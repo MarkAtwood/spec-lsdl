@@ -1,5 +1,13 @@
 # LSDL: A Construction Grammar for Latin, Greek, and Cyrillic
 
+## Why This Exists
+
+The absence of a constructive grammar for alphabetic characters has irritated me since I was a preschool autistic nerdling who had to consciously think his way through motor control. While other kids just *wrote*, I had to decompose each letter into steps: stem down, curve right, close the loop. I was reverse-engineering handwriting from first principles because my brain didn't come with the "just do it automatically" module.
+
+Decades later, it turns out I wasn't wrong to think letters should have explicit build instructions. Look at most people's handwriting today. The motor-control-by-osmosis approach isn't working that well for anyone. Maybe a systematic description of how letters are actually constructed—the strokes, the attachments, the proportions—should finally exist.
+
+So here it is.
+
 ## The Problem: Nobody Describes How Letters Are Built
 
 Latin, Greek, and Cyrillic characters (and their diacritic-laden descendants across European, Slavic, and Southeast Asian orthographies) exist in several digital representations, and every single one of them throws away structural information.
