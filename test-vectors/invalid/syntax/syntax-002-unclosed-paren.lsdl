@@ -1,0 +1,4 @@
+@lsdl 1.0
+
+# Syntax error: missing closing parenthesis
+A LATIN-CAPITAL-A = APEX(stem.l, stem.r

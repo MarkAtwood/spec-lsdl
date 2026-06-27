@@ -1,0 +1,5 @@
+error: syntax error
+line: 6
+expected: numeric coordinate [UINT,UINT]
+found: [six,4]
+grammar: COORD ::= '[' UINT ',' UINT ']'

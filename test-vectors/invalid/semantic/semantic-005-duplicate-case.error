@@ -1,0 +1,6 @@
+error: duplicate uppercase in @case declaration
+line: 12
+character: A
+previous: line 11
+constraint: Each uppercase character MUST appear in at most one @case declaration
+reference: Section 13.4 constraint 1

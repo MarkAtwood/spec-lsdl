@@ -1,0 +1,6 @@
+error: invalid script tag
+line: 4
+expected: 4-letter ISO 15924 code (e.g., Latn, Grek, Cyrl)
+found: LATIN (5 characters)
+grammar: META_SCRIPT ::= 'script:' WS? LETTER LETTER LETTER LETTER
+reference: Section 4.7.1 requires ISO 15924 codes

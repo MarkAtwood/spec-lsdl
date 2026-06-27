@@ -1,0 +1,5 @@
+error: syntax error
+line: 4
+expected: '=' between UNICODE_NAME and EXPR
+found: APEX(stem.l, stem.r)
+grammar: CHAR_INLINE ::= LITERAL_CHAR WS UNAME WS '=' WS EXPR

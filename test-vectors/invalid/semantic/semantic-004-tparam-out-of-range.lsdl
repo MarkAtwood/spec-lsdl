@@ -1,0 +1,5 @@
+@lsdl 1.0
+
+# Semantic error: transform parameter exceeds bounds
+# Constraint 2: All TPARAM values MUST be in the range -12 to 24 inclusive
+A LATIN-CAPITAL-A = sc(APEX(stem.l, stem.r), sx=30, sy=12)

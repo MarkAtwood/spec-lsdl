@@ -1,0 +1,317 @@
+@lsdl 1.0
+
+# Block form test: @elem blocks with path geometry and anchors
+
+# ============================================================
+# Standard /12 Grid Elements
+# ============================================================
+
+@elem stem
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+width: 1
+anchors: top=[6,4] base=[6,8] mid=[6,6]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+@elem stem.l
+zone: cap
+path: p1 p2
+p1 = [2,0]
+p2 = [2,8]
+width: 1
+anchors: top=[2,0] base=[2,8] mid=[2,4]
+@end
+
+@elem stem.r
+zone: cap
+path: p1 p2
+p1 = [10,0]
+p2 = [10,8]
+width: 1
+anchors: top=[10,0] base=[10,8] mid=[10,4]
+@end
+
+# Bowl with closed path
+@elem bowl
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = C([12,4] [12,8])
+p3 = [6,8]
+p4 = C([0,8] [0,4])
+close: true
+width: 1
+anchors: attach=[6,6] mark-above=[6,3] mark-below=[6,9]
+@end
+
+# Arc with quadratic curve
+@elem arc.top
+zone: x-height
+path: p1 p2 p3
+p1 = [10,6]
+p2 = C([10,4] [6,4])
+p3 = [2,6]
+width: 1
+anchors: left=[2,6] right=[10,6] top=[6,4]
+@end
+
+# Arc with cubic curve
+@elem arc.bot
+zone: x-height
+path: p1 p2 p3
+p1 = [2,6]
+p2 = C([2,7] [4,8] [6,8])
+p3 = [10,8]
+width: 1
+anchors: left=[2,6] right=[10,8] base=[6,8]
+@end
+
+# ============================================================
+# /24 Grid Elements (Fine Resolution)
+# ============================================================
+
+# Acute diacritic at /24 precision
+@elem acute /24
+zone: diacritic-above
+path: p1 p2
+p1 = [10,3]
+p2 = [14,0]
+width: 1
+anchors: attach=[12,4]
+@end
+
+# Grave diacritic at /24 precision
+@elem grave /24
+zone: diacritic-above
+path: p1 p2
+p1 = [14,3]
+p2 = [10,0]
+width: 1
+anchors: attach=[12,4]
+@end
+
+# Fine cedilla shape at /24 precision
+@elem cedilla /24
+zone: diacritic-below
+path: p1 p2 p3 p4
+p1 = [12,16]
+p2 = [10,18]
+p3 = C([8,18] [8,20])
+p4 = C([10,22] [12,22])
+width: 1
+anchors: attach=[12,16]
+@end
+
+# Complex curve at /24 precision
+@elem ogee /24
+zone: full
+path: p1 p2 p3 p4
+p1 = [12,0]
+p2 = C([4,4] [4,8] [4,12])
+p3 = C([20,12] [20,16] [20,20])
+p4 = [12,24]
+width: 1
+anchors: top=[12,0] base=[12,24] mid=[12,12]
+@end
+
+# ============================================================
+# Elements Defined by Expression (build: from_expr)
+# ============================================================
+
+@elem crossbar
+zone: x-height
+path: p1 p2
+p1 = [2,6]
+p2 = [10,6]
+width: 1
+anchors: left=[2,6] right=[10,6] mid=[6,6]
+@end
+
+@elem bar.top
+zone: cap
+path: p1 p2
+p1 = [2,0]
+p2 = [10,0]
+width: 1
+anchors: left=[2,0] right=[10,0] mid=[6,0]
+@end
+
+# Compound element defined by expression
+@elem h.shape
+build: from_expr
+FRAME(stem.l, crossbar, stem.r)
+@end
+
+# Another compound element
+@elem e.shape
+build: from_expr
+FRAME(arc.top, crossbar, arc.bot)
+@end
+
+# ============================================================
+# Different Zone Declarations
+# ============================================================
+
+@elem cap.stem
+zone: cap
+path: p1 p2
+p1 = [6,0]
+p2 = [6,8]
+width: 1
+anchors: top=[6,0] base=[6,8] mid=[6,4]
+@end
+
+@elem ascender.element
+zone: ascender
+path: p1 p2
+p1 = [6,1]
+p2 = [6,8]
+width: 1
+anchors: top=[6,1] base=[6,8] mid=[6,4]
+@end
+
+@elem descender.element
+zone: descender
+path: p1 p2
+p1 = [6,4]
+p2 = [6,10]
+width: 1
+anchors: top=[6,4] base=[6,10] mid=[6,7]
+@end
+
+@elem full.element
+zone: full
+path: p1 p2
+p1 = [6,0]
+p2 = [6,12]
+width: 1
+anchors: top=[6,0] base=[6,12] mid=[6,6]
+@end
+
+@elem diacritic.above.element
+zone: diacritic-above
+path: p1 p2
+p1 = [4,0]
+p2 = [8,0]
+width: 1
+anchors: attach=[6,1]
+@end
+
+@elem diacritic.below.element
+zone: diacritic-below
+path: p1 p2
+p1 = [4,11]
+p2 = [8,11]
+width: 1
+anchors: attach=[6,10]
+@end
+
+# ============================================================
+# Different Width Values
+# ============================================================
+
+@elem hairline.stem
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+width: 0
+anchors: top=[6,4] base=[6,8]
+@end
+
+@elem normal.stem
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+@elem bold.stem
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+width: 2
+anchors: top=[6,4] base=[6,8]
+@end
+
+# ============================================================
+# Close: true vs false
+# ============================================================
+
+@elem open.arc
+zone: x-height
+path: p1 p2 p3
+p1 = [2,4]
+p2 = C([6,2] [10,4])
+p3 = [10,8]
+close: false
+width: 1
+anchors: left=[2,4] right=[10,8]
+@end
+
+@elem closed.bowl
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,4]
+p2 = C([2,8] [6,8])
+p3 = [10,8]
+p4 = C([10,4] [6,4])
+close: true
+width: 1
+anchors: attach=[6,6]
+@end
+
+# ============================================================
+# Complex Path with Multiple Points
+# ============================================================
+
+@elem complex.shape
+zone: x-height
+path: p1 p2 p3 p4 p5 p6 p7 p8
+p1 = [2,4]
+p2 = [4,4]
+p3 = C([6,4] [6,5])
+p4 = [6,6]
+p5 = C([6,7] [8,8])
+p6 = [10,8]
+p7 = [10,6]
+p8 = C([10,4] [8,4])
+close: true
+width: 1
+anchors: top=[4,4] base=[6,8] mid=[6,6] left=[2,4] right=[10,6]
+@end
+
+# ============================================================
+# Character Definition in Block Form
+# ============================================================
+
+@char Q LATIN-CAPITAL-Q
+zone: cap
+path: p1 p2 p3 p4 p5 p6
+p1 = [6,0]
+p2 = C([12,0] [12,8])
+p3 = [6,8]
+p4 = C([0,8] [0,0])
+p5 = [8,6]
+p6 = [12,10]
+width: 1
+anchors: top=[6,0] base=[6,8] mark-above=[6,0]
+script:Latn
+@end
+
+# ============================================================
+# Test Characters
+# ============================================================
+
+H  LATIN-CAPITAL-H = h.shape script:Latn
+e  LATIN-SMALL-E = e.shape script:Latn
+é  LATIN-SMALL-E-ACUTE = DIA(e, acute) script:Latn
+ç  LATIN-SMALL-C-CEDILLA = DIA(c, cedilla) script:Latn
+
+c  LATIN-SMALL-C = STACK(arc.top, arc.bot) script:Latn

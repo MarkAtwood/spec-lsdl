@@ -1,0 +1,5 @@
+@lsdl 1.0
+
+# Semantic error: DIA requires 2 or 3 arguments, given only 1
+# Constraint 20: DIA MUST have 2 or 3 arguments
+A LATIN-CAPITAL-A = DIA(stem)

@@ -1,0 +1,4 @@
+@lsdl 1.0
+
+# Syntax error: missing '=' in character definition
+A LATIN-CAPITAL-A APEX(stem.l, stem.r)

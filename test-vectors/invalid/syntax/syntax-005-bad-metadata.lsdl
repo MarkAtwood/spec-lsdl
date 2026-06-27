@@ -1,0 +1,4 @@
+@lsdl 1.0
+
+# Syntax error: invalid script tag format (not ISO 15924)
+A LATIN-CAPITAL-A = APEX(stem.l, stem.r) script:LATIN

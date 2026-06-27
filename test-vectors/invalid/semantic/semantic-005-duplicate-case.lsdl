@@ -1,0 +1,12 @@
+@lsdl 1.0
+
+# Define some characters first
+A LATIN-CAPITAL-A = APEX(stem.l, stem.r)
+a LATIN-SMALL-A = bowl
+B LATIN-CAPITAL-B = STACK(bowl.upper, bowl.lower)
+b LATIN-SMALL-B = STACK(ascender, bowl)
+
+# Semantic error: duplicate uppercase in @case declarations
+# Constraint from Section 13.4: Each uppercase character MUST appear in at most one @case declaration
+@case A a
+@case A b

@@ -1,0 +1,14 @@
+@lsdl 1.0
+
+# Smallest valid LSDL file: version declaration + one character
+
+@elem stem
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+i  LATIN-SMALL-I = stem

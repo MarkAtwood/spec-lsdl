@@ -1,0 +1,4 @@
+@lsdl 1.0
+
+# Syntax error: MERGE is not a valid composition operator
+A LATIN-CAPITAL-A = MERGE(stem.l, stem.r)

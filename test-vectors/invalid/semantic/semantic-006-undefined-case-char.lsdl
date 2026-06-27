@@ -1,0 +1,8 @@
+@lsdl 1.0
+
+# Define only the uppercase character
+A LATIN-CAPITAL-A = APEX(stem.l, stem.r)
+
+# Semantic error: @case references undefined lowercase character
+# Constraint 18: @case declarations MUST reference characters defined in the same file
+@case A z

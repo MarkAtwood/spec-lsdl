@@ -1,0 +1,12 @@
+@lsdl 1.0
+
+# Semantic error: coordinate exceeds grid bounds
+# Constraint 4: All coordinate values in standard blocks MUST be 0 to 12
+@elem badelem
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [15,8]
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end

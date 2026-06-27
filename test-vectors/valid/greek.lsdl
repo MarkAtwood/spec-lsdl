@@ -1,0 +1,329 @@
+@lsdl 1.0
+
+# Greek alphabet test: script:Grek tags and final sigma handling
+
+# ============================================================
+# Element Definitions
+# ============================================================
+
+@elem stem
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+width: 1
+anchors: top=[6,4] base=[6,8] mid=[6,6]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+@elem stem.l
+zone: cap
+path: p1 p2
+p1 = [2,0]
+p2 = [2,8]
+width: 1
+anchors: top=[2,0] base=[2,8] mid=[2,4]
+@end
+
+@elem stem.r
+zone: cap
+path: p1 p2
+p1 = [10,0]
+p2 = [10,8]
+width: 1
+anchors: top=[10,0] base=[10,8] mid=[10,4]
+@end
+
+@elem ascender
+zone: ascender
+path: p1 p2
+p1 = [6,1]
+p2 = [6,8]
+width: 1
+anchors: top=[6,1] base=[6,8] mid=[6,4]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+@elem ascender.curved
+zone: ascender
+path: p1 p2 p3
+p1 = [4,1]
+p2 = C([8,1] [8,4])
+p3 = [6,4]
+width: 1
+anchors: top=[4,1] base=[6,4] mid=[6,2]
+@end
+
+@elem descender
+zone: descender
+path: p1 p2
+p1 = [6,4]
+p2 = [6,10]
+width: 1
+anchors: top=[6,4] base=[6,10] mid=[6,7]
+@end
+
+@elem descender.curved
+zone: descender
+path: p1 p2 p3
+p1 = [6,8]
+p2 = C([2,8] [2,10])
+p3 = [4,10]
+width: 1
+anchors: top=[6,8] base=[4,10]
+@end
+
+@elem bowl.full
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = C([12,4] [12,8])
+p3 = [6,8]
+p4 = C([0,8] [0,4])
+close: true
+width: 1
+anchors: attach=[6,6] mark-above=[6,3] mark-below=[6,9]
+@end
+
+@elem bowl.r
+zone: x-height
+path: p1 p2 p3
+p1 = [6,4]
+p2 = C([12,4] [12,8])
+p3 = [6,8]
+close: true
+width: 1
+anchors: attach=[6,6] mark-above=[8,3] mark-below=[8,9]
+@end
+
+@elem bowl.r.upper
+zone: x-height
+path: p1 p2 p3
+p1 = [6,4]
+p2 = C([11,4] [11,6])
+p3 = [6,6]
+width: 1
+anchors: attach=[6,5] top=[8,4] base=[8,6]
+@end
+
+@elem bowl.r.lower
+zone: x-height
+path: p1 p2 p3
+p1 = [6,6]
+p2 = C([12,6] [12,8])
+p3 = [6,8]
+width: 1
+anchors: attach=[6,7] top=[8,6] base=[8,8]
+@end
+
+@elem crossbar
+zone: x-height
+path: p1 p2
+p1 = [2,6]
+p2 = [10,6]
+width: 1
+anchors: left=[2,6] right=[10,6] mid=[6,6]
+@end
+
+@elem bar.top
+zone: cap
+path: p1 p2
+p1 = [2,0]
+p2 = [10,0]
+width: 1
+anchors: left=[2,0] right=[10,0] mid=[6,0]
+@end
+
+@elem apex
+zone: cap
+path: p1 p2 p3
+p1 = [2,8]
+p2 = [6,0]
+p3 = [10,8]
+width: 1
+anchors: top=[6,0] left=[2,8] right=[10,8]
+@end
+
+@elem diagonal.l
+zone: cap
+path: p1 p2
+p1 = [2,0]
+p2 = [6,8]
+width: 1
+anchors: top=[2,0] base=[6,8]
+@end
+
+@elem diagonal.r
+zone: cap
+path: p1 p2
+p1 = [10,0]
+p2 = [6,8]
+width: 1
+anchors: top=[10,0] base=[6,8]
+@end
+
+@elem arc.top
+zone: x-height
+path: p1 p2 p3
+p1 = [10,6]
+p2 = C([10,4] [6,4])
+p3 = [2,6]
+width: 1
+anchors: left=[2,6] right=[10,6] top=[6,4]
+@end
+
+@elem arc.bot
+zone: x-height
+path: p1 p2 p3
+p1 = [2,6]
+p2 = C([2,8] [6,8])
+p3 = [10,8]
+width: 1
+anchors: left=[2,6] right=[10,8] base=[6,8]
+@end
+
+@elem spine.greek
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,4]
+p2 = C([10,4] [10,6])
+p3 = C([2,6] [2,8])
+p4 = [10,8]
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+@elem tail.sigma
+zone: x-height
+path: p1 p2 p3
+p1 = [6,4]
+p2 = C([10,4] [10,6])
+p3 = [8,6]
+width: 1
+anchors: attach=[6,4]
+@end
+
+@elem tail.final
+zone: descender
+path: p1 p2 p3
+p1 = [6,8]
+p2 = C([10,8] [10,10])
+p3 = [8,10]
+width: 1
+anchors: attach=[6,8]
+@end
+
+@elem ogee
+zone: full
+path: p1 p2 p3 p4
+p1 = [6,0]
+p2 = C([2,3] [2,6])
+p3 = C([10,6] [10,9])
+p4 = [6,12]
+width: 1
+anchors: top=[6,0] base=[6,12]
+@end
+
+@elem loop.greek
+zone: descender
+path: p1 p2 p3
+p1 = [6,8]
+p2 = C([2,8] [2,10])
+p3 = [6,10]
+close: true
+width: 1
+anchors: attach=[6,8] top=[6,8]
+@end
+
+# ============================================================
+# Case Mappings with Final Form
+# ============================================================
+
+@case Α α
+@case Β β
+@case Γ γ
+@case Δ δ
+@case Ε ε
+@case Ζ ζ
+@case Η η
+@case Θ θ
+@case Ι ι
+@case Κ κ
+@case Λ λ
+@case Μ μ
+@case Ν ν
+@case Ξ ξ
+@case Ο ο
+@case Π π
+@case Ρ ρ
+@case Σ σ final:ς
+@case Τ τ
+@case Υ υ
+@case Φ φ
+@case Χ χ
+@case Ψ ψ
+@case Ω ω
+
+# ============================================================
+# Capital Greek Letters
+# ============================================================
+
+Α  GREEK-CAPITAL-ALPHA    = APEX(diagonal.l, diagonal.r, crossbar) script:Grek
+Β  GREEK-CAPITAL-BETA     = LR(stem.l, STACK(bowl.r, bowl.r), 4/8) script:Grek
+Γ  GREEK-CAPITAL-GAMMA    = FRAME(bar.top, stem.l) script:Grek
+Δ  GREEK-CAPITAL-DELTA    = apex script:Grek
+Ε  GREEK-CAPITAL-EPSILON  = FRAME(stem.l, bar.top, crossbar, arc.bot) script:Grek
+Ζ  GREEK-CAPITAL-ZETA     = FRAME(bar.top, diagonal.r, arc.bot) script:Grek
+Η  GREEK-CAPITAL-ETA      = FRAME(stem.l, crossbar, stem.r) script:Grek
+Θ  GREEK-CAPITAL-THETA    = OVR(bowl.full, crossbar) script:Grek
+Ι  GREEK-CAPITAL-IOTA     = stem script:Grek
+Κ  GREEK-CAPITAL-KAPPA    = LR(stem.l, STACK(diagonal.r, diagonal.l), 4/8) script:Grek
+Λ  GREEK-CAPITAL-LAMBDA   = apex script:Grek
+Μ  GREEK-CAPITAL-MU       = FRAME(stem.l, apex, stem.r) script:Grek
+Ν  GREEK-CAPITAL-NU       = LR3(stem.l, diagonal.l, stem.r, 4/4/4) script:Grek
+Ξ  GREEK-CAPITAL-XI       = FRAME(bar.top, crossbar, arc.bot) script:Grek
+Ο  GREEK-CAPITAL-OMICRON  = bowl.full script:Grek
+Π  GREEK-CAPITAL-PI       = FRAME(stem.l, bar.top, stem.r) script:Grek
+Ρ  GREEK-CAPITAL-RHO      = LR(stem.l, bowl.r, 4/8) script:Grek
+Σ  GREEK-CAPITAL-SIGMA    = FRAME(bar.top, STACK(diagonal.r, diagonal.l), arc.bot) script:Grek
+Τ  GREEK-CAPITAL-TAU      = FRAME(bar.top, stem) script:Grek
+Υ  GREEK-CAPITAL-UPSILON  = STACK(apex, stem) script:Grek
+Φ  GREEK-CAPITAL-PHI      = OVR(bowl.full, stem) script:Grek
+Χ  GREEK-CAPITAL-CHI      = FRAME(diagonal.l, diagonal.r) script:Grek
+Ψ  GREEK-CAPITAL-PSI      = FRAME(stem.l, stem, stem.r, arc.bot) script:Grek
+Ω  GREEK-CAPITAL-OMEGA    = FRAME(arc.top, bowl.full, stem.l, stem.r) script:Grek
+
+# ============================================================
+# Lowercase Greek Letters
+# ============================================================
+
+α  GREEK-SMALL-ALPHA      = LR(bowl.full, stem, 8/4) script:Grek
+β  GREEK-SMALL-BETA       = STACK(ascender.curved, bowl.r.upper, bowl.r.lower) script:Grek
+γ  GREEK-SMALL-GAMMA      = STACK(apex, descender) script:Grek
+δ  GREEK-SMALL-DELTA      = STACK(arc.top, bowl.full) script:Grek
+ε  GREEK-SMALL-EPSILON    = STACK(arc.top, arc.bot) script:Grek
+ζ  GREEK-SMALL-ZETA       = STACK(arc.top, spine.greek, tail.final) script:Grek
+η  GREEK-SMALL-ETA        = STACK(stem, arc.bot, descender) script:Grek
+θ  GREEK-SMALL-THETA      = OVR(bowl.full, crossbar) script:Grek
+ι  GREEK-SMALL-IOTA       = stem script:Grek
+κ  GREEK-SMALL-KAPPA      = LR(stem, STACK(diagonal.r, diagonal.l), 4/8) script:Grek
+λ  GREEK-SMALL-LAMBDA     = STACK(diagonal.l, diagonal.r) script:Grek
+μ  GREEK-SMALL-MU         = STACK(stem, arc.bot, descender) script:Grek
+ν  GREEK-SMALL-NU         = apex script:Grek
+ξ  GREEK-SMALL-XI         = STACK(arc.top, spine.greek, tail.final) script:Grek
+ο  GREEK-SMALL-OMICRON    = bowl.full script:Grek
+π  GREEK-SMALL-PI         = FRAME(bar.top, stem, stem.r) script:Grek
+ρ  GREEK-SMALL-RHO        = STACK(bowl.r, descender) script:Grek
+
+# Medial sigma (used in middle of words)
+σ  GREEK-SMALL-SIGMA      = FRAME(tail.sigma, bowl.full) script:Grek
+
+# Final sigma (used at end of words) - declared in @case
+ς  GREEK-SMALL-FINAL-SIGMA = STACK(arc.top, descender.curved) script:Grek
+
+τ  GREEK-SMALL-TAU        = FRAME(bar.top, stem) script:Grek
+υ  GREEK-SMALL-UPSILON    = STACK(stem, arc.bot, stem) script:Grek
+φ  GREEK-SMALL-PHI        = STACK(ascender, bowl.full, descender) script:Grek
+χ  GREEK-SMALL-CHI        = STACK(FRAME(diagonal.l, diagonal.r), descender) script:Grek
+ψ  GREEK-SMALL-PSI        = STACK(FRAME(stem.l, stem, stem.r), arc.bot, descender) script:Grek
+ω  GREEK-SMALL-OMEGA      = LR(loop.greek, loop.greek, 6/6) script:Grek

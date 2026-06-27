@@ -1,0 +1,5 @@
+@lsdl 1.0
+
+# Semantic error: reference to undefined element
+# Constraint 6: All FULL_ELEM references MUST resolve to a defined element
+A LATIN-CAPITAL-A = APEX(undefined_elem, stem.r)

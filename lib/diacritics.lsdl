@@ -1,0 +1,438 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Standard Diacritic Library
+# =============================================================================
+#
+# This file defines all 24 standard diacritics from LSDL Spec Appendix C.
+# Diacritics are combining marks that attach to base characters via the DIA
+# and DIA2 operators (Sections 8.5 and 8.6).
+#
+# Categories:
+#   - Above marks (13): acute, grave, circumflex, tilde, diaeresis, macron,
+#                       breve, caron, ring, dot-above, double-acute, horn,
+#                       comma-above
+#   - Below marks (8): cedilla, ogonek, dot-below, comma-below, macron-below,
+#                      line-below, breve-below, ring-below
+#   - Through marks (3): stroke, stroke.diag, oblique-stroke
+#
+# Zone assignments:
+#   diacritic-above: y=0 to y=2 (above cap-height)
+#   diacritic-below: y=8 to y=11 (below baseline into descender)
+#   x-height: y=4 to y=8 (for through-marks, centered on base)
+#
+# All diacritics MUST define an `attach` anchor per Section 15.2.
+#
+# =============================================================================
+
+# =============================================================================
+# ABOVE MARKS (13)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# acute - Rising diagonal stroke
+# Unicode: U+0301 COMBINING ACUTE ACCENT
+# Stacking: yes
+# -----------------------------------------------------------------------------
+@elem acute
+zone: diacritic-above
+path: p1 p2
+p1 = [5,2]
+p2 = [7,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# grave - Falling diagonal stroke
+# Unicode: U+0300 COMBINING GRAVE ACCENT
+# Stacking: yes
+# -----------------------------------------------------------------------------
+@elem grave
+zone: diacritic-above
+path: p1 p2
+p1 = [7,2]
+p2 = [5,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# circumflex - Inverted V shape (hat)
+# Unicode: U+0302 COMBINING CIRCUMFLEX ACCENT
+# Stacking: yes
+# -----------------------------------------------------------------------------
+@elem circumflex
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [4,2]
+p2 = [6,0]
+p3 = [8,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# tilde - Wave-shaped mark
+# Unicode: U+0303 COMBINING TILDE
+# Stacking: yes
+# -----------------------------------------------------------------------------
+@elem tilde
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [3,2]
+p2 = C([5,0] [7,2])
+p3 = [9,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# diaeresis - Two dots (umlaut)
+# Unicode: U+0308 COMBINING DIAERESIS
+# Stacking: yes
+# -----------------------------------------------------------------------------
+@elem diaeresis
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [4,1]
+p2 = C([4.5,1] [4.5,1.5])
+p3 = C([4.5,2] [4,2])
+p4 = C([3.5,2] [3.5,1.5])
+close: true
+width: 1
+anchors: attach=[6,2]
+# Second dot defined via path continuation
+path2: q1 q2 q3 q4
+q1 = [8,1]
+q2 = C([8.5,1] [8.5,1.5])
+q3 = C([8.5,2] [8,2])
+q4 = C([7.5,2] [7.5,1.5])
+close2: true
+@end
+
+# -----------------------------------------------------------------------------
+# macron - Horizontal bar above
+# Unicode: U+0304 COMBINING MACRON
+# Stacking: yes
+# -----------------------------------------------------------------------------
+@elem macron
+zone: diacritic-above
+path: p1 p2
+p1 = [4,1]
+p2 = [8,1]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# breve - Curved arc opening upward
+# Unicode: U+0306 COMBINING BREVE
+# Stacking: yes
+# -----------------------------------------------------------------------------
+@elem breve
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [4,0]
+p2 = C([4,2] [6,2])
+p3 = C([8,2] [8,0])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# caron - V shape (hacek/wedge)
+# Unicode: U+030C COMBINING CARON
+# Stacking: yes
+# -----------------------------------------------------------------------------
+@elem caron
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [4,0]
+p2 = [6,2]
+p3 = [8,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# ring - Small circle above
+# Unicode: U+030A COMBINING RING ABOVE
+# Stacking: yes
+# -----------------------------------------------------------------------------
+@elem ring
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [6,0]
+p2 = C([7.5,0] [7.5,1])
+p3 = C([7.5,2] [6,2])
+p4 = C([4.5,2] [4.5,1])
+close: true
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# dot-above - Single dot above
+# Unicode: U+0307 COMBINING DOT ABOVE
+# Stacking: yes
+# -----------------------------------------------------------------------------
+@elem dot-above
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [6,0.5]
+p2 = C([6.75,0.5] [6.75,1.25])
+p3 = C([6.75,2] [6,2])
+p4 = C([5.25,2] [5.25,1.25])
+close: true
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# double-acute - Two rising diagonal strokes
+# Unicode: U+030B COMBINING DOUBLE ACUTE ACCENT
+# Stacking: yes
+# -----------------------------------------------------------------------------
+@elem double-acute
+zone: diacritic-above
+path: p1 p2
+p1 = [3,2]
+p2 = [5,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+# Second stroke
+path2: q1 q2
+q1 = [7,2]
+q2 = [9,0]
+close2: false
+@end
+
+# -----------------------------------------------------------------------------
+# horn - Small hook extending from upper right
+# Unicode: U+031B COMBINING HORN
+# Stacking: no (attaches to top-right, not centered)
+# Note: Use with DIA(base, horn, attach:top-right) for proper positioning
+# -----------------------------------------------------------------------------
+@elem horn
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [6,2]
+p2 = C([7,1] [8,1])
+p3 = [8,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# comma-above - Small comma shape above (smooth breathing in Greek)
+# Unicode: U+0313 COMBINING COMMA ABOVE
+# Stacking: yes
+# -----------------------------------------------------------------------------
+@elem comma-above
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [6,0]
+p2 = C([6.5,0.5] [6.5,1])
+p3 = [5.5,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# =============================================================================
+# BELOW MARKS (8)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# cedilla - Hook extending below
+# Unicode: U+0327 COMBINING CEDILLA
+# Stacking: no
+# -----------------------------------------------------------------------------
+@elem cedilla
+zone: diacritic-below
+path: p1 p2 p3 p4
+p1 = [6,8]
+p2 = [5.5,9]
+p3 = C([4,9.5] [5,10])
+p4 = C([6.5,10.5] [6,11])
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# ogonek - Small hook curving right
+# Unicode: U+0328 COMBINING OGONEK
+# Stacking: no
+# -----------------------------------------------------------------------------
+@elem ogonek
+zone: diacritic-below
+path: p1 p2 p3
+p1 = [6,8]
+p2 = C([5,9] [5,10])
+p3 = C([6,10.5] [7,10])
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# dot-below - Single dot below
+# Unicode: U+0323 COMBINING DOT BELOW
+# Stacking: yes
+# -----------------------------------------------------------------------------
+@elem dot-below
+zone: diacritic-below
+path: p1 p2 p3 p4
+p1 = [6,9]
+p2 = C([6.75,9] [6.75,9.75])
+p3 = C([6.75,10.5] [6,10.5])
+p4 = C([5.25,10.5] [5.25,9.75])
+close: true
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# comma-below - Comma shape below
+# Unicode: U+0326 COMBINING COMMA BELOW
+# Stacking: no
+# -----------------------------------------------------------------------------
+@elem comma-below
+zone: diacritic-below
+path: p1 p2 p3
+p1 = [6,9]
+p2 = C([6.5,9.5] [6.5,10])
+p3 = [5.5,11]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# macron-below - Horizontal bar below
+# Unicode: U+0331 COMBINING MACRON BELOW
+# Stacking: yes
+# -----------------------------------------------------------------------------
+@elem macron-below
+zone: diacritic-below
+path: p1 p2
+p1 = [4,9]
+p2 = [8,9]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# line-below - Horizontal line below (underline mark)
+# Unicode: U+0332 COMBINING LOW LINE
+# Stacking: yes
+# -----------------------------------------------------------------------------
+@elem line-below
+zone: diacritic-below
+path: p1 p2
+p1 = [3,9]
+p2 = [9,9]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# breve-below - Curved arc below opening downward
+# Unicode: U+032E COMBINING BREVE BELOW
+# Stacking: yes
+# -----------------------------------------------------------------------------
+@elem breve-below
+zone: diacritic-below
+path: p1 p2 p3
+p1 = [4,10]
+p2 = C([4,9] [6,9])
+p3 = C([8,9] [8,10])
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# ring-below - Small circle below
+# Unicode: U+0325 COMBINING RING BELOW
+# Stacking: yes
+# -----------------------------------------------------------------------------
+@elem ring-below
+zone: diacritic-below
+path: p1 p2 p3 p4
+p1 = [6,9]
+p2 = C([7.5,9] [7.5,10])
+p3 = C([7.5,11] [6,11])
+p4 = C([4.5,11] [4.5,10])
+close: true
+width: 1
+anchors: attach=[6,8]
+@end
+
+# =============================================================================
+# THROUGH MARKS (3)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# stroke - Horizontal line through center
+# Unicode: U+0335 COMBINING SHORT STROKE OVERLAY / U+0336 COMBINING LONG STROKE OVERLAY
+# Stacking: no
+# Note: Centered on base bounding box via DIA for through-marks
+# -----------------------------------------------------------------------------
+@elem stroke
+zone: x-height
+path: p1 p2
+p1 = [2,6]
+p2 = [10,6]
+close: false
+width: 1
+anchors: attach=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# stroke.diag - Diagonal line through center (slash overlay)
+# Unicode: U+0337 COMBINING SHORT SOLIDUS OVERLAY / U+0338 COMBINING LONG SOLIDUS OVERLAY
+# Stacking: no
+# -----------------------------------------------------------------------------
+@elem stroke.diag
+zone: x-height
+path: p1 p2
+p1 = [3,8]
+p2 = [9,4]
+close: false
+width: 1
+anchors: attach=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# oblique-stroke - Long diagonal slash (for null set, etc.)
+# Unicode: U+0338 COMBINING LONG SOLIDUS OVERLAY
+# Stacking: no
+# Note: Longer than stroke.diag, extends beyond typical x-height bounds
+# -----------------------------------------------------------------------------
+@elem oblique-stroke
+zone: x-height
+path: p1 p2
+p1 = [2,9]
+p2 = [10,3]
+close: false
+width: 1
+anchors: attach=[6,6]
+@end
+
+# =============================================================================
+# END OF STANDARD DIACRITIC LIBRARY
+# =============================================================================

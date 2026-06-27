@@ -1,0 +1,10 @@
+@lsdl 1.0
+
+@elem badcoord
+zone: x-height
+path: p1 p2
+p1 = [six,4]
+p2 = [6,8]
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end

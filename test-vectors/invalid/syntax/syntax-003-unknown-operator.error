@@ -1,0 +1,5 @@
+error: unknown composition operator
+line: 4
+operator: MERGE
+valid operators: STACK, LR, LR3, DIA, DIA2, OVR, FRAME, LIG, APEX
+reference: Section 8 defines the closed set of 8 composition operators

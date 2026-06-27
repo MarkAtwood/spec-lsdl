@@ -1,0 +1,1423 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Standard Element Library
+# =============================================================================
+#
+# This file defines all 39 base elements from Appendix B of the LSDL spec,
+# plus common positional variants. It serves as a reference library for
+# character composition.
+#
+# Element Categories:
+#   - Verticals (4): stem, ascender, descender, full-stem
+#   - Curves (12): bowl, bowl.upper, bowl.lower, counter, arc.top, arc.bot,
+#                  hook.top, hook.bot, loop, ear, shoulder, ogee
+#   - Horizontals/Diagonals (13): crossbar, bar.top, bar.bot, bar.mid, arm,
+#                                  leg, diagonal, apex, vertex, spine, tail,
+#                                  stroke.diag, stroke.horiz
+#   - Terminals (7): serif, spur, ball, finial, swash, flag, tittle
+#   - Special (3): dot, caron.alt, comma.shape
+#
+# Zone assignments follow the default metric system:
+#   cap-top: 0, ascender: 1, cap-height: 2, x-top: 4, baseline: 8,
+#   descender: 10, desc-limit: 12
+#
+# =============================================================================
+
+# =============================================================================
+# VERTICALS (4 base elements)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# stem - Vertical straight stroke for x-height
+# Used in: i, l, n, m, h, u, and many other lowercase letters
+# -----------------------------------------------------------------------------
+@elem stem
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8] mid=[6,6]
+  arm.left=[0,6] arm.right=[12,6]
+  mark-above=[6,3] mark-below=[6,9]
+  top-serif=[6,3] bot-serif=[6,9]
+@end
+
+# stem.l - Left-positioned stem (for H, N, M, etc.)
+@elem stem.l
+zone: cap
+path: p1 p2
+p1 = [2,0]
+p2 = [2,8]
+close: false
+width: 1
+anchors: top=[2,0] base=[2,8] mid=[2,4]
+  arm.right=[4,4] mark-above=[2,0] mark-below=[2,9]
+  top-serif=[2,0] bot-serif=[2,8]
+@end
+
+# stem.r - Right-positioned stem (for H, N, M, etc.)
+@elem stem.r
+zone: cap
+path: p1 p2
+p1 = [10,0]
+p2 = [10,8]
+close: false
+width: 1
+anchors: top=[10,0] base=[10,8] mid=[10,4]
+  arm.left=[8,4] mark-above=[10,0] mark-below=[10,9]
+  top-serif=[10,0] bot-serif=[10,8]
+@end
+
+# stem.x - Stem for lowercase x-height, centered
+@elem stem.x
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8] mid=[6,6]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# ascender - Stem extending above x-height (b, d, h, k, l)
+# -----------------------------------------------------------------------------
+@elem ascender
+zone: ascender
+path: p1 p2
+p1 = [6,1]
+p2 = [6,8]
+close: false
+width: 1
+anchors: top=[6,1] base=[6,8] mid=[6,4]
+  mark-above=[6,0] mark-below=[6,9]
+  arm.left=[0,6] arm.right=[12,6]
+  top-serif=[6,0] bot-serif=[6,9]
+@end
+
+# ascender.l - Left-positioned ascender
+@elem ascender.l
+zone: ascender
+path: p1 p2
+p1 = [2,1]
+p2 = [2,8]
+close: false
+width: 1
+anchors: top=[2,1] base=[2,8] mid=[2,4]
+  mark-above=[2,0] mark-below=[2,9]
+  arm.right=[4,6]
+@end
+
+# ascender.r - Right-positioned ascender
+@elem ascender.r
+zone: ascender
+path: p1 p2
+p1 = [10,1]
+p2 = [10,8]
+close: false
+width: 1
+anchors: top=[10,1] base=[10,8] mid=[10,4]
+  mark-above=[10,0] mark-below=[10,9]
+  arm.left=[8,6]
+@end
+
+# ascender.curved - Curved entry ascender (as in Greek beta)
+@elem ascender.curved
+zone: ascender
+path: p1 p2 p3
+p1 = [4,1]
+p2 = C([8,1] [8,4])
+p3 = [6,4]
+close: false
+width: 1
+anchors: top=[4,1] base=[6,4] mid=[6,2]
+  mark-above=[4,0]
+@end
+
+# -----------------------------------------------------------------------------
+# descender - Stem extending below baseline (g, p, q, y)
+# -----------------------------------------------------------------------------
+@elem descender
+zone: descender
+path: p1 p2
+p1 = [6,4]
+p2 = [6,10]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,10] mid=[6,7]
+  mark-above=[6,3] mark-below=[6,11]
+@end
+
+# descender.l - Left-positioned descender
+@elem descender.l
+zone: descender
+path: p1 p2
+p1 = [2,4]
+p2 = [2,10]
+close: false
+width: 1
+anchors: top=[2,4] base=[2,10] mid=[2,7]
+@end
+
+# descender.r - Right-positioned descender
+@elem descender.r
+zone: descender
+path: p1 p2
+p1 = [10,4]
+p2 = [10,10]
+close: false
+width: 1
+anchors: top=[10,4] base=[10,10] mid=[10,7]
+@end
+
+# descender.curved - Curved descender (as in y tail)
+@elem descender.curved
+zone: descender
+path: p1 p2 p3
+p1 = [6,8]
+p2 = C([6,10] [4,10])
+p3 = [3,10]
+close: false
+width: 1
+anchors: top=[6,8] base=[3,10] mid=[5,9]
+@end
+
+# -----------------------------------------------------------------------------
+# full-stem - Full-height stem from ascender to descender
+# -----------------------------------------------------------------------------
+@elem full-stem
+zone: full
+path: p1 p2
+p1 = [6,1]
+p2 = [6,10]
+close: false
+width: 1
+anchors: top=[6,1] base=[6,10] mid=[6,5]
+  mark-above=[6,0] mark-below=[6,11]
+  arm.left=[0,5] arm.right=[12,5]
+@end
+
+# =============================================================================
+# CURVES (12 base elements)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# bowl - Closed round form (as in b, d, p, q, o)
+# Default is right-side attachment (bowl.r equivalent)
+# -----------------------------------------------------------------------------
+@elem bowl
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = C([12,4] [12,6])
+p3 = C([12,8] [6,8])
+p4 = C([0,8] [0,6])
+close: true
+width: 1
+anchors: attach=[6,6] mark-above=[6,3] mark-below=[6,9]
+  left=[0,6] right=[12,6] top=[6,4] base=[6,8]
+@end
+
+# bowl.l - Left-side bowl (as in d, q)
+@elem bowl.l
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = C([0,4] [0,6])
+p3 = C([0,8] [6,8])
+p4 = C([12,8] [12,6])
+close: true
+width: 1
+anchors: attach=[6,6] mark-above=[4,3] mark-below=[4,9]
+  left=[0,6] right=[12,6] top=[6,4] base=[6,8]
+@end
+
+# bowl.r - Right-side bowl (as in b, p)
+@elem bowl.r
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = C([12,4] [12,6])
+p3 = C([12,8] [6,8])
+p4 = C([0,8] [0,6])
+close: true
+width: 1
+anchors: attach=[6,6] mark-above=[8,3] mark-below=[8,9]
+  left=[0,6] right=[12,6] top=[6,4] base=[6,8]
+@end
+
+# bowl.full - Full round bowl (as in o)
+@elem bowl.full
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = C([12,4] [12,6])
+p3 = C([12,8] [6,8])
+p4 = C([0,8] [0,6])
+p5 = C([0,4] [6,4])
+close: true
+width: 1
+anchors: attach=[6,6] mark-above=[6,3] mark-below=[6,9]
+  left=[0,6] right=[12,6] top=[6,4] base=[6,8]
+@end
+
+# bowl.cap - Capital-height bowl (as in O, D, Q)
+@elem bowl.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [6,0]
+p2 = C([12,0] [12,4])
+p3 = C([12,8] [6,8])
+p4 = C([0,8] [0,4])
+p5 = C([0,0] [6,0])
+close: true
+width: 1
+anchors: attach=[6,4] mark-above=[6,0] mark-below=[6,9]
+  left=[0,4] right=[12,4] top=[6,0] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# bowl.upper - Upper half-bowl (as in B top, beta top)
+# -----------------------------------------------------------------------------
+@elem bowl.upper
+zone: x-height
+path: p1 p2 p3
+p1 = [6,4]
+p2 = C([11,4] [11,6])
+p3 = [6,6]
+close: false
+width: 1
+anchors: attach=[6,5] top=[8,4] base=[8,6]
+  left=[6,5] right=[11,5]
+@end
+
+# bowl.r.upper - Right-side upper half-bowl
+@elem bowl.r.upper
+zone: x-height
+path: p1 p2 p3
+p1 = [6,4]
+p2 = C([11,4] [11,6])
+p3 = [6,6]
+close: false
+width: 1
+anchors: attach=[6,5] top=[8,4] base=[8,6]
+  left=[6,5] right=[11,5]
+@end
+
+# -----------------------------------------------------------------------------
+# bowl.lower - Lower half-bowl (as in B bottom, beta bottom)
+# -----------------------------------------------------------------------------
+@elem bowl.lower
+zone: x-height
+path: p1 p2 p3
+p1 = [6,6]
+p2 = C([12,6] [12,8])
+p3 = [6,8]
+close: false
+width: 1
+anchors: attach=[6,7] top=[8,6] base=[8,8]
+  left=[6,7] right=[12,7]
+@end
+
+# bowl.r.lower - Right-side lower half-bowl
+@elem bowl.r.lower
+zone: x-height
+path: p1 p2 p3
+p1 = [6,6]
+p2 = C([12,6] [12,8])
+p3 = [6,8]
+close: false
+width: 1
+anchors: attach=[6,7] top=[8,6] base=[8,8]
+  left=[6,7] right=[12,7]
+@end
+
+# -----------------------------------------------------------------------------
+# counter - Interior of a bowl (implicit; not drawn but defined for reference)
+# -----------------------------------------------------------------------------
+@elem counter
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [5,5]
+p2 = C([9,5] [9,7])
+p3 = C([5,7] [5,5])
+close: true
+width: 0
+anchors: attach=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# arc.top - Open curve, top half (as in c, s top)
+# -----------------------------------------------------------------------------
+@elem arc.top
+zone: x-height
+path: p1 p2 p3
+p1 = [10,6]
+p2 = C([10,4] [6,4])
+p3 = [2,6]
+close: false
+width: 1
+anchors: left=[2,6] right=[10,6] top=[6,4]
+  mark-above=[6,3]
+@end
+
+# arc.top.cap - Capital-height top arc
+@elem arc.top.cap
+zone: cap
+path: p1 p2 p3
+p1 = [10,4]
+p2 = C([10,0] [6,0])
+p3 = [2,4]
+close: false
+width: 1
+anchors: left=[2,4] right=[10,4] top=[6,0]
+  mark-above=[6,0]
+@end
+
+# -----------------------------------------------------------------------------
+# arc.bot - Open curve, bottom half (as in s bottom)
+# -----------------------------------------------------------------------------
+@elem arc.bot
+zone: x-height
+path: p1 p2 p3
+p1 = [2,6]
+p2 = C([2,8] [6,8])
+p3 = [10,8]
+close: false
+width: 1
+anchors: left=[2,6] right=[10,8] base=[6,8]
+  mark-below=[6,9]
+@end
+
+# arc.bot.cap - Capital-height bottom arc
+@elem arc.bot.cap
+zone: cap
+path: p1 p2 p3
+p1 = [2,4]
+p2 = C([2,8] [6,8])
+p3 = [10,4]
+close: false
+width: 1
+anchors: left=[2,4] right=[10,4] base=[6,8]
+  mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# hook.top - Curved entry at top (as in f, Gamma)
+# -----------------------------------------------------------------------------
+@elem hook.top
+zone: ascender
+path: p1 p2 p3
+p1 = [10,1]
+p2 = C([10,2] [6,2])
+p3 = [6,4]
+close: false
+width: 1
+anchors: attach=[6,4] base=[6,4] top=[10,1]
+  mark-above=[8,0]
+@end
+
+# hook.top.deep - Deeper hook (as in script f)
+@elem hook.top.deep
+zone: ascender
+path: p1 p2 p3 p4
+p1 = [11,1]
+p2 = C([11,3] [8,3])
+p3 = C([6,3] [6,4])
+p4 = [6,5]
+close: false
+width: 1
+anchors: attach=[6,5] base=[6,5] top=[11,1]
+@end
+
+# -----------------------------------------------------------------------------
+# hook.bot - Curved exit at bottom (as in j, J)
+# -----------------------------------------------------------------------------
+@elem hook.bot
+zone: descender
+path: p1 p2 p3
+p1 = [6,8]
+p2 = C([6,10] [2,10])
+p3 = [2,9]
+close: false
+width: 1
+anchors: attach=[6,8] top=[6,8]
+  mark-below=[4,11]
+@end
+
+# hook.bot.right - Right-curving bottom hook
+@elem hook.bot.right
+zone: descender
+path: p1 p2 p3
+p1 = [6,8]
+p2 = C([6,10] [10,10])
+p3 = [10,9]
+close: false
+width: 1
+anchors: attach=[6,8] top=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# loop - Closed curve below baseline (as in g double-storey)
+# -----------------------------------------------------------------------------
+@elem loop
+zone: descender
+path: p1 p2 p3 p4
+p1 = [6,8]
+p2 = C([2,8] [2,10])
+p3 = C([2,11] [6,11])
+p4 = C([10,11] [10,10])
+close: true
+width: 1
+anchors: attach=[6,8] top=[6,8]
+  mark-below=[6,12]
+@end
+
+# loop.open - Open loop (as in y tail)
+@elem loop.open
+zone: descender
+path: p1 p2 p3
+p1 = [6,8]
+p2 = C([3,9] [3,10])
+p3 = C([3,11] [6,10])
+close: false
+width: 1
+anchors: attach=[6,8] top=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# ear - Small projection (as in g single-storey, r)
+# -----------------------------------------------------------------------------
+@elem ear
+zone: x-height
+path: p1 p2 p3
+p1 = [6,4]
+p2 = C([8,4] [10,5])
+p3 = [10,5]
+close: false
+width: 1
+anchors: attach=[6,4]
+@end
+
+# ear.l - Left-side ear
+@elem ear.l
+zone: x-height
+path: p1 p2 p3
+p1 = [6,4]
+p2 = C([4,4] [2,5])
+p3 = [2,5]
+close: false
+width: 1
+anchors: attach=[6,4]
+@end
+
+# -----------------------------------------------------------------------------
+# shoulder - Arch from stem (as in h, m, n)
+# -----------------------------------------------------------------------------
+@elem shoulder
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,6]
+p2 = C([2,4] [6,4])
+p3 = C([10,4] [10,6])
+p4 = [10,8]
+close: false
+width: 1
+anchors: attach=[2,6] top=[6,4] base=[10,8]
+  left=[2,6] right=[10,6]
+@end
+
+# shoulder.l - Left-anchored shoulder
+@elem shoulder.l
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [0,6]
+p2 = C([0,4] [4,4])
+p3 = C([8,4] [8,6])
+p4 = [8,8]
+close: false
+width: 1
+anchors: attach=[0,6] top=[4,4] base=[8,8]
+@end
+
+# shoulder.r - Right-anchored shoulder
+@elem shoulder.r
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [4,6]
+p2 = C([4,4] [8,4])
+p3 = C([12,4] [12,6])
+p4 = [12,8]
+close: false
+width: 1
+anchors: attach=[4,6] top=[8,4] base=[12,8]
+@end
+
+# -----------------------------------------------------------------------------
+# ogee - S-curve (as in integral sign, xi)
+# -----------------------------------------------------------------------------
+@elem ogee
+zone: full
+path: p1 p2 p3 p4 p5
+p1 = [9,1]
+p2 = C([9,3] [6,4])
+p3 = [6,6]
+p4 = C([6,8] [3,9])
+p5 = [3,11]
+close: false
+width: 1
+anchors: top=[9,1] base=[3,11] mid=[6,6]
+@end
+
+# ogee.reversed - Reversed S-curve
+@elem ogee.reversed
+zone: full
+path: p1 p2 p3 p4 p5
+p1 = [3,1]
+p2 = C([3,3] [6,4])
+p3 = [6,6]
+p4 = C([6,8] [9,9])
+p5 = [9,11]
+close: false
+width: 1
+anchors: top=[3,1] base=[9,11] mid=[6,6]
+@end
+
+# =============================================================================
+# HORIZONTALS AND DIAGONALS (13 base elements)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# crossbar - Horizontal stroke at mid-height (as in A, H, e, f)
+# -----------------------------------------------------------------------------
+@elem crossbar
+zone: x-height
+path: p1 p2
+p1 = [2,6]
+p2 = [10,6]
+close: false
+width: 1
+anchors: left=[2,6] right=[10,6] mid=[6,6]
+@end
+
+# crossbar.cap - Capital-height crossbar
+@elem crossbar.cap
+zone: cap
+path: p1 p2
+p1 = [2,4]
+p2 = [10,4]
+close: false
+width: 1
+anchors: left=[2,4] right=[10,4] mid=[6,4]
+@end
+
+# crossbar.low - Low crossbar (as in e)
+@elem crossbar.low
+zone: x-height
+path: p1 p2
+p1 = [2,7]
+p2 = [10,7]
+close: false
+width: 1
+anchors: left=[2,7] right=[10,7] mid=[6,7]
+@end
+
+# -----------------------------------------------------------------------------
+# bar.top - Bar at top of glyph (as in T, Gamma)
+# -----------------------------------------------------------------------------
+@elem bar.top
+zone: cap
+path: p1 p2
+p1 = [0,0]
+p2 = [12,0]
+close: false
+width: 1
+anchors: left=[0,0] right=[12,0] mid=[6,0]
+@end
+
+# bar.top.x - Bar at x-height top
+@elem bar.top.x
+zone: x-height
+path: p1 p2
+p1 = [0,4]
+p2 = [12,4]
+close: false
+width: 1
+anchors: left=[0,4] right=[12,4] mid=[6,4]
+@end
+
+# -----------------------------------------------------------------------------
+# bar.bot - Bar at bottom of glyph (as in L)
+# -----------------------------------------------------------------------------
+@elem bar.bot
+zone: x-height
+path: p1 p2
+p1 = [0,8]
+p2 = [12,8]
+close: false
+width: 1
+anchors: left=[0,8] right=[12,8] mid=[6,8]
+@end
+
+# bar.bot.cap - Bar at capital baseline
+@elem bar.bot.cap
+zone: cap
+path: p1 p2
+p1 = [0,8]
+p2 = [12,8]
+close: false
+width: 1
+anchors: left=[0,8] right=[12,8] mid=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# bar.mid - Bar at x-height (as in e crossbar, G)
+# -----------------------------------------------------------------------------
+@elem bar.mid
+zone: x-height
+path: p1 p2
+p1 = [2,6]
+p2 = [10,6]
+close: false
+width: 1
+anchors: left=[2,6] right=[10,6] mid=[6,6]
+@end
+
+# bar.mid.short - Short mid bar (as in f)
+@elem bar.mid.short
+zone: x-height
+path: p1 p2
+p1 = [3,4]
+p2 = [9,4]
+close: false
+width: 1
+anchors: left=[3,4] right=[9,4] mid=[6,4]
+@end
+
+# -----------------------------------------------------------------------------
+# arm - Horizontal projecting from stem (as in E, F, K)
+# -----------------------------------------------------------------------------
+@elem arm
+zone: x-height
+path: p1 p2
+p1 = [6,6]
+p2 = [12,6]
+close: false
+width: 1
+anchors: attach=[6,6] right=[12,6]
+@end
+
+# arm.top - Top arm (as in E top)
+@elem arm.top
+zone: cap
+path: p1 p2
+p1 = [2,0]
+p2 = [10,0]
+close: false
+width: 1
+anchors: attach=[2,0] right=[10,0]
+@end
+
+# arm.mid - Middle arm (as in E middle)
+@elem arm.mid
+zone: cap
+path: p1 p2
+p1 = [2,4]
+p2 = [8,4]
+close: false
+width: 1
+anchors: attach=[2,4] right=[8,4]
+@end
+
+# arm.bot - Bottom arm (as in E bottom)
+@elem arm.bot
+zone: cap
+path: p1 p2
+p1 = [2,8]
+p2 = [10,8]
+close: false
+width: 1
+anchors: attach=[2,8] right=[10,8]
+@end
+
+# arm.l - Left-projecting arm
+@elem arm.l
+zone: x-height
+path: p1 p2
+p1 = [0,6]
+p2 = [6,6]
+close: false
+width: 1
+anchors: attach=[6,6] left=[0,6]
+@end
+
+# -----------------------------------------------------------------------------
+# leg - Diagonal descending from junction (as in K, R, k)
+# -----------------------------------------------------------------------------
+@elem leg
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [10,8]
+close: false
+width: 1
+anchors: attach=[6,4] base=[10,8]
+  top=[6,4]
+@end
+
+# leg.cap - Capital-height leg (as in K, R)
+@elem leg.cap
+zone: cap
+path: p1 p2
+p1 = [2,4]
+p2 = [10,8]
+close: false
+width: 1
+anchors: attach=[2,4] base=[10,8]
+@end
+
+# leg.l - Left-angled leg
+@elem leg.l
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [2,8]
+close: false
+width: 1
+anchors: attach=[6,4] base=[2,8]
+@end
+
+# -----------------------------------------------------------------------------
+# diagonal - Full-height diagonal (as in N, Z)
+# -----------------------------------------------------------------------------
+@elem diagonal
+zone: cap
+path: p1 p2
+p1 = [2,0]
+p2 = [10,8]
+close: false
+width: 1
+anchors: top=[2,0] base=[10,8] mid=[6,4]
+@end
+
+# diagonal.l - Left-leaning diagonal (as in backslash)
+@elem diagonal.l
+zone: cap
+path: p1 p2
+p1 = [10,0]
+p2 = [2,8]
+close: false
+width: 1
+anchors: top=[10,0] base=[2,8] mid=[6,4]
+@end
+
+# diagonal.x - X-height diagonal
+@elem diagonal.x
+zone: x-height
+path: p1 p2
+p1 = [2,4]
+p2 = [10,8]
+close: false
+width: 1
+anchors: top=[2,4] base=[10,8] mid=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# apex - Meeting point of two diagonals at top (as in A, Lambda)
+# -----------------------------------------------------------------------------
+@elem apex
+zone: cap
+path: p1 p2 p3
+p1 = [0,8]
+p2 = [6,0]
+p3 = [12,8]
+close: false
+width: 1
+anchors: top=[6,0] left=[0,8] right=[12,8]
+  mark-above=[6,0]
+@end
+
+# apex.x - X-height apex
+@elem apex.x
+zone: x-height
+path: p1 p2 p3
+p1 = [0,8]
+p2 = [6,4]
+p3 = [12,8]
+close: false
+width: 1
+anchors: top=[6,4] left=[0,8] right=[12,8]
+@end
+
+# -----------------------------------------------------------------------------
+# vertex - Bottom meeting of diagonals (as in V, W)
+# -----------------------------------------------------------------------------
+@elem vertex
+zone: x-height
+path: p1 p2 p3
+p1 = [0,4]
+p2 = [6,8]
+p3 = [12,4]
+close: false
+width: 1
+anchors: base=[6,8] left=[0,4] right=[12,4]
+  mark-below=[6,9]
+@end
+
+# vertex.cap - Capital-height vertex
+@elem vertex.cap
+zone: cap
+path: p1 p2 p3
+p1 = [0,0]
+p2 = [6,8]
+p3 = [12,0]
+close: false
+width: 1
+anchors: base=[6,8] left=[0,0] right=[12,0]
+  mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# spine - Central S-curve (as in S, s)
+# -----------------------------------------------------------------------------
+@elem spine
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [10,4]
+p2 = C([10,5] [6,5])
+p3 = [6,6]
+p4 = C([6,7] [2,7])
+p5 = [2,8]
+close: false
+width: 1
+anchors: top=[10,4] base=[2,8] mid=[6,6]
+@end
+
+# spine.cap - Capital-height spine
+@elem spine.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [10,0]
+p2 = C([10,2] [6,3])
+p3 = [6,4]
+p4 = C([6,5] [2,6])
+p5 = [2,8]
+close: false
+width: 1
+anchors: top=[10,0] base=[2,8] mid=[6,4]
+@end
+
+# -----------------------------------------------------------------------------
+# tail - Terminal flourish (as in Q)
+# -----------------------------------------------------------------------------
+@elem tail
+zone: descender
+path: p1 p2 p3
+p1 = [6,8]
+p2 = C([8,9] [10,10])
+p3 = [11,10]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# tail.l - Left-curving tail
+@elem tail.l
+zone: descender
+path: p1 p2 p3
+p1 = [6,8]
+p2 = C([4,9] [2,10])
+p3 = [1,10]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# tail.long - Extended tail (as in y)
+@elem tail.long
+zone: descender
+path: p1 p2 p3 p4
+p1 = [6,8]
+p2 = C([6,9] [5,10])
+p3 = C([3,10] [2,9])
+p4 = [2,9]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# stroke.diag - Overlay diagonal slash (as in slashed O)
+# -----------------------------------------------------------------------------
+@elem stroke.diag
+zone: x-height
+path: p1 p2
+p1 = [3,8]
+p2 = [9,4]
+close: false
+width: 1
+anchors: mid=[6,6]
+@end
+
+# stroke.diag.cap - Capital-height diagonal stroke
+@elem stroke.diag.cap
+zone: cap
+path: p1 p2
+p1 = [2,8]
+p2 = [10,0]
+close: false
+width: 1
+anchors: mid=[6,4]
+@end
+
+# stroke.diag.rev - Reversed diagonal stroke
+@elem stroke.diag.rev
+zone: x-height
+path: p1 p2
+p1 = [3,4]
+p2 = [9,8]
+close: false
+width: 1
+anchors: mid=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# stroke.horiz - Overlay horizontal bar (as in slashed l, eth)
+# -----------------------------------------------------------------------------
+@elem stroke.horiz
+zone: x-height
+path: p1 p2
+p1 = [2,6]
+p2 = [10,6]
+close: false
+width: 1
+anchors: left=[2,6] right=[10,6] mid=[6,6]
+@end
+
+# stroke.horiz.short - Short horizontal stroke
+@elem stroke.horiz.short
+zone: x-height
+path: p1 p2
+p1 = [4,6]
+p2 = [8,6]
+close: false
+width: 1
+anchors: left=[4,6] right=[8,6] mid=[6,6]
+@end
+
+# =============================================================================
+# TERMINALS (7 base elements)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# serif - Perpendicular terminal
+# Zone varies depending on attachment position
+# -----------------------------------------------------------------------------
+@elem serif
+zone: x-height
+path: p1 p2 p3
+p1 = [4,8]
+p2 = [6,8]
+p3 = [8,8]
+close: false
+width: 1
+anchors: attach=[6,8] left=[4,8] right=[8,8]
+@end
+
+# serif.top - Top serif
+@elem serif.top
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = [6,4]
+p3 = [8,4]
+close: false
+width: 1
+anchors: attach=[6,4] left=[4,4] right=[8,4]
+@end
+
+# serif.bilateral - Bilateral serif (extends both directions)
+@elem serif.bilateral
+zone: x-height
+path: p1 p2 p3
+p1 = [3,8]
+p2 = [6,8]
+p3 = [9,8]
+close: false
+width: 1
+anchors: attach=[6,8] left=[3,8] right=[9,8]
+@end
+
+# -----------------------------------------------------------------------------
+# spur - Small serif-like projection (as in b, G)
+# -----------------------------------------------------------------------------
+@elem spur
+zone: x-height
+path: p1 p2
+p1 = [6,8]
+p2 = [8,8]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# spur.l - Left spur
+@elem spur.l
+zone: x-height
+path: p1 p2
+p1 = [4,8]
+p2 = [6,8]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# spur.top - Top spur
+@elem spur.top
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [8,4]
+close: false
+width: 1
+anchors: attach=[6,4]
+@end
+
+# -----------------------------------------------------------------------------
+# ball - Circular terminal (as in a, c, f, r in some styles)
+# -----------------------------------------------------------------------------
+@elem ball
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [7,7]
+p2 = C([8,7] [8,8])
+p3 = C([8,9] [7,9])
+p4 = C([6,9] [6,8])
+close: true
+width: 1
+anchors: attach=[6,8]
+@end
+
+# ball.top - Top ball terminal
+@elem ball.top
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [7,5]
+p2 = C([8,5] [8,4])
+p3 = C([8,3] [7,3])
+p4 = C([6,3] [6,4])
+close: true
+width: 1
+anchors: attach=[6,4]
+@end
+
+# ball.small - Small ball terminal
+@elem ball.small
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,7]
+p2 = C([7,7] [7,8])
+p3 = C([7,9] [6,9])
+p4 = C([5,9] [5,8])
+close: true
+width: 1
+anchors: attach=[5,8]
+@end
+
+# -----------------------------------------------------------------------------
+# finial - Tapered terminal (as in e, c)
+# -----------------------------------------------------------------------------
+@elem finial
+zone: x-height
+path: p1 p2 p3
+p1 = [10,6]
+p2 = C([10,5] [9,5])
+p3 = [9,6]
+close: false
+width: 1
+anchors: attach=[10,6]
+@end
+
+# finial.l - Left finial
+@elem finial.l
+zone: x-height
+path: p1 p2 p3
+p1 = [2,6]
+p2 = C([2,5] [3,5])
+p3 = [3,6]
+close: false
+width: 1
+anchors: attach=[2,6]
+@end
+
+# finial.bot - Bottom finial
+@elem finial.bot
+zone: x-height
+path: p1 p2 p3
+p1 = [2,8]
+p2 = C([2,9] [3,9])
+p3 = [3,8]
+close: false
+width: 1
+anchors: attach=[2,8]
+@end
+
+# -----------------------------------------------------------------------------
+# swash - Extended decorative terminal
+# -----------------------------------------------------------------------------
+@elem swash
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,8]
+p2 = C([8,8] [10,9])
+p3 = C([11,10] [10,10])
+p4 = [9,10]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# swash.l - Left swash
+@elem swash.l
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,8]
+p2 = C([4,8] [2,9])
+p3 = C([1,10] [2,10])
+p4 = [3,10]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# swash.top - Top swash
+@elem swash.top
+zone: ascender
+path: p1 p2 p3 p4
+p1 = [6,1]
+p2 = C([8,1] [10,0])
+p3 = C([11,0] [10,1])
+p4 = [9,1]
+close: false
+width: 1
+anchors: attach=[6,1]
+@end
+
+# -----------------------------------------------------------------------------
+# flag - Small horizontal at top of stem (as in 1, soft sign)
+# -----------------------------------------------------------------------------
+@elem flag
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = [6,4]
+p3 = [6,5]
+close: false
+width: 1
+anchors: attach=[6,4]
+@end
+
+# flag.cap - Capital-height flag
+@elem flag.cap
+zone: cap
+path: p1 p2 p3
+p1 = [4,0]
+p2 = [6,0]
+p3 = [6,1]
+close: false
+width: 1
+anchors: attach=[6,0]
+@end
+
+# flag.l - Left flag
+@elem flag.l
+zone: x-height
+path: p1 p2 p3
+p1 = [8,4]
+p2 = [6,4]
+p3 = [6,5]
+close: false
+width: 1
+anchors: attach=[6,4]
+@end
+
+# -----------------------------------------------------------------------------
+# tittle - Dot above (as in i, j)
+# -----------------------------------------------------------------------------
+@elem tittle
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,2]
+p2 = C([7,2] [7,3])
+p3 = C([7,4] [6,4])
+p4 = C([5,4] [5,3])
+close: true
+width: 1
+anchors: attach=[6,3] base=[6,4]
+  mark-above=[6,1]
+@end
+
+# tittle.square - Square tittle
+@elem tittle.square
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [5,2]
+p2 = [7,2]
+p3 = [7,4]
+p4 = [5,4]
+close: true
+width: 1
+anchors: attach=[6,3] base=[6,4]
+@end
+
+# =============================================================================
+# SPECIAL (3 base elements)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# dot - Period/point (standalone dot)
+# -----------------------------------------------------------------------------
+@elem dot
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,7]
+p2 = C([7,7] [7,8])
+p3 = C([7,9] [6,9])
+p4 = C([5,9] [5,8])
+close: true
+width: 1
+anchors: attach=[6,8]
+@end
+
+# dot.mid - Mid-height dot (as in interpunct)
+@elem dot.mid
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,5]
+p2 = C([7,5] [7,6])
+p3 = C([7,7] [6,7])
+p4 = C([5,7] [5,6])
+close: true
+width: 1
+anchors: attach=[6,6]
+@end
+
+# dot.high - High dot (as in colon top)
+@elem dot.high
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = C([7,4] [7,5])
+p3 = C([7,6] [6,6])
+p4 = C([5,6] [5,5])
+close: true
+width: 1
+anchors: attach=[6,5]
+@end
+
+# -----------------------------------------------------------------------------
+# caron.alt - Vertical stroke hacek variant (as in d-caron, t-caron, L-caron)
+# -----------------------------------------------------------------------------
+@elem caron.alt
+zone: x-height
+path: p1 p2
+p1 = [8,3]
+p2 = [9,5]
+close: false
+width: 1
+anchors: attach=[8,4]
+@end
+
+# caron.alt.l - Left-positioned caron.alt
+@elem caron.alt.l
+zone: x-height
+path: p1 p2
+p1 = [4,3]
+p2 = [3,5]
+close: false
+width: 1
+anchors: attach=[4,4]
+@end
+
+# -----------------------------------------------------------------------------
+# comma.shape - Comma-shaped mark (as in Cyrillic palatal marks)
+# -----------------------------------------------------------------------------
+@elem comma.shape
+zone: x-height
+path: p1 p2 p3
+p1 = [6,7]
+p2 = C([7,8] [6,9])
+p3 = [5,9]
+close: false
+width: 1
+anchors: attach=[6,7]
+@end
+
+# comma.shape.above - Above comma shape (as in comma above diacritic)
+@elem comma.shape.above
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [6,1]
+p2 = C([7,2] [6,3])
+p3 = [5,3]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# comma.shape.below - Below comma shape
+@elem comma.shape.below
+zone: diacritic-below
+path: p1 p2 p3
+p1 = [6,9]
+p2 = C([7,10] [6,11])
+p3 = [5,11]
+close: false
+width: 1
+anchors: attach=[6,9]
+@end
+
+# =============================================================================
+# VARIANT ELEMENTS USING from_expr
+# =============================================================================
+
+# Shifted stem variants
+@elem stem.shifted.l
+build: from_expr
+sh(stem, dx=-4, dy=0)
+@end
+
+@elem stem.shifted.r
+build: from_expr
+sh(stem, dx=4, dy=0)
+@end
+
+# Scaled bowl variants
+@elem bowl.small
+build: from_expr
+sc(bowl, sx=9, sy=9)
+@end
+
+@elem bowl.large
+build: from_expr
+sc(bowl, sx=14, sy=14)
+@end
+
+# Mirrored/transformed variants
+@elem bowl.l.cap
+build: from_expr
+sc(bowl.l, sx=12, sy=16)
+@end
+
+@elem bowl.r.cap
+build: from_expr
+sc(bowl.r, sx=12, sy=16)
+@end
+
+# =============================================================================
+# END OF STANDARD ELEMENT LIBRARY
+# =============================================================================

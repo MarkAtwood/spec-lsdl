@@ -1,0 +1,436 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Cyrillic Alphabet Library
+# =============================================================================
+#
+# Complete Cyrillic character definitions for Russian (33 uppercase + 33
+# lowercase) with Ukrainian extensions (4 additional letters).
+#
+# All characters tagged with:
+#   - script:Cyrl (ISO 15924 script code for Cyrillic)
+#   - ortho:Rus for Russian standard forms
+#   - ortho:Ukr for Ukrainian-specific letters
+#
+# Structural Notes:
+#   - Many Cyrillic capitals share structure with Latin (A=А, E=Е, etc.)
+#   - Cyrillic-specific forms: Б, Г, Д, Ж, З, И, Л, П, Ф, Ц, Ч, Ш, Щ, Ъ, Ы, Ь, Э, Ю, Я
+#   - Uses .cyr element variants for Cyrillic-specific strokes
+#
+# =============================================================================
+
+@import elements-base.lsdl
+
+# =============================================================================
+# CYRILLIC-SPECIFIC ELEMENT DEFINITIONS
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# stem.cyr - Centered Cyrillic stem (for Т, Ж, etc.)
+# -----------------------------------------------------------------------------
+@elem stem.cyr
+zone: cap
+path: p1 p2
+p1 = [6,0]
+p2 = [6,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mid=[6,4]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# hook.cyr - Cyrillic hook form (for Ч)
+# Left-side curved entry connecting to right stem
+# -----------------------------------------------------------------------------
+@elem hook.cyr
+zone: x-height
+path: p1 p2 p3
+p1 = [2,4]
+p2 = C([2,6] [4,8])
+p3 = [6,8]
+close: false
+width: 1
+anchors: attach=[2,4] base=[6,8] top=[2,4]
+@end
+
+# -----------------------------------------------------------------------------
+# tail.cyr - Cyrillic descending tail (for Ц, Щ)
+# Short descender at right edge
+# -----------------------------------------------------------------------------
+@elem tail.cyr
+zone: descender
+path: p1 p2 p3
+p1 = [10,8]
+p2 = [10,10]
+p3 = [8,10]
+close: false
+width: 1
+anchors: attach=[10,8] base=[10,10]
+@end
+
+# -----------------------------------------------------------------------------
+# tick.cyr - Upturn tick (for Ukrainian Ґ)
+# Small ascending tick at right of top bar
+# -----------------------------------------------------------------------------
+@elem tick.cyr
+zone: cap
+path: p1 p2
+p1 = [10,2]
+p2 = [12,0]
+close: false
+width: 1
+anchors: attach=[10,2] top=[12,0]
+@end
+
+# -----------------------------------------------------------------------------
+# soft-sign.base - Base form for Ь and component of Ъ, Ы
+# Vertical stem with rightward bowl at bottom
+# -----------------------------------------------------------------------------
+@elem soft-sign.base
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,4]
+p2 = [2,8]
+p3 = C([2,8] [8,8])
+p4 = C([8,6] [2,6])
+close: true
+width: 1
+anchors: top=[2,4] base=[2,8] attach=[5,7]
+  mark-above=[2,3] mark-below=[5,9]
+@end
+
+# -----------------------------------------------------------------------------
+# hard-sign.top - Top bar component for Ъ
+# Horizontal bar extending left from soft sign
+# -----------------------------------------------------------------------------
+@elem hard-sign.top
+zone: cap
+path: p1 p2
+p1 = [0,4]
+p2 = [4,4]
+close: false
+width: 1
+anchors: attach=[4,4] left=[0,4]
+@end
+
+# =============================================================================
+# CROSS-SCRIPT HOMOGLYPH ALIASES
+# =============================================================================
+# Many Cyrillic characters appear identical to Latin or Greek but have
+# distinct Unicode code points. These aliases enable script-aware lookup.
+
+@alias Cyrl:A = А   # U+0410 (not Latin A U+0041)
+@alias Cyrl:B = В   # U+0412 (looks like Latin B, sounds like V)
+@alias Cyrl:E = Е   # U+0415 (not Latin E U+0045)
+@alias Cyrl:H = Н   # U+041D (looks like Latin H, sounds like N)
+@alias Cyrl:K = К   # U+041A (not Latin K U+004B)
+@alias Cyrl:M = М   # U+041C (not Latin M U+004D)
+@alias Cyrl:O = О   # U+041E (not Latin O U+004F)
+@alias Cyrl:P = Р   # U+0420 (looks like Latin P, sounds like R)
+@alias Cyrl:C = С   # U+0421 (looks like Latin C, sounds like S)
+@alias Cyrl:T = Т   # U+0422 (not Latin T U+0054)
+@alias Cyrl:X = Х   # U+0425 (not Latin X U+0058)
+@alias Cyrl:Y = У   # U+0423 (looks like Latin Y)
+
+# Lowercase homoglyphs
+@alias Cyrl:a = а   # U+0430
+@alias Cyrl:e = е   # U+0435
+@alias Cyrl:o = о   # U+043E
+@alias Cyrl:p = р   # U+0440 (looks like Latin p, sounds like r)
+@alias Cyrl:c = с   # U+0441
+@alias Cyrl:x = х   # U+0445
+@alias Cyrl:y = у   # U+0443
+
+# =============================================================================
+# CASE MAPPINGS
+# =============================================================================
+# Russian alphabet (33 pairs)
+
+@case А а
+@case Б б
+@case В в
+@case Г г
+@case Д д
+@case Е е
+@case Ж ж
+@case З з
+@case И и
+@case Й й
+@case К к
+@case Л л
+@case М м
+@case Н н
+@case О о
+@case П п
+@case Р р
+@case С с
+@case Т т
+@case У у
+@case Ф ф
+@case Х х
+@case Ц ц
+@case Ч ч
+@case Ш ш
+@case Щ щ
+@case Ъ ъ
+@case Ы ы
+@case Ь ь
+@case Э э
+@case Ю ю
+@case Я я
+
+# Ukrainian extensions (4 pairs)
+@case Ґ ґ
+@case Є є
+@case І і
+@case Ї ї
+
+# =============================================================================
+# CYRILLIC CAPITAL LETTERS (33 Russian)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Letters sharing Latin structure
+# -----------------------------------------------------------------------------
+
+А  CYRILLIC-CAPITAL-A = apex script:Cyrl ortho:Rus
+  # Identical to Latin A: two diagonals meeting at apex with crossbar
+
+Е  CYRILLIC-CAPITAL-IE = FRAME(stem.l, arm.top, arm.mid, arm.bot) script:Cyrl ortho:Rus
+  # Identical to Latin E: vertical stem with three horizontal arms
+
+К  CYRILLIC-CAPITAL-KA = LR(stem.l, STACK(leg.cap, leg.cap.rev)) script:Cyrl ortho:Rus
+  # Identical to Latin K: stem with diagonal arm and leg
+
+М  CYRILLIC-CAPITAL-EM = FRAME(stem.l, vertex.cap.inv, stem.r) script:Cyrl ortho:Rus
+  # Identical to Latin M: two stems joined by inverted vertex
+
+Н  CYRILLIC-CAPITAL-EN = FRAME(stem.l, crossbar.cap, stem.r) script:Cyrl ortho:Rus
+  # Identical to Latin H: two stems with horizontal crossbar
+
+О  CYRILLIC-CAPITAL-O = bowl.cap script:Cyrl ortho:Rus
+  # Identical to Latin O: closed bowl
+
+Р  CYRILLIC-CAPITAL-ER = LR(stem.l, bowl.r.upper.cap) script:Cyrl ortho:Rus
+  # Looks like Latin P but represents sound /r/
+
+С  CYRILLIC-CAPITAL-ES = STACK(arc.top.cap, arc.bot.cap) script:Cyrl ortho:Rus
+  # Identical to Latin C: open bowl (arcs)
+
+Т  CYRILLIC-CAPITAL-TE = FRAME(bar.top, stem.cyr) script:Cyrl ortho:Rus
+  # Identical to Latin T: centered stem under top bar
+
+У  CYRILLIC-CAPITAL-U = STACK(vertex.cap, descender) script:Cyrl ortho:Rus
+  # Looks like Latin Y with descender
+
+Х  CYRILLIC-CAPITAL-HA = FRAME(diagonal, diagonal.l) script:Cyrl ortho:Rus
+  # Identical to Latin X: two crossing diagonals
+
+# -----------------------------------------------------------------------------
+# Cyrillic-specific letters
+# -----------------------------------------------------------------------------
+
+Б  CYRILLIC-CAPITAL-BE = FRAME(bar.top, stem.l, bowl.r.lower.cap) script:Cyrl ortho:Rus
+  # Like Latin B but top bar extends past stem; single lower bowl
+
+В  CYRILLIC-CAPITAL-VE = LR(stem.l, STACK(bowl.r.upper.cap, bowl.r.lower.cap)) script:Cyrl ortho:Rus
+  # Identical to Latin B: stem with stacked upper and lower bowls
+
+Г  CYRILLIC-CAPITAL-GHE = FRAME(bar.top, stem.l) script:Cyrl ortho:Rus
+  # Like Latin L rotated 180 degrees or Greek Gamma
+
+Д  CYRILLIC-CAPITAL-DE = FRAME(apex, bar.bot.cap, tail.cyr, tail.cyr) script:Cyrl ortho:Rus
+  # Triangular top with legs descending below baseline
+
+Ж  CYRILLIC-CAPITAL-ZHE = LR3(STACK(leg.cap.rev, leg.cap), stem.cyr, STACK(leg.cap, leg.cap.rev)) script:Cyrl ortho:Rus
+  # Three-part: diagonal pairs flanking central stem (like K-stem-mirrored-K)
+
+З  CYRILLIC-CAPITAL-ZE = STACK(arc.top.cap.r, arc.bot.cap.r) script:Cyrl ortho:Rus
+  # Like numeral 3: two right-facing arcs stacked
+
+И  CYRILLIC-CAPITAL-I = LR3(stem.l, diagonal, stem.r) script:Cyrl ortho:Rus
+  # Like Latin N reversed: diagonal goes from lower-left to upper-right
+
+Й  CYRILLIC-CAPITAL-SHORT-I = DIA(И, breve) script:Cyrl ortho:Rus
+  # И with breve diacritic above
+
+Л  CYRILLIC-CAPITAL-EL = apex script:Cyrl ortho:Rus
+  # Like Greek Lambda or inverted V (no crossbar)
+
+П  CYRILLIC-CAPITAL-PE = FRAME(stem.l, bar.top, stem.r) script:Cyrl ortho:Rus
+  # Like Greek Pi: two stems joined at top by horizontal bar
+
+Ф  CYRILLIC-CAPITAL-EF = OVR(bowl.cap, stem.cyr) script:Cyrl ortho:Rus
+  # Stem through center of full bowl (like Greek Phi)
+
+Ц  CYRILLIC-CAPITAL-TSE = FRAME(stem.l, bar.bot.cap, stem.r, tail.cyr) script:Cyrl ortho:Rus
+  # Like П (Pe) but with descending tail at right
+
+Ч  CYRILLIC-CAPITAL-CHE = FRAME(hook.cyr, stem.r) script:Cyrl ortho:Rus
+  # Like inverted Latin L or numeral 4 without crossbar
+
+Ш  CYRILLIC-CAPITAL-SHA = FRAME(stem.l, bar.bot.cap, stem.cyr, stem.r) script:Cyrl ortho:Rus
+  # Like Latin W inverted: three stems on baseline bar
+
+Щ  CYRILLIC-CAPITAL-SHCHA = FRAME(stem.l, bar.bot.cap, stem.cyr, stem.r, tail.cyr) script:Cyrl ortho:Rus
+  # Ш (Sha) with descending tail at right
+
+Ъ  CYRILLIC-CAPITAL-HARD-SIGN = FRAME(hard-sign.top, soft-sign.base) script:Cyrl ortho:Rus
+  # Soft sign with horizontal bar extending left from top
+
+Ы  CYRILLIC-CAPITAL-YERU = LR(soft-sign.base, stem.r) script:Cyrl ortho:Rus
+  # Soft sign followed by separate vertical stem
+
+Ь  CYRILLIC-CAPITAL-SOFT-SIGN = soft-sign.base script:Cyrl ortho:Rus
+  # Vertical stem with rightward bowl at bottom
+
+Э  CYRILLIC-CAPITAL-E = FRAME(STACK(arc.top.cap.r, arc.bot.cap.r), crossbar.cap) script:Cyrl ortho:Rus
+  # Reversed Latin C (Є) with horizontal crossbar
+
+Ю  CYRILLIC-CAPITAL-YU = LR(FRAME(stem.l, crossbar.cap.short), bowl.cap) script:Cyrl ortho:Rus
+  # Stem with arm connecting to adjacent bowl (like IO ligature)
+
+Я  CYRILLIC-CAPITAL-YA = FRAME(STACK(bowl.l.upper.cap, leg.cap.l), stem.r) script:Cyrl ortho:Rus
+  # Like reversed Latin R: right stem with left-facing bowl and leg
+
+# =============================================================================
+# CYRILLIC LOWERCASE LETTERS (33 Russian)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Letters sharing Latin structure
+# -----------------------------------------------------------------------------
+
+а  CYRILLIC-SMALL-A = LR(bowl.l, stem) script:Cyrl ortho:Rus
+  # Like Latin a: left bowl with right stem
+
+е  CYRILLIC-SMALL-IE = FRAME(arc.top, crossbar.low, arc.bot) script:Cyrl ortho:Rus
+  # Like Latin e: bowl with horizontal crossbar
+
+к  CYRILLIC-SMALL-KA = LR(stem, STACK(leg, leg.rev)) script:Cyrl ortho:Rus
+  # Like Latin k but at x-height
+
+м  CYRILLIC-SMALL-EM = FRAME(stem, vertex.inv, stem) script:Cyrl ortho:Rus
+  # Like Latin m but constructed differently
+
+н  CYRILLIC-SMALL-EN = FRAME(stem, crossbar, stem) script:Cyrl ortho:Rus
+  # Like Latin n with extra stem (or small H)
+
+о  CYRILLIC-SMALL-O = bowl.full script:Cyrl ortho:Rus
+  # Identical to Latin o: closed bowl
+
+р  CYRILLIC-SMALL-ER = LR(descender, bowl.r) script:Cyrl ortho:Rus
+  # Like Latin p but represents sound /r/
+
+с  CYRILLIC-SMALL-ES = STACK(arc.top, arc.bot) script:Cyrl ortho:Rus
+  # Identical to Latin c: open bowl
+
+т  CYRILLIC-SMALL-TE = FRAME(bar.top.x, stem) script:Cyrl ortho:Rus
+  # Miniature Т: stem under top bar at x-height
+
+у  CYRILLIC-SMALL-U = STACK(vertex, descender.curved) script:Cyrl ortho:Rus
+  # Like Latin y: vertex with curved descender
+
+х  CYRILLIC-SMALL-HA = FRAME(diagonal.x, diagonal.x.rev) script:Cyrl ortho:Rus
+  # Identical to Latin x: crossing diagonals at x-height
+
+# -----------------------------------------------------------------------------
+# Cyrillic-specific letters
+# -----------------------------------------------------------------------------
+
+б  CYRILLIC-SMALL-BE = STACK(hook.top.cyr, bowl.full) script:Cyrl ortho:Rus
+  # Ascender with curved top flowing into bowl (like numeral 6)
+
+в  CYRILLIC-SMALL-VE = LR(stem, STACK(bowl.r.upper, bowl.r.lower)) script:Cyrl ortho:Rus
+  # Like small Latin b with two stacked bowls
+
+г  CYRILLIC-SMALL-GHE = FRAME(bar.top.x, stem) script:Cyrl ortho:Rus
+  # Like lowercase Г: horizontal bar with descending stem
+
+д  CYRILLIC-SMALL-DE = FRAME(apex.x, bar.bot, tail.cyr, tail.cyr) script:Cyrl ortho:Rus
+  # Like small Д: triangular with descending tails
+
+ж  CYRILLIC-SMALL-ZHE = LR3(STACK(leg.rev, leg), stem, STACK(leg, leg.rev)) script:Cyrl ortho:Rus
+  # Like small Ж: central stem with diagonal pairs
+
+з  CYRILLIC-SMALL-ZE = STACK(arc.top.r, arc.bot.r) script:Cyrl ortho:Rus
+  # Like numeral 3 at x-height
+
+и  CYRILLIC-SMALL-I = LR3(stem, diagonal.x, stem) script:Cyrl ortho:Rus
+  # Like small И: reversed n diagonal
+
+й  CYRILLIC-SMALL-SHORT-I = DIA(и, breve) script:Cyrl ortho:Rus
+  # и with breve above
+
+л  CYRILLIC-SMALL-EL = apex.x script:Cyrl ortho:Rus
+  # Like inverted v at x-height
+
+п  CYRILLIC-SMALL-PE = FRAME(stem, bar.top.x, stem) script:Cyrl ortho:Rus
+  # Like small п: two stems joined at x-height top
+
+ф  CYRILLIC-SMALL-EF = STACK(ascender, bowl.full, descender) script:Cyrl ortho:Rus
+  # Vertical line through bowl, extending above and below
+
+ц  CYRILLIC-SMALL-TSE = FRAME(stem, bar.bot, stem, tail.cyr) script:Cyrl ortho:Rus
+  # Like п with descending tail
+
+ч  CYRILLIC-SMALL-CHE = FRAME(hook.cyr, stem) script:Cyrl ortho:Rus
+  # Like inverted small h
+
+ш  CYRILLIC-SMALL-SHA = FRAME(stem, bar.bot, stem, stem) script:Cyrl ortho:Rus
+  # Three stems on baseline
+
+щ  CYRILLIC-SMALL-SHCHA = FRAME(stem, bar.bot, stem, stem, tail.cyr) script:Cyrl ortho:Rus
+  # ш with descending tail
+
+ъ  CYRILLIC-SMALL-HARD-SIGN = FRAME(hard-sign.top, soft-sign.base) script:Cyrl ortho:Rus
+  # Small hard sign
+
+ы  CYRILLIC-SMALL-YERU = LR(soft-sign.base, stem) script:Cyrl ortho:Rus
+  # Soft sign with separate stem
+
+ь  CYRILLIC-SMALL-SOFT-SIGN = soft-sign.base script:Cyrl ortho:Rus
+  # Stem with rightward bowl at bottom
+
+э  CYRILLIC-SMALL-E = FRAME(STACK(arc.top.r, arc.bot.r), crossbar) script:Cyrl ortho:Rus
+  # Reversed c with crossbar
+
+ю  CYRILLIC-SMALL-YU = LR(FRAME(stem, crossbar.short), bowl.full) script:Cyrl ortho:Rus
+  # Stem connected to adjacent bowl
+
+я  CYRILLIC-SMALL-YA = FRAME(STACK(bowl.l.upper, leg.l), stem) script:Cyrl ortho:Rus
+  # Reversed r at x-height
+
+# =============================================================================
+# UKRAINIAN EXTENSIONS (4 letters)
+# =============================================================================
+# Ukrainian uses the Russian alphabet plus these four additional letters
+
+Ґ  CYRILLIC-CAPITAL-GHE-UPTURN = FRAME(bar.top, stem.l, tick.cyr) script:Cyrl ortho:Ukr
+  # Г with small ascending tick (for /g/ sound)
+
+ґ  CYRILLIC-SMALL-GHE-UPTURN = FRAME(bar.top.x, stem, tick.cyr) script:Cyrl ortho:Ukr
+  # Small г with ascending tick
+
+Є  CYRILLIC-CAPITAL-UKRAINIAN-IE = FRAME(STACK(arc.top.cap, arc.bot.cap), crossbar.cap) script:Cyrl ortho:Ukr
+  # Like Latin E but curved (reversed Э)
+
+є  CYRILLIC-SMALL-UKRAINIAN-IE = FRAME(STACK(arc.top, arc.bot), crossbar) script:Cyrl ortho:Ukr
+  # Like reversed small э
+
+І  CYRILLIC-CAPITAL-BYELORUSSIAN-UKRAINIAN-I = stem.l script:Cyrl ortho:Ukr
+  # Identical to Latin I (vertical stem)
+
+і  CYRILLIC-SMALL-BYELORUSSIAN-UKRAINIAN-I = STACK(tittle, stem) script:Cyrl ortho:Ukr
+  # Identical to Latin i (stem with tittle)
+
+Ї  CYRILLIC-CAPITAL-YI = DIA(І, diaeresis) script:Cyrl ortho:Ukr
+  # І with diaeresis (two dots above)
+
+ї  CYRILLIC-SMALL-YI = DIA(і, diaeresis) script:Cyrl ortho:Ukr
+  # і with diaeresis (two dots above)
+
+# =============================================================================
+# END OF CYRILLIC ALPHABET LIBRARY
+# =============================================================================

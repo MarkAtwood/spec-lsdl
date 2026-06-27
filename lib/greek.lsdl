@@ -1,0 +1,280 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Greek Alphabet Library
+# =============================================================================
+#
+# This file defines the Greek alphabet (script:Grek) using elements from the
+# standard element library. It includes:
+#   - Greek-specific element variants
+#   - All 24 uppercase letters (Α-Ω)
+#   - All 25 lowercase letters including final sigma (α-ω, ς)
+#   - Case mappings with final sigma handling
+#
+# =============================================================================
+
+# =============================================================================
+# GREEK-SPECIFIC ELEMENT VARIANTS
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# spine.greek - Greek sigma-style S-curve
+# Used in: zeta, xi lowercase forms
+# -----------------------------------------------------------------------------
+@elem spine.greek
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,4]
+p2 = C([10,4] [10,6])
+p3 = C([2,6] [2,8])
+p4 = [10,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# tail.sigma - Rightward tail for medial sigma
+# Used in: medial sigma (σ)
+# -----------------------------------------------------------------------------
+@elem tail.sigma
+zone: x-height
+path: p1 p2 p3
+p1 = [6,4]
+p2 = C([10,4] [10,6])
+p3 = [8,6]
+close: false
+width: 1
+anchors: attach=[6,4]
+@end
+
+# -----------------------------------------------------------------------------
+# tail.final - Curving descender for final sigma
+# Used in: final sigma (ς)
+# -----------------------------------------------------------------------------
+@elem tail.final
+zone: descender
+path: p1 p2 p3
+p1 = [6,8]
+p2 = C([10,8] [10,10])
+p3 = [8,10]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# loop.greek - Greek omega loop form
+# Used in: omega (ω)
+# -----------------------------------------------------------------------------
+@elem loop.greek
+zone: x-height
+path: p1 p2 p3
+p1 = [6,4]
+p2 = C([2,4] [2,8])
+p3 = [6,8]
+close: true
+width: 1
+anchors: attach=[6,6] top=[6,4] base=[6,8]
+@end
+
+# =============================================================================
+# CASE MAPPINGS
+# =============================================================================
+#
+# All 24 Greek letter pairs with special handling for sigma:
+#   @case Σ σ final:ς
+# indicates that lowercase sigma has a word-final variant (ς)
+#
+# =============================================================================
+
+@case Α α
+@case Β β
+@case Γ γ
+@case Δ δ
+@case Ε ε
+@case Ζ ζ
+@case Η η
+@case Θ θ
+@case Ι ι
+@case Κ κ
+@case Λ λ
+@case Μ μ
+@case Ν ν
+@case Ξ ξ
+@case Ο ο
+@case Π π
+@case Ρ ρ
+@case Σ σ final:ς
+@case Τ τ
+@case Υ υ
+@case Φ φ
+@case Χ χ
+@case Ψ ψ
+@case Ω ω
+
+# =============================================================================
+# UPPERCASE GREEK LETTERS (24)
+# =============================================================================
+#
+# Letters sharing structure with Latin: Α (A), Β (B), Ε (E), Ζ (Z), Η (H),
+# Ι (I), Κ (K), Μ (M), Ν (N), Ο (O), Ρ (P), Τ (T), Υ (Y), Χ (X)
+#
+# Greek-specific forms: Γ, Δ, Θ, Λ, Ξ, Π, Σ, Φ, Ψ, Ω
+#
+# =============================================================================
+
+# Alpha - Structurally identical to Latin A
+Α  GREEK-CAPITAL-ALPHA    = APEX(diagonal.l, diagonal.r, crossbar.cap) script:Grek
+
+# Beta - Double-bowl like Latin B
+Β  GREEK-CAPITAL-BETA     = LR(stem.l, STACK(bowl.r.upper, bowl.r.lower), 4/8) script:Grek
+
+# Gamma - Greek-specific: bar at top with single descending stem
+Γ  GREEK-CAPITAL-GAMMA    = FRAME(bar.top, stem.l) script:Grek
+
+# Delta - Greek-specific: triangular form (like rotated Latin A)
+Δ  GREEK-CAPITAL-DELTA    = apex script:Grek
+
+# Epsilon - Similar to Latin E
+Ε  GREEK-CAPITAL-EPSILON  = FRAME(stem.l, arm.top, arm.mid, arm.bot) script:Grek
+
+# Zeta - Similar to Latin Z
+Ζ  GREEK-CAPITAL-ZETA     = FRAME(bar.top, diagonal, bar.bot.cap) script:Grek
+
+# Eta - Structurally identical to Latin H
+Η  GREEK-CAPITAL-ETA      = FRAME(stem.l, crossbar.cap, stem.r) script:Grek
+
+# Theta - Greek-specific: oval with crossbar
+Θ  GREEK-CAPITAL-THETA    = OVR(bowl.cap, crossbar.cap) script:Grek
+
+# Iota - Structurally identical to Latin I
+Ι  GREEK-CAPITAL-IOTA     = stem.l script:Grek
+
+# Kappa - Structurally similar to Latin K
+Κ  GREEK-CAPITAL-KAPPA    = LR(stem.l, STACK(leg.cap, diagonal), 4/8) script:Grek
+
+# Lambda - Greek-specific: inverted V (apex form)
+Λ  GREEK-CAPITAL-LAMBDA   = apex script:Grek
+
+# Mu - Structurally similar to Latin M
+Μ  GREEK-CAPITAL-MU       = FRAME(stem.l, vertex.cap, stem.r) script:Grek
+
+# Nu - Structurally similar to Latin N
+Ν  GREEK-CAPITAL-NU       = LR3(stem.l, diagonal, stem.r, 4/4/4) script:Grek
+
+# Xi - Greek-specific: three horizontal bars
+Ξ  GREEK-CAPITAL-XI       = FRAME(bar.top, crossbar.cap, bar.bot.cap) script:Grek
+
+# Omicron - Structurally identical to Latin O
+Ο  GREEK-CAPITAL-OMICRON  = bowl.cap script:Grek
+
+# Pi - Greek-specific: two stems with connecting bar (like wide sans H top)
+Π  GREEK-CAPITAL-PI       = FRAME(stem.l, bar.top, stem.r) script:Grek
+
+# Rho - Structurally similar to Latin P
+Ρ  GREEK-CAPITAL-RHO      = LR(stem.l, bowl.r.upper, 4/8) script:Grek
+
+# Sigma - Greek-specific: angular form like rotated E
+Σ  GREEK-CAPITAL-SIGMA    = FRAME(bar.top, vertex.cap, bar.bot.cap) script:Grek
+
+# Tau - Structurally identical to Latin T
+Τ  GREEK-CAPITAL-TAU      = FRAME(bar.top, stem) script:Grek
+
+# Upsilon - Structurally similar to Latin Y
+Υ  GREEK-CAPITAL-UPSILON  = STACK(vertex.cap, stem) script:Grek
+
+# Phi - Greek-specific: circular bowl with vertical through-stroke
+Φ  GREEK-CAPITAL-PHI      = OVR(bowl.cap, full-stem) script:Grek
+
+# Chi - Structurally identical to Latin X
+Χ  GREEK-CAPITAL-CHI      = FRAME(diagonal.l, diagonal) script:Grek
+
+# Psi - Greek-specific: trident form
+Ψ  GREEK-CAPITAL-PSI      = FRAME(diagonal.l, full-stem, diagonal) script:Grek
+
+# Omega - Greek-specific: horseshoe form
+Ω  GREEK-CAPITAL-OMEGA    = FRAME(arc.top.cap, arc.bot.cap, stem.l, stem.r) script:Grek
+
+# =============================================================================
+# LOWERCASE GREEK LETTERS (25 including final sigma)
+# =============================================================================
+
+# Alpha - Bowl with stem
+α  GREEK-SMALL-ALPHA      = LR(bowl.full, stem, 8/4) script:Grek
+
+# Beta - Ascending curved stem with stacked bowls
+β  GREEK-SMALL-BETA       = STACK(ascender.curved, bowl.r.upper, bowl.r.lower) script:Grek
+
+# Gamma - Descending from apex
+γ  GREEK-SMALL-GAMMA      = STACK(vertex, descender) script:Grek
+
+# Delta - Arc over bowl
+δ  GREEK-SMALL-DELTA      = STACK(arc.top, bowl.full) script:Grek
+
+# Epsilon - Stacked arcs (lunate form)
+ε  GREEK-SMALL-EPSILON    = STACK(arc.top, arc.bot) script:Grek
+
+# Zeta - Descending S-curve form
+ζ  GREEK-SMALL-ZETA       = STACK(arc.top, spine.greek, tail.final) script:Grek
+
+# Eta - Stem with descender
+η  GREEK-SMALL-ETA        = STACK(shoulder, descender) script:Grek
+
+# Theta - Bowl with crossbar
+θ  GREEK-SMALL-THETA      = OVR(bowl.full, crossbar) script:Grek
+
+# Iota - Simple stem
+ι  GREEK-SMALL-IOTA       = stem script:Grek
+
+# Kappa - Stem with diagonals
+κ  GREEK-SMALL-KAPPA      = LR(stem, STACK(leg, diagonal.x), 4/8) script:Grek
+
+# Lambda - Ascending diagonal apex
+λ  GREEK-SMALL-LAMBDA     = STACK(ascender, apex.x) script:Grek
+
+# Mu - Stem with descender, similar to eta
+μ  GREEK-SMALL-MU         = STACK(stem, arc.bot, descender) script:Grek
+
+# Nu - V-shaped form
+ν  GREEK-SMALL-NU         = vertex script:Grek
+
+# Xi - Descending zigzag
+ξ  GREEK-SMALL-XI         = STACK(arc.top, spine.greek, tail.final) script:Grek
+
+# Omicron - Simple bowl
+ο  GREEK-SMALL-OMICRON    = bowl.full script:Grek
+
+# Pi - Two stems with bar (like lowercase n with flat top)
+π  GREEK-SMALL-PI         = FRAME(bar.top.x, stem, stem.x) script:Grek
+
+# Rho - Bowl with descender
+ρ  GREEK-SMALL-RHO        = STACK(bowl.r, descender) script:Grek
+
+# Medial sigma - Used in middle of words
+σ  GREEK-SMALL-SIGMA      = FRAME(tail.sigma, bowl.full) script:Grek
+
+# Final sigma - Used at end of words (declared via @case Σ σ final:ς)
+ς  GREEK-SMALL-FINAL-SIGMA = STACK(arc.top, descender.curved) script:Grek
+
+# Tau - Crossbar with stem
+τ  GREEK-SMALL-TAU        = FRAME(bar.top.x, stem) script:Grek
+
+# Upsilon - V-shape with stem
+υ  GREEK-SMALL-UPSILON    = arc.bot script:Grek
+
+# Phi - Bowl pierced by full-height stem
+φ  GREEK-SMALL-PHI        = OVR(bowl.full, full-stem) script:Grek
+
+# Chi - Crossing diagonals with descender
+χ  GREEK-SMALL-CHI        = STACK(FRAME(diagonal.x, diagonal.l), descender) script:Grek
+
+# Psi - Trident with descender
+ψ  GREEK-SMALL-PSI        = STACK(vertex, full-stem) script:Grek
+
+# Omega - Two loops side by side
+ω  GREEK-SMALL-OMEGA      = LR(loop.greek, loop.greek, 6/6) script:Grek
+
+# =============================================================================
+# END OF GREEK ALPHABET LIBRARY
+# =============================================================================

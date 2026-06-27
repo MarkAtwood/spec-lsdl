@@ -1,0 +1,401 @@
+@lsdl 1.0
+
+# Cyrillic alphabet test: script:Cyrl and ortho: tags
+
+# ============================================================
+# Element Definitions
+# ============================================================
+
+@elem stem
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+width: 1
+anchors: top=[6,4] base=[6,8] mid=[6,6]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+@elem stem.l
+zone: cap
+path: p1 p2
+p1 = [2,0]
+p2 = [2,8]
+width: 1
+anchors: top=[2,0] base=[2,8] mid=[2,4]
+@end
+
+@elem stem.r
+zone: cap
+path: p1 p2
+p1 = [10,0]
+p2 = [10,8]
+width: 1
+anchors: top=[10,0] base=[10,8] mid=[10,4]
+@end
+
+@elem stem.cyr
+zone: cap
+path: p1 p2
+p1 = [6,0]
+p2 = [6,8]
+width: 1
+anchors: top=[6,0] base=[6,8] mid=[6,4]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+@elem ascender
+zone: ascender
+path: p1 p2
+p1 = [6,1]
+p2 = [6,8]
+width: 1
+anchors: top=[6,1] base=[6,8] mid=[6,4]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+@elem descender
+zone: descender
+path: p1 p2
+p1 = [6,4]
+p2 = [6,10]
+width: 1
+anchors: top=[6,4] base=[6,10] mid=[6,7]
+@end
+
+@elem bowl.full
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = C([12,4] [12,8])
+p3 = [6,8]
+p4 = C([0,8] [0,4])
+close: true
+width: 1
+anchors: attach=[6,6] mark-above=[6,3] mark-below=[6,9]
+@end
+
+@elem bowl.r
+zone: x-height
+path: p1 p2 p3
+p1 = [6,4]
+p2 = C([12,4] [12,8])
+p3 = [6,8]
+close: true
+width: 1
+anchors: attach=[6,6] mark-above=[8,3] mark-below=[8,9]
+@end
+
+@elem bowl.l
+zone: x-height
+path: p1 p2 p3
+p1 = [6,4]
+p2 = C([0,4] [0,8])
+p3 = [6,8]
+close: true
+width: 1
+anchors: attach=[6,6] mark-above=[4,3] mark-below=[4,9]
+@end
+
+@elem crossbar
+zone: x-height
+path: p1 p2
+p1 = [2,6]
+p2 = [10,6]
+width: 1
+anchors: left=[2,6] right=[10,6] mid=[6,6]
+@end
+
+@elem bar.top
+zone: cap
+path: p1 p2
+p1 = [2,0]
+p2 = [10,0]
+width: 1
+anchors: left=[2,0] right=[10,0] mid=[6,0]
+@end
+
+@elem bar.bot
+zone: x-height
+path: p1 p2
+p1 = [2,8]
+p2 = [10,8]
+width: 1
+anchors: left=[2,8] right=[10,8] mid=[6,8]
+@end
+
+@elem diagonal.l
+zone: cap
+path: p1 p2
+p1 = [2,0]
+p2 = [6,8]
+width: 1
+anchors: top=[2,0] base=[6,8]
+@end
+
+@elem diagonal.r
+zone: cap
+path: p1 p2
+p1 = [10,0]
+p2 = [6,8]
+width: 1
+anchors: top=[10,0] base=[6,8]
+@end
+
+@elem apex
+zone: cap
+path: p1 p2 p3
+p1 = [2,8]
+p2 = [6,0]
+p3 = [10,8]
+width: 1
+anchors: top=[6,0] left=[2,8] right=[10,8]
+@end
+
+@elem hook.cyr
+zone: x-height
+path: p1 p2 p3
+p1 = [2,4]
+p2 = C([2,6] [4,8])
+p3 = [6,8]
+width: 1
+anchors: attach=[2,4] base=[6,8]
+@end
+
+@elem tail.cyr
+zone: descender
+path: p1 p2 p3
+p1 = [10,8]
+p2 = [10,10]
+p3 = [8,10]
+width: 1
+anchors: attach=[10,8]
+@end
+
+@elem tick.cyr
+zone: cap
+path: p1 p2
+p1 = [2,2]
+p2 = [4,0]
+width: 1
+anchors: attach=[4,0]
+@end
+
+@elem soft-sign.base
+zone: x-height
+path: p1 p2 p3
+p1 = [2,4]
+p2 = [2,8]
+p3 = C([8,8] [8,6])
+close: true
+width: 1
+anchors: top=[2,4] base=[2,8] attach=[6,6]
+@end
+
+@elem hard-sign.top
+zone: cap
+path: p1 p2 p3
+p1 = [2,0]
+p2 = [6,0]
+p3 = [2,2]
+width: 1
+anchors: attach=[2,2]
+@end
+
+@elem arm
+zone: x-height
+path: p1 p2
+p1 = [2,4]
+p2 = [8,4]
+width: 1
+anchors: attach=[2,4]
+@end
+
+@elem arm.mid
+zone: x-height
+path: p1 p2
+p1 = [2,5]
+p2 = [8,5]
+width: 1
+anchors: attach=[2,5]
+@end
+
+@elem shoulder
+zone: x-height
+path: p1 p2 p3
+p1 = [2,4]
+p2 = C([2,8] [6,8])
+p3 = [10,8]
+width: 1
+anchors: attach=[2,4] top=[2,4] base=[10,8]
+@end
+
+@elem breve
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [4,0]
+p2 = C([6,2] [8,0])
+p3 = [8,0]
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem diaeresis
+zone: diacritic-above
+path: p1 p2
+p1 = [4,1]
+p2 = [8,1]
+width: 1
+anchors: attach=[6,2]
+@end
+
+# ============================================================
+# Aliases for Cross-Script Compatibility
+# ============================================================
+
+@alias Cyrl:A = А
+@alias Cyrl:B = Б
+@alias Cyrl:E = Е
+@alias Cyrl:H = Н
+@alias Cyrl:M = М
+@alias Cyrl:O = О
+@alias Cyrl:P = Р
+@alias Cyrl:T = Т
+@alias Cyrl:X = Х
+
+# ============================================================
+# Case Mappings
+# ============================================================
+
+@case А а
+@case Б б
+@case В в
+@case Г г
+@case Д д
+@case Е е
+@case Ж ж
+@case З з
+@case И и
+@case Й й
+@case К к
+@case Л л
+@case М м
+@case Н н
+@case О о
+@case П п
+@case Р р
+@case С с
+@case Т т
+@case У у
+@case Ф ф
+@case Х х
+@case Ц ц
+@case Ч ч
+@case Ш ш
+@case Щ щ
+@case Ъ ъ
+@case Ы ы
+@case Ь ь
+@case Э э
+@case Ю ю
+@case Я я
+
+# ============================================================
+# Capital Cyrillic Letters
+# ============================================================
+
+А  CYRILLIC-CAPITAL-A     = APEX(diagonal.l, diagonal.r, crossbar) script:Cyrl ortho:Rus
+Б  CYRILLIC-CAPITAL-BE    = FRAME(bar.top, stem.l, bowl.r) script:Cyrl ortho:Rus
+В  CYRILLIC-CAPITAL-VE    = LR(stem.l, STACK(bowl.r, bowl.r), 4/8) script:Cyrl ortho:Rus
+Г  CYRILLIC-CAPITAL-GHE   = FRAME(bar.top, stem.l) script:Cyrl ortho:Rus
+Д  CYRILLIC-CAPITAL-DE    = FRAME(apex, bar.bot, tail.cyr, tail.cyr) script:Cyrl ortho:Rus
+Е  CYRILLIC-CAPITAL-IE    = FRAME(stem.l, arm, arm.mid, bar.bot) script:Cyrl ortho:Rus
+Ж  CYRILLIC-CAPITAL-ZHE   = LR3(STACK(diagonal.r, diagonal.l), stem.cyr, STACK(diagonal.l, diagonal.r), 4/4/4) script:Cyrl ortho:Rus
+З  CYRILLIC-CAPITAL-ZE    = STACK(bowl.r, bowl.r) script:Cyrl ortho:Rus
+И  CYRILLIC-CAPITAL-I     = LR3(stem.l, diagonal.r, stem.r, 4/4/4) script:Cyrl ortho:Rus
+Й  CYRILLIC-CAPITAL-SHORT-I = DIA(И, breve) script:Cyrl ortho:Rus
+К  CYRILLIC-CAPITAL-KA    = LR(stem.l, STACK(diagonal.r, diagonal.l), 4/8) script:Cyrl ortho:Rus
+Л  CYRILLIC-CAPITAL-EL    = apex script:Cyrl ortho:Rus
+М  CYRILLIC-CAPITAL-EM    = FRAME(stem.l, apex, stem.r) script:Cyrl ortho:Rus
+Н  CYRILLIC-CAPITAL-EN    = FRAME(stem.l, crossbar, stem.r) script:Cyrl ortho:Rus
+О  CYRILLIC-CAPITAL-O     = bowl.full script:Cyrl ortho:Rus
+П  CYRILLIC-CAPITAL-PE    = FRAME(stem.l, bar.top, stem.r) script:Cyrl ortho:Rus
+Р  CYRILLIC-CAPITAL-ER    = LR(stem.l, bowl.r, 4/8) script:Cyrl ortho:Rus
+С  CYRILLIC-CAPITAL-ES    = STACK(bowl.l, bowl.l) script:Cyrl ortho:Rus
+Т  CYRILLIC-CAPITAL-TE    = FRAME(bar.top, stem.cyr) script:Cyrl ortho:Rus
+У  CYRILLIC-CAPITAL-U     = STACK(apex, descender) script:Cyrl ortho:Rus
+Ф  CYRILLIC-CAPITAL-EF    = OVR(bowl.full, stem.cyr) script:Cyrl ortho:Rus
+Х  CYRILLIC-CAPITAL-HA    = FRAME(diagonal.l, diagonal.r) script:Cyrl ortho:Rus
+Ц  CYRILLIC-CAPITAL-TSE   = FRAME(stem.l, bar.bot, stem.r, tail.cyr) script:Cyrl ortho:Rus
+Ч  CYRILLIC-CAPITAL-CHE   = FRAME(hook.cyr, stem.r) script:Cyrl ortho:Rus
+Ш  CYRILLIC-CAPITAL-SHA   = FRAME(stem.l, bar.bot, stem.cyr, stem.r) script:Cyrl ortho:Rus
+Щ  CYRILLIC-CAPITAL-SHCHA = FRAME(stem.l, bar.bot, stem.cyr, stem.r, tail.cyr) script:Cyrl ortho:Rus
+Ъ  CYRILLIC-CAPITAL-HARD-SIGN = FRAME(hard-sign.top, soft-sign.base) script:Cyrl ortho:Rus
+Ы  CYRILLIC-CAPITAL-YERU  = LR(soft-sign.base, stem.r, 8/4) script:Cyrl ortho:Rus
+Ь  CYRILLIC-CAPITAL-SOFT-SIGN = soft-sign.base script:Cyrl ortho:Rus
+Э  CYRILLIC-CAPITAL-E     = STACK(bowl.r, bowl.r) script:Cyrl ortho:Rus
+Ю  CYRILLIC-CAPITAL-YU    = LR(FRAME(stem.l, crossbar), bowl.full, 5/7) script:Cyrl ortho:Rus
+Я  CYRILLIC-CAPITAL-YA    = FRAME(STACK(bowl.l, diagonal.l), stem.r) script:Cyrl ortho:Rus
+
+# ============================================================
+# Lowercase Cyrillic Letters
+# ============================================================
+
+а  CYRILLIC-SMALL-A       = LR(bowl.l, stem, 8/4) script:Cyrl ortho:Rus
+б  CYRILLIC-SMALL-BE      = STACK(ascender, bowl.full) script:Cyrl ortho:Rus
+в  CYRILLIC-SMALL-VE      = LR(stem, STACK(bowl.r, bowl.r), 4/8) script:Cyrl ortho:Rus
+г  CYRILLIC-SMALL-GHE     = FRAME(bar.top, stem) script:Cyrl ortho:Rus
+д  CYRILLIC-SMALL-DE      = FRAME(apex, bar.bot, tail.cyr, tail.cyr) script:Cyrl ortho:Rus
+е  CYRILLIC-SMALL-IE      = bowl.full script:Cyrl ortho:Rus
+ж  CYRILLIC-SMALL-ZHE     = LR3(STACK(diagonal.r, diagonal.l), stem, STACK(diagonal.l, diagonal.r), 4/4/4) script:Cyrl ortho:Rus
+з  CYRILLIC-SMALL-ZE      = STACK(bowl.r, bowl.r) script:Cyrl ortho:Rus
+и  CYRILLIC-SMALL-I       = LR3(stem, diagonal.r, stem, 4/4/4) script:Cyrl ortho:Rus
+й  CYRILLIC-SMALL-SHORT-I = DIA(и, breve) script:Cyrl ortho:Rus
+к  CYRILLIC-SMALL-KA      = LR(stem, STACK(diagonal.r, diagonal.l), 4/8) script:Cyrl ortho:Rus
+л  CYRILLIC-SMALL-EL      = apex script:Cyrl ortho:Rus
+м  CYRILLIC-SMALL-EM      = FRAME(stem, apex, stem) script:Cyrl ortho:Rus
+н  CYRILLIC-SMALL-EN      = FRAME(stem, crossbar, stem) script:Cyrl ortho:Rus
+о  CYRILLIC-SMALL-O       = bowl.full script:Cyrl ortho:Rus
+п  CYRILLIC-SMALL-PE      = FRAME(stem, bar.top, stem) script:Cyrl ortho:Rus
+р  CYRILLIC-SMALL-ER      = STACK(bowl.r, descender) script:Cyrl ortho:Rus
+с  CYRILLIC-SMALL-ES      = STACK(bowl.l, bowl.l) script:Cyrl ortho:Rus
+т  CYRILLIC-SMALL-TE      = FRAME(bar.top, stem) script:Cyrl ortho:Rus
+у  CYRILLIC-SMALL-U       = STACK(apex, descender) script:Cyrl ortho:Rus
+ф  CYRILLIC-SMALL-EF      = STACK(ascender, bowl.full, descender) script:Cyrl ortho:Rus
+х  CYRILLIC-SMALL-HA      = FRAME(diagonal.l, diagonal.r) script:Cyrl ortho:Rus
+ц  CYRILLIC-SMALL-TSE     = FRAME(stem, bar.bot, stem, tail.cyr) script:Cyrl ortho:Rus
+ч  CYRILLIC-SMALL-CHE     = FRAME(hook.cyr, stem) script:Cyrl ortho:Rus
+ш  CYRILLIC-SMALL-SHA     = FRAME(stem, bar.bot, stem, stem) script:Cyrl ortho:Rus
+щ  CYRILLIC-SMALL-SHCHA   = FRAME(stem, bar.bot, stem, stem, tail.cyr) script:Cyrl ortho:Rus
+ъ  CYRILLIC-SMALL-HARD-SIGN = FRAME(hard-sign.top, soft-sign.base) script:Cyrl ortho:Rus
+ы  CYRILLIC-SMALL-YERU    = LR(soft-sign.base, stem, 8/4) script:Cyrl ortho:Rus
+ь  CYRILLIC-SMALL-SOFT-SIGN = soft-sign.base script:Cyrl ortho:Rus
+э  CYRILLIC-SMALL-E       = STACK(bowl.r, bowl.r) script:Cyrl ortho:Rus
+ю  CYRILLIC-SMALL-YU      = LR(FRAME(stem, crossbar), bowl.full, 5/7) script:Cyrl ortho:Rus
+я  CYRILLIC-SMALL-YA      = FRAME(STACK(bowl.l, diagonal.l), stem) script:Cyrl ortho:Rus
+
+# ============================================================
+# Ukrainian Extensions
+# ============================================================
+
+@case Ґ ґ
+@case Є є
+@case І і
+@case Ї ї
+
+Ґ  CYRILLIC-CAPITAL-GHE-UPTURN = FRAME(bar.top, stem.l, tick.cyr) script:Cyrl ortho:Ukr
+ґ  CYRILLIC-SMALL-GHE-UPTURN = FRAME(bar.top, stem, tick.cyr) script:Cyrl ortho:Ukr
+Є  CYRILLIC-CAPITAL-UKRAINIAN-IE = FRAME(bowl.l, crossbar) script:Cyrl ortho:Ukr
+є  CYRILLIC-SMALL-UKRAINIAN-IE = FRAME(bowl.l, crossbar) script:Cyrl ortho:Ukr
+І  CYRILLIC-CAPITAL-BYELORUSSIAN-UKRAINIAN-I = stem script:Cyrl ortho:Ukr
+і  CYRILLIC-SMALL-BYELORUSSIAN-UKRAINIAN-I = stem script:Cyrl ortho:Ukr
+Ї  CYRILLIC-CAPITAL-YI = DIA(І, diaeresis) script:Cyrl ortho:Ukr
+ї  CYRILLIC-SMALL-YI = DIA(і, diaeresis) script:Cyrl ortho:Ukr
+
+# ============================================================
+# Serbian/Bulgarian Italic Variants
+# (Same Unicode codepoint, different glyph shape)
+# ============================================================
+
+# Serbian italic б has different shape
+б  CYRILLIC-SMALL-BE = STACK(ascender, bowl.r) script:Cyrl ortho:Srp

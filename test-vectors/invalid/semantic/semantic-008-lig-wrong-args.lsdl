@@ -1,0 +1,11 @@
+@lsdl 1.0
+
+# Define some characters
+f LATIN-SMALL-F = hook.top
+i LATIN-SMALL-I = stem
+l LATIN-SMALL-L = ascender
+j LATIN-SMALL-J = descender
+
+# Semantic error: LIG requires 2 or 3 arguments (2 expressions + optional merge:)
+# Constraint 23: LIG MUST have 2 or 3 arguments
+X LIGATURE-TEST = LIG(f, i, l, j)

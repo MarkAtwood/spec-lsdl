@@ -1,0 +1,4 @@
+error: cyclic reference detected
+cycle: foo -> bar -> foo
+constraint: 7 - The element reference graph MUST be acyclic
+reference: Section 4.4 (Acyclicity Constraint) and Section 12.9

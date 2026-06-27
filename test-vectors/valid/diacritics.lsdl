@@ -1,0 +1,323 @@
+@lsdl 1.0
+
+# Diacritics test: DIA and DIA2 compositions with various marks
+
+# ============================================================
+# Base Element Definitions
+# ============================================================
+
+@elem stem
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+width: 1
+anchors: top=[6,4] base=[6,8] mid=[6,6]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+@elem bowl.full
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = C([12,4] [12,8])
+p3 = [6,8]
+p4 = C([0,8] [0,4])
+close: true
+width: 1
+anchors: attach=[6,6] mark-above=[6,3] mark-below=[6,9]
+  top-right=[10,4]
+@end
+
+@elem arc.top
+zone: x-height
+path: p1 p2 p3
+p1 = [10,6]
+p2 = C([10,4] [6,4])
+p3 = [2,6]
+width: 1
+anchors: left=[2,6] right=[10,6] top=[6,4] mark-below=[6,9]
+@end
+
+@elem arc.bot
+zone: x-height
+path: p1 p2 p3
+p1 = [2,6]
+p2 = C([2,8] [6,8])
+p3 = [10,8]
+width: 1
+anchors: left=[2,6] right=[10,8] base=[6,8]
+@end
+
+@elem crossbar
+zone: x-height
+path: p1 p2
+p1 = [2,6]
+p2 = [10,6]
+width: 1
+anchors: left=[2,6] right=[10,6] mid=[6,6]
+@end
+
+@elem shoulder
+zone: x-height
+path: p1 p2 p3
+p1 = [2,4]
+p2 = C([2,8] [6,8])
+p3 = [10,8]
+width: 1
+anchors: attach=[2,4] top=[2,4] base=[10,8] mark-above=[6,3]
+@end
+
+@elem bowl.l
+zone: x-height
+path: p1 p2 p3
+p1 = [6,4]
+p2 = C([0,4] [0,8])
+p3 = [6,8]
+close: true
+width: 1
+anchors: attach=[6,6] mark-above=[4,3] mark-below=[4,9]
+@end
+
+# ============================================================
+# Diacritic Mark Definitions
+# ============================================================
+
+@elem acute
+zone: diacritic-above
+path: p1 p2
+p1 = [5,1]
+p2 = [7,0]
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem grave
+zone: diacritic-above
+path: p1 p2
+p1 = [7,1]
+p2 = [5,0]
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem circumflex
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [4,1]
+p2 = [6,0]
+p3 = [8,1]
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem tilde
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [3,1]
+p2 = C([5,0] [7,2])
+p3 = [9,1]
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem diaeresis
+zone: diacritic-above
+path: p1 p2
+p1 = [4,1]
+p2 = [8,1]
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem macron
+zone: diacritic-above
+path: p1 p2
+p1 = [3,1]
+p2 = [9,1]
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem breve
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [4,0]
+p2 = C([6,2] [8,0])
+p3 = [8,0]
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem caron
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [4,0]
+p2 = [6,1]
+p3 = [8,0]
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem ring
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [5,0]
+p2 = C([4,0] [4,1])
+p3 = [5,1]
+p4 = C([6,1] [6,0])
+close: true
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem dot-above
+zone: diacritic-above
+path: p1
+p1 = [6,1]
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem double-acute
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [3,1]
+p2 = [5,0]
+p3 = [7,1]
+p4 = [9,0]
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem horn
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [8,4]
+p2 = C([10,3] [10,1])
+p3 = [9,1]
+width: 1
+anchors: attach=[8,4]
+@end
+
+@elem hook-above
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [5,2]
+p2 = C([6,1] [7,1])
+p3 = [6,0]
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem cedilla
+zone: diacritic-below
+path: p1 p2 p3
+p1 = [6,8]
+p2 = [5,10]
+p3 = C([4,10] [6,11])
+width: 1
+anchors: attach=[6,8]
+@end
+
+@elem ogonek
+zone: diacritic-below
+path: p1 p2 p3
+p1 = [8,8]
+p2 = C([10,9] [10,10])
+p3 = [8,10]
+width: 1
+anchors: attach=[8,8]
+@end
+
+@elem dot-below
+zone: diacritic-below
+path: p1
+p1 = [6,10]
+width: 1
+anchors: attach=[6,9]
+@end
+
+@elem comma-below
+zone: diacritic-below
+path: p1 p2
+p1 = [6,9]
+p2 = [5,10]
+width: 1
+anchors: attach=[6,9]
+@end
+
+# ============================================================
+# Base Characters for Composition
+# ============================================================
+
+a  LATIN-SMALL-A          = LR(bowl.l, stem, 8/4) script:Latn
+c  LATIN-SMALL-C          = STACK(arc.top, arc.bot) script:Latn
+e  LATIN-SMALL-E          = FRAME(arc.top, crossbar, arc.bot) script:Latn
+n  LATIN-SMALL-N          = LR(stem, shoulder, 4/8) script:Latn
+o  LATIN-SMALL-O          = bowl.full script:Latn
+u  LATIN-SMALL-U          = STACK(stem, arc.bot, stem) script:Latn
+
+# ============================================================
+# DIA Compositions - Single Diacritics
+# ============================================================
+
+# Acute accents
+é  LATIN-SMALL-E-ACUTE    = DIA(e, acute) script:Latn ortho:Fra,Spa,Por
+á  LATIN-SMALL-A-ACUTE    = DIA(a, acute) script:Latn ortho:Spa,Por
+ó  LATIN-SMALL-O-ACUTE    = DIA(o, acute) script:Latn ortho:Spa,Pol
+
+# Grave accents
+è  LATIN-SMALL-E-GRAVE    = DIA(e, grave) script:Latn ortho:Fra,Ita
+à  LATIN-SMALL-A-GRAVE    = DIA(a, grave) script:Latn ortho:Fra,Ita
+ù  LATIN-SMALL-U-GRAVE    = DIA(u, grave) script:Latn ortho:Fra,Ita
+
+# Circumflex
+ê  LATIN-SMALL-E-CIRCUMFLEX = DIA(e, circumflex) script:Latn ortho:Fra,Por
+â  LATIN-SMALL-A-CIRCUMFLEX = DIA(a, circumflex) script:Latn ortho:Fra,Por,Ron
+ô  LATIN-SMALL-O-CIRCUMFLEX = DIA(o, circumflex) script:Latn ortho:Fra,Por,Vie
+
+# Tilde
+ñ  LATIN-SMALL-N-TILDE    = DIA(n, tilde) script:Latn ortho:Spa
+ã  LATIN-SMALL-A-TILDE    = DIA(a, tilde) script:Latn ortho:Por
+õ  LATIN-SMALL-O-TILDE    = DIA(o, tilde) script:Latn ortho:Por
+
+# Diaeresis
+ë  LATIN-SMALL-E-DIAERESIS = DIA(e, diaeresis) script:Latn ortho:Nld,Fra
+ö  LATIN-SMALL-O-DIAERESIS = DIA(o, diaeresis) script:Latn ortho:Deu,Tur
+ü  LATIN-SMALL-U-DIAERESIS = DIA(u, diaeresis) script:Latn ortho:Deu,Tur
+
+# Cedilla
+ç  LATIN-SMALL-C-CEDILLA  = DIA(c, cedilla) script:Latn ortho:Fra,Tur,Por
+
+# Caron
+č  LATIN-SMALL-C-CARON    = DIA(c, caron) script:Latn ortho:Ces
+
+# Ring
+å  LATIN-SMALL-A-RING     = DIA(a, ring) script:Latn ortho:Dan,Nor
+
+# Ogonek
+ą  LATIN-SMALL-A-OGONEK   = DIA(a, ogonek) script:Latn ortho:Pol
+
+# ============================================================
+# DIA2 Compositions - Vietnamese Stacked Diacritics
+# ============================================================
+
+# Breve + tone marks
+ắ  LATIN-SMALL-A-BREVE-ACUTE = DIA2(a, breve, acute) script:Latn ortho:Vie
+ằ  LATIN-SMALL-A-BREVE-GRAVE = DIA2(a, breve, grave) script:Latn ortho:Vie
+ẳ  LATIN-SMALL-A-BREVE-HOOK = DIA2(a, breve, hook-above) script:Latn ortho:Vie
+ẵ  LATIN-SMALL-A-BREVE-TILDE = DIA2(a, breve, tilde) script:Latn ortho:Vie
+
+# Circumflex + tone marks
+ố  LATIN-SMALL-O-CIRCUMFLEX-ACUTE = DIA2(o, circumflex, acute) script:Latn ortho:Vie
+ồ  LATIN-SMALL-O-CIRCUMFLEX-GRAVE = DIA2(o, circumflex, grave) script:Latn ortho:Vie
+ổ  LATIN-SMALL-O-CIRCUMFLEX-HOOK = DIA2(o, circumflex, hook-above) script:Latn ortho:Vie
+ỗ  LATIN-SMALL-O-CIRCUMFLEX-TILDE = DIA2(o, circumflex, tilde) script:Latn ortho:Vie
+
+# ============================================================
+# DIA with Anchor Override
+# ============================================================
+
+# Horn diacritic uses explicit anchor override
+ơ  LATIN-SMALL-O-HORN = DIA(o, horn, attach:top-right) script:Latn ortho:Vie

@@ -1,0 +1,5 @@
+error: undefined element reference
+line: 5
+element: undefined_elem
+constraint: 6 - All FULL_ELEM references MUST resolve to a defined element, alias, or previously defined character
+reference: Section 12.9

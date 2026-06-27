@@ -1,0 +1,8 @@
+@lsdl 1.0
+
+# Semantic error: cyclic alias references
+# Constraint 7: The element reference graph MUST be acyclic
+@alias foo = bar
+@alias bar = foo
+
+A LATIN-CAPITAL-A = APEX(foo, stem.r)

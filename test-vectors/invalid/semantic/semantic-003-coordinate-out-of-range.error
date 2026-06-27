@@ -1,0 +1,6 @@
+error: coordinate out of range
+line: 9
+coordinate: [15,8]
+valid range: 0-12 for standard /12 blocks
+constraint: 4 - All coordinate values in standard blocks MUST be 0 to 12
+reference: Section 12.9

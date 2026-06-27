@@ -1,0 +1,5 @@
+error: syntax error
+line: 4
+expected: ')' to close APEX expression
+found: end of line
+grammar: APEX_EXPR ::= 'APEX(' EXPR ( ',' WS? EXPR )+ ')'

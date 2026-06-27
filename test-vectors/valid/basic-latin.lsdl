@@ -1,0 +1,334 @@
+@lsdl 1.0
+
+# Basic Latin alphabet using STACK, LR, APEX compositions
+
+# ============================================================
+# Element Definitions
+# ============================================================
+
+@elem stem
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+width: 1
+anchors: top=[6,4] base=[6,8] mid=[6,6]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+@elem stem.l
+zone: cap
+path: p1 p2
+p1 = [2,0]
+p2 = [2,8]
+width: 1
+anchors: top=[2,0] base=[2,8] mid=[2,4]
+@end
+
+@elem stem.r
+zone: cap
+path: p1 p2
+p1 = [10,0]
+p2 = [10,8]
+width: 1
+anchors: top=[10,0] base=[10,8] mid=[10,4]
+@end
+
+@elem ascender
+zone: ascender
+path: p1 p2
+p1 = [6,1]
+p2 = [6,8]
+width: 1
+anchors: top=[6,1] base=[6,8] mid=[6,4]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+@elem descender
+zone: descender
+path: p1 p2
+p1 = [6,4]
+p2 = [6,10]
+width: 1
+anchors: top=[6,4] base=[6,10] mid=[6,7]
+@end
+
+@elem bowl.r
+zone: x-height
+path: p1 p2 p3
+p1 = [6,4]
+p2 = C([12,4] [12,8])
+p3 = [6,8]
+close: true
+width: 1
+anchors: attach=[6,6] mark-above=[8,3] mark-below=[8,9]
+@end
+
+@elem bowl.l
+zone: x-height
+path: p1 p2 p3
+p1 = [6,4]
+p2 = C([0,4] [0,8])
+p3 = [6,8]
+close: true
+width: 1
+anchors: attach=[6,6] mark-above=[4,3] mark-below=[4,9]
+@end
+
+@elem bowl.full
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = C([12,4] [12,8])
+p3 = [6,8]
+p4 = C([0,8] [0,4])
+close: true
+width: 1
+anchors: attach=[6,6] mark-above=[6,3] mark-below=[6,9]
+@end
+
+@elem crossbar
+zone: x-height
+path: p1 p2
+p1 = [2,6]
+p2 = [10,6]
+width: 1
+anchors: left=[2,6] right=[10,6] mid=[6,6]
+@end
+
+@elem bar.top
+zone: cap
+path: p1 p2
+p1 = [2,0]
+p2 = [10,0]
+width: 1
+anchors: left=[2,0] right=[10,0] mid=[6,0]
+@end
+
+@elem bar.bot
+zone: x-height
+path: p1 p2
+p1 = [2,8]
+p2 = [10,8]
+width: 1
+anchors: left=[2,8] right=[10,8] mid=[6,8]
+@end
+
+@elem arm
+zone: x-height
+path: p1 p2
+p1 = [2,4]
+p2 = [8,4]
+width: 1
+anchors: attach=[2,4]
+@end
+
+@elem arm.mid
+zone: x-height
+path: p1 p2
+p1 = [2,5]
+p2 = [8,5]
+width: 1
+anchors: attach=[2,5]
+@end
+
+@elem shoulder
+zone: x-height
+path: p1 p2 p3
+p1 = [2,4]
+p2 = C([2,8] [6,8])
+p3 = [10,8]
+width: 1
+anchors: attach=[2,4] top=[2,4] base=[10,8]
+@end
+
+@elem arc.top
+zone: x-height
+path: p1 p2 p3
+p1 = [10,6]
+p2 = C([10,4] [6,4])
+p3 = [2,6]
+width: 1
+anchors: left=[2,6] right=[10,6] top=[6,4]
+@end
+
+@elem arc.bot
+zone: x-height
+path: p1 p2 p3
+p1 = [2,6]
+p2 = C([2,8] [6,8])
+p3 = [10,8]
+width: 1
+anchors: left=[2,6] right=[10,8] base=[6,8]
+@end
+
+@elem diagonal.l
+zone: cap
+path: p1 p2
+p1 = [2,0]
+p2 = [6,8]
+width: 1
+anchors: top=[2,0] base=[6,8]
+@end
+
+@elem diagonal.r
+zone: cap
+path: p1 p2
+p1 = [10,0]
+p2 = [6,8]
+width: 1
+anchors: top=[10,0] base=[6,8]
+@end
+
+@elem apex
+zone: cap
+path: p1 p2 p3
+p1 = [2,8]
+p2 = [6,0]
+p3 = [10,8]
+width: 1
+anchors: top=[6,0] left=[2,8] right=[10,8]
+@end
+
+@elem vertex
+zone: x-height
+path: p1 p2 p3
+p1 = [2,4]
+p2 = [6,8]
+p3 = [10,4]
+width: 1
+anchors: base=[6,8] left=[2,4] right=[10,4]
+@end
+
+@elem tittle
+zone: x-height
+path: p1
+p1 = [6,3]
+width: 1
+anchors: attach=[6,4]
+@end
+
+@elem hook.top
+zone: ascender
+path: p1 p2 p3
+p1 = [8,1]
+p2 = C([4,1] [4,4])
+p3 = [4,8]
+width: 1
+anchors: attach=[8,1] base=[4,8]
+@end
+
+@elem loop
+zone: descender
+path: p1 p2 p3 p4
+p1 = [6,8]
+p2 = C([2,8] [2,10])
+p3 = [6,10]
+p4 = C([10,10] [10,8])
+close: true
+width: 1
+anchors: attach=[6,8] top=[6,8]
+@end
+
+@elem tail
+zone: descender
+path: p1 p2 p3
+p1 = [6,8]
+p2 = C([10,8] [10,10])
+p3 = [8,10]
+width: 1
+anchors: attach=[6,8]
+@end
+
+# ============================================================
+# Case Mappings
+# ============================================================
+
+@case A a
+@case B b
+@case C c
+@case D d
+@case E e
+@case F f
+@case G g
+@case H h
+@case I i
+@case J j
+@case K k
+@case L l
+@case M m
+@case N n
+@case O o
+@case P p
+@case Q q
+@case R r
+@case S s
+@case T t
+@case U u
+@case V v
+@case W w
+@case X x
+@case Y y
+@case Z z
+
+# ============================================================
+# Capital Letters
+# ============================================================
+
+A  LATIN-CAPITAL-A        = APEX(diagonal.l, diagonal.r, crossbar) script:Latn
+B  LATIN-CAPITAL-B        = LR(stem.l, STACK(bowl.r, bowl.r), 4/8) script:Latn
+C  LATIN-CAPITAL-C        = STACK(arc.top, arc.bot) script:Latn
+D  LATIN-CAPITAL-D        = LR(stem.l, bowl.r, 4/8) script:Latn
+E  LATIN-CAPITAL-E        = FRAME(stem.l, arm, arm.mid, bar.bot) script:Latn
+F  LATIN-CAPITAL-F        = FRAME(stem.l, arm, arm.mid) script:Latn
+G  LATIN-CAPITAL-G        = FRAME(arc.top, arc.bot, crossbar) script:Latn
+H  LATIN-CAPITAL-H        = FRAME(stem.l, crossbar, stem.r) script:Latn
+I  LATIN-CAPITAL-I        = stem script:Latn
+J  LATIN-CAPITAL-J        = STACK(stem, arc.bot) script:Latn
+K  LATIN-CAPITAL-K        = LR(stem.l, STACK(diagonal.r, diagonal.l), 4/8) script:Latn
+L  LATIN-CAPITAL-L        = FRAME(stem.l, bar.bot) script:Latn
+M  LATIN-CAPITAL-M        = FRAME(stem.l, vertex, stem.r) script:Latn
+N  LATIN-CAPITAL-N        = LR3(stem.l, diagonal.l, stem.r, 4/4/4) script:Latn
+O  LATIN-CAPITAL-O        = bowl.full script:Latn
+P  LATIN-CAPITAL-P        = LR(stem.l, bowl.r, 4/8) script:Latn
+Q  LATIN-CAPITAL-Q        = FRAME(bowl.full, tail) script:Latn
+R  LATIN-CAPITAL-R        = LR(STACK(stem.l, bowl.r), diagonal.l, 6/6) script:Latn
+S  LATIN-CAPITAL-S        = STACK(arc.top, arc.bot) script:Latn
+T  LATIN-CAPITAL-T        = FRAME(bar.top, stem) script:Latn
+U  LATIN-CAPITAL-U        = STACK(stem.l, arc.bot, stem.r) script:Latn
+V  LATIN-CAPITAL-V        = vertex script:Latn
+W  LATIN-CAPITAL-W        = LR(vertex, vertex, 6/6) script:Latn
+X  LATIN-CAPITAL-X        = FRAME(diagonal.l, diagonal.r) script:Latn
+Y  LATIN-CAPITAL-Y        = STACK(vertex, stem) script:Latn
+Z  LATIN-CAPITAL-Z        = FRAME(bar.top, diagonal.r, bar.bot) script:Latn
+
+# ============================================================
+# Lowercase Letters
+# ============================================================
+
+a  LATIN-SMALL-A          = LR(bowl.l, stem, 8/4) script:Latn
+b  LATIN-SMALL-B          = STACK(ascender, bowl.r) script:Latn
+c  LATIN-SMALL-C          = STACK(arc.top, arc.bot) script:Latn
+d  LATIN-SMALL-D          = LR(bowl.l, ascender, 7/5) script:Latn
+e  LATIN-SMALL-E          = FRAME(arc.top, crossbar, arc.bot) script:Latn
+f  LATIN-SMALL-F          = hook.top script:Latn
+g  LATIN-SMALL-G          = STACK(bowl.full, loop) script:Latn
+h  LATIN-SMALL-H          = STACK(ascender, shoulder) script:Latn
+i  LATIN-SMALL-I          = STACK(tittle, stem) script:Latn
+j  LATIN-SMALL-J          = STACK(tittle, stem, loop) script:Latn
+k  LATIN-SMALL-K          = LR(ascender, STACK(diagonal.r, diagonal.l), 4/8) script:Latn
+l  LATIN-SMALL-L          = ascender script:Latn
+m  LATIN-SMALL-M          = LR3(stem, shoulder, shoulder, 4/4/4) script:Latn
+n  LATIN-SMALL-N          = LR(stem, shoulder, 4/8) script:Latn
+o  LATIN-SMALL-O          = bowl.full script:Latn
+p  LATIN-SMALL-P          = STACK(bowl.r, descender) script:Latn
+q  LATIN-SMALL-Q          = STACK(bowl.l, descender) script:Latn
+r  LATIN-SMALL-R          = LR(stem, arc.top, 6/6) script:Latn
+s  LATIN-SMALL-S          = STACK(arc.top, arc.bot) script:Latn
+t  LATIN-SMALL-T          = FRAME(crossbar, ascender) script:Latn
+u  LATIN-SMALL-U          = STACK(stem, arc.bot, stem) script:Latn
+v  LATIN-SMALL-V          = vertex script:Latn
+w  LATIN-SMALL-W          = LR(vertex, vertex, 6/6) script:Latn
+x  LATIN-SMALL-X          = FRAME(diagonal.l, diagonal.r) script:Latn
+y  LATIN-SMALL-Y          = STACK(vertex, descender) script:Latn
+z  LATIN-SMALL-Z          = FRAME(crossbar, diagonal.r, bar.bot) script:Latn

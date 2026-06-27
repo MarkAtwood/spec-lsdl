@@ -1,0 +1,5 @@
+error: @case references undefined character
+line: 8
+undefined character: z
+constraint: 18 - @case declarations MUST reference characters defined in the same file
+reference: Section 12.9 and Section 13.2

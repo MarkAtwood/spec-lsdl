@@ -1,0 +1,6 @@
+error: transform parameter out of range
+line: 5
+parameter: sx=30
+valid range: -12 to 24 inclusive
+constraint: 2 - All TPARAM values MUST be in the range -12 to 24 inclusive
+reference: Section 9.1 and Section 12.9

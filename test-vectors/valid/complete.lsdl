@@ -1,0 +1,278 @@
+@lsdl 1.0
+
+# Metrics (defaults; shown for clarity)
+@metrics
+cap-top: 0
+ascender: 1
+cap-height: 2
+x-top: 4
+baseline: 8
+descender: 10
+desc-limit: 12
+@end
+
+# ============================================================
+# Aliases
+# ============================================================
+
+@alias acute = acute
+@alias cedilla = cedilla
+@alias Latn:H = H
+@alias Grek:H = Η
+@alias Cyrl:H = Н
+
+# ============================================================
+# Leaf Element Definitions
+# ============================================================
+
+@elem stem
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+width: 1
+anchors: top=[6,4] base=[6,8] mid=[6,6]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+@elem stem.l
+zone: cap
+path: p1 p2
+p1 = [2,0]
+p2 = [2,8]
+width: 1
+anchors: top=[2,0] base=[2,8] mid=[2,4]
+@end
+
+@elem stem.r
+zone: cap
+path: p1 p2
+p1 = [10,0]
+p2 = [10,8]
+width: 1
+anchors: top=[10,0] base=[10,8] mid=[10,4]
+@end
+
+@elem ascender
+zone: ascender
+path: p1 p2
+p1 = [6,1]
+p2 = [6,8]
+width: 1
+anchors: top=[6,1] base=[6,8] mid=[6,4]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+@elem ascender.curved
+zone: ascender
+path: p1 p2 p3
+p1 = [4,1]
+p2 = C([8,1] [8,4])
+p3 = [6,4]
+width: 1
+anchors: top=[4,1] base=[6,4] mid=[6,2]
+@end
+
+@elem bowl.r
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = C([12,4] [12,8])
+p3 = [6,8]
+close: true
+width: 1
+anchors: attach=[6,6] mark-above=[8,3] mark-below=[8,9]
+@end
+
+@elem bowl.l
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = C([0,4] [0,8])
+p3 = [6,8]
+close: true
+width: 1
+anchors: attach=[6,6] mark-above=[4,3] mark-below=[4,9]
+@end
+
+@elem bowl.r.upper
+zone: x-height
+path: p1 p2 p3
+p1 = [6,4]
+p2 = C([11,4] [11,6])
+p3 = [6,6]
+width: 1
+anchors: attach=[6,5] top=[8,4] base=[8,6]
+@end
+
+@elem bowl.r.lower
+zone: x-height
+path: p1 p2 p3
+p1 = [6,6]
+p2 = C([12,6] [12,8])
+p3 = [6,8]
+width: 1
+anchors: attach=[6,7] top=[8,6] base=[8,8]
+@end
+
+@elem crossbar
+zone: x-height
+path: p1 p2
+p1 = [2,6]
+p2 = [10,6]
+width: 1
+anchors: left=[2,6] right=[10,6] mid=[6,6]
+@end
+
+@elem bar.top
+zone: cap
+path: p1 p2
+p1 = [2,0]
+p2 = [10,0]
+width: 1
+anchors: left=[2,0] right=[10,0] mid=[6,0]
+@end
+
+@elem arc.top
+zone: x-height
+path: p1 p2 p3
+p1 = [10,6]
+p2 = C([10,4] [6,4])
+p3 = [2,6]
+width: 1
+anchors: left=[2,6] right=[10,6] top=[6,4]
+@end
+
+@elem arc.bot
+zone: x-height
+path: p1 p2 p3
+p1 = [2,6]
+p2 = C([2,8] [6,8])
+p3 = [10,8]
+width: 1
+anchors: left=[2,6] right=[10,8] base=[6,8]
+@end
+
+@elem stroke.diag
+zone: x-height
+path: p1 p2
+p1 = [3,8]
+p2 = [9,4]
+width: 1
+anchors: mid=[6,6]
+@end
+
+@elem stroke.horiz
+zone: x-height
+path: p1 p2
+p1 = [2,6]
+p2 = [10,6]
+width: 1
+anchors: left=[2,6] right=[10,6]
+@end
+
+# ============================================================
+# Diacritic Definitions
+# ============================================================
+
+@elem acute
+zone: diacritic-above
+path: p1 p2
+p1 = [5,1]
+p2 = [7,0]
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem grave
+zone: diacritic-above
+path: p1 p2
+p1 = [7,1]
+p2 = [5,0]
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem diaeresis
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [4,1]
+p2 = [4,1]
+p3 = [8,1]
+p4 = [8,1]
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem tilde
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [3,1]
+p2 = C([5,0] [7,2])
+p3 = [9,1]
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem cedilla
+zone: diacritic-below
+path: p1 p2 p3
+p1 = [6,8]
+p2 = [5,10]
+p3 = C([4,10] [6,11])
+width: 1
+anchors: attach=[6,8]
+@end
+
+# ============================================================
+# Case Mappings
+# ============================================================
+
+@case A a
+@case B b
+@case D d
+@case E e
+@case O o
+@case Σ σ final:ς
+
+# ============================================================
+# Character Definitions
+# ============================================================
+
+# Latin lowercase
+b  LATIN-SMALL-B        = STACK(ascender, bowl.r) script:Latn
+d  LATIN-SMALL-D        = LR(bowl.l, ascender, 7/5) script:Latn
+e  LATIN-SMALL-E        = FRAME(arc.top, crossbar, arc.bot) script:Latn
+
+# Diacritic compositions
+é  LATIN-SMALL-E-ACUTE  = DIA(e, acute) script:Latn ortho:Fra,Spa,Por
+è  LATIN-SMALL-E-GRAVE  = DIA(e, grave) script:Latn ortho:Fra,Ita
+ë  LATIN-SMALL-E-DIAERESIS = DIA(e, diaeresis) script:Latn ortho:Nld,Fra
+ñ  LATIN-SMALL-N-TILDE  = DIA(n, tilde) script:Latn ortho:Spa
+ç  LATIN-SMALL-C-CEDILLA = DIA(c, cedilla) script:Latn ortho:Fra,Tur,Por
+ö  LATIN-SMALL-O-DIAERESIS = DIA(o, diaeresis) script:Latn ortho:Deu,Tur
+
+# Overlay compositions
+Ø  LATIN-CAPITAL-O-STROKE = OVR(O, stroke.diag) script:Latn ortho:Dan,Nor
+ø  LATIN-SMALL-O-STROKE = OVR(o, stroke.diag) script:Latn ortho:Dan,Nor
+ł  LATIN-SMALL-L-STROKE = OVR(l, stroke.horiz) script:Latn ortho:Pol
+
+# Multi-diacritic
+ắ  LATIN-SMALL-A-BREVE-ACUTE = DIA2(a, breve, acute) script:Latn ortho:Vie
+
+# Cyrillic
+П  CYRILLIC-CAPITAL-PE  = FRAME(stem.l, bar.top, stem.r) script:Cyrl
+
+# Greek
+β  GREEK-SMALL-BETA     = STACK(ascender.curved, bowl.r.upper, bowl.r.lower) script:Grek
+
+# Ligatures
+ﬁ  LATIN-SMALL-LIGATURE-FI = LIG(f, i, merge:hook-tittle) cp:U+FB01 script:Latn
+ﬂ  LATIN-SMALL-LIGATURE-FL = LIG(f, l, merge:hook-ascender) cp:U+FB02 script:Latn
+Æ  LATIN-CAPITAL-AE = LIG(A, E, merge:stem-shared) cp:U+00C6 script:Latn
+Œ  LATIN-CAPITAL-OE = LIG(O, E, merge:bowl-stem) cp:U+0152 script:Latn
+
+# Style transform
+@style italic
+transform: sk(*, kx=2, ky=0)
+@end

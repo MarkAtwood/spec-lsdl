@@ -1,0 +1,72 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Ligatures Library
+# =============================================================================
+#
+# This file defines standard ligature characters for Latin script.
+#
+# Organization:
+#   - Alphabetic Presentation Forms (U+FB00-FB06)
+#   - Historical Ligatures (Æ, Œ, Ĳ)
+#   - Case mappings
+#
+# Reference: LSDL Specification Section 14 (Ligatures)
+#
+# =============================================================================
+
+# =============================================================================
+# ALPHABETIC PRESENTATION FORMS (U+FB00-FB06)
+# =============================================================================
+
+# ff - Two f characters with hooks merged
+ﬀ  LATIN-SMALL-LIGATURE-FF = LIG(f, f, merge:hook-hook) cp:U+FB00 script:Latn
+
+# fi - f with hook absorbing i tittle
+ﬁ  LATIN-SMALL-LIGATURE-FI = LIG(f, i, merge:hook-tittle) cp:U+FB01 script:Latn
+
+# fl - f hook merging into l ascender
+ﬂ  LATIN-SMALL-LIGATURE-FL = LIG(f, l, merge:hook-ascender) cp:U+FB02 script:Latn
+
+# ffi - ff ligature with i (hook absorbs tittle)
+ﬃ  LATIN-SMALL-LIGATURE-FFI = LIG(ﬀ, i, merge:hook-tittle) cp:U+FB03 script:Latn
+
+# ffl - ff ligature with l (hook merges into ascender)
+ﬄ  LATIN-SMALL-LIGATURE-FFL = LIG(ﬀ, l, merge:hook-ascender) cp:U+FB04 script:Latn
+
+# st - s arc merging into t stem
+ﬅ  LATIN-SMALL-LIGATURE-ST = LIG(s, t, merge:arc-stem) cp:U+FB05 script:Latn
+
+# =============================================================================
+# HISTORICAL LIGATURES
+# =============================================================================
+
+# AE - Capital A and E with shared stem
+Æ  LATIN-CAPITAL-AE = LIG(A, E, merge:stem-shared) cp:U+00C6 script:Latn
+
+# ae - Small a and e with merged bowl and arc
+æ  LATIN-SMALL-AE = LIG(a, e, merge:bowl-arc) cp:U+00E6 script:Latn
+
+# OE - Capital O and E with bowl merging into stem
+Œ  LATIN-CAPITAL-OE = LIG(O, E, merge:bowl-stem) cp:U+0152 script:Latn
+
+# oe - Small o and e with merged bowl and arc
+œ  LATIN-SMALL-OE = LIG(o, e, merge:bowl-arc) cp:U+0153 script:Latn
+
+# IJ - Capital I and J (Dutch digraph ligature)
+Ĳ  LATIN-CAPITAL-IJ = LIG(I, J) cp:U+0132 script:Latn
+
+# ij - Small i and j (Dutch digraph ligature)
+ĳ  LATIN-SMALL-IJ = LIG(i, j) cp:U+0133 script:Latn
+
+# =============================================================================
+# CASE MAPPINGS
+# =============================================================================
+
+@case Æ æ
+@case Œ œ
+@case Ĳ ĳ
+
+# =============================================================================
+# END OF LIGATURES LIBRARY
+# =============================================================================

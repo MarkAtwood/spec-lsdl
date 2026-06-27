@@ -1,0 +1,273 @@
+@lsdl 1.0
+
+# Transforms test: sc, sh, sk operators and @style blocks
+
+# ============================================================
+# Element Definitions
+# ============================================================
+
+@elem stem
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+width: 1
+anchors: top=[6,4] base=[6,8] mid=[6,6]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+@elem bowl
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = C([12,4] [12,8])
+p3 = [6,8]
+p4 = C([0,8] [0,4])
+close: true
+width: 1
+anchors: attach=[6,6] mark-above=[6,3] mark-below=[6,9]
+@end
+
+@elem ascender
+zone: ascender
+path: p1 p2
+p1 = [6,1]
+p2 = [6,8]
+width: 1
+anchors: top=[6,1] base=[6,8] mid=[6,4]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+@elem bowl.r
+zone: x-height
+path: p1 p2 p3
+p1 = [6,4]
+p2 = C([12,4] [12,8])
+p3 = [6,8]
+close: true
+width: 1
+anchors: attach=[6,6] mark-above=[8,3] mark-below=[8,9]
+@end
+
+@elem bowl.l
+zone: x-height
+path: p1 p2 p3
+p1 = [6,4]
+p2 = C([0,4] [0,8])
+p3 = [6,8]
+close: true
+width: 1
+anchors: attach=[6,6] mark-above=[4,3] mark-below=[4,9]
+@end
+
+@elem crossbar
+zone: x-height
+path: p1 p2
+p1 = [2,6]
+p2 = [10,6]
+width: 1
+anchors: left=[2,6] right=[10,6] mid=[6,6]
+@end
+
+@elem arc.top
+zone: x-height
+path: p1 p2 p3
+p1 = [10,6]
+p2 = C([10,4] [6,4])
+p3 = [2,6]
+width: 1
+anchors: left=[2,6] right=[10,6] top=[6,4]
+@end
+
+@elem arc.bot
+zone: x-height
+path: p1 p2 p3
+p1 = [2,6]
+p2 = C([2,8] [6,8])
+p3 = [10,8]
+width: 1
+anchors: left=[2,6] right=[10,8] base=[6,8]
+@end
+
+@elem dot
+zone: x-height
+path: p1
+p1 = [6,6]
+width: 1
+anchors: attach=[6,6]
+@end
+
+@elem shoulder
+zone: x-height
+path: p1 p2 p3
+p1 = [2,4]
+p2 = C([2,8] [6,8])
+p3 = [10,8]
+width: 1
+anchors: attach=[2,4] top=[2,4] base=[10,8]
+@end
+
+@elem acute
+zone: diacritic-above
+path: p1 p2
+p1 = [5,1]
+p2 = [7,0]
+width: 1
+anchors: attach=[6,2]
+@end
+
+# ============================================================
+# Style Blocks
+# ============================================================
+
+# Italic style - applies horizontal skew
+@style italic
+transform: sk(*, kx=2, ky=0)
+@end
+
+# Bold approximation - scales up
+@style bold
+transform: sc(*, sx=14, sy=12)
+@end
+
+# Condensed style - horizontally compressed
+@style condensed
+transform: sc(*, sx=9, sy=12)
+@end
+
+# Extended style - horizontally expanded
+@style extended
+transform: sc(*, sx=15, sy=12)
+@end
+
+# Compound style: italic + condensed
+@style italic-condensed
+transform: sk(sc(*, sx=9, sy=12), kx=2, ky=0)
+@end
+
+# Compound style: bold + extended
+@style bold-extended
+transform: sc(sc(*, sx=15, sy=12), sx=14, sy=12)
+@end
+
+# Superscript style
+@style superscript
+transform: sh(sc(*, sx=8, sy=8), dx=2, dy=-4)
+@end
+
+# Subscript style
+@style subscript
+transform: sh(sc(*, sx=8, sy=8), dx=2, dy=4)
+@end
+
+# ============================================================
+# Base Characters
+# ============================================================
+
+a  LATIN-SMALL-A = LR(bowl.l, stem, 8/4) script:Latn
+b  LATIN-SMALL-B = STACK(ascender, bowl.r) script:Latn
+e  LATIN-SMALL-E = FRAME(arc.top, crossbar, arc.bot) script:Latn
+n  LATIN-SMALL-N = LR(stem, shoulder, 4/8) script:Latn
+o  LATIN-SMALL-O = bowl script:Latn
+
+# ============================================================
+# sc (Scale) Transform Examples
+# ============================================================
+
+# Scaled down bowl (2/3 size)
+o.small  LATIN-SMALL-O-SMALL = sc(bowl, sx=8, sy=8) script:Latn
+
+# Scaled up bowl (150%)
+o.large  LATIN-SMALL-O-LARGE = sc(bowl, sx=18, sy=18) script:Latn
+
+# Horizontally condensed
+o.narrow  LATIN-SMALL-O-NARROW = sc(bowl, sx=8, sy=12) script:Latn
+
+# Vertically condensed
+o.flat  LATIN-SMALL-O-FLAT = sc(bowl, sx=12, sy=8) script:Latn
+
+# Non-uniform scaling
+o.stretched  LATIN-SMALL-O-STRETCHED = sc(bowl, sx=16, sy=10) script:Latn
+
+# ============================================================
+# sh (Shift) Transform Examples
+# ============================================================
+
+# Shifted dot (for tittle position)
+dot.raised  DOT-RAISED = sh(dot, dx=0, dy=-2) script:Latn
+
+# Shifted to the right
+dot.right  DOT-RIGHT = sh(dot, dx=3, dy=0) script:Latn
+
+# Shifted down and left
+dot.lowleft  DOT-LOW-LEFT = sh(dot, dx=-2, dy=2) script:Latn
+
+# Negative shift
+dot.upleft  DOT-UP-LEFT = sh(dot, dx=-2, dy=-3) script:Latn
+
+# ============================================================
+# sk (Skew) Transform Examples
+# ============================================================
+
+# Italic lean (standard)
+o.italic  LATIN-SMALL-O-ITALIC = sk(bowl, kx=2, ky=0) script:Latn
+
+# Reverse italic
+o.backslant  LATIN-SMALL-O-BACKSLANT = sk(bowl, kx=-2, ky=0) script:Latn
+
+# Vertical skew
+o.vskew  LATIN-SMALL-O-VSKEW = sk(bowl, kx=0, ky=1) script:Latn
+
+# Combined horizontal and vertical skew
+o.doubleskew  LATIN-SMALL-O-DOUBLE-SKEW = sk(bowl, kx=1, ky=1) script:Latn
+
+# ============================================================
+# Nested Transforms
+# ============================================================
+
+# Scale then shift
+o.scaled-shifted  LATIN-SMALL-O-SCALED-SHIFTED = sh(sc(bowl, sx=8, sy=8), dx=2, dy=-2) script:Latn
+
+# Scale then skew (italic small)
+o.small-italic  LATIN-SMALL-O-SMALL-ITALIC = sk(sc(bowl, sx=9, sy=9), kx=2, ky=0) script:Latn
+
+# All three transforms
+o.complex  LATIN-SMALL-O-COMPLEX = sh(sk(sc(bowl, sx=10, sy=10), kx=1, ky=0), dx=1, dy=-1) script:Latn
+
+# Deeply nested
+o.deep  LATIN-SMALL-O-DEEP = sc(sh(sk(sc(bowl, sx=10, sy=10), kx=1, ky=0), dx=1, dy=0), sx=11, sy=11) script:Latn
+
+# ============================================================
+# Transforms on Compositions
+# ============================================================
+
+# Italic b (composition with skew)
+b.italic  LATIN-SMALL-B-ITALIC = sk(STACK(ascender, bowl.r), kx=2, ky=0) script:Latn
+
+# Scaled composition
+e.small  LATIN-SMALL-E-SMALL = sc(FRAME(arc.top, crossbar, arc.bot), sx=8, sy=8) script:Latn
+
+# Shifted composition
+n.shifted  LATIN-SMALL-N-SHIFTED = sh(LR(stem, shoulder, 4/8), dx=1, dy=0) script:Latn
+
+# Transform on DIA composition
+é.italic  LATIN-SMALL-E-ACUTE-ITALIC = sk(DIA(e, acute), kx=2, ky=0) script:Latn
+
+# ============================================================
+# Boundary Value Tests (Parameter Limits)
+# ============================================================
+
+# Maximum positive values
+o.max-scale  LATIN-SMALL-O-MAX-SCALE = sc(bowl, sx=24, sy=24) script:Latn
+
+# Minimum (negative) values
+o.shifted-far  LATIN-SMALL-O-SHIFTED-FAR = sh(bowl, dx=-12, dy=-12) script:Latn
+
+# Zero scale axis (degenerate)
+o.flat-zero  LATIN-SMALL-O-FLAT-ZERO = sc(bowl, sx=12, sy=1) script:Latn
+
+# Maximum skew
+o.max-skew  LATIN-SMALL-O-MAX-SKEW = sk(bowl, kx=24, ky=0) script:Latn
+
+# Negative skew boundary
+o.neg-skew  LATIN-SMALL-O-NEG-SKEW = sk(bowl, kx=-12, ky=-12) script:Latn

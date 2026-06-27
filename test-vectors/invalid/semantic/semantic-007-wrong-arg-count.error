@@ -1,0 +1,6 @@
+error: wrong argument count for DIA
+line: 5
+found: 1 argument
+expected: 2 or 3 arguments (base, mark [, attach:ANCHOR_NAME])
+constraint: 20 - DIA MUST have 2 or 3 arguments
+reference: Section 8.5 and Section 12.9

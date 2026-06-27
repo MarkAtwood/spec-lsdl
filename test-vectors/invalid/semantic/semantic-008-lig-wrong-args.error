@@ -1,0 +1,6 @@
+error: wrong argument count for LIG
+line: 11
+found: 4 arguments
+expected: 2 or 3 arguments (expr1, expr2 [, merge:STRATEGY])
+constraint: 23 - LIG MUST have 2 or 3 arguments
+reference: Section 14.2 and Section 12.9

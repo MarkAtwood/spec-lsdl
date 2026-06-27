@@ -1,0 +1,215 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Basic Latin Character Library
+# =============================================================================
+#
+# This file defines the 52 Basic Latin characters: A-Z (uppercase) and a-z
+# (lowercase). All character definitions use composition operators and
+# elements from elements-base.lsdl.
+#
+# Organization:
+#   - Uppercase letters A-Z (26 characters)
+#   - Lowercase letters a-z (26 characters)
+#   - Case mappings (@case declarations)
+#
+# =============================================================================
+
+# =============================================================================
+# UPPERCASE LETTERS A-Z (26 characters)
+# =============================================================================
+
+# A - Two diagonal stems meeting at apex with crossbar
+A  LATIN-CAPITAL-A = APEX(stem.l, stem.r, crossbar.cap) script:Latn
+
+# B - Vertical stem with two stacked half-bowls
+B  LATIN-CAPITAL-B = LR(stem.l, STACK(bowl.upper, bowl.lower), 3/9) script:Latn
+
+# C - Open arc form
+C  LATIN-CAPITAL-C = STACK(arc.top.cap, arc.bot.cap) script:Latn
+
+# D - Vertical stem with right-side capital bowl
+D  LATIN-CAPITAL-D = LR(stem.l, bowl.r.cap, 3/9) script:Latn
+
+# E - Vertical stem with three horizontal arms
+E  LATIN-CAPITAL-E = FRAME(stem.l, arm.top, arm.mid, arm.bot) script:Latn
+
+# F - Vertical stem with two horizontal arms (top and middle)
+F  LATIN-CAPITAL-F = FRAME(stem.l, arm.top, arm.mid) script:Latn
+
+# G - C-shape with horizontal bar
+G  LATIN-CAPITAL-G = FRAME(arc.top.cap, arc.bot.cap, bar.mid) script:Latn
+
+# H - Two vertical stems connected by crossbar
+H  LATIN-CAPITAL-H = FRAME(stem.l, crossbar.cap, stem.r) script:Latn
+
+# I - Single vertical stem
+I  LATIN-CAPITAL-I = stem.l script:Latn
+
+# J - Descending stem with bottom hook
+J  LATIN-CAPITAL-J = STACK(stem.r, hook.bot) script:Latn
+
+# K - Vertical stem with diagonal arm and leg
+K  LATIN-CAPITAL-K = FRAME(stem.l, diagonal.l, leg.cap) script:Latn
+
+# L - Vertical stem with bottom horizontal arm
+L  LATIN-CAPITAL-L = FRAME(stem.l, arm.bot) script:Latn
+
+# M - Two outer stems with apex structure between
+M  LATIN-CAPITAL-M = FRAME(stem.l, apex, stem.r) script:Latn
+
+# N - Two vertical stems connected by diagonal
+N  LATIN-CAPITAL-N = FRAME(stem.l, diagonal, stem.r) script:Latn
+
+# O - Full round capital bowl
+O  LATIN-CAPITAL-O = bowl.cap script:Latn
+
+# P - Vertical stem with upper bowl
+P  LATIN-CAPITAL-P = LR(stem.l, bowl.upper, 3/9) script:Latn
+
+# Q - Full round bowl with tail
+Q  LATIN-CAPITAL-Q = FRAME(bowl.cap, tail) script:Latn
+
+# R - Vertical stem with upper bowl and leg
+R  LATIN-CAPITAL-R = FRAME(stem.l, bowl.upper, leg.cap) script:Latn
+
+# S - Central spine curve with top and bottom arcs
+S  LATIN-CAPITAL-S = FRAME(arc.top.cap, spine.cap, arc.bot.cap) script:Latn
+
+# T - Horizontal bar at top with vertical stem
+T  LATIN-CAPITAL-T = FRAME(bar.top, stem) script:Latn
+
+# U - Two vertical stems connected by bottom arc
+U  LATIN-CAPITAL-U = FRAME(stem.l, arc.bot.cap, stem.r) script:Latn
+
+# V - Two diagonal stems meeting at bottom vertex
+V  LATIN-CAPITAL-V = vertex.cap script:Latn
+
+# W - Double vertex structure
+W  LATIN-CAPITAL-W = LR(vertex.cap, vertex.cap, 6/6) script:Latn
+
+# X - Two crossing diagonals
+X  LATIN-CAPITAL-X = OVR(diagonal, diagonal.l) script:Latn
+
+# Y - Two diagonal stems meeting at center, descending to baseline
+Y  LATIN-CAPITAL-Y = FRAME(diagonal.l, stem, diagonal) script:Latn
+
+# Z - Top bar, diagonal, bottom bar
+Z  LATIN-CAPITAL-Z = FRAME(bar.top, diagonal, bar.bot.cap) script:Latn
+
+# =============================================================================
+# LOWERCASE LETTERS a-z (26 characters)
+# =============================================================================
+
+# a - Bowl with vertical stem on right
+a  LATIN-SMALL-A = LR(bowl.l, stem, 7/5) script:Latn
+
+# b - Ascender with right-side bowl
+b  LATIN-SMALL-B = STACK(ascender, bowl.r) script:Latn
+
+# c - Open arc form at x-height
+c  LATIN-SMALL-C = STACK(arc.top, arc.bot) script:Latn
+
+# d - Left-side bowl with ascender
+d  LATIN-SMALL-D = LR(bowl.l, ascender, 7/5) script:Latn
+
+# e - Bowl with crossbar (single eye form)
+e  LATIN-SMALL-E = FRAME(arc.top, crossbar.low, arc.bot) script:Latn
+
+# f - Hook top with stem and crossbar
+f  LATIN-SMALL-F = FRAME(hook.top, stem, bar.mid.short) script:Latn
+
+# g - Bowl with descending loop (double-storey)
+g  LATIN-SMALL-G = STACK(bowl, loop) script:Latn
+
+# h - Ascender with shoulder
+h  LATIN-SMALL-H = FRAME(ascender, shoulder) script:Latn
+
+# i - Stem with tittle above
+i  LATIN-SMALL-I = STACK(tittle, stem) script:Latn
+
+# j - Stem with hook bottom and tittle above
+j  LATIN-SMALL-J = STACK(tittle, stem, hook.bot) script:Latn
+
+# k - Ascender with diagonal arm and leg
+k  LATIN-SMALL-K = FRAME(ascender, diagonal.l, leg) script:Latn
+
+# l - Simple ascender
+l  LATIN-SMALL-L = ascender script:Latn
+
+# m - Stem with two shoulders (double arch)
+m  LATIN-SMALL-M = FRAME(stem, shoulder.l, shoulder.r) script:Latn
+
+# n - Stem with single shoulder
+n  LATIN-SMALL-N = FRAME(stem, shoulder) script:Latn
+
+# o - Full round bowl at x-height
+o  LATIN-SMALL-O = bowl.full script:Latn
+
+# p - Stem descending below baseline with right bowl
+p  LATIN-SMALL-P = STACK(bowl.r, descender) script:Latn
+
+# q - Left bowl with descending stem
+q  LATIN-SMALL-Q = LR(bowl.l, descender.r, 7/5) script:Latn
+
+# r - Stem with ear projection
+r  LATIN-SMALL-R = FRAME(stem, ear) script:Latn
+
+# s - Spine curve at x-height
+s  LATIN-SMALL-S = FRAME(arc.top, spine, arc.bot) script:Latn
+
+# t - Stem with crossbar (shorter than f)
+t  LATIN-SMALL-T = FRAME(ascender, bar.mid.short) script:Latn
+
+# u - Two stems connected by bottom arc (inverted n)
+u  LATIN-SMALL-U = FRAME(stem, arc.bot, stem) script:Latn
+
+# v - Diagonal vertex at x-height
+v  LATIN-SMALL-V = vertex script:Latn
+
+# w - Double vertex at x-height
+w  LATIN-SMALL-W = LR(vertex, vertex, 6/6) script:Latn
+
+# x - Two crossing diagonals at x-height
+x  LATIN-SMALL-X = OVR(diagonal.x, diagonal.l) script:Latn
+
+# y - Vertex with descending tail
+y  LATIN-SMALL-Y = FRAME(vertex, descender.curved) script:Latn
+
+# z - Top bar, diagonal, bottom bar at x-height
+z  LATIN-SMALL-Z = FRAME(bar.top.x, diagonal.x, bar.bot) script:Latn
+
+# =============================================================================
+# CASE MAPPINGS
+# =============================================================================
+
+@case A a
+@case B b
+@case C c
+@case D d
+@case E e
+@case F f
+@case G g
+@case H h
+@case I i
+@case J j
+@case K k
+@case L l
+@case M m
+@case N n
+@case O o
+@case P p
+@case Q q
+@case R r
+@case S s
+@case T t
+@case U u
+@case V v
+@case W w
+@case X x
+@case Y y
+@case Z z
+
+# =============================================================================
+# END OF BASIC LATIN CHARACTER LIBRARY
+# =============================================================================
