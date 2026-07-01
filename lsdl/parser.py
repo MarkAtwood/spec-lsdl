@@ -816,7 +816,11 @@ class Parser:
                     self.add_error(f"coordinate out of range 0-{max_val}: {coord}")
                 coords.append(coord)
 
-            if self._check("RPAREN") is not None:
+            rparen_tok = self.current()
+            if rparen_tok is None or rparen_tok.type != "RPAREN":
+                got = rparen_tok.value if rparen_tok else "end of input"
+                self.add_error(f"expected ')' to close curve, got {got!r}", tok)
+            else:
                 self.consume()
 
             if len(coords) == 2:
@@ -1183,7 +1187,13 @@ class Parser:
         if field_name == "script":
             cur = self.current()
             if cur is not None:
-                meta.script = self.consume().value
+                script_val = self.consume().value
+                if len(script_val) != 4 or not script_val.isalpha():
+                    self.add_error(
+                        f"script: requires 4-letter ISO 15924 code, got {script_val!r}",
+                        tok,
+                    )
+                meta.script = script_val
         elif field_name == "ortho":
             # Comma-separated list of language tags
             orthos = []
@@ -1322,7 +1332,11 @@ class Parser:
                 if child:
                     children.append(child)
 
-        if self._check("RPAREN") is not None:
+        rparen_tok = self.current()
+        if rparen_tok is None or rparen_tok.type != "RPAREN":
+            got = rparen_tok.value if rparen_tok else "end of input"
+            self.add_error(f"expected ')' to close {op} expression, got {got!r}", tok)
+        else:
             self.consume()
 
         # Validate operator constraints (12.9)
@@ -1428,7 +1442,11 @@ class Parser:
                         self.add_error(f"transform param must be -12 to 24, got {param_val}", tok)
                     params[param_name] = param_val
 
-        if self._check("RPAREN") is not None:
+        rparen_tok = self.current()
+        if rparen_tok is None or rparen_tok.type != "RPAREN":
+            got = rparen_tok.value if rparen_tok else "end of input"
+            self.add_error(f"expected ')' to close {op} expression, got {got!r}", tok)
+        else:
             self.consume()
 
         return TransformExpr(op=op, child=child, params=params, line=line, col=col)
@@ -1473,24 +1491,18 @@ class Parser:
         self.detect_cycles(result)
 
         # Constraint 18: @case must reference defined characters
-        # Note: In lenient mode (default), we allow references to undefined
-        # single-character names as they may be defined in concatenated files.
         for case_map in result.case_mappings:
-            if case_map.upper not in result.characters and len(case_map.upper) > 1:
+            if case_map.upper not in result.characters:
                 self.add_error(
                     f"@case references undefined character: {case_map.upper}",
                     Token("", "", case_map.line, case_map.col),
                 )
-            if case_map.lower not in result.characters and len(case_map.lower) > 1:
+            if case_map.lower not in result.characters:
                 self.add_error(
                     f"@case references undefined character: {case_map.lower}",
                     Token("", "", case_map.line, case_map.col),
                 )
-            if (
-                case_map.final
-                and case_map.final not in result.characters
-                and len(case_map.final) > 1
-            ):
+            if case_map.final and case_map.final not in result.characters:
                 self.add_error(
                     f"@case references undefined final character: {case_map.final}",
                     Token("", "", case_map.line, case_map.col),
@@ -1525,13 +1537,19 @@ class Parser:
 
     def detect_cycles(self, result: LSDLFile) -> None:
         """Detect cycles in element reference graph (constraint 7)."""
-        # Build dependency graph
+        # Build dependency graph from elements
         graph: dict[str, set[str]] = {}
         for name, elem in result.elements.items():
             if elem.expression:
                 graph[name] = self.collect_refs(elem.expression)
             else:
                 graph[name] = set()
+
+        # Add alias dependencies to graph (only alias-to-alias chains)
+        for name, alias in result.aliases.items():
+            if name not in graph:
+                # ponytail: only add if not already an element (identity alias case)
+                graph[name] = {alias.target}
 
         # DFS for cycles
         visited: set[str] = set()
@@ -1545,7 +1563,7 @@ class Parser:
                 return False
             path.add(node)
             for dep in graph.get(node, set()):
-                if dep in graph and dfs(dep):  # Only follow element refs
+                if dep in graph and dfs(dep):  # Only follow refs in graph
                     return True
             path.remove(node)
             visited.add(node)

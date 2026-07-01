@@ -35,24 +35,9 @@ from lsdl.parser import (
 from tests.conftest import SEMANTIC_ERROR_FILES, SYNTAX_ERROR_FILES, VALID_FILES
 
 # Known issues with test vectors (parser bugs tracked in beads)
-VALID_FILES_WITH_KNOWN_PARSER_ISSUES = {
-    "basic-latin": "LSDL-5dih",  # Parser rejects path points not in path: order (spurious)
-    "block-form": "LSDL-5dih",  # Parser rejects path points not in path: order (spurious)
-    "complete": "LSDL-5dih",  # Parser rejects path points not in path: order (spurious)
-    "cyrillic": "LSDL-5dih",  # Parser rejects path points not in path: order (spurious)
-    "diacritics": "LSDL-5dih",  # Parser rejects path points not in path: order (spurious)
-    "greek": "LSDL-5dih",  # Parser rejects path points not in path: order (spurious)
-    "ligatures": "LSDL-5dih.72",  # Parser fails on LIG operator with merge: strategies
-    "transforms": "LSDL-12ni",  # Parser fails on @style blocks with transforms
-}
-INVALID_SYNTAX_WITH_LENIENT_PARSING = {
-    "syntax-002-unclosed-paren": "LSDL-bnv8",  # Parser doesn't reject unclosed parenthesis
-    "syntax-005-bad-metadata": "LSDL-612y",  # Parser doesn't reject invalid script tag
-}
-INVALID_SEMANTIC_WITH_LENIENT_PARSING = {
-    "semantic-002-cyclic-reference": "LSDL-pxax",  # Parser doesn't detect cyclic aliases
-    "semantic-006-undefined-case-char": "LSDL-kdsk",  # Parser doesn't reject undefined @case char
-}
+VALID_FILES_WITH_KNOWN_PARSER_ISSUES: dict[str, str] = {}
+INVALID_SYNTAX_WITH_LENIENT_PARSING: dict[str, str] = {}
+INVALID_SEMANTIC_WITH_LENIENT_PARSING: dict[str, str] = {}
 
 
 # =============================================================================

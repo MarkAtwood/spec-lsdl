@@ -216,11 +216,3 @@ o  LATIN-SMALL-O          = bowl.full script:Latn
 
 # oe ligature (lowercase)
 œ  LATIN-SMALL-OE = LIG(o, e, merge:bowl-stem) cp:U+0153 script:Latn ortho:Fra
-
-# ============================================================
-# LIG without merge: (defaults to horizontal adjacency)
-# ============================================================
-
-# This demonstrates LIG without a merge strategy
-# Behaves like LR(f, f) - simple horizontal placement
-ff  LATIN-SMALL-FF-SIMPLE = LIG(f, f) script:Latn

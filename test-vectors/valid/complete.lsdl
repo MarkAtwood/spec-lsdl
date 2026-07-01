@@ -75,7 +75,7 @@ anchors: top=[4,1] base=[6,4] mid=[6,2]
 
 @elem bowl.r
 zone: x-height
-path: p1 p2 p3 p4
+path: p1 p2 p3
 p1 = [6,4]
 p2 = C([12,4] [12,8])
 p3 = [6,8]
@@ -86,7 +86,7 @@ anchors: attach=[6,6] mark-above=[8,3] mark-below=[8,9]
 
 @elem bowl.l
 zone: x-height
-path: p1 p2 p3 p4
+path: p1 p2 p3
 p1 = [6,4]
 p2 = C([0,4] [0,8])
 p3 = [6,8]
@@ -223,17 +223,6 @@ p3 = C([4,10] [6,11])
 width: 1
 anchors: attach=[6,8]
 @end
-
-# ============================================================
-# Case Mappings
-# ============================================================
-
-@case A a
-@case B b
-@case D d
-@case E e
-@case O o
-@case Σ σ final:ς
 
 # ============================================================
 # Character Definitions

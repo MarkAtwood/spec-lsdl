@@ -171,103 +171,181 @@ n  LATIN-SMALL-N = LR(stem, shoulder, 4/8) script:Latn
 o  LATIN-SMALL-O = bowl script:Latn
 
 # ============================================================
-# sc (Scale) Transform Examples
+# sc (Scale) Transform Examples - as @elem blocks
 # ============================================================
 
 # Scaled down bowl (2/3 size)
-o.small  LATIN-SMALL-O-SMALL = sc(bowl, sx=8, sy=8) script:Latn
+@elem o.small
+build: from_expr
+sc(bowl, sx=8, sy=8)
+@end
 
 # Scaled up bowl (150%)
-o.large  LATIN-SMALL-O-LARGE = sc(bowl, sx=18, sy=18) script:Latn
+@elem o.large
+build: from_expr
+sc(bowl, sx=18, sy=18)
+@end
 
 # Horizontally condensed
-o.narrow  LATIN-SMALL-O-NARROW = sc(bowl, sx=8, sy=12) script:Latn
+@elem o.narrow
+build: from_expr
+sc(bowl, sx=8, sy=12)
+@end
 
 # Vertically condensed
-o.flat  LATIN-SMALL-O-FLAT = sc(bowl, sx=12, sy=8) script:Latn
+@elem o.flat
+build: from_expr
+sc(bowl, sx=12, sy=8)
+@end
 
 # Non-uniform scaling
-o.stretched  LATIN-SMALL-O-STRETCHED = sc(bowl, sx=16, sy=10) script:Latn
+@elem o.stretched
+build: from_expr
+sc(bowl, sx=16, sy=10)
+@end
 
 # ============================================================
 # sh (Shift) Transform Examples
 # ============================================================
 
 # Shifted dot (for tittle position)
-dot.raised  DOT-RAISED = sh(dot, dx=0, dy=-2) script:Latn
+@elem dot.raised
+build: from_expr
+sh(dot, dx=0, dy=-2)
+@end
 
 # Shifted to the right
-dot.right  DOT-RIGHT = sh(dot, dx=3, dy=0) script:Latn
+@elem dot.right
+build: from_expr
+sh(dot, dx=3, dy=0)
+@end
 
 # Shifted down and left
-dot.lowleft  DOT-LOW-LEFT = sh(dot, dx=-2, dy=2) script:Latn
+@elem dot.lowleft
+build: from_expr
+sh(dot, dx=-2, dy=2)
+@end
 
 # Negative shift
-dot.upleft  DOT-UP-LEFT = sh(dot, dx=-2, dy=-3) script:Latn
+@elem dot.upleft
+build: from_expr
+sh(dot, dx=-2, dy=-3)
+@end
 
 # ============================================================
 # sk (Skew) Transform Examples
 # ============================================================
 
 # Italic lean (standard)
-o.italic  LATIN-SMALL-O-ITALIC = sk(bowl, kx=2, ky=0) script:Latn
+@elem o.italic
+build: from_expr
+sk(bowl, kx=2, ky=0)
+@end
 
 # Reverse italic
-o.backslant  LATIN-SMALL-O-BACKSLANT = sk(bowl, kx=-2, ky=0) script:Latn
+@elem o.backslant
+build: from_expr
+sk(bowl, kx=-2, ky=0)
+@end
 
 # Vertical skew
-o.vskew  LATIN-SMALL-O-VSKEW = sk(bowl, kx=0, ky=1) script:Latn
+@elem o.vskew
+build: from_expr
+sk(bowl, kx=0, ky=1)
+@end
 
 # Combined horizontal and vertical skew
-o.doubleskew  LATIN-SMALL-O-DOUBLE-SKEW = sk(bowl, kx=1, ky=1) script:Latn
+@elem o.doubleskew
+build: from_expr
+sk(bowl, kx=1, ky=1)
+@end
 
 # ============================================================
 # Nested Transforms
 # ============================================================
 
 # Scale then shift
-o.scaled-shifted  LATIN-SMALL-O-SCALED-SHIFTED = sh(sc(bowl, sx=8, sy=8), dx=2, dy=-2) script:Latn
+@elem o.scaledshifted
+build: from_expr
+sh(sc(bowl, sx=8, sy=8), dx=2, dy=-2)
+@end
 
 # Scale then skew (italic small)
-o.small-italic  LATIN-SMALL-O-SMALL-ITALIC = sk(sc(bowl, sx=9, sy=9), kx=2, ky=0) script:Latn
+@elem o.smallitalic
+build: from_expr
+sk(sc(bowl, sx=9, sy=9), kx=2, ky=0)
+@end
 
 # All three transforms
-o.complex  LATIN-SMALL-O-COMPLEX = sh(sk(sc(bowl, sx=10, sy=10), kx=1, ky=0), dx=1, dy=-1) script:Latn
+@elem o.complex
+build: from_expr
+sh(sk(sc(bowl, sx=10, sy=10), kx=1, ky=0), dx=1, dy=-1)
+@end
 
 # Deeply nested
-o.deep  LATIN-SMALL-O-DEEP = sc(sh(sk(sc(bowl, sx=10, sy=10), kx=1, ky=0), dx=1, dy=0), sx=11, sy=11) script:Latn
+@elem o.deep
+build: from_expr
+sc(sh(sk(sc(bowl, sx=10, sy=10), kx=1, ky=0), dx=1, dy=0), sx=11, sy=11)
+@end
 
 # ============================================================
 # Transforms on Compositions
 # ============================================================
 
 # Italic b (composition with skew)
-b.italic  LATIN-SMALL-B-ITALIC = sk(STACK(ascender, bowl.r), kx=2, ky=0) script:Latn
+@elem b.italic
+build: from_expr
+sk(STACK(ascender, bowl.r), kx=2, ky=0)
+@end
 
 # Scaled composition
-e.small  LATIN-SMALL-E-SMALL = sc(FRAME(arc.top, crossbar, arc.bot), sx=8, sy=8) script:Latn
+@elem e.small
+build: from_expr
+sc(FRAME(arc.top, crossbar, arc.bot), sx=8, sy=8)
+@end
 
 # Shifted composition
-n.shifted  LATIN-SMALL-N-SHIFTED = sh(LR(stem, shoulder, 4/8), dx=1, dy=0) script:Latn
+@elem n.shifted
+build: from_expr
+sh(LR(stem, shoulder, 4/8), dx=1, dy=0)
+@end
 
 # Transform on DIA composition
-é.italic  LATIN-SMALL-E-ACUTE-ITALIC = sk(DIA(e, acute), kx=2, ky=0) script:Latn
+@elem eacuteitalic
+build: from_expr
+sk(DIA(e, acute), kx=2, ky=0)
+@end
 
 # ============================================================
 # Boundary Value Tests (Parameter Limits)
 # ============================================================
 
 # Maximum positive values
-o.max-scale  LATIN-SMALL-O-MAX-SCALE = sc(bowl, sx=24, sy=24) script:Latn
+@elem o.maxscale
+build: from_expr
+sc(bowl, sx=24, sy=24)
+@end
 
 # Minimum (negative) values
-o.shifted-far  LATIN-SMALL-O-SHIFTED-FAR = sh(bowl, dx=-12, dy=-12) script:Latn
+@elem o.shiftedfar
+build: from_expr
+sh(bowl, dx=-12, dy=-12)
+@end
 
 # Zero scale axis (degenerate)
-o.flat-zero  LATIN-SMALL-O-FLAT-ZERO = sc(bowl, sx=12, sy=1) script:Latn
+@elem o.flatzero
+build: from_expr
+sc(bowl, sx=12, sy=1)
+@end
 
 # Maximum skew
-o.max-skew  LATIN-SMALL-O-MAX-SKEW = sk(bowl, kx=24, ky=0) script:Latn
+@elem o.maxskew
+build: from_expr
+sk(bowl, kx=24, ky=0)
+@end
 
 # Negative skew boundary
-o.neg-skew  LATIN-SMALL-O-NEG-SKEW = sk(bowl, kx=-12, ky=-12) script:Latn
+@elem o.negskew
+build: from_expr
+sk(bowl, kx=-12, ky=-12)
+@end
