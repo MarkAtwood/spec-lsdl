@@ -303,6 +303,18 @@ class Parser:
         tok = self.current()
         return tok is not None and tok.type == "KEYWORD" and tok.value == "@end"
 
+    def _count_wildcards(self, expr: Expr) -> int:
+        """Count wildcard (*) tokens in an expression tree."""
+        if isinstance(expr, WildcardExpr):
+            return 1
+        if isinstance(expr, RefExpr):
+            return 0
+        if isinstance(expr, TransformExpr):
+            return self._count_wildcards(expr.child)
+        if isinstance(expr, ComposeExpr):
+            return sum(self._count_wildcards(c) for c in expr.children)
+        return 0
+
     # Human-readable descriptions for token types used in error messages
     TOKEN_DESCRIPTIONS: dict[str, str] = {
         "KEYWORD": "keyword (@lsdl, @elem, @char, etc.)",
@@ -687,6 +699,10 @@ class Parser:
                     self.add_error("transform: only valid in @style blocks")
 
             elif t.type == "META_FIELD":
+                meta_name = t.value.rstrip(":")
+                if meta_name in seen_fields:
+                    self.add_error(f"duplicate field '{t.value}'", t)
+                seen_fields.add(meta_name)
                 self.parse_metadata_field(elem.metadata)
 
             elif t.type == "NAME":
@@ -944,6 +960,10 @@ class Parser:
                         is_expr_form = True
 
             elif t.type == "META_FIELD":
+                meta_name = t.value.rstrip(":")
+                if meta_name in seen_fields:
+                    self.add_error(f"duplicate field '{t.value}'", t)
+                seen_fields.add(meta_name)
                 self.parse_metadata_field(char_def.metadata)
 
             elif t.type == "NAME":
@@ -1038,7 +1058,14 @@ class Parser:
         char_def = CharacterDefinition(char=char, name=uname, expression=expr, line=line, col=col)
 
         # Trailing metadata
+        seen_meta: set[str] = set()
         while self._check("META_FIELD") is not None:
+            t = self.current()
+            if t is not None:
+                meta_name = t.value.rstrip(":")
+                if meta_name in seen_meta:
+                    self.add_error(f"duplicate field '{t.value}'", t)
+                seen_meta.add(meta_name)
             self.parse_metadata_field(char_def.metadata)
 
         return char_def
@@ -1184,6 +1211,7 @@ class Parser:
         self.in_style_block = True
 
         transform = None
+        seen_transform = False
         while not self._at_end_kw():
             self.skip_blank_lines()
             t = self.current()
@@ -1191,6 +1219,9 @@ class Parser:
                 break
 
             if t.type == "BLOCK_FIELD" and t.value == "transform:":
+                if seen_transform:
+                    self.add_error("duplicate field 'transform:'", t)
+                seen_transform = True
                 self.consume()
                 expr = self.parse_expr()
                 if expr and isinstance(expr, TransformExpr):
@@ -1210,6 +1241,13 @@ class Parser:
         if not transform:
             self.add_error("@style block requires transform:", tok)
             return None
+
+        # Validate exactly one wildcard in transform expression
+        wc_count = self._count_wildcards(transform)
+        if wc_count == 0:
+            self.add_error("@style transform must contain exactly one * wildcard", tok)
+        elif wc_count > 1:
+            self.add_error(f"@style transform has {wc_count} wildcards, must have exactly one", tok)
 
         return StyleDefinition(name=name, transform=transform, line=line, col=col)
 
@@ -1439,9 +1477,9 @@ class Parser:
                 self.add_error(f"FRAME requires at least 2 children, got {n}", tok)
 
         elif op == "LIG":
-            # Constraint 23: LIG must have 2 or 3 arguments
-            if n < 2 or n > 3:
-                self.add_error(f"LIG requires 2 or 3 arguments, got {n}", tok)
+            # Constraint 23: LIG must have exactly 2 expression children (merge: is separate)
+            if n != 2:
+                self.add_error(f"LIG requires exactly 2 children, got {n}", tok)
 
         elif op == "APEX" and n < 2:
             self.add_error(f"APEX requires at least 2 children, got {n}", tok)
