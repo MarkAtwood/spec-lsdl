@@ -1308,9 +1308,13 @@ class Parser:
                     transform = expr
                 elif expr:
                     self.add_error("@style transform must be a transform expression (sc, sh, sk)")
+            elif t.type == "BLOCK_FIELD":
+                self.add_error(f"'{t.value}' not valid in @style blocks", t)
+                self.pos += 1
             elif t.type == "NL":
                 self.pos += 1
             else:
+                self.add_error(f"unexpected in @style: {t.value!r}", t)
                 self.pos += 1
 
         self.in_style_block = False
