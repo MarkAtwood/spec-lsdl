@@ -139,7 +139,8 @@ class BoundingBox:
             Zone.DIACRITIC_ABOVE: (metrics.cap_top, metrics.cap_height),
             Zone.DIACRITIC_BELOW: (metrics.baseline + 1, metrics.desc_limit),
         }
-        y_min, y_max = zone_bounds.get(zone, (0, 12))
+        # Direct lookup - KeyError means Zone enum missing from dict (programming error)
+        y_min, y_max = zone_bounds[zone]
         return cls(x_min=0, y_min=y_min, x_max=12, y_max=y_max)
 
     @classmethod
