@@ -25,6 +25,7 @@ from lsdl.model import (
     CharacterDefinition,
     ComposeExpr,
     ElementDefinition,
+    ErrorExpr,
     Expr,
     LSDLError,
     LSDLFile,
@@ -205,6 +206,8 @@ def _expr_to_str(expr: Expr | None) -> str:
         return f"{expr.op}({child}, {params})"
     elif isinstance(expr, WildcardExpr):
         return "*"
+    elif isinstance(expr, ErrorExpr):
+        return f"<error: {expr.message}>"
     return str(expr)
 
 
@@ -368,6 +371,8 @@ def _expr_to_dict(expr: Expr | None) -> dict[str, Any] | None:
         }
     elif isinstance(expr, WildcardExpr):
         return {"type": "wildcard"}
+    elif isinstance(expr, ErrorExpr):
+        return {"type": "error", "message": expr.message, "line": expr.line, "col": expr.col}
 
     return {"type": "unknown"}
 
