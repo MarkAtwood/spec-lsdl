@@ -698,6 +698,10 @@ class Parser:
                             if elem.path_points is None:
                                 elem.path_points = {}
                             elem.path_points[pid] = pp
+                        else:
+                            # ponytail: error and advance to prevent infinite loop
+                            self.add_error(f"expected path point after '{pid}='")
+                            self.pos += 1
                 elif is_expr_form:
                     elem.expression = self.parse_expr()
                 else:
@@ -943,6 +947,10 @@ class Parser:
                         if char_def.path_points is None:
                             char_def.path_points = {}
                         char_def.path_points[pid] = pp
+                    else:
+                        # ponytail: error and advance to prevent infinite loop
+                        self.add_error(f"expected path point after '{pid}='")
+                        self.pos += 1
                 else:
                     self.pos += 1
 
