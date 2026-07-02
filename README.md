@@ -102,7 +102,7 @@ Elements support **positional variants** via dotted names. The element `bowl` ha
 
 ## Composition Operators
 
-Seven operators describe how elements combine:
+Eight operators describe how elements combine:
 
 | Operator | Meaning | Example |
 |----------|---------|---------|
@@ -113,6 +113,7 @@ Seven operators describe how elements combine:
 | `DIA2(base, m1, m2)` | Two diacritics | `DIA2(a, breve, acute)` = ắ |
 | `OVR(a, b)` | Overlay / superimposition | `OVR(O, stroke.diag)` = Ø |
 | `FRAME(parts…)` | Assembled from anchor points | `FRAME(stem.l, bar.top, stem.r)` = П |
+| `APEX(a, b, …)` | Diagonal meeting point | `APEX(stem.l, stem.r, crossbar)` = A |
 
 The `DIA` operator is the most frequently used. Approximately half of all Latin Extended characters are base+diacritic compositions.
 
@@ -262,3 +263,25 @@ LSDL fills a representation gap that has existed for decades. With a constructiv
 Font toolchains could accept LSDL input and generate outlines, preserving structural metadata through the compilation process. Educational software could present letters as build instructions rather than opaque images. Structural search becomes possible: find all characters that contain `bowl` with an attached diacritic. Systematic comparison across scripts and orthographies can be done programmatically. Automated consistency checking can verify that an element used in hundreds of characters is defined identically everywhere. And machine learning systems working on character recognition or generation could use the structural decomposition as training signal rather than treating letters as undifferentiated pixel patterns.
 
 The language is deliberately austere. Approximately 45 element types, 8 composition operators, 3 transforms, a 12×12 grid with metric zones. That's the entire vocabulary. The constraint is the point: by refusing to be a programming language, LSDL guarantees that every file is parseable, every expression terminates, and every implementation agrees on the output.
+
+## Reference Implementation
+
+This repository includes a Python reference implementation:
+
+```bash
+pip install lsdl
+```
+
+The package provides:
+- **Parser:** Validates LSDL files and produces an AST
+- **Evaluator:** Resolves expressions to positioned geometry
+- **CLI tools:** `lsdl-validate`, `lsdl-dump`, `lsdl-render`
+
+```python
+from lsdl import parse, evaluate
+
+lsdl_file = parse(source)
+geometry = evaluate(lsdl_file)
+```
+
+See the [spec](lsdl-spec.md) for formal semantics and the [primer](lsdl-primer.md) for a tutorial introduction.
