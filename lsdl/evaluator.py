@@ -751,7 +751,7 @@ def evaluate_dia(
     - attach: parameter can override the target anchor
     """
     if len(children) < 2:
-        raise EvaluationError(f"DIA requires at least 2 arguments, got {len(children)}", line, col)
+        raise EvaluationError(f"DIA requires exactly 2 children, got {len(children)}", line, col)
 
     base = children[0]
     mark = children[1]
@@ -995,7 +995,7 @@ def evaluate_lig(
     Default is horizontal adjacency (like LR).
     """
     if len(children) < 2:
-        raise EvaluationError(f"LIG requires at least 2 children, got {len(children)}", line, col)
+        raise EvaluationError(f"LIG requires exactly 2 children, got {len(children)}", line, col)
 
     # Default behavior: horizontal adjacency (like LR without scaling)
     if not merge_strategy or merge_strategy == "adjacent":
