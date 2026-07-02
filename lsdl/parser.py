@@ -497,7 +497,7 @@ class Parser:
                     )
                     self.pos += 1
             elif tok.type == "INT" and len(tok.value) == 1 and tok.value.isdigit():
-                # Single digit followed by UNAME = inline char definition (e.g., "0 DIGIT-ZERO = ...")
+                # Single digit + UNAME = inline char definition (e.g., "0 DIGIT-ZERO = ...")
                 peek1 = self.peek(1)
                 if peek1 is not None and peek1.type == "UNAME":
                     char_def = self.parse_char_inline()
@@ -1826,10 +1826,7 @@ class Parser:
                 return False
             path.add(node)
             try:
-                for dep in graph.get(node, set()):
-                    if dep in graph and dfs(dep):  # Only follow refs in graph
-                        return True
-                return False
+                return any(dep in graph and dfs(dep) for dep in graph.get(node, set()))
             finally:
                 path.remove(node)
                 visited.add(node)
