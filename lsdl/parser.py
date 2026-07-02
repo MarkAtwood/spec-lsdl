@@ -142,12 +142,19 @@ class Token:
     col: int
 
 
+MAX_TOKENS = 100_000  # ponytail: prevent memory exhaustion on huge/adversarial input
+
+
 def _tokenize(text: str) -> list[Token]:
     """Tokenize LSDL source text (internal implementation detail)."""
-    tokens = []
+    tokens: list[Token] = []
     line, col = 1, 1
     pos = 0
     while pos < len(text):
+        # ponytail: limit token count to prevent memory exhaustion
+        if len(tokens) >= MAX_TOKENS:
+            tokens.append(Token("ERROR", "<token limit exceeded>", line, col))
+            break
         match = TOKEN_RE.match(text, pos)
         if match:
             kind = match.lastgroup
@@ -365,6 +372,9 @@ class Parser:
 
     def add_error(self, msg: str, tok: Token | None = None) -> None:
         """Record an error and continue parsing."""
+        # ponytail: limit error collection to prevent memory exhaustion on pathological input
+        if len(self.errors) >= 100:
+            return  # silently drop after limit; first 100 errors is enough to diagnose
         self.errors.append(self.error(msg, tok))
 
     # -------------------------------------------------------------------------
@@ -1548,8 +1558,8 @@ class Parser:
                 base = name.split(".")[0]
                 # Allow references that are:
                 # 1. In the element registry (or a variant thereof)
-                # 2. Single characters (likely character references defined elsewhere)
-                # 3. Single lowercase letters (likely base characters like a, b, c)
+                # 2. Single characters (standard character references like 'a', 'n', 'e')
+                # ponytail: single-char exemption needed for DIA(n, tilde) style references
                 is_known_base = base in FULL_ELEMENT_REGISTRY
                 is_single_char = len(name) == 1
                 if not is_known_base and not is_single_char:
