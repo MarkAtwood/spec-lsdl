@@ -509,7 +509,4 @@ class LSDLFile:
         return None
 
 
-# Backward compatibility aliases (deprecated, use canonical names)
-Document = LSDLFile  #: Deprecated alias for LSDLFile
-GlyphDef = CharacterDefinition  #: Deprecated alias for CharacterDefinition
-StrokeDef = ElementDefinition  #: Deprecated alias for ElementDefinition
+# ponytail: backward compat aliases removed; import from `lsdl` package for deprecation warnings

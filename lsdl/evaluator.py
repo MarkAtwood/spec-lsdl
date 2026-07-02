@@ -495,10 +495,12 @@ def evaluate_ref(
 
     # Element not found - create a placeholder (for standard elements not defined in file)
     # In a full implementation, standard elements would be pre-defined
-    return create_placeholder_element(name, ctx)
+    return create_placeholder_element(name, ctx, ref.line, ref.col)
 
 
-def create_placeholder_element(name: str, ctx: EvaluationContext) -> PositionedElement:
+def create_placeholder_element(
+    name: str, ctx: EvaluationContext, line: int = 0, col: int = 0
+) -> PositionedElement:
     """Create a placeholder for standard library elements not explicitly defined.
 
     In a production implementation, the standard element library would be loaded.
@@ -507,12 +509,10 @@ def create_placeholder_element(name: str, ctx: EvaluationContext) -> PositionedE
     Emits a warning to alert users that an element was not found and a placeholder
     with empty geometry is being used instead.
     """
-    # Use stacklevel=1 (this function) rather than attempting to point to user code.
-    # The call depth between user code and this function varies (e.g., direct evaluation
-    # vs. nested compositions, alias resolution, transform chains), making a fixed
-    # stacklevel unreliable. The element name in the message provides sufficient context.
+    # ponytail: include source location in message since stacklevel varies with call depth
+    loc = f" at {line}:{col}" if line > 0 else ""
     warnings.warn(
-        f"Element '{name}' not found; using placeholder with empty geometry",
+        f"Element '{name}' not found{loc}; using placeholder with empty geometry",
         category=UserWarning,
         stacklevel=1,
     )
@@ -703,7 +703,7 @@ def evaluate_lr(
     # ensuring we never leave it as None even if widths is empty
     combined_bbox = children[0].bbox if children else BoundingBox.standard()
 
-    for _i, (child, width) in enumerate(zip(children, widths)):
+    for child, width in zip(children, widths):
         # Scale child horizontally to fit allocated width
         # Guard against zero/degenerate widths to avoid division by zero or extreme scaling
         # ponytail: use abs() for negative widths from pathological transforms; min 1.0
