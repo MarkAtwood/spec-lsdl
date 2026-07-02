@@ -1346,7 +1346,12 @@ class Parser:
 
             # Check for split
             if self._check("SPLIT") is not None:
-                split = [int(x) for x in self.consume().value.split("/")]
+                parts = self.consume().value.split("/")
+                # ponytail: limit split components to prevent DoS; 100 is far more than any real use
+                if len(parts) > 100:
+                    self.add_error("split has too many components (max 100)")
+                    parts = parts[:100]
+                split = [int(x) for x in parts]
                 continue
 
             # Check for attach: parameter (DIA)
@@ -1414,9 +1419,10 @@ class Parser:
                 self.add_error(f"LR3 split has {len(split)} values but {n} children", tok)
 
         elif op == "DIA":
-            # Constraint 20: DIA must have 2 or 3 arguments
-            if n < 2 or n > 3:
-                self.add_error(f"DIA requires 2 or 3 arguments, got {n}", tok)
+            # Constraint 20: DIA takes exactly 2 expression children; attach: is separate
+            # ponytail: spec says DIA_EXPR = DIA(EXPR, EXPR, attach:NAME?) - 3rd is param, not child
+            if n != 2:
+                self.add_error(f"DIA requires exactly 2 arguments, got {n}", tok)
 
         elif op == "DIA2":
             # Constraint 21: DIA2 must have exactly 3 arguments
