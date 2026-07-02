@@ -256,6 +256,9 @@ EvaluatedExpr = Union[PositionedElement, ComposedElement]
 # =============================================================================
 
 
+MAX_EVAL_DEPTH = 100  # ponytail: limit nesting to prevent stack overflow
+
+
 @dataclass
 class EvaluationContext:
     """Context for expression evaluation."""
@@ -264,6 +267,8 @@ class EvaluationContext:
     metrics: Metrics
     # Cache of evaluated elements (name -> evaluated result)
     _cache: dict[str, EvaluatedExpr] = field(default_factory=dict)
+    # Recursion depth counter for nested expressions
+    _depth: int = 0
 
 
 class EvaluationError(LSDLError):
@@ -424,6 +429,19 @@ def position_path_point(pp: PathPoint, grid: int = 12) -> PositionedPathPoint:
 
 def evaluate_expr(expr: Expr, ctx: EvaluationContext) -> EvaluatedExpr:
     """Evaluate an expression to positioned geometry."""
+    ctx._depth += 1
+    if ctx._depth > MAX_EVAL_DEPTH:
+        line = getattr(expr, "line", 0)
+        col = getattr(expr, "col", 0)
+        raise EvaluationError(f"expression nesting too deep (>{MAX_EVAL_DEPTH})", line, col)
+    try:
+        return _evaluate_expr_impl(expr, ctx)
+    finally:
+        ctx._depth -= 1
+
+
+def _evaluate_expr_impl(expr: Expr, ctx: EvaluationContext) -> EvaluatedExpr:
+    """Internal implementation of evaluate_expr."""
     if isinstance(expr, RefExpr):
         return evaluate_ref(expr, ctx)
     elif isinstance(expr, ComposeExpr):
