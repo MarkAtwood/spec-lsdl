@@ -1205,8 +1205,8 @@ s LATIN-SMALL-S = OVR(stem)
             parse(source)
         assert "2" in str(exc_info.value)
 
-    def test_lig_requires_two_or_three_arguments(self) -> None:
-        """Test LIG requires 2 or 3 arguments."""
+    def test_lig_requires_exactly_two_children(self) -> None:
+        """Test LIG requires exactly 2 expression children."""
         source = """@lsdl 1.0
 @elem stem
 zone: x-height
