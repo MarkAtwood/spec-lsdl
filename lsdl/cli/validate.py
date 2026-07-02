@@ -69,7 +69,8 @@ def format_error_line(
 
 def get_source_line(source: str, line_num: int) -> str | None:
     """Get a specific line from source text (1-indexed)."""
-    lines = source.split("\n")
+    # ponytail: splitlines() handles \n, \r\n, and \r correctly
+    lines = source.splitlines()
     if 1 <= line_num <= len(lines):
         return lines[line_num - 1]
     return None
