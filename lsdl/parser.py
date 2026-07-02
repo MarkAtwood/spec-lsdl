@@ -772,7 +772,7 @@ class Parser:
         if is_expr_form:
             if not elem.expression:
                 self.add_error("build: from_expr requires an expression", tok)
-            if elem.path_points:
+            if elem.path_ids or elem.path_points:
                 self.add_error("expression-form block cannot have path definitions", tok)
         else:
             if not elem.zone:
@@ -1028,14 +1028,24 @@ class Parser:
         if self._at_end_kw():
             self.consume()
 
-        # Validate expr-form has an expression
-        if is_expr_form and not char_def.expression:
-            self.add_error("build: from_expr requires an expression", tok)
+        # Validate character form (mirror parse_elem_block validation)
+        if is_expr_form:
+            if not char_def.expression:
+                self.add_error("build: from_expr requires an expression", tok)
+            if char_def.path_ids or char_def.path_points:
+                self.add_error("expression-form block cannot have path definitions", tok)
+        else:
+            # Path-form requires zone and anchors
+            if char_def.path_ids or char_def.path_points:
+                if not char_def.zone:
+                    self.add_error("path-form @char requires zone:", tok)
+                if not char_def.anchors:
+                    self.add_error("path-form @char requires anchors:", tok)
 
         # Validate path point IDs match path: declaration
-        if char_def.path_ids and char_def.path_points:
-            declared = set(char_def.path_ids)
-            defined = set(char_def.path_points.keys())
+        if char_def.path_ids is not None or char_def.path_points:
+            declared = set(char_def.path_ids or [])
+            defined = set((char_def.path_points or {}).keys())
             missing = declared - defined
             extra = defined - declared
             if missing:
