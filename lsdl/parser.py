@@ -929,9 +929,14 @@ class Parser:
             return None
         uname = self.consume().value
 
+        # Optional /24 grid spec (same as @elem)
+        grid = 12
+        if self._check("GRID_SPEC") is not None:
+            grid = 24 if self.consume().value == "/24" else 12
+
         self.skip_blank_lines()
 
-        char_def = CharacterDefinition(char=char, name=uname, line=line, col=col)
+        char_def = CharacterDefinition(char=char, name=uname, grid=grid, line=line, col=col)
         is_expr_form = False
         seen_fields: set[str] = set()  # Track duplicate field names
 
@@ -980,6 +985,11 @@ class Parser:
                     if self._check("FROM_EXPR") is not None:
                         self.consume()
                         is_expr_form = True
+                        # Constraint 11: /24 and from_expr are mutually exclusive
+                        if grid == 24:
+                            self.add_error("/24 and build: from_expr are mutually exclusive", tok)
+                    else:
+                        self.add_error("expected 'from_expr' after build:")
 
             elif t.type == "META_FIELD":
                 meta_name = t.value.rstrip(":")
