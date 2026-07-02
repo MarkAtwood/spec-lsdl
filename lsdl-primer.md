@@ -214,7 +214,7 @@ Elements are the atomic anatomical parts of alphabetic glyphs
 
 ## 4. Composition Operators
 
-Seven operators describe how elements combine (§8). These
+Nine operators describe how elements combine (§8). These
 are structurally different from CSDL's spatial tiling operators
 because alphabetic characters compose by *attachment* rather
 than *partition*.
@@ -228,6 +228,8 @@ than *partition*.
 | `DIA2(base, m1, m2)` | Two diacritics | `DIA2(o, dot-above, macron)` = ȱ |
 | `OVR(a, b)` | Overlay / superimposition | `OVR(O, stroke.diag)` = Ø |
 | `FRAME(parts…)` | Assembled from named attachment points | `FRAME(stem.l, bar.top, stem.r)` = П |
+| `APEX(a, b, …)` | Diagonal meeting point | `APEX(stem.l, stem.r, crossbar)` = A |
+| `LIG(a, b, merge:…)` | Ligature composition | `LIG(f, i, merge:hook-tittle)` = ﬁ |
 
 ### STACK details
 
@@ -708,7 +710,7 @@ e  LATIN-SMALL-E      = FRAME(arc.top, crossbar, arc.bot) script:Latn
 Ask these questions in order:
 
 1. **What character?** The literal glyph and Unicode name on the left of `=`.
-2. **How is it composed?** The operator: STACK, LR, DIA, OVR, FRAME, LIG.
+2. **How is it composed?** The operator: STACK, LR, LR3, DIA, DIA2, OVR, FRAME, APEX, LIG.
 3. **What are the elements?** The arguments inside the parentheses.
 4. **Any diacritics?** If DIA/DIA2, what mark and where.
 5. **Proportions?** If split given, read it. Otherwise default.
@@ -747,7 +749,7 @@ one-line compositions.
 ## 17. Quick Reference Card
 
 ```
-COMPOSE:  STACK LR LR3 DIA DIA2 OVR FRAME LIG
+COMPOSE:  STACK LR LR3 DIA DIA2 OVR FRAME APEX LIG
 SPLIT:    proportional ratio (values summing to 12 preferred)
 ZONES:    cap-top ascender x-top baseline descender desc-limit
 ANCHORS:  top base mid mark-above mark-below attach
@@ -839,11 +841,12 @@ lsdl-dump myfile.lsdl --chars      # List character definitions
 
 ### lsdl-render
 
-Renders LSDL definitions to SVG (coming soon).
+Renders LSDL definitions to SVG.
 
 ```bash
-lsdl-render myfile.lsdl -o output.svg
-lsdl-render myfile.lsdl --char=é --size=100
+lsdl-render myfile.lsdl --all -o output/
+lsdl-render myfile.lsdl A B C --size=120
+lsdl-render myfile.lsdl --show-grid --show-anchors
 ```
 
 ### Python Module
@@ -859,13 +862,14 @@ python3 -m lsdl.cli.dump file.lsdl --stats
 
 ## 19. Standard Libraries
 
-LSDL ships with pre-defined element and character libraries. Import these
-to avoid re-defining common primitives.
+LSDL ships with pre-defined element and character libraries in the `lib/`
+directory. These serve as reference implementations and can be used as
+starting points for your own definitions.
 
 | Library | Contents | Count |
 |---------|----------|-------|
-| `lib/elements-base.lsdl` | Base structural elements (stems, bowls, arcs, etc.) | 39 elements |
-| `lib/diacritics.lsdl` | Combining diacritical marks | 24 diacritics |
+| `lib/elements-base.lsdl` | Base structural elements (stems, bowls, arcs, etc.) | ~40 elements |
+| `lib/diacritics.lsdl` | Combining diacritical marks | ~30 diacritics |
 | `lib/basic-latin.lsdl` | A-Z uppercase, a-z lowercase | 52 characters |
 | `lib/latin-extended.lsdl` | Accented Latin characters | ~300 characters |
 | `lib/greek.lsdl` | Greek alphabet (upper and lower) | ~100 characters |
@@ -874,14 +878,16 @@ to avoid re-defining common primitives.
 
 ### Usage
 
-```
-@lsdl 1.0
-@import lib/elements-base.lsdl
-@import lib/diacritics.lsdl
+To use the standard libraries, concatenate them with your definitions
+or copy the elements you need:
 
-# Now all base elements and diacritics are available
-ñ  LATIN-SMALL-N-TILDE = DIA(n, tilde) script:Latn ortho:Spa
+```bash
+# Combine library with your file
+cat lib/elements-base.lsdl lib/diacritics.lsdl myfile.lsdl > combined.lsdl
+lsdl-validate combined.lsdl
 ```
+
+Or extract specific definitions from the libraries into your file.
 
 ---
 
@@ -899,29 +905,44 @@ lsdl-validate myfile.lsdl
 lsdl-dump myfile.lsdl --stats
 ```
 
-### Check with Python module
+### Render characters to SVG
 
 ```bash
-python3 -m lsdl.cli.validate file.lsdl
+lsdl-render myfile.lsdl --all -o output/
 ```
 
 ### Create a minimal LSDL file
 
 1. Start with `@lsdl 1.0`
-2. Import the standard libraries (or define your own elements)
+2. Define your elements (or copy from `lib/elements-base.lsdl`)
 3. Define characters as one-line compositions
 4. Validate with `lsdl-validate`
 
 Example workflow:
 
 ```bash
-# Create a new file
+# Create a file with element definitions and character
 cat > test.lsdl << 'EOF'
 @lsdl 1.0
-@import lib/elements-base.lsdl
-@import lib/diacritics.lsdl
 
-ë  LATIN-SMALL-E-DIAERESIS = DIA(e, diaeresis) script:Latn
+@elem stem
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+anchors: top=[6,4] base=[6,8]
+@end
+
+@elem acute
+zone: diacritic-above
+path: p1 p2
+p1 = [5,1]
+p2 = [7,0]
+anchors: attach=[6,2]
+@end
+
+e LATIN-SMALL-E = stem
+é LATIN-SMALL-E-ACUTE = DIA(e, acute) script:Latn
 EOF
 
 # Validate
