@@ -120,6 +120,7 @@ TOKEN_PATTERNS = [
     #   ꬰ-꭯       U+AB30-U+AB6F  Latin Extended-E
     #   ﬀ-ﬆ       U+FB00-U+FB06  Alphabetic Presentation Forms (ligatures)
     #   ⃐-⃿       U+20D0-U+20FF  Combining Diacritical Marks for Symbols
+    #   ←-⇿       U+2190-U+21FF  Arrows
     #   (SMP)     U+1E030-1E08F  Cyrillic Extended-D (requires \U escape)
     #   (PUA)     U+E000-U+F8FF  Private Use Area (UCSUR: Unifon U+E740-E76F, etc.)
     (
@@ -127,7 +128,7 @@ TOKEN_PATTERNS = [
         r"[!-~ -ͯͰ-ԯ᪰-᫿"
         r"ᲀ-᲏᷀-᷿Ḁ-ỿἀ-῿"
         r"Ⱡ-Ɀⷠ-ⷿꙀ-ꟿꬰ-꭯"
-        r"ﬀ-ﬆ⃐-⃿-]"  # includes PUA U+E000-F8FF for UCSUR scripts
+        r"ﬀ-ﬆ⃐-⃿←-⇿-]"  # includes Arrows U+2190-21FF and PUA U+E000-F8FF
         r"|[\U0001E030-\U0001E08F]"  # Cyrillic Extended-D
         r"|[\U00010400-\U0001044F]"  # Deseret
         r"|[\U00010450-\U0001047F]",  # Shavian
@@ -252,6 +253,24 @@ class Parser:
         self.element_refs: dict[str, set[str]] = {}
         # Allow wildcards only in @style blocks
         self.in_style_block = False
+
+    def _parse_codepoint(self, tok: Token) -> str | None:
+        """Convert U+XXXX token to character with validation.
+
+        Returns the character on success, None on error (error recorded via add_error).
+        Validates: codepoint <= U+10FFFF and not a surrogate (U+D800-U+DFFF).
+        """
+        value = tok.value
+        codepoint = int(value[2:], 16)
+        if codepoint > 0x10FFFF:
+            self.add_error(f"invalid codepoint {value}: exceeds U+10FFFF", tok)
+            return None
+        if 0xD800 <= codepoint <= 0xDFFF:
+            self.add_error(
+                f"invalid codepoint {value}: surrogates (U+D800-U+DFFF) not allowed", tok
+            )
+            return None
+        return chr(codepoint)
 
     def current(self) -> Token | None:
         """Get current token."""
@@ -456,8 +475,29 @@ class Parser:
                 if char_def:
                     self.defined_chars[char_def.char] = char_def.line
                     result.characters[char_def.char] = char_def
+            elif tok.type == "CODEPOINT":
+                # Inline char definition with codepoint notation (preferred for non-Basic-Latin)
+                char_def = self.parse_char_inline()
+                if char_def:
+                    self.defined_chars[char_def.char] = char_def.line
+                    result.characters[char_def.char] = char_def
             elif tok.type == "NAME" and len(tok.value) == 1:
                 # Single lowercase letter followed by UNAME = inline char definition
+                peek1 = self.peek(1)
+                if peek1 is not None and peek1.type == "UNAME":
+                    char_def = self.parse_char_inline()
+                    if char_def:
+                        self.defined_chars[char_def.char] = char_def.line
+                        result.characters[char_def.char] = char_def
+                else:
+                    self.add_error(
+                        f"expected @elem, @char, @alias, @case, @style, "
+                        f"or inline character definition, got {tok.value!r}",
+                        tok,
+                    )
+                    self.pos += 1
+            elif tok.type == "INT" and len(tok.value) == 1 and tok.value.isdigit():
+                # Single digit followed by UNAME = inline char definition (e.g., "0 DIGIT-ZERO = ...")
                 peek1 = self.peek(1)
                 if peek1 is not None and peek1.type == "UNAME":
                     char_def = self.parse_char_inline()
@@ -919,15 +959,23 @@ class Parser:
         tok = self.consume("KEYWORD")  # @char
         line, col = tok.line, tok.col
 
-        # Literal character (may be LITERAL_CHAR or single-letter NAME like 'a'..'z')
+        # Literal character: LITERAL_CHAR, single-letter NAME, single-digit INT,
+        # or CODEPOINT (U+XXXX notation, preferred for non-Basic-Latin)
         char_tok = self.current()
-        if char_tok is not None and (
+        if char_tok is not None and char_tok.type == "CODEPOINT":
+            self.consume()
+            char = self._parse_codepoint(char_tok)
+            if char is None:
+                self.skip_to_end_or_keyword()
+                return None
+        elif char_tok is not None and (
             char_tok.type == "LITERAL_CHAR"
             or (char_tok.type == "NAME" and len(char_tok.value) == 1)
+            or (char_tok.type == "INT" and len(char_tok.value) == 1 and char_tok.value.isdigit())
         ):
             char = self.consume().value
         else:
-            self.add_error("expected literal character after @char")
+            self.add_error("expected literal character or U+XXXX codepoint after @char")
             self.skip_to_end_or_keyword()
             return None
 
@@ -1110,11 +1158,21 @@ class Parser:
             return None
         line, col = tok.line, tok.col
 
-        # Literal character (may be LITERAL_CHAR or single-letter NAME/NAME)
-        if tok.type == "LITERAL_CHAR" or (tok.type == "NAME" and len(tok.value) == 1):
+        # Literal character: LITERAL_CHAR, single-letter NAME, single-digit INT,
+        # or CODEPOINT (U+XXXX notation, preferred for non-Basic-Latin)
+        if tok.type == "CODEPOINT":
+            self.consume()
+            char = self._parse_codepoint(tok)
+            if char is None:
+                return None
+        elif (
+            tok.type == "LITERAL_CHAR"
+            or (tok.type == "NAME" and len(tok.value) == 1)
+            or (tok.type == "INT" and len(tok.value) == 1 and tok.value.isdigit())
+        ):
             char = self.consume().value
         else:
-            self.add_error("expected literal character")
+            self.add_error("expected literal character or U+XXXX codepoint")
             return None
 
         # Unicode name
