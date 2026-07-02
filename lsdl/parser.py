@@ -1638,6 +1638,21 @@ class Parser:
                     Token("", "", case_map.line, case_map.col),
                 )
 
+        # Validate alias targets exist
+        for name, alias in result.aliases.items():
+            target = alias.target
+            if target not in all_names:
+                base = target.split(".")[0]
+                # ponytail: single-char exemption allows forward refs like @alias Latn:H = H
+                # Same tradeoff as validate_refs; evaluator warns on undefined refs
+                # Use len(base) not len(target) to allow a.variant style refs
+                is_single_char = len(base) == 1
+                if base not in FULL_ELEMENT_REGISTRY and not is_single_char:
+                    self.add_error(
+                        f"@alias {name} references undefined target: {target}",
+                        Token("", "", alias.line, alias.col),
+                    )
+
     def validate_refs(
         self, expr: Expr, all_names: set[str], context: ElementDefinition | CharacterDefinition
     ) -> None:
@@ -1652,8 +1667,9 @@ class Parser:
                 # 1. In the element registry (or a variant thereof)
                 # 2. Single characters (standard character references like 'a', 'n', 'e')
                 # ponytail: single-char exemption needed for DIA(n, tilde) style references
+                # Use len(base) not len(name) to allow a.variant style refs
                 is_known_base = base in FULL_ELEMENT_REGISTRY
-                is_single_char = len(name) == 1
+                is_single_char = len(base) == 1
                 if not is_known_base and not is_single_char:
                     self.add_error(
                         f"unresolved reference: {name}",
