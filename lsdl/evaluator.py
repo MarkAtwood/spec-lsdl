@@ -837,7 +837,7 @@ def evaluate_dia2(
 
     # First, attach mark1 to base using standard DIA logic
     dia1_result = evaluate_dia([base, mark1], None, ctx, line, col)
-    # ponytail: defensive check; evaluate_dia always returns 2 children but guard against future changes
+    # ponytail: evaluate_dia always returns 2 children; guard against future changes
     if len(dia1_result.children) < 2:
         raise EvaluationError("DIA2 internal error: DIA returned insufficient children", line, col)
     positioned_mark1 = dia1_result.children[1]
