@@ -688,6 +688,8 @@ class Parser:
                 elif field_name == "close":
                     if self._check("BOOL") is not None:
                         elem.close = self.consume().value == "true"
+                    else:
+                        self.add_error("close: requires true or false")
 
                 elif field_name == "width":
                     if self._check("INT") is not None:
@@ -695,6 +697,8 @@ class Parser:
                         if width not in (0, 1, 2):
                             self.add_error(f"width must be 0, 1, or 2, got {width}")
                         elem.width = width
+                    else:
+                        self.add_error("width: requires 0, 1, or 2")
 
                 elif field_name == "anchors":
                     elem.anchors = self.parse_anchor_defs()
@@ -961,6 +965,8 @@ class Parser:
                             char_def.zone = Zone(zone_val)
                         except ValueError:
                             self.add_error(f"invalid zone: {zone_val}")
+                    else:
+                        self.add_error("zone: requires a value")
 
                 elif field_name == "path":
                     char_def.path_ids = []
@@ -970,6 +976,8 @@ class Parser:
                 elif field_name == "close":
                     if self._check("BOOL") is not None:
                         char_def.close = self.consume().value == "true"
+                    else:
+                        self.add_error("close: requires true or false")
 
                 elif field_name == "width":
                     if self._check("INT") is not None:
@@ -977,6 +985,8 @@ class Parser:
                         if width not in (0, 1, 2):
                             self.add_error(f"width must be 0, 1, or 2, got {width}")
                         char_def.width = width
+                    else:
+                        self.add_error("width: requires 0, 1, or 2")
 
                 elif field_name == "anchors":
                     char_def.anchors = self.parse_anchor_defs()
