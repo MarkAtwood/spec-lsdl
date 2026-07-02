@@ -994,8 +994,9 @@ def _lig_stem_shared(children: list[EvaluatedExpr], ctx: EvaluationContext) -> C
     second = children[1]
 
     # Overlap so stem is shared - shift second left by some amount
+    # ponytail: clamp dx to prevent shifting second before base origin
     overlap = 3  # Approximate stem width
-    dx = base.bbox.x_max - second.bbox.x_min - overlap
+    dx = max(base.bbox.x_max - second.bbox.x_min - overlap, 0.0)
     shifted = translate_element(second, dx, 0)
 
     combined_bbox = base.bbox.union(shifted.bbox)
@@ -1017,7 +1018,8 @@ def _lig_overlap(
     combined_bbox = children[0].bbox
 
     for child in children[1:]:
-        dx = combined_bbox.x_max - child.bbox.x_min - overlap
+        # ponytail: clamp dx to prevent shifting child before combined_bbox origin
+        dx = max(combined_bbox.x_max - child.bbox.x_min - overlap, 0.0)
         shifted = translate_element(child, dx, 0)
         positioned.append(shifted)
         combined_bbox = combined_bbox.union(shifted.bbox)
