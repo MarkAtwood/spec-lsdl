@@ -560,6 +560,7 @@ class Parser:
             "descender": "descender",
             "desc-limit": "desc_limit",
         }
+        seen_metrics: set[str] = set()
 
         while not self._at_end_kw():
             self.skip_blank_lines()
@@ -570,6 +571,9 @@ class Parser:
             # Expect metric-name: value
             if t.type == "NAME":
                 name = self.consume().value
+                if name in seen_metrics:
+                    self.add_error(f"duplicate metric '{name}'", t)
+                seen_metrics.add(name)
                 if self._check("COLON") is None:
                     self.add_error(f"expected ':' after metric name '{name}'", t)
                 else:
