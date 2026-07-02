@@ -1,0 +1,534 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Latin Extended-E Character Library (U+AB30-AB6F)
+# =============================================================================
+#
+# This file defines the 60 characters in the Latin Extended-E Unicode block.
+# These characters are used for African languages, phonetic transcription,
+# and various linguistic notations.
+#
+# Categories:
+#   - Barred letters (barred alpha, barred e)
+#   - Blackletter forms (blackletter e, blackletter o)
+#   - Letters with crossed-tails (m, n, eng, r)
+#   - Letters with middle decorations (l with tilde, ring)
+#   - Small capital letters (small capital r with leg, small capital omega)
+#   - Chi variants
+#   - X variants with legs and rings
+#   - U/UI variants
+#   - Modifier letters
+#   - Digraphs with retroflex hooks
+#
+# Composition patterns:
+#   - OVR: Stroke overlays for barred letters
+#   - DIA: Diacritic attachment
+#   - FRAME: Complex letterforms with hooks, tails, crossed-tails
+#   - LR: Digraphs and ligatures
+#   - sc: Scaled variants (small capitals, turned forms)
+#
+# =============================================================================
+
+# =============================================================================
+# SPECIAL ELEMENTS FOR LATIN EXTENDED-E
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# schwa.small - Small schwa (turned e)
+# For phonetic schwa
+# -----------------------------------------------------------------------------
+@elem schwa.small
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [2,4]
+p2 = C([8,4] [10,5])
+p3 = C([10,7] [6,6])
+p4 = C([2,7] [2,8])
+p5 = [10,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8] mid=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# double.tilde - Double tilde overlay
+# For double middle tilde
+# -----------------------------------------------------------------------------
+@elem double.tilde
+zone: x-height
+path: p1 p2 p3 p4 p5 p6
+p1 = [2,5]
+p2 = C([3,4] [4,5])
+p3 = [5,5]
+p4 = [7,5]
+p5 = C([8,4] [9,5])
+p6 = [10,5]
+close: false
+width: 1
+anchors: mid=[6,5]
+@end
+
+# -----------------------------------------------------------------------------
+# tilde.overlay - Tilde overlay for middle position
+# For letters with middle tilde
+# -----------------------------------------------------------------------------
+@elem tilde.overlay
+zone: x-height
+path: p1 p2 p3
+p1 = [3,6]
+p2 = C([5,5] [7,7])
+p3 = [9,6]
+close: false
+width: 1
+anchors: mid=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# retroflex.hook.below - Retroflex hook below
+# For digraphs with retroflex hook
+# -----------------------------------------------------------------------------
+@elem retroflex.hook.below
+zone: descender
+path: p1 p2 p3
+p1 = [6,8]
+p2 = C([6,9] [7,10])
+p3 = [8,10]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# left.tack.below - Left tack modifier shape
+# For modifier letter left tack
+# -----------------------------------------------------------------------------
+@elem left.tack.below
+zone: x-height
+path: p1 p2 p3
+p1 = [8,5]
+p2 = [4,5]
+p3 = [4,8]
+close: false
+width: 1
+anchors: mid=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# right.tack.below - Right tack modifier shape
+# For modifier letter right tack
+# -----------------------------------------------------------------------------
+@elem right.tack.below
+zone: x-height
+path: p1 p2 p3
+p1 = [4,5]
+p2 = [8,5]
+p3 = [8,8]
+close: false
+width: 1
+anchors: mid=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# alpha.small - Small alpha shape (like turned a)
+# For phonetic alpha letterform
+# -----------------------------------------------------------------------------
+@elem alpha.small
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [10,6]
+p2 = C([10,4] [6,4])
+p3 = C([2,4] [2,6])
+p4 = C([2,8] [6,8])
+p5 = C([10,8] [10,6])
+close: true
+width: 1
+anchors: top=[6,4] base=[6,8] left=[2,6] right=[10,6]
+@end
+
+# -----------------------------------------------------------------------------
+# crossed.tail - Crossed tail descender element
+# For letters with crossed-tail (m, n, eng, r variants)
+# -----------------------------------------------------------------------------
+@elem crossed.tail
+zone: descender
+path: p1 p2 p3 p4 p5
+p1 = [6,8]
+p2 = C([6,10] [4,10])
+p3 = [3,9]
+p4 = [5,10]
+p5 = [7,9]
+close: false
+width: 1
+anchors: attach=[6,8] top=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# inverted.lazy.s - Inverted lazy S shape
+# For l with inverted lazy s
+# -----------------------------------------------------------------------------
+@elem inverted.lazy.s
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [4,5]
+p2 = C([3,5] [3,6])
+p3 = C([3,7] [5,7])
+p4 = C([7,7] [7,6])
+p5 = C([7,5] [5,5])
+close: false
+width: 1
+anchors: attach=[6,6] mid=[5,6]
+@end
+
+# -----------------------------------------------------------------------------
+# middle.tilde - Middle tilde overlay
+# For letters with middle tilde
+# -----------------------------------------------------------------------------
+@elem middle.tilde
+zone: x-height
+path: p1 p2 p3
+p1 = [3,5]
+p2 = C([5,4] [7,6])
+p3 = [9,5]
+close: false
+width: 1
+anchors: mid=[6,5]
+@end
+
+# -----------------------------------------------------------------------------
+# middle.ring - Middle ring overlay
+# For l with middle ring
+# -----------------------------------------------------------------------------
+@elem middle.ring
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [5,5]
+p2 = C([7,5] [7,7])
+p3 = C([7,9] [5,9])
+p4 = C([3,9] [3,7])
+close: true
+width: 1
+anchors: mid=[5,7]
+@end
+
+# -----------------------------------------------------------------------------
+# script.r - Script r form
+# For script r and variants
+# -----------------------------------------------------------------------------
+@elem script.r
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [2,8]
+p2 = C([2,6] [4,4])
+p3 = C([8,4] [10,5])
+p4 = C([10,7] [8,8])
+p5 = [6,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8] left=[2,8] right=[10,6]
+@end
+
+# -----------------------------------------------------------------------------
+# chi.small - Small chi shape
+# For chi and chi variants
+# -----------------------------------------------------------------------------
+@elem chi.small
+zone: full
+path: p1 p2 p3 p4
+p1 = [2,4]
+p2 = [10,10]
+p3 = [10,4]
+p4 = [2,10]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,10] mid=[6,7]
+@end
+
+# -----------------------------------------------------------------------------
+# stirrup.r - Stirrup r shape
+# For stirrup r
+# -----------------------------------------------------------------------------
+@elem stirrup.r
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [2,8]
+p2 = C([2,4] [6,4])
+p3 = C([10,4] [10,6])
+p4 = C([10,8] [8,8])
+p5 = [6,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# baseline.esh - Baseline esh (esh sitting on baseline)
+# For baseline esh
+# -----------------------------------------------------------------------------
+@elem baseline.esh
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [10,4]
+p2 = C([4,4] [4,5])
+p3 = [4,7]
+p4 = C([4,8] [6,8])
+p5 = [8,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# sakha.yat - Sakha Yat shape
+# For Sakha language
+# -----------------------------------------------------------------------------
+@elem sakha.yat
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [2,4]
+p2 = C([2,6] [4,8])
+p3 = [6,8]
+p4 = C([8,8] [10,6])
+p5 = [10,4]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# iotified.e - Iotified E shape
+# For iotified e
+# -----------------------------------------------------------------------------
+@elem iotified.e
+zone: x-height
+path: p1 p2 p3 p4 p5 p6
+p1 = [2,4]
+p2 = [2,8]
+p3 = [4,6]
+p4 = C([4,4] [6,4])
+p5 = C([10,4] [10,6])
+p6 = C([10,8] [6,8])
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# small.cap.omega - Small capital omega shape
+# For Greek small capital omega
+# -----------------------------------------------------------------------------
+@elem small.cap.omega
+zone: x-height
+path: p1 p2 p3 p4 p5 p6
+p1 = [0,8]
+p2 = [2,8]
+p3 = C([0,6] [2,4])
+p4 = C([6,4] [10,4])
+p5 = C([12,6] [10,8])
+p6 = [12,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# =============================================================================
+# CHARACTERS U+AB30-AB3F
+# =============================================================================
+
+# ꬰ - Latin Small Letter Barred Alpha
+ꬰ  LATIN-SMALL-BARRED-ALPHA = OVR(alpha.small, stroke.horiz) cp:U+AB30 script:Latn
+
+# ꬱ - Latin Small Letter A Reversed-Schwa
+ꬱ  LATIN-SMALL-A-REVERSED-SCHWA = LR(a, schwa.small, 6/6) cp:U+AB31 script:Latn
+
+# ꬲ - Latin Small Letter Blackletter E
+# Blackletter style e - using rotated/styled e
+ꬲ  LATIN-SMALL-BLACKLETTER-E = FRAME(arc.top, crossbar.low, arc.bot) cp:U+AB32 script:Latn
+
+# ꬳ - Latin Small Letter Barred E
+ꬳ  LATIN-SMALL-BARRED-E = OVR(e, stroke.horiz) cp:U+AB33 script:Latn
+
+# ꬴ - Latin Small Letter E with Flourish
+ꬴ  LATIN-SMALL-E-FLOURISH = FRAME(e, swash) cp:U+AB34 script:Latn
+
+# ꬵ - Latin Small Letter Lenis F
+# Lenis f - softer f form
+ꬵ  LATIN-SMALL-LENIS-F = FRAME(hook.top, stem) cp:U+AB35 script:Latn
+
+# ꬶ - Latin Small Letter Script G with Crossed-Tail
+ꬶ  LATIN-SMALL-SCRIPT-G-CROSSED-TAIL = FRAME(g, crossed.tail) cp:U+AB36 script:Latn
+
+# ꬷ - Latin Small Letter L with Inverted Lazy S
+ꬷ  LATIN-SMALL-L-INVERTED-LAZY-S = FRAME(l, inverted.lazy.s) cp:U+AB37 script:Latn
+
+# ꬸ - Latin Small Letter L with Double Middle Tilde
+ꬸ  LATIN-SMALL-L-DOUBLE-MIDDLE-TILDE = OVR(l, double.tilde) cp:U+AB38 script:Latn
+
+# ꬹ - Latin Small Letter L with Middle Ring
+ꬹ  LATIN-SMALL-L-MIDDLE-RING = FRAME(l, middle.ring) cp:U+AB39 script:Latn
+
+# ꬺ - Latin Small Letter M with Crossed-Tail
+ꬺ  LATIN-SMALL-M-CROSSED-TAIL = FRAME(m, crossed.tail) cp:U+AB3A script:Latn
+
+# ꬻ - Latin Small Letter N with Crossed-Tail
+ꬻ  LATIN-SMALL-N-CROSSED-TAIL = FRAME(n, crossed.tail) cp:U+AB3B script:Latn
+
+# ꬼ - Latin Small Letter Eng with Crossed-Tail
+ꬼ  LATIN-SMALL-ENG-CROSSED-TAIL = FRAME(shoulder, crossed.tail) cp:U+AB3C script:Latn
+
+# ꬽ - Latin Small Letter Blackletter O
+ꬽ  LATIN-SMALL-BLACKLETTER-O = bowl.full cp:U+AB3D script:Latn
+
+# ꬾ - Latin Small Letter Blackletter O with Stroke
+ꬾ  LATIN-SMALL-BLACKLETTER-O-STROKE = OVR(bowl.full, stroke.diag) cp:U+AB3E script:Latn
+
+# ꬿ - Latin Small Letter Open O with Stroke
+ꬿ  LATIN-SMALL-OPEN-O-STROKE = OVR(arc.bot, stroke.diag) cp:U+AB3F script:Latn
+
+# =============================================================================
+# CHARACTERS U+AB40-AB4F
+# =============================================================================
+
+# ꭀ - Latin Small Letter Inverted OE
+ꭀ  LATIN-SMALL-INVERTED-OE = sc(LR(o, e, 6/6), sx=12, sy=-12) cp:U+AB40 script:Latn
+
+# ꭁ - Latin Small Letter Turned OE with Stroke
+ꭁ  LATIN-SMALL-TURNED-OE-STROKE = OVR(sc(LR(o, e, 6/6), sx=-12, sy=-12), stroke.diag) cp:U+AB41 script:Latn
+
+# ꭂ - Latin Small Letter Turned OE with Horizontal Stroke
+ꭂ  LATIN-SMALL-TURNED-OE-HORIZ-STROKE = OVR(sc(LR(o, e, 6/6), sx=-12, sy=-12), stroke.horiz) cp:U+AB42 script:Latn
+
+# ꭃ - Latin Small Letter Turned O Open-O
+ꭃ  LATIN-SMALL-TURNED-O-OPEN-O = LR(sc(o, sx=12, sy=-12), arc.bot, 6/6) cp:U+AB43 script:Latn
+
+# ꭄ - Latin Small Letter Turned O Open-O with Stroke
+ꭄ  LATIN-SMALL-TURNED-O-OPEN-O-STROKE = OVR(LR(sc(o, sx=12, sy=-12), arc.bot, 6/6), stroke.diag) cp:U+AB44 script:Latn
+
+# ꭅ - Latin Small Letter Stirrup R
+ꭅ  LATIN-SMALL-STIRRUP-R = stirrup.r cp:U+AB45 script:Latn
+
+# ꭆ - Latin Letter Small Capital R with Right Leg
+ꭆ  LATIN-SMALL-CAPITAL-R-RIGHT-LEG = FRAME(sc(R, sx=10, sy=8), leg) cp:U+AB46 script:Latn
+
+# ꭇ - Latin Small Letter R without Handle
+ꭇ  LATIN-SMALL-R-WITHOUT-HANDLE = ear cp:U+AB47 script:Latn
+
+# ꭈ - Latin Small Letter Double R
+ꭈ  LATIN-SMALL-DOUBLE-R = LR(r, r, 6/6) cp:U+AB48 script:Latn
+
+# ꭉ - Latin Small Letter R with Crossed-Tail
+ꭉ  LATIN-SMALL-R-CROSSED-TAIL = FRAME(r, crossed.tail) cp:U+AB49 script:Latn
+
+# ꭊ - Latin Small Letter Double R with Crossed-Tail
+ꭊ  LATIN-SMALL-DOUBLE-R-CROSSED-TAIL = FRAME(LR(r, r, 6/6), crossed.tail) cp:U+AB4A script:Latn
+
+# ꭋ - Latin Small Letter Script R
+ꭋ  LATIN-SMALL-SCRIPT-R = script.r cp:U+AB4B script:Latn
+
+# ꭌ - Latin Small Letter Script R with Ring
+ꭌ  LATIN-SMALL-SCRIPT-R-RING = DIA(script.r, ring) cp:U+AB4C script:Latn
+
+# ꭍ - Latin Small Letter Baseline Esh
+ꭍ  LATIN-SMALL-BASELINE-ESH = baseline.esh cp:U+AB4D script:Latn
+
+# ꭎ - Latin Small Letter U with Short Right Leg
+ꭎ  LATIN-SMALL-U-SHORT-RIGHT-LEG = FRAME(arc.bot, stem) cp:U+AB4E script:Latn
+
+# ꭏ - Latin Small Letter U Bar with Short Right Leg
+ꭏ  LATIN-SMALL-U-BAR-SHORT-RIGHT-LEG = OVR(FRAME(arc.bot, stem), stroke.horiz) cp:U+AB4F script:Latn
+
+# =============================================================================
+# CHARACTERS U+AB50-AB5F
+# =============================================================================
+
+# ꭐ - Latin Small Letter UI
+ꭐ  LATIN-SMALL-UI = LR(u, i, 6/6) cp:U+AB50 script:Latn
+
+# ꭑ - Latin Small Letter Turned UI
+ꭑ  LATIN-SMALL-TURNED-UI = sc(LR(u, i, 6/6), sx=-12, sy=-12) cp:U+AB51 script:Latn
+
+# ꭒ - Latin Small Letter U with Left Hook
+ꭒ  LATIN-SMALL-U-LEFT-HOOK = FRAME(hook.bot, u) cp:U+AB52 script:Latn
+
+# ꭓ - Latin Small Letter Chi
+ꭓ  LATIN-SMALL-CHI = chi.small cp:U+AB53 script:Latn
+
+# ꭔ - Latin Small Letter Chi with Low Right Ring
+ꭔ  LATIN-SMALL-CHI-LOW-RIGHT-RING = DIA(chi.small, ring-below, attach:bottom-right) cp:U+AB54 script:Latn
+
+# ꭕ - Latin Small Letter Chi with Low Left Serif
+ꭕ  LATIN-SMALL-CHI-LOW-LEFT-SERIF = FRAME(chi.small, spur.l) cp:U+AB55 script:Latn
+
+# ꭖ - Latin Small Letter X with Low Right Ring
+ꭖ  LATIN-SMALL-X-LOW-RIGHT-RING = DIA(x, ring-below, attach:bottom-right) cp:U+AB56 script:Latn
+
+# ꭗ - Latin Small Letter X with Long Left Leg
+ꭗ  LATIN-SMALL-X-LONG-LEFT-LEG = FRAME(diagonal.x, diagonal.x.rev, descender.l) cp:U+AB57 script:Latn
+
+# ꭘ - Latin Small Letter X with Long Left Leg and Low Right Ring
+ꭘ  LATIN-SMALL-X-LONG-LEFT-LEG-LOW-RIGHT-RING = DIA(FRAME(diagonal.x, diagonal.x.rev, descender.l), ring-below, attach:bottom-right) cp:U+AB58 script:Latn
+
+# ꭙ - Latin Small Letter X with Long Left Leg with Serif
+ꭙ  LATIN-SMALL-X-LONG-LEFT-LEG-SERIF = FRAME(diagonal.x, diagonal.x.rev, descender.l, serif) cp:U+AB59 script:Latn
+
+# ꭚ - Latin Small Letter Y with Short Right Leg
+ꭚ  LATIN-SMALL-Y-SHORT-RIGHT-LEG = FRAME(diagonal.x.rev, stem) cp:U+AB5A script:Latn
+
+# ꭛ - Modifier Breve with Inverted Breve
+꭛  MODIFIER-BREVE-INVERTED-BREVE = LR(breve, inverted-breve, 6/6) cp:U+AB5B script:Zyyy
+
+# ꭜ - Modifier Letter Small Heng
+# Modifier version of heng
+ꭜ  MODIFIER-LETTER-SMALL-HENG = sc(FRAME(h, hook.bot), sx=8, sy=8) cp:U+AB5C script:Latn
+
+# ꭝ - Modifier Letter Small L with Inverted Lazy S
+ꭝ  MODIFIER-LETTER-SMALL-L-INVERTED-LAZY-S = sc(FRAME(l, inverted.lazy.s), sx=8, sy=8) cp:U+AB5D script:Latn
+
+# ꭞ - Modifier Letter Small L with Middle Tilde
+ꭞ  MODIFIER-LETTER-SMALL-L-MIDDLE-TILDE = sc(OVR(l, tilde.overlay), sx=8, sy=8) cp:U+AB5E script:Latn
+
+# ꭟ - Modifier Letter Small U with Left Hook
+ꭟ  MODIFIER-LETTER-SMALL-U-LEFT-HOOK = sc(FRAME(hook.bot, u), sx=8, sy=8) cp:U+AB5F script:Latn
+
+# =============================================================================
+# CHARACTERS U+AB60-AB6B
+# =============================================================================
+
+# ꭠ - Latin Small Letter Sakha Yat
+ꭠ  LATIN-SMALL-SAKHA-YAT = sakha.yat cp:U+AB60 script:Latn
+
+# ꭡ - Latin Small Letter Iotified E
+ꭡ  LATIN-SMALL-IOTIFIED-E = iotified.e cp:U+AB61 script:Latn
+
+# ꭢ - Latin Small Letter Open OE
+ꭢ  LATIN-SMALL-OPEN-OE = LR(arc.bot, e, 6/6) cp:U+AB62 script:Latn
+
+# ꭣ - Latin Small Letter UO
+ꭣ  LATIN-SMALL-UO = LR(u, o, 6/6) cp:U+AB63 script:Latn
+
+# ꭤ - Latin Small Letter Inverted Alpha
+ꭤ  LATIN-SMALL-INVERTED-ALPHA = sc(alpha.small, sx=12, sy=-12) cp:U+AB64 script:Latn
+
+# ꭥ - Greek Letter Small Capital Omega
+ꭥ  GREEK-SMALL-CAPITAL-OMEGA = small.cap.omega cp:U+AB65 script:Grek
+
+# ꭦ - Latin Small Letter DZ Digraph with Retroflex Hook
+ꭦ  LATIN-SMALL-DZ-RETROFLEX-HOOK = FRAME(LR(d, z, 6/6), retroflex.hook.below) cp:U+AB66 script:Latn
+
+# ꭧ - Latin Small Letter TS Digraph with Retroflex Hook
+ꭧ  LATIN-SMALL-TS-RETROFLEX-HOOK = FRAME(LR(t, s, 6/6), retroflex.hook.below) cp:U+AB67 script:Latn
+
+# ꭨ - Latin Small Letter Turned R with Middle Tilde
+ꭨ  LATIN-SMALL-TURNED-R-MIDDLE-TILDE = OVR(sc(r, sx=-12, sy=-12), tilde.overlay) cp:U+AB68 script:Latn
+
+# ꭩ - Modifier Letter Small Turned W
+ꭩ  MODIFIER-LETTER-SMALL-TURNED-W = sc(w, sx=-8, sy=-8) cp:U+AB69 script:Latn
+
+# ꭪ - Modifier Letter Left Tack
+꭪  MODIFIER-LETTER-LEFT-TACK = left.tack.below cp:U+AB6A script:Zyyy
+
+# ꭫ - Modifier Letter Right Tack
+꭫  MODIFIER-LETTER-RIGHT-TACK = right.tack.below cp:U+AB6B script:Zyyy
+
+# =============================================================================
+# END OF LATIN EXTENDED-E CHARACTER LIBRARY
+# =============================================================================

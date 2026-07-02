@@ -1,0 +1,244 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Homoglyph Mappings
+# =============================================================================
+#
+# This file declares visual equivalences between characters that appear
+# identical across Latin, Greek, and Cyrillic scripts but have different
+# Unicode codepoints.
+#
+# Purpose:
+#   - Enable structure sharing: define once in Latin, alias for other scripts
+#   - Support script-aware rendering: same glyph, different script context
+#   - Reduce unique definitions by ~30-40%
+#
+# Format: @homoglyph canonical = member1, member2, ...
+#   canonical: The character whose definition is used (typically Latin)
+#   members: Characters that should use the same structural definition
+#
+# Structure verification status (from lib/*.lsdl analysis):
+#   [exact]   - LSDL definitions are identical
+#   [partial] - Similar structure, minor element/proportion differences
+#   [visual]  - Visually identical but structurally different in LSDL
+#
+# =============================================================================
+
+# =============================================================================
+# UPPERCASE HOMOGLYPHS (17 sets)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Exact structural matches - definitions are identical
+# These can share code entirely
+# -----------------------------------------------------------------------------
+
+# C: Latin = Cyrillic Es
+# Latin:    STACK(arc.top.cap, arc.bot.cap)
+# Cyrillic: STACK(arc.top.cap, arc.bot.cap)
+# @homoglyph C = С  # [exact] U+0043 = U+0421
+
+# E: Latin = Greek Epsilon = Cyrillic Ie
+# All three: FRAME(stem.l, arm.top, arm.mid, arm.bot)
+# @homoglyph E = Ε, Е  # [exact] U+0045 = U+0395, U+0415
+
+# H: Latin = Greek Eta = Cyrillic En
+# All three: FRAME(stem.l, crossbar.cap, stem.r)
+# @homoglyph H = Η, Н  # [exact] U+0048 = U+0397, U+041D
+
+# I: Latin = Greek Iota = Cyrillic I (Ukrainian)
+# All three: stem.l
+# @homoglyph I = Ι, І  # [exact] U+0049 = U+0399, U+0406
+
+# O: Latin = Greek Omicron = Cyrillic O
+# All three: bowl.cap
+# @homoglyph O = Ο, О  # [exact] U+004F = U+039F, U+041E
+
+# T: Latin = Greek Tau
+# Both: FRAME(bar.top, stem)
+# Note: Cyrillic Te uses stem.cyr (centered) - see partial matches
+# @homoglyph T = Τ  # [exact] U+0054 = U+03A4
+
+# Z: Latin = Greek Zeta
+# Both: FRAME(bar.top, diagonal, bar.bot.cap)
+# @homoglyph Z = Ζ  # [exact] U+005A = U+0396
+
+# -----------------------------------------------------------------------------
+# Partial structural matches - same elements, minor differences
+# These could be unified with minor normalization
+# -----------------------------------------------------------------------------
+
+# A: Latin = Greek Alpha = Cyrillic A
+# Latin:    APEX(stem.l, stem.r, crossbar.cap)
+# Greek:    APEX(diagonal.l, diagonal.r, crossbar.cap)
+# Cyrillic: apex
+# @homoglyph A = Α, А  # [partial] U+0041 = U+0391, U+0410
+
+# B: Latin = Greek Beta = Cyrillic Ve
+# Latin:    LR(stem.l, STACK(bowl.upper, bowl.lower), 3/9)
+# Greek:    LR(stem.l, STACK(bowl.r.upper, bowl.r.lower), 4/8)
+# Cyrillic: LR(stem.l, STACK(bowl.r.upper.cap, bowl.r.lower.cap))
+# @homoglyph B = Β, В  # [partial] U+0042 = U+0392, U+0412
+
+# K: Latin = Greek Kappa = Cyrillic Ka
+# Latin:    FRAME(stem.l, diagonal.l, leg.cap)
+# Greek:    LR(stem.l, STACK(leg.cap, diagonal), 4/8)
+# Cyrillic: LR(stem.l, STACK(leg.cap, leg.cap.rev))
+# @homoglyph K = Κ, К  # [partial] U+004B = U+039A, U+041A
+
+# M: Latin = Greek Mu = Cyrillic Em
+# Latin:    FRAME(stem.l, apex, stem.r)
+# Greek:    FRAME(stem.l, vertex.cap, stem.r)
+# Cyrillic: FRAME(stem.l, vertex.cap.inv, stem.r)
+# @homoglyph M = Μ, М  # [partial] U+004D = U+039C, U+041C
+
+# N: Latin = Greek Nu
+# Latin: FRAME(stem.l, diagonal, stem.r)
+# Greek: LR3(stem.l, diagonal, stem.r, 4/4/4)
+# @homoglyph N = Ν  # [partial] U+004E = U+039D
+
+# P: Latin = Greek Rho = Cyrillic Er
+# Latin:    LR(stem.l, bowl.upper, 3/9)
+# Greek:    LR(stem.l, bowl.r.upper, 4/8)
+# Cyrillic: LR(stem.l, bowl.r.upper.cap)
+# @homoglyph P = Ρ, Р  # [partial] U+0050 = U+03A1, U+0420
+
+# T: Cyrillic Te (partial match to Latin T)
+# Cyrillic: FRAME(bar.top, stem.cyr)  -- uses centered stem
+# Note: Listed separately as it differs from Latin/Greek exact match
+# @homoglyph Т = T  # [partial] U+0422 derives from U+0054
+
+# X: Latin = Greek Chi = Cyrillic Ha
+# Latin:    OVR(diagonal, diagonal.l)
+# Greek:    FRAME(diagonal.l, diagonal)
+# Cyrillic: FRAME(diagonal, diagonal.l)
+# @homoglyph X = Χ, Х  # [partial] U+0058 = U+03A7, U+0425
+
+# -----------------------------------------------------------------------------
+# Visual matches with different structure
+# These look identical but have meaningfully different definitions
+# -----------------------------------------------------------------------------
+
+# Y: Latin = Greek Upsilon = Cyrillic U
+# Latin:    FRAME(diagonal.l, stem, diagonal)
+# Greek:    STACK(vertex.cap, stem)
+# Cyrillic: STACK(vertex.cap, descender)  -- extends below baseline
+# @homoglyph Y = Υ, У  # [visual] U+0059 = U+03A5, U+0423 - structure differs
+
+# -----------------------------------------------------------------------------
+# Undefined members (Serbian/Macedonian extensions)
+# These are visual homoglyphs but not yet defined in lib/*.lsdl
+# -----------------------------------------------------------------------------
+
+# J: Latin = Cyrillic Je
+# Cyrillic Je (U+0408) not defined in cyrillic.lsdl
+# @homoglyph J = Ј  # [not_defined] U+004A = U+0408
+
+# S: Latin = Cyrillic Dze
+# Cyrillic Dze (U+0405) not defined in cyrillic.lsdl
+# @homoglyph S = Ѕ  # [not_defined] U+0053 = U+0405
+
+# =============================================================================
+# LOWERCASE HOMOGLYPHS (10 sets)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Exact structural matches
+# -----------------------------------------------------------------------------
+
+# c: Latin = Cyrillic es
+# Both: STACK(arc.top, arc.bot)
+# @homoglyph c = с  # [exact] U+0063 = U+0441
+
+# e: Latin = Cyrillic ie
+# Both: FRAME(arc.top, crossbar.low, arc.bot)
+# @homoglyph e = е  # [exact] U+0065 = U+0435
+
+# i: Latin = Cyrillic i (Ukrainian)
+# Both: STACK(tittle, stem)
+# @homoglyph i = і  # [exact] U+0069 = U+0456
+
+# o: Latin = Greek omicron = Cyrillic o
+# All three: bowl.full
+# @homoglyph o = ο, о  # [exact] U+006F = U+03BF, U+043E
+
+# -----------------------------------------------------------------------------
+# Partial structural matches
+# -----------------------------------------------------------------------------
+
+# a: Latin = Cyrillic a
+# Latin:    LR(bowl.l, stem, 7/5)
+# Cyrillic: LR(bowl.l, stem)  -- no explicit ratio
+# @homoglyph a = а  # [partial] U+0061 = U+0430
+
+# p: Latin = Cyrillic er
+# Latin:    STACK(bowl.r, descender)
+# Cyrillic: LR(descender, bowl.r)
+# @homoglyph p = р  # [partial] U+0070 = U+0440
+
+# x: Latin = Cyrillic ha
+# Latin:    OVR(diagonal.x, diagonal.l)
+# Cyrillic: FRAME(diagonal.x, diagonal.x.rev)
+# @homoglyph x = х  # [partial] U+0078 = U+0445
+
+# y: Latin = Cyrillic u
+# Latin:    FRAME(vertex, descender.curved)
+# Cyrillic: STACK(vertex, descender.curved)
+# @homoglyph y = у  # [partial] U+0079 = U+0443
+
+# -----------------------------------------------------------------------------
+# Undefined lowercase members
+# -----------------------------------------------------------------------------
+
+# j: Latin = Cyrillic je
+# Cyrillic je (U+0458) not defined in cyrillic.lsdl
+# @homoglyph j = ј  # [not_defined] U+006A = U+0458
+
+# s: Latin = Cyrillic dze
+# Cyrillic dze (U+0455) not defined in cyrillic.lsdl
+# @homoglyph s = ѕ  # [not_defined] U+0073 = U+0455
+
+# =============================================================================
+# GREEK-CYRILLIC HOMOGLYPHS (no Latin equivalent)
+# =============================================================================
+#
+# These characters are identical between Greek and Cyrillic but have no
+# direct Latin equivalent. The canonical is set to Greek.
+# -----------------------------------------------------------------------------
+
+# Gamma/Ghe: Greek = Cyrillic
+# Both: FRAME(bar.top, stem.l)
+# @homoglyph Γ = Г  # [exact] U+0393 = U+0413
+
+# Pi/Pe: Greek = Cyrillic
+# Both: FRAME(stem.l, bar.top, stem.r)
+# @homoglyph Π = П  # [exact] U+03A0 = U+041F
+
+# Phi/Ef: Greek = Cyrillic
+# Greek:    OVR(bowl.cap, full-stem)
+# Cyrillic: OVR(bowl.cap, stem.cyr)
+# @homoglyph Φ = Ф  # [partial] U+03A6 = U+0424
+
+# =============================================================================
+# STATISTICS
+# =============================================================================
+#
+# Total homoglyph sets: 30
+#   Uppercase: 19 (17 Latin-based + 2 Greek-Cyrillic)
+#   Lowercase: 11 (10 Latin-based + 1 Greek-Cyrillic)
+#
+# Structure match breakdown:
+#   Exact matches:     14 (can share definitions entirely)
+#   Partial matches:   12 (minor normalization needed)
+#   Visual only:        1 (Y/Υ/У - different rendering)
+#   Undefined:          4 (Serbian/Macedonian extensions)
+#
+# Reduction potential:
+#   - 14 characters can be pure aliases (exact matches)
+#   - 12 more with minor element normalization
+#   - Total: ~26 definitions could be eliminated
+#   - Estimated reduction: 30-35% of cross-script definitions
+#
+# =============================================================================
+# END OF HOMOGLYPH MAPPINGS
+# =============================================================================

@@ -7,35 +7,14 @@
 # This file defines standard ligature characters for Latin script.
 #
 # Organization:
-#   - Alphabetic Presentation Forms (U+FB00-FB06)
 #   - Historical Ligatures (Æ, Œ, Ĳ)
 #   - Case mappings
+#
+# Note: Alphabetic Presentation Forms (U+FB00-FB06) are in latin-ligatures.lsdl
 #
 # Reference: LSDL Specification Section 14 (Ligatures)
 #
 # =============================================================================
-
-# =============================================================================
-# ALPHABETIC PRESENTATION FORMS (U+FB00-FB06)
-# =============================================================================
-
-# ff - Two f characters with hooks merged
-ﬀ  LATIN-SMALL-LIGATURE-FF = LIG(f, f, merge:hook-hook) cp:U+FB00 script:Latn
-
-# fi - f with hook absorbing i tittle
-ﬁ  LATIN-SMALL-LIGATURE-FI = LIG(f, i, merge:hook-tittle) cp:U+FB01 script:Latn
-
-# fl - f hook merging into l ascender
-ﬂ  LATIN-SMALL-LIGATURE-FL = LIG(f, l, merge:hook-ascender) cp:U+FB02 script:Latn
-
-# ffi - ff ligature with i (hook absorbs tittle)
-ﬃ  LATIN-SMALL-LIGATURE-FFI = LIG(ﬀ, i, merge:hook-tittle) cp:U+FB03 script:Latn
-
-# ffl - ff ligature with l (hook merges into ascender)
-ﬄ  LATIN-SMALL-LIGATURE-FFL = LIG(ﬀ, l, merge:hook-ascender) cp:U+FB04 script:Latn
-
-# st - s arc merging into t stem
-ﬅ  LATIN-SMALL-LIGATURE-ST = LIG(s, t, merge:arc-stem) cp:U+FB05 script:Latn
 
 # =============================================================================
 # HISTORICAL LIGATURES

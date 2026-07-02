@@ -121,13 +121,16 @@ TOKEN_PATTERNS = [
     #   ﬀ-ﬆ       U+FB00-U+FB06  Alphabetic Presentation Forms (ligatures)
     #   ⃐-⃿       U+20D0-U+20FF  Combining Diacritical Marks for Symbols
     #   (SMP)     U+1E030-1E08F  Cyrillic Extended-D (requires \U escape)
+    #   (PUA)     U+E000-U+F8FF  Private Use Area (UCSUR: Unifon U+E740-E76F, etc.)
     (
         "LITERAL_CHAR",
         r"[!-~ -ͯͰ-ԯ᪰-᫿"
         r"ᲀ-᲏᷀-᷿Ḁ-ỿἀ-῿"
         r"Ⱡ-Ɀⷠ-ⷿꙀ-ꟿꬰ-꭯"
-        r"ﬀ-ﬆ⃐-⃿]"
-        r"|[\U0001E030-\U0001E08F]",
+        r"ﬀ-ﬆ⃐-⃿-]"  # includes PUA U+E000-F8FF for UCSUR scripts
+        r"|[\U0001E030-\U0001E08F]"  # Cyrillic Extended-D
+        r"|[\U00010400-\U0001044F]"  # Deseret
+        r"|[\U00010450-\U0001047F]",  # Shavian
     ),
 ]
 

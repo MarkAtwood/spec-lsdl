@@ -1,0 +1,1260 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Latin Extended-B Character Library (U+0180-024F)
+# =============================================================================
+#
+# This file defines the 208 characters in the Latin Extended-B Unicode block.
+# These characters are used for African languages, Croatian/Slovenian,
+# Pinyin romanization, Romanian, and various phonetic extensions.
+#
+# Categories:
+#   - African language letters (Ɓ, Ɔ, Ɗ, Ə, Ɛ, etc.)
+#   - Croatian/Slovenian digraphs (DŽ, LJ, NJ)
+#   - Pinyin vowels with tone marks (ǎ, ǐ, ǔ, ǚ)
+#   - Romanian letters (Ș, Ț with comma below)
+#   - Phonetic extensions (turned, hooked, stroked letters)
+#   - Double diacritic combinations
+#
+# Composition patterns:
+#   - DIA: Single diacritic attachment
+#   - DIA2: Double diacritic attachment
+#   - OVR: Stroke overlays
+#   - FRAME: Complex letterforms with hooks, tails
+#   - LR: Digraphs and compound letters
+#
+# =============================================================================
+
+# =============================================================================
+# SPECIAL ELEMENTS FOR LATIN EXTENDED-B
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# hook.top.cap - Capital letter hook (for African Ɓ, Ɗ, Ƙ, etc.)
+# Hook extending from top of letter, curving left
+# -----------------------------------------------------------------------------
+@elem hook.top.cap
+zone: cap
+path: p1 p2 p3
+p1 = [4,0]
+p2 = C([2,0] [2,2])
+p3 = [3,3]
+close: false
+width: 1
+anchors: attach=[4,0] base=[3,3]
+@end
+
+# -----------------------------------------------------------------------------
+# topbar - Horizontal bar at top extending both sides
+# Used for Ƃ, Ƌ (letters with topbar)
+# -----------------------------------------------------------------------------
+@elem topbar
+zone: cap
+path: p1 p2
+p1 = [3,0]
+p2 = [9,0]
+close: false
+width: 1
+anchors: mid=[6,0]
+@end
+
+# -----------------------------------------------------------------------------
+# topbar.small - Shorter topbar for lowercase
+# -----------------------------------------------------------------------------
+@elem topbar.small
+zone: x-height
+path: p1 p2
+p1 = [4,4]
+p2 = [8,4]
+close: false
+width: 1
+anchors: mid=[6,4]
+@end
+
+# -----------------------------------------------------------------------------
+# open.o.cap - Open O shape (like C but more curved)
+# For Ɔ (Latin Capital Letter Open O)
+# -----------------------------------------------------------------------------
+@elem open.o.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [2,2]
+p2 = C([2,0] [6,0])
+p3 = C([10,0] [10,4])
+p4 = C([10,8] [6,8])
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] left=[2,4]
+@end
+
+# -----------------------------------------------------------------------------
+# open.e.cap - Open E shape (epsilon-like)
+# For Ɛ (Latin Capital Letter Open E)
+# -----------------------------------------------------------------------------
+@elem open.e.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [10,0]
+p2 = C([4,0] [2,2])
+p3 = [6,4]
+p4 = C([2,6] [4,8])
+p5 = [10,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mid=[6,4]
+@end
+
+# -----------------------------------------------------------------------------
+# schwa.cap - Capital schwa (turned e)
+# For Ə (Latin Capital Letter Schwa)
+# -----------------------------------------------------------------------------
+@elem schwa.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [2,0]
+p2 = C([8,0] [10,2])
+p3 = C([10,6] [6,4])
+p4 = C([2,6] [2,8])
+p5 = [10,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mid=[6,4]
+@end
+
+# -----------------------------------------------------------------------------
+# schwa.small - Small schwa (turned e)
+# For ə (Latin Small Letter Schwa)
+# -----------------------------------------------------------------------------
+@elem schwa.small
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [2,4]
+p2 = C([8,4] [10,5])
+p3 = C([10,7] [6,6])
+p4 = C([2,7] [2,8])
+p5 = [10,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8] mid=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# gamma.cap - Capital Gamma shape
+# For Ɣ (Latin Capital Letter Gamma)
+# -----------------------------------------------------------------------------
+@elem gamma.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [2,0]
+p2 = [6,4]
+p3 = [10,0]
+p4 = [6,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# iota.cap - Capital Iota shape
+# For Ɩ (Latin Capital Letter Iota)
+# -----------------------------------------------------------------------------
+@elem iota.cap
+zone: cap
+path: p1 p2 p3
+p1 = [6,0]
+p2 = [6,8]
+p3 = C([6,10] [4,10])
+close: false
+width: 1
+anchors: top=[6,0] base=[4,10]
+@end
+
+# -----------------------------------------------------------------------------
+# upsilon.cap - Capital Upsilon shape
+# For Ʊ (Latin Capital Letter Upsilon)
+# -----------------------------------------------------------------------------
+@elem upsilon.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [2,0]
+p2 = C([2,5] [4,6])
+p3 = C([8,6] [10,5])
+p4 = [10,0]
+p5 = [6,4]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,4]
+@end
+
+# -----------------------------------------------------------------------------
+# esh.cap - Capital Esh shape (elongated S)
+# For Ʃ (Latin Capital Letter Esh)
+# -----------------------------------------------------------------------------
+@elem esh.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6
+p1 = [10,0]
+p2 = C([4,0] [4,2])
+p3 = C([4,4] [8,4])
+p4 = C([8,6] [8,8])
+p5 = C([8,10] [4,10])
+p6 = [2,10]
+close: false
+width: 1
+anchors: top=[6,0] base=[4,10]
+@end
+
+# -----------------------------------------------------------------------------
+# esh.small - Small esh shape
+# For IPA usage
+# -----------------------------------------------------------------------------
+@elem esh.small
+zone: full
+path: p1 p2 p3 p4 p5 p6
+p1 = [8,1]
+p2 = C([4,1] [4,3])
+p3 = [4,6]
+p4 = C([4,9] [6,9])
+p5 = C([8,9] [8,10])
+p6 = [6,10]
+close: false
+width: 1
+anchors: top=[6,1] base=[6,10]
+@end
+
+# -----------------------------------------------------------------------------
+# ezh.cap - Capital Ezh shape (like 3)
+# For Ʒ (Latin Capital Letter Ezh)
+# -----------------------------------------------------------------------------
+@elem ezh.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [2,0]
+p2 = [10,0]
+p3 = C([10,2] [6,4])
+p4 = C([10,6] [10,8])
+p5 = [2,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# ezh.small - Small ezh shape
+# -----------------------------------------------------------------------------
+@elem ezh.small
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [2,4]
+p2 = [10,4]
+p3 = C([10,5] [6,6])
+p4 = C([10,7] [10,8])
+p5 = [2,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# yogh.cap - Capital Yogh shape
+# For Ȝ (Latin Capital Letter Yogh)
+# -----------------------------------------------------------------------------
+@elem yogh.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [2,0]
+p2 = [10,0]
+p3 = [6,4]
+p4 = C([8,6] [8,10])
+p5 = [4,10]
+close: false
+width: 1
+anchors: top=[6,0] base=[4,10]
+@end
+
+# -----------------------------------------------------------------------------
+# yogh.small - Small yogh shape
+# -----------------------------------------------------------------------------
+@elem yogh.small
+zone: full
+path: p1 p2 p3 p4 p5
+p1 = [2,4]
+p2 = [10,4]
+p3 = [6,6]
+p4 = C([8,8] [8,10])
+p5 = [4,10]
+close: false
+width: 1
+anchors: top=[6,4] base=[4,10]
+@end
+
+# -----------------------------------------------------------------------------
+# wynn.cap - Capital Wynn shape
+# For Ƿ (Latin Capital Letter Wynn)
+# -----------------------------------------------------------------------------
+@elem wynn.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [2,0]
+p2 = [2,8]
+p3 = C([2,4] [8,4])
+p4 = C([10,6] [8,8])
+close: false
+width: 1
+anchors: top=[2,0] base=[2,8]
+@end
+
+# -----------------------------------------------------------------------------
+# wynn.small - Small wynn shape
+# -----------------------------------------------------------------------------
+@elem wynn.small
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,4]
+p2 = [2,8]
+p3 = C([2,5] [8,5])
+p4 = C([10,6] [8,8])
+close: false
+width: 1
+anchors: top=[2,4] base=[2,8]
+@end
+
+# -----------------------------------------------------------------------------
+# ou.cap - Capital OU ligature shape
+# For Ȣ (Latin Capital Letter OU)
+# -----------------------------------------------------------------------------
+@elem ou.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6
+p1 = [6,0]
+p2 = C([0,0] [0,4])
+p3 = C([0,8] [6,8])
+p4 = C([12,8] [12,4])
+p5 = C([12,0] [6,0])
+p6 = [6,4]
+close: true
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# glottal.cap - Capital glottal stop shape
+# For Ɂ (Latin Capital Letter Glottal Stop)
+# -----------------------------------------------------------------------------
+@elem glottal.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [2,0]
+p2 = C([10,0] [10,3])
+p3 = [6,4]
+p4 = [6,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# glottal.small - Small glottal stop shape
+# -----------------------------------------------------------------------------
+@elem glottal.small
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,4]
+p2 = C([10,4] [10,5])
+p3 = [6,6]
+p4 = [6,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# click.dental - Dental click shape (|)
+# For ǀ (Latin Letter Dental Click)
+# -----------------------------------------------------------------------------
+@elem click.dental
+zone: cap
+path: p1 p2
+p1 = [6,0]
+p2 = [6,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# click.lateral - Lateral click shape (||)
+# For ǁ (Latin Letter Lateral Click)
+# -----------------------------------------------------------------------------
+@elem click.lateral
+zone: cap
+path: p1 p2
+p1 = [4,0]
+p2 = [4,8]
+close: false
+width: 1
+anchors: top=[4,0] base=[4,8]
+@end
+
+# -----------------------------------------------------------------------------
+# click.alveolar - Alveolar click shape (≠ like)
+# For ǂ (Latin Letter Alveolar Click)
+# -----------------------------------------------------------------------------
+@elem click.alveolar
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [2,2]
+p2 = [10,2]
+p3 = [6,0]
+p4 = [6,8]
+p5 = [2,6]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# click.retroflex - Retroflex click shape (!)
+# For ǃ (Latin Letter Retroflex Click)
+# -----------------------------------------------------------------------------
+@elem click.retroflex
+zone: cap
+path: p1 p2 p3 p4
+p1 = [6,0]
+p2 = [6,6]
+p3 = [6,7]
+p4 = [6,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+# =============================================================================
+# CHARACTERS U+0180-018F
+# =============================================================================
+
+# ƀ - Latin Small Letter B with Stroke
+ƀ  LATIN-SMALL-B-STROKE = OVR(b, stroke.horiz) cp:U+0180 script:Latn
+
+# Ɓ - Latin Capital Letter B with Hook
+Ɓ  LATIN-CAPITAL-B-HOOK = FRAME(hook.top.cap, B) cp:U+0181 script:Latn
+
+# Ƃ - Latin Capital Letter B with Topbar
+Ƃ  LATIN-CAPITAL-B-TOPBAR = FRAME(topbar, B) cp:U+0182 script:Latn
+
+# ƃ - Latin Small Letter B with Topbar
+ƃ  LATIN-SMALL-B-TOPBAR = FRAME(topbar.small, b) cp:U+0183 script:Latn
+
+# Ƅ - Latin Capital Letter Tone Six
+Ƅ  LATIN-CAPITAL-TONE-SIX = FRAME(bowl.cap, stem.l) cp:U+0184 script:Latn
+
+# ƅ - Latin Small Letter Tone Six
+ƅ  LATIN-SMALL-TONE-SIX = FRAME(bowl.full, stem) cp:U+0185 script:Latn
+
+# Ɔ - Latin Capital Letter Open O
+Ɔ  LATIN-CAPITAL-OPEN-O = open.o.cap cp:U+0186 script:Latn
+
+# Ƈ - Latin Capital Letter C with Hook
+Ƈ  LATIN-CAPITAL-C-HOOK = FRAME(hook.top.cap, C) cp:U+0187 script:Latn
+
+# ƈ - Latin Small Letter C with Hook
+ƈ  LATIN-SMALL-C-HOOK = FRAME(hook.top, c) cp:U+0188 script:Latn
+
+# Ɖ - Latin Capital Letter African D
+Ɖ  LATIN-CAPITAL-AFRICAN-D = OVR(D, stroke.horiz) cp:U+0189 script:Latn
+
+# Ɗ - Latin Capital Letter D with Hook
+Ɗ  LATIN-CAPITAL-D-HOOK = FRAME(hook.top.cap, D) cp:U+018A script:Latn
+
+# Ƌ - Latin Capital Letter D with Topbar
+Ƌ  LATIN-CAPITAL-D-TOPBAR = FRAME(topbar, D) cp:U+018B script:Latn
+
+# ƌ - Latin Small Letter D with Topbar
+ƌ  LATIN-SMALL-D-TOPBAR = FRAME(topbar.small, d) cp:U+018C script:Latn
+
+# ƍ - Latin Small Letter Turned Delta
+# This is a phonetic symbol, delta shape rotated 180 degrees
+ƍ  LATIN-SMALL-TURNED-DELTA = sc(apex.x, sx=10, sy=10) cp:U+018D script:Latn
+
+# Ǝ - Latin Capital Letter Reversed E
+Ǝ  LATIN-CAPITAL-REVERSED-E = sc(E, sx=-12, sy=12) cp:U+018E script:Latn
+
+# Ə - Latin Capital Letter Schwa
+Ə  LATIN-CAPITAL-SCHWA = schwa.cap cp:U+018F script:Latn
+
+# =============================================================================
+# CHARACTERS U+0190-019F
+# =============================================================================
+
+# Ɛ - Latin Capital Letter Open E
+Ɛ  LATIN-CAPITAL-OPEN-E = open.e.cap cp:U+0190 script:Latn
+
+# Ƒ - Latin Capital Letter F with Hook
+Ƒ  LATIN-CAPITAL-F-HOOK = FRAME(F, hook.bot) cp:U+0191 script:Latn
+
+# ƒ - Latin Small Letter F with Hook (florin)
+ƒ  LATIN-SMALL-F-HOOK = FRAME(f, hook.bot) cp:U+0192 script:Latn
+
+# Ɠ - Latin Capital Letter G with Hook
+Ɠ  LATIN-CAPITAL-G-HOOK = FRAME(hook.top.cap, G) cp:U+0193 script:Latn
+
+# Ɣ - Latin Capital Letter Gamma
+Ɣ  LATIN-CAPITAL-GAMMA = gamma.cap cp:U+0194 script:Latn
+
+# ƕ - Latin Small Letter HV (hwair)
+ƕ  LATIN-SMALL-HV = LR(h, v, 6/6) cp:U+0195 script:Latn
+
+# Ɩ - Latin Capital Letter Iota
+Ɩ  LATIN-CAPITAL-IOTA = iota.cap cp:U+0196 script:Latn
+
+# Ɨ - Latin Capital Letter I with Stroke
+Ɨ  LATIN-CAPITAL-I-STROKE = OVR(I, stroke.horiz) cp:U+0197 script:Latn
+
+# Ƙ - Latin Capital Letter K with Hook
+Ƙ  LATIN-CAPITAL-K-HOOK = FRAME(hook.top.cap, K) cp:U+0198 script:Latn
+
+# ƙ - Latin Small Letter K with Hook
+ƙ  LATIN-SMALL-K-HOOK = FRAME(hook.top, k) cp:U+0199 script:Latn
+
+# ƚ - Latin Small Letter L with Bar
+ƚ  LATIN-SMALL-L-BAR = OVR(l, stroke.horiz) cp:U+019A script:Latn
+
+# ƛ - Latin Small Letter Lambda with Stroke
+ƛ  LATIN-SMALL-LAMBDA-STROKE = OVR(apex.x, stroke.diag) cp:U+019B script:Latn
+
+# Ɯ - Latin Capital Letter Turned M
+Ɯ  LATIN-CAPITAL-TURNED-M = sc(M, sx=12, sy=-12) cp:U+019C script:Latn
+
+# Ɲ - Latin Capital Letter N with Left Hook
+Ɲ  LATIN-CAPITAL-N-LEFT-HOOK = FRAME(hook.top.cap, N) cp:U+019D script:Latn
+
+# ƞ - Latin Small Letter N with Long Right Leg
+ƞ  LATIN-SMALL-N-LONG-RIGHT-LEG = FRAME(n, descender.r) cp:U+019E script:Latn
+
+# Ɵ - Latin Capital Letter O with Middle Tilde
+Ɵ  LATIN-CAPITAL-O-MIDDLE-TILDE = OVR(O, stroke.horiz) cp:U+019F script:Latn
+
+# =============================================================================
+# CHARACTERS U+01A0-01AF
+# =============================================================================
+
+# Ơ - Latin Capital Letter O with Horn
+Ơ  LATIN-CAPITAL-O-HORN = DIA(O, horn, attach:top-right) cp:U+01A0 script:Latn ortho:Vie
+
+# ơ - Latin Small Letter O with Horn
+ơ  LATIN-SMALL-O-HORN = DIA(o, horn, attach:top-right) cp:U+01A1 script:Latn ortho:Vie
+
+# Ƣ - Latin Capital Letter OI
+Ƣ  LATIN-CAPITAL-OI = ou.cap cp:U+01A2 script:Latn
+
+# ƣ - Latin Small Letter OI
+ƣ  LATIN-SMALL-OI = FRAME(bowl.full, stem) cp:U+01A3 script:Latn
+
+# Ƥ - Latin Capital Letter P with Hook
+Ƥ  LATIN-CAPITAL-P-HOOK = FRAME(hook.top.cap, P) cp:U+01A4 script:Latn
+
+# ƥ - Latin Small Letter P with Hook
+ƥ  LATIN-SMALL-P-HOOK = FRAME(hook.top, p) cp:U+01A5 script:Latn
+
+# Ʀ - Latin Letter Yr
+Ʀ  LATIN-LETTER-YR = FRAME(R, descender) cp:U+01A6 script:Latn
+
+# Ƨ - Latin Capital Letter Tone Two
+Ƨ  LATIN-CAPITAL-TONE-TWO = sc(S, sx=-12, sy=12) cp:U+01A7 script:Latn
+
+# ƨ - Latin Small Letter Tone Two
+ƨ  LATIN-SMALL-TONE-TWO = sc(s, sx=-12, sy=12) cp:U+01A8 script:Latn
+
+# Ʃ - Latin Capital Letter Esh
+Ʃ  LATIN-CAPITAL-ESH = esh.cap cp:U+01A9 script:Latn
+
+# ƪ - Latin Letter Reversed Esh Loop
+ƪ  LATIN-LETTER-REVERSED-ESH-LOOP = sc(esh.small, sx=-12, sy=12) cp:U+01AA script:Latn
+
+# ƫ - Latin Small Letter T with Palatal Hook
+ƫ  LATIN-SMALL-T-PALATAL-HOOK = FRAME(t, hook.bot) cp:U+01AB script:Latn
+
+# Ƭ - Latin Capital Letter T with Hook
+Ƭ  LATIN-CAPITAL-T-HOOK = FRAME(hook.top.cap, T) cp:U+01AC script:Latn
+
+# ƭ - Latin Small Letter T with Hook
+ƭ  LATIN-SMALL-T-HOOK = FRAME(hook.top, t) cp:U+01AD script:Latn
+
+# Ʈ - Latin Capital Letter T with Retroflex Hook
+Ʈ  LATIN-CAPITAL-T-RETROFLEX-HOOK = FRAME(T, hook.bot) cp:U+01AE script:Latn
+
+# Ư - Latin Capital Letter U with Horn
+Ư  LATIN-CAPITAL-U-HORN = DIA(U, horn, attach:top-right) cp:U+01AF script:Latn ortho:Vie
+
+# =============================================================================
+# CHARACTERS U+01B0-01BF
+# =============================================================================
+
+# ư - Latin Small Letter U with Horn
+ư  LATIN-SMALL-U-HORN = DIA(u, horn, attach:top-right) cp:U+01B0 script:Latn ortho:Vie
+
+# Ʊ - Latin Capital Letter Upsilon
+Ʊ  LATIN-CAPITAL-UPSILON = upsilon.cap cp:U+01B1 script:Latn
+
+# Ʋ - Latin Capital Letter V with Hook
+Ʋ  LATIN-CAPITAL-V-HOOK = FRAME(V, hook.bot) cp:U+01B2 script:Latn
+
+# Ƴ - Latin Capital Letter Y with Hook
+Ƴ  LATIN-CAPITAL-Y-HOOK = FRAME(Y, hook.bot) cp:U+01B3 script:Latn
+
+# ƴ - Latin Small Letter Y with Hook
+ƴ  LATIN-SMALL-Y-HOOK = FRAME(y, hook.bot.right) cp:U+01B4 script:Latn
+
+# Ƶ - Latin Capital Letter Z with Stroke
+Ƶ  LATIN-CAPITAL-Z-STROKE = OVR(Z, stroke.horiz) cp:U+01B5 script:Latn
+
+# ƶ - Latin Small Letter Z with Stroke
+ƶ  LATIN-SMALL-Z-STROKE = OVR(z, stroke.horiz) cp:U+01B6 script:Latn
+
+# Ʒ - Latin Capital Letter Ezh
+Ʒ  LATIN-CAPITAL-EZH = ezh.cap cp:U+01B7 script:Latn
+
+# Ƹ - Latin Capital Letter Ezh Reversed
+Ƹ  LATIN-CAPITAL-EZH-REVERSED = sc(ezh.cap, sx=-12, sy=12) cp:U+01B8 script:Latn
+
+# ƹ - Latin Small Letter Ezh Reversed
+ƹ  LATIN-SMALL-EZH-REVERSED = sc(ezh.small, sx=-12, sy=12) cp:U+01B9 script:Latn
+
+# ƺ - Latin Small Letter Ezh with Tail
+ƺ  LATIN-SMALL-EZH-TAIL = FRAME(ezh.small, tail) cp:U+01BA script:Latn
+
+# ƻ - Latin Letter Two with Stroke
+ƻ  LATIN-LETTER-TWO-STROKE = OVR(ezh.cap, stroke.horiz) cp:U+01BB script:Latn
+
+# Ƽ - Latin Capital Letter Tone Five
+Ƽ  LATIN-CAPITAL-TONE-FIVE = FRAME(stem.l, diagonal, arc.bot.cap) cp:U+01BC script:Latn
+
+# ƽ - Latin Small Letter Tone Five
+ƽ  LATIN-SMALL-TONE-FIVE = FRAME(stem, diagonal.x, arc.bot) cp:U+01BD script:Latn
+
+# ƾ - Latin Letter Inverted Glottal Stop with Stroke
+ƾ  LATIN-LETTER-INV-GLOTTAL-STROKE = OVR(glottal.small, stroke.horiz) cp:U+01BE script:Latn
+
+# ƿ - Latin Letter Wynn
+ƿ  LATIN-LETTER-WYNN = wynn.small cp:U+01BF script:Latn
+
+# =============================================================================
+# CHARACTERS U+01C0-01CF (Click consonants and Caron letters)
+# =============================================================================
+
+# ǀ - Latin Letter Dental Click
+ǀ  LATIN-LETTER-DENTAL-CLICK = click.dental cp:U+01C0 script:Latn
+
+# ǁ - Latin Letter Lateral Click
+ǁ  LATIN-LETTER-LATERAL-CLICK = LR(click.dental, click.dental, 6/6) cp:U+01C1 script:Latn
+
+# ǂ - Latin Letter Alveolar Click
+ǂ  LATIN-LETTER-ALVEOLAR-CLICK = click.alveolar cp:U+01C2 script:Latn
+
+# ǃ - Latin Letter Retroflex Click
+ǃ  LATIN-LETTER-RETROFLEX-CLICK = click.retroflex cp:U+01C3 script:Latn
+
+# Ǆ - Latin Capital Letter DZ with Caron
+Ǆ  LATIN-CAPITAL-DZ-CARON = LR(D, DIA(Z, caron), 6/6) cp:U+01C4 script:Latn ortho:Hrv,Slv
+
+# ǅ - Latin Capital Letter D with Small Letter Z with Caron
+ǅ  LATIN-CAPITAL-D-SMALL-Z-CARON = LR(D, DIA(z, caron), 7/5) cp:U+01C5 script:Latn ortho:Hrv,Slv
+
+# ǆ - Latin Small Letter DZ with Caron
+ǆ  LATIN-SMALL-DZ-CARON = LR(d, DIA(z, caron), 6/6) cp:U+01C6 script:Latn ortho:Hrv,Slv
+
+# Ǉ - Latin Capital Letter LJ
+Ǉ  LATIN-CAPITAL-LJ = LR(L, J, 6/6) cp:U+01C7 script:Latn ortho:Hrv,Slv
+
+# ǈ - Latin Capital Letter L with Small Letter J
+ǈ  LATIN-CAPITAL-L-SMALL-J = LR(L, j, 7/5) cp:U+01C8 script:Latn ortho:Hrv,Slv
+
+# ǉ - Latin Small Letter LJ
+ǉ  LATIN-SMALL-LJ = LR(l, j, 6/6) cp:U+01C9 script:Latn ortho:Hrv,Slv
+
+# Ǌ - Latin Capital Letter NJ
+Ǌ  LATIN-CAPITAL-NJ = LR(N, J, 6/6) cp:U+01CA script:Latn ortho:Hrv,Slv
+
+# ǋ - Latin Capital Letter N with Small Letter J
+ǋ  LATIN-CAPITAL-N-SMALL-J = LR(N, j, 7/5) cp:U+01CB script:Latn ortho:Hrv,Slv
+
+# ǌ - Latin Small Letter NJ
+ǌ  LATIN-SMALL-NJ = LR(n, j, 6/6) cp:U+01CC script:Latn ortho:Hrv,Slv
+
+# Ǎ - Latin Capital Letter A with Caron
+Ǎ  LATIN-CAPITAL-A-CARON = DIA(A, caron) cp:U+01CD script:Latn ortho:Pin
+
+# ǎ - Latin Small Letter A with Caron
+ǎ  LATIN-SMALL-A-CARON = DIA(a, caron) cp:U+01CE script:Latn ortho:Pin
+
+# Ǐ - Latin Capital Letter I with Caron
+Ǐ  LATIN-CAPITAL-I-CARON = DIA(I, caron) cp:U+01CF script:Latn ortho:Pin
+
+# =============================================================================
+# CHARACTERS U+01D0-01DF (Pinyin vowels and diaeresis combinations)
+# =============================================================================
+
+# ǐ - Latin Small Letter I with Caron
+ǐ  LATIN-SMALL-I-CARON = DIA(i, caron) cp:U+01D0 script:Latn ortho:Pin
+
+# Ǒ - Latin Capital Letter O with Caron
+Ǒ  LATIN-CAPITAL-O-CARON = DIA(O, caron) cp:U+01D1 script:Latn ortho:Pin
+
+# ǒ - Latin Small Letter O with Caron
+ǒ  LATIN-SMALL-O-CARON = DIA(o, caron) cp:U+01D2 script:Latn ortho:Pin
+
+# Ǔ - Latin Capital Letter U with Caron
+Ǔ  LATIN-CAPITAL-U-CARON = DIA(U, caron) cp:U+01D3 script:Latn ortho:Pin
+
+# ǔ - Latin Small Letter U with Caron
+ǔ  LATIN-SMALL-U-CARON = DIA(u, caron) cp:U+01D4 script:Latn ortho:Pin
+
+# Ǖ - Latin Capital Letter U with Diaeresis and Macron
+Ǖ  LATIN-CAPITAL-U-DIAERESIS-MACRON = DIA2(U, diaeresis, macron) cp:U+01D5 script:Latn ortho:Pin
+
+# ǖ - Latin Small Letter U with Diaeresis and Macron
+ǖ  LATIN-SMALL-U-DIAERESIS-MACRON = DIA2(u, diaeresis, macron) cp:U+01D6 script:Latn ortho:Pin
+
+# Ǘ - Latin Capital Letter U with Diaeresis and Acute
+Ǘ  LATIN-CAPITAL-U-DIAERESIS-ACUTE = DIA2(U, diaeresis, acute) cp:U+01D7 script:Latn ortho:Pin
+
+# ǘ - Latin Small Letter U with Diaeresis and Acute
+ǘ  LATIN-SMALL-U-DIAERESIS-ACUTE = DIA2(u, diaeresis, acute) cp:U+01D8 script:Latn ortho:Pin
+
+# Ǚ - Latin Capital Letter U with Diaeresis and Caron
+Ǚ  LATIN-CAPITAL-U-DIAERESIS-CARON = DIA2(U, diaeresis, caron) cp:U+01D9 script:Latn ortho:Pin
+
+# ǚ - Latin Small Letter U with Diaeresis and Caron
+ǚ  LATIN-SMALL-U-DIAERESIS-CARON = DIA2(u, diaeresis, caron) cp:U+01DA script:Latn ortho:Pin
+
+# Ǜ - Latin Capital Letter U with Diaeresis and Grave
+Ǜ  LATIN-CAPITAL-U-DIAERESIS-GRAVE = DIA2(U, diaeresis, grave) cp:U+01DB script:Latn ortho:Pin
+
+# ǜ - Latin Small Letter U with Diaeresis and Grave
+ǜ  LATIN-SMALL-U-DIAERESIS-GRAVE = DIA2(u, diaeresis, grave) cp:U+01DC script:Latn ortho:Pin
+
+# ǝ - Latin Small Letter Turned E
+ǝ  LATIN-SMALL-TURNED-E = schwa.small cp:U+01DD script:Latn
+
+# Ǟ - Latin Capital Letter A with Diaeresis and Macron
+Ǟ  LATIN-CAPITAL-A-DIAERESIS-MACRON = DIA2(A, diaeresis, macron) cp:U+01DE script:Latn
+
+# ǟ - Latin Small Letter A with Diaeresis and Macron
+ǟ  LATIN-SMALL-A-DIAERESIS-MACRON = DIA2(a, diaeresis, macron) cp:U+01DF script:Latn
+
+# =============================================================================
+# CHARACTERS U+01E0-01EF (Dot above combinations, G/K with caron, Ogonek)
+# =============================================================================
+
+# Ǡ - Latin Capital Letter A with Dot Above and Macron
+Ǡ  LATIN-CAPITAL-A-DOT-ABOVE-MACRON = DIA2(A, dot-above, macron) cp:U+01E0 script:Latn
+
+# ǡ - Latin Small Letter A with Dot Above and Macron
+ǡ  LATIN-SMALL-A-DOT-ABOVE-MACRON = DIA2(a, dot-above, macron) cp:U+01E1 script:Latn
+
+# Ǣ - Latin Capital Letter AE with Macron
+Ǣ  LATIN-CAPITAL-AE-MACRON = DIA(LR(A, E, 6/6), macron) cp:U+01E2 script:Latn
+
+# ǣ - Latin Small Letter AE with Macron
+ǣ  LATIN-SMALL-AE-MACRON = DIA(LR(a, e, 6/6), macron) cp:U+01E3 script:Latn
+
+# Ǥ - Latin Capital Letter G with Stroke
+Ǥ  LATIN-CAPITAL-G-STROKE = OVR(G, stroke.horiz) cp:U+01E4 script:Latn
+
+# ǥ - Latin Small Letter G with Stroke
+ǥ  LATIN-SMALL-G-STROKE = OVR(g, stroke.horiz) cp:U+01E5 script:Latn
+
+# Ǧ - Latin Capital Letter G with Caron
+Ǧ  LATIN-CAPITAL-G-CARON = DIA(G, caron) cp:U+01E6 script:Latn
+
+# ǧ - Latin Small Letter G with Caron
+ǧ  LATIN-SMALL-G-CARON = DIA(g, caron) cp:U+01E7 script:Latn
+
+# Ǩ - Latin Capital Letter K with Caron
+Ǩ  LATIN-CAPITAL-K-CARON = DIA(K, caron) cp:U+01E8 script:Latn
+
+# ǩ - Latin Small Letter K with Caron
+ǩ  LATIN-SMALL-K-CARON = DIA(k, caron) cp:U+01E9 script:Latn
+
+# Ǫ - Latin Capital Letter O with Ogonek
+Ǫ  LATIN-CAPITAL-O-OGONEK = DIA(O, ogonek) cp:U+01EA script:Latn
+
+# ǫ - Latin Small Letter O with Ogonek
+ǫ  LATIN-SMALL-O-OGONEK = DIA(o, ogonek) cp:U+01EB script:Latn
+
+# Ǭ - Latin Capital Letter O with Ogonek and Macron
+Ǭ  LATIN-CAPITAL-O-OGONEK-MACRON = DIA2(O, ogonek, macron) cp:U+01EC script:Latn
+
+# ǭ - Latin Small Letter O with Ogonek and Macron
+ǭ  LATIN-SMALL-O-OGONEK-MACRON = DIA2(o, ogonek, macron) cp:U+01ED script:Latn
+
+# Ǯ - Latin Capital Letter Ezh with Caron
+Ǯ  LATIN-CAPITAL-EZH-CARON = DIA(Ʒ, caron) cp:U+01EE script:Latn
+
+# ǯ - Latin Small Letter Ezh with Caron
+ǯ  LATIN-SMALL-EZH-CARON = DIA(ezh.small, caron) cp:U+01EF script:Latn
+
+# =============================================================================
+# CHARACTERS U+01F0-01FF (J with caron, DZ, G/N with acute/grave, A-ring-acute)
+# =============================================================================
+
+# ǰ - Latin Small Letter J with Caron
+ǰ  LATIN-SMALL-J-CARON = DIA(j, caron) cp:U+01F0 script:Latn
+
+# Ǳ - Latin Capital Letter DZ
+Ǳ  LATIN-CAPITAL-DZ = LR(D, Z, 6/6) cp:U+01F1 script:Latn
+
+# ǲ - Latin Capital Letter D with Small Letter Z
+ǲ  LATIN-CAPITAL-D-SMALL-Z = LR(D, z, 7/5) cp:U+01F2 script:Latn
+
+# ǳ - Latin Small Letter DZ
+ǳ  LATIN-SMALL-DZ = LR(d, z, 6/6) cp:U+01F3 script:Latn
+
+# Ǵ - Latin Capital Letter G with Acute
+Ǵ  LATIN-CAPITAL-G-ACUTE = DIA(G, acute) cp:U+01F4 script:Latn
+
+# ǵ - Latin Small Letter G with Acute
+ǵ  LATIN-SMALL-G-ACUTE = DIA(g, acute) cp:U+01F5 script:Latn
+
+# Ƕ - Latin Capital Letter Hwair
+Ƕ  LATIN-CAPITAL-HWAIR = FRAME(H, descender) cp:U+01F6 script:Latn
+
+# Ƿ - Latin Capital Letter Wynn
+Ƿ  LATIN-CAPITAL-WYNN = wynn.cap cp:U+01F7 script:Latn
+
+# Ǹ - Latin Capital Letter N with Grave
+Ǹ  LATIN-CAPITAL-N-GRAVE = DIA(N, grave) cp:U+01F8 script:Latn
+
+# ǹ - Latin Small Letter N with Grave
+ǹ  LATIN-SMALL-N-GRAVE = DIA(n, grave) cp:U+01F9 script:Latn
+
+# Ǻ - Latin Capital Letter A with Ring Above and Acute
+Ǻ  LATIN-CAPITAL-A-RING-ACUTE = DIA2(A, ring, acute) cp:U+01FA script:Latn
+
+# ǻ - Latin Small Letter A with Ring Above and Acute
+ǻ  LATIN-SMALL-A-RING-ACUTE = DIA2(a, ring, acute) cp:U+01FB script:Latn
+
+# Ǽ - Latin Capital Letter AE with Acute
+Ǽ  LATIN-CAPITAL-AE-ACUTE = DIA(LR(A, E, 6/6), acute) cp:U+01FC script:Latn
+
+# ǽ - Latin Small Letter AE with Acute
+ǽ  LATIN-SMALL-AE-ACUTE = DIA(LR(a, e, 6/6), acute) cp:U+01FD script:Latn
+
+# Ǿ - Latin Capital Letter O with Stroke and Acute
+Ǿ  LATIN-CAPITAL-O-STROKE-ACUTE = DIA(Ø, acute) cp:U+01FE script:Latn
+
+# ǿ - Latin Small Letter O with Stroke and Acute
+ǿ  LATIN-SMALL-O-STROKE-ACUTE = DIA(ø, acute) cp:U+01FF script:Latn
+
+# =============================================================================
+# CHARACTERS U+0200-020F (Double grave and Inverted breve letters)
+# =============================================================================
+
+# Ȁ - Latin Capital Letter A with Double Grave
+Ȁ  LATIN-CAPITAL-A-DOUBLE-GRAVE = DIA(A, double-grave) cp:U+0200 script:Latn
+
+# ȁ - Latin Small Letter A with Double Grave
+ȁ  LATIN-SMALL-A-DOUBLE-GRAVE = DIA(a, double-grave) cp:U+0201 script:Latn
+
+# Ȃ - Latin Capital Letter A with Inverted Breve
+Ȃ  LATIN-CAPITAL-A-INVERTED-BREVE = DIA(A, inverted-breve) cp:U+0202 script:Latn
+
+# ȃ - Latin Small Letter A with Inverted Breve
+ȃ  LATIN-SMALL-A-INVERTED-BREVE = DIA(a, inverted-breve) cp:U+0203 script:Latn
+
+# Ȅ - Latin Capital Letter E with Double Grave
+Ȅ  LATIN-CAPITAL-E-DOUBLE-GRAVE = DIA(E, double-grave) cp:U+0204 script:Latn
+
+# ȅ - Latin Small Letter E with Double Grave
+ȅ  LATIN-SMALL-E-DOUBLE-GRAVE = DIA(e, double-grave) cp:U+0205 script:Latn
+
+# Ȇ - Latin Capital Letter E with Inverted Breve
+Ȇ  LATIN-CAPITAL-E-INVERTED-BREVE = DIA(E, inverted-breve) cp:U+0206 script:Latn
+
+# ȇ - Latin Small Letter E with Inverted Breve
+ȇ  LATIN-SMALL-E-INVERTED-BREVE = DIA(e, inverted-breve) cp:U+0207 script:Latn
+
+# Ȉ - Latin Capital Letter I with Double Grave
+Ȉ  LATIN-CAPITAL-I-DOUBLE-GRAVE = DIA(I, double-grave) cp:U+0208 script:Latn
+
+# ȉ - Latin Small Letter I with Double Grave
+ȉ  LATIN-SMALL-I-DOUBLE-GRAVE = DIA(i, double-grave) cp:U+0209 script:Latn
+
+# Ȋ - Latin Capital Letter I with Inverted Breve
+Ȋ  LATIN-CAPITAL-I-INVERTED-BREVE = DIA(I, inverted-breve) cp:U+020A script:Latn
+
+# ȋ - Latin Small Letter I with Inverted Breve
+ȋ  LATIN-SMALL-I-INVERTED-BREVE = DIA(i, inverted-breve) cp:U+020B script:Latn
+
+# Ȍ - Latin Capital Letter O with Double Grave
+Ȍ  LATIN-CAPITAL-O-DOUBLE-GRAVE = DIA(O, double-grave) cp:U+020C script:Latn
+
+# ȍ - Latin Small Letter O with Double Grave
+ȍ  LATIN-SMALL-O-DOUBLE-GRAVE = DIA(o, double-grave) cp:U+020D script:Latn
+
+# Ȏ - Latin Capital Letter O with Inverted Breve
+Ȏ  LATIN-CAPITAL-O-INVERTED-BREVE = DIA(O, inverted-breve) cp:U+020E script:Latn
+
+# ȏ - Latin Small Letter O with Inverted Breve
+ȏ  LATIN-SMALL-O-INVERTED-BREVE = DIA(o, inverted-breve) cp:U+020F script:Latn
+
+# =============================================================================
+# CHARACTERS U+0210-021F (R/U double grave/inverted breve, Romanian S/T)
+# =============================================================================
+
+# Ȑ - Latin Capital Letter R with Double Grave
+Ȑ  LATIN-CAPITAL-R-DOUBLE-GRAVE = DIA(R, double-grave) cp:U+0210 script:Latn
+
+# ȑ - Latin Small Letter R with Double Grave
+ȑ  LATIN-SMALL-R-DOUBLE-GRAVE = DIA(r, double-grave) cp:U+0211 script:Latn
+
+# Ȓ - Latin Capital Letter R with Inverted Breve
+Ȓ  LATIN-CAPITAL-R-INVERTED-BREVE = DIA(R, inverted-breve) cp:U+0212 script:Latn
+
+# ȓ - Latin Small Letter R with Inverted Breve
+ȓ  LATIN-SMALL-R-INVERTED-BREVE = DIA(r, inverted-breve) cp:U+0213 script:Latn
+
+# Ȕ - Latin Capital Letter U with Double Grave
+Ȕ  LATIN-CAPITAL-U-DOUBLE-GRAVE = DIA(U, double-grave) cp:U+0214 script:Latn
+
+# ȕ - Latin Small Letter U with Double Grave
+ȕ  LATIN-SMALL-U-DOUBLE-GRAVE = DIA(u, double-grave) cp:U+0215 script:Latn
+
+# Ȗ - Latin Capital Letter U with Inverted Breve
+Ȗ  LATIN-CAPITAL-U-INVERTED-BREVE = DIA(U, inverted-breve) cp:U+0216 script:Latn
+
+# ȗ - Latin Small Letter U with Inverted Breve
+ȗ  LATIN-SMALL-U-INVERTED-BREVE = DIA(u, inverted-breve) cp:U+0217 script:Latn
+
+# Ș - Latin Capital Letter S with Comma Below
+Ș  LATIN-CAPITAL-S-COMMA-BELOW = DIA(S, comma-below) cp:U+0218 script:Latn ortho:Ron
+
+# ș - Latin Small Letter S with Comma Below
+ș  LATIN-SMALL-S-COMMA-BELOW = DIA(s, comma-below) cp:U+0219 script:Latn ortho:Ron
+
+# Ț - Latin Capital Letter T with Comma Below
+Ț  LATIN-CAPITAL-T-COMMA-BELOW = DIA(T, comma-below) cp:U+021A script:Latn ortho:Ron
+
+# ț - Latin Small Letter T with Comma Below
+ț  LATIN-SMALL-T-COMMA-BELOW = DIA(t, comma-below) cp:U+021B script:Latn ortho:Ron
+
+# Ȝ - Latin Capital Letter Yogh
+Ȝ  LATIN-CAPITAL-YOGH = yogh.cap cp:U+021C script:Latn
+
+# ȝ - Latin Small Letter Yogh
+ȝ  LATIN-SMALL-YOGH = yogh.small cp:U+021D script:Latn
+
+# Ȟ - Latin Capital Letter H with Caron
+Ȟ  LATIN-CAPITAL-H-CARON = DIA(H, caron) cp:U+021E script:Latn
+
+# ȟ - Latin Small Letter H with Caron
+ȟ  LATIN-SMALL-H-CARON = DIA(h, caron) cp:U+021F script:Latn
+
+# =============================================================================
+# CHARACTERS U+0220-022F (N long leg, D curl, OU, Z hook, A/E dot/cedilla)
+# =============================================================================
+
+# Ƞ - Latin Capital Letter N with Long Right Leg
+Ƞ  LATIN-CAPITAL-N-LONG-RIGHT-LEG = FRAME(N, descender.r) cp:U+0220 script:Latn
+
+# ȡ - Latin Small Letter D with Curl
+ȡ  LATIN-SMALL-D-CURL = FRAME(d, hook.bot.right) cp:U+0221 script:Latn
+
+# Ȣ - Latin Capital Letter OU
+Ȣ  LATIN-CAPITAL-OU = ou.cap cp:U+0222 script:Latn
+
+# ȣ - Latin Small Letter OU
+ȣ  LATIN-SMALL-OU = FRAME(bowl.full, stem) cp:U+0223 script:Latn
+
+# Ȥ - Latin Capital Letter Z with Hook
+Ȥ  LATIN-CAPITAL-Z-HOOK = FRAME(Z, hook.bot) cp:U+0224 script:Latn
+
+# ȥ - Latin Small Letter Z with Hook
+ȥ  LATIN-SMALL-Z-HOOK = FRAME(z, hook.bot) cp:U+0225 script:Latn
+
+# Ȧ - Latin Capital Letter A with Dot Above
+Ȧ  LATIN-CAPITAL-A-DOT-ABOVE = DIA(A, dot-above) cp:U+0226 script:Latn
+
+# ȧ - Latin Small Letter A with Dot Above
+ȧ  LATIN-SMALL-A-DOT-ABOVE = DIA(a, dot-above) cp:U+0227 script:Latn
+
+# Ȩ - Latin Capital Letter E with Cedilla
+Ȩ  LATIN-CAPITAL-E-CEDILLA = DIA(E, cedilla) cp:U+0228 script:Latn
+
+# ȩ - Latin Small Letter E with Cedilla
+ȩ  LATIN-SMALL-E-CEDILLA = DIA(e, cedilla) cp:U+0229 script:Latn
+
+# Ȫ - Latin Capital Letter O with Diaeresis and Macron
+Ȫ  LATIN-CAPITAL-O-DIAERESIS-MACRON = DIA2(O, diaeresis, macron) cp:U+022A script:Latn
+
+# ȫ - Latin Small Letter O with Diaeresis and Macron
+ȫ  LATIN-SMALL-O-DIAERESIS-MACRON = DIA2(o, diaeresis, macron) cp:U+022B script:Latn
+
+# Ȭ - Latin Capital Letter O with Tilde and Macron
+Ȭ  LATIN-CAPITAL-O-TILDE-MACRON = DIA2(O, tilde, macron) cp:U+022C script:Latn
+
+# ȭ - Latin Small Letter O with Tilde and Macron
+ȭ  LATIN-SMALL-O-TILDE-MACRON = DIA2(o, tilde, macron) cp:U+022D script:Latn
+
+# Ȯ - Latin Capital Letter O with Dot Above
+Ȯ  LATIN-CAPITAL-O-DOT-ABOVE = DIA(O, dot-above) cp:U+022E script:Latn
+
+# ȯ - Latin Small Letter O with Dot Above
+ȯ  LATIN-SMALL-O-DOT-ABOVE = DIA(o, dot-above) cp:U+022F script:Latn
+
+# =============================================================================
+# CHARACTERS U+0230-023F (O dot macron, Y macron, curls, dotless j)
+# =============================================================================
+
+# Ȱ - Latin Capital Letter O with Dot Above and Macron
+Ȱ  LATIN-CAPITAL-O-DOT-ABOVE-MACRON = DIA2(O, dot-above, macron) cp:U+0230 script:Latn
+
+# ȱ - Latin Small Letter O with Dot Above and Macron
+ȱ  LATIN-SMALL-O-DOT-ABOVE-MACRON = DIA2(o, dot-above, macron) cp:U+0231 script:Latn
+
+# Ȳ - Latin Capital Letter Y with Macron
+Ȳ  LATIN-CAPITAL-Y-MACRON = DIA(Y, macron) cp:U+0232 script:Latn
+
+# ȳ - Latin Small Letter Y with Macron
+ȳ  LATIN-SMALL-Y-MACRON = DIA(y, macron) cp:U+0233 script:Latn
+
+# ȴ - Latin Small Letter L with Curl
+ȴ  LATIN-SMALL-L-CURL = FRAME(l, hook.bot.right) cp:U+0234 script:Latn
+
+# ȵ - Latin Small Letter N with Curl
+ȵ  LATIN-SMALL-N-CURL = FRAME(n, hook.bot.right) cp:U+0235 script:Latn
+
+# ȶ - Latin Small Letter T with Curl
+ȶ  LATIN-SMALL-T-CURL = FRAME(t, hook.bot.right) cp:U+0236 script:Latn
+
+# ȷ - Latin Small Letter Dotless J
+ȷ  LATIN-SMALL-DOTLESS-J = STACK(stem, hook.bot) cp:U+0237 script:Latn
+
+# ȸ - Latin Small Letter DB Digraph
+ȸ  LATIN-SMALL-DB-DIGRAPH = LR(d, b, 6/6) cp:U+0238 script:Latn
+
+# ȹ - Latin Small Letter QP Digraph
+ȹ  LATIN-SMALL-QP-DIGRAPH = LR(q, p, 6/6) cp:U+0239 script:Latn
+
+# Ⱥ - Latin Capital Letter A with Stroke
+Ⱥ  LATIN-CAPITAL-A-STROKE = OVR(A, stroke.horiz) cp:U+023A script:Latn
+
+# Ȼ - Latin Capital Letter C with Stroke
+Ȼ  LATIN-CAPITAL-C-STROKE = OVR(C, stroke.diag.cap) cp:U+023B script:Latn
+
+# ȼ - Latin Small Letter C with Stroke
+ȼ  LATIN-SMALL-C-STROKE = OVR(c, stroke.diag) cp:U+023C script:Latn
+
+# Ƚ - Latin Capital Letter L with Bar
+Ƚ  LATIN-CAPITAL-L-BAR = OVR(L, stroke.horiz) cp:U+023D script:Latn
+
+# Ⱦ - Latin Capital Letter T with Diagonal Stroke
+Ⱦ  LATIN-CAPITAL-T-DIAGONAL-STROKE = OVR(T, stroke.diag.cap) cp:U+023E script:Latn
+
+# ȿ - Latin Small Letter S with Swash Tail
+ȿ  LATIN-SMALL-S-SWASH-TAIL = FRAME(s, swash) cp:U+023F script:Latn
+
+# =============================================================================
+# CHARACTERS U+0240-024F (Z swash, glottal, strokes)
+# =============================================================================
+
+# ɀ - Latin Small Letter Z with Swash Tail
+ɀ  LATIN-SMALL-Z-SWASH-TAIL = FRAME(z, swash) cp:U+0240 script:Latn
+
+# Ɂ - Latin Capital Letter Glottal Stop
+Ɂ  LATIN-CAPITAL-GLOTTAL-STOP = glottal.cap cp:U+0241 script:Latn
+
+# ɂ - Latin Small Letter Glottal Stop
+ɂ  LATIN-SMALL-GLOTTAL-STOP = glottal.small cp:U+0242 script:Latn
+
+# Ƀ - Latin Capital Letter B with Stroke
+Ƀ  LATIN-CAPITAL-B-STROKE = OVR(B, stroke.horiz) cp:U+0243 script:Latn
+
+# Ʉ - Latin Capital Letter U Bar
+Ʉ  LATIN-CAPITAL-U-BAR = OVR(U, stroke.horiz) cp:U+0244 script:Latn
+
+# Ʌ - Latin Capital Letter Turned V
+Ʌ  LATIN-CAPITAL-TURNED-V = sc(V, sx=12, sy=-12) cp:U+0245 script:Latn
+
+# Ɇ - Latin Capital Letter E with Stroke
+Ɇ  LATIN-CAPITAL-E-STROKE = OVR(E, stroke.diag.cap) cp:U+0246 script:Latn
+
+# ɇ - Latin Small Letter E with Stroke
+ɇ  LATIN-SMALL-E-STROKE = OVR(e, stroke.diag) cp:U+0247 script:Latn
+
+# Ɉ - Latin Capital Letter J with Stroke
+Ɉ  LATIN-CAPITAL-J-STROKE = OVR(J, stroke.horiz) cp:U+0248 script:Latn
+
+# ɉ - Latin Small Letter J with Stroke
+ɉ  LATIN-SMALL-J-STROKE = OVR(j, stroke.horiz) cp:U+0249 script:Latn
+
+# Ɋ - Latin Capital Letter Small Q with Hook Tail
+Ɋ  LATIN-CAPITAL-Q-HOOK-TAIL = FRAME(Q, hook.bot.right) cp:U+024A script:Latn
+
+# ɋ - Latin Small Letter Q with Hook Tail
+ɋ  LATIN-SMALL-Q-HOOK-TAIL = FRAME(q, hook.bot.right) cp:U+024B script:Latn
+
+# Ɍ - Latin Capital Letter R with Stroke
+Ɍ  LATIN-CAPITAL-R-STROKE = OVR(R, stroke.horiz) cp:U+024C script:Latn
+
+# ɍ - Latin Small Letter R with Stroke
+ɍ  LATIN-SMALL-R-STROKE = OVR(r, stroke.horiz) cp:U+024D script:Latn
+
+# Ɏ - Latin Capital Letter Y with Stroke
+Ɏ  LATIN-CAPITAL-Y-STROKE = OVR(Y, stroke.horiz) cp:U+024E script:Latn
+
+# ɏ - Latin Small Letter Y with Stroke
+ɏ  LATIN-SMALL-Y-STROKE = OVR(y, stroke.horiz) cp:U+024F script:Latn
+
+# =============================================================================
+# CASE MAPPINGS
+# =============================================================================
+#
+# Standard uppercase/lowercase pairs within this block.
+# Note: Many African letters have lowercase forms in IPA Extensions (U+0250+),
+# not in Latin Extended-B. Those case pairs will be added when IPA Extensions
+# is implemented.
+#
+# =============================================================================
+
+# B variants (both forms in this block)
+@case Ƃ ƃ
+
+# C variants
+@case Ƈ ƈ
+@case Ȼ ȼ
+
+# D variants
+@case Ƌ ƌ
+
+# E variants (Ǝ->ǝ is in this block)
+@case Ǝ ǝ
+@case Ȅ ȅ
+@case Ȇ ȇ
+@case Ɇ ɇ
+
+# F variants
+@case Ƒ ƒ
+
+# G variants
+@case Ǥ ǥ
+@case Ǧ ǧ
+@case Ǵ ǵ
+
+# H variants
+@case Ƕ ƕ
+@case Ȟ ȟ
+
+# I variants
+@case Ǐ ǐ
+@case Ȉ ȉ
+@case Ȋ ȋ
+
+# J variants
+@case Ɉ ɉ
+
+# K variants
+@case Ƙ ƙ
+@case Ǩ ǩ
+
+# L variants
+@case Ƚ ƚ
+
+# N variants
+@case Ƞ ƞ
+@case Ǹ ǹ
+
+# O variants
+@case Ơ ơ
+@case Ǒ ǒ
+@case Ǫ ǫ
+@case Ǭ ǭ
+@case Ȍ ȍ
+@case Ȏ ȏ
+@case Ȫ ȫ
+@case Ȭ ȭ
+@case Ȯ ȯ
+@case Ȱ ȱ
+
+# P variants
+@case Ƥ ƥ
+
+# Q variants
+@case Ɋ ɋ
+
+# R variants
+@case Ȑ ȑ
+@case Ȓ ȓ
+@case Ɍ ɍ
+
+# S variants (Ʃ->ʃ is in IPA block)
+@case Ș ș
+
+# T variants
+@case Ƭ ƭ
+@case Ț ț
+
+# U variants
+@case Ư ư
+@case Ǔ ǔ
+@case Ǖ ǖ
+@case Ǘ ǘ
+@case Ǚ ǚ
+@case Ǜ ǜ
+@case Ȕ ȕ
+@case Ȗ ȗ
+
+# W variants
+@case Ƿ ƿ
+
+# Y variants
+@case Ƴ ƴ
+@case Ȳ ȳ
+@case Ɏ ɏ
+
+# Z variants
+@case Ƶ ƶ
+@case Ƹ ƹ
+@case Ǯ ǯ
+@case Ȥ ȥ
+
+# A variants with diacritics
+@case Ǎ ǎ
+@case Ǟ ǟ
+@case Ǡ ǡ
+@case Ǣ ǣ
+@case Ǻ ǻ
+@case Ȁ ȁ
+@case Ȃ ȃ
+@case Ȧ ȧ
+@case Ȩ ȩ
+
+# AE variants
+@case Ǽ ǽ
+
+# O-stroke variants
+@case Ǿ ǿ
+
+# Yogh
+@case Ȝ ȝ
+
+# OI/OU
+@case Ƣ ƣ
+@case Ȣ ȣ
+
+# Glottal stop
+@case Ɂ ɂ
+
+# DZ digraphs
+@case Ǆ ǆ
+@case Ǳ ǳ
+
+# LJ digraph
+@case Ǉ ǉ
+
+# NJ digraph
+@case Ǌ ǌ
+
+# =============================================================================
+# END OF LATIN EXTENDED-B CHARACTER LIBRARY
+# =============================================================================

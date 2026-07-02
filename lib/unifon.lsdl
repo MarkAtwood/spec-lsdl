@@ -1,0 +1,329 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Unifon Alphabet Library
+# =============================================================================
+#
+# This file defines the Unifon alphabet using elements designed to capture
+# its phonetic representation of English sounds.
+#
+# Unifon was created by John R. Malone in the 1950s as a phonemic orthography
+# for teaching English reading. Key features:
+#   - 40 letters representing the "40 most important sounds" of English
+#   - 24 consonants and 16 vowels
+#   - Most letters are standard Latin capitals
+#   - Some letters are modified Latin forms (barred, inverted, reversed, etc.)
+#   - Small letters are printed as small capitals
+#
+# UCSUR range: U+E740-U+E767 (Private Use Area)
+# ConScript Unicode Registry assignment
+#
+# Note: Uses script:Latn since Unifon is Latin-derived and has no ISO 15924 code.
+#
+# =============================================================================
+
+# =============================================================================
+# UNIFON-SPECIFIC ELEMENTS
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# unf.bar.vert - Vertical center bar (for barred O)
+# -----------------------------------------------------------------------------
+@elem unf.bar.vert
+zone: cap
+path: p1 p2
+p1 = [6,0]
+p2 = [6,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mid=[6,4]
+@end
+
+# -----------------------------------------------------------------------------
+# unf.bar.half.upper - Upper half horizontal bar (for half-barred O)
+# -----------------------------------------------------------------------------
+@elem unf.bar.half.upper
+zone: cap
+path: p1 p2
+p1 = [6,0]
+p2 = [12,0]
+close: false
+width: 1
+anchors: left=[6,0] right=[12,0]
+@end
+
+# -----------------------------------------------------------------------------
+# unf.bar.half.lower - Lower half horizontal bar (for half-barred O)
+# -----------------------------------------------------------------------------
+@elem unf.bar.half.lower
+zone: cap
+path: p1 p2
+p1 = [6,8]
+p2 = [12,8]
+close: false
+width: 1
+anchors: left=[6,8] right=[12,8]
+@end
+
+# -----------------------------------------------------------------------------
+# unf.bar.right - Right side bar on bowl (for BOY)
+# -----------------------------------------------------------------------------
+@elem unf.bar.right
+zone: cap
+path: p1 p2
+p1 = [12,2]
+p2 = [12,6]
+close: false
+width: 1
+anchors: top=[12,2] base=[12,6]
+@end
+
+# -----------------------------------------------------------------------------
+# unf.hook.eng - Eng-style descending hook (for KING)
+# -----------------------------------------------------------------------------
+@elem unf.hook.eng
+zone: descender
+path: p1 p2 p3
+p1 = [10,8]
+p2 = C([10,10] [8,10])
+p3 = [6,10]
+close: false
+width: 1
+anchors: attach=[10,8]
+@end
+
+# -----------------------------------------------------------------------------
+# unf.tail.esh - Esh descender tail (for SURE)
+# -----------------------------------------------------------------------------
+@elem unf.tail.esh
+zone: descender
+path: p1 p2 p3
+p1 = [6,8]
+p2 = C([6,10] [4,10])
+p3 = [2,10]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# unf.hook.ezh - Ezh hook (for AZURE)
+# -----------------------------------------------------------------------------
+@elem unf.hook.ezh
+zone: x-height
+path: p1 p2 p3
+p1 = [6,6]
+p2 = C([8,7] [8,8])
+p3 = [6,8]
+close: false
+width: 1
+anchors: attach=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# unf.arc.top.rev - Reversed top arc (opens right, for CHAIR)
+# -----------------------------------------------------------------------------
+@elem unf.arc.top.rev
+zone: cap
+path: p1 p2 p3
+p1 = [2,4]
+p2 = C([2,0] [6,0])
+p3 = [10,4]
+close: false
+width: 1
+anchors: left=[2,4] right=[10,4] top=[6,0]
+@end
+
+# -----------------------------------------------------------------------------
+# unf.arc.bot.rev - Reversed bottom arc (opens right, for CHAIR)
+# -----------------------------------------------------------------------------
+@elem unf.arc.bot.rev
+zone: cap
+path: p1 p2 p3
+p1 = [2,4]
+p2 = C([2,8] [6,8])
+p3 = [10,4]
+close: false
+width: 1
+anchors: left=[2,4] right=[10,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# unf.stem.rev - Right-positioned stem with left arms (for HE - reversed E)
+# -----------------------------------------------------------------------------
+@elem unf.stem.rev
+zone: cap
+path: p1 p2
+p1 = [10,0]
+p2 = [10,8]
+close: false
+width: 1
+anchors: top=[10,0] base=[10,8] mid=[10,4]
+@end
+
+# -----------------------------------------------------------------------------
+# unf.arm.top.rev - Left-extending top arm (for HE)
+# -----------------------------------------------------------------------------
+@elem unf.arm.top.rev
+zone: cap
+path: p1 p2
+p1 = [10,0]
+p2 = [2,0]
+close: false
+width: 1
+anchors: attach=[10,0] left=[2,0]
+@end
+
+# -----------------------------------------------------------------------------
+# unf.arm.mid.rev - Left-extending mid arm (for HE)
+# -----------------------------------------------------------------------------
+@elem unf.arm.mid.rev
+zone: cap
+path: p1 p2
+p1 = [10,4]
+p2 = [4,4]
+close: false
+width: 1
+anchors: attach=[10,4] left=[4,4]
+@end
+
+# -----------------------------------------------------------------------------
+# unf.arm.bot.rev - Left-extending bottom arm (for HE)
+# -----------------------------------------------------------------------------
+@elem unf.arm.bot.rev
+zone: cap
+path: p1 p2
+p1 = [10,8]
+p2 = [2,8]
+close: false
+width: 1
+anchors: attach=[10,8] left=[2,8]
+@end
+
+# =============================================================================
+# UNIFON LETTERS (40 characters)
+# =============================================================================
+
+# AT - Standard A for /ae/
+  UNIFON-LETTER-AT             = APEX(diagonal.l, diagonal.r, crossbar.cap) cp:U+E740 script:Latn
+
+# ATE - Barred A for /eI/
+  UNIFON-LETTER-ATE            = OVR(APEX(diagonal.l, diagonal.r, crossbar.cap), crossbar.cap) cp:U+E741 script:Latn
+
+# ALL - Inverted V for /O/
+  UNIFON-LETTER-ALL            = vertex.cap cp:U+E742 script:Latn
+
+# BOW - Standard B for /b/
+  UNIFON-LETTER-BOW            = LR(stem.l, STACK(bowl.r.upper.cap, bowl.r.lower.cap), 3/9) cp:U+E743 script:Latn
+
+# CHAIR - Reversed C for /tS/
+  UNIFON-LETTER-CHAIR          = STACK(unf.arc.top.rev, unf.arc.bot.rev) cp:U+E744 script:Latn
+
+# DIP - Standard D for /d/
+  UNIFON-LETTER-DIP            = LR(stem.l, bowl.r.cap, 3/9) cp:U+E745 script:Latn
+
+# HEN - Standard E for /E/
+  UNIFON-LETTER-HEN            = FRAME(stem.l, arm.top, arm.mid, arm.bot) cp:U+E746 script:Latn
+
+# HE - Reversed E for /i:/
+  UNIFON-LETTER-HE             = FRAME(unf.stem.rev, unf.arm.top.rev, unf.arm.mid.rev, unf.arm.bot.rev) cp:U+E747 script:Latn
+
+# HER - Schwa for /3:/
+  UNIFON-LETTER-HER            = bowl.cap cp:U+E748 script:Latn
+
+# FAST - Standard F for /f/
+  UNIFON-LETTER-FAST           = FRAME(stem.l, arm.top, arm.mid) cp:U+E749 script:Latn
+
+# GOAT - Standard G for /g/
+  UNIFON-LETTER-GOAT           = FRAME(arc.top.cap, arc.bot.cap, bar.mid) cp:U+E74A script:Latn
+
+# HAT - Standard H for /h/
+  UNIFON-LETTER-HAT            = FRAME(stem.l, crossbar.cap, stem.r) cp:U+E74B script:Latn
+
+# BIT - Small-cap I for /I/
+  UNIFON-LETTER-BIT            = stem.l cp:U+E74C script:Latn
+
+# BITE - Turned I for /aI/
+  UNIFON-LETTER-BITE           = FRAME(serif.top, stem.l, serif) cp:U+E74D script:Latn
+
+# JAW - Standard J for /dZ/
+  UNIFON-LETTER-JAW            = STACK(stem.r, hook.bot) cp:U+E74E script:Latn
+
+# KISS - Standard K for /k/
+  UNIFON-LETTER-KISS           = FRAME(stem.l, diagonal.l, leg.cap) cp:U+E74F script:Latn
+
+# LOW - Standard L for /l/
+  UNIFON-LETTER-LOW            = FRAME(stem.l, arm.bot) cp:U+E750 script:Latn
+
+# MUSIC - Standard M for /m/
+  UNIFON-LETTER-MUSIC          = FRAME(stem.l, apex, stem.r) cp:U+E751 script:Latn
+
+# NO - Standard N for /n/
+  UNIFON-LETTER-NO             = FRAME(stem.l, diagonal, stem.r) cp:U+E752 script:Latn
+
+# KING - Eng for /N/
+  UNIFON-LETTER-KING           = FRAME(stem.l, diagonal, stem.r, unf.hook.eng) cp:U+E753 script:Latn
+
+# LOT - Standard O for /A/
+  UNIFON-LETTER-LOT            = bowl.cap cp:U+E754 script:Latn
+
+# OLD - Barred O for /oU/
+  UNIFON-LETTER-OLD            = OVR(bowl.cap, unf.bar.vert) cp:U+E755 script:Latn
+
+# LOOK - Half-barred O for /U/
+  UNIFON-LETTER-LOOK           = OVR(bowl.cap, unf.bar.half.upper) cp:U+E756 script:Latn
+
+# OUT - Half-barred O for /aU/
+  UNIFON-LETTER-OUT            = OVR(bowl.cap, unf.bar.half.lower) cp:U+E757 script:Latn
+
+# BOY - Barred O variant for /OI/
+  UNIFON-LETTER-BOY            = OVR(bowl.cap, unf.bar.right) cp:U+E758 script:Latn
+
+# PIPE - Standard P for /p/
+  UNIFON-LETTER-PIPE           = LR(stem.l, bowl.r.upper.cap, 3/9) cp:U+E759 script:Latn
+
+# RUN - Standard R for /r/
+  UNIFON-LETTER-RUN            = FRAME(stem.l, bowl.r.upper.cap, leg.cap) cp:U+E75A script:Latn
+
+# CELL - Standard S for /s/
+  UNIFON-LETTER-CELL           = FRAME(arc.top.cap, spine.cap, arc.bot.cap) cp:U+E75B script:Latn
+
+# SURE - Esh for /S/
+  UNIFON-LETTER-SURE           = FRAME(stem, unf.tail.esh) cp:U+E75C script:Latn
+
+# TABLE - Standard T for /t/
+  UNIFON-LETTER-TABLE          = FRAME(bar.top, stem) cp:U+E75D script:Latn
+
+# THERE - Eth for /D/
+  UNIFON-LETTER-THERE          = OVR(LR(stem.l, bowl.r.cap, 3/9), stroke.horiz) cp:U+E75E script:Latn
+
+# THIRST - Theta for /T/
+  UNIFON-LETTER-THIRST         = OVR(bowl.cap, crossbar.cap) cp:U+E75F script:Latn
+
+# UP - Standard U for /V/
+  UNIFON-LETTER-UP             = FRAME(stem.l, arc.bot.cap, stem.r) cp:U+E760 script:Latn
+
+# DUE - Barred U for /u:/
+  UNIFON-LETTER-DUE            = OVR(FRAME(stem.l, arc.bot.cap, stem.r), crossbar.cap) cp:U+E761 script:Latn
+
+# YOU - Standard Y for /ju/
+  UNIFON-LETTER-YOU            = FRAME(diagonal.l, stem, diagonal) cp:U+E762 script:Latn
+
+# VEST - Standard V for /v/
+  UNIFON-LETTER-VEST           = vertex.cap cp:U+E763 script:Latn
+
+# WIG - Standard W for /w/
+  UNIFON-LETTER-WIG            = LR(vertex.cap, vertex.cap, 6/6) cp:U+E764 script:Latn
+
+# AZURE - Ezh for /Z/
+  UNIFON-LETTER-AZURE          = FRAME(bar.top, diagonal, unf.hook.ezh) cp:U+E765 script:Latn
+
+# YES - Standard Y for /j/
+  UNIFON-LETTER-YES            = FRAME(diagonal.l, stem, diagonal) cp:U+E766 script:Latn
+
+# ZEBRA - Standard Z for /z/
+  UNIFON-LETTER-ZEBRA          = FRAME(bar.top, diagonal, bar.bot.cap) cp:U+E767 script:Latn
+
+# =============================================================================
+# END OF UNIFON ALPHABET LIBRARY
+# =============================================================================

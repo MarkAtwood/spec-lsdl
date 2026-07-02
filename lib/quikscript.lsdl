@@ -1,0 +1,865 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Quikscript Alphabet Library (UCSUR U+E650-U+E67F)
+# =============================================================================
+#
+# Quikscript (also called the Read Alphabet or Second Shaw Alphabet) was
+# created by Kingsley Read in 1966 as a revision of the Shavian alphabet.
+# It contains 40 letters: 25 consonants (including clusters and special
+# consonants) and 15 vowels.
+#
+# Design principles:
+#   - Each letter is a single continuous stroke with curved forms
+#   - Tall letters (ascender zone): voiceless consonants
+#   - Deep letters (descender zone): voiced consonants (paired with voiceless)
+#   - Short letters (x-height zone): vowels, nasals, liquids, semivowels
+#   - Featural pairing: voiced/voiceless pairs share shape but differ in zone
+#   - Uses Latin-like vertical zones (ascender/x-height/descender)
+#
+# All characters tagged with:
+#   - script:Qaak (ISO 15924 script code for Quikscript)
+#   - cp: tags with UCSUR codepoints (U+E6xx)
+#
+# =============================================================================
+
+# =============================================================================
+# LOCAL ELEMENT DEFINITIONS
+# =============================================================================
+#
+# Quikscript letters are single-stroke curved designs. Each element defines
+# the characteristic shape of a letter, inspired by cursive Latin forms but
+# with novel curved constructions.
+#
+# Zone assignments:
+#   - ascender: tall letters (y=1 to y=8)
+#   - x-height: short letters (y=4 to y=8)
+#   - descender: deep letters (y=4 to y=10)
+#
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# TALL LETTERS (Voiceless Consonants) - Ascender Zone
+# -----------------------------------------------------------------------------
+
+# PEA /p/ - Curved hook from ascender descending to baseline
+@elem qk.pea
+zone: ascender
+path: p1 p2 p3 p4
+p1 = [3,1]
+p2 = C([7,1] [7,3])
+p3 = [7,5]
+p4 = [7,8]
+close: false
+width: 1
+anchors: top=[3,1] base=[7,8] mid=[7,4]
+  mark-above=[5,0] mark-below=[7,9]
+@end
+
+# TEA /t/ - Tall vertical with leftward curve at top
+@elem qk.tea
+zone: ascender
+path: p1 p2 p3 p4
+p1 = [5,1]
+p2 = C([3,1] [3,3])
+p3 = [3,5]
+p4 = [3,8]
+close: false
+width: 1
+anchors: top=[5,1] base=[3,8] mid=[3,4]
+  mark-above=[4,0] mark-below=[3,9]
+@end
+
+# KEY /k/ - Diagonal from top with curved descent
+@elem qk.key
+zone: ascender
+path: p1 p2 p3
+p1 = [3,1]
+p2 = C([5,3] [7,5])
+p3 = [7,8]
+close: false
+width: 1
+anchors: top=[3,1] base=[7,8] mid=[5,4]
+  mark-above=[3,0] mark-below=[7,9]
+@end
+
+# THAW /th/ - Tall curved form for voiceless dental fricative
+@elem qk.thaw
+zone: ascender
+path: p1 p2 p3
+p1 = [4,1]
+p2 = C([4,4] [6,5])
+p3 = [6,8]
+close: false
+width: 1
+anchors: top=[4,1] base=[6,8] mid=[5,4]
+  mark-above=[4,0] mark-below=[6,9]
+@end
+
+# FEE /f/ - S-curve starting from ascender
+@elem qk.fee
+zone: ascender
+path: p1 p2 p3 p4 p5
+p1 = [4,1]
+p2 = C([4,3] [7,3])
+p3 = [7,5]
+p4 = C([7,7] [4,7])
+p5 = [4,8]
+close: false
+width: 1
+anchors: top=[4,1] base=[4,8] mid=[5,4]
+  mark-above=[4,0] mark-below=[4,9]
+@end
+
+# SEE /s/ - Curved stroke from ascender with rightward hook
+@elem qk.see
+zone: ascender
+path: p1 p2 p3
+p1 = [4,1]
+p2 = C([7,1] [7,4])
+p3 = [7,8]
+close: false
+width: 1
+anchors: top=[4,1] base=[7,8] mid=[7,4]
+  mark-above=[5,0] mark-below=[7,9]
+@end
+
+# SHE /sh/ - Curved loop at top descending
+@elem qk.she
+zone: ascender
+path: p1 p2 p3 p4 p5
+p1 = [4,1]
+p2 = C([4,2] [7,2])
+p3 = [7,3]
+p4 = C([7,4] [5,5])
+p5 = [5,8]
+close: false
+width: 1
+anchors: top=[4,1] base=[5,8] mid=[5,4]
+  mark-above=[4,0] mark-below=[5,9]
+@end
+
+# CHEER /ch/ - Angular tall form with curve
+@elem qk.cheer
+zone: ascender
+path: p1 p2 p3 p4
+p1 = [4,1]
+p2 = [4,4]
+p3 = C([4,6] [7,6])
+p4 = [7,8]
+close: false
+width: 1
+anchors: top=[4,1] base=[7,8] mid=[4,4]
+  mark-above=[4,0] mark-below=[7,9]
+@end
+
+# HE /h/ - Tall form with curved entry (voiceless glottal)
+@elem qk.he
+zone: ascender
+path: p1 p2 p3
+p1 = [5,1]
+p2 = C([5,4] [4,6])
+p3 = [4,8]
+close: false
+width: 1
+anchors: top=[5,1] base=[4,8] mid=[4,4]
+  mark-above=[5,0] mark-below=[4,9]
+@end
+
+# OOLONG /ng/ - Tall form with bottom hook (velar nasal, exception: voiced but tall)
+@elem qk.oolong
+zone: ascender
+path: p1 p2 p3 p4
+p1 = [5,1]
+p2 = [5,6]
+p3 = C([5,8] [3,8])
+p4 = [3,7]
+close: false
+width: 1
+anchors: top=[5,1] base=[3,7] mid=[5,4]
+  mark-above=[5,0] mark-below=[4,9]
+@end
+
+# -----------------------------------------------------------------------------
+# DEEP LETTERS (Voiced Consonants) - Descender Zone
+# -----------------------------------------------------------------------------
+
+# BAY /b/ - Mirror of PEA, descending (voiced bilabial)
+@elem qk.bay
+zone: descender
+path: p1 p2 p3 p4
+p1 = [7,4]
+p2 = [7,7]
+p3 = C([7,9] [3,9])
+p4 = [3,10]
+close: false
+width: 1
+anchors: top=[7,4] base=[3,10] mid=[7,7]
+  mark-above=[7,3] mark-below=[5,11]
+@end
+
+# DAY /d/ - Mirror of TEA, descending (voiced alveolar)
+@elem qk.day
+zone: descender
+path: p1 p2 p3 p4
+p1 = [3,4]
+p2 = [3,7]
+p3 = C([3,9] [5,9])
+p4 = [5,10]
+close: false
+width: 1
+anchors: top=[3,4] base=[5,10] mid=[3,7]
+  mark-above=[3,3] mark-below=[4,11]
+@end
+
+# GAY /g/ - Diagonal descending with curve (voiced velar)
+@elem qk.gay
+zone: descender
+path: p1 p2 p3
+p1 = [7,4]
+p2 = C([5,6] [3,8])
+p3 = [3,10]
+close: false
+width: 1
+anchors: top=[7,4] base=[3,10] mid=[5,7]
+  mark-above=[7,3] mark-below=[3,11]
+@end
+
+# THEY /dh/ - Descending curve for voiced dental fricative
+@elem qk.they
+zone: descender
+path: p1 p2 p3
+p1 = [6,4]
+p2 = C([6,7] [4,8])
+p3 = [4,10]
+close: false
+width: 1
+anchors: top=[6,4] base=[4,10] mid=[5,7]
+  mark-above=[6,3] mark-below=[4,11]
+@end
+
+# VIE /v/ - Reversed S-curve descending (voiced labiodental)
+@elem qk.vie
+zone: descender
+path: p1 p2 p3 p4 p5
+p1 = [7,4]
+p2 = C([7,5] [4,5])
+p3 = [4,7]
+p4 = C([4,9] [7,9])
+p5 = [7,10]
+close: false
+width: 1
+anchors: top=[7,4] base=[7,10] mid=[5,7]
+  mark-above=[7,3] mark-below=[7,11]
+@end
+
+# ZOO /z/ - Deep curved form (voiced alveolar fricative)
+@elem qk.zoo
+zone: descender
+path: p1 p2 p3
+p1 = [4,4]
+p2 = C([4,7] [4,9])
+p3 = [4,10]
+close: false
+width: 1
+anchors: top=[4,4] base=[4,10] mid=[4,7]
+  mark-above=[4,3] mark-below=[4,11]
+@end
+
+# ZHIVAGO /zh/ - Curved descending form (voiced postalveolar)
+@elem qk.zhivago
+zone: descender
+path: p1 p2 p3 p4 p5
+p1 = [7,4]
+p2 = C([7,5] [4,5])
+p3 = [4,6]
+p4 = C([4,7] [5,8])
+p5 = [5,10]
+close: false
+width: 1
+anchors: top=[7,4] base=[5,10] mid=[5,7]
+  mark-above=[7,3] mark-below=[5,11]
+@end
+
+# JAY /dj/ - Angular descending stroke (voiced affricate)
+@elem qk.jay
+zone: descender
+path: p1 p2 p3 p4
+p1 = [7,4]
+p2 = [7,7]
+p3 = C([7,8] [4,8])
+p4 = [4,10]
+close: false
+width: 1
+anchors: top=[7,4] base=[4,10] mid=[7,7]
+  mark-above=[7,3] mark-below=[4,11]
+@end
+
+# WHY /hw/ - Deep form with bottom hook (voiceless labio-velar)
+@elem qk.why
+zone: descender
+path: p1 p2 p3 p4
+p1 = [5,4]
+p2 = [5,8]
+p3 = C([5,10] [7,10])
+p4 = [7,9]
+close: false
+width: 1
+anchors: top=[5,4] base=[7,9] mid=[5,7]
+  mark-above=[5,3] mark-below=[6,11]
+@end
+
+# -----------------------------------------------------------------------------
+# SHORT LETTERS (Semivowels) - X-height Zone
+# -----------------------------------------------------------------------------
+
+# YE /j/ - Short curved form (palatal approximant)
+@elem qk.ye
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = C([4,6] [6,7])
+p3 = [6,8]
+close: false
+width: 1
+anchors: top=[4,4] base=[6,8] mid=[5,6]
+  mark-above=[4,3] mark-below=[6,9]
+@end
+
+# WAY /w/ - Short curved form (labio-velar approximant)
+@elem qk.way
+zone: x-height
+path: p1 p2 p3
+p1 = [7,4]
+p2 = C([7,6] [5,7])
+p3 = [5,8]
+close: false
+width: 1
+anchors: top=[7,4] base=[5,8] mid=[6,6]
+  mark-above=[7,3] mark-below=[5,9]
+@end
+
+# -----------------------------------------------------------------------------
+# SHORT LETTERS (Nasals and Liquids) - X-height Zone
+# -----------------------------------------------------------------------------
+
+# MAY /m/ - Symmetric curved form (bilabial nasal)
+@elem qk.may
+zone: x-height
+path: p1 p2 p3
+p1 = [7,4]
+p2 = C([7,6] [4,6])
+p3 = [4,8]
+close: false
+width: 1
+anchors: top=[7,4] base=[4,8] mid=[5,6]
+  mark-above=[7,3] mark-below=[4,9]
+@end
+
+# NO /n/ - Short curved stroke (alveolar nasal)
+@elem qk.no
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = C([4,6] [7,6])
+p3 = [7,8]
+close: false
+width: 1
+anchors: top=[4,4] base=[7,8] mid=[5,6]
+  mark-above=[4,3] mark-below=[7,9]
+@end
+
+# LOW /l/ - Curved form at x-height (lateral approximant)
+@elem qk.low
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = C([6,5] [7,6])
+p3 = [7,8]
+close: false
+width: 1
+anchors: top=[4,4] base=[7,8] mid=[5,6]
+  mark-above=[4,3] mark-below=[7,9]
+@end
+
+# ROE /r/ - Short curved stroke (alveolar approximant)
+@elem qk.roe
+zone: x-height
+path: p1 p2 p3
+p1 = [7,4]
+p2 = C([5,5] [4,6])
+p3 = [4,8]
+close: false
+width: 1
+anchors: top=[7,4] base=[4,8] mid=[5,6]
+  mark-above=[7,3] mark-below=[4,9]
+@end
+
+# -----------------------------------------------------------------------------
+# SHORT LETTERS (Special Consonants) - X-height Zone
+# -----------------------------------------------------------------------------
+
+# LOCH /x/ - Voiceless velar fricative (Scottish)
+@elem qk.loch
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [4,4]
+p2 = [4,6]
+p3 = C([4,8] [6,8])
+p4 = [7,7]
+close: false
+width: 1
+anchors: top=[4,4] base=[7,7] mid=[5,6]
+  mark-above=[4,3] mark-below=[5,9]
+@end
+
+# LLAN /lh/ - Voiceless lateral fricative (Welsh)
+@elem qk.llan
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [7,4]
+p2 = [7,6]
+p3 = C([7,8] [5,8])
+p4 = [4,7]
+close: false
+width: 1
+anchors: top=[7,4] base=[4,7] mid=[6,6]
+  mark-above=[7,3] mark-below=[5,9]
+@end
+
+# EXCITE /ks/ - Cluster letter
+@elem qk.excite
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [3,4]
+p2 = [5,6]
+p3 = [7,4]
+p4 = [5,8]
+close: false
+width: 1
+anchors: top=[3,4] base=[5,8] mid=[5,6]
+  mark-above=[5,3] mark-below=[5,9]
+@end
+
+# EXAM /gz/ - Cluster letter
+@elem qk.exam
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [7,4]
+p2 = [5,6]
+p3 = [3,4]
+p4 = [5,8]
+close: false
+width: 1
+anchors: top=[7,4] base=[5,8] mid=[5,6]
+  mark-above=[5,3] mark-below=[5,9]
+@end
+
+# -----------------------------------------------------------------------------
+# SHORT LETTERS (Vowels) - X-height Zone
+# -----------------------------------------------------------------------------
+
+# IT /i/ - Short i vowel
+@elem qk.it
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = C([4,6] [5,7])
+p3 = [5,8]
+close: false
+width: 1
+anchors: top=[4,4] base=[5,8] mid=[4,6]
+  mark-above=[4,3] mark-below=[5,9]
+@end
+
+# EAT /ee/ - Long i vowel
+@elem qk.eat
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = C([4,6] [6,8])
+p3 = [7,8]
+close: false
+width: 1
+anchors: top=[4,4] base=[7,8] mid=[5,6]
+  mark-above=[4,3] mark-below=[7,9]
+@end
+
+# ET /e/ - Short e vowel
+@elem qk.et
+zone: x-height
+path: p1 p2 p3
+p1 = [7,4]
+p2 = C([7,6] [6,7])
+p3 = [6,8]
+close: false
+width: 1
+anchors: top=[7,4] base=[6,8] mid=[6,6]
+  mark-above=[7,3] mark-below=[6,9]
+@end
+
+# EIGHT /ei/ - Diphthong
+@elem qk.eight
+zone: x-height
+path: p1 p2 p3
+p1 = [7,4]
+p2 = C([7,6] [5,8])
+p3 = [4,8]
+close: false
+width: 1
+anchors: top=[7,4] base=[4,8] mid=[5,6]
+  mark-above=[7,3] mark-below=[4,9]
+@end
+
+# AT /ae/ - Short a vowel
+@elem qk.at
+zone: x-height
+path: p1 p2 p3
+p1 = [3,4]
+p2 = [5,6]
+p3 = [7,4]
+close: false
+width: 1
+anchors: top=[3,4] base=[5,6] mid=[5,5]
+  mark-above=[5,3] mark-below=[5,9]
+@end
+
+# I /ai/ - Long i diphthong
+@elem qk.i
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = [5,8]
+p3 = [7,4]
+close: false
+width: 1
+anchors: top=[4,4] base=[5,8] mid=[5,6]
+  mark-above=[5,3] mark-below=[5,9]
+@end
+
+# AH /a/ - Open a vowel
+@elem qk.ah
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = [5,8]
+p3 = [7,4]
+close: false
+width: 1
+anchors: top=[4,4] base=[5,8] mid=[5,6]
+  mark-above=[5,3] mark-below=[5,9]
+@end
+
+# AWE /aw/ - Open o vowel
+@elem qk.awe
+zone: x-height
+path: p1 p2 p3
+p1 = [7,4]
+p2 = [7,8]
+p3 = [4,8]
+close: false
+width: 1
+anchors: top=[7,4] base=[4,8] mid=[7,6]
+  mark-above=[7,3] mark-below=[5,9]
+@end
+
+# OX /o/ - Short o vowel (British)
+@elem qk.ox
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [4,5]
+p2 = C([4,7] [5,8])
+p3 = C([7,7] [7,5])
+p4 = C([7,4] [4,5])
+close: true
+width: 1
+anchors: top=[5,4] base=[5,8] mid=[5,6]
+  mark-above=[5,3] mark-below=[5,9]
+@end
+
+# OY /oi/ - Diphthong
+@elem qk.oy
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = [4,8]
+p3 = [7,8]
+close: false
+width: 1
+anchors: top=[4,4] base=[7,8] mid=[4,6]
+  mark-above=[4,3] mark-below=[5,9]
+@end
+
+# UTTER /u/ - Short u / schwa / er vowel
+@elem qk.utter
+zone: x-height
+path: p1 p2 p3
+p1 = [7,4]
+p2 = [5,8]
+p3 = [4,4]
+close: false
+width: 1
+anchors: top=[7,4] base=[5,8] mid=[5,6]
+  mark-above=[5,3] mark-below=[5,9]
+@end
+
+# OUT /au/ - Diphthong
+@elem qk.out
+zone: x-height
+path: p1 p2 p3
+p1 = [3,8]
+p2 = [5,5]
+p3 = [7,8]
+close: false
+width: 1
+anchors: top=[5,5] base=[3,8] mid=[5,6]
+  mark-above=[5,3] mark-below=[5,9]
+@end
+
+# OWE /ou/ - Long o diphthong
+@elem qk.owe
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [4,4]
+p2 = C([4,6] [5,7])
+p3 = C([7,6] [7,4])
+p4 = [5,4]
+close: false
+width: 1
+anchors: top=[4,4] base=[5,7] mid=[5,5]
+  mark-above=[5,3] mark-below=[5,9]
+@end
+
+# FOOT /oo/ - Short u vowel
+@elem qk.foot
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = C([5,6] [7,6])
+p3 = [7,4]
+close: false
+width: 1
+anchors: top=[4,4] base=[5,6] mid=[5,5]
+  mark-above=[5,3] mark-below=[5,9]
+@end
+
+# OOZE /oo/ - Long u vowel
+@elem qk.ooze
+zone: x-height
+path: p1 p2 p3
+p1 = [4,8]
+p2 = C([5,6] [7,6])
+p3 = [7,8]
+close: false
+width: 1
+anchors: top=[5,6] base=[4,8] mid=[5,7]
+  mark-above=[5,3] mark-below=[5,9]
+@end
+
+# -----------------------------------------------------------------------------
+# PUNCTUATION - X-height Zone
+# -----------------------------------------------------------------------------
+
+# LEFT ANGLED PARENTHESIS
+@elem qk.left_paren
+zone: x-height
+path: p1 p2 p3
+p1 = [6,4]
+p2 = [4,6]
+p3 = [6,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8] mid=[4,6]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+# RIGHT ANGLED PARENTHESIS
+@elem qk.right_paren
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = [6,6]
+p3 = [4,8]
+close: false
+width: 1
+anchors: top=[4,4] base=[4,8] mid=[6,6]
+  mark-above=[4,3] mark-below=[4,9]
+@end
+
+# =============================================================================
+# QUIKSCRIPT CHARACTER DEFINITIONS (UCSUR U+E650-U+E67F)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# CONSONANTS - Voiceless/Voiced Pairs (U+E650-U+E65F)
+# -----------------------------------------------------------------------------
+
+  QUIKSCRIPT-LETTER-PEA = qk.pea cp:U+E650 script:Qaak
+  # /p/ as in "pea" - voiceless bilabial plosive
+
+  QUIKSCRIPT-LETTER-BAY = qk.bay cp:U+E651 script:Qaak
+  # /b/ as in "bay" - voiced bilabial plosive (pair with PEA)
+
+  QUIKSCRIPT-LETTER-TEA = qk.tea cp:U+E652 script:Qaak
+  # /t/ as in "tea" - voiceless alveolar plosive
+
+  QUIKSCRIPT-LETTER-DAY = qk.day cp:U+E653 script:Qaak
+  # /d/ as in "day" - voiced alveolar plosive (pair with TEA)
+
+  QUIKSCRIPT-LETTER-KEY = qk.key cp:U+E654 script:Qaak
+  # /k/ as in "key" - voiceless velar plosive
+
+  QUIKSCRIPT-LETTER-GAY = qk.gay cp:U+E655 script:Qaak
+  # /g/ as in "gay" - voiced velar plosive (pair with KEY)
+
+  QUIKSCRIPT-LETTER-THAW = qk.thaw cp:U+E656 script:Qaak
+  # /th/ as in "thaw" - voiceless dental fricative
+
+  QUIKSCRIPT-LETTER-THEY = qk.they cp:U+E657 script:Qaak
+  # /dh/ as in "they" - voiced dental fricative (pair with THAW)
+
+  QUIKSCRIPT-LETTER-FEE = qk.fee cp:U+E658 script:Qaak
+  # /f/ as in "fee" - voiceless labiodental fricative
+
+  QUIKSCRIPT-LETTER-VIE = qk.vie cp:U+E659 script:Qaak
+  # /v/ as in "vie" - voiced labiodental fricative (pair with FEE)
+
+  QUIKSCRIPT-LETTER-SEE = qk.see cp:U+E65A script:Qaak
+  # /s/ as in "see" - voiceless alveolar fricative
+
+  QUIKSCRIPT-LETTER-ZOO = qk.zoo cp:U+E65B script:Qaak
+  # /z/ as in "zoo" - voiced alveolar fricative (pair with SEE)
+
+  QUIKSCRIPT-LETTER-SHE = qk.she cp:U+E65C script:Qaak
+  # /sh/ as in "she" - voiceless postalveolar fricative
+
+  QUIKSCRIPT-LETTER-ZHIVAGO = qk.zhivago cp:U+E65D script:Qaak
+  # /zh/ as in "Zhivago" - voiced postalveolar fricative (pair with SHE)
+
+  QUIKSCRIPT-LETTER-CHEER = qk.cheer cp:U+E65E script:Qaak
+  # /ch/ as in "cheer" - voiceless postalveolar affricate
+
+  QUIKSCRIPT-LETTER-JAY = qk.jay cp:U+E65F script:Qaak
+  # /dj/ as in "jay" - voiced postalveolar affricate (pair with CHEER)
+
+# -----------------------------------------------------------------------------
+# SEMIVOWELS (U+E660-U+E661)
+# -----------------------------------------------------------------------------
+
+  QUIKSCRIPT-LETTER-YE = qk.ye cp:U+E660 script:Qaak
+  # /j/ as in "ye" - palatal approximant
+
+  QUIKSCRIPT-LETTER-WAY = qk.way cp:U+E661 script:Qaak
+  # /w/ as in "way" - labio-velar approximant
+
+# -----------------------------------------------------------------------------
+# H SOUNDS (U+E662-U+E663)
+# -----------------------------------------------------------------------------
+
+  QUIKSCRIPT-LETTER-HE = qk.he cp:U+E662 script:Qaak
+  # /h/ as in "he" - voiceless glottal fricative
+
+  QUIKSCRIPT-LETTER-WHY = qk.why cp:U+E663 script:Qaak
+  # /hw/ as in "why" - voiceless labio-velar fricative (pair with HE)
+
+# -----------------------------------------------------------------------------
+# NASALS (U+E664-U+E666)
+# -----------------------------------------------------------------------------
+
+  QUIKSCRIPT-LETTER-OOLONG = qk.oolong cp:U+E664 script:Qaak
+  # /ng/ as in "oolong" - velar nasal (exception: voiced but tall)
+
+  QUIKSCRIPT-LETTER-MAY = qk.may cp:U+E665 script:Qaak
+  # /m/ as in "may" - bilabial nasal
+
+  QUIKSCRIPT-LETTER-NO = qk.no cp:U+E666 script:Qaak
+  # /n/ as in "no" - alveolar nasal
+
+# -----------------------------------------------------------------------------
+# LIQUIDS (U+E667-U+E668)
+# -----------------------------------------------------------------------------
+
+  QUIKSCRIPT-LETTER-LOW = qk.low cp:U+E667 script:Qaak
+  # /l/ as in "low" - alveolar lateral approximant
+
+  QUIKSCRIPT-LETTER-ROE = qk.roe cp:U+E668 script:Qaak
+  # /r/ as in "roe" - alveolar approximant
+
+# -----------------------------------------------------------------------------
+# SPECIAL CONSONANTS (U+E669-U+E66C)
+# -----------------------------------------------------------------------------
+
+  QUIKSCRIPT-LETTER-LOCH = qk.loch cp:U+E669 script:Qaak
+  # /x/ as in "loch" - voiceless velar fricative (Scottish)
+
+  QUIKSCRIPT-LETTER-LLAN = qk.llan cp:U+E66A script:Qaak
+  # /lh/ as in "llan" - voiceless alveolar lateral fricative (Welsh)
+
+  QUIKSCRIPT-LETTER-EXCITE = qk.excite cp:U+E66B script:Qaak
+  # /ks/ as in "excite" - cluster letter
+
+  QUIKSCRIPT-LETTER-EXAM = qk.exam cp:U+E66C script:Qaak
+  # /gz/ as in "exam" - cluster letter
+
+# -----------------------------------------------------------------------------
+# PUNCTUATION (U+E66E-U+E66F)
+# -----------------------------------------------------------------------------
+
+  QUIKSCRIPT-LEFT-PARENTHESIS = qk.left_paren cp:U+E66E script:Qaak
+  # Left angled parenthesis
+
+  QUIKSCRIPT-RIGHT-PARENTHESIS = qk.right_paren cp:U+E66F script:Qaak
+  # Right angled parenthesis
+
+# -----------------------------------------------------------------------------
+# VOWELS (U+E670-U+E67E)
+# -----------------------------------------------------------------------------
+
+  QUIKSCRIPT-LETTER-IT = qk.it cp:U+E670 script:Qaak
+  # /i/ as in "it" - short i vowel
+
+  QUIKSCRIPT-LETTER-EAT = qk.eat cp:U+E671 script:Qaak
+  # /ee/ as in "eat" - long i vowel
+
+  QUIKSCRIPT-LETTER-ET = qk.et cp:U+E672 script:Qaak
+  # /e/ as in "et" - short e vowel
+
+  QUIKSCRIPT-LETTER-EIGHT = qk.eight cp:U+E673 script:Qaak
+  # /ei/ as in "eight" - diphthong
+
+  QUIKSCRIPT-LETTER-AT = qk.at cp:U+E674 script:Qaak
+  # /ae/ as in "at" - short a vowel
+
+  QUIKSCRIPT-LETTER-I = qk.i cp:U+E675 script:Qaak
+  # /ai/ as in "I" - long i diphthong
+
+  QUIKSCRIPT-LETTER-AH = qk.ah cp:U+E676 script:Qaak
+  # /a/ as in "ah" - open a vowel
+
+  QUIKSCRIPT-LETTER-AWE = qk.awe cp:U+E677 script:Qaak
+  # /aw/ as in "awe" - open o vowel
+
+  QUIKSCRIPT-LETTER-OX = qk.ox cp:U+E678 script:Qaak
+  # /o/ as in "ox" - short o vowel (British)
+
+  QUIKSCRIPT-LETTER-OY = qk.oy cp:U+E679 script:Qaak
+  # /oi/ as in "oy" - diphthong
+
+  QUIKSCRIPT-LETTER-UTTER = qk.utter cp:U+E67A script:Qaak
+  # /u/ or /schwa/ or /er/ as in "utter" - short u / schwa / stressed er
+
+  QUIKSCRIPT-LETTER-OUT = qk.out cp:U+E67B script:Qaak
+  # /au/ as in "out" - diphthong
+
+  QUIKSCRIPT-LETTER-OWE = qk.owe cp:U+E67C script:Qaak
+  # /ou/ as in "owe" - long o diphthong
+
+  QUIKSCRIPT-LETTER-FOOT = qk.foot cp:U+E67D script:Qaak
+  # /oo/ (short) as in "foot" - short u vowel
+
+  QUIKSCRIPT-LETTER-OOZE = qk.ooze cp:U+E67E script:Qaak
+  # /oo/ (long) as in "ooze" - long u vowel
+
+# =============================================================================
+# END OF QUIKSCRIPT ALPHABET LIBRARY
+# =============================================================================

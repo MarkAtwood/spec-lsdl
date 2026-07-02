@@ -253,7 +253,7 @@ anchors: attach=[6,6] mark-above=[8,3] mark-below=[8,9]
 # bowl.full - Full round bowl (as in o)
 @elem bowl.full
 zone: x-height
-path: p1 p2 p3 p4
+path: p1 p2 p3 p4 p5
 p1 = [6,4]
 p2 = C([12,4] [12,6])
 p3 = C([12,8] [6,8])
@@ -268,7 +268,7 @@ anchors: attach=[6,6] mark-above=[6,3] mark-below=[6,9]
 # bowl.cap - Capital-height bowl (as in O, D, Q)
 @elem bowl.cap
 zone: cap
-path: p1 p2 p3 p4
+path: p1 p2 p3 p4 p5
 p1 = [6,0]
 p2 = C([12,0] [12,4])
 p3 = C([12,8] [6,8])
@@ -336,12 +336,64 @@ anchors: attach=[6,7] top=[8,6] base=[8,8]
   left=[6,7] right=[12,7]
 @end
 
+# bowl.l.upper - Left-side upper half-bowl (as in Cyrillic Ya)
+@elem bowl.l.upper
+zone: x-height
+path: p1 p2 p3
+p1 = [6,4]
+p2 = C([1,4] [1,6])
+p3 = [6,6]
+close: false
+width: 1
+anchors: attach=[6,5] top=[4,4] base=[4,6]
+  left=[1,5] right=[6,5]
+@end
+
+# bowl.r.upper.cap - Capital-height right-side upper half-bowl
+@elem bowl.r.upper.cap
+zone: cap
+path: p1 p2 p3
+p1 = [6,0]
+p2 = C([12,0] [12,4])
+p3 = [6,4]
+close: false
+width: 1
+anchors: attach=[6,2] top=[8,0] base=[8,4]
+  left=[6,2] right=[12,2]
+@end
+
+# bowl.r.lower.cap - Capital-height right-side lower half-bowl
+@elem bowl.r.lower.cap
+zone: cap
+path: p1 p2 p3
+p1 = [6,4]
+p2 = C([12,4] [12,8])
+p3 = [6,8]
+close: false
+width: 1
+anchors: attach=[6,6] top=[8,4] base=[8,8]
+  left=[6,6] right=[12,6]
+@end
+
+# bowl.l.upper.cap - Capital-height left-side upper half-bowl
+@elem bowl.l.upper.cap
+zone: cap
+path: p1 p2 p3
+p1 = [6,0]
+p2 = C([0,0] [0,4])
+p3 = [6,4]
+close: false
+width: 1
+anchors: attach=[6,2] top=[4,0] base=[4,4]
+  left=[0,2] right=[6,2]
+@end
+
 # -----------------------------------------------------------------------------
 # counter - Interior of a bowl (implicit; not drawn but defined for reference)
 # -----------------------------------------------------------------------------
 @elem counter
 zone: x-height
-path: p1 p2 p3 p4
+path: p1 p2 p3
 p1 = [5,5]
 p2 = C([9,5] [9,7])
 p3 = C([5,7] [5,5])
@@ -406,6 +458,58 @@ anchors: left=[2,4] right=[10,4] base=[6,8]
   mark-below=[6,9]
 @end
 
+# arc.top.r - Right-opening top arc (as in Cyrillic Ze upper curve)
+@elem arc.top.r
+zone: x-height
+path: p1 p2 p3
+p1 = [2,6]
+p2 = C([2,4] [6,4])
+p3 = [10,6]
+close: false
+width: 1
+anchors: left=[2,6] right=[10,6] top=[6,4]
+  mark-above=[6,3]
+@end
+
+# arc.bot.r - Right-opening bottom arc (as in Cyrillic Ze lower curve)
+@elem arc.bot.r
+zone: x-height
+path: p1 p2 p3
+p1 = [10,6]
+p2 = C([10,8] [6,8])
+p3 = [2,6]
+close: false
+width: 1
+anchors: left=[2,6] right=[10,6] base=[6,8]
+  mark-below=[6,9]
+@end
+
+# arc.top.cap.r - Capital-height right-opening top arc
+@elem arc.top.cap.r
+zone: cap
+path: p1 p2 p3
+p1 = [2,4]
+p2 = C([2,0] [6,0])
+p3 = [10,4]
+close: false
+width: 1
+anchors: left=[2,4] right=[10,4] top=[6,0]
+  mark-above=[6,0]
+@end
+
+# arc.bot.cap.r - Capital-height right-opening bottom arc
+@elem arc.bot.cap.r
+zone: cap
+path: p1 p2 p3
+p1 = [10,4]
+p2 = C([10,8] [6,8])
+p3 = [2,4]
+close: false
+width: 1
+anchors: left=[2,4] right=[10,4] base=[6,8]
+  mark-below=[6,9]
+@end
+
 # -----------------------------------------------------------------------------
 # hook.top - Curved entry at top (as in f, Gamma)
 # -----------------------------------------------------------------------------
@@ -432,6 +536,20 @@ p4 = [6,5]
 close: false
 width: 1
 anchors: attach=[6,5] base=[6,5] top=[11,1]
+@end
+
+# hook.top.cyr - Cyrillic top hook (as in Cyrillic б, like numeral 6 top)
+# Curves from upper left toward lower right, flowing into bowl
+@elem hook.top.cyr
+zone: ascender
+path: p1 p2 p3
+p1 = [10,1]
+p2 = C([8,1] [6,2])
+p3 = [6,4]
+close: false
+width: 1
+anchors: attach=[6,4] base=[6,4] top=[10,1]
+  mark-above=[8,0]
 @end
 
 # -----------------------------------------------------------------------------
@@ -626,6 +744,28 @@ width: 1
 anchors: left=[2,7] right=[10,7] mid=[6,7]
 @end
 
+# crossbar.short - Short crossbar (as in Cyrillic Ю)
+@elem crossbar.short
+zone: x-height
+path: p1 p2
+p1 = [4,6]
+p2 = [8,6]
+close: false
+width: 1
+anchors: left=[4,6] right=[8,6] mid=[6,6]
+@end
+
+# crossbar.cap.short - Capital-height short crossbar
+@elem crossbar.cap.short
+zone: cap
+path: p1 p2
+p1 = [4,4]
+p2 = [8,4]
+close: false
+width: 1
+anchors: left=[4,4] right=[8,4] mid=[6,4]
+@end
+
 # -----------------------------------------------------------------------------
 # bar.top - Bar at top of glyph (as in T, Gamma)
 # -----------------------------------------------------------------------------
@@ -791,6 +931,39 @@ width: 1
 anchors: attach=[6,4] base=[2,8]
 @end
 
+# leg.rev - Reversed leg, rising from baseline (as in Cyrillic К lower)
+@elem leg.rev
+zone: x-height
+path: p1 p2
+p1 = [2,8]
+p2 = [6,4]
+close: false
+width: 1
+anchors: attach=[6,4] base=[2,8]
+@end
+
+# leg.cap.rev - Capital-height reversed leg
+@elem leg.cap.rev
+zone: cap
+path: p1 p2
+p1 = [2,8]
+p2 = [6,4]
+close: false
+width: 1
+anchors: attach=[6,4] base=[2,8]
+@end
+
+# leg.cap.l - Capital-height left leg (as in Cyrillic Я)
+@elem leg.cap.l
+zone: cap
+path: p1 p2
+p1 = [6,4]
+p2 = [0,8]
+close: false
+width: 1
+anchors: attach=[6,4] base=[0,8]
+@end
+
 # -----------------------------------------------------------------------------
 # diagonal - Full-height diagonal (as in N, Z)
 # -----------------------------------------------------------------------------
@@ -824,6 +997,28 @@ p2 = [10,8]
 close: false
 width: 1
 anchors: top=[2,4] base=[10,8] mid=[6,6]
+@end
+
+# diagonal.x.rev - Reversed x-height diagonal (as in Cyrillic x lower)
+@elem diagonal.x.rev
+zone: x-height
+path: p1 p2
+p1 = [10,4]
+p2 = [2,8]
+close: false
+width: 1
+anchors: top=[10,4] base=[2,8] mid=[6,6]
+@end
+
+# diagonal.r - Right-leaning diagonal (explicit alias, same as diagonal)
+@elem diagonal.r
+zone: cap
+path: p1 p2
+p1 = [2,0]
+p2 = [10,8]
+close: false
+width: 1
+anchors: top=[2,0] base=[10,8] mid=[6,4]
 @end
 
 # -----------------------------------------------------------------------------
@@ -879,6 +1074,32 @@ close: false
 width: 1
 anchors: base=[6,8] left=[0,0] right=[12,0]
   mark-below=[6,9]
+@end
+
+# vertex.inv - Inverted vertex, apex at bottom (as in Cyrillic М)
+@elem vertex.inv
+zone: x-height
+path: p1 p2 p3
+p1 = [0,8]
+p2 = [6,4]
+p3 = [12,8]
+close: false
+width: 1
+anchors: top=[6,4] left=[0,8] right=[12,8]
+  mark-above=[6,3]
+@end
+
+# vertex.cap.inv - Capital-height inverted vertex (as in Cyrillic М)
+@elem vertex.cap.inv
+zone: cap
+path: p1 p2 p3
+p1 = [0,8]
+p2 = [6,0]
+p3 = [12,8]
+close: false
+width: 1
+anchors: top=[6,0] left=[0,8] right=[12,8]
+  mark-above=[6,0]
 @end
 
 # -----------------------------------------------------------------------------

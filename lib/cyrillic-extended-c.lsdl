@@ -1,0 +1,238 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Cyrillic Extended-C Library (U+1C80-1C8A)
+# =============================================================================
+#
+# Historical Cyrillic variant letterforms used in early Cyrillic manuscripts.
+# These are paleographic variants of standard Cyrillic letters, primarily
+# lowercase forms with distinctive shapes used in specific manuscript traditions.
+#
+# All characters tagged with:
+#   - script:Cyrl (ISO 15924 script code for Cyrillic)
+#   - ortho:OCS (Old Church Slavonic / historical)
+#
+# =============================================================================
+
+# =============================================================================
+# LOCAL ELEMENT DEFINITIONS (copied from cyrillic.lsdl and primitives)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# soft-sign.base - Base form for Ь and component of Ъ, Ы
+# Vertical stem with rightward bowl at bottom
+# -----------------------------------------------------------------------------
+@elem soft-sign.base
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,4]
+p2 = [2,8]
+p3 = C([2,8] [8,8])
+p4 = C([8,6] [2,6])
+close: true
+width: 1
+anchors: top=[2,4] base=[2,8] attach=[5,7]
+  mark-above=[2,3] mark-below=[5,9]
+@end
+
+# -----------------------------------------------------------------------------
+# hard-sign.top - Top bar component for Ъ
+# Horizontal bar extending left from soft sign
+# -----------------------------------------------------------------------------
+@elem hard-sign.top
+zone: cap
+path: p1 p2
+p1 = [0,4]
+p2 = [4,4]
+close: false
+width: 1
+anchors: attach=[4,4] left=[0,4]
+@end
+
+# -----------------------------------------------------------------------------
+# bowl.rounded - Rounded bowl variant (for rounded ve)
+# More circular than standard bowl, with softer transitions
+# -----------------------------------------------------------------------------
+@elem bowl.rounded
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,4]
+p2 = C([2,8] [8,8])
+p3 = C([10,6] [10,4])
+p4 = C([8,4] [2,4])
+close: true
+width: 1
+anchors: top=[6,4] base=[6,8] attach=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# leg.long - Extended descending leg (for long-legged de)
+# Longer descent than standard leg
+# -----------------------------------------------------------------------------
+@elem leg.long
+zone: descender
+path: p1 p2
+p1 = [2,8]
+p2 = [2,12]
+close: false
+width: 1
+anchors: attach=[2,8] base=[2,12]
+@end
+
+# -----------------------------------------------------------------------------
+# bowl.narrow - Narrow oval bowl (for narrow o)
+# Vertically compressed bowl shape
+# -----------------------------------------------------------------------------
+@elem bowl.narrow
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [4,4]
+p2 = C([4,8] [8,8])
+p3 = C([8,4] [4,4])
+p4 = [4,4]
+close: true
+width: 1
+anchors: top=[6,4] base=[6,8] attach=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# arc.wide - Wide arc (for wide es)
+# Horizontally extended arc shape
+# -----------------------------------------------------------------------------
+@elem arc.wide.top
+zone: x-height
+path: p1 p2 p3
+p1 = [10,4]
+p2 = C([10,4] [2,4])
+p3 = [2,6]
+close: false
+width: 1
+anchors: top=[6,4] attach=[2,6]
+@end
+
+@elem arc.wide.bot
+zone: x-height
+path: p1 p2 p3
+p1 = [2,6]
+p2 = C([2,8] [10,8])
+p3 = [10,8]
+close: false
+width: 1
+anchors: base=[6,8] attach=[2,6]
+@end
+
+# -----------------------------------------------------------------------------
+# stem.tall - Tall ascending stem (for tall te, tall hard sign, tall yat)
+# Extends above x-height into ascender zone
+# -----------------------------------------------------------------------------
+@elem stem.tall
+zone: ascender
+path: p1 p2
+p1 = [6,0]
+p2 = [6,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mid=[6,4]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# stem.third - Third leg for three-legged te
+# Central stem position
+# -----------------------------------------------------------------------------
+@elem stem.third
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# soft-sign.tall - Tall soft sign base (for tall hard sign)
+# Vertical stem with rightward bowl, starting from ascender
+# -----------------------------------------------------------------------------
+@elem soft-sign.tall
+zone: ascender
+path: p1 p2 p3 p4
+p1 = [2,0]
+p2 = [2,8]
+p3 = C([2,8] [8,8])
+p4 = C([8,6] [2,6])
+close: true
+width: 1
+anchors: top=[2,0] base=[2,8] attach=[5,7]
+@end
+
+# -----------------------------------------------------------------------------
+# yat.tall - Tall yat form (for tall yat)
+# Extended ascender with top bar and soft sign base
+# -----------------------------------------------------------------------------
+@elem yat.tall.top
+zone: ascender
+path: p1 p2 p3
+p1 = [0,2]
+p2 = [6,2]
+p3 = [6,4]
+close: false
+width: 1
+anchors: attach=[6,2] left=[0,2]
+@end
+
+# =============================================================================
+# CASE MAPPING
+# =============================================================================
+# Only one uppercase/lowercase pair in this block
+
+@case Ᲊ ᲊ
+
+# =============================================================================
+# CYRILLIC EXTENDED-C CHARACTERS (U+1C80-1C8A)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Historical Lowercase Variants (U+1C80-1C88)
+# -----------------------------------------------------------------------------
+
+ᲀ  CYRILLIC-SMALL-ROUNDED-VE = FRAME(stem, bowl.rounded) script:Cyrl ortho:OCS
+  # Rounded variant of в - rounder bowl shape
+
+ᲁ  CYRILLIC-SMALL-LONG-LEGGED-DE = FRAME(apex.x, bar.bot, leg.long, leg.long) script:Cyrl ortho:OCS
+  # Long-legged variant of д - extended descending legs
+
+ᲂ  CYRILLIC-SMALL-NARROW-O = bowl.narrow script:Cyrl ortho:OCS
+  # Narrow variant of о - vertically compressed oval
+
+ᲃ  CYRILLIC-SMALL-WIDE-ES = STACK(arc.wide.top, arc.wide.bot) script:Cyrl ortho:OCS
+  # Wide variant of с - horizontally extended arcs
+
+ᲄ  CYRILLIC-SMALL-TALL-TE = FRAME(bar.top.x, stem.tall) script:Cyrl ortho:OCS
+  # Tall variant of т - stem extends into ascender zone
+
+ᲅ  CYRILLIC-SMALL-THREE-LEGGED-TE = FRAME(bar.top.x, stem, stem.third, stem) script:Cyrl ortho:OCS
+  # Three-legged variant of т - three stems below crossbar
+
+ᲆ  CYRILLIC-SMALL-TALL-HARD-SIGN = FRAME(hard-sign.top, soft-sign.tall) script:Cyrl ortho:OCS
+  # Tall variant of ъ - extends into ascender zone
+
+ᲇ  CYRILLIC-SMALL-TALL-YAT = FRAME(yat.tall.top, soft-sign.tall) script:Cyrl ortho:OCS
+  # Tall variant of ѣ - extended ascender form
+
+ᲈ  CYRILLIC-SMALL-UNBLENDED-UK = LR(о, у) script:Cyrl ortho:OCS
+  # Unblended uk - о and у as distinct adjacent letters (not ligated)
+
+# -----------------------------------------------------------------------------
+# TJE Letter (U+1C89-1C8A)
+# -----------------------------------------------------------------------------
+
+Ᲊ  CYRILLIC-CAPITAL-TJE = FRAME(soft-sign.base, bar.top, acute) script:Cyrl ortho:OCS
+  # Capital Tje - resembles Ћ with acute accent
+
+ᲊ  CYRILLIC-SMALL-TJE = FRAME(soft-sign.base, bar.top.x, acute) script:Cyrl ortho:OCS
+  # Small tje - resembles ћ with acute accent
+
+# =============================================================================
+# END OF CYRILLIC EXTENDED-C LIBRARY
+# =============================================================================

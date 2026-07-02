@@ -103,7 +103,7 @@ ELEMENT_REGISTRY: frozenset[str] = frozenset(
 # Standard diacritics (Appendix C)
 DIACRITIC_REGISTRY: frozenset[str] = frozenset(
     {
-        # Above (13)
+        # Above (14 core + 4 extended)
         "acute",
         "grave",
         "circumflex",
@@ -115,9 +115,16 @@ DIACRITIC_REGISTRY: frozenset[str] = frozenset(
         "ring",
         "dot-above",
         "double-acute",
+        "double-grave",
+        "inverted-breve",
         "horn",
         "comma-above",
-        # Below (8)
+        "hook-above",  # Vietnamese hoi tone
+        "vertical-line-above",
+        "overline",
+        "right-half-ring-above",
+        "left-half-ring-above",
+        # Below (12 core + 2 extended)
         "cedilla",
         "ogonek",
         "dot-below",
@@ -126,6 +133,12 @@ DIACRITIC_REGISTRY: frozenset[str] = frozenset(
         "line-below",
         "breve-below",
         "ring-below",
+        "circumflex-below",
+        "tilde-below",
+        "diaeresis-below",
+        "vertical-line-below",
+        "caron-below",
+        "inverted-breve-below",
         # Through (3)
         "oblique-stroke",
     }

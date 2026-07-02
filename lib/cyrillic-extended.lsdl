@@ -1,0 +1,509 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Extended Cyrillic Library (U+0480-04FF)
+# =============================================================================
+#
+# Extended Cyrillic characters used for non-Slavic languages written in
+# Cyrillic script (Kazakh, Uzbek, Turkmen, Tajik, Abkhaz, Chuvash, etc.)
+#
+# Many of these are base letters with hooks, tails, bars, or other modifiers.
+#
+# =============================================================================
+
+# @import cyrillic.lsdl
+# @import elements-base.lsdl
+
+# =============================================================================
+# CASE MAPPINGS
+# =============================================================================
+
+# Extended Cyrillic (U+0480-04FF)
+# Note: Ґ/ґ defined in cyrillic.lsdl (Ukrainian extension)
+@case Ҁ ҁ
+@case Ҋ ҋ
+@case Ҍ ҍ
+@case Ҏ ҏ
+@case Ғ ғ
+@case Ҕ ҕ
+@case Җ җ
+@case Ҙ ҙ
+@case Қ қ
+@case Ҝ ҝ
+@case Ҟ ҟ
+@case Ҡ ҡ
+@case Ң ң
+@case Ҥ ҥ
+@case Ҧ ҧ
+@case Ҩ ҩ
+@case Ҫ ҫ
+@case Ҭ ҭ
+@case Ү ү
+@case Ұ ұ
+@case Ҳ ҳ
+@case Ҵ ҵ
+@case Ҷ ҷ
+@case Ҹ ҹ
+@case Һ һ
+@case Ҽ ҽ
+@case Ҿ ҿ
+@case Ӏ ӏ
+@case Ӂ ӂ
+@case Ӄ ӄ
+@case Ӆ ӆ
+@case Ӈ ӈ
+@case Ӊ ӊ
+@case Ӌ ӌ
+@case Ӎ ӎ
+@case Ӑ ӑ
+@case Ӓ ӓ
+@case Ӕ ӕ
+@case Ӗ ӗ
+@case Ә ә
+@case Ӛ ӛ
+@case Ӝ ӝ
+@case Ӟ ӟ
+@case Ӡ ӡ
+@case Ӣ ӣ
+@case Ӥ ӥ
+@case Ӧ ӧ
+@case Ө ө
+@case Ӫ ӫ
+@case Ӭ ӭ
+@case Ӯ ӯ
+@case Ӱ ӱ
+@case Ӳ ӳ
+@case Ӵ ӵ
+@case Ӷ ӷ
+@case Ӹ ӹ
+@case Ӻ ӻ
+@case Ӽ ӽ
+@case Ӿ ӿ
+
+# =============================================================================
+# CYRILLIC-SPECIFIC EXTENDED ELEMENTS
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# soft-sign.base - Base form for Ь and component of Ъ, Ы
+# (Copied from cyrillic.lsdl for standalone validation)
+# -----------------------------------------------------------------------------
+@elem soft-sign.base
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,4]
+p2 = [2,8]
+p3 = C([2,8] [8,8])
+p4 = C([8,6] [2,6])
+close: true
+width: 1
+anchors: top=[2,4] base=[2,8] attach=[5,7]
+  mark-above=[2,3] mark-below=[5,9]
+@end
+
+# -----------------------------------------------------------------------------
+# tick.cyr - Upturn tick (for Ukrainian Ґ)
+# (Copied from cyrillic.lsdl for standalone validation)
+# -----------------------------------------------------------------------------
+@elem tick.cyr
+zone: cap
+path: p1 p2
+p1 = [10,2]
+p2 = [12,0]
+close: false
+width: 1
+anchors: attach=[10,2] top=[12,0]
+@end
+
+# -----------------------------------------------------------------------------
+# hook.desc.cyr - Descending hook (for Қ, Ң, etc.)
+# -----------------------------------------------------------------------------
+@elem hook.desc.cyr
+zone: descender
+path: p1 p2 p3
+p1 = [6,8]
+p2 = [6,10]
+p3 = C([6,10] [4,10])
+close: false
+width: 1
+anchors: attach=[6,8] base=[4,10]
+@end
+
+# -----------------------------------------------------------------------------
+# stroke.mid.cyr - Middle horizontal stroke (for Ғ, Ҳ, etc.)
+# -----------------------------------------------------------------------------
+@elem stroke.mid.cyr
+zone: cap
+path: p1 p2
+p1 = [0,4]
+p2 = [4,4]
+close: false
+width: 1
+anchors: mid=[2,4]
+@end
+
+# =============================================================================
+# EXTENDED CYRILLIC CAPITAL LETTERS
+# =============================================================================
+
+Ҁ  CYRILLIC-CAPITAL-KOPPA = STACK(arc.top.cap, arc.bot.cap, tail) script:Cyrl ortho:OCS
+  # Koppa - archaic, like C with tail
+
+Ҋ  CYRILLIC-CAPITAL-SHORT-I-TAIL = FRAME(И, tail.cyr) script:Cyrl
+  # Short I with tail (Kildin Sami)
+
+Ҍ  CYRILLIC-CAPITAL-SEMISOFT = FRAME(soft-sign.base, stroke.mid.cyr) script:Cyrl
+  # Semisoft sign (Kildin Sami)
+
+Ҏ  CYRILLIC-CAPITAL-ER-TICK = FRAME(Р, tick.cyr) script:Cyrl
+  # Er with tick (Kildin Sami)
+
+Ғ  CYRILLIC-CAPITAL-GHE-STROKE = FRAME(bar.top, stem.l, stroke.mid.cyr) script:Cyrl ortho:Kaz
+  # Ghe with middle stroke (Kazakh, Azerbaijani)
+
+Ҕ  CYRILLIC-CAPITAL-GHE-HOOK = FRAME(bar.top, stem.l, hook.desc.cyr) script:Cyrl ortho:Yak
+  # Ghe with hook (Yakut)
+
+Җ  CYRILLIC-CAPITAL-ZHE-DESCENDER = FRAME(Ж, tail.cyr) script:Cyrl ortho:Tat
+  # Zhe with descender (Tatar, Bashkir)
+
+Ҙ  CYRILLIC-CAPITAL-ZE-DESCENDER = FRAME(STACK(arc.top.cap.r, arc.bot.cap.r), tail.cyr) script:Cyrl ortho:Bsh
+  # Ze with descender (Bashkir)
+
+Қ  CYRILLIC-CAPITAL-KA-DESCENDER = FRAME(К, hook.desc.cyr) script:Cyrl ortho:Kaz
+  # Ka with descender (Kazakh, Uzbek, Uyghur)
+
+Ҝ  CYRILLIC-CAPITAL-KA-VERTICAL-STROKE = FRAME(К, stroke.mid.cyr) script:Cyrl ortho:Aze
+  # Ka with vertical stroke (Azerbaijani)
+
+Ҟ  CYRILLIC-CAPITAL-KA-STROKE = OVR(К, stroke.horiz) script:Cyrl ortho:Abk
+  # Ka with stroke (Abkhaz)
+
+Ҡ  CYRILLIC-CAPITAL-BASHKIR-KA = FRAME(stem.l, STACK(arc.top.cap.r, arc.bot.cap.r)) script:Cyrl ortho:Bsh
+  # Bashkir Ka - unique form
+
+Ң  CYRILLIC-CAPITAL-EN-DESCENDER = FRAME(Н, hook.desc.cyr) script:Cyrl ortho:Kaz
+  # En with descender (Kazakh, Kyrgyz, Tatar)
+
+Ҥ  CYRILLIC-CAPITAL-LIGATURE-EN-GHE = LR(Н, Г) script:Cyrl ortho:Yak
+  # En-Ghe ligature (Yakut)
+
+Ҧ  CYRILLIC-CAPITAL-PE-HOOK = FRAME(П, hook.desc.cyr) script:Cyrl ortho:Abk
+  # Pe with hook (Abkhaz)
+
+Ҩ  CYRILLIC-CAPITAL-ABKHAZ-HA = FRAME(bowl.cap, tail) script:Cyrl ortho:Abk
+  # Abkhaz Ha - O with tail
+
+Ҫ  CYRILLIC-CAPITAL-ES-DESCENDER = FRAME(С, tail.cyr) script:Cyrl ortho:Chv
+  # Es with descender (Chuvash, Bashkir)
+
+Ҭ  CYRILLIC-CAPITAL-TE-DESCENDER = FRAME(Т, tail.cyr) script:Cyrl ortho:Abk
+  # Te with descender (Abkhaz)
+
+Ү  CYRILLIC-CAPITAL-STRAIGHT-U = vertex.cap script:Cyrl ortho:Kaz
+  # Straight U (Kazakh, Kyrgyz, Mongolian)
+
+Ұ  CYRILLIC-CAPITAL-STRAIGHT-U-STROKE = OVR(vertex.cap, stroke.horiz) script:Cyrl ortho:Kaz
+  # Straight U with stroke (Kazakh)
+
+Ҳ  CYRILLIC-CAPITAL-HA-DESCENDER = FRAME(Х, hook.desc.cyr) script:Cyrl ortho:Uzb
+  # Ha with descender (Uzbek, Tajik)
+
+Ҵ  CYRILLIC-CAPITAL-LIGATURE-TE-TSE = LR(Т, Ц) script:Cyrl ortho:Abk
+  # Te-Tse ligature (Abkhaz)
+
+Ҷ  CYRILLIC-CAPITAL-CHE-DESCENDER = FRAME(Ч, hook.desc.cyr) script:Cyrl ortho:Tjk
+  # Che with descender (Tajik, Abkhaz)
+
+Ҹ  CYRILLIC-CAPITAL-CHE-VERTICAL-STROKE = FRAME(Ч, stroke.mid.cyr) script:Cyrl ortho:Aze
+  # Che with vertical stroke (Azerbaijani)
+
+Һ  CYRILLIC-CAPITAL-SHHA = FRAME(stem.l, shoulder, stem.r) script:Cyrl ortho:Tat
+  # Shha - like Latin H (Tatar, Bashkir, Kazakh)
+
+Ҽ  CYRILLIC-CAPITAL-ABKHAZ-CHE = FRAME(hook.cyr, arc.top.cap) script:Cyrl ortho:Abk
+  # Abkhaz Che - variant form
+
+Ҿ  CYRILLIC-CAPITAL-ABKHAZ-CHE-DESCENDER = FRAME(Ҽ, hook.desc.cyr) script:Cyrl ortho:Abk
+  # Abkhaz Che with descender
+
+Ӏ  CYRILLIC-LETTER-PALOCHKA = stem.l script:Cyrl ortho:Cau
+  # Palochka - modifier letter for Caucasian languages
+
+Ӂ  CYRILLIC-CAPITAL-ZHE-BREVE = DIA(Ж, breve) script:Cyrl ortho:Mol
+  # Zhe with breve (Moldovan)
+
+Ӄ  CYRILLIC-CAPITAL-KA-HOOK = FRAME(К, hook.top) script:Cyrl ortho:Kha
+  # Ka with hook (Khanty)
+
+Ӆ  CYRILLIC-CAPITAL-EL-TAIL = FRAME(Л, tail.cyr) script:Cyrl ortho:Ksa
+  # El with tail (Kildin Sami)
+
+Ӈ  CYRILLIC-CAPITAL-EN-HOOK = FRAME(Н, hook.top) script:Cyrl ortho:Kha
+  # En with hook (Khanty, Chukchi)
+
+Ӊ  CYRILLIC-CAPITAL-EN-TAIL = FRAME(Н, tail.cyr) script:Cyrl ortho:Ksa
+  # En with tail (Kildin Sami)
+
+Ӌ  CYRILLIC-CAPITAL-CHE-HOOK = FRAME(Ч, hook.top) script:Cyrl ortho:Kha
+  # Che with hook (Khanty)
+
+Ӎ  CYRILLIC-CAPITAL-EM-TAIL = FRAME(М, tail.cyr) script:Cyrl ortho:Ksa
+  # Em with tail (Kildin Sami)
+
+Ӑ  CYRILLIC-CAPITAL-A-BREVE = DIA(А, breve) script:Cyrl ortho:Chv
+  # A with breve (Chuvash)
+
+Ӓ  CYRILLIC-CAPITAL-A-DIAERESIS = DIA(А, diaeresis) script:Cyrl ortho:Mri
+  # A with diaeresis (Mari)
+
+Ӕ  CYRILLIC-CAPITAL-LIGATURE-A-IE = LR(А, Е) script:Cyrl ortho:Oss
+  # A-Ie ligature (Ossetian) - like Latin AE
+
+Ӗ  CYRILLIC-CAPITAL-IE-BREVE = DIA(Е, breve) script:Cyrl ortho:Chv
+  # Ie with breve (Chuvash)
+
+Ә  CYRILLIC-CAPITAL-SCHWA = bowl.cap script:Cyrl ortho:Kaz
+  # Schwa (Kazakh, Tatar, Bashkir) - rotated E form
+
+Ӛ  CYRILLIC-CAPITAL-SCHWA-DIAERESIS = DIA(Ә, diaeresis) script:Cyrl ortho:Kha
+  # Schwa with diaeresis (Khanty)
+
+Ӝ  CYRILLIC-CAPITAL-ZHE-DIAERESIS = DIA(Ж, diaeresis) script:Cyrl ortho:Udm
+  # Zhe with diaeresis (Udmurt)
+
+Ӟ  CYRILLIC-CAPITAL-ZE-DIAERESIS = DIA(З, diaeresis) script:Cyrl ortho:Udm
+  # Ze with diaeresis (Udmurt)
+
+Ӡ  CYRILLIC-CAPITAL-ABKHAZ-DZE = FRAME(STACK(arc.top.cap.r, arc.bot.cap.r), tail) script:Cyrl ortho:Abk
+  # Abkhaz Dze - Ze with tail variant
+
+Ӣ  CYRILLIC-CAPITAL-I-MACRON = DIA(И, macron) script:Cyrl ortho:Tjk
+  # I with macron (Tajik)
+
+Ӥ  CYRILLIC-CAPITAL-I-DIAERESIS = DIA(И, diaeresis) script:Cyrl ortho:Udm
+  # I with diaeresis (Udmurt)
+
+Ӧ  CYRILLIC-CAPITAL-O-DIAERESIS = DIA(О, diaeresis) script:Cyrl ortho:Kom
+  # O with diaeresis (Komi, Mari)
+
+Ө  CYRILLIC-CAPITAL-BARRED-O = OVR(bowl.cap, stroke.horiz) script:Cyrl ortho:Kaz
+  # Barred O (Kazakh, Kyrgyz, Mongolian)
+
+Ӫ  CYRILLIC-CAPITAL-BARRED-O-DIAERESIS = DIA(Ө, diaeresis) script:Cyrl ortho:Kha
+  # Barred O with diaeresis
+
+Ӭ  CYRILLIC-CAPITAL-E-DIAERESIS = DIA(Э, diaeresis) script:Cyrl ortho:Ksa
+  # E with diaeresis (Kildin Sami)
+
+Ӯ  CYRILLIC-CAPITAL-U-MACRON = DIA(У, macron) script:Cyrl ortho:Tjk
+  # U with macron (Tajik)
+
+Ӱ  CYRILLIC-CAPITAL-U-DIAERESIS = DIA(У, diaeresis) script:Cyrl ortho:Mri
+  # U with diaeresis (Mari, Altai)
+
+Ӳ  CYRILLIC-CAPITAL-U-DOUBLE-ACUTE = DIA(У, double-acute) script:Cyrl ortho:Chv
+  # U with double acute (Chuvash)
+
+Ӵ  CYRILLIC-CAPITAL-CHE-DIAERESIS = DIA(Ч, diaeresis) script:Cyrl ortho:Udm
+  # Che with diaeresis (Udmurt)
+
+Ӷ  CYRILLIC-CAPITAL-GHE-DESCENDER = FRAME(Г, hook.desc.cyr) script:Cyrl ortho:Abk
+  # Ghe with descender
+
+Ӹ  CYRILLIC-CAPITAL-YERU-DIAERESIS = DIA(Ы, diaeresis) script:Cyrl ortho:Mri
+  # Yeru with diaeresis (Mari)
+
+Ӻ  CYRILLIC-CAPITAL-GHE-STROKE-HOOK = FRAME(Ғ, hook.desc.cyr) script:Cyrl
+  # Ghe with stroke and hook
+
+Ӽ  CYRILLIC-CAPITAL-HA-HOOK = FRAME(Х, hook.top) script:Cyrl ortho:Kha
+  # Ha with hook (Khanty)
+
+Ӿ  CYRILLIC-CAPITAL-HA-STROKE = OVR(Х, stroke.horiz) script:Cyrl ortho:Kha
+  # Ha with stroke (Khanty)
+
+# =============================================================================
+# EXTENDED CYRILLIC SMALL LETTERS
+# =============================================================================
+
+ҁ  CYRILLIC-SMALL-KOPPA = STACK(arc.top, arc.bot, tail) script:Cyrl ortho:OCS
+  # Small koppa
+
+ҋ  CYRILLIC-SMALL-SHORT-I-TAIL = FRAME(и, tail.cyr) script:Cyrl
+  # Small short i with tail
+
+ҍ  CYRILLIC-SMALL-SEMISOFT = FRAME(soft-sign.base, stroke.mid.cyr) script:Cyrl
+  # Small semisoft sign
+
+ҏ  CYRILLIC-SMALL-ER-TICK = FRAME(р, tick.cyr) script:Cyrl
+  # Small er with tick
+
+ғ  CYRILLIC-SMALL-GHE-STROKE = FRAME(bar.top.x, stem, stroke.mid.cyr) script:Cyrl ortho:Kaz
+  # Small ghe with stroke
+
+ҕ  CYRILLIC-SMALL-GHE-HOOK = FRAME(bar.top.x, stem, hook.desc.cyr) script:Cyrl ortho:Yak
+  # Small ghe with hook
+
+җ  CYRILLIC-SMALL-ZHE-DESCENDER = FRAME(ж, tail.cyr) script:Cyrl ortho:Tat
+  # Small zhe with descender
+
+ҙ  CYRILLIC-SMALL-ZE-DESCENDER = FRAME(STACK(arc.top.r, arc.bot.r), tail.cyr) script:Cyrl ortho:Bsh
+  # Small ze with descender
+
+қ  CYRILLIC-SMALL-KA-DESCENDER = FRAME(к, hook.desc.cyr) script:Cyrl ortho:Kaz
+  # Small ka with descender
+
+ҝ  CYRILLIC-SMALL-KA-VERTICAL-STROKE = FRAME(к, stroke.mid.cyr) script:Cyrl ortho:Aze
+  # Small ka with vertical stroke
+
+ҟ  CYRILLIC-SMALL-KA-STROKE = OVR(к, stroke.horiz) script:Cyrl ortho:Abk
+  # Small ka with stroke
+
+ҡ  CYRILLIC-SMALL-BASHKIR-KA = FRAME(stem, STACK(arc.top.r, arc.bot.r)) script:Cyrl ortho:Bsh
+  # Small Bashkir ka
+
+ң  CYRILLIC-SMALL-EN-DESCENDER = FRAME(н, hook.desc.cyr) script:Cyrl ortho:Kaz
+  # Small en with descender
+
+ҥ  CYRILLIC-SMALL-LIGATURE-EN-GHE = LR(н, г) script:Cyrl ortho:Yak
+  # Small en-ghe ligature
+
+ҧ  CYRILLIC-SMALL-PE-HOOK = FRAME(п, hook.desc.cyr) script:Cyrl ortho:Abk
+  # Small pe with hook
+
+ҩ  CYRILLIC-SMALL-ABKHAZ-HA = FRAME(bowl.full, tail) script:Cyrl ortho:Abk
+  # Small Abkhaz ha
+
+ҫ  CYRILLIC-SMALL-ES-DESCENDER = FRAME(с, tail.cyr) script:Cyrl ortho:Chv
+  # Small es with descender
+
+ҭ  CYRILLIC-SMALL-TE-DESCENDER = FRAME(т, tail.cyr) script:Cyrl ortho:Abk
+  # Small te with descender
+
+ү  CYRILLIC-SMALL-STRAIGHT-U = vertex script:Cyrl ortho:Kaz
+  # Small straight u
+
+ұ  CYRILLIC-SMALL-STRAIGHT-U-STROKE = OVR(vertex, stroke.horiz) script:Cyrl ortho:Kaz
+  # Small straight u with stroke
+
+ҳ  CYRILLIC-SMALL-HA-DESCENDER = FRAME(х, hook.desc.cyr) script:Cyrl ortho:Uzb
+  # Small ha with descender
+
+ҵ  CYRILLIC-SMALL-LIGATURE-TE-TSE = LR(т, ц) script:Cyrl ortho:Abk
+  # Small te-tse ligature
+
+ҷ  CYRILLIC-SMALL-CHE-DESCENDER = FRAME(ч, hook.desc.cyr) script:Cyrl ortho:Tjk
+  # Small che with descender
+
+ҹ  CYRILLIC-SMALL-CHE-VERTICAL-STROKE = FRAME(ч, stroke.mid.cyr) script:Cyrl ortho:Aze
+  # Small che with vertical stroke
+
+һ  CYRILLIC-SMALL-SHHA = FRAME(ascender.l, shoulder) script:Cyrl ortho:Tat
+  # Small shha - like Latin h
+
+ҽ  CYRILLIC-SMALL-ABKHAZ-CHE = FRAME(hook.cyr, arc.top) script:Cyrl ortho:Abk
+  # Small Abkhaz che
+
+ҿ  CYRILLIC-SMALL-ABKHAZ-CHE-DESCENDER = FRAME(ҽ, hook.desc.cyr) script:Cyrl ortho:Abk
+  # Small Abkhaz che with descender
+
+ӏ  CYRILLIC-SMALL-PALOCHKA = stem script:Cyrl ortho:Cau
+  # Small palochka
+
+ӂ  CYRILLIC-SMALL-ZHE-BREVE = DIA(ж, breve) script:Cyrl ortho:Mol
+  # Small zhe with breve
+
+ӄ  CYRILLIC-SMALL-KA-HOOK = FRAME(к, hook.top) script:Cyrl ortho:Kha
+  # Small ka with hook
+
+ӆ  CYRILLIC-SMALL-EL-TAIL = FRAME(л, tail.cyr) script:Cyrl ortho:Ksa
+  # Small el with tail
+
+ӈ  CYRILLIC-SMALL-EN-HOOK = FRAME(н, hook.top) script:Cyrl ortho:Kha
+  # Small en with hook
+
+ӊ  CYRILLIC-SMALL-EN-TAIL = FRAME(н, tail.cyr) script:Cyrl ortho:Ksa
+  # Small en with tail
+
+ӌ  CYRILLIC-SMALL-CHE-HOOK = FRAME(ч, hook.top) script:Cyrl ortho:Kha
+  # Small che with hook
+
+ӎ  CYRILLIC-SMALL-EM-TAIL = FRAME(м, tail.cyr) script:Cyrl ortho:Ksa
+  # Small em with tail
+
+ӑ  CYRILLIC-SMALL-A-BREVE = DIA(а, breve) script:Cyrl ortho:Chv
+  # Small a with breve
+
+ӓ  CYRILLIC-SMALL-A-DIAERESIS = DIA(а, diaeresis) script:Cyrl ortho:Mri
+  # Small a with diaeresis
+
+ӕ  CYRILLIC-SMALL-LIGATURE-A-IE = LR(а, е) script:Cyrl ortho:Oss
+  # Small a-ie ligature
+
+ӗ  CYRILLIC-SMALL-IE-BREVE = DIA(е, breve) script:Cyrl ortho:Chv
+  # Small ie with breve
+
+ә  CYRILLIC-SMALL-SCHWA = bowl.full script:Cyrl ortho:Kaz
+  # Small schwa
+
+ӛ  CYRILLIC-SMALL-SCHWA-DIAERESIS = DIA(ә, diaeresis) script:Cyrl ortho:Kha
+  # Small schwa with diaeresis
+
+ӝ  CYRILLIC-SMALL-ZHE-DIAERESIS = DIA(ж, diaeresis) script:Cyrl ortho:Udm
+  # Small zhe with diaeresis
+
+ӟ  CYRILLIC-SMALL-ZE-DIAERESIS = DIA(з, diaeresis) script:Cyrl ortho:Udm
+  # Small ze with diaeresis
+
+ӡ  CYRILLIC-SMALL-ABKHAZ-DZE = FRAME(STACK(arc.top.r, arc.bot.r), tail) script:Cyrl ortho:Abk
+  # Small Abkhaz dze
+
+ӣ  CYRILLIC-SMALL-I-MACRON = DIA(и, macron) script:Cyrl ortho:Tjk
+  # Small i with macron
+
+ӥ  CYRILLIC-SMALL-I-DIAERESIS = DIA(и, diaeresis) script:Cyrl ortho:Udm
+  # Small i with diaeresis
+
+ӧ  CYRILLIC-SMALL-O-DIAERESIS = DIA(о, diaeresis) script:Cyrl ortho:Kom
+  # Small o with diaeresis
+
+ө  CYRILLIC-SMALL-BARRED-O = OVR(bowl.full, stroke.horiz) script:Cyrl ortho:Kaz
+  # Small barred o
+
+ӫ  CYRILLIC-SMALL-BARRED-O-DIAERESIS = DIA(ө, diaeresis) script:Cyrl ortho:Kha
+  # Small barred o with diaeresis
+
+ӭ  CYRILLIC-SMALL-E-DIAERESIS = DIA(э, diaeresis) script:Cyrl ortho:Ksa
+  # Small e with diaeresis
+
+ӯ  CYRILLIC-SMALL-U-MACRON = DIA(у, macron) script:Cyrl ortho:Tjk
+  # Small u with macron
+
+ӱ  CYRILLIC-SMALL-U-DIAERESIS = DIA(у, diaeresis) script:Cyrl ortho:Mri
+  # Small u with diaeresis
+
+ӳ  CYRILLIC-SMALL-U-DOUBLE-ACUTE = DIA(у, double-acute) script:Cyrl ortho:Chv
+  # Small u with double acute
+
+ӵ  CYRILLIC-SMALL-CHE-DIAERESIS = DIA(ч, diaeresis) script:Cyrl ortho:Udm
+  # Small che with diaeresis
+
+ӷ  CYRILLIC-SMALL-GHE-DESCENDER = FRAME(г, hook.desc.cyr) script:Cyrl ortho:Abk
+  # Small ghe with descender
+
+ӹ  CYRILLIC-SMALL-YERU-DIAERESIS = DIA(ы, diaeresis) script:Cyrl ortho:Mri
+  # Small yeru with diaeresis
+
+ӻ  CYRILLIC-SMALL-GHE-STROKE-HOOK = FRAME(ғ, hook.desc.cyr) script:Cyrl
+  # Small ghe with stroke and hook
+
+ӽ  CYRILLIC-SMALL-HA-HOOK = FRAME(х, hook.top) script:Cyrl ortho:Kha
+  # Small ha with hook
+
+ӿ  CYRILLIC-SMALL-HA-STROKE = OVR(х, stroke.horiz) script:Cyrl ortho:Kha
+  # Small ha with stroke
+
+# =============================================================================
+# END OF EXTENDED CYRILLIC LIBRARY
+# =============================================================================

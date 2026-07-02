@@ -78,6 +78,37 @@ width: 1
 anchors: attach=[6,6] top=[6,4] base=[6,8]
 @end
 
+# -----------------------------------------------------------------------------
+# greek-ypogegrammeni - Greek iota subscript (used under vowels)
+# Unicode: U+0345 COMBINING GREEK YPOGEGRAMMENI
+# -----------------------------------------------------------------------------
+@elem greek-ypogegrammeni
+zone: diacritic-below
+path: p1 p2 p3
+p1 = [5,9]
+p2 = [6,10]
+p3 = [7,9]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# greek-dialytika-tonos - Combined diaeresis and acute (for ΐ, ΰ)
+# Unicode: U+0344 COMBINING GREEK DIALYTIKA TONOS
+# ponytail: simplified to single dot + acute line; full form needs multi-path support
+# -----------------------------------------------------------------------------
+@elem greek-dialytika-tonos
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [4,0]
+p2 = [6,0]
+p3 = [8,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
 # =============================================================================
 # CASE MAPPINGS
 # =============================================================================
@@ -125,10 +156,10 @@ anchors: attach=[6,6] top=[6,4] base=[6,8]
 # =============================================================================
 
 # Alpha - Structurally identical to Latin A
-Α  GREEK-CAPITAL-ALPHA    = APEX(diagonal.l, diagonal.r, crossbar.cap) script:Grek
+Α  GREEK-CAPITAL-ALPHA    = APEX(stem.l, stem.r, crossbar.cap) script:Grek
 
 # Beta - Double-bowl like Latin B
-Β  GREEK-CAPITAL-BETA     = LR(stem.l, STACK(bowl.r.upper, bowl.r.lower), 4/8) script:Grek
+Β  GREEK-CAPITAL-BETA     = LR(stem.l, STACK(bowl.upper, bowl.lower), 3/9) script:Grek
 
 # Gamma - Greek-specific: bar at top with single descending stem
 Γ  GREEK-CAPITAL-GAMMA    = FRAME(bar.top, stem.l) script:Grek
@@ -152,16 +183,16 @@ anchors: attach=[6,6] top=[6,4] base=[6,8]
 Ι  GREEK-CAPITAL-IOTA     = stem.l script:Grek
 
 # Kappa - Structurally similar to Latin K
-Κ  GREEK-CAPITAL-KAPPA    = LR(stem.l, STACK(leg.cap, diagonal), 4/8) script:Grek
+Κ  GREEK-CAPITAL-KAPPA    = FRAME(stem.l, diagonal.l, leg.cap) script:Grek
 
 # Lambda - Greek-specific: inverted V (apex form)
 Λ  GREEK-CAPITAL-LAMBDA   = apex script:Grek
 
 # Mu - Structurally similar to Latin M
-Μ  GREEK-CAPITAL-MU       = FRAME(stem.l, vertex.cap, stem.r) script:Grek
+Μ  GREEK-CAPITAL-MU       = FRAME(stem.l, apex, stem.r) script:Grek
 
 # Nu - Structurally similar to Latin N
-Ν  GREEK-CAPITAL-NU       = LR3(stem.l, diagonal, stem.r, 4/4/4) script:Grek
+Ν  GREEK-CAPITAL-NU       = FRAME(stem.l, diagonal, stem.r) script:Grek
 
 # Xi - Greek-specific: three horizontal bars
 Ξ  GREEK-CAPITAL-XI       = FRAME(bar.top, crossbar.cap, bar.bot.cap) script:Grek
@@ -173,7 +204,7 @@ anchors: attach=[6,6] top=[6,4] base=[6,8]
 Π  GREEK-CAPITAL-PI       = FRAME(stem.l, bar.top, stem.r) script:Grek
 
 # Rho - Structurally similar to Latin P
-Ρ  GREEK-CAPITAL-RHO      = LR(stem.l, bowl.r.upper, 4/8) script:Grek
+Ρ  GREEK-CAPITAL-RHO      = LR(stem.l, bowl.upper, 3/9) script:Grek
 
 # Sigma - Greek-specific: angular form like rotated E
 Σ  GREEK-CAPITAL-SIGMA    = FRAME(bar.top, vertex.cap, bar.bot.cap) script:Grek
@@ -182,13 +213,13 @@ anchors: attach=[6,6] top=[6,4] base=[6,8]
 Τ  GREEK-CAPITAL-TAU      = FRAME(bar.top, stem) script:Grek
 
 # Upsilon - Structurally similar to Latin Y
-Υ  GREEK-CAPITAL-UPSILON  = STACK(vertex.cap, stem) script:Grek
+Υ  GREEK-CAPITAL-UPSILON  = FRAME(diagonal.l, stem, diagonal) script:Grek
 
 # Phi - Greek-specific: circular bowl with vertical through-stroke
 Φ  GREEK-CAPITAL-PHI      = OVR(bowl.cap, full-stem) script:Grek
 
 # Chi - Structurally identical to Latin X
-Χ  GREEK-CAPITAL-CHI      = FRAME(diagonal.l, diagonal) script:Grek
+Χ  GREEK-CAPITAL-CHI      = OVR(diagonal, diagonal.l) script:Grek
 
 # Psi - Greek-specific: trident form
 Ψ  GREEK-CAPITAL-PSI      = FRAME(diagonal.l, full-stem, diagonal) script:Grek
@@ -274,6 +305,252 @@ anchors: attach=[6,6] top=[6,4] base=[6,8]
 
 # Omega - Two loops side by side
 ω  GREEK-SMALL-OMEGA      = LR(loop.greek, loop.greek, 6/6) script:Grek
+
+# =============================================================================
+# GREEK PUNCTUATION AND NUMERAL SIGNS
+# =============================================================================
+
+# Greek numeral sign (keraia) - apostrophe-like mark after numerals
+# U+0374 GREEK NUMERAL SIGN
+ʹ  GREEK-NUMERAL-SIGN        = comma-above script:Grek
+
+# Greek lower numeral sign - for thousands
+# U+0375 GREEK LOWER NUMERAL SIGN
+͵  GREEK-LOWER-NUMERAL-SIGN  = comma-below script:Grek
+
+# Greek question mark - identical to semicolon
+# U+037E GREEK QUESTION MARK
+;  GREEK-QUESTION-MARK       = STACK(dot-above, comma) script:Grek
+
+# Greek ano teleia (middle dot) - sentence separator
+# U+0387 GREEK ANO TELEIA
+·  GREEK-ANO-TELEIA          = dot script:Grek
+
+# Greek tonos - standalone accent mark (same as acute)
+΄  GREEK-TONOS               = acute script:Grek
+
+# Greek dialytika tonos - diaeresis with acute
+΅  GREEK-DIALYTIKA-TONOS     = STACK(diaeresis, acute) script:Grek
+
+# Greek ypogegrammeni - iota subscript (standalone)
+ͺ  GREEK-YPOGEGRAMMENI       = greek-ypogegrammeni script:Grek
+
+# =============================================================================
+# ACCENTED GREEK CAPITAL LETTERS
+# =============================================================================
+
+# Capital letters with tonos (acute accent)
+Ά  GREEK-CAPITAL-ALPHA-TONOS    = DIA(Α, acute) script:Grek
+Έ  GREEK-CAPITAL-EPSILON-TONOS  = DIA(Ε, acute) script:Grek
+Ή  GREEK-CAPITAL-ETA-TONOS      = DIA(Η, acute) script:Grek
+Ί  GREEK-CAPITAL-IOTA-TONOS     = DIA(Ι, acute) script:Grek
+Ό  GREEK-CAPITAL-OMICRON-TONOS  = DIA(Ο, acute) script:Grek
+Ύ  GREEK-CAPITAL-UPSILON-TONOS  = DIA(Υ, acute) script:Grek
+Ώ  GREEK-CAPITAL-OMEGA-TONOS    = DIA(Ω, acute) script:Grek
+
+# Capital letters with dialytika (diaeresis)
+Ϊ  GREEK-CAPITAL-IOTA-DIALYTIKA    = DIA(Ι, diaeresis) script:Grek
+Ϋ  GREEK-CAPITAL-UPSILON-DIALYTIKA = DIA(Υ, diaeresis) script:Grek
+
+# =============================================================================
+# ACCENTED GREEK SMALL LETTERS
+# =============================================================================
+
+# Small letters with tonos (acute accent)
+ά  GREEK-SMALL-ALPHA-TONOS    = DIA(α, acute) script:Grek
+έ  GREEK-SMALL-EPSILON-TONOS  = DIA(ε, acute) script:Grek
+ή  GREEK-SMALL-ETA-TONOS      = DIA(η, acute) script:Grek
+ί  GREEK-SMALL-IOTA-TONOS     = DIA(ι, acute) script:Grek
+ό  GREEK-SMALL-OMICRON-TONOS  = DIA(ο, acute) script:Grek
+ύ  GREEK-SMALL-UPSILON-TONOS  = DIA(υ, acute) script:Grek
+ώ  GREEK-SMALL-OMEGA-TONOS    = DIA(ω, acute) script:Grek
+
+# Small letters with dialytika (diaeresis)
+ϊ  GREEK-SMALL-IOTA-DIALYTIKA    = DIA(ι, diaeresis) script:Grek
+ϋ  GREEK-SMALL-UPSILON-DIALYTIKA = DIA(υ, diaeresis) script:Grek
+
+# Small letters with dialytika and tonos (combined diaeresis + acute)
+ΐ  GREEK-SMALL-IOTA-DIALYTIKA-TONOS    = DIA(ι, greek-dialytika-tonos) script:Grek
+ΰ  GREEK-SMALL-UPSILON-DIALYTIKA-TONOS = DIA(υ, greek-dialytika-tonos) script:Grek
+
+# =============================================================================
+# ARCHAIC GREEK LETTERS
+# =============================================================================
+
+# Heta - archaic letter for rough breathing
+@case Ͱ ͱ
+Ͱ  GREEK-CAPITAL-HETA    = FRAME(stem.l, crossbar.cap) script:Grek
+ͱ  GREEK-SMALL-HETA      = FRAME(stem, crossbar) script:Grek
+
+# Archaic Sampi - used as numeral for 900
+@case Ͳ ͳ
+Ͳ  GREEK-CAPITAL-ARCHAIC-SAMPI = STACK(bar.top, vertex.cap) script:Grek
+ͳ  GREEK-SMALL-ARCHAIC-SAMPI   = STACK(bar.top.x, vertex) script:Grek
+
+# Pamphylian Digamma - regional variant of digamma
+@case Ͷ ͷ
+Ͷ  GREEK-CAPITAL-PAMPHYLIAN-DIGAMMA = FRAME(stem.l, arm.top, arm.mid) script:Grek
+ͷ  GREEK-SMALL-PAMPHYLIAN-DIGAMMA   = FRAME(stem, arm.top.x, arm.mid.x) script:Grek
+
+# Digamma (wau) - archaic letter for /w/ sound, numeral 6
+@case Ϝ ϝ
+Ϝ  GREEK-CAPITAL-DIGAMMA = FRAME(stem.l, arm.top, arm.mid) script:Grek
+ϝ  GREEK-SMALL-DIGAMMA   = FRAME(stem, arm.top.x, arm.mid.x) script:Grek
+
+# Stigma - ligature of sigma-tau, numeral 6
+@case Ϛ ϛ
+Ϛ  GREEK-CAPITAL-STIGMA  = STACK(arc.top.cap, tail.final) script:Grek
+ϛ  GREEK-SMALL-STIGMA    = STACK(arc.top, tail.final) script:Grek
+
+# Archaic Koppa - numeral 90
+@case Ϙ ϙ
+Ϙ  GREEK-CAPITAL-ARCHAIC-KOPPA = STACK(bowl.cap, descender) script:Grek
+ϙ  GREEK-SMALL-ARCHAIC-KOPPA   = STACK(bowl.full, descender) script:Grek
+
+# Koppa - numeral 90 (alternate form)
+@case Ϟ ϟ
+Ϟ  GREEK-CAPITAL-KOPPA   = STACK(bowl.cap, stem) script:Grek
+ϟ  GREEK-SMALL-KOPPA     = STACK(bowl.full, stem) script:Grek
+
+# Sampi - numeral 900
+@case Ϡ ϡ
+Ϡ  GREEK-CAPITAL-SAMPI   = STACK(vertex.cap, descender) script:Grek
+ϡ  GREEK-SMALL-SAMPI     = STACK(vertex, descender) script:Grek
+
+# San - archaic letter (predecessor of sigma)
+@case Ϻ ϻ
+Ϻ  GREEK-CAPITAL-SAN     = FRAME(stem.l, vertex.cap, stem.r) script:Grek
+ϻ  GREEK-SMALL-SAN       = FRAME(stem, vertex, stem.x) script:Grek
+
+# Sho - used in Bactrian
+@case Ϸ ϸ
+Ϸ  GREEK-CAPITAL-SHO     = LR(stem.l, bowl.r.upper, 4/8) script:Grek
+ϸ  GREEK-SMALL-SHO       = STACK(stem, descender) script:Grek
+
+# Yot - used in ancient Greek dialects
+@case Ϳ ϳ
+Ϳ  GREEK-CAPITAL-YOT     = STACK(stem.l, hook) script:Grek
+ϳ  GREEK-SMALL-YOT       = STACK(stem, hook) script:Grek
+
+# =============================================================================
+# GREEK LETTER VARIANTS AND SYMBOLS
+# =============================================================================
+
+# Beta symbol (curly beta) - mathematical/technical use
+ϐ  GREEK-BETA-SYMBOL     = STACK(ascender.curved, bowl.r.upper, bowl.r.lower) script:Grek
+
+# Theta symbol - mathematical/technical use
+ϑ  GREEK-THETA-SYMBOL    = OVR(bowl.full, stroke) script:Grek
+
+# Upsilon with hook - mathematical use
+ϒ  GREEK-UPSILON-HOOK-SYMBOL = STACK(vertex.cap, hook) script:Grek
+
+# Upsilon with acute and hook
+ϓ  GREEK-UPSILON-ACUTE-HOOK-SYMBOL = DIA(ϒ, acute) script:Grek
+
+# Upsilon with diaeresis and hook
+ϔ  GREEK-UPSILON-DIAERESIS-HOOK-SYMBOL = DIA(ϒ, diaeresis) script:Grek
+
+# Phi symbol (loopy phi) - mathematical use
+ϕ  GREEK-PHI-SYMBOL      = OVR(bowl.full, stem) script:Grek
+
+# Pi symbol (variant omega-pi) - mathematical use
+ϖ  GREEK-PI-SYMBOL       = LR(loop.greek, loop.greek, 6/6) script:Grek
+
+# Kai symbol - abbreviation for "kai" (and)
+@case Ϗ ϗ
+Ϗ  GREEK-CAPITAL-KAI-SYMBOL = LR(stem.l, STACK(leg.cap, diagonal), 4/8) script:Grek
+ϗ  GREEK-SMALL-KAI-SYMBOL   = LR(stem, STACK(leg, diagonal.x), 4/8) script:Grek
+
+# Kappa symbol - mathematical use
+ϰ  GREEK-KAPPA-SYMBOL    = LR(stem, STACK(leg, diagonal.x), 4/8) script:Grek
+
+# Rho symbol - mathematical use (with stroke)
+ϱ  GREEK-RHO-SYMBOL      = STACK(bowl.r, descender.curved) script:Grek
+
+# Rho with stroke symbol
+ϼ  GREEK-RHO-STROKE-SYMBOL = OVR(ϱ, stroke) script:Grek
+
+# Lunate sigma symbol - C-shaped sigma
+ϲ  GREEK-LUNATE-SIGMA-SYMBOL = arc.left script:Grek
+
+# Lunate epsilon symbol
+ϵ  GREEK-LUNATE-EPSILON-SYMBOL = STACK(arc.top, arc.bot) script:Grek
+
+# Reversed lunate epsilon symbol
+϶  GREEK-REVERSED-LUNATE-EPSILON-SYMBOL = STACK(arc.top.r, arc.bot.r) script:Grek
+
+# Capital theta symbol - mathematical use
+ϴ  GREEK-CAPITAL-THETA-SYMBOL = OVR(bowl.cap, stroke) script:Grek
+
+# Capital lunate sigma symbol
+Ϲ  GREEK-CAPITAL-LUNATE-SIGMA-SYMBOL = arc.left.cap script:Grek
+
+# =============================================================================
+# SIGMA VARIANT SYMBOLS
+# =============================================================================
+
+# Small reversed lunate sigma
+ͻ  GREEK-SMALL-REVERSED-LUNATE-SIGMA = arc.right script:Grek
+
+# Small dotted lunate sigma
+ͼ  GREEK-SMALL-DOTTED-LUNATE-SIGMA = OVR(arc.left, dot) script:Grek
+
+# Small reversed dotted lunate sigma
+ͽ  GREEK-SMALL-REVERSED-DOTTED-LUNATE-SIGMA = OVR(arc.right, dot) script:Grek
+
+# Capital reversed lunate sigma
+Ͻ  GREEK-CAPITAL-REVERSED-LUNATE-SIGMA = arc.right.cap script:Grek
+
+# Capital dotted lunate sigma
+Ͼ  GREEK-CAPITAL-DOTTED-LUNATE-SIGMA = OVR(arc.left.cap, dot) script:Grek
+
+# Capital reversed dotted lunate sigma
+Ͽ  GREEK-CAPITAL-REVERSED-DOTTED-LUNATE-SIGMA = OVR(arc.right.cap, dot) script:Grek
+
+# =============================================================================
+# COPTIC LETTERS
+# =============================================================================
+#
+# Coptic letters that appear in the Greek and Coptic block (U+03E2-03EF).
+# These are distinct from the dedicated Coptic block (U+2C80-2CFF).
+#
+# =============================================================================
+
+# Shei - Coptic letter derived from Egyptian demotic
+@case Ϣ ϣ
+Ϣ  COPTIC-CAPITAL-SHEI   = FRAME(stem.l, arm.top, arm.bot.cap) script:Copt
+ϣ  COPTIC-SMALL-SHEI     = FRAME(stem, arm.top.x, arm.bot) script:Copt
+
+# Fei - Coptic letter for /f/ sound
+@case Ϥ ϥ
+Ϥ  COPTIC-CAPITAL-FEI    = STACK(bowl.cap, stem) script:Copt
+ϥ  COPTIC-SMALL-FEI      = STACK(bowl.full, descender) script:Copt
+
+# Khei - Coptic letter for /x/ sound
+@case Ϧ ϧ
+Ϧ  COPTIC-CAPITAL-KHEI   = FRAME(diagonal.l, diagonal, crossbar.cap) script:Copt
+ϧ  COPTIC-SMALL-KHEI     = FRAME(diagonal.l, diagonal.x, crossbar) script:Copt
+
+# Hori - Coptic letter for /h/ sound
+@case Ϩ ϩ
+Ϩ  COPTIC-CAPITAL-HORI   = FRAME(stem.l, crossbar.cap, stem.r) script:Copt
+ϩ  COPTIC-SMALL-HORI     = FRAME(stem, crossbar, shoulder) script:Copt
+
+# Gangia - Coptic letter
+@case Ϫ ϫ
+Ϫ  COPTIC-CAPITAL-GANGIA = FRAME(diagonal.l, crossbar.cap, diagonal) script:Copt
+ϫ  COPTIC-SMALL-GANGIA   = FRAME(diagonal.l, crossbar, diagonal.x) script:Copt
+
+# Shima - Coptic letter
+@case Ϭ ϭ
+Ϭ  COPTIC-CAPITAL-SHIMA  = FRAME(stem.l, STACK(bowl.r.upper, bowl.r.lower), 4/8) script:Copt
+ϭ  COPTIC-SMALL-SHIMA    = FRAME(stem, STACK(bowl.r, bowl.r), 4/8) script:Copt
+
+# Dei - Coptic letter
+@case Ϯ ϯ
+Ϯ  COPTIC-CAPITAL-DEI    = FRAME(stem.l, bar.top, stem.r) script:Copt
+ϯ  COPTIC-SMALL-DEI      = FRAME(stem, bar.top.x, stem.x) script:Copt
 
 # =============================================================================
 # END OF GREEK ALPHABET LIBRARY

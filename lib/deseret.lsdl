@@ -1,0 +1,808 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Deseret Alphabet Library
+# =============================================================================
+#
+# This file defines the Deseret alphabet (script:Dsrt) using elements designed
+# to capture the unique geometric forms of this phonetic script.
+#
+# The Deseret alphabet was created by George D. Watt for the LDS church in 1854.
+# Key design features:
+#   - 40 uppercase + 40 lowercase letters (80 total)
+#   - No ascenders or descenders - all letters same height
+#   - Simple, uniform strokes distinct from Latin forms
+#   - Uppercase and lowercase differ only by scale
+#
+# Unicode range: U+10400-U+1044F (Supplementary Multilingual Plane)
+# ISO 15924 script code: Dsrt
+#
+# =============================================================================
+
+# =============================================================================
+# DESERET-SPECIFIC ELEMENTS
+# =============================================================================
+#
+# Deseret letters use simple geometric strokes: vertical stems, horizontal bars,
+# diagonal strokes, arcs, and loops. All elements are defined in x-height zone
+# since Deseret has no ascenders/descenders.
+#
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# dsrt.stem - Vertical straight stroke for Deseret
+# Used in: many consonants
+# -----------------------------------------------------------------------------
+@elem dsrt.stem
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8] mid=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.stem.l - Left-positioned vertical stroke
+# -----------------------------------------------------------------------------
+@elem dsrt.stem.l
+zone: x-height
+path: p1 p2
+p1 = [2,4]
+p2 = [2,8]
+close: false
+width: 1
+anchors: top=[2,4] base=[2,8] mid=[2,6]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.stem.r - Right-positioned vertical stroke
+# -----------------------------------------------------------------------------
+@elem dsrt.stem.r
+zone: x-height
+path: p1 p2
+p1 = [10,4]
+p2 = [10,8]
+close: false
+width: 1
+anchors: top=[10,4] base=[10,8] mid=[10,6]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.bar.top - Horizontal bar at top
+# -----------------------------------------------------------------------------
+@elem dsrt.bar.top
+zone: x-height
+path: p1 p2
+p1 = [2,4]
+p2 = [10,4]
+close: false
+width: 1
+anchors: left=[2,4] right=[10,4] mid=[6,4]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.bar.mid - Horizontal bar at middle
+# -----------------------------------------------------------------------------
+@elem dsrt.bar.mid
+zone: x-height
+path: p1 p2
+p1 = [2,6]
+p2 = [10,6]
+close: false
+width: 1
+anchors: left=[2,6] right=[10,6] mid=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.bar.bot - Horizontal bar at bottom
+# -----------------------------------------------------------------------------
+@elem dsrt.bar.bot
+zone: x-height
+path: p1 p2
+p1 = [2,8]
+p2 = [10,8]
+close: false
+width: 1
+anchors: left=[2,8] right=[10,8] mid=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.diag.down - Diagonal stroke descending left to right
+# -----------------------------------------------------------------------------
+@elem dsrt.diag.down
+zone: x-height
+path: p1 p2
+p1 = [2,4]
+p2 = [10,8]
+close: false
+width: 1
+anchors: top=[2,4] base=[10,8] mid=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.diag.up - Diagonal stroke ascending left to right
+# -----------------------------------------------------------------------------
+@elem dsrt.diag.up
+zone: x-height
+path: p1 p2
+p1 = [2,8]
+p2 = [10,4]
+close: false
+width: 1
+anchors: base=[2,8] top=[10,4] mid=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.arc.left - Left-opening arc (C-shape)
+# -----------------------------------------------------------------------------
+@elem dsrt.arc.left
+zone: x-height
+path: p1 p2 p3
+p1 = [8,4]
+p2 = C([2,4] [2,8])
+p3 = [8,8]
+close: false
+width: 1
+anchors: top=[8,4] base=[8,8] mid=[2,6]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.arc.right - Right-opening arc (reversed C-shape)
+# -----------------------------------------------------------------------------
+@elem dsrt.arc.right
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = C([10,4] [10,8])
+p3 = [4,8]
+close: false
+width: 1
+anchors: top=[4,4] base=[4,8] mid=[10,6]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.arc.top - Top arc (upside-down U)
+# -----------------------------------------------------------------------------
+@elem dsrt.arc.top
+zone: x-height
+path: p1 p2 p3
+p1 = [2,6]
+p2 = C([2,4] [10,4])
+p3 = [10,6]
+close: false
+width: 1
+anchors: left=[2,6] right=[10,6] top=[6,4]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.arc.bot - Bottom arc (U-shape)
+# -----------------------------------------------------------------------------
+@elem dsrt.arc.bot
+zone: x-height
+path: p1 p2 p3
+p1 = [2,6]
+p2 = C([2,8] [10,8])
+p3 = [10,6]
+close: false
+width: 1
+anchors: left=[2,6] right=[10,6] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.loop - Closed oval loop
+# -----------------------------------------------------------------------------
+@elem dsrt.loop
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = C([10,4] [10,6])
+p3 = C([10,8] [6,8])
+p4 = C([2,8] [2,6])
+close: true
+width: 1
+anchors: top=[6,4] base=[6,8] mid=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.loop.small - Small closed loop
+# -----------------------------------------------------------------------------
+@elem dsrt.loop.small
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,5]
+p2 = C([8,5] [8,6])
+p3 = C([8,7] [6,7])
+p4 = C([4,7] [4,6])
+close: true
+width: 1
+anchors: top=[6,5] base=[6,7] mid=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.hook.top - Hook curving from top
+# -----------------------------------------------------------------------------
+@elem dsrt.hook.top
+zone: x-height
+path: p1 p2 p3
+p1 = [10,4]
+p2 = C([10,5] [8,6])
+p3 = [6,6]
+close: false
+width: 1
+anchors: top=[10,4] base=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.hook.bot - Hook curving at bottom
+# -----------------------------------------------------------------------------
+@elem dsrt.hook.bot
+zone: x-height
+path: p1 p2 p3
+p1 = [6,6]
+p2 = C([4,7] [2,8])
+p3 = [2,8]
+close: false
+width: 1
+anchors: top=[6,6] base=[2,8]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.curve.s - S-curve (serpentine)
+# -----------------------------------------------------------------------------
+@elem dsrt.curve.s
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,4]
+p2 = C([8,4] [8,6])
+p3 = C([4,6] [4,8])
+p4 = [10,8]
+close: false
+width: 1
+anchors: top=[2,4] base=[10,8] mid=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.curve.s.rev - Reversed S-curve
+# -----------------------------------------------------------------------------
+@elem dsrt.curve.s.rev
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [10,4]
+p2 = C([4,4] [4,6])
+p3 = C([8,6] [8,8])
+p4 = [2,8]
+close: false
+width: 1
+anchors: top=[10,4] base=[2,8] mid=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.vertex.top - V-shape pointing up (apex)
+# -----------------------------------------------------------------------------
+@elem dsrt.vertex.top
+zone: x-height
+path: p1 p2 p3
+p1 = [2,8]
+p2 = [6,4]
+p3 = [10,8]
+close: false
+width: 1
+anchors: top=[6,4] left=[2,8] right=[10,8]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.vertex.bot - V-shape pointing down
+# -----------------------------------------------------------------------------
+@elem dsrt.vertex.bot
+zone: x-height
+path: p1 p2 p3
+p1 = [2,4]
+p2 = [6,8]
+p3 = [10,4]
+close: false
+width: 1
+anchors: base=[6,8] left=[2,4] right=[10,4]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.angle.left - Left angle bracket shape
+# -----------------------------------------------------------------------------
+@elem dsrt.angle.left
+zone: x-height
+path: p1 p2 p3
+p1 = [8,4]
+p2 = [2,6]
+p3 = [8,8]
+close: false
+width: 1
+anchors: top=[8,4] base=[8,8] mid=[2,6]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.angle.right - Right angle bracket shape
+# -----------------------------------------------------------------------------
+@elem dsrt.angle.right
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = [10,6]
+p3 = [4,8]
+close: false
+width: 1
+anchors: top=[4,4] base=[4,8] mid=[10,6]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.bowl.left - Left-attached bowl
+# -----------------------------------------------------------------------------
+@elem dsrt.bowl.left
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = C([2,4] [2,6])
+p3 = C([2,8] [6,8])
+p4 = [6,6]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8] mid=[2,6]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.bowl.right - Right-attached bowl
+# -----------------------------------------------------------------------------
+@elem dsrt.bowl.right
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = C([10,4] [10,6])
+p3 = C([10,8] [6,8])
+p4 = [6,6]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8] mid=[10,6]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.tail.left - Tail curving left
+# -----------------------------------------------------------------------------
+@elem dsrt.tail.left
+zone: x-height
+path: p1 p2 p3
+p1 = [6,6]
+p2 = C([4,7] [2,8])
+p3 = [2,8]
+close: false
+width: 1
+anchors: attach=[6,6] base=[2,8]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.tail.right - Tail curving right
+# -----------------------------------------------------------------------------
+@elem dsrt.tail.right
+zone: x-height
+path: p1 p2 p3
+p1 = [6,6]
+p2 = C([8,7] [10,8])
+p3 = [10,8]
+close: false
+width: 1
+anchors: attach=[6,6] base=[10,8]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.sickle - Curved sickle shape
+# -----------------------------------------------------------------------------
+@elem dsrt.sickle
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,4]
+p2 = C([10,4] [10,6])
+p3 = C([10,8] [6,8])
+p4 = [4,6]
+close: false
+width: 1
+anchors: top=[2,4] base=[4,6]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.wave - Wave-like horizontal stroke
+# -----------------------------------------------------------------------------
+@elem dsrt.wave
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [2,6]
+p2 = C([4,4] [6,4])
+p3 = [6,6]
+p4 = C([6,8] [8,8])
+p5 = [10,6]
+close: false
+width: 1
+anchors: left=[2,6] right=[10,6] mid=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# dsrt.dot - Dot element
+# -----------------------------------------------------------------------------
+@elem dsrt.dot
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,5]
+p2 = C([7,5] [7,6])
+p3 = C([7,7] [6,7])
+p4 = C([5,7] [5,6])
+close: true
+width: 1
+anchors: mid=[6,6]
+@end
+
+# =============================================================================
+# CASE MAPPINGS
+# =============================================================================
+#
+# Deseret has 40 letter pairs. Case conversion is uniform: +0x28 offset.
+# U+10400-U+10427 are uppercase, U+10428-U+1044F are lowercase.
+#
+# =============================================================================
+
+@case 𐐀 𐐨
+@case 𐐁 𐐩
+@case 𐐂 𐐪
+@case 𐐃 𐐫
+@case 𐐄 𐐬
+@case 𐐅 𐐭
+@case 𐐆 𐐮
+@case 𐐇 𐐯
+@case 𐐈 𐐰
+@case 𐐉 𐐱
+@case 𐐊 𐐲
+@case 𐐋 𐐳
+@case 𐐌 𐐴
+@case 𐐍 𐐵
+@case 𐐎 𐐶
+@case 𐐏 𐐷
+@case 𐐐 𐐸
+@case 𐐑 𐐹
+@case 𐐒 𐐺
+@case 𐐓 𐐻
+@case 𐐔 𐐼
+@case 𐐕 𐐽
+@case 𐐖 𐐾
+@case 𐐗 𐐿
+@case 𐐘 𐑀
+@case 𐐙 𐑁
+@case 𐐚 𐑂
+@case 𐐛 𐑃
+@case 𐐜 𐑄
+@case 𐐝 𐑅
+@case 𐐞 𐑆
+@case 𐐟 𐑇
+@case 𐐠 𐑈
+@case 𐐡 𐑉
+@case 𐐢 𐑊
+@case 𐐣 𐑋
+@case 𐐤 𐑌
+@case 𐐥 𐑍
+@case 𐐦 𐑎
+@case 𐐧 𐑏
+
+# =============================================================================
+# UPPERCASE DESERET LETTERS (40)
+# =============================================================================
+#
+# U+10400-U+10427: Capital letters
+# Deseret uppercase letters use full x-height elements.
+#
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Vowels: Long Vowels (U+10400-U+10405)
+# -----------------------------------------------------------------------------
+
+# Long I - vertical stem with curved top hook
+𐐀  DESERET-CAPITAL-LONG-I       = FRAME(dsrt.stem, dsrt.hook.top) cp:U+10400 script:Dsrt
+
+# Long E - curved S-like form
+𐐁  DESERET-CAPITAL-LONG-E       = dsrt.curve.s cp:U+10401 script:Dsrt
+
+# Long A - left-opening arc with stem
+𐐂  DESERET-CAPITAL-LONG-A       = FRAME(dsrt.arc.left, dsrt.stem.r) cp:U+10402 script:Dsrt
+
+# Long Ah - bowl shape open at right
+𐐃  DESERET-CAPITAL-LONG-AH      = dsrt.arc.left cp:U+10403 script:Dsrt
+
+# Long O - closed oval loop
+𐐄  DESERET-CAPITAL-LONG-O       = dsrt.loop cp:U+10404 script:Dsrt
+
+# Long Oo - loop with tail
+𐐅  DESERET-CAPITAL-LONG-OO      = FRAME(dsrt.loop, dsrt.tail.right) cp:U+10405 script:Dsrt
+
+# -----------------------------------------------------------------------------
+# Vowels: Short Vowels (U+10406-U+1040B)
+# -----------------------------------------------------------------------------
+
+# Short I - reversed hook form
+𐐆  DESERET-CAPITAL-SHORT-I      = FRAME(dsrt.stem, dsrt.hook.bot) cp:U+10406 script:Dsrt
+
+# Short E - reversed S-curve
+𐐇  DESERET-CAPITAL-SHORT-E      = dsrt.curve.s.rev cp:U+10407 script:Dsrt
+
+# Short A - right-opening arc with stem
+𐐈  DESERET-CAPITAL-SHORT-A      = FRAME(dsrt.stem.l, dsrt.arc.right) cp:U+10408 script:Dsrt
+
+# Short Ah - right-opening arc
+𐐉  DESERET-CAPITAL-SHORT-AH     = dsrt.arc.right cp:U+10409 script:Dsrt
+
+# Short O - small loop
+𐐊  DESERET-CAPITAL-SHORT-O      = dsrt.loop.small cp:U+1040A script:Dsrt
+
+# Short Oo - small loop with tail
+𐐋  DESERET-CAPITAL-SHORT-OO     = FRAME(dsrt.loop.small, dsrt.tail.left) cp:U+1040B script:Dsrt
+
+# -----------------------------------------------------------------------------
+# Diphthongs (U+1040C-U+1040F)
+# -----------------------------------------------------------------------------
+
+# Ay - diagonal down stroke
+𐐌  DESERET-CAPITAL-AY           = dsrt.diag.down cp:U+1040C script:Dsrt
+
+# Ow - diagonal up stroke
+𐐍  DESERET-CAPITAL-OW           = dsrt.diag.up cp:U+1040D script:Dsrt
+
+# Wu - wave form
+𐐎  DESERET-CAPITAL-WU           = dsrt.wave cp:U+1040E script:Dsrt
+
+# Yee - V-shape pointing down
+𐐏  DESERET-CAPITAL-YEE          = dsrt.vertex.bot cp:U+1040F script:Dsrt
+
+# -----------------------------------------------------------------------------
+# Consonants: Stops and Affricates (U+10410-U+10418)
+# -----------------------------------------------------------------------------
+
+# H - two vertical stems
+𐐐  DESERET-CAPITAL-H            = FRAME(dsrt.stem.l, dsrt.stem.r) cp:U+10410 script:Dsrt
+
+# Pee - stem with right bowl
+𐐑  DESERET-CAPITAL-PEE          = FRAME(dsrt.stem.l, dsrt.bowl.right) cp:U+10411 script:Dsrt
+
+# Bee - stem with left bowl
+𐐒  DESERET-CAPITAL-BEE          = FRAME(dsrt.bowl.left, dsrt.stem.r) cp:U+10412 script:Dsrt
+
+# Tee - V pointing up (apex)
+𐐓  DESERET-CAPITAL-TEE          = dsrt.vertex.top cp:U+10413 script:Dsrt
+
+# Dee - inverted V
+𐐔  DESERET-CAPITAL-DEE          = dsrt.vertex.bot cp:U+10414 script:Dsrt
+
+# Chee - right angle bracket
+𐐕  DESERET-CAPITAL-CHEE         = dsrt.angle.right cp:U+10415 script:Dsrt
+
+# Jee - left angle bracket
+𐐖  DESERET-CAPITAL-JEE          = dsrt.angle.left cp:U+10416 script:Dsrt
+
+# Kay - stem with diagonal up arm
+𐐗  DESERET-CAPITAL-KAY          = FRAME(dsrt.stem.l, dsrt.diag.up) cp:U+10417 script:Dsrt
+
+# Gay - stem with diagonal down arm
+𐐘  DESERET-CAPITAL-GAY          = FRAME(dsrt.stem.l, dsrt.diag.down) cp:U+10418 script:Dsrt
+
+# -----------------------------------------------------------------------------
+# Consonants: Fricatives (U+10419-U+10420)
+# -----------------------------------------------------------------------------
+
+# Ef - top arc with stem
+𐐙  DESERET-CAPITAL-EF           = FRAME(dsrt.arc.top, dsrt.stem) cp:U+10419 script:Dsrt
+
+# Vee - bottom arc with stem
+𐐚  DESERET-CAPITAL-VEE          = FRAME(dsrt.stem, dsrt.arc.bot) cp:U+1041A script:Dsrt
+
+# Eth - sickle curve
+𐐛  DESERET-CAPITAL-ETH          = dsrt.sickle cp:U+1041B script:Dsrt
+
+# Thee - reversed sickle
+𐐜  DESERET-CAPITAL-THEE         = FRAME(dsrt.stem.l, dsrt.arc.right) cp:U+1041C script:Dsrt
+
+# Es - top bar with stem
+𐐝  DESERET-CAPITAL-ES           = FRAME(dsrt.bar.top, dsrt.stem) cp:U+1041D script:Dsrt
+
+# Zee - bottom bar with stem
+𐐞  DESERET-CAPITAL-ZEE          = FRAME(dsrt.stem, dsrt.bar.bot) cp:U+1041E script:Dsrt
+
+# Esh - S-curve
+𐐟  DESERET-CAPITAL-ESH          = dsrt.curve.s cp:U+1041F script:Dsrt
+
+# Zhee - reversed S-curve
+𐐠  DESERET-CAPITAL-ZHEE         = dsrt.curve.s.rev cp:U+10420 script:Dsrt
+
+# -----------------------------------------------------------------------------
+# Consonants: Liquids and Nasals (U+10421-U+10425)
+# -----------------------------------------------------------------------------
+
+# Er - arc loop form
+𐐡  DESERET-CAPITAL-ER           = FRAME(dsrt.arc.left, dsrt.stem.r) cp:U+10421 script:Dsrt
+
+# El - stem with bottom curve
+𐐢  DESERET-CAPITAL-EL           = FRAME(dsrt.stem.l, dsrt.arc.bot) cp:U+10422 script:Dsrt
+
+# Em - two stems with connecting arc
+𐐣  DESERET-CAPITAL-EM           = FRAME(dsrt.stem.l, dsrt.arc.top, dsrt.stem.r) cp:U+10423 script:Dsrt
+
+# En - two stems with bottom arc
+𐐤  DESERET-CAPITAL-EN           = FRAME(dsrt.stem.l, dsrt.arc.bot, dsrt.stem.r) cp:U+10424 script:Dsrt
+
+# Eng - loop with stems
+𐐥  DESERET-CAPITAL-ENG          = FRAME(dsrt.loop, dsrt.stem.r) cp:U+10425 script:Dsrt
+
+# -----------------------------------------------------------------------------
+# Additional Letters (U+10426-U+10427)
+# -----------------------------------------------------------------------------
+
+# Oi - diagonal with dot
+𐐦  DESERET-CAPITAL-OI           = FRAME(dsrt.diag.down, dsrt.dot) cp:U+10426 script:Dsrt
+
+# Ew - wave with dot
+𐐧  DESERET-CAPITAL-EW           = FRAME(dsrt.wave, dsrt.dot) cp:U+10427 script:Dsrt
+
+# =============================================================================
+# LOWERCASE DESERET LETTERS (40)
+# =============================================================================
+#
+# U+10428-U+1044F: Small letters
+# Lowercase forms use the same shapes as uppercase, scaled smaller.
+# In LSDL, we reference the same elements; scaling is handled at render time.
+#
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Vowels: Long Vowels (U+10428-U+1042D)
+# -----------------------------------------------------------------------------
+
+# Small Long I
+𐐨  DESERET-SMALL-LONG-I         = FRAME(dsrt.stem, dsrt.hook.top) cp:U+10428 script:Dsrt
+
+# Small Long E
+𐐩  DESERET-SMALL-LONG-E         = dsrt.curve.s cp:U+10429 script:Dsrt
+
+# Small Long A
+𐐪  DESERET-SMALL-LONG-A         = FRAME(dsrt.arc.left, dsrt.stem.r) cp:U+1042A script:Dsrt
+
+# Small Long Ah
+𐐫  DESERET-SMALL-LONG-AH        = dsrt.arc.left cp:U+1042B script:Dsrt
+
+# Small Long O
+𐐬  DESERET-SMALL-LONG-O         = dsrt.loop cp:U+1042C script:Dsrt
+
+# Small Long Oo
+𐐭  DESERET-SMALL-LONG-OO        = FRAME(dsrt.loop, dsrt.tail.right) cp:U+1042D script:Dsrt
+
+# -----------------------------------------------------------------------------
+# Vowels: Short Vowels (U+1042E-U+10433)
+# -----------------------------------------------------------------------------
+
+# Small Short I
+𐐮  DESERET-SMALL-SHORT-I        = FRAME(dsrt.stem, dsrt.hook.bot) cp:U+1042E script:Dsrt
+
+# Small Short E
+𐐯  DESERET-SMALL-SHORT-E        = dsrt.curve.s.rev cp:U+1042F script:Dsrt
+
+# Small Short A
+𐐰  DESERET-SMALL-SHORT-A        = FRAME(dsrt.stem.l, dsrt.arc.right) cp:U+10430 script:Dsrt
+
+# Small Short Ah
+𐐱  DESERET-SMALL-SHORT-AH       = dsrt.arc.right cp:U+10431 script:Dsrt
+
+# Small Short O
+𐐲  DESERET-SMALL-SHORT-O        = dsrt.loop.small cp:U+10432 script:Dsrt
+
+# Small Short Oo
+𐐳  DESERET-SMALL-SHORT-OO       = FRAME(dsrt.loop.small, dsrt.tail.left) cp:U+10433 script:Dsrt
+
+# -----------------------------------------------------------------------------
+# Diphthongs (U+10434-U+10437)
+# -----------------------------------------------------------------------------
+
+# Small Ay
+𐐴  DESERET-SMALL-AY             = dsrt.diag.down cp:U+10434 script:Dsrt
+
+# Small Ow
+𐐵  DESERET-SMALL-OW             = dsrt.diag.up cp:U+10435 script:Dsrt
+
+# Small Wu
+𐐶  DESERET-SMALL-WU             = dsrt.wave cp:U+10436 script:Dsrt
+
+# Small Yee
+𐐷  DESERET-SMALL-YEE            = dsrt.vertex.bot cp:U+10437 script:Dsrt
+
+# -----------------------------------------------------------------------------
+# Consonants: Stops and Affricates (U+10438-U+10440)
+# -----------------------------------------------------------------------------
+
+# Small H
+𐐸  DESERET-SMALL-H              = FRAME(dsrt.stem.l, dsrt.stem.r) cp:U+10438 script:Dsrt
+
+# Small Pee
+𐐹  DESERET-SMALL-PEE            = FRAME(dsrt.stem.l, dsrt.bowl.right) cp:U+10439 script:Dsrt
+
+# Small Bee
+𐐺  DESERET-SMALL-BEE            = FRAME(dsrt.bowl.left, dsrt.stem.r) cp:U+1043A script:Dsrt
+
+# Small Tee
+𐐻  DESERET-SMALL-TEE            = dsrt.vertex.top cp:U+1043B script:Dsrt
+
+# Small Dee
+𐐼  DESERET-SMALL-DEE            = dsrt.vertex.bot cp:U+1043C script:Dsrt
+
+# Small Chee
+𐐽  DESERET-SMALL-CHEE           = dsrt.angle.right cp:U+1043D script:Dsrt
+
+# Small Jee
+𐐾  DESERET-SMALL-JEE            = dsrt.angle.left cp:U+1043E script:Dsrt
+
+# Small Kay
+𐐿  DESERET-SMALL-KAY            = FRAME(dsrt.stem.l, dsrt.diag.up) cp:U+1043F script:Dsrt
+
+# Small Gay
+𐑀  DESERET-SMALL-GAY            = FRAME(dsrt.stem.l, dsrt.diag.down) cp:U+10440 script:Dsrt
+
+# -----------------------------------------------------------------------------
+# Consonants: Fricatives (U+10441-U+10448)
+# -----------------------------------------------------------------------------
+
+# Small Ef
+𐑁  DESERET-SMALL-EF             = FRAME(dsrt.arc.top, dsrt.stem) cp:U+10441 script:Dsrt
+
+# Small Vee
+𐑂  DESERET-SMALL-VEE            = FRAME(dsrt.stem, dsrt.arc.bot) cp:U+10442 script:Dsrt
+
+# Small Eth
+𐑃  DESERET-SMALL-ETH            = dsrt.sickle cp:U+10443 script:Dsrt
+
+# Small Thee
+𐑄  DESERET-SMALL-THEE           = FRAME(dsrt.stem.l, dsrt.arc.right) cp:U+10444 script:Dsrt
+
+# Small Es
+𐑅  DESERET-SMALL-ES             = FRAME(dsrt.bar.top, dsrt.stem) cp:U+10445 script:Dsrt
+
+# Small Zee
+𐑆  DESERET-SMALL-ZEE            = FRAME(dsrt.stem, dsrt.bar.bot) cp:U+10446 script:Dsrt
+
+# Small Esh
+𐑇  DESERET-SMALL-ESH            = dsrt.curve.s cp:U+10447 script:Dsrt
+
+# Small Zhee
+𐑈  DESERET-SMALL-ZHEE           = dsrt.curve.s.rev cp:U+10448 script:Dsrt
+
+# -----------------------------------------------------------------------------
+# Consonants: Liquids and Nasals (U+10449-U+1044D)
+# -----------------------------------------------------------------------------
+
+# Small Er
+𐑉  DESERET-SMALL-ER             = FRAME(dsrt.arc.left, dsrt.stem.r) cp:U+10449 script:Dsrt
+
+# Small El
+𐑊  DESERET-SMALL-EL             = FRAME(dsrt.stem.l, dsrt.arc.bot) cp:U+1044A script:Dsrt
+
+# Small Em
+𐑋  DESERET-SMALL-EM             = FRAME(dsrt.stem.l, dsrt.arc.top, dsrt.stem.r) cp:U+1044B script:Dsrt
+
+# Small En
+𐑌  DESERET-SMALL-EN             = FRAME(dsrt.stem.l, dsrt.arc.bot, dsrt.stem.r) cp:U+1044C script:Dsrt
+
+# Small Eng
+𐑍  DESERET-SMALL-ENG            = FRAME(dsrt.loop, dsrt.stem.r) cp:U+1044D script:Dsrt
+
+# -----------------------------------------------------------------------------
+# Additional Letters (U+1044E-U+1044F)
+# -----------------------------------------------------------------------------
+
+# Small Oi
+𐑎  DESERET-SMALL-OI             = FRAME(dsrt.diag.down, dsrt.dot) cp:U+1044E script:Dsrt
+
+# Small Ew
+𐑏  DESERET-SMALL-EW             = FRAME(dsrt.wave, dsrt.dot) cp:U+1044F script:Dsrt
+
+# =============================================================================
+# END OF DESERET ALPHABET LIBRARY
+# =============================================================================

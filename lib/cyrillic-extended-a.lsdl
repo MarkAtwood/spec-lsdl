@@ -1,0 +1,705 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Cyrillic Extended-A Library (U+2DE0-U+2DFF)
+# =============================================================================
+#
+# Complete coverage of Unicode block Cyrillic Extended-A (32 combining marks).
+# These are superscript (combining) versions of Cyrillic letters used in
+# Church Slavonic texts for abbreviation marks.
+#
+# All characters:
+#   - Use zone: diacritic-above (positioned above base characters)
+#   - Have attach anchor at [6,2] for mark attachment
+#   - Are scaled-down versions of their base letter forms
+#   - Tagged with script:Cyrl and ortho:OCS (Old Church Slavonic)
+#
+# =============================================================================
+
+# =============================================================================
+# COMBINING CYRILLIC LETTERS (U+2DE0-U+2DFF)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-be
+# Unicode: U+2DE0 COMBINING CYRILLIC LETTER BE
+# Superscript form of Cyrillic Б - horizontal bar with lower bowl
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-be
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [4,0]
+p2 = [7,0]
+p3 = [4,0]
+p4 = [4,2]
+p5 = C([4,2] [7,2])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷠ  COMBINING-CYRILLIC-LETTER-BE = combining-cyrillic-letter-be script:Cyrl ortho:OCS
+  # Superscript Б used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-ve
+# Unicode: U+2DE1 COMBINING CYRILLIC LETTER VE
+# Superscript form of Cyrillic В - stem with two stacked bowls
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-ve
+zone: diacritic-above
+path: p1 p2 p3 p4 p5 p6
+p1 = [4,0]
+p2 = [4,2]
+p3 = C([4,0] [7,0])
+p4 = C([7,1] [4,1])
+p5 = C([4,1] [7,1])
+p6 = C([7,2] [4,2])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷡ  COMBINING-CYRILLIC-LETTER-VE = combining-cyrillic-letter-ve script:Cyrl ortho:OCS
+  # Superscript В used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-ghe
+# Unicode: U+2DE2 COMBINING CYRILLIC LETTER GHE
+# Superscript form of Cyrillic Г - horizontal bar with descending stem
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-ghe
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [4,0]
+p2 = [8,0]
+p3 = [4,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷢ  COMBINING-CYRILLIC-LETTER-GHE = combining-cyrillic-letter-ghe script:Cyrl ortho:OCS
+  # Superscript Г used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-de
+# Unicode: U+2DE3 COMBINING CYRILLIC LETTER DE
+# Superscript form of Cyrillic Д - triangular with legs
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-de
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [4,2]
+p2 = [6,0]
+p3 = [8,2]
+p4 = [3,2]
+p5 = [9,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷣ  COMBINING-CYRILLIC-LETTER-DE = combining-cyrillic-letter-de script:Cyrl ortho:OCS
+  # Superscript Д used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-zhe
+# Unicode: U+2DE4 COMBINING CYRILLIC LETTER ZHE
+# Superscript form of Cyrillic Ж - central stem with diagonal pairs
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-zhe
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [4,0]
+p2 = [8,2]
+p3 = [6,1]
+p4 = [4,2]
+p5 = [8,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷤ  COMBINING-CYRILLIC-LETTER-ZHE = combining-cyrillic-letter-zhe script:Cyrl ortho:OCS
+  # Superscript Ж used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-ze
+# Unicode: U+2DE5 COMBINING CYRILLIC LETTER ZE
+# Superscript form of Cyrillic З - like numeral 3
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-ze
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [5,0]
+p2 = C([7,0] [7,1])
+p3 = C([5,1] [7,1])
+p4 = C([7,2] [5,2])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷥ  COMBINING-CYRILLIC-LETTER-ZE = combining-cyrillic-letter-ze script:Cyrl ortho:OCS
+  # Superscript З used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-ka
+# Unicode: U+2DE6 COMBINING CYRILLIC LETTER KA
+# Superscript form of Cyrillic К - stem with diagonal arm and leg
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-ka
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [5,0]
+p2 = [5,2]
+p3 = [5,1]
+p4 = [7,0]
+p5 = [5,1]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷦ  COMBINING-CYRILLIC-LETTER-KA = combining-cyrillic-letter-ka script:Cyrl ortho:OCS
+  # Superscript К used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-el
+# Unicode: U+2DE7 COMBINING CYRILLIC LETTER EL
+# Superscript form of Cyrillic Л - inverted V shape
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-el
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [4,2]
+p2 = [6,0]
+p3 = [8,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷧ  COMBINING-CYRILLIC-LETTER-EL = combining-cyrillic-letter-el script:Cyrl ortho:OCS
+  # Superscript Л used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-em
+# Unicode: U+2DE8 COMBINING CYRILLIC LETTER EM
+# Superscript form of Cyrillic М - two stems with inverted vertex
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-em
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [4,2]
+p2 = [4,0]
+p3 = [6,1]
+p4 = [8,0]
+p5 = [8,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷨ  COMBINING-CYRILLIC-LETTER-EM = combining-cyrillic-letter-em script:Cyrl ortho:OCS
+  # Superscript М used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-en
+# Unicode: U+2DE9 COMBINING CYRILLIC LETTER EN
+# Superscript form of Cyrillic Н - two stems with crossbar
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-en
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [4,0]
+p2 = [4,2]
+p3 = [4,1]
+p4 = [8,1]
+p5 = [8,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷩ  COMBINING-CYRILLIC-LETTER-EN = combining-cyrillic-letter-en script:Cyrl ortho:OCS
+  # Superscript Н used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-o
+# Unicode: U+2DEA COMBINING CYRILLIC LETTER O
+# Superscript form of Cyrillic О - closed bowl
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-o
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [6,0]
+p2 = C([8,0] [8,1])
+p3 = C([8,2] [6,2])
+p4 = C([4,2] [4,1])
+close: true
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷪ  COMBINING-CYRILLIC-LETTER-O = combining-cyrillic-letter-o script:Cyrl ortho:OCS
+  # Superscript О used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-pe
+# Unicode: U+2DEB COMBINING CYRILLIC LETTER PE
+# Superscript form of Cyrillic П - two stems joined at top
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-pe
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [4,2]
+p2 = [4,0]
+p3 = [8,0]
+p4 = [8,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷫ  COMBINING-CYRILLIC-LETTER-PE = combining-cyrillic-letter-pe script:Cyrl ortho:OCS
+  # Superscript П used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-er
+# Unicode: U+2DEC COMBINING CYRILLIC LETTER ER
+# Superscript form of Cyrillic Р - stem with upper bowl
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-er
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [4,0]
+p2 = [4,2]
+p3 = C([4,0] [7,0])
+p4 = C([7,1] [4,1])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷬ  COMBINING-CYRILLIC-LETTER-ER = combining-cyrillic-letter-er script:Cyrl ortho:OCS
+  # Superscript Р used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-es
+# Unicode: U+2DED COMBINING CYRILLIC LETTER ES
+# Superscript form of Cyrillic С - open bowl
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-es
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [7,0]
+p2 = C([7,0] [6,0])
+p3 = C([5,0] [5,1])
+p4 = C([5,2] [6,2])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷭ  COMBINING-CYRILLIC-LETTER-ES = combining-cyrillic-letter-es script:Cyrl ortho:OCS
+  # Superscript С used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-te
+# Unicode: U+2DEE COMBINING CYRILLIC LETTER TE
+# Superscript form of Cyrillic Т - centered stem under top bar
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-te
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [4,0]
+p2 = [8,0]
+p3 = [6,0]
+p4 = [6,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷮ  COMBINING-CYRILLIC-LETTER-TE = combining-cyrillic-letter-te script:Cyrl ortho:OCS
+  # Superscript Т used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-ha
+# Unicode: U+2DEF COMBINING CYRILLIC LETTER HA
+# Superscript form of Cyrillic Х - crossing diagonals
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-ha
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [4,0]
+p2 = [8,2]
+p3 = [6,1]
+p4 = [8,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷯ  COMBINING-CYRILLIC-LETTER-HA = combining-cyrillic-letter-ha script:Cyrl ortho:OCS
+  # Superscript Х used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-tse
+# Unicode: U+2DF0 COMBINING CYRILLIC LETTER TSE
+# Superscript form of Cyrillic Ц - П with descending tail
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-tse
+zone: diacritic-above
+path: p1 p2 p3 p4 p5 p6
+p1 = [4,2]
+p2 = [4,0]
+p3 = [4,2]
+p4 = [8,2]
+p5 = [8,0]
+p6 = [8,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷰ  COMBINING-CYRILLIC-LETTER-TSE = combining-cyrillic-letter-tse script:Cyrl ortho:OCS
+  # Superscript Ц used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-che
+# Unicode: U+2DF1 COMBINING CYRILLIC LETTER CHE
+# Superscript form of Cyrillic Ч - inverted L shape
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-che
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [4,0]
+p2 = C([4,1] [5,2])
+p3 = [7,2]
+p4 = [7,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷱ  COMBINING-CYRILLIC-LETTER-CHE = combining-cyrillic-letter-che script:Cyrl ortho:OCS
+  # Superscript Ч used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-sha
+# Unicode: U+2DF2 COMBINING CYRILLIC LETTER SHA
+# Superscript form of Cyrillic Ш - three stems on baseline
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-sha
+zone: diacritic-above
+path: p1 p2 p3 p4 p5 p6 p7
+p1 = [4,0]
+p2 = [4,2]
+p3 = [8,2]
+p4 = [8,0]
+p5 = [8,2]
+p6 = [6,2]
+p7 = [6,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷲ  COMBINING-CYRILLIC-LETTER-SHA = combining-cyrillic-letter-sha script:Cyrl ortho:OCS
+  # Superscript Ш used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-shcha
+# Unicode: U+2DF3 COMBINING CYRILLIC LETTER SHCHA
+# Superscript form of Cyrillic Щ - Ш with descending tail
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-shcha
+zone: diacritic-above
+path: p1 p2 p3 p4 p5 p6 p7
+p1 = [4,0]
+p2 = [4,2]
+p3 = [8,2]
+p4 = [8,0]
+p5 = [8,2]
+p6 = [6,2]
+p7 = [6,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷳ  COMBINING-CYRILLIC-LETTER-SHCHA = combining-cyrillic-letter-shcha script:Cyrl ortho:OCS
+  # Superscript Щ used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-fita
+# Unicode: U+2DF4 COMBINING CYRILLIC LETTER FITA
+# Superscript form of Cyrillic Ѳ - bowl with crossbar (theta)
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-fita
+zone: diacritic-above
+path: p1 p2 p3 p4 p5 p6
+p1 = [6,0]
+p2 = C([8,0] [8,1])
+p3 = C([8,2] [6,2])
+p4 = C([4,2] [4,1])
+p5 = [4,1]
+p6 = [8,1]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷴ  COMBINING-CYRILLIC-LETTER-FITA = combining-cyrillic-letter-fita script:Cyrl ortho:OCS
+  # Superscript Ѳ used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-es-te
+# Unicode: U+2DF5 COMBINING CYRILLIC LETTER ES-TE
+# Superscript form of СТ ligature
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-es-te
+zone: diacritic-above
+path: p1 p2 p3 p4 p5 p6 p7
+p1 = [6,0]
+p2 = C([6,0] [5,0])
+p3 = C([4,0] [4,1])
+p4 = C([4,2] [5,2])
+p5 = [5,0]
+p6 = [8,0]
+p7 = [6,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷵ  COMBINING-CYRILLIC-LETTER-ES-TE = combining-cyrillic-letter-es-te script:Cyrl ortho:OCS
+  # Superscript СТ ligature used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-a
+# Unicode: U+2DF6 COMBINING CYRILLIC LETTER A
+# Superscript form of Cyrillic А - apex with crossbar
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-a
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [4,2]
+p2 = [6,0]
+p3 = [8,2]
+p4 = [5,1]
+p5 = [7,1]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷶ  COMBINING-CYRILLIC-LETTER-A = combining-cyrillic-letter-a script:Cyrl ortho:OCS
+  # Superscript А used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-ie
+# Unicode: U+2DF7 COMBINING CYRILLIC LETTER IE
+# Superscript form of Cyrillic Е - stem with three horizontal arms
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-ie
+zone: diacritic-above
+path: p1 p2 p3 p4 p5 p6 p7
+p1 = [7,0]
+p2 = [4,0]
+p3 = [4,2]
+p4 = [7,2]
+p5 = [4,2]
+p6 = [4,1]
+p7 = [6,1]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷷ  COMBINING-CYRILLIC-LETTER-IE = combining-cyrillic-letter-ie script:Cyrl ortho:OCS
+  # Superscript Е used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-djerv
+# Unicode: U+2DF8 COMBINING CYRILLIC LETTER DJERV
+# Superscript form of historical Cyrillic Ћ/Ђ variant
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-djerv
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [4,0]
+p2 = [4,2]
+p3 = C([4,2] [7,2])
+p4 = C([7,1] [4,1])
+p5 = [8,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷸ  COMBINING-CYRILLIC-LETTER-DJERV = combining-cyrillic-letter-djerv script:Cyrl ortho:OCS
+  # Superscript Djerv used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-monograph-uk
+# Unicode: U+2DF9 COMBINING CYRILLIC LETTER MONOGRAPH UK
+# Superscript form of Cyrillic Ꙋ (monograph uk)
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-monograph-uk
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [4,0]
+p2 = [6,1]
+p3 = [8,0]
+p4 = [6,1]
+p5 = [6,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷹ  COMBINING-CYRILLIC-LETTER-MONOGRAPH-UK = combining-cyrillic-letter-monograph-uk script:Cyrl ortho:OCS
+  # Superscript Uk used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-yat
+# Unicode: U+2DFA COMBINING CYRILLIC LETTER YAT
+# Superscript form of Cyrillic Ѣ - historical yat letter
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-yat
+zone: diacritic-above
+path: p1 p2 p3 p4 p5 p6
+p1 = [6,0]
+p2 = [6,2]
+p3 = C([6,2] [8,2])
+p4 = C([8,1] [6,1])
+p5 = [4,0]
+p6 = [8,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷺ  COMBINING-CYRILLIC-LETTER-YAT = combining-cyrillic-letter-yat script:Cyrl ortho:OCS
+  # Superscript Ѣ used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-yu
+# Unicode: U+2DFB COMBINING CYRILLIC LETTER YU
+# Superscript form of Cyrillic Ю - stem connected to bowl
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-yu
+zone: diacritic-above
+path: p1 p2 p3 p4 p5 p6 p7
+p1 = [4,0]
+p2 = [4,2]
+p3 = [4,1]
+p4 = [5,1]
+p5 = C([5,0] [8,0])
+p6 = C([8,2] [5,2])
+p7 = [5,1]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷻ  COMBINING-CYRILLIC-LETTER-YU = combining-cyrillic-letter-yu script:Cyrl ortho:OCS
+  # Superscript Ю used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-iotified-a
+# Unicode: U+2DFC COMBINING CYRILLIC LETTER IOTIFIED A
+# Superscript form of Cyrillic Ꙗ - iotified A
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-iotified-a
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [4,0]
+p2 = [4,2]
+p3 = [4,1]
+p4 = [7,0]
+p5 = [7,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷼ  COMBINING-CYRILLIC-LETTER-IOTIFIED-A = combining-cyrillic-letter-iotified-a script:Cyrl ortho:OCS
+  # Superscript iotified A used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-little-yus
+# Unicode: U+2DFD COMBINING CYRILLIC LETTER LITTLE YUS
+# Superscript form of Cyrillic Ѧ - like Л with crossbar
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-little-yus
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [4,2]
+p2 = [6,0]
+p3 = [8,2]
+p4 = [5,1]
+p5 = [7,1]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷽ  COMBINING-CYRILLIC-LETTER-LITTLE-YUS = combining-cyrillic-letter-little-yus script:Cyrl ortho:OCS
+  # Superscript Ѧ used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-big-yus
+# Unicode: U+2DFE COMBINING CYRILLIC LETTER BIG YUS
+# Superscript form of Cyrillic Ѫ - like Ѧ with central descender
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-big-yus
+zone: diacritic-above
+path: p1 p2 p3 p4 p5 p6 p7
+p1 = [4,2]
+p2 = [6,0]
+p3 = [8,2]
+p4 = [5,1]
+p5 = [7,1]
+p6 = [6,1]
+p7 = [6,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷾ  COMBINING-CYRILLIC-LETTER-BIG-YUS = combining-cyrillic-letter-big-yus script:Cyrl ortho:OCS
+  # Superscript Ѫ used in Church Slavonic abbreviations
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-letter-iotified-big-yus
+# Unicode: U+2DFF COMBINING CYRILLIC LETTER IOTIFIED BIG YUS
+# Superscript form of Cyrillic Ѭ - І + Ѫ ligature
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-letter-iotified-big-yus
+zone: diacritic-above
+path: p1 p2 p3 p4 p5 p6 p7 p8 p9
+p1 = [3,0]
+p2 = [3,2]
+p3 = [3,1]
+p4 = [5,2]
+p5 = [6,0]
+p6 = [7,2]
+p7 = [5,1]
+p8 = [6,1]
+p9 = [6,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+ⷿ  COMBINING-CYRILLIC-LETTER-IOTIFIED-BIG-YUS = combining-cyrillic-letter-iotified-big-yus script:Cyrl ortho:OCS
+  # Superscript Ѭ used in Church Slavonic abbreviations
+
+# =============================================================================
+# END OF CYRILLIC EXTENDED-A LIBRARY
+# =============================================================================

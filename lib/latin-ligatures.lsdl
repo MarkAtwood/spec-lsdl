@@ -1,0 +1,55 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Latin Ligatures Library (U+FB00-FB06)
+# =============================================================================
+#
+# This file defines the 7 Latin ligature characters in the Alphabetic
+# Presentation Forms block (U+FB00-FB06).
+#
+# These are typographic ligatures historically used to improve the appearance
+# of certain letter combinations, particularly those involving the letter f.
+#
+# Characters:
+#   U+FB00  ff   - two f letters with hooks merged
+#   U+FB01  fi   - f with hook absorbing i tittle
+#   U+FB02  fl   - f hook merging into l ascender
+#   U+FB03  ffi  - ff ligature with i
+#   U+FB04  ffl  - ff ligature with l
+#   U+FB05  ſt   - long s with t (historical)
+#   U+FB06  st   - regular s with t
+#
+# Reference: Unicode Standard, Alphabetic Presentation Forms
+#
+# =============================================================================
+
+# =============================================================================
+# ALPHABETIC PRESENTATION FORMS (U+FB00-FB06)
+# =============================================================================
+
+# ff - Two f characters with hooks merged at the connection point
+ﬀ  LATIN-SMALL-LIGATURE-FF = LIG(f, f, merge:hook-hook) cp:U+FB00 script:Latn
+
+# fi - f with hook absorbing i tittle (tittle disappears under f's terminal)
+ﬁ  LATIN-SMALL-LIGATURE-FI = LIG(f, i, merge:hook-tittle) cp:U+FB01 script:Latn
+
+# fl - f hook merging into l ascender (smooth connection at top)
+ﬂ  LATIN-SMALL-LIGATURE-FL = LIG(f, l, merge:hook-ascender) cp:U+FB02 script:Latn
+
+# ffi - ff ligature combined with i (three letters, hook absorbs tittle)
+ﬃ  LATIN-SMALL-LIGATURE-FFI = LIG(ﬀ, i, merge:hook-tittle) cp:U+FB03 script:Latn
+
+# ffl - ff ligature combined with l (three letters, hook merges into ascender)
+ﬄ  LATIN-SMALL-LIGATURE-FFL = LIG(ﬀ, l, merge:hook-ascender) cp:U+FB04 script:Latn
+
+# ſt - Long s (U+017F) with t (historical ligature)
+# The long s descender flows into t's crossbar region
+ﬅ  LATIN-SMALL-LIGATURE-LONG-S-T = LIG(ſ, t, merge:descender-crossbar) cp:U+FB05 script:Latn
+
+# st - Regular s with t (typographic ligature)
+# The s arc merges smoothly into t stem
+ﬆ  LATIN-SMALL-LIGATURE-ST = LIG(s, t, merge:arc-stem) cp:U+FB06 script:Latn
+
+# =============================================================================
+# END OF LATIN LIGATURES LIBRARY
+# =============================================================================

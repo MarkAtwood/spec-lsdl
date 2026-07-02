@@ -1,0 +1,1098 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Combining Diacritical Marks Supplement Library
+# =============================================================================
+#
+# Complete coverage of Unicode block U+1DC0-1DFF (64 combining marks).
+#
+# Categories:
+#   - Dotted accent marks: dots combined with accents (grave, acute)
+#   - Compound tone marks: acute/grave/macron combinations
+#   - Ligature marks: medieval manuscript abbreviations
+#   - Phonetic modifier marks: IPA and phonetic notation
+#   - Superscript letters: small letter forms used as diacritics
+#
+# Zone assignments:
+#   diacritic-above: y=0 to y=2 (above cap-height)
+#   diacritic-below: y=8 to y=11 (below baseline into descender)
+#   x-height: y=4 to y=8 (for through-marks, centered on base)
+#
+# All diacritics MUST define an `attach` anchor per Section 15.2.
+#
+# =============================================================================
+
+# =============================================================================
+# DOTTED ACCENT MARKS
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# dotted-grave - Grave accent with dot above
+# Unicode: U+1DC0 COMBINING DOTTED GRAVE ACCENT
+# -----------------------------------------------------------------------------
+@elem dotted-grave
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [7,2]
+p2 = [5,1]
+p3 = [6,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# dotted-acute - Acute accent with dot above
+# Unicode: U+1DC1 COMBINING DOTTED ACUTE ACCENT
+# -----------------------------------------------------------------------------
+@elem dotted-acute
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [5,2]
+p2 = [7,1]
+p3 = [6,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# =============================================================================
+# BELOW MARKS
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# snake-below - Snake-like wavy line below
+# Unicode: U+1DC2 COMBINING SNAKE BELOW
+# -----------------------------------------------------------------------------
+@elem snake-below
+zone: diacritic-below
+path: p1 p2 p3 p4 p5
+p1 = [3,10]
+p2 = C([4,9] [5,10])
+p3 = C([6,11] [7,10])
+p4 = C([8,9] [9,10])
+p5 = [9,10]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# =============================================================================
+# ABOVE MARKS - SUSPENSION AND COMPOUND
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# suspension-mark - Medieval suspension mark
+# Unicode: U+1DC3 COMBINING SUSPENSION MARK
+# Used in medieval manuscripts for abbreviations
+# -----------------------------------------------------------------------------
+@elem suspension-mark
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [5,1]
+p2 = C([5,0] [6,0])
+p3 = C([7,0] [7,1])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# macron-acute - Macron combined with acute
+# Unicode: U+1DC4 COMBINING MACRON-ACUTE
+# -----------------------------------------------------------------------------
+@elem macron-acute
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [4,2]
+p2 = [8,2]
+p3 = [6,2]
+p4 = [8,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# grave-macron - Grave followed by macron
+# Unicode: U+1DC5 COMBINING GRAVE-MACRON
+# -----------------------------------------------------------------------------
+@elem grave-macron
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [5,0]
+p2 = [3,2]
+p3 = [4,2]
+p4 = [8,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# macron-grave - Macron followed by grave
+# Unicode: U+1DC6 COMBINING MACRON-GRAVE
+# -----------------------------------------------------------------------------
+@elem macron-grave
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [4,2]
+p2 = [8,2]
+p3 = [9,2]
+p4 = [7,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# acute-macron - Acute followed by macron
+# Unicode: U+1DC7 COMBINING ACUTE-MACRON
+# -----------------------------------------------------------------------------
+@elem acute-macron
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [3,2]
+p2 = [5,0]
+p3 = [4,2]
+p4 = [8,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# grave-acute-grave - Triple tone mark (grave-acute-grave)
+# Unicode: U+1DC8 COMBINING GRAVE-ACUTE-GRAVE
+# -----------------------------------------------------------------------------
+@elem grave-acute-grave
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [4,0]
+p2 = [3,2]
+p3 = [6,0]
+p4 = [9,2]
+p5 = [8,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# acute-grave-acute - Triple tone mark (acute-grave-acute)
+# Unicode: U+1DC9 COMBINING ACUTE-GRAVE-ACUTE
+# -----------------------------------------------------------------------------
+@elem acute-grave-acute
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [3,2]
+p2 = [4,0]
+p3 = [6,2]
+p4 = [8,0]
+p5 = [9,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# latin-small-letter-r-below - Small letter r below
+# Unicode: U+1DCA COMBINING LATIN SMALL LETTER R BELOW
+# -----------------------------------------------------------------------------
+@elem latin-small-letter-r-below
+zone: diacritic-below
+path: p1 p2 p3
+p1 = [5,11]
+p2 = [5,9]
+p3 = C([5,9] [7,9])
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# breve-macron - Breve combined with macron
+# Unicode: U+1DCB COMBINING BREVE-MACRON
+# -----------------------------------------------------------------------------
+@elem breve-macron
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [3,0]
+p2 = C([3,1] [4,1])
+p3 = C([5,1] [5,0])
+p4 = [6,2]
+p5 = [9,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# macron-breve - Macron combined with breve
+# Unicode: U+1DCC COMBINING MACRON-BREVE
+# -----------------------------------------------------------------------------
+@elem macron-breve
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [3,2]
+p2 = [6,2]
+p3 = [7,0]
+p4 = C([7,1] [8,1])
+p5 = C([9,1] [9,0])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# double-circumflex-above - Double circumflex (two peaks)
+# Unicode: U+1DCD COMBINING DOUBLE CIRCUMFLEX ABOVE
+# -----------------------------------------------------------------------------
+@elem double-circumflex-above
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [2,2]
+p2 = [4,0]
+p3 = [6,2]
+p4 = [8,0]
+p5 = [10,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# ogonek-above - Ogonek positioned above
+# Unicode: U+1DCE COMBINING OGONEK ABOVE
+# -----------------------------------------------------------------------------
+@elem ogonek-above
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [6,0]
+p2 = C([5,1] [5,2])
+p3 = C([6,2] [7,2])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# zigzag-below - Zigzag line below
+# Unicode: U+1DCF COMBINING ZIGZAG BELOW
+# -----------------------------------------------------------------------------
+@elem zigzag-below
+zone: diacritic-below
+path: p1 p2 p3 p4 p5
+p1 = [3,10]
+p2 = [4,9]
+p3 = [6,11]
+p4 = [8,9]
+p5 = [9,10]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# is-below - IS abbreviation mark below
+# Unicode: U+1DD0 COMBINING IS BELOW
+# Medieval ligature abbreviation
+# -----------------------------------------------------------------------------
+@elem is-below
+zone: diacritic-below
+path: p1 p2 p3 p4
+p1 = [5,9]
+p2 = [5,11]
+p3 = [6,10]
+p4 = C([7,9] [7,11])
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# ur-above - UR abbreviation mark above
+# Unicode: U+1DD1 COMBINING UR ABOVE
+# Medieval ligature abbreviation
+# -----------------------------------------------------------------------------
+@elem ur-above
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [4,0]
+p2 = C([4,2] [5,2])
+p3 = C([6,2] [6,0])
+p4 = C([6,0] [7,0])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# us-above - US abbreviation mark above
+# Unicode: U+1DD2 COMBINING US ABOVE
+# Medieval ligature abbreviation (resembles 9)
+# -----------------------------------------------------------------------------
+@elem us-above
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [7,0]
+p2 = C([7,0] [6,0])
+p3 = C([5,0] [5,1])
+p4 = C([5,1] [6,1])
+p5 = [6,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# =============================================================================
+# SUPERSCRIPT LETTERS (U+1DD3-1DF4)
+# Medieval manuscript combining letters
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# flattened-open-a-above - Flattened open A above
+# Unicode: U+1DD3 COMBINING LATIN SMALL LETTER FLATTENED OPEN A ABOVE
+# -----------------------------------------------------------------------------
+@elem flattened-open-a-above
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [4,2]
+p2 = C([4,1] [5,0])
+p3 = C([7,0] [8,1])
+p4 = [8,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-ae-above - Combined ae ligature above
+# Unicode: U+1DD4 COMBINING LATIN SMALL LETTER AE
+# -----------------------------------------------------------------------------
+@elem combining-ae-above
+zone: diacritic-above
+path: p1 p2 p3 p4 p5 p6
+p1 = [4,2]
+p2 = C([4,0] [5,0])
+p3 = [6,1]
+p4 = [7,1]
+p5 = C([7,0] [7,2])
+p6 = C([7,2] [8,2])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-ao-above - Combined ao ligature above
+# Unicode: U+1DD5 COMBINING LATIN SMALL LETTER AO
+# -----------------------------------------------------------------------------
+@elem combining-ao-above
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [4,2]
+p2 = C([4,0] [5,0])
+p3 = [6,2]
+p4 = C([7,2] [8,1])
+p5 = C([8,0] [7,0])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-av-above - Combined av ligature above
+# Unicode: U+1DD6 COMBINING LATIN SMALL LETTER AV
+# -----------------------------------------------------------------------------
+@elem combining-av-above
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [4,2]
+p2 = C([4,0] [5,0])
+p3 = [6,2]
+p4 = [7,0]
+p5 = [8,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-c-cedilla-above - C with cedilla above
+# Unicode: U+1DD7 COMBINING LATIN SMALL LETTER C CEDILLA
+# -----------------------------------------------------------------------------
+@elem combining-c-cedilla-above
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [7,0]
+p2 = C([6,0] [5,0])
+p3 = C([5,1] [5,2])
+p4 = C([6,2] [7,2])
+p5 = C([6,2] [6,3])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-insular-d-above - Insular D above
+# Unicode: U+1DD8 COMBINING LATIN SMALL LETTER INSULAR D
+# -----------------------------------------------------------------------------
+@elem combining-insular-d-above
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [5,0]
+p2 = [5,2]
+p3 = C([5,2] [7,2])
+p4 = C([7,1] [5,0])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-eth-above - Eth above
+# Unicode: U+1DD9 COMBINING LATIN SMALL LETTER ETH
+# -----------------------------------------------------------------------------
+@elem combining-eth-above
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [5,0]
+p2 = [5,2]
+p3 = C([5,2] [7,2])
+p4 = C([7,1] [5,0])
+p5 = [4,1]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-g-above - Small letter g above
+# Unicode: U+1DDA COMBINING LATIN SMALL LETTER G
+# -----------------------------------------------------------------------------
+@elem combining-g-above
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [7,0]
+p2 = C([6,0] [5,0])
+p3 = C([5,1] [6,1])
+p4 = [7,1]
+p5 = C([7,2] [5,2])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-small-capital-g-above - Small capital G above
+# Unicode: U+1DDB COMBINING LATIN LETTER SMALL CAPITAL G
+# -----------------------------------------------------------------------------
+@elem combining-small-capital-g-above
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [7,0]
+p2 = C([6,0] [5,0])
+p3 = C([5,1] [5,2])
+p4 = C([6,2] [7,2])
+p5 = [7,1]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-k-above - Small letter k above
+# Unicode: U+1DDC COMBINING LATIN SMALL LETTER K
+# -----------------------------------------------------------------------------
+@elem combining-k-above
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [5,0]
+p2 = [5,2]
+p3 = [5,1]
+p4 = [7,0]
+p5 = [5,1]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-l-above - Small letter l above
+# Unicode: U+1DDD COMBINING LATIN SMALL LETTER L
+# -----------------------------------------------------------------------------
+@elem combining-l-above
+zone: diacritic-above
+path: p1 p2
+p1 = [6,0]
+p2 = [6,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-small-capital-l-above - Small capital L above
+# Unicode: U+1DDE COMBINING LATIN LETTER SMALL CAPITAL L
+# -----------------------------------------------------------------------------
+@elem combining-small-capital-l-above
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [5,0]
+p2 = [5,2]
+p3 = [7,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-small-capital-m-above - Small capital M above
+# Unicode: U+1DDF COMBINING LATIN LETTER SMALL CAPITAL M
+# -----------------------------------------------------------------------------
+@elem combining-small-capital-m-above
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [4,2]
+p2 = [4,0]
+p3 = [6,1]
+p4 = [8,0]
+p5 = [8,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-n-above - Small letter n above
+# Unicode: U+1DE0 COMBINING LATIN SMALL LETTER N
+# -----------------------------------------------------------------------------
+@elem combining-n-above
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [5,2]
+p2 = [5,0]
+p3 = C([5,0] [7,0])
+p4 = [7,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-small-capital-n-above - Small capital N above
+# Unicode: U+1DE1 COMBINING LATIN LETTER SMALL CAPITAL N
+# -----------------------------------------------------------------------------
+@elem combining-small-capital-n-above
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [5,2]
+p2 = [5,0]
+p3 = [7,2]
+p4 = [7,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-small-capital-r-above - Small capital R above
+# Unicode: U+1DE2 COMBINING LATIN LETTER SMALL CAPITAL R
+# -----------------------------------------------------------------------------
+@elem combining-small-capital-r-above
+zone: diacritic-above
+path: p1 p2 p3 p4 p5 p6
+p1 = [5,2]
+p2 = [5,0]
+p3 = [7,0]
+p4 = C([7,0] [7,1])
+p5 = [5,1]
+p6 = [7,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-r-rotunda-above - R rotunda above
+# Unicode: U+1DE3 COMBINING LATIN SMALL LETTER R ROTUNDA
+# -----------------------------------------------------------------------------
+@elem combining-r-rotunda-above
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [5,2]
+p2 = C([5,1] [6,0])
+p3 = C([7,0] [7,1])
+p4 = [7,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-s-above - Small letter s above
+# Unicode: U+1DE4 COMBINING LATIN SMALL LETTER S
+# -----------------------------------------------------------------------------
+@elem combining-s-above
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [7,0]
+p2 = C([6,0] [5,0])
+p3 = C([5,1] [7,1])
+p4 = C([7,2] [6,2])
+p5 = [5,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-long-s-above - Long s above
+# Unicode: U+1DE5 COMBINING LATIN SMALL LETTER LONG S
+# -----------------------------------------------------------------------------
+@elem combining-long-s-above
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [6,2]
+p2 = [6,0]
+p3 = C([6,0] [7,0])
+p4 = [7,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-z-above - Small letter z above
+# Unicode: U+1DE6 COMBINING LATIN SMALL LETTER Z
+# -----------------------------------------------------------------------------
+@elem combining-z-above
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [5,0]
+p2 = [7,0]
+p3 = [5,2]
+p4 = [7,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-alpha-above - Small letter alpha above
+# Unicode: U+1DE7 COMBINING LATIN SMALL LETTER ALPHA
+# -----------------------------------------------------------------------------
+@elem combining-alpha-above
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [4,2]
+p2 = C([4,0] [6,0])
+p3 = C([8,0] [8,2])
+p4 = C([6,2] [4,2])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-b-above - Small letter b above
+# Unicode: U+1DE8 COMBINING LATIN SMALL LETTER B
+# -----------------------------------------------------------------------------
+@elem combining-b-above
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [5,0]
+p2 = [5,2]
+p3 = C([5,2] [7,2])
+p4 = C([7,1] [5,1])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-beta-above - Small letter beta above
+# Unicode: U+1DE9 COMBINING LATIN SMALL LETTER BETA
+# -----------------------------------------------------------------------------
+@elem combining-beta-above
+zone: diacritic-above
+path: p1 p2 p3 p4 p5 p6
+p1 = [5,2]
+p2 = [5,0]
+p3 = C([5,0] [7,0])
+p4 = [6,1]
+p5 = C([6,1] [7,1])
+p6 = C([7,2] [5,2])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-schwa-above - Schwa above
+# Unicode: U+1DEA COMBINING LATIN SMALL LETTER SCHWA
+# -----------------------------------------------------------------------------
+@elem combining-schwa-above
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [7,1]
+p2 = [5,1]
+p3 = C([5,2] [6,2])
+p4 = C([7,2] [7,0])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-f-above - Small letter f above
+# Unicode: U+1DEB COMBINING LATIN SMALL LETTER F
+# -----------------------------------------------------------------------------
+@elem combining-f-above
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [6,2]
+p2 = [6,0]
+p3 = C([6,0] [7,0])
+p4 = [5,1]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-l-double-tilde-above - L with double middle tilde above
+# Unicode: U+1DEC COMBINING LATIN SMALL LETTER L WITH DOUBLE MIDDLE TILDE
+# -----------------------------------------------------------------------------
+@elem combining-l-double-tilde-above
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [6,0]
+p2 = [6,2]
+p3 = C([5,1] [7,1])
+p4 = C([5,1] [7,1])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-o-centralized-above - O with light centralization stroke above
+# Unicode: U+1DED COMBINING LATIN SMALL LETTER O WITH LIGHT CENTRALIZATION STROKE
+# -----------------------------------------------------------------------------
+@elem combining-o-centralized-above
+zone: diacritic-above
+path: p1 p2 p3 p4 p5 p6
+p1 = [6,0]
+p2 = C([8,0] [8,1])
+p3 = C([8,2] [6,2])
+p4 = C([4,2] [4,1])
+p5 = C([4,0] [6,0])
+p6 = [7,1]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-p-above - Small letter p above
+# Unicode: U+1DEE COMBINING LATIN SMALL LETTER P
+# -----------------------------------------------------------------------------
+@elem combining-p-above
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [5,2]
+p2 = [5,0]
+p3 = C([5,0] [7,0])
+p4 = C([7,1] [5,1])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-esh-above - Esh above
+# Unicode: U+1DEF COMBINING LATIN SMALL LETTER ESH
+# IPA symbol
+# -----------------------------------------------------------------------------
+@elem combining-esh-above
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [5,0]
+p2 = C([5,0] [6,0])
+p3 = [6,2]
+p4 = C([6,2] [7,2])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-u-centralized-above - U with light centralization stroke above
+# Unicode: U+1DF0 COMBINING LATIN SMALL LETTER U WITH LIGHT CENTRALIZATION STROKE
+# -----------------------------------------------------------------------------
+@elem combining-u-centralized-above
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [5,0]
+p2 = C([5,2] [6,2])
+p3 = C([7,2] [7,0])
+p4 = [7,2]
+p5 = [6,1]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-w-above - Small letter w above
+# Unicode: U+1DF1 COMBINING LATIN SMALL LETTER W
+# -----------------------------------------------------------------------------
+@elem combining-w-above
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [4,0]
+p2 = [5,2]
+p3 = [6,1]
+p4 = [7,2]
+p5 = [8,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-a-diaeresis-above - A with diaeresis above
+# Unicode: U+1DF2 COMBINING LATIN SMALL LETTER A WITH DIAERESIS
+# -----------------------------------------------------------------------------
+@elem combining-a-diaeresis-above
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [7,2]
+p2 = C([7,1] [6,1])
+p3 = C([5,1] [5,2])
+p4 = C([5,2] [6,2])
+p5 = [7,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-o-diaeresis-above - O with diaeresis above
+# Unicode: U+1DF3 COMBINING LATIN SMALL LETTER O WITH DIAERESIS
+# -----------------------------------------------------------------------------
+@elem combining-o-diaeresis-above
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [6,1]
+p2 = C([8,1] [8,2])
+p3 = C([8,2] [6,2])
+p4 = C([4,2] [4,1])
+close: true
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# combining-u-diaeresis-above - U with diaeresis above
+# Unicode: U+1DF4 COMBINING LATIN SMALL LETTER U WITH DIAERESIS
+# -----------------------------------------------------------------------------
+@elem combining-u-diaeresis-above
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [5,1]
+p2 = C([5,2] [6,2])
+p3 = C([7,2] [7,1])
+p4 = [7,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# =============================================================================
+# PHONETIC MODIFIER MARKS
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# up-tack-above - Up tack above
+# Unicode: U+1DF5 COMBINING UP TACK ABOVE
+# IPA diacritic
+# -----------------------------------------------------------------------------
+@elem up-tack-above
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [6,2]
+p2 = [6,0]
+p3 = [4,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# kavyka-above-right - Kavyka above right
+# Unicode: U+1DF6 COMBINING KAVYKA ABOVE RIGHT
+# Slavic diacritic
+# -----------------------------------------------------------------------------
+@elem kavyka-above-right
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [7,0]
+p2 = C([8,0] [8,1])
+p3 = [8,2]
+close: false
+width: 1
+anchors: attach=[7,2]
+@end
+
+# -----------------------------------------------------------------------------
+# kavyka-above-left - Kavyka above left
+# Unicode: U+1DF7 COMBINING KAVYKA ABOVE LEFT
+# Slavic diacritic
+# -----------------------------------------------------------------------------
+@elem kavyka-above-left
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [5,0]
+p2 = C([4,0] [4,1])
+p3 = [4,2]
+close: false
+width: 1
+anchors: attach=[5,2]
+@end
+
+# -----------------------------------------------------------------------------
+# dot-above-left - Dot above left
+# Unicode: U+1DF8 COMBINING DOT ABOVE LEFT
+# -----------------------------------------------------------------------------
+@elem dot-above-left
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [4,0]
+p2 = C([4,0] [4,1])
+p3 = C([4,2] [4,2])
+p4 = C([4,2] [4,1])
+close: true
+width: 1
+anchors: attach=[4,2]
+@end
+
+# -----------------------------------------------------------------------------
+# wide-inverted-bridge-below - Wide inverted bridge below
+# Unicode: U+1DF9 COMBINING WIDE INVERTED BRIDGE BELOW
+# IPA diacritic
+# -----------------------------------------------------------------------------
+@elem wide-inverted-bridge-below
+zone: diacritic-below
+path: p1 p2 p3 p4
+p1 = [3,11]
+p2 = [3,10]
+p3 = C([3,9] [6,9])
+p4 = C([9,9] [9,10])
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# dot-below-left - Dot below left
+# Unicode: U+1DFA COMBINING DOT BELOW LEFT
+# -----------------------------------------------------------------------------
+@elem dot-below-left
+zone: diacritic-below
+path: p1 p2 p3 p4
+p1 = [4,9]
+p2 = C([4,9] [4,10])
+p3 = C([4,10] [4,10])
+p4 = C([4,10] [4,10])
+close: true
+width: 1
+anchors: attach=[4,8]
+@end
+
+# -----------------------------------------------------------------------------
+# deletion-mark - Deletion mark (strikethrough)
+# Unicode: U+1DFB COMBINING DELETION MARK
+# -----------------------------------------------------------------------------
+@elem deletion-mark
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [3,5]
+p2 = [5,7]
+p3 = [7,5]
+p4 = [9,7]
+close: false
+width: 1
+anchors: attach=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# double-inverted-breve-below - Double inverted breve below
+# Unicode: U+1DFC COMBINING DOUBLE INVERTED BREVE BELOW
+# Spans two characters
+# -----------------------------------------------------------------------------
+@elem double-inverted-breve-below
+zone: diacritic-below
+path: p1 p2 p3
+p1 = [0,9]
+p2 = C([0,11] [6,11])
+p3 = C([12,11] [12,9])
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# almost-equal-below - Almost equal to below
+# Unicode: U+1DFD COMBINING ALMOST EQUAL TO BELOW
+# -----------------------------------------------------------------------------
+@elem almost-equal-below
+zone: diacritic-below
+path: p1 p2 p3
+p1 = [4,9]
+p2 = C([5,9] [6,10])
+p3 = C([7,10] [8,9])
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# left-arrowhead-above - Left arrowhead above
+# Unicode: U+1DFE COMBINING LEFT ARROWHEAD ABOVE
+# -----------------------------------------------------------------------------
+@elem left-arrowhead-above
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [8,0]
+p2 = [4,1]
+p3 = [8,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# right-arrowhead-down-arrowhead-below - Right arrowhead and down arrowhead below
+# Unicode: U+1DFF COMBINING RIGHT ARROWHEAD AND DOWN ARROWHEAD BELOW
+# -----------------------------------------------------------------------------
+@elem right-arrowhead-down-arrowhead-below
+zone: diacritic-below
+path: p1 p2 p3 p4 p5 p6
+p1 = [4,9]
+p2 = [6,10]
+p3 = [4,11]
+p4 = [6,10]
+p5 = [8,9]
+p6 = [8,11]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# =============================================================================
+# END OF COMBINING DIACRITICAL MARKS SUPPLEMENT LIBRARY
+# =============================================================================

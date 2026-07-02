@@ -1,0 +1,877 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Shavian Alphabet Library (U+10450-U+1047F)
+# =============================================================================
+#
+# The Shavian alphabet is a phonetic alphabet designed by Kingsley Read
+# in 1962, commissioned through George Bernard Shaw's will. It was
+# standardized in Unicode's Supplementary Multilingual Plane.
+#
+# Design principles:
+#   - Each letter is a single stroke
+#   - Tall letters (ascender zone): voiceless consonants
+#   - Deep letters (descender zone): voiced consonants
+#   - Short letters (x-height zone): vowels, sonorants, ligatures
+#   - Featural: rotation/reflection creates related sounds (p/b, t/d, etc.)
+#
+# All characters tagged with:
+#   - script:Shaw (ISO 15924 script code for Shavian)
+#   - cp: tags with Unicode codepoints (U+104xx)
+#
+# =============================================================================
+
+# =============================================================================
+# LOCAL ELEMENT DEFINITIONS
+# =============================================================================
+#
+# Shavian letters are single-stroke designs. Each element defines the
+# characteristic shape of a letter. The shapes use curves, hooks, and
+# straight strokes to represent phonemes.
+#
+# Zone assignments:
+#   - ascender: tall letters (y=1 to y=8)
+#   - x-height: short letters (y=4 to y=8)
+#   - descender: deep letters (y=4 to y=10)
+#
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# TALL LETTERS (Voiceless Consonants) - Ascender Zone
+# -----------------------------------------------------------------------------
+
+# PEEP /p/ - Hook curving left at top, descending to baseline
+@elem shaw.peep
+zone: ascender
+path: p1 p2 p3 p4
+p1 = [8,1]
+p2 = C([4,1] [4,3])
+p3 = [4,4]
+p4 = [4,8]
+close: false
+width: 1
+anchors: top=[8,1] base=[4,8] mid=[4,4]
+  mark-above=[6,0] mark-below=[4,9]
+@end
+
+# TOT /t/ - Vertical stroke with leftward hook at top
+@elem shaw.tot
+zone: ascender
+path: p1 p2 p3 p4
+p1 = [4,1]
+p2 = C([8,1] [8,3])
+p3 = [8,4]
+p4 = [8,8]
+close: false
+width: 1
+anchors: top=[4,1] base=[8,8] mid=[8,4]
+  mark-above=[6,0] mark-below=[8,9]
+@end
+
+# KICK /k/ - Diagonal from top-left descending with curve
+@elem shaw.kick
+zone: ascender
+path: p1 p2 p3
+p1 = [3,1]
+p2 = C([6,3] [9,5])
+p3 = [9,8]
+close: false
+width: 1
+anchors: top=[3,1] base=[9,8] mid=[6,4]
+  mark-above=[3,0] mark-below=[9,9]
+@end
+
+# FEE /f/ - Curved S-like stroke starting high
+@elem shaw.fee
+zone: ascender
+path: p1 p2 p3 p4 p5
+p1 = [4,1]
+p2 = C([4,3] [8,3])
+p3 = [8,5]
+p4 = C([8,7] [4,7])
+p5 = [4,8]
+close: false
+width: 1
+anchors: top=[4,1] base=[4,8] mid=[6,4]
+  mark-above=[4,0] mark-below=[4,9]
+@end
+
+# THIGH /th/ - Vertical with top-left curve entry
+@elem shaw.thigh
+zone: ascender
+path: p1 p2 p3
+p1 = [3,1]
+p2 = C([3,3] [6,3])
+p3 = [6,8]
+close: false
+width: 1
+anchors: top=[3,1] base=[6,8] mid=[6,4]
+  mark-above=[3,0] mark-below=[6,9]
+@end
+
+# SO /s/ - Hook curving right at top
+@elem shaw.so
+zone: ascender
+path: p1 p2 p3
+p1 = [4,1]
+p2 = C([8,1] [8,4])
+p3 = [8,8]
+close: false
+width: 1
+anchors: top=[4,1] base=[8,8] mid=[8,4]
+  mark-above=[6,0] mark-below=[8,9]
+@end
+
+# SURE /sh/ - Curved loop at top, descending
+@elem shaw.sure
+zone: ascender
+path: p1 p2 p3 p4 p5
+p1 = [4,1]
+p2 = C([4,2] [8,2])
+p3 = [8,3]
+p4 = C([8,4] [6,5])
+p5 = [6,8]
+close: false
+width: 1
+anchors: top=[4,1] base=[6,8] mid=[6,4]
+  mark-above=[4,0] mark-below=[6,9]
+@end
+
+# CHURCH /ch/ - Angular stroke with upper hook
+@elem shaw.church
+zone: ascender
+path: p1 p2 p3 p4
+p1 = [4,1]
+p2 = [4,4]
+p3 = C([4,6] [8,6])
+p4 = [8,8]
+close: false
+width: 1
+anchors: top=[4,1] base=[8,8] mid=[4,4]
+  mark-above=[4,0] mark-below=[8,9]
+@end
+
+# YEA /j/ - Tall curved form (voiced but in tall category)
+@elem shaw.yea
+zone: ascender
+path: p1 p2 p3
+p1 = [6,1]
+p2 = C([6,4] [4,6])
+p3 = [4,8]
+close: false
+width: 1
+anchors: top=[6,1] base=[4,8] mid=[5,4]
+  mark-above=[6,0] mark-below=[4,9]
+@end
+
+# HUNG /ng/ - Tall form with bottom hook (velar nasal)
+@elem shaw.hung
+zone: ascender
+path: p1 p2 p3 p4
+p1 = [6,1]
+p2 = [6,6]
+p3 = C([6,8] [4,8])
+p4 = [4,7]
+close: false
+width: 1
+anchors: top=[6,1] base=[4,7] mid=[6,4]
+  mark-above=[6,0] mark-below=[5,9]
+@end
+
+# -----------------------------------------------------------------------------
+# DEEP LETTERS (Voiced Consonants) - Descender Zone
+# -----------------------------------------------------------------------------
+
+# BIB /b/ - Mirror of PEEP, descending
+@elem shaw.bib
+zone: descender
+path: p1 p2 p3 p4
+p1 = [4,4]
+p2 = [4,8]
+p3 = C([4,9] [8,9])
+p4 = [8,10]
+close: false
+width: 1
+anchors: top=[4,4] base=[8,10] mid=[4,7]
+  mark-above=[4,3] mark-below=[8,11]
+@end
+
+# DEAD /d/ - Mirror of TOT, descending
+@elem shaw.dead
+zone: descender
+path: p1 p2 p3 p4
+p1 = [8,4]
+p2 = [8,8]
+p3 = C([8,9] [4,9])
+p4 = [4,10]
+close: false
+width: 1
+anchors: top=[8,4] base=[4,10] mid=[8,7]
+  mark-above=[8,3] mark-below=[4,11]
+@end
+
+# GAG /g/ - Diagonal descending with curve
+@elem shaw.gag
+zone: descender
+path: p1 p2 p3
+p1 = [9,4]
+p2 = C([6,6] [3,8])
+p3 = [3,10]
+close: false
+width: 1
+anchors: top=[9,4] base=[3,10] mid=[6,7]
+  mark-above=[9,3] mark-below=[3,11]
+@end
+
+# VOW /v/ - Reversed S-curve, descending
+@elem shaw.vow
+zone: descender
+path: p1 p2 p3 p4 p5
+p1 = [8,4]
+p2 = C([8,5] [4,5])
+p3 = [4,7]
+p4 = C([4,9] [8,9])
+p5 = [8,10]
+close: false
+width: 1
+anchors: top=[8,4] base=[8,10] mid=[6,7]
+  mark-above=[8,3] mark-below=[8,11]
+@end
+
+# THEY /dh/ - Vertical with bottom curve
+@elem shaw.they
+zone: descender
+path: p1 p2 p3
+p1 = [6,4]
+p2 = C([6,8] [9,8])
+p3 = [9,10]
+close: false
+width: 1
+anchors: top=[6,4] base=[9,10] mid=[6,7]
+  mark-above=[6,3] mark-below=[9,11]
+@end
+
+# ZOO /z/ - Hook curving into descent
+@elem shaw.zoo
+zone: descender
+path: p1 p2 p3
+p1 = [4,4]
+p2 = C([4,6] [4,8])
+p3 = [4,10]
+close: false
+width: 1
+anchors: top=[4,4] base=[4,10] mid=[4,7]
+  mark-above=[4,3] mark-below=[4,11]
+@end
+
+# MEASURE /zh/ - Curved form descending
+@elem shaw.measure
+zone: descender
+path: p1 p2 p3 p4 p5
+p1 = [8,4]
+p2 = C([8,5] [4,5])
+p3 = [4,6]
+p4 = C([4,7] [6,8])
+p5 = [6,10]
+close: false
+width: 1
+anchors: top=[8,4] base=[6,10] mid=[6,7]
+  mark-above=[8,3] mark-below=[6,11]
+@end
+
+# JUDGE /j/ - Angular descending stroke
+@elem shaw.judge
+zone: descender
+path: p1 p2 p3 p4
+p1 = [8,4]
+p2 = [8,7]
+p3 = C([8,8] [4,8])
+p4 = [4,10]
+close: false
+width: 1
+anchors: top=[8,4] base=[4,10] mid=[8,7]
+  mark-above=[8,3] mark-below=[4,11]
+@end
+
+# WOE /w/ - Curved form with descent
+@elem shaw.woe
+zone: descender
+path: p1 p2 p3
+p1 = [6,4]
+p2 = C([6,7] [8,9])
+p3 = [8,10]
+close: false
+width: 1
+anchors: top=[6,4] base=[8,10] mid=[7,7]
+  mark-above=[6,3] mark-below=[8,11]
+@end
+
+# HA-HA /h/ - Deep form with bottom hook
+@elem shaw.haha
+zone: descender
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = [6,8]
+p3 = C([6,10] [8,10])
+p4 = [8,9]
+close: false
+width: 1
+anchors: top=[6,4] base=[8,9] mid=[6,7]
+  mark-above=[6,3] mark-below=[7,11]
+@end
+
+# -----------------------------------------------------------------------------
+# SHORT LETTERS (Sonorants) - X-height Zone
+# -----------------------------------------------------------------------------
+
+# LOLL /l/ - Curved form at x-height
+@elem shaw.loll
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = C([4,6] [8,6])
+p3 = [8,8]
+close: false
+width: 1
+anchors: top=[4,4] base=[8,8] mid=[6,6]
+  mark-above=[4,3] mark-below=[8,9]
+@end
+
+# MIME /m/ - Symmetric curved form
+@elem shaw.mime
+zone: x-height
+path: p1 p2 p3
+p1 = [8,4]
+p2 = C([8,6] [4,6])
+p3 = [4,8]
+close: false
+width: 1
+anchors: top=[8,4] base=[4,8] mid=[6,6]
+  mark-above=[8,3] mark-below=[4,9]
+@end
+
+# ROAR /r/ - Short curved stroke
+@elem shaw.roar
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = C([6,5] [8,6])
+p3 = [8,8]
+close: false
+width: 1
+anchors: top=[4,4] base=[8,8] mid=[6,6]
+  mark-above=[4,3] mark-below=[8,9]
+@end
+
+# NUN /n/ - Short curved stroke (mirror of roar)
+@elem shaw.nun
+zone: x-height
+path: p1 p2 p3
+p1 = [8,4]
+p2 = C([6,5] [4,6])
+p3 = [4,8]
+close: false
+width: 1
+anchors: top=[8,4] base=[4,8] mid=[6,6]
+  mark-above=[8,3] mark-below=[4,9]
+@end
+
+# -----------------------------------------------------------------------------
+# SHORT LETTERS (Vowels) - X-height Zone
+# -----------------------------------------------------------------------------
+
+# IF /i/ - Short hook form
+@elem shaw.if
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = C([4,6] [6,7])
+p3 = [6,8]
+close: false
+width: 1
+anchors: top=[4,4] base=[6,8] mid=[5,6]
+  mark-above=[4,3] mark-below=[6,9]
+@end
+
+# EGG /e/ - Short curved form
+@elem shaw.egg
+zone: x-height
+path: p1 p2 p3
+p1 = [8,4]
+p2 = C([8,6] [6,7])
+p3 = [6,8]
+close: false
+width: 1
+anchors: top=[8,4] base=[6,8] mid=[7,6]
+  mark-above=[8,3] mark-below=[6,9]
+@end
+
+# ASH /ae/ - Open angled form
+@elem shaw.ash
+zone: x-height
+path: p1 p2 p3
+p1 = [3,4]
+p2 = [6,6]
+p3 = [9,4]
+close: false
+width: 1
+anchors: top=[3,4] base=[6,6] mid=[6,5]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+# ADO /schwa/ - Rounded form
+@elem shaw.ado
+zone: x-height
+path: p1 p2 p3
+p1 = [9,4]
+p2 = [6,6]
+p3 = [3,4]
+close: false
+width: 1
+anchors: top=[9,4] base=[6,6] mid=[6,5]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+# ON /o/ - Small circular form
+@elem shaw.on
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [4,5]
+p2 = C([4,7] [6,8])
+p3 = C([8,7] [8,5])
+p4 = C([8,4] [4,5])
+close: true
+width: 1
+anchors: top=[6,4] base=[6,8] mid=[6,6]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+# WOOL /u/ - Small open form
+@elem shaw.wool
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = C([6,6] [8,6])
+p3 = [8,4]
+close: false
+width: 1
+anchors: top=[4,4] base=[6,6] mid=[6,5]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+# OUT /au/ - Wide angled form
+@elem shaw.out
+zone: x-height
+path: p1 p2 p3
+p1 = [3,8]
+p2 = [6,5]
+p3 = [9,8]
+close: false
+width: 1
+anchors: top=[6,5] base=[3,8] mid=[6,6]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+# AH /a/ - Open form
+@elem shaw.ah
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = [6,8]
+p3 = [8,4]
+close: false
+width: 1
+anchors: top=[4,4] base=[6,8] mid=[6,6]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+# EAT /ee/ - Tall short vowel
+@elem shaw.eat
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = C([4,6] [6,8])
+p3 = [8,8]
+close: false
+width: 1
+anchors: top=[4,4] base=[8,8] mid=[6,6]
+  mark-above=[4,3] mark-below=[8,9]
+@end
+
+# AGE /ei/ - Diphthong form
+@elem shaw.age
+zone: x-height
+path: p1 p2 p3
+p1 = [8,4]
+p2 = C([8,6] [6,8])
+p3 = [4,8]
+close: false
+width: 1
+anchors: top=[8,4] base=[4,8] mid=[6,6]
+  mark-above=[8,3] mark-below=[4,9]
+@end
+
+# ICE /ai/ - Angular diphthong
+@elem shaw.ice
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = [6,8]
+p3 = [8,4]
+close: false
+width: 1
+anchors: top=[4,4] base=[6,8] mid=[6,6]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+# UP /u/ - Short form
+@elem shaw.up
+zone: x-height
+path: p1 p2 p3
+p1 = [8,4]
+p2 = [6,8]
+p3 = [4,4]
+close: false
+width: 1
+anchors: top=[8,4] base=[6,8] mid=[6,6]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+# OAK /ou/ - Rounded diphthong
+@elem shaw.oak
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [4,4]
+p2 = C([4,6] [6,7])
+p3 = C([8,6] [8,4])
+p4 = [6,4]
+close: false
+width: 1
+anchors: top=[4,4] base=[6,7] mid=[6,5]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+# OOZE /oo/ - Long u form
+@elem shaw.ooze
+zone: x-height
+path: p1 p2 p3
+p1 = [4,8]
+p2 = C([6,6] [8,6])
+p3 = [8,8]
+close: false
+width: 1
+anchors: top=[6,6] base=[4,8] mid=[6,7]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+# OIL /oi/ - Diphthong form
+@elem shaw.oil
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = [4,8]
+p3 = [8,8]
+close: false
+width: 1
+anchors: top=[4,4] base=[8,8] mid=[4,6]
+  mark-above=[4,3] mark-below=[6,9]
+@end
+
+# AWE /aw/ - Open rounded form
+@elem shaw.awe
+zone: x-height
+path: p1 p2 p3
+p1 = [8,4]
+p2 = [8,8]
+p3 = [4,8]
+close: false
+width: 1
+anchors: top=[8,4] base=[4,8] mid=[8,6]
+  mark-above=[8,3] mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# SHORT LETTERS (Ligatures / R-colored Vowels) - X-height Zone
+# -----------------------------------------------------------------------------
+
+# ARE /ar/ - R-colored vowel
+@elem shaw.are
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [3,4]
+p2 = [6,6]
+p3 = C([8,7] [8,8])
+p4 = [6,8]
+close: false
+width: 1
+anchors: top=[3,4] base=[6,8] mid=[6,6]
+  mark-above=[3,3] mark-below=[6,9]
+@end
+
+# OR /or/ - R-colored vowel
+@elem shaw.or
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [9,4]
+p2 = [6,6]
+p3 = C([4,7] [4,8])
+p4 = [6,8]
+close: false
+width: 1
+anchors: top=[9,4] base=[6,8] mid=[6,6]
+  mark-above=[9,3] mark-below=[6,9]
+@end
+
+# AIR /air/ - R-colored vowel
+@elem shaw.air
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [4,4]
+p2 = C([4,6] [6,7])
+p3 = [8,7]
+p4 = [8,8]
+close: false
+width: 1
+anchors: top=[4,4] base=[8,8] mid=[6,6]
+  mark-above=[4,3] mark-below=[8,9]
+@end
+
+# ERR /er/ - R-colored schwa
+@elem shaw.err
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [8,4]
+p2 = C([8,6] [6,7])
+p3 = [4,7]
+p4 = [4,8]
+close: false
+width: 1
+anchors: top=[8,4] base=[4,8] mid=[6,6]
+  mark-above=[8,3] mark-below=[4,9]
+@end
+
+# ARRAY /unstressed er/ - Short r-colored
+@elem shaw.array
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = C([6,6] [6,8])
+p3 = [8,8]
+close: false
+width: 1
+anchors: top=[4,4] base=[8,8] mid=[6,6]
+  mark-above=[4,3] mark-below=[8,9]
+@end
+
+# EAR /ear/ - R-colored vowel
+@elem shaw.ear
+zone: x-height
+path: p1 p2 p3
+p1 = [8,4]
+p2 = C([6,6] [6,8])
+p3 = [4,8]
+close: false
+width: 1
+anchors: top=[8,4] base=[4,8] mid=[6,6]
+  mark-above=[8,3] mark-below=[4,9]
+@end
+
+# IAN /ia/ - Vowel combination
+@elem shaw.ian
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [4,4]
+p2 = [4,6]
+p3 = C([4,8] [6,8])
+p4 = [8,8]
+close: false
+width: 1
+anchors: top=[4,4] base=[8,8] mid=[5,6]
+  mark-above=[4,3] mark-below=[6,9]
+@end
+
+# YEW /ju/ - Vowel combination
+@elem shaw.yew
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [8,4]
+p2 = [8,6]
+p3 = C([8,8] [6,8])
+p4 = [4,8]
+close: false
+width: 1
+anchors: top=[8,4] base=[4,8] mid=[7,6]
+  mark-above=[8,3] mark-below=[6,9]
+@end
+
+# =============================================================================
+# SHAVIAN CHARACTER DEFINITIONS (U+10450-U+1047F)
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# TALL LETTERS - Voiceless Consonants (U+10450-U+10459)
+# -----------------------------------------------------------------------------
+
+𐑐  SHAVIAN-LETTER-PEEP = shaw.peep cp:U+10450 script:Shaw
+  # /p/ as in "peep"
+
+𐑑  SHAVIAN-LETTER-TOT = shaw.tot cp:U+10451 script:Shaw
+  # /t/ as in "tot"
+
+𐑒  SHAVIAN-LETTER-KICK = shaw.kick cp:U+10452 script:Shaw
+  # /k/ as in "kick"
+
+𐑓  SHAVIAN-LETTER-FEE = shaw.fee cp:U+10453 script:Shaw
+  # /f/ as in "fee"
+
+𐑔  SHAVIAN-LETTER-THIGH = shaw.thigh cp:U+10454 script:Shaw
+  # /th/ (voiceless) as in "thigh"
+
+𐑕  SHAVIAN-LETTER-SO = shaw.so cp:U+10455 script:Shaw
+  # /s/ as in "so"
+
+𐑖  SHAVIAN-LETTER-SURE = shaw.sure cp:U+10456 script:Shaw
+  # /sh/ as in "sure"
+
+𐑗  SHAVIAN-LETTER-CHURCH = shaw.church cp:U+10457 script:Shaw
+  # /ch/ as in "church"
+
+𐑘  SHAVIAN-LETTER-YEA = shaw.yea cp:U+10458 script:Shaw
+  # /j/ as in "yea"
+
+𐑙  SHAVIAN-LETTER-HUNG = shaw.hung cp:U+10459 script:Shaw
+  # /ng/ as in "hung"
+
+# -----------------------------------------------------------------------------
+# DEEP LETTERS - Voiced Consonants (U+1045A-U+10463)
+# -----------------------------------------------------------------------------
+
+𐑚  SHAVIAN-LETTER-BIB = shaw.bib cp:U+1045A script:Shaw
+  # /b/ as in "bib"
+
+𐑛  SHAVIAN-LETTER-DEAD = shaw.dead cp:U+1045B script:Shaw
+  # /d/ as in "dead"
+
+𐑜  SHAVIAN-LETTER-GAG = shaw.gag cp:U+1045C script:Shaw
+  # /g/ as in "gag"
+
+𐑝  SHAVIAN-LETTER-VOW = shaw.vow cp:U+1045D script:Shaw
+  # /v/ as in "vow"
+
+𐑞  SHAVIAN-LETTER-THEY = shaw.they cp:U+1045E script:Shaw
+  # /th/ (voiced) as in "they"
+
+𐑟  SHAVIAN-LETTER-ZOO = shaw.zoo cp:U+1045F script:Shaw
+  # /z/ as in "zoo"
+
+𐑠  SHAVIAN-LETTER-MEASURE = shaw.measure cp:U+10460 script:Shaw
+  # /zh/ as in "measure"
+
+𐑡  SHAVIAN-LETTER-JUDGE = shaw.judge cp:U+10461 script:Shaw
+  # /dj/ as in "judge"
+
+𐑢  SHAVIAN-LETTER-WOE = shaw.woe cp:U+10462 script:Shaw
+  # /w/ as in "woe"
+
+𐑣  SHAVIAN-LETTER-HA-HA = shaw.haha cp:U+10463 script:Shaw
+  # /h/ as in "ha-ha"
+
+# -----------------------------------------------------------------------------
+# SHORT LETTERS - Sonorants (U+10464-U+10465, U+1046E-U+1046F)
+# -----------------------------------------------------------------------------
+
+𐑤  SHAVIAN-LETTER-LOLL = shaw.loll cp:U+10464 script:Shaw
+  # /l/ as in "loll"
+
+𐑥  SHAVIAN-LETTER-MIME = shaw.mime cp:U+10465 script:Shaw
+  # /m/ as in "mime"
+
+𐑮  SHAVIAN-LETTER-ROAR = shaw.roar cp:U+1046E script:Shaw
+  # /r/ as in "roar"
+
+𐑯  SHAVIAN-LETTER-NUN = shaw.nun cp:U+1046F script:Shaw
+  # /n/ as in "nun"
+
+# -----------------------------------------------------------------------------
+# SHORT LETTERS - Vowels (U+10466-U+10477)
+# -----------------------------------------------------------------------------
+
+𐑦  SHAVIAN-LETTER-IF = shaw.if cp:U+10466 script:Shaw
+  # /i/ (short) as in "if"
+
+𐑧  SHAVIAN-LETTER-EGG = shaw.egg cp:U+10467 script:Shaw
+  # /e/ (short) as in "egg"
+
+𐑨  SHAVIAN-LETTER-ASH = shaw.ash cp:U+10468 script:Shaw
+  # /ae/ as in "ash"
+
+𐑩  SHAVIAN-LETTER-ADO = shaw.ado cp:U+10469 script:Shaw
+  # /schwa/ as in "ado"
+
+𐑪  SHAVIAN-LETTER-ON = shaw.on cp:U+1046A script:Shaw
+  # /o/ (short) as in "on"
+
+𐑫  SHAVIAN-LETTER-WOOL = shaw.wool cp:U+1046B script:Shaw
+  # /u/ (short) as in "wool"
+
+𐑬  SHAVIAN-LETTER-OUT = shaw.out cp:U+1046C script:Shaw
+  # /au/ as in "out"
+
+𐑭  SHAVIAN-LETTER-AH = shaw.ah cp:U+1046D script:Shaw
+  # /a/ (long) as in "ah"
+
+𐑰  SHAVIAN-LETTER-EAT = shaw.eat cp:U+10470 script:Shaw
+  # /ee/ (long) as in "eat"
+
+𐑱  SHAVIAN-LETTER-AGE = shaw.age cp:U+10471 script:Shaw
+  # /ei/ as in "age"
+
+𐑲  SHAVIAN-LETTER-ICE = shaw.ice cp:U+10472 script:Shaw
+  # /ai/ as in "ice"
+
+𐑳  SHAVIAN-LETTER-UP = shaw.up cp:U+10473 script:Shaw
+  # /u/ (short) as in "up"
+
+𐑴  SHAVIAN-LETTER-OAK = shaw.oak cp:U+10474 script:Shaw
+  # /ou/ as in "oak"
+
+𐑵  SHAVIAN-LETTER-OOZE = shaw.ooze cp:U+10475 script:Shaw
+  # /oo/ (long) as in "ooze"
+
+𐑶  SHAVIAN-LETTER-OIL = shaw.oil cp:U+10476 script:Shaw
+  # /oi/ as in "oil"
+
+𐑷  SHAVIAN-LETTER-AWE = shaw.awe cp:U+10477 script:Shaw
+  # /aw/ as in "awe"
+
+# -----------------------------------------------------------------------------
+# SHORT LETTERS - Ligatures / R-colored Vowels (U+10478-U+1047F)
+# -----------------------------------------------------------------------------
+
+𐑸  SHAVIAN-LETTER-ARE = shaw.are cp:U+10478 script:Shaw
+  # /ar/ as in "are"
+
+𐑹  SHAVIAN-LETTER-OR = shaw.or cp:U+10479 script:Shaw
+  # /or/ as in "or"
+
+𐑺  SHAVIAN-LETTER-AIR = shaw.air cp:U+1047A script:Shaw
+  # /air/ as in "air"
+
+𐑻  SHAVIAN-LETTER-ERR = shaw.err cp:U+1047B script:Shaw
+  # /er/ (stressed) as in "err"
+
+𐑼  SHAVIAN-LETTER-ARRAY = shaw.array cp:U+1047C script:Shaw
+  # /er/ (unstressed) as in "array"
+
+𐑽  SHAVIAN-LETTER-EAR = shaw.ear cp:U+1047D script:Shaw
+  # /ear/ as in "ear"
+
+𐑾  SHAVIAN-LETTER-IAN = shaw.ian cp:U+1047E script:Shaw
+  # /ia/ as in "Ian"
+
+𐑿  SHAVIAN-LETTER-YEW = shaw.yew cp:U+1047F script:Shaw
+  # /ju/ as in "yew"
+
+# =============================================================================
+# END OF SHAVIAN ALPHABET LIBRARY
+# =============================================================================

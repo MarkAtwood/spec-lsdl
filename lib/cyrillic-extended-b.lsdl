@@ -1,0 +1,1119 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Cyrillic Extended-B Library (U+A640-A69F)
+# =============================================================================
+#
+# Old Church Slavonic and historical Cyrillic characters.
+# This block contains 96 code points used in medieval manuscripts,
+# liturgical texts, and scholarly editions of historical Slavic documents.
+#
+# Key letterforms:
+#   - Zemlya (Ꙁ/ꙁ) - alternative form of Ze
+#   - Dzelo (Ꙃ/ꙃ) - historical Dz sound
+#   - Reversed Ze (Ꙅ/ꙅ) - mirrored form
+#   - Iota (Ꙇ/ꙇ) - Greek-derived vowel
+#   - Djerv (Ꙉ/ꙉ) - South Slavic consonant
+#   - Monograph Uk (Ꙋ/ꙋ) - single-letter form of digraph
+#   - Yat variants (Ꙗ/ꙗ) - iotified forms
+#   - Little Yus / Big Yus variants - nasal vowels
+#   - Fita / Izhitsa variants
+#
+# All characters tagged with script:Cyrl and ortho:OCS (Old Church Slavonic)
+#
+# =============================================================================
+
+# =============================================================================
+# CASE MAPPINGS (U+A640-A69F)
+# =============================================================================
+
+@case Ꙁ ꙁ
+@case Ꙃ ꙃ
+@case Ꙅ ꙅ
+@case Ꙇ ꙇ
+@case Ꙉ ꙉ
+@case Ꙋ ꙋ
+@case Ꙍ ꙍ
+@case Ꙏ ꙏ
+@case Ꙑ ꙑ
+@case Ꙓ ꙓ
+@case Ꙕ ꙕ
+@case Ꙗ ꙗ
+@case Ꙙ ꙙ
+@case Ꙛ ꙛ
+@case Ꙝ ꙝ
+@case Ꙟ ꙟ
+@case Ꙡ ꙡ
+@case Ꙣ ꙣ
+@case Ꙥ ꙥ
+@case Ꙧ ꙧ
+@case Ꙩ ꙩ
+@case Ꙫ ꙫ
+@case Ꙭ ꙭ
+@case Ꚁ ꚁ
+@case Ꚃ ꚃ
+@case Ꚅ ꚅ
+@case Ꚇ ꚇ
+@case Ꚉ ꚉ
+@case Ꚋ ꚋ
+@case Ꚍ ꚍ
+@case Ꚏ ꚏ
+@case Ꚑ ꚑ
+@case Ꚓ ꚓ
+@case Ꚕ ꚕ
+@case Ꚗ ꚗ
+@case Ꚙ ꚙ
+@case Ꚛ ꚛ
+
+# =============================================================================
+# LOCAL ELEMENT DEFINITIONS
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# zemlya.stroke - Z-like stroke for Zemlya letter
+# Distinctive s-curve form different from standard Ze
+# -----------------------------------------------------------------------------
+@elem zemlya.stroke
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [2,0]
+p2 = [10,0]
+p3 = [2,8]
+p4 = [10,8]
+p5 = [10,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mark-above=[6,0]
+@end
+
+@elem zemlya.stroke.x
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,4]
+p2 = [10,4]
+p3 = [2,8]
+p4 = [10,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# dzelo.form - Unique form for Dzelo (like reversed S with tail)
+# -----------------------------------------------------------------------------
+@elem dzelo.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6
+p1 = [10,0]
+p2 = C([2,0] [2,2])
+p3 = [6,4]
+p4 = C([10,6] [10,8])
+p5 = [2,8]
+p6 = [2,10]
+close: false
+width: 1
+anchors: top=[6,0] base=[2,10] mark-above=[6,0]
+@end
+
+@elem dzelo.x
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [10,4]
+p2 = C([2,4] [2,5])
+p3 = [6,6]
+p4 = C([10,7] [10,8])
+p5 = [2,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# reversed-ze.cap - Left-facing Ze curves (mirror of standard Ze)
+# -----------------------------------------------------------------------------
+@elem reversed-ze.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [10,0]
+p2 = C([10,0] [6,0])
+p3 = C([2,2] [2,4])
+p4 = C([2,6] [6,8])
+p5 = C([10,8] [10,8])
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mark-above=[6,0]
+@end
+
+@elem reversed-ze.x
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [10,4]
+p2 = C([10,4] [6,4])
+p3 = C([2,5] [2,6])
+p4 = C([2,7] [6,8])
+p5 = C([10,8] [10,8])
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# djerv.form - Unique South Slavic letter form
+# Like soft sign with diagonal stroke through it
+# -----------------------------------------------------------------------------
+@elem djerv.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [4,0]
+p2 = [4,8]
+p3 = C([4,8] [10,8])
+p4 = C([10,5] [4,5])
+p5 = [10,0]
+close: false
+width: 1
+anchors: top=[4,0] base=[4,8] mark-above=[4,0]
+@end
+
+@elem djerv.x
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [4,4]
+p2 = [4,8]
+p3 = C([4,8] [10,8])
+p4 = C([10,6] [4,6])
+p5 = [10,4]
+close: false
+width: 1
+anchors: top=[4,4] base=[4,8]
+@end
+
+# -----------------------------------------------------------------------------
+# monograph-uk - Single letter form of Uk digraph
+# Combines O and Y-like forms into single glyph
+# -----------------------------------------------------------------------------
+@elem monograph-uk.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6 p7
+p1 = [2,0]
+p2 = C([0,0] [0,4])
+p3 = C([0,8] [2,8])
+p4 = [6,4]
+p5 = [10,8]
+p6 = C([12,4] [10,0])
+p7 = [10,0]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mark-above=[6,0]
+@end
+
+@elem monograph-uk.x
+zone: x-height
+path: p1 p2 p3 p4 p5 p6
+p1 = [2,4]
+p2 = C([0,4] [0,6])
+p3 = C([0,8] [2,8])
+p4 = [6,6]
+p5 = [10,8]
+p6 = C([12,6] [10,4])
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# broad-omega - Wide omega form for OCS
+# -----------------------------------------------------------------------------
+@elem broad-omega.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6 p7
+p1 = [0,0]
+p2 = [0,6]
+p3 = C([0,8] [3,8])
+p4 = [6,6]
+p5 = C([9,8] [12,8])
+p6 = [12,6]
+p7 = [12,0]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mark-above=[6,0]
+@end
+
+@elem broad-omega.x
+zone: x-height
+path: p1 p2 p3 p4 p5 p6 p7
+p1 = [0,4]
+p2 = [0,7]
+p3 = C([0,8] [3,8])
+p4 = [6,7]
+p5 = C([9,8] [12,8])
+p6 = [12,7]
+p7 = [12,4]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# yat-iotified - Iotified Yat letter form
+# I + yat ligature for OCS
+# -----------------------------------------------------------------------------
+@elem soft-sign.base
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,4]
+p2 = [2,8]
+p3 = C([2,8] [8,8])
+p4 = C([8,6] [2,6])
+close: true
+width: 1
+anchors: top=[2,4] base=[2,8] attach=[5,7]
+  mark-above=[2,3] mark-below=[5,9]
+@end
+
+@elem yat.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6
+p1 = [6,0]
+p2 = [6,8]
+p3 = C([6,8] [10,8])
+p4 = C([10,6] [6,6])
+p5 = [2,0]
+p6 = [10,0]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mark-above=[6,0]
+@end
+
+@elem yat.x
+zone: x-height
+path: p1 p2 p3 p4 p5 p6
+p1 = [6,4]
+p2 = [6,8]
+p3 = C([6,8] [10,8])
+p4 = C([10,6] [6,6])
+p5 = [4,4]
+p6 = [8,4]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# neutral-yer - Historical reduced vowel
+# -----------------------------------------------------------------------------
+@elem neutral-yer.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [2,0]
+p2 = [2,8]
+p3 = C([2,8] [8,8])
+p4 = C([8,4] [2,4])
+close: false
+width: 1
+anchors: top=[2,0] base=[2,8] mark-above=[2,0]
+@end
+
+@elem neutral-yer.x
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,4]
+p2 = [2,8]
+p3 = C([2,8] [8,8])
+p4 = C([8,6] [2,6])
+close: false
+width: 1
+anchors: top=[2,4] base=[2,8]
+@end
+
+# -----------------------------------------------------------------------------
+# little-yus variants
+# -----------------------------------------------------------------------------
+@elem little-yus.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [0,8]
+p2 = [6,0]
+p3 = [12,8]
+p4 = [2,4]
+p5 = [10,4]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mark-above=[6,0]
+@end
+
+@elem little-yus.x
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [0,8]
+p2 = [6,4]
+p3 = [12,8]
+p4 = [2,6]
+p5 = [10,6]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# closed-little-yus - Little Yus with closed top
+# -----------------------------------------------------------------------------
+@elem closed-little-yus.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6
+p1 = [0,8]
+p2 = [6,0]
+p3 = [12,8]
+p4 = [2,4]
+p5 = [10,4]
+p6 = [6,0]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mark-above=[6,0]
+@end
+
+@elem closed-little-yus.x
+zone: x-height
+path: p1 p2 p3 p4 p5 p6
+p1 = [0,8]
+p2 = [6,4]
+p3 = [12,8]
+p4 = [2,6]
+p5 = [10,6]
+p6 = [6,4]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# blended-yus - Intermediate Yus form
+# -----------------------------------------------------------------------------
+@elem blended-yus.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6
+p1 = [0,8]
+p2 = [6,0]
+p3 = [12,8]
+p4 = [2,4]
+p5 = [10,4]
+p6 = [6,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mark-above=[6,0]
+@end
+
+@elem blended-yus.x
+zone: x-height
+path: p1 p2 p3 p4 p5 p6
+p1 = [0,8]
+p2 = [6,4]
+p3 = [12,8]
+p4 = [2,6]
+p5 = [10,6]
+p6 = [6,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# yn - Historical letter form
+# -----------------------------------------------------------------------------
+@elem yn.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [2,0]
+p2 = [2,8]
+p3 = [6,4]
+p4 = [10,8]
+p5 = [10,0]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mark-above=[6,0]
+@end
+
+@elem yn.x
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [2,4]
+p2 = [2,8]
+p3 = [6,6]
+p4 = [10,8]
+p5 = [10,4]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# reversed-dze - Mirrored Dze form
+# -----------------------------------------------------------------------------
+@elem reversed-dze.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [2,0]
+p2 = C([2,2] [6,3])
+p3 = [6,4]
+p4 = C([6,5] [10,6])
+p5 = [10,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mark-above=[6,0]
+@end
+
+@elem reversed-dze.x
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [2,4]
+p2 = C([2,5] [6,5])
+p3 = [6,6]
+p4 = C([6,7] [10,7])
+p5 = [10,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# iotified-a - Iotified A form
+# -----------------------------------------------------------------------------
+@elem iotified-a.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6 p7
+p1 = [0,0]
+p2 = [0,8]
+p3 = [4,8]
+p4 = C([4,8] [10,8])
+p5 = C([10,6] [4,6])
+p6 = [4,0]
+p7 = [4,8]
+close: false
+width: 1
+anchors: top=[2,0] base=[4,8] mark-above=[2,0]
+@end
+
+@elem iotified-a.x
+zone: x-height
+path: p1 p2 p3 p4 p5 p6 p7
+p1 = [0,4]
+p2 = [0,8]
+p3 = [4,8]
+p4 = C([4,8] [10,8])
+p5 = C([10,6] [4,6])
+p6 = [4,4]
+p7 = [4,8]
+close: false
+width: 1
+anchors: top=[2,4] base=[4,8]
+@end
+
+# -----------------------------------------------------------------------------
+# crossed-o - O with cross inside
+# -----------------------------------------------------------------------------
+@elem crossed-o.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6 p7 p8 p9
+p1 = [6,0]
+p2 = C([12,0] [12,4])
+p3 = C([12,8] [6,8])
+p4 = C([0,8] [0,4])
+p5 = C([0,0] [6,0])
+p6 = [6,8]
+p7 = [6,0]
+p8 = [0,4]
+p9 = [12,4]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mark-above=[6,0]
+@end
+
+@elem crossed-o.x
+zone: x-height
+path: p1 p2 p3 p4 p5 p6 p7 p8 p9
+p1 = [6,4]
+p2 = C([12,4] [12,6])
+p3 = C([12,8] [6,8])
+p4 = C([0,8] [0,6])
+p5 = C([0,4] [6,4])
+p6 = [6,8]
+p7 = [6,4]
+p8 = [0,6]
+p9 = [12,6]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# monocular-o - O with single dot inside
+# -----------------------------------------------------------------------------
+@elem monocular-o.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6
+p1 = [6,0]
+p2 = C([12,0] [12,4])
+p3 = C([12,8] [6,8])
+p4 = C([0,8] [0,4])
+p5 = C([0,0] [6,0])
+p6 = [6,4]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mark-above=[6,0]
+@end
+
+# -----------------------------------------------------------------------------
+# binocular-o - O with two dots inside
+# -----------------------------------------------------------------------------
+@elem binocular-o.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6 p7
+p1 = [6,0]
+p2 = C([12,0] [12,4])
+p3 = C([12,8] [6,8])
+p4 = C([0,8] [0,4])
+p5 = C([0,0] [6,0])
+p6 = [4,4]
+p7 = [8,4]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mark-above=[6,0]
+@end
+
+# -----------------------------------------------------------------------------
+# multiocular-o - O with multiple dots/eyes (rare symbol)
+# -----------------------------------------------------------------------------
+@elem multiocular-o.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6 p7 p8 p9
+p1 = [6,0]
+p2 = C([12,0] [12,4])
+p3 = C([12,8] [6,8])
+p4 = C([0,8] [0,4])
+p5 = C([0,0] [6,0])
+p6 = [4,3]
+p7 = [8,3]
+p8 = [4,5]
+p9 = [8,5]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mark-above=[6,0]
+@end
+
+# -----------------------------------------------------------------------------
+# stem.l - Left-positioned stem (for capital letters)
+# -----------------------------------------------------------------------------
+@elem stem.l
+zone: cap
+path: p1 p2
+p1 = [2,0]
+p2 = [2,8]
+close: false
+width: 1
+anchors: top=[2,0] base=[2,8] mid=[2,4]
+  arm.right=[4,4] mark-above=[2,0] mark-below=[2,9]
+  top-serif=[2,0] bot-serif=[2,8]
+@end
+
+# -----------------------------------------------------------------------------
+# stem.r - Right-positioned stem (for capital letters)
+# -----------------------------------------------------------------------------
+@elem stem.r
+zone: cap
+path: p1 p2
+p1 = [10,0]
+p2 = [10,8]
+close: false
+width: 1
+anchors: top=[10,0] base=[10,8] mid=[10,4]
+  arm.left=[8,4] mark-above=[10,0] mark-below=[10,9]
+  top-serif=[10,0] bot-serif=[10,8]
+@end
+
+# -----------------------------------------------------------------------------
+# stem - Vertical straight stroke for x-height
+# -----------------------------------------------------------------------------
+@elem stem
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8] mid=[6,6]
+  arm.left=[0,6] arm.right=[12,6]
+  mark-above=[6,3] mark-below=[6,9]
+  top-serif=[6,3] bot-serif=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# crossbar.cap - Capital-height crossbar
+# -----------------------------------------------------------------------------
+@elem crossbar.cap
+zone: cap
+path: p1 p2
+p1 = [2,4]
+p2 = [10,4]
+close: false
+width: 1
+anchors: left=[2,4] right=[10,4] mid=[6,4]
+@end
+
+# -----------------------------------------------------------------------------
+# crossbar - X-height crossbar
+# -----------------------------------------------------------------------------
+@elem crossbar
+zone: x-height
+path: p1 p2
+p1 = [2,6]
+p2 = [10,6]
+close: false
+width: 1
+anchors: left=[2,6] right=[10,6] mid=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# iota.cap - Iota form (Greek-derived)
+# -----------------------------------------------------------------------------
+@elem iota.cap
+zone: cap
+path: p1 p2
+p1 = [6,0]
+p2 = [6,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mark-above=[6,0]
+@end
+
+@elem iota.x
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# tittle - Dot above for lowercase letters
+# -----------------------------------------------------------------------------
+@elem tittle
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,2]
+p2 = C([7,2] [7,3])
+p3 = C([7,4] [6,4])
+p4 = C([5,4] [5,3])
+close: true
+width: 1
+anchors: attach=[6,3] base=[6,4]
+  mark-above=[6,1]
+@end
+
+# -----------------------------------------------------------------------------
+# el-tail - L with tail extension
+# -----------------------------------------------------------------------------
+@elem el-tail.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [0,8]
+p2 = [6,0]
+p3 = [12,8]
+p4 = [12,10]
+close: false
+width: 1
+anchors: top=[6,0] base=[12,10] mark-above=[6,0]
+@end
+
+@elem el-tail.x
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [0,8]
+p2 = [6,4]
+p3 = [12,8]
+p4 = [12,10]
+close: false
+width: 1
+anchors: top=[6,4] base=[12,10]
+@end
+
+# -----------------------------------------------------------------------------
+# tail.cyr - Cyrillic descending tail
+# -----------------------------------------------------------------------------
+@elem tail.cyr
+zone: descender
+path: p1 p2 p3
+p1 = [10,8]
+p2 = [10,10]
+p3 = [8,10]
+close: false
+width: 1
+anchors: attach=[10,8] base=[10,10]
+@end
+
+# -----------------------------------------------------------------------------
+# hook.desc.cyr - Descending hook
+# -----------------------------------------------------------------------------
+@elem hook.desc.cyr
+zone: descender
+path: p1 p2 p3
+p1 = [6,8]
+p2 = [6,10]
+p3 = C([6,10] [4,10])
+close: false
+width: 1
+anchors: attach=[6,8] base=[4,10]
+@end
+
+# -----------------------------------------------------------------------------
+# e-iotified - E with preceding I-element
+# -----------------------------------------------------------------------------
+@elem e-iotified.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6
+p1 = [0,0]
+p2 = [0,8]
+p3 = [10,4]
+p4 = C([10,0] [6,0])
+p5 = [4,4]
+p6 = C([4,8] [10,8])
+close: false
+width: 1
+anchors: top=[2,0] base=[6,8] mark-above=[2,0]
+@end
+
+@elem e-iotified.x
+zone: x-height
+path: p1 p2 p3 p4 p5 p6
+p1 = [0,4]
+p2 = [0,8]
+p3 = [10,6]
+p4 = C([10,4] [6,4])
+p5 = [4,6]
+p6 = C([4,8] [10,8])
+close: false
+width: 1
+anchors: top=[2,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# ha-hook - Ha with descending hook
+# -----------------------------------------------------------------------------
+@elem ha-hook.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [0,0]
+p2 = [12,8]
+p3 = [12,0]
+p4 = [0,8]
+p5 = [6,10]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,10] mark-above=[6,0]
+@end
+
+@elem ha-hook.x
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [0,4]
+p2 = [12,8]
+p3 = [12,4]
+p4 = [0,8]
+p5 = [6,10]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,10]
+@end
+
+# =============================================================================
+# CYRILLIC EXTENDED-B CAPITAL LETTERS (U+A640-A69E odd code points)
+# =============================================================================
+
+Ꙁ  CYRILLIC-CAPITAL-ZEMLYA = zemlya.stroke script:Cyrl ortho:OCS
+  # Zemlya - alternate form of Ze, z-like shape
+
+Ꙃ  CYRILLIC-CAPITAL-DZELO = dzelo.cap script:Cyrl ortho:OCS
+  # Dzelo - historical letter for /dz/ sound
+
+Ꙅ  CYRILLIC-CAPITAL-REVERSED-DZE = reversed-ze.cap script:Cyrl ortho:OCS
+  # Reversed Dze - mirrored S-like form
+
+Ꙇ  CYRILLIC-CAPITAL-IOTA = iota.cap script:Cyrl ortho:OCS
+  # Iota - Greek-derived vowel, simple vertical stroke
+
+Ꙉ  CYRILLIC-CAPITAL-DJERV = djerv.cap script:Cyrl ortho:OCS
+  # Djerv - South Slavic letter for /dj/ sound
+
+Ꙋ  CYRILLIC-CAPITAL-MONOGRAPH-UK = monograph-uk.cap script:Cyrl ortho:OCS
+  # Monograph Uk - single-letter form of Uk digraph
+
+Ꙍ  CYRILLIC-CAPITAL-BROAD-OMEGA = broad-omega.cap script:Cyrl ortho:OCS
+  # Broad Omega - wide omega variant
+
+Ꙏ  CYRILLIC-CAPITAL-NEUTRAL-YER = neutral-yer.cap script:Cyrl ortho:OCS
+  # Neutral Yer - reduced vowel form
+
+Ꙑ  CYRILLIC-CAPITAL-YERU-BACK-YER = FRAME(soft-sign.base, stem.r) script:Cyrl ortho:OCS
+  # Yeru with back yer - historical yery variant
+
+Ꙓ  CYRILLIC-CAPITAL-IOTIFIED-YAT = LR(stem.l, yat.cap) script:Cyrl ortho:OCS
+  # Iotified Yat - I + Yat ligature
+
+Ꙕ  CYRILLIC-CAPITAL-REVERSED-YU = FRAME(stem.r, crossbar.cap, LR(bowl.l.upper.cap, bowl.l.upper.cap)) script:Cyrl ortho:OCS
+  # Reversed Yu - mirrored form
+
+Ꙗ  CYRILLIC-CAPITAL-IOTIFIED-A = iotified-a.cap script:Cyrl ortho:OCS
+  # Iotified A - I + A ligature, common in OCS
+
+Ꙙ  CYRILLIC-CAPITAL-CLOSED-LITTLE-YUS = closed-little-yus.cap script:Cyrl ortho:OCS
+  # Closed Little Yus - variant with closed top
+
+Ꙛ  CYRILLIC-CAPITAL-BLENDED-YUS = blended-yus.cap script:Cyrl ortho:OCS
+  # Blended Yus - intermediate yus form
+
+Ꙝ  CYRILLIC-CAPITAL-IOTIFIED-CLOSED-LITTLE-YUS = LR(stem.l, closed-little-yus.cap) script:Cyrl ortho:OCS
+  # Iotified Closed Little Yus - I + closed little yus
+
+Ꙟ  CYRILLIC-CAPITAL-YN = yn.cap script:Cyrl ortho:OCS
+  # Yn - historical letter form
+
+Ꙡ  CYRILLIC-CAPITAL-REVERSED-TSE = FRAME(stem.l, crossbar.cap, stem.r, hook.desc.cyr) script:Cyrl ortho:OCS
+  # Reversed Tse - mirrored tse form
+
+Ꙣ  CYRILLIC-CAPITAL-SOFT-DE = FRAME(djerv.cap, hook.desc.cyr) script:Cyrl ortho:OCS
+  # Soft De - palatalized de variant
+
+Ꙥ  CYRILLIC-CAPITAL-SOFT-EL = el-tail.cap script:Cyrl ortho:OCS
+  # Soft El - El with tail modification
+
+Ꙧ  CYRILLIC-CAPITAL-SOFT-EM = FRAME(stem.l, vertex.cap.inv, stem.r, hook.desc.cyr) script:Cyrl ortho:OCS
+  # Soft Em - Em with tail modification
+
+Ꙩ  CYRILLIC-CAPITAL-MONOCULAR-O = monocular-o.cap script:Cyrl ortho:OCS
+  # Monocular O - O with single eye/dot
+
+Ꙫ  CYRILLIC-CAPITAL-BINOCULAR-O = binocular-o.cap script:Cyrl ortho:OCS
+  # Binocular O - O with two eyes/dots
+
+Ꙭ  CYRILLIC-CAPITAL-DOUBLE-MONOCULAR-O = LR(monocular-o.cap, monocular-o.cap) script:Cyrl ortho:OCS
+  # Double Monocular O - two monocular O forms joined
+
+# U+A66E is CYRILLIC-LETTER-MULTIOCULAR-O (caseless)
+ꙮ  CYRILLIC-LETTER-MULTIOCULAR-O = multiocular-o.cap script:Cyrl ortho:OCS
+  # Multiocular O - O with many eyes (rare liturgical symbol)
+
+# U+A670-A67D are combining marks, not letters
+# U+A67E is CYRILLIC-KAVYKA (modifier letter)
+# U+A67F is CYRILLIC-PAYEROK (modifier letter)
+
+Ꚁ  CYRILLIC-CAPITAL-DWE = FRAME(djerv.cap, broad-omega.cap) script:Cyrl ortho:OCS
+  # Dwe - historical letter
+
+Ꚃ  CYRILLIC-CAPITAL-DZWE = FRAME(dzelo.cap, broad-omega.cap) script:Cyrl ortho:OCS
+  # Dzwe - historical letter
+
+Ꚅ  CYRILLIC-CAPITAL-ZHWE = FRAME(stem.l, STACK(leg.cap, leg.cap.rev), stem.r, broad-omega.cap) script:Cyrl ortho:OCS
+  # Zhwe - historical letter
+
+Ꚇ  CYRILLIC-CAPITAL-CCHE = FRAME(hook.cyr, stem.r, stem.r) script:Cyrl ortho:OCS
+  # Cche - double che form
+
+Ꚉ  CYRILLIC-CAPITAL-DZZE = FRAME(dzelo.cap, dzelo.cap) script:Cyrl ortho:OCS
+  # Dzze - doubled dzelo
+
+Ꚋ  CYRILLIC-CAPITAL-TE-MIDDLE-HOOK = FRAME(bar.top, stem.l, hook.desc.cyr) script:Cyrl ortho:OCS
+  # Te with middle hook - variant te form
+
+Ꚍ  CYRILLIC-CAPITAL-TWE = FRAME(FRAME(bar.top, stem.l), broad-omega.cap) script:Cyrl ortho:OCS
+  # Twe - historical letter
+
+Ꚏ  CYRILLIC-CAPITAL-TSWE = FRAME(stem.l, crossbar.cap, stem.r, tail.cyr, broad-omega.cap) script:Cyrl ortho:OCS
+  # Tswe - historical letter
+
+Ꚑ  CYRILLIC-CAPITAL-TSSE = FRAME(FRAME(bar.top, stem.l), FRAME(stem.r, crossbar.cap, stem.r, tail.cyr)) script:Cyrl ortho:OCS
+  # Tsse - te and tse-tse ligature
+
+Ꚓ  CYRILLIC-CAPITAL-TCHE = FRAME(FRAME(bar.top, stem.l), FRAME(hook.cyr, stem.r)) script:Cyrl ortho:OCS
+  # Tche - te and che ligature
+
+Ꚕ  CYRILLIC-CAPITAL-HWE = ha-hook.cap script:Cyrl ortho:OCS
+  # Hwe - ha with hook
+
+Ꚗ  CYRILLIC-CAPITAL-SHWE = FRAME(stem.l, crossbar.cap, stem.l, stem.r, broad-omega.cap) script:Cyrl ortho:OCS
+  # Shwe - sha with omega
+
+Ꚙ  CYRILLIC-CAPITAL-DOUBLE-O = LR(crossed-o.cap, crossed-o.cap) script:Cyrl ortho:OCS
+  # Double O - two crossed O forms
+
+Ꚛ  CYRILLIC-CAPITAL-CROSSED-O = crossed-o.cap script:Cyrl ortho:OCS
+  # Crossed O - O with internal cross
+
+# =============================================================================
+# CYRILLIC EXTENDED-B SMALL LETTERS (U+A641-A69F even code points)
+# =============================================================================
+
+ꙁ  CYRILLIC-SMALL-ZEMLYA = zemlya.stroke.x script:Cyrl ortho:OCS
+  # Small zemlya
+
+ꙃ  CYRILLIC-SMALL-DZELO = dzelo.x script:Cyrl ortho:OCS
+  # Small dzelo
+
+ꙅ  CYRILLIC-SMALL-REVERSED-DZE = reversed-ze.x script:Cyrl ortho:OCS
+  # Small reversed dze
+
+ꙇ  CYRILLIC-SMALL-IOTA = STACK(tittle, iota.x) script:Cyrl ortho:OCS
+  # Small iota - with tittle like Latin i
+
+ꙉ  CYRILLIC-SMALL-DJERV = djerv.x script:Cyrl ortho:OCS
+  # Small djerv
+
+ꙋ  CYRILLIC-SMALL-MONOGRAPH-UK = monograph-uk.x script:Cyrl ortho:OCS
+  # Small monograph uk
+
+ꙍ  CYRILLIC-SMALL-BROAD-OMEGA = broad-omega.x script:Cyrl ortho:OCS
+  # Small broad omega
+
+ꙏ  CYRILLIC-SMALL-NEUTRAL-YER = neutral-yer.x script:Cyrl ortho:OCS
+  # Small neutral yer
+
+ꙑ  CYRILLIC-SMALL-YERU-BACK-YER = FRAME(soft-sign.base, stem) script:Cyrl ortho:OCS
+  # Small yeru with back yer
+
+ꙓ  CYRILLIC-SMALL-IOTIFIED-YAT = LR(stem, yat.x) script:Cyrl ortho:OCS
+  # Small iotified yat
+
+ꙕ  CYRILLIC-SMALL-REVERSED-YU = FRAME(stem, crossbar, LR(bowl.l.upper, bowl.l.upper)) script:Cyrl ortho:OCS
+  # Small reversed yu
+
+ꙗ  CYRILLIC-SMALL-IOTIFIED-A = iotified-a.x script:Cyrl ortho:OCS
+  # Small iotified a
+
+ꙙ  CYRILLIC-SMALL-CLOSED-LITTLE-YUS = closed-little-yus.x script:Cyrl ortho:OCS
+  # Small closed little yus
+
+ꙛ  CYRILLIC-SMALL-BLENDED-YUS = blended-yus.x script:Cyrl ortho:OCS
+  # Small blended yus
+
+ꙝ  CYRILLIC-SMALL-IOTIFIED-CLOSED-LITTLE-YUS = LR(stem, closed-little-yus.x) script:Cyrl ortho:OCS
+  # Small iotified closed little yus
+
+ꙟ  CYRILLIC-SMALL-YN = yn.x script:Cyrl ortho:OCS
+  # Small yn
+
+ꙡ  CYRILLIC-SMALL-REVERSED-TSE = FRAME(stem, crossbar, stem, hook.desc.cyr) script:Cyrl ortho:OCS
+  # Small reversed tse
+
+ꙣ  CYRILLIC-SMALL-SOFT-DE = FRAME(djerv.x, hook.desc.cyr) script:Cyrl ortho:OCS
+  # Small soft de
+
+ꙥ  CYRILLIC-SMALL-SOFT-EL = el-tail.x script:Cyrl ortho:OCS
+  # Small soft el
+
+ꙧ  CYRILLIC-SMALL-SOFT-EM = FRAME(stem, vertex.inv, stem, hook.desc.cyr) script:Cyrl ortho:OCS
+  # Small soft em
+
+ꙩ  CYRILLIC-SMALL-MONOCULAR-O = FRAME(crossed-o.x, tittle) script:Cyrl ortho:OCS
+  # Small monocular o - bowl with central dot
+
+ꙫ  CYRILLIC-SMALL-BINOCULAR-O = FRAME(crossed-o.x, tittle, tittle) script:Cyrl ortho:OCS
+  # Small binocular o - bowl with two dots
+
+ꙭ  CYRILLIC-SMALL-DOUBLE-MONOCULAR-O = LR(crossed-o.x, crossed-o.x) script:Cyrl ortho:OCS
+  # Small double monocular o
+
+ꚁ  CYRILLIC-SMALL-DWE = FRAME(djerv.x, broad-omega.x) script:Cyrl ortho:OCS
+  # Small dwe
+
+ꚃ  CYRILLIC-SMALL-DZWE = FRAME(dzelo.x, broad-omega.x) script:Cyrl ortho:OCS
+  # Small dzwe
+
+ꚅ  CYRILLIC-SMALL-ZHWE = FRAME(stem, STACK(leg, leg.rev), stem, broad-omega.x) script:Cyrl ortho:OCS
+  # Small zhwe
+
+ꚇ  CYRILLIC-SMALL-CCHE = FRAME(hook.cyr, stem, stem) script:Cyrl ortho:OCS
+  # Small cche
+
+ꚉ  CYRILLIC-SMALL-DZZE = FRAME(dzelo.x, dzelo.x) script:Cyrl ortho:OCS
+  # Small dzze
+
+ꚋ  CYRILLIC-SMALL-TE-MIDDLE-HOOK = FRAME(bar.top.x, stem, hook.desc.cyr) script:Cyrl ortho:OCS
+  # Small te with middle hook
+
+ꚍ  CYRILLIC-SMALL-TWE = FRAME(FRAME(bar.top.x, stem), broad-omega.x) script:Cyrl ortho:OCS
+  # Small twe
+
+ꚏ  CYRILLIC-SMALL-TSWE = FRAME(stem, crossbar, stem, tail.cyr, broad-omega.x) script:Cyrl ortho:OCS
+  # Small tswe
+
+ꚑ  CYRILLIC-SMALL-TSSE = FRAME(FRAME(bar.top.x, stem), FRAME(stem, crossbar, stem, tail.cyr)) script:Cyrl ortho:OCS
+  # Small tsse
+
+ꚓ  CYRILLIC-SMALL-TCHE = FRAME(FRAME(bar.top.x, stem), FRAME(hook.cyr, stem)) script:Cyrl ortho:OCS
+  # Small tche
+
+ꚕ  CYRILLIC-SMALL-HWE = ha-hook.x script:Cyrl ortho:OCS
+  # Small hwe
+
+ꚗ  CYRILLIC-SMALL-SHWE = FRAME(stem, crossbar, stem, stem, broad-omega.x) script:Cyrl ortho:OCS
+  # Small shwe
+
+ꚙ  CYRILLIC-SMALL-DOUBLE-O = LR(crossed-o.x, crossed-o.x) script:Cyrl ortho:OCS
+  # Small double o
+
+ꚛ  CYRILLIC-SMALL-CROSSED-O = crossed-o.x script:Cyrl ortho:OCS
+  # Small crossed o
+
+# =============================================================================
+# MODIFIER LETTERS AND PUNCTUATION (U+A673-A67F, U+A69C-A69D)
+# =============================================================================
+# These are not letters with case pairs but belong to this block.
+
+# U+A673 Slavonic Asterisk - punctuation mark
+꙳  SLAVONIC-ASTERISK = FRAME(diagonal.x, diagonal.x.rev, stroke.horiz) script:Cyrl ortho:OCS
+  # Asterisk used in Slavonic manuscripts
+
+# U+A67E Cyrillic Kavyka - punctuation mark
+꙾  CYRILLIC-KAVYKA = comma.shape script:Cyrl ortho:OCS
+  # Kavyka - comma-like punctuation
+
+# U+A67F Cyrillic Payerok - modifier letter (indicates omission)
+ꙿ  CYRILLIC-PAYEROK = arc.top script:Cyrl ortho:OCS
+  # Payerok - modifier indicating letter omission
+
+# U+A69C Modifier letter Cyrillic Hard Sign
+ꚜ  MODIFIER-LETTER-CYRILLIC-HARD-SIGN = neutral-yer.x script:Cyrl ortho:OCS
+  # Superscript hard sign modifier
+
+# U+A69D Modifier letter Cyrillic Soft Sign
+ꚝ  MODIFIER-LETTER-CYRILLIC-SOFT-SIGN = soft-sign.base script:Cyrl ortho:OCS
+  # Superscript soft sign modifier
+
+# =============================================================================
+# COMBINING MARKS (U+A66F-A67D, U+A69E-A69F)
+# =============================================================================
+# Note: Combining marks are diacritics, not base letters.
+# They are defined here for completeness but typically used via DIA operator.
+#
+# U+A66F COMBINING CYRILLIC VZMET - titlo-like mark
+# U+A670 COMBINING CYRILLIC TEN MILLIONS SIGN
+# U+A671 COMBINING CYRILLIC HUNDRED MILLIONS SIGN
+# U+A672 COMBINING CYRILLIC THOUSAND MILLIONS SIGN
+# U+A674 COMBINING CYRILLIC LETTER UKRAINIAN IE
+# U+A675 COMBINING CYRILLIC LETTER I
+# U+A676 COMBINING CYRILLIC LETTER YI
+# U+A677 COMBINING CYRILLIC LETTER U
+# U+A678 COMBINING CYRILLIC LETTER HARD SIGN
+# U+A679 COMBINING CYRILLIC LETTER YERU
+# U+A67A COMBINING CYRILLIC LETTER SOFT SIGN
+# U+A67B COMBINING CYRILLIC LETTER OMEGA
+# U+A67C COMBINING CYRILLIC KAVYKA
+# U+A67D COMBINING CYRILLIC PAYEROK
+# U+A69E COMBINING CYRILLIC LETTER EF
+# U+A69F COMBINING CYRILLIC LETTER IOTIFIED E
+#
+# These combining marks would require diacritic element definitions.
+# For now, they are documented but not rendered as base characters.
+
+# =============================================================================
+# END OF CYRILLIC EXTENDED-B LIBRARY
+# =============================================================================

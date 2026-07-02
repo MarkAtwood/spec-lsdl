@@ -1,0 +1,345 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Cyrillic Extended-D Library (U+1E030-1E08F)
+# =============================================================================
+#
+# This Unicode block contains Cyrillic modifier letters (superscript variants)
+# and subscript letters used in Slavic linguistics and phonetic transcription.
+#
+# Categories:
+#   - Modifier letters (U+1E030-1E050): Superscript Cyrillic small letters
+#   - Subscript letters (U+1E051-1E06A): Subscript Cyrillic small letters
+#   - Additional modifier letters (U+1E06B-1E06D): Extended superscripts
+#   - Combining mark (U+1E08F): Combining Cyrillic small letter i
+#
+# Note: Characters U+1E06E-1E08E are unassigned/reserved in Unicode.
+#
+# Composition pattern:
+#   Modifier/superscript letters use sc() with reduced scale and sh() for
+#   positioning in the superscript zone. Subscript letters use sc() with
+#   reduced scale and sh() for positioning below baseline.
+#
+# =============================================================================
+
+# =============================================================================
+# LOCAL ELEMENT COPIES
+# =============================================================================
+# Elements copied from cyrillic.lsdl and cyrillic-extended.lsdl for standalone
+# validation. In production, these would be imported.
+
+# -----------------------------------------------------------------------------
+# soft-sign.base - Base form for Ь and component of Ъ, Ы
+# -----------------------------------------------------------------------------
+@elem soft-sign.base
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,4]
+p2 = [2,8]
+p3 = C([2,8] [8,8])
+p4 = C([8,6] [2,6])
+close: true
+width: 1
+anchors: top=[2,4] base=[2,8] attach=[5,7]
+  mark-above=[2,3] mark-below=[5,9]
+@end
+
+# -----------------------------------------------------------------------------
+# hard-sign.top - Top bar component for Ъ
+# -----------------------------------------------------------------------------
+@elem hard-sign.top
+zone: cap
+path: p1 p2
+p1 = [0,4]
+p2 = [4,4]
+close: false
+width: 1
+anchors: attach=[4,4] left=[0,4]
+@end
+
+# -----------------------------------------------------------------------------
+# hook.cyr - Cyrillic hook form (for Ч)
+# -----------------------------------------------------------------------------
+@elem hook.cyr
+zone: x-height
+path: p1 p2 p3
+p1 = [2,4]
+p2 = C([2,6] [4,8])
+p3 = [6,8]
+close: false
+width: 1
+anchors: attach=[2,4] base=[6,8] top=[2,4]
+@end
+
+# -----------------------------------------------------------------------------
+# tail.cyr - Cyrillic descending tail (for Ц, Щ)
+# -----------------------------------------------------------------------------
+@elem tail.cyr
+zone: descender
+path: p1 p2 p3
+p1 = [10,8]
+p2 = [10,10]
+p3 = [8,10]
+close: false
+width: 1
+anchors: attach=[10,8] base=[10,10]
+@end
+
+# -----------------------------------------------------------------------------
+# tick.cyr - Upturn tick (for Ukrainian Ґ)
+# -----------------------------------------------------------------------------
+@elem tick.cyr
+zone: cap
+path: p1 p2
+p1 = [10,2]
+p2 = [12,0]
+close: false
+width: 1
+anchors: attach=[10,2] top=[12,0]
+@end
+
+# -----------------------------------------------------------------------------
+# hook.desc.cyr - Descending hook (for Қ, Ң, etc.)
+# -----------------------------------------------------------------------------
+@elem hook.desc.cyr
+zone: descender
+path: p1 p2 p3
+p1 = [6,8]
+p2 = [6,10]
+p3 = C([6,10] [4,10])
+close: false
+width: 1
+anchors: attach=[6,8] base=[4,10]
+@end
+
+# =============================================================================
+# MODIFIER LETTERS - SUPERSCRIPT CYRILLIC (U+1E030-1E050)
+# =============================================================================
+# These are superscript (modifier) versions of Cyrillic small letters.
+# Used in Slavic linguistics for phonetic annotation and transcription.
+# Scale factor sx=8, sy=8 reduces to ~67% size.
+
+𞀰  MODIFIER-LETTER-CYRILLIC-SMALL-A = sc(а, sx=8, sy=8) cp:U+1E030 script:Cyrl
+  # Superscript а
+
+𞀱  MODIFIER-LETTER-CYRILLIC-SMALL-BE = sc(б, sx=8, sy=8) cp:U+1E031 script:Cyrl
+  # Superscript б
+
+𞀲  MODIFIER-LETTER-CYRILLIC-SMALL-VE = sc(в, sx=8, sy=8) cp:U+1E032 script:Cyrl
+  # Superscript в
+
+𞀳  MODIFIER-LETTER-CYRILLIC-SMALL-GHE = sc(г, sx=8, sy=8) cp:U+1E033 script:Cyrl
+  # Superscript г
+
+𞀴  MODIFIER-LETTER-CYRILLIC-SMALL-DE = sc(д, sx=8, sy=8) cp:U+1E034 script:Cyrl
+  # Superscript д
+
+𞀵  MODIFIER-LETTER-CYRILLIC-SMALL-IE = sc(е, sx=8, sy=8) cp:U+1E035 script:Cyrl
+  # Superscript е
+
+𞀶  MODIFIER-LETTER-CYRILLIC-SMALL-ZHE = sc(ж, sx=8, sy=8) cp:U+1E036 script:Cyrl
+  # Superscript ж
+
+𞀷  MODIFIER-LETTER-CYRILLIC-SMALL-ZE = sc(з, sx=8, sy=8) cp:U+1E037 script:Cyrl
+  # Superscript з
+
+𞀸  MODIFIER-LETTER-CYRILLIC-SMALL-I = sc(и, sx=8, sy=8) cp:U+1E038 script:Cyrl
+  # Superscript и
+
+𞀹  MODIFIER-LETTER-CYRILLIC-SMALL-KA = sc(к, sx=8, sy=8) cp:U+1E039 script:Cyrl
+  # Superscript к
+
+𞀺  MODIFIER-LETTER-CYRILLIC-SMALL-EL = sc(л, sx=8, sy=8) cp:U+1E03A script:Cyrl
+  # Superscript л
+
+𞀻  MODIFIER-LETTER-CYRILLIC-SMALL-EM = sc(м, sx=8, sy=8) cp:U+1E03B script:Cyrl
+  # Superscript м
+
+𞀼  MODIFIER-LETTER-CYRILLIC-SMALL-O = sc(о, sx=8, sy=8) cp:U+1E03C script:Cyrl
+  # Superscript о
+
+𞀽  MODIFIER-LETTER-CYRILLIC-SMALL-PE = sc(п, sx=8, sy=8) cp:U+1E03D script:Cyrl
+  # Superscript п
+
+𞀾  MODIFIER-LETTER-CYRILLIC-SMALL-ER = sc(р, sx=8, sy=8) cp:U+1E03E script:Cyrl
+  # Superscript р
+
+𞀿  MODIFIER-LETTER-CYRILLIC-SMALL-ES = sc(с, sx=8, sy=8) cp:U+1E03F script:Cyrl
+  # Superscript с
+
+𞁀  MODIFIER-LETTER-CYRILLIC-SMALL-TE = sc(т, sx=8, sy=8) cp:U+1E040 script:Cyrl
+  # Superscript т
+
+𞁁  MODIFIER-LETTER-CYRILLIC-SMALL-U = sc(у, sx=8, sy=8) cp:U+1E041 script:Cyrl
+  # Superscript у
+
+𞁂  MODIFIER-LETTER-CYRILLIC-SMALL-EF = sc(ф, sx=8, sy=8) cp:U+1E042 script:Cyrl
+  # Superscript ф
+
+𞁃  MODIFIER-LETTER-CYRILLIC-SMALL-HA = sc(х, sx=8, sy=8) cp:U+1E043 script:Cyrl
+  # Superscript х
+
+𞁄  MODIFIER-LETTER-CYRILLIC-SMALL-TSE = sc(ц, sx=8, sy=8) cp:U+1E044 script:Cyrl
+  # Superscript ц
+
+𞁅  MODIFIER-LETTER-CYRILLIC-SMALL-CHE = sc(ч, sx=8, sy=8) cp:U+1E045 script:Cyrl
+  # Superscript ч
+
+𞁆  MODIFIER-LETTER-CYRILLIC-SMALL-SHA = sc(ш, sx=8, sy=8) cp:U+1E046 script:Cyrl
+  # Superscript ш
+
+𞁇  MODIFIER-LETTER-CYRILLIC-SMALL-YERU = sc(ы, sx=8, sy=8) cp:U+1E047 script:Cyrl
+  # Superscript ы
+
+𞁈  MODIFIER-LETTER-CYRILLIC-SMALL-E = sc(э, sx=8, sy=8) cp:U+1E048 script:Cyrl
+  # Superscript э
+
+𞁉  MODIFIER-LETTER-CYRILLIC-SMALL-YU = sc(ю, sx=8, sy=8) cp:U+1E049 script:Cyrl
+  # Superscript ю
+
+𞁊  MODIFIER-LETTER-CYRILLIC-SMALL-DZZE = sc(ѕ, sx=8, sy=8) cp:U+1E04A script:Cyrl
+  # Superscript dzze (Macedonian ѕ)
+
+𞁋  MODIFIER-LETTER-CYRILLIC-SMALL-SCHWA = sc(ә, sx=8, sy=8) cp:U+1E04B script:Cyrl
+  # Superscript schwa (ә)
+
+𞁌  MODIFIER-LETTER-CYRILLIC-SMALL-BYELORUSSIAN-UKRAINIAN-I = sc(і, sx=8, sy=8) cp:U+1E04C script:Cyrl
+  # Superscript і (Ukrainian/Belarusian)
+
+𞁍  MODIFIER-LETTER-CYRILLIC-SMALL-JE = sc(ј, sx=8, sy=8) cp:U+1E04D script:Cyrl
+  # Superscript ј (Serbian/Macedonian)
+
+𞁎  MODIFIER-LETTER-CYRILLIC-SMALL-BARRED-O = sc(ө, sx=8, sy=8) cp:U+1E04E script:Cyrl
+  # Superscript barred o (ө)
+
+𞁏  MODIFIER-LETTER-CYRILLIC-SMALL-STRAIGHT-U = sc(ү, sx=8, sy=8) cp:U+1E04F script:Cyrl
+  # Superscript straight u (ү)
+
+𞁐  MODIFIER-LETTER-CYRILLIC-SMALL-PALOCHKA = sc(ӏ, sx=8, sy=8) cp:U+1E050 script:Cyrl
+  # Superscript palochka (ӏ) - Caucasian languages
+
+# =============================================================================
+# SUBSCRIPT LETTERS - SUBSCRIPT CYRILLIC (U+1E051-1E06A)
+# =============================================================================
+# These are subscript versions of Cyrillic small letters.
+# Used in linguistic notation for phonetic subscripts.
+# Scale factor sx=8, sy=8 reduces to ~67% size.
+
+𞁑  CYRILLIC-SUBSCRIPT-SMALL-A = sc(а, sx=8, sy=8) cp:U+1E051 script:Cyrl
+  # Subscript а
+
+𞁒  CYRILLIC-SUBSCRIPT-SMALL-BE = sc(б, sx=8, sy=8) cp:U+1E052 script:Cyrl
+  # Subscript б
+
+𞁓  CYRILLIC-SUBSCRIPT-SMALL-VE = sc(в, sx=8, sy=8) cp:U+1E053 script:Cyrl
+  # Subscript в
+
+𞁔  CYRILLIC-SUBSCRIPT-SMALL-GHE = sc(г, sx=8, sy=8) cp:U+1E054 script:Cyrl
+  # Subscript г
+
+𞁕  CYRILLIC-SUBSCRIPT-SMALL-DE = sc(д, sx=8, sy=8) cp:U+1E055 script:Cyrl
+  # Subscript д
+
+𞁖  CYRILLIC-SUBSCRIPT-SMALL-IE = sc(е, sx=8, sy=8) cp:U+1E056 script:Cyrl
+  # Subscript е
+
+𞁗  CYRILLIC-SUBSCRIPT-SMALL-ZHE = sc(ж, sx=8, sy=8) cp:U+1E057 script:Cyrl
+  # Subscript ж
+
+𞁘  CYRILLIC-SUBSCRIPT-SMALL-ZE = sc(з, sx=8, sy=8) cp:U+1E058 script:Cyrl
+  # Subscript з
+
+𞁙  CYRILLIC-SUBSCRIPT-SMALL-I = sc(и, sx=8, sy=8) cp:U+1E059 script:Cyrl
+  # Subscript и
+
+𞁚  CYRILLIC-SUBSCRIPT-SMALL-KA = sc(к, sx=8, sy=8) cp:U+1E05A script:Cyrl
+  # Subscript к
+
+𞁛  CYRILLIC-SUBSCRIPT-SMALL-EL = sc(л, sx=8, sy=8) cp:U+1E05B script:Cyrl
+  # Subscript л
+
+𞁜  CYRILLIC-SUBSCRIPT-SMALL-O = sc(о, sx=8, sy=8) cp:U+1E05C script:Cyrl
+  # Subscript о
+
+𞁝  CYRILLIC-SUBSCRIPT-SMALL-PE = sc(п, sx=8, sy=8) cp:U+1E05D script:Cyrl
+  # Subscript п
+
+𞁞  CYRILLIC-SUBSCRIPT-SMALL-ES = sc(с, sx=8, sy=8) cp:U+1E05E script:Cyrl
+  # Subscript с
+
+𞁟  CYRILLIC-SUBSCRIPT-SMALL-U = sc(у, sx=8, sy=8) cp:U+1E05F script:Cyrl
+  # Subscript у
+
+𞁠  CYRILLIC-SUBSCRIPT-SMALL-EF = sc(ф, sx=8, sy=8) cp:U+1E060 script:Cyrl
+  # Subscript ф
+
+𞁡  CYRILLIC-SUBSCRIPT-SMALL-HA = sc(х, sx=8, sy=8) cp:U+1E061 script:Cyrl
+  # Subscript х
+
+𞁢  CYRILLIC-SUBSCRIPT-SMALL-TSE = sc(ц, sx=8, sy=8) cp:U+1E062 script:Cyrl
+  # Subscript ц
+
+𞁣  CYRILLIC-SUBSCRIPT-SMALL-CHE = sc(ч, sx=8, sy=8) cp:U+1E063 script:Cyrl
+  # Subscript ч
+
+𞁤  CYRILLIC-SUBSCRIPT-SMALL-SHA = sc(ш, sx=8, sy=8) cp:U+1E064 script:Cyrl
+  # Subscript ш
+
+𞁥  CYRILLIC-SUBSCRIPT-SMALL-HARD-SIGN = sc(ъ, sx=8, sy=8) cp:U+1E065 script:Cyrl
+  # Subscript ъ (hard sign)
+
+𞁦  CYRILLIC-SUBSCRIPT-SMALL-YERU = sc(ы, sx=8, sy=8) cp:U+1E066 script:Cyrl
+  # Subscript ы
+
+𞁧  CYRILLIC-SUBSCRIPT-SMALL-GHE-UPTURN = sc(ґ, sx=8, sy=8) cp:U+1E067 script:Cyrl
+  # Subscript ґ (Ukrainian ghe with upturn)
+
+𞁨  CYRILLIC-SUBSCRIPT-SMALL-BYELORUSSIAN-UKRAINIAN-I = sc(і, sx=8, sy=8) cp:U+1E068 script:Cyrl
+  # Subscript і (Ukrainian/Belarusian)
+
+𞁩  CYRILLIC-SUBSCRIPT-SMALL-DZE = sc(ѕ, sx=8, sy=8) cp:U+1E069 script:Cyrl
+  # Subscript ѕ (Macedonian dze)
+
+𞁪  CYRILLIC-SUBSCRIPT-SMALL-DZHE = sc(џ, sx=8, sy=8) cp:U+1E06A script:Cyrl
+  # Subscript џ (Serbian dzhe)
+
+# =============================================================================
+# ADDITIONAL MODIFIER LETTERS (U+1E06B-1E06D)
+# =============================================================================
+# Extended superscript letters for specialized linguistic use.
+
+𞁫  MODIFIER-LETTER-CYRILLIC-SMALL-ES-DESCENDER = sc(ҫ, sx=8, sy=8) cp:U+1E06B script:Cyrl
+  # Superscript ҫ (es with descender - Chuvash/Bashkir)
+
+𞁬  MODIFIER-LETTER-CYRILLIC-SMALL-YERU-BACK-YER = sc(ы, sx=8, sy=8) cp:U+1E06C script:Cyrl
+  # Superscript yeru with back yer (variant form)
+
+𞁭  MODIFIER-LETTER-CYRILLIC-SMALL-STRAIGHT-U-STROKE = sc(ұ, sx=8, sy=8) cp:U+1E06D script:Cyrl
+  # Superscript ұ (straight u with stroke - Kazakh)
+
+# =============================================================================
+# COMBINING MARK (U+1E08F)
+# =============================================================================
+# Single combining diacritical mark in this block.
+
+# -----------------------------------------------------------------------------
+# combining-cyrillic-small-byelorussian-ukrainian-i
+# Unicode: U+1E08F COMBINING CYRILLIC SMALL LETTER BYELORUSSIAN-UKRAINIAN I
+# A combining form of the letter і for use over other letters
+# -----------------------------------------------------------------------------
+@elem combining-cyrillic-small-byelorussian-ukrainian-i
+zone: diacritic-above
+path: p1 p2
+p1 = [6,0]
+p2 = [6,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+𞂏  COMBINING-CYRILLIC-SMALL-BYELORUSSIAN-UKRAINIAN-I = combining-cyrillic-small-byelorussian-ukrainian-i cp:U+1E08F script:Cyrl
+  # Combining form of і (Ukrainian/Belarusian) as diacritic
+
+# =============================================================================
+# END OF CYRILLIC EXTENDED-D LIBRARY
+# =============================================================================

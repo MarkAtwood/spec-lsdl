@@ -239,5 +239,89 @@
 @case Ç ç
 
 # =============================================================================
+# SPECIAL LATIN-1 SUPPLEMENT CHARACTERS
+# =============================================================================
+#
+# These characters require special composition patterns beyond simple DIA:
+#   - Eth (Ð/ð): Icelandic voiced dental fricative
+#   - Thorn (Þ/þ): Icelandic/Old English voiceless dental fricative
+#   - Eszett (ß): German sharp s ligature
+#   - Stroked O (Ø/ø): Scandinavian vowel
+#   - Mathematical operators (×, ÷)
+#   - Y with diaeresis (ÿ)
+#
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# ETH (Ð/ð) - Icelandic letter, voiced dental fricative
+# -----------------------------------------------------------------------------
+
+# Ð - Capital eth: D with horizontal stroke through bowl
+Ð LATIN-CAPITAL-ETH = OVR(D, stroke.horiz) cp:U+00D0 script:Latn ortho:Ice,Fao
+
+# ð - Small eth: d with curved stroke through ascender
+# Unique letterform with curved top stroke
+ð LATIN-SMALL-ETH = OVR(d, stroke.diag) cp:U+00F0 script:Latn ortho:Ice,Fao
+
+# -----------------------------------------------------------------------------
+# STROKED O (Ø/ø) - Scandinavian vowel
+# -----------------------------------------------------------------------------
+
+# Ø - Capital O with diagonal stroke
+Ø LATIN-CAPITAL-O-STROKE = OVR(O, stroke.diag.cap) cp:U+00D8 script:Latn ortho:Dan,Nor,Fao
+
+# ø - Small o with diagonal stroke
+ø LATIN-SMALL-O-STROKE = OVR(o, stroke.diag) cp:U+00F8 script:Latn ortho:Dan,Nor,Fao
+
+# -----------------------------------------------------------------------------
+# THORN (Þ/þ) - Icelandic/Old English voiceless dental fricative
+# -----------------------------------------------------------------------------
+
+# Þ - Capital thorn: vertical stem with right bowl at cap height
+# Like P but stem descends to baseline (no bottom bowl)
+Þ LATIN-CAPITAL-THORN = LR(stem.l, bowl.r.upper.cap, 3/9) cp:U+00DE script:Latn ortho:Ice
+
+# þ - Small thorn: ascender-height stem with x-height bowl, descends below baseline
+þ LATIN-SMALL-THORN = FRAME(ascender, bowl.r, descender) cp:U+00FE script:Latn ortho:Ice
+
+# -----------------------------------------------------------------------------
+# ESZETT (ß) - German sharp s
+# -----------------------------------------------------------------------------
+
+# ß - Sharp s: ascender with two stacked bowls opening right
+# Historically a ligature of long s and z, now a unique letterform
+ß LATIN-SMALL-SHARP-S = FRAME(ascender, bowl.r.upper, bowl.r.lower) cp:U+00DF script:Latn ortho:Deu
+
+# -----------------------------------------------------------------------------
+# Y WITH DIAERESIS
+# -----------------------------------------------------------------------------
+
+# ÿ - Small y with diaeresis: y with two dots above
+ÿ LATIN-SMALL-Y-DIAERESIS = DIA(y, diaeresis) cp:U+00FF script:Latn ortho:Fra
+
+# -----------------------------------------------------------------------------
+# MATHEMATICAL OPERATORS
+# -----------------------------------------------------------------------------
+
+# × - Multiplication sign: rotated plus or X shape at mid-height
+× MULTIPLICATION-SIGN = OVR(diagonal.x, diagonal.x.rev) cp:U+00D7
+
+# ÷ - Division sign: horizontal bar with dot above and dot below
+÷ DIVISION-SIGN = FRAME(dot.high, crossbar, dot) cp:U+00F7
+
+# =============================================================================
+# ADDITIONAL CASE MAPPINGS
+# =============================================================================
+
+# Eth pair
+@case Ð ð
+
+# Stroked O pair
+@case Ø ø
+
+# Thorn pair
+@case Þ þ
+
+# =============================================================================
 # END OF EXTENDED LATIN CHARACTER LIBRARY
 # =============================================================================

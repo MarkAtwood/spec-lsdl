@@ -1,0 +1,850 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Latin Extended Additional Character Library (U+1E00-U+1EFF)
+# =============================================================================
+#
+# This file defines characters from the Latin Extended Additional Unicode block.
+# This block contains 256 code points, primarily used for:
+#   - Vietnamese vowels with tone marks (majority of characters)
+#   - Welsh W and Y with accents
+#   - Letters with dot below (Indian language transliteration)
+#   - Various multi-diacritic combinations
+#
+# All characters are composed using DIA (Diacritic Attachment) operator with
+# base characters and diacritics from the corresponding LSDL libraries.
+#
+# Organization: grouped by base letter (A through Z)
+#
+# Dependencies:
+#   - basic-latin.lsdl (A-Z, a-z)
+#   - latin-extended-b.lsdl (O-horn, U-horn for Vietnamese)
+#   - diacritics.lsdl (combining marks)
+#
+# Language codes (ISO 639-3):
+#   Vie = Vietnamese, Cym = Welsh, San = Sanskrit (transliteration)
+#
+# =============================================================================
+
+# =============================================================================
+# A + DIACRITICS
+# =============================================================================
+
+Ḁ LATIN-CAPITAL-LETTER-A-WITH-RING-BELOW = DIA(A, ring-below) cp:U+1E00 script:Latn
+
+ḁ LATIN-SMALL-LETTER-A-WITH-RING-BELOW = DIA(a, ring-below) cp:U+1E01 script:Latn
+
+Ạ LATIN-CAPITAL-LETTER-A-WITH-DOT-BELOW = DIA(A, dot-below) cp:U+1EA0 script:Latn ortho:San
+
+ạ LATIN-SMALL-LETTER-A-WITH-DOT-BELOW = DIA(a, dot-below) cp:U+1EA1 script:Latn ortho:San
+
+Ả LATIN-CAPITAL-LETTER-A-WITH-HOOK-ABOVE = DIA(A, hook-above) cp:U+1EA2 script:Latn ortho:Vie
+
+ả LATIN-SMALL-LETTER-A-WITH-HOOK-ABOVE = DIA(a, hook-above) cp:U+1EA3 script:Latn ortho:Vie
+
+Ấ LATIN-CAPITAL-LETTER-A-WITH-CIRCUMFLEX-AND-ACUTE = DIA(Â, acute) cp:U+1EA4 script:Latn
+
+ấ LATIN-SMALL-LETTER-A-WITH-CIRCUMFLEX-AND-ACUTE = DIA(â, acute) cp:U+1EA5 script:Latn
+
+Ầ LATIN-CAPITAL-LETTER-A-WITH-CIRCUMFLEX-AND-GRAVE = DIA(Â, grave) cp:U+1EA6 script:Latn
+
+ầ LATIN-SMALL-LETTER-A-WITH-CIRCUMFLEX-AND-GRAVE = DIA(â, grave) cp:U+1EA7 script:Latn
+
+Ẩ LATIN-CAPITAL-LETTER-A-WITH-CIRCUMFLEX-AND-HOOK-ABOVE = DIA(Â, hook-above) cp:U+1EA8 script:Latn ortho:Vie
+
+ẩ LATIN-SMALL-LETTER-A-WITH-CIRCUMFLEX-AND-HOOK-ABOVE = DIA(â, hook-above) cp:U+1EA9 script:Latn ortho:Vie
+
+Ẫ LATIN-CAPITAL-LETTER-A-WITH-CIRCUMFLEX-AND-TILDE = DIA(Â, tilde) cp:U+1EAA script:Latn
+
+ẫ LATIN-SMALL-LETTER-A-WITH-CIRCUMFLEX-AND-TILDE = DIA(â, tilde) cp:U+1EAB script:Latn
+
+Ậ LATIN-CAPITAL-LETTER-A-WITH-CIRCUMFLEX-AND-DOT-BELOW = DIA(Ạ, circumflex) cp:U+1EAC script:Latn ortho:San
+
+ậ LATIN-SMALL-LETTER-A-WITH-CIRCUMFLEX-AND-DOT-BELOW = DIA(ạ, circumflex) cp:U+1EAD script:Latn ortho:San
+
+Ắ LATIN-CAPITAL-LETTER-A-WITH-BREVE-AND-ACUTE = DIA(DIA(A, breve), acute) cp:U+1EAE script:Latn ortho:Vie
+
+ắ LATIN-SMALL-LETTER-A-WITH-BREVE-AND-ACUTE = DIA(DIA(a, breve), acute) cp:U+1EAF script:Latn ortho:Vie
+
+Ằ LATIN-CAPITAL-LETTER-A-WITH-BREVE-AND-GRAVE = DIA(DIA(A, breve), grave) cp:U+1EB0 script:Latn ortho:Vie
+
+ằ LATIN-SMALL-LETTER-A-WITH-BREVE-AND-GRAVE = DIA(DIA(a, breve), grave) cp:U+1EB1 script:Latn ortho:Vie
+
+Ẳ LATIN-CAPITAL-LETTER-A-WITH-BREVE-AND-HOOK-ABOVE = DIA(DIA(A, breve), hook-above) cp:U+1EB2 script:Latn ortho:Vie
+
+ẳ LATIN-SMALL-LETTER-A-WITH-BREVE-AND-HOOK-ABOVE = DIA(DIA(a, breve), hook-above) cp:U+1EB3 script:Latn ortho:Vie
+
+Ẵ LATIN-CAPITAL-LETTER-A-WITH-BREVE-AND-TILDE = DIA(DIA(A, breve), tilde) cp:U+1EB4 script:Latn ortho:Vie
+
+ẵ LATIN-SMALL-LETTER-A-WITH-BREVE-AND-TILDE = DIA(DIA(a, breve), tilde) cp:U+1EB5 script:Latn ortho:Vie
+
+Ặ LATIN-CAPITAL-LETTER-A-WITH-BREVE-AND-DOT-BELOW = DIA(Ạ, breve) cp:U+1EB6 script:Latn ortho:Vie
+
+ặ LATIN-SMALL-LETTER-A-WITH-BREVE-AND-DOT-BELOW = DIA(ạ, breve) cp:U+1EB7 script:Latn ortho:Vie
+
+# =============================================================================
+# B + DIACRITICS
+# =============================================================================
+
+Ḃ LATIN-CAPITAL-LETTER-B-WITH-DOT-ABOVE = DIA(B, dot-above) cp:U+1E02 script:Latn
+
+ḃ LATIN-SMALL-LETTER-B-WITH-DOT-ABOVE = DIA(b, dot-above) cp:U+1E03 script:Latn
+
+Ḅ LATIN-CAPITAL-LETTER-B-WITH-DOT-BELOW = DIA(B, dot-below) cp:U+1E04 script:Latn ortho:San
+
+ḅ LATIN-SMALL-LETTER-B-WITH-DOT-BELOW = DIA(b, dot-below) cp:U+1E05 script:Latn ortho:San
+
+Ḇ LATIN-CAPITAL-LETTER-B-WITH-LINE-BELOW = DIA(B, macron-below) cp:U+1E06 script:Latn
+
+ḇ LATIN-SMALL-LETTER-B-WITH-LINE-BELOW = DIA(b, macron-below) cp:U+1E07 script:Latn
+
+# =============================================================================
+# C + DIACRITICS
+# =============================================================================
+
+Ḉ LATIN-CAPITAL-LETTER-C-WITH-CEDILLA-AND-ACUTE = DIA(Ç, acute) cp:U+1E08 script:Latn
+
+ḉ LATIN-SMALL-LETTER-C-WITH-CEDILLA-AND-ACUTE = DIA(ç, acute) cp:U+1E09 script:Latn
+
+# =============================================================================
+# D + DIACRITICS
+# =============================================================================
+
+Ḋ LATIN-CAPITAL-LETTER-D-WITH-DOT-ABOVE = DIA(D, dot-above) cp:U+1E0A script:Latn
+
+ḋ LATIN-SMALL-LETTER-D-WITH-DOT-ABOVE = DIA(d, dot-above) cp:U+1E0B script:Latn
+
+Ḍ LATIN-CAPITAL-LETTER-D-WITH-DOT-BELOW = DIA(D, dot-below) cp:U+1E0C script:Latn ortho:San
+
+ḍ LATIN-SMALL-LETTER-D-WITH-DOT-BELOW = DIA(d, dot-below) cp:U+1E0D script:Latn ortho:San
+
+Ḏ LATIN-CAPITAL-LETTER-D-WITH-LINE-BELOW = DIA(D, macron-below) cp:U+1E0E script:Latn
+
+ḏ LATIN-SMALL-LETTER-D-WITH-LINE-BELOW = DIA(d, macron-below) cp:U+1E0F script:Latn
+
+Ḑ LATIN-CAPITAL-LETTER-D-WITH-CEDILLA = DIA(D, cedilla) cp:U+1E10 script:Latn
+
+ḑ LATIN-SMALL-LETTER-D-WITH-CEDILLA = DIA(d, cedilla) cp:U+1E11 script:Latn
+
+Ḓ LATIN-CAPITAL-LETTER-D-WITH-CIRCUMFLEX-BELOW = DIA(D, circumflex-below) cp:U+1E12 script:Latn
+
+ḓ LATIN-SMALL-LETTER-D-WITH-CIRCUMFLEX-BELOW = DIA(d, circumflex-below) cp:U+1E13 script:Latn
+
+# =============================================================================
+# E + DIACRITICS
+# =============================================================================
+
+Ḕ LATIN-CAPITAL-LETTER-E-WITH-MACRON-AND-GRAVE = DIA(DIA(E, macron), grave) cp:U+1E14 script:Latn
+
+ḕ LATIN-SMALL-LETTER-E-WITH-MACRON-AND-GRAVE = DIA(DIA(e, macron), grave) cp:U+1E15 script:Latn
+
+Ḗ LATIN-CAPITAL-LETTER-E-WITH-MACRON-AND-ACUTE = DIA(DIA(E, macron), acute) cp:U+1E16 script:Latn
+
+ḗ LATIN-SMALL-LETTER-E-WITH-MACRON-AND-ACUTE = DIA(DIA(e, macron), acute) cp:U+1E17 script:Latn
+
+Ḙ LATIN-CAPITAL-LETTER-E-WITH-CIRCUMFLEX-BELOW = DIA(E, circumflex-below) cp:U+1E18 script:Latn
+
+ḙ LATIN-SMALL-LETTER-E-WITH-CIRCUMFLEX-BELOW = DIA(e, circumflex-below) cp:U+1E19 script:Latn
+
+Ḛ LATIN-CAPITAL-LETTER-E-WITH-TILDE-BELOW = DIA(E, tilde-below) cp:U+1E1A script:Latn
+
+ḛ LATIN-SMALL-LETTER-E-WITH-TILDE-BELOW = DIA(e, tilde-below) cp:U+1E1B script:Latn
+
+Ḝ LATIN-CAPITAL-LETTER-E-WITH-CEDILLA-AND-BREVE = DIA(DIA(E, cedilla), breve) cp:U+1E1C script:Latn
+
+ḝ LATIN-SMALL-LETTER-E-WITH-CEDILLA-AND-BREVE = DIA(DIA(e, cedilla), breve) cp:U+1E1D script:Latn
+
+Ẹ LATIN-CAPITAL-LETTER-E-WITH-DOT-BELOW = DIA(E, dot-below) cp:U+1EB8 script:Latn ortho:San
+
+ẹ LATIN-SMALL-LETTER-E-WITH-DOT-BELOW = DIA(e, dot-below) cp:U+1EB9 script:Latn ortho:San
+
+Ẻ LATIN-CAPITAL-LETTER-E-WITH-HOOK-ABOVE = DIA(E, hook-above) cp:U+1EBA script:Latn ortho:Vie
+
+ẻ LATIN-SMALL-LETTER-E-WITH-HOOK-ABOVE = DIA(e, hook-above) cp:U+1EBB script:Latn ortho:Vie
+
+Ẽ LATIN-CAPITAL-LETTER-E-WITH-TILDE = DIA(E, tilde) cp:U+1EBC script:Latn
+
+ẽ LATIN-SMALL-LETTER-E-WITH-TILDE = DIA(e, tilde) cp:U+1EBD script:Latn
+
+Ế LATIN-CAPITAL-LETTER-E-WITH-CIRCUMFLEX-AND-ACUTE = DIA(Ê, acute) cp:U+1EBE script:Latn
+
+ế LATIN-SMALL-LETTER-E-WITH-CIRCUMFLEX-AND-ACUTE = DIA(ê, acute) cp:U+1EBF script:Latn
+
+Ề LATIN-CAPITAL-LETTER-E-WITH-CIRCUMFLEX-AND-GRAVE = DIA(Ê, grave) cp:U+1EC0 script:Latn
+
+ề LATIN-SMALL-LETTER-E-WITH-CIRCUMFLEX-AND-GRAVE = DIA(ê, grave) cp:U+1EC1 script:Latn
+
+Ể LATIN-CAPITAL-LETTER-E-WITH-CIRCUMFLEX-AND-HOOK-ABOVE = DIA(Ê, hook-above) cp:U+1EC2 script:Latn ortho:Vie
+
+ể LATIN-SMALL-LETTER-E-WITH-CIRCUMFLEX-AND-HOOK-ABOVE = DIA(ê, hook-above) cp:U+1EC3 script:Latn ortho:Vie
+
+Ễ LATIN-CAPITAL-LETTER-E-WITH-CIRCUMFLEX-AND-TILDE = DIA(Ê, tilde) cp:U+1EC4 script:Latn
+
+ễ LATIN-SMALL-LETTER-E-WITH-CIRCUMFLEX-AND-TILDE = DIA(ê, tilde) cp:U+1EC5 script:Latn
+
+Ệ LATIN-CAPITAL-LETTER-E-WITH-CIRCUMFLEX-AND-DOT-BELOW = DIA(Ẹ, circumflex) cp:U+1EC6 script:Latn ortho:San
+
+ệ LATIN-SMALL-LETTER-E-WITH-CIRCUMFLEX-AND-DOT-BELOW = DIA(ẹ, circumflex) cp:U+1EC7 script:Latn ortho:San
+
+# =============================================================================
+# F + DIACRITICS
+# =============================================================================
+
+Ḟ LATIN-CAPITAL-LETTER-F-WITH-DOT-ABOVE = DIA(F, dot-above) cp:U+1E1E script:Latn
+
+ḟ LATIN-SMALL-LETTER-F-WITH-DOT-ABOVE = DIA(f, dot-above) cp:U+1E1F script:Latn
+
+# =============================================================================
+# G + DIACRITICS
+# =============================================================================
+
+Ḡ LATIN-CAPITAL-LETTER-G-WITH-MACRON = DIA(G, macron) cp:U+1E20 script:Latn
+
+ḡ LATIN-SMALL-LETTER-G-WITH-MACRON = DIA(g, macron) cp:U+1E21 script:Latn
+
+# =============================================================================
+# H + DIACRITICS
+# =============================================================================
+
+Ḣ LATIN-CAPITAL-LETTER-H-WITH-DOT-ABOVE = DIA(H, dot-above) cp:U+1E22 script:Latn
+
+ḣ LATIN-SMALL-LETTER-H-WITH-DOT-ABOVE = DIA(h, dot-above) cp:U+1E23 script:Latn
+
+Ḥ LATIN-CAPITAL-LETTER-H-WITH-DOT-BELOW = DIA(H, dot-below) cp:U+1E24 script:Latn ortho:San
+
+ḥ LATIN-SMALL-LETTER-H-WITH-DOT-BELOW = DIA(h, dot-below) cp:U+1E25 script:Latn ortho:San
+
+Ḧ LATIN-CAPITAL-LETTER-H-WITH-DIAERESIS = DIA(H, diaeresis) cp:U+1E26 script:Latn
+
+ḧ LATIN-SMALL-LETTER-H-WITH-DIAERESIS = DIA(h, diaeresis) cp:U+1E27 script:Latn
+
+Ḩ LATIN-CAPITAL-LETTER-H-WITH-CEDILLA = DIA(H, cedilla) cp:U+1E28 script:Latn
+
+ḩ LATIN-SMALL-LETTER-H-WITH-CEDILLA = DIA(h, cedilla) cp:U+1E29 script:Latn
+
+Ḫ LATIN-CAPITAL-LETTER-H-WITH-BREVE-BELOW = DIA(H, breve-below) cp:U+1E2A script:Latn
+
+ḫ LATIN-SMALL-LETTER-H-WITH-BREVE-BELOW = DIA(h, breve-below) cp:U+1E2B script:Latn
+
+ẖ LATIN-SMALL-LETTER-H-WITH-LINE-BELOW = DIA(h, macron-below) cp:U+1E96 script:Latn
+
+# =============================================================================
+# I + DIACRITICS
+# =============================================================================
+
+Ḭ LATIN-CAPITAL-LETTER-I-WITH-TILDE-BELOW = DIA(I, tilde-below) cp:U+1E2C script:Latn
+
+ḭ LATIN-SMALL-LETTER-I-WITH-TILDE-BELOW = DIA(i, tilde-below) cp:U+1E2D script:Latn
+
+Ḯ LATIN-CAPITAL-LETTER-I-WITH-DIAERESIS-AND-ACUTE = DIA(Ï, acute) cp:U+1E2E script:Latn
+
+ḯ LATIN-SMALL-LETTER-I-WITH-DIAERESIS-AND-ACUTE = DIA(ï, acute) cp:U+1E2F script:Latn
+
+Ỉ LATIN-CAPITAL-LETTER-I-WITH-HOOK-ABOVE = DIA(I, hook-above) cp:U+1EC8 script:Latn ortho:Vie
+
+ỉ LATIN-SMALL-LETTER-I-WITH-HOOK-ABOVE = DIA(i, hook-above) cp:U+1EC9 script:Latn ortho:Vie
+
+Ị LATIN-CAPITAL-LETTER-I-WITH-DOT-BELOW = DIA(I, dot-below) cp:U+1ECA script:Latn ortho:San
+
+ị LATIN-SMALL-LETTER-I-WITH-DOT-BELOW = DIA(i, dot-below) cp:U+1ECB script:Latn ortho:San
+
+# =============================================================================
+# K + DIACRITICS
+# =============================================================================
+
+Ḱ LATIN-CAPITAL-LETTER-K-WITH-ACUTE = DIA(K, acute) cp:U+1E30 script:Latn
+
+ḱ LATIN-SMALL-LETTER-K-WITH-ACUTE = DIA(k, acute) cp:U+1E31 script:Latn
+
+Ḳ LATIN-CAPITAL-LETTER-K-WITH-DOT-BELOW = DIA(K, dot-below) cp:U+1E32 script:Latn ortho:San
+
+ḳ LATIN-SMALL-LETTER-K-WITH-DOT-BELOW = DIA(k, dot-below) cp:U+1E33 script:Latn ortho:San
+
+Ḵ LATIN-CAPITAL-LETTER-K-WITH-LINE-BELOW = DIA(K, macron-below) cp:U+1E34 script:Latn
+
+ḵ LATIN-SMALL-LETTER-K-WITH-LINE-BELOW = DIA(k, macron-below) cp:U+1E35 script:Latn
+
+# =============================================================================
+# L + DIACRITICS
+# =============================================================================
+
+Ḷ LATIN-CAPITAL-LETTER-L-WITH-DOT-BELOW = DIA(L, dot-below) cp:U+1E36 script:Latn ortho:San
+
+ḷ LATIN-SMALL-LETTER-L-WITH-DOT-BELOW = DIA(l, dot-below) cp:U+1E37 script:Latn ortho:San
+
+Ḹ LATIN-CAPITAL-LETTER-L-WITH-DOT-BELOW-AND-MACRON = DIA(Ḷ, macron) cp:U+1E38 script:Latn ortho:San
+
+ḹ LATIN-SMALL-LETTER-L-WITH-DOT-BELOW-AND-MACRON = DIA(ḷ, macron) cp:U+1E39 script:Latn ortho:San
+
+Ḻ LATIN-CAPITAL-LETTER-L-WITH-LINE-BELOW = DIA(L, macron-below) cp:U+1E3A script:Latn
+
+ḻ LATIN-SMALL-LETTER-L-WITH-LINE-BELOW = DIA(l, macron-below) cp:U+1E3B script:Latn
+
+Ḽ LATIN-CAPITAL-LETTER-L-WITH-CIRCUMFLEX-BELOW = DIA(L, circumflex-below) cp:U+1E3C script:Latn
+
+ḽ LATIN-SMALL-LETTER-L-WITH-CIRCUMFLEX-BELOW = DIA(l, circumflex-below) cp:U+1E3D script:Latn
+
+# =============================================================================
+# M + DIACRITICS
+# =============================================================================
+
+Ḿ LATIN-CAPITAL-LETTER-M-WITH-ACUTE = DIA(M, acute) cp:U+1E3E script:Latn
+
+ḿ LATIN-SMALL-LETTER-M-WITH-ACUTE = DIA(m, acute) cp:U+1E3F script:Latn
+
+Ṁ LATIN-CAPITAL-LETTER-M-WITH-DOT-ABOVE = DIA(M, dot-above) cp:U+1E40 script:Latn
+
+ṁ LATIN-SMALL-LETTER-M-WITH-DOT-ABOVE = DIA(m, dot-above) cp:U+1E41 script:Latn
+
+Ṃ LATIN-CAPITAL-LETTER-M-WITH-DOT-BELOW = DIA(M, dot-below) cp:U+1E42 script:Latn ortho:San
+
+ṃ LATIN-SMALL-LETTER-M-WITH-DOT-BELOW = DIA(m, dot-below) cp:U+1E43 script:Latn ortho:San
+
+# =============================================================================
+# N + DIACRITICS
+# =============================================================================
+
+Ṅ LATIN-CAPITAL-LETTER-N-WITH-DOT-ABOVE = DIA(N, dot-above) cp:U+1E44 script:Latn
+
+ṅ LATIN-SMALL-LETTER-N-WITH-DOT-ABOVE = DIA(n, dot-above) cp:U+1E45 script:Latn
+
+Ṇ LATIN-CAPITAL-LETTER-N-WITH-DOT-BELOW = DIA(N, dot-below) cp:U+1E46 script:Latn ortho:San
+
+ṇ LATIN-SMALL-LETTER-N-WITH-DOT-BELOW = DIA(n, dot-below) cp:U+1E47 script:Latn ortho:San
+
+Ṉ LATIN-CAPITAL-LETTER-N-WITH-LINE-BELOW = DIA(N, macron-below) cp:U+1E48 script:Latn
+
+ṉ LATIN-SMALL-LETTER-N-WITH-LINE-BELOW = DIA(n, macron-below) cp:U+1E49 script:Latn
+
+Ṋ LATIN-CAPITAL-LETTER-N-WITH-CIRCUMFLEX-BELOW = DIA(N, circumflex-below) cp:U+1E4A script:Latn
+
+ṋ LATIN-SMALL-LETTER-N-WITH-CIRCUMFLEX-BELOW = DIA(n, circumflex-below) cp:U+1E4B script:Latn
+
+# =============================================================================
+# O + DIACRITICS
+# =============================================================================
+
+Ṍ LATIN-CAPITAL-LETTER-O-WITH-TILDE-AND-ACUTE = DIA(Õ, acute) cp:U+1E4C script:Latn
+
+ṍ LATIN-SMALL-LETTER-O-WITH-TILDE-AND-ACUTE = DIA(õ, acute) cp:U+1E4D script:Latn
+
+Ṏ LATIN-CAPITAL-LETTER-O-WITH-TILDE-AND-DIAERESIS = DIA(Õ, diaeresis) cp:U+1E4E script:Latn
+
+ṏ LATIN-SMALL-LETTER-O-WITH-TILDE-AND-DIAERESIS = DIA(õ, diaeresis) cp:U+1E4F script:Latn
+
+Ṑ LATIN-CAPITAL-LETTER-O-WITH-MACRON-AND-GRAVE = DIA(DIA(O, macron), grave) cp:U+1E50 script:Latn
+
+ṑ LATIN-SMALL-LETTER-O-WITH-MACRON-AND-GRAVE = DIA(DIA(o, macron), grave) cp:U+1E51 script:Latn
+
+Ṓ LATIN-CAPITAL-LETTER-O-WITH-MACRON-AND-ACUTE = DIA(DIA(O, macron), acute) cp:U+1E52 script:Latn
+
+ṓ LATIN-SMALL-LETTER-O-WITH-MACRON-AND-ACUTE = DIA(DIA(o, macron), acute) cp:U+1E53 script:Latn
+
+Ọ LATIN-CAPITAL-LETTER-O-WITH-DOT-BELOW = DIA(O, dot-below) cp:U+1ECC script:Latn ortho:San
+
+ọ LATIN-SMALL-LETTER-O-WITH-DOT-BELOW = DIA(o, dot-below) cp:U+1ECD script:Latn ortho:San
+
+Ỏ LATIN-CAPITAL-LETTER-O-WITH-HOOK-ABOVE = DIA(O, hook-above) cp:U+1ECE script:Latn ortho:Vie
+
+ỏ LATIN-SMALL-LETTER-O-WITH-HOOK-ABOVE = DIA(o, hook-above) cp:U+1ECF script:Latn ortho:Vie
+
+Ố LATIN-CAPITAL-LETTER-O-WITH-CIRCUMFLEX-AND-ACUTE = DIA(Ô, acute) cp:U+1ED0 script:Latn
+
+ố LATIN-SMALL-LETTER-O-WITH-CIRCUMFLEX-AND-ACUTE = DIA(ô, acute) cp:U+1ED1 script:Latn
+
+Ồ LATIN-CAPITAL-LETTER-O-WITH-CIRCUMFLEX-AND-GRAVE = DIA(Ô, grave) cp:U+1ED2 script:Latn
+
+ồ LATIN-SMALL-LETTER-O-WITH-CIRCUMFLEX-AND-GRAVE = DIA(ô, grave) cp:U+1ED3 script:Latn
+
+Ổ LATIN-CAPITAL-LETTER-O-WITH-CIRCUMFLEX-AND-HOOK-ABOVE = DIA(Ô, hook-above) cp:U+1ED4 script:Latn ortho:Vie
+
+ổ LATIN-SMALL-LETTER-O-WITH-CIRCUMFLEX-AND-HOOK-ABOVE = DIA(ô, hook-above) cp:U+1ED5 script:Latn ortho:Vie
+
+Ỗ LATIN-CAPITAL-LETTER-O-WITH-CIRCUMFLEX-AND-TILDE = DIA(Ô, tilde) cp:U+1ED6 script:Latn
+
+ỗ LATIN-SMALL-LETTER-O-WITH-CIRCUMFLEX-AND-TILDE = DIA(ô, tilde) cp:U+1ED7 script:Latn
+
+Ộ LATIN-CAPITAL-LETTER-O-WITH-CIRCUMFLEX-AND-DOT-BELOW = DIA(Ọ, circumflex) cp:U+1ED8 script:Latn ortho:San
+
+ộ LATIN-SMALL-LETTER-O-WITH-CIRCUMFLEX-AND-DOT-BELOW = DIA(ọ, circumflex) cp:U+1ED9 script:Latn ortho:San
+
+Ớ LATIN-CAPITAL-LETTER-O-WITH-HORN-AND-ACUTE = DIA(Ơ, acute) cp:U+1EDA script:Latn ortho:Vie
+
+ớ LATIN-SMALL-LETTER-O-WITH-HORN-AND-ACUTE = DIA(ơ, acute) cp:U+1EDB script:Latn ortho:Vie
+
+Ờ LATIN-CAPITAL-LETTER-O-WITH-HORN-AND-GRAVE = DIA(Ơ, grave) cp:U+1EDC script:Latn ortho:Vie
+
+ờ LATIN-SMALL-LETTER-O-WITH-HORN-AND-GRAVE = DIA(ơ, grave) cp:U+1EDD script:Latn ortho:Vie
+
+Ở LATIN-CAPITAL-LETTER-O-WITH-HORN-AND-HOOK-ABOVE = DIA(Ơ, hook-above) cp:U+1EDE script:Latn ortho:Vie
+
+ở LATIN-SMALL-LETTER-O-WITH-HORN-AND-HOOK-ABOVE = DIA(ơ, hook-above) cp:U+1EDF script:Latn ortho:Vie
+
+Ỡ LATIN-CAPITAL-LETTER-O-WITH-HORN-AND-TILDE = DIA(Ơ, tilde) cp:U+1EE0 script:Latn ortho:Vie
+
+ỡ LATIN-SMALL-LETTER-O-WITH-HORN-AND-TILDE = DIA(ơ, tilde) cp:U+1EE1 script:Latn ortho:Vie
+
+Ợ LATIN-CAPITAL-LETTER-O-WITH-HORN-AND-DOT-BELOW = DIA(Ơ, dot-below) cp:U+1EE2 script:Latn ortho:Vie
+
+ợ LATIN-SMALL-LETTER-O-WITH-HORN-AND-DOT-BELOW = DIA(ơ, dot-below) cp:U+1EE3 script:Latn ortho:Vie
+
+# =============================================================================
+# P + DIACRITICS
+# =============================================================================
+
+Ṕ LATIN-CAPITAL-LETTER-P-WITH-ACUTE = DIA(P, acute) cp:U+1E54 script:Latn
+
+ṕ LATIN-SMALL-LETTER-P-WITH-ACUTE = DIA(p, acute) cp:U+1E55 script:Latn
+
+Ṗ LATIN-CAPITAL-LETTER-P-WITH-DOT-ABOVE = DIA(P, dot-above) cp:U+1E56 script:Latn
+
+ṗ LATIN-SMALL-LETTER-P-WITH-DOT-ABOVE = DIA(p, dot-above) cp:U+1E57 script:Latn
+
+# =============================================================================
+# R + DIACRITICS
+# =============================================================================
+
+Ṙ LATIN-CAPITAL-LETTER-R-WITH-DOT-ABOVE = DIA(R, dot-above) cp:U+1E58 script:Latn
+
+ṙ LATIN-SMALL-LETTER-R-WITH-DOT-ABOVE = DIA(r, dot-above) cp:U+1E59 script:Latn
+
+Ṛ LATIN-CAPITAL-LETTER-R-WITH-DOT-BELOW = DIA(R, dot-below) cp:U+1E5A script:Latn ortho:San
+
+ṛ LATIN-SMALL-LETTER-R-WITH-DOT-BELOW = DIA(r, dot-below) cp:U+1E5B script:Latn ortho:San
+
+Ṝ LATIN-CAPITAL-LETTER-R-WITH-DOT-BELOW-AND-MACRON = DIA(Ṛ, macron) cp:U+1E5C script:Latn ortho:San
+
+ṝ LATIN-SMALL-LETTER-R-WITH-DOT-BELOW-AND-MACRON = DIA(ṛ, macron) cp:U+1E5D script:Latn ortho:San
+
+Ṟ LATIN-CAPITAL-LETTER-R-WITH-LINE-BELOW = DIA(R, macron-below) cp:U+1E5E script:Latn
+
+ṟ LATIN-SMALL-LETTER-R-WITH-LINE-BELOW = DIA(r, macron-below) cp:U+1E5F script:Latn
+
+# =============================================================================
+# S + DIACRITICS
+# =============================================================================
+
+Ṡ LATIN-CAPITAL-LETTER-S-WITH-DOT-ABOVE = DIA(S, dot-above) cp:U+1E60 script:Latn
+
+ṡ LATIN-SMALL-LETTER-S-WITH-DOT-ABOVE = DIA(s, dot-above) cp:U+1E61 script:Latn
+
+Ṣ LATIN-CAPITAL-LETTER-S-WITH-DOT-BELOW = DIA(S, dot-below) cp:U+1E62 script:Latn ortho:San
+
+ṣ LATIN-SMALL-LETTER-S-WITH-DOT-BELOW = DIA(s, dot-below) cp:U+1E63 script:Latn ortho:San
+
+Ṥ LATIN-CAPITAL-LETTER-S-WITH-ACUTE-AND-DOT-ABOVE = DIA(DIA(S, acute), dot-above) cp:U+1E64 script:Latn
+
+ṥ LATIN-SMALL-LETTER-S-WITH-ACUTE-AND-DOT-ABOVE = DIA(DIA(s, acute), dot-above) cp:U+1E65 script:Latn
+
+Ṧ LATIN-CAPITAL-LETTER-S-WITH-CARON-AND-DOT-ABOVE = DIA(DIA(S, caron), dot-above) cp:U+1E66 script:Latn
+
+ṧ LATIN-SMALL-LETTER-S-WITH-CARON-AND-DOT-ABOVE = DIA(DIA(s, caron), dot-above) cp:U+1E67 script:Latn
+
+Ṩ LATIN-CAPITAL-LETTER-S-WITH-DOT-BELOW-AND-DOT-ABOVE = DIA(Ṣ, dot-above) cp:U+1E68 script:Latn ortho:San
+
+ṩ LATIN-SMALL-LETTER-S-WITH-DOT-BELOW-AND-DOT-ABOVE = DIA(ṣ, dot-above) cp:U+1E69 script:Latn ortho:San
+
+ẛ LATIN-SMALL-LETTER-LONG-S-WITH-DOT-ABOVE = DIA(ſ, dot-above) cp:U+1E9B script:Latn
+
+# =============================================================================
+# T + DIACRITICS
+# =============================================================================
+
+Ṫ LATIN-CAPITAL-LETTER-T-WITH-DOT-ABOVE = DIA(T, dot-above) cp:U+1E6A script:Latn
+
+ṫ LATIN-SMALL-LETTER-T-WITH-DOT-ABOVE = DIA(t, dot-above) cp:U+1E6B script:Latn
+
+Ṭ LATIN-CAPITAL-LETTER-T-WITH-DOT-BELOW = DIA(T, dot-below) cp:U+1E6C script:Latn ortho:San
+
+ṭ LATIN-SMALL-LETTER-T-WITH-DOT-BELOW = DIA(t, dot-below) cp:U+1E6D script:Latn ortho:San
+
+Ṯ LATIN-CAPITAL-LETTER-T-WITH-LINE-BELOW = DIA(T, macron-below) cp:U+1E6E script:Latn
+
+ṯ LATIN-SMALL-LETTER-T-WITH-LINE-BELOW = DIA(t, macron-below) cp:U+1E6F script:Latn
+
+Ṱ LATIN-CAPITAL-LETTER-T-WITH-CIRCUMFLEX-BELOW = DIA(T, circumflex-below) cp:U+1E70 script:Latn
+
+ṱ LATIN-SMALL-LETTER-T-WITH-CIRCUMFLEX-BELOW = DIA(t, circumflex-below) cp:U+1E71 script:Latn
+
+ẗ LATIN-SMALL-LETTER-T-WITH-DIAERESIS = DIA(t, diaeresis) cp:U+1E97 script:Latn
+
+# =============================================================================
+# U + DIACRITICS
+# =============================================================================
+
+Ṳ LATIN-CAPITAL-LETTER-U-WITH-DIAERESIS-BELOW = DIA(U, diaeresis-below) cp:U+1E72 script:Latn
+
+ṳ LATIN-SMALL-LETTER-U-WITH-DIAERESIS-BELOW = DIA(u, diaeresis-below) cp:U+1E73 script:Latn
+
+Ṵ LATIN-CAPITAL-LETTER-U-WITH-TILDE-BELOW = DIA(U, tilde-below) cp:U+1E74 script:Latn
+
+ṵ LATIN-SMALL-LETTER-U-WITH-TILDE-BELOW = DIA(u, tilde-below) cp:U+1E75 script:Latn
+
+Ṷ LATIN-CAPITAL-LETTER-U-WITH-CIRCUMFLEX-BELOW = DIA(U, circumflex-below) cp:U+1E76 script:Latn
+
+ṷ LATIN-SMALL-LETTER-U-WITH-CIRCUMFLEX-BELOW = DIA(u, circumflex-below) cp:U+1E77 script:Latn
+
+Ṹ LATIN-CAPITAL-LETTER-U-WITH-TILDE-AND-ACUTE = DIA(DIA(U, tilde), acute) cp:U+1E78 script:Latn
+
+ṹ LATIN-SMALL-LETTER-U-WITH-TILDE-AND-ACUTE = DIA(DIA(u, tilde), acute) cp:U+1E79 script:Latn
+
+Ṻ LATIN-CAPITAL-LETTER-U-WITH-MACRON-AND-DIAERESIS = DIA(DIA(U, macron), diaeresis) cp:U+1E7A script:Latn
+
+ṻ LATIN-SMALL-LETTER-U-WITH-MACRON-AND-DIAERESIS = DIA(DIA(u, macron), diaeresis) cp:U+1E7B script:Latn
+
+Ụ LATIN-CAPITAL-LETTER-U-WITH-DOT-BELOW = DIA(U, dot-below) cp:U+1EE4 script:Latn ortho:San
+
+ụ LATIN-SMALL-LETTER-U-WITH-DOT-BELOW = DIA(u, dot-below) cp:U+1EE5 script:Latn ortho:San
+
+Ủ LATIN-CAPITAL-LETTER-U-WITH-HOOK-ABOVE = DIA(U, hook-above) cp:U+1EE6 script:Latn ortho:Vie
+
+ủ LATIN-SMALL-LETTER-U-WITH-HOOK-ABOVE = DIA(u, hook-above) cp:U+1EE7 script:Latn ortho:Vie
+
+Ứ LATIN-CAPITAL-LETTER-U-WITH-HORN-AND-ACUTE = DIA(Ư, acute) cp:U+1EE8 script:Latn ortho:Vie
+
+ứ LATIN-SMALL-LETTER-U-WITH-HORN-AND-ACUTE = DIA(ư, acute) cp:U+1EE9 script:Latn ortho:Vie
+
+Ừ LATIN-CAPITAL-LETTER-U-WITH-HORN-AND-GRAVE = DIA(Ư, grave) cp:U+1EEA script:Latn ortho:Vie
+
+ừ LATIN-SMALL-LETTER-U-WITH-HORN-AND-GRAVE = DIA(ư, grave) cp:U+1EEB script:Latn ortho:Vie
+
+Ử LATIN-CAPITAL-LETTER-U-WITH-HORN-AND-HOOK-ABOVE = DIA(Ư, hook-above) cp:U+1EEC script:Latn ortho:Vie
+
+ử LATIN-SMALL-LETTER-U-WITH-HORN-AND-HOOK-ABOVE = DIA(ư, hook-above) cp:U+1EED script:Latn ortho:Vie
+
+Ữ LATIN-CAPITAL-LETTER-U-WITH-HORN-AND-TILDE = DIA(Ư, tilde) cp:U+1EEE script:Latn ortho:Vie
+
+ữ LATIN-SMALL-LETTER-U-WITH-HORN-AND-TILDE = DIA(ư, tilde) cp:U+1EEF script:Latn ortho:Vie
+
+Ự LATIN-CAPITAL-LETTER-U-WITH-HORN-AND-DOT-BELOW = DIA(Ư, dot-below) cp:U+1EF0 script:Latn ortho:Vie
+
+ự LATIN-SMALL-LETTER-U-WITH-HORN-AND-DOT-BELOW = DIA(ư, dot-below) cp:U+1EF1 script:Latn ortho:Vie
+
+# =============================================================================
+# V + DIACRITICS
+# =============================================================================
+
+Ṽ LATIN-CAPITAL-LETTER-V-WITH-TILDE = DIA(V, tilde) cp:U+1E7C script:Latn
+
+ṽ LATIN-SMALL-LETTER-V-WITH-TILDE = DIA(v, tilde) cp:U+1E7D script:Latn
+
+Ṿ LATIN-CAPITAL-LETTER-V-WITH-DOT-BELOW = DIA(V, dot-below) cp:U+1E7E script:Latn ortho:San
+
+ṿ LATIN-SMALL-LETTER-V-WITH-DOT-BELOW = DIA(v, dot-below) cp:U+1E7F script:Latn ortho:San
+
+# =============================================================================
+# W + DIACRITICS
+# =============================================================================
+
+Ẁ LATIN-CAPITAL-LETTER-W-WITH-GRAVE = DIA(W, grave) cp:U+1E80 script:Latn ortho:Cym
+
+ẁ LATIN-SMALL-LETTER-W-WITH-GRAVE = DIA(w, grave) cp:U+1E81 script:Latn ortho:Cym
+
+Ẃ LATIN-CAPITAL-LETTER-W-WITH-ACUTE = DIA(W, acute) cp:U+1E82 script:Latn ortho:Cym
+
+ẃ LATIN-SMALL-LETTER-W-WITH-ACUTE = DIA(w, acute) cp:U+1E83 script:Latn ortho:Cym
+
+Ẅ LATIN-CAPITAL-LETTER-W-WITH-DIAERESIS = DIA(W, diaeresis) cp:U+1E84 script:Latn ortho:Cym
+
+ẅ LATIN-SMALL-LETTER-W-WITH-DIAERESIS = DIA(w, diaeresis) cp:U+1E85 script:Latn ortho:Cym
+
+Ẇ LATIN-CAPITAL-LETTER-W-WITH-DOT-ABOVE = DIA(W, dot-above) cp:U+1E86 script:Latn
+
+ẇ LATIN-SMALL-LETTER-W-WITH-DOT-ABOVE = DIA(w, dot-above) cp:U+1E87 script:Latn
+
+Ẉ LATIN-CAPITAL-LETTER-W-WITH-DOT-BELOW = DIA(W, dot-below) cp:U+1E88 script:Latn ortho:San
+
+ẉ LATIN-SMALL-LETTER-W-WITH-DOT-BELOW = DIA(w, dot-below) cp:U+1E89 script:Latn ortho:San
+
+ẘ LATIN-SMALL-LETTER-W-WITH-RING-ABOVE = DIA(w, ring) cp:U+1E98 script:Latn
+
+# =============================================================================
+# X + DIACRITICS
+# =============================================================================
+
+Ẋ LATIN-CAPITAL-LETTER-X-WITH-DOT-ABOVE = DIA(X, dot-above) cp:U+1E8A script:Latn
+
+ẋ LATIN-SMALL-LETTER-X-WITH-DOT-ABOVE = DIA(x, dot-above) cp:U+1E8B script:Latn
+
+Ẍ LATIN-CAPITAL-LETTER-X-WITH-DIAERESIS = DIA(X, diaeresis) cp:U+1E8C script:Latn
+
+ẍ LATIN-SMALL-LETTER-X-WITH-DIAERESIS = DIA(x, diaeresis) cp:U+1E8D script:Latn
+
+# =============================================================================
+# Y + DIACRITICS
+# =============================================================================
+
+Ẏ LATIN-CAPITAL-LETTER-Y-WITH-DOT-ABOVE = DIA(Y, dot-above) cp:U+1E8E script:Latn
+
+ẏ LATIN-SMALL-LETTER-Y-WITH-DOT-ABOVE = DIA(y, dot-above) cp:U+1E8F script:Latn
+
+ẙ LATIN-SMALL-LETTER-Y-WITH-RING-ABOVE = DIA(y, ring) cp:U+1E99 script:Latn
+
+Ỳ LATIN-CAPITAL-LETTER-Y-WITH-GRAVE = DIA(Y, grave) cp:U+1EF2 script:Latn ortho:Cym
+
+ỳ LATIN-SMALL-LETTER-Y-WITH-GRAVE = DIA(y, grave) cp:U+1EF3 script:Latn ortho:Cym
+
+Ỵ LATIN-CAPITAL-LETTER-Y-WITH-DOT-BELOW = DIA(Y, dot-below) cp:U+1EF4 script:Latn ortho:San
+
+ỵ LATIN-SMALL-LETTER-Y-WITH-DOT-BELOW = DIA(y, dot-below) cp:U+1EF5 script:Latn ortho:San
+
+Ỷ LATIN-CAPITAL-LETTER-Y-WITH-HOOK-ABOVE = DIA(Y, hook-above) cp:U+1EF6 script:Latn ortho:Vie
+
+ỷ LATIN-SMALL-LETTER-Y-WITH-HOOK-ABOVE = DIA(y, hook-above) cp:U+1EF7 script:Latn ortho:Vie
+
+Ỹ LATIN-CAPITAL-LETTER-Y-WITH-TILDE = DIA(Y, tilde) cp:U+1EF8 script:Latn
+
+ỹ LATIN-SMALL-LETTER-Y-WITH-TILDE = DIA(y, tilde) cp:U+1EF9 script:Latn
+
+# =============================================================================
+# Z + DIACRITICS
+# =============================================================================
+
+Ẑ LATIN-CAPITAL-LETTER-Z-WITH-CIRCUMFLEX = DIA(Z, circumflex) cp:U+1E90 script:Latn
+
+ẑ LATIN-SMALL-LETTER-Z-WITH-CIRCUMFLEX = DIA(z, circumflex) cp:U+1E91 script:Latn
+
+Ẓ LATIN-CAPITAL-LETTER-Z-WITH-DOT-BELOW = DIA(Z, dot-below) cp:U+1E92 script:Latn ortho:San
+
+ẓ LATIN-SMALL-LETTER-Z-WITH-DOT-BELOW = DIA(z, dot-below) cp:U+1E93 script:Latn ortho:San
+
+Ẕ LATIN-CAPITAL-LETTER-Z-WITH-LINE-BELOW = DIA(Z, macron-below) cp:U+1E94 script:Latn
+
+ẕ LATIN-SMALL-LETTER-Z-WITH-LINE-BELOW = DIA(z, macron-below) cp:U+1E95 script:Latn
+
+# =============================================================================
+# SPECIAL CHARACTERS (non-DIA compositions)
+# =============================================================================
+#
+# These characters cannot be expressed as simple DIA compositions.
+# They include unique letterforms, compatibility characters, and
+# ligature-derived forms.
+#
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# A with right half ring (compatibility character)
+# U+1E9A - Originally a ligature of a + modifier letter right half ring
+# -----------------------------------------------------------------------------
+ẚ LATIN-SMALL-LETTER-A-WITH-RIGHT-HALF-RING = DIA(a, right-half-ring-above) cp:U+1E9A script:Latn
+
+# -----------------------------------------------------------------------------
+# Long S variants (historical/paleographic)
+# U+1E9C/1E9D - Used in historical texts
+# -----------------------------------------------------------------------------
+ẜ LATIN-SMALL-LETTER-LONG-S-WITH-DIAGONAL-STROKE = OVR(ſ, stroke.diag) cp:U+1E9C script:Latn
+
+ẝ LATIN-SMALL-LETTER-LONG-S-WITH-HIGH-STROKE = OVR(ſ, stroke.high) cp:U+1E9D script:Latn
+
+# -----------------------------------------------------------------------------
+# Capital sharp S (Eszett)
+# U+1E9E - Official uppercase of German ß since 2017
+# -----------------------------------------------------------------------------
+ẞ LATIN-CAPITAL-LETTER-SHARP-S = FRAME(bowl.upper.cap, crossbar, bowl.lower.cap) cp:U+1E9E script:Latn ortho:Deu
+
+# -----------------------------------------------------------------------------
+# Latin small letter delta
+# U+1E9F - Used in transliteration, distinct from Greek delta
+# -----------------------------------------------------------------------------
+ẟ LATIN-SMALL-LETTER-DELTA = FRAME(loop.upper, stem.curved) cp:U+1E9F script:Latn
+
+# -----------------------------------------------------------------------------
+# Middle-Welsh letters
+# U+1EFA-1EFD - Historical Welsh orthography
+# -----------------------------------------------------------------------------
+Ỻ LATIN-CAPITAL-LETTER-MIDDLE-WELSH-LL = LIG(L, L) cp:U+1EFA script:Latn ortho:Cym
+
+ỻ LATIN-SMALL-LETTER-MIDDLE-WELSH-LL = LIG(l, l) cp:U+1EFB script:Latn ortho:Cym
+
+Ỽ LATIN-CAPITAL-LETTER-MIDDLE-WELSH-V = FRAME(diagonal.down, diagonal.up) cp:U+1EFC script:Latn ortho:Cym
+
+ỽ LATIN-SMALL-LETTER-MIDDLE-WELSH-V = FRAME(diagonal.down, diagonal.up) cp:U+1EFD script:Latn ortho:Cym
+
+# -----------------------------------------------------------------------------
+# Y with loop
+# U+1EFE/1EFF - Used in Americanist phonetic notation
+# -----------------------------------------------------------------------------
+Ỿ LATIN-CAPITAL-LETTER-Y-WITH-LOOP = FRAME(diagonal.down, diagonal.up, loop.lower) cp:U+1EFE script:Latn
+
+ỿ LATIN-SMALL-LETTER-Y-WITH-LOOP = FRAME(diagonal.down, diagonal.up, loop.descender) cp:U+1EFF script:Latn
+
+# =============================================================================
+# CASE MAPPINGS
+# =============================================================================
+
+# A + diacritics
+@case Ḁ ḁ
+@case Ạ ạ
+@case Ả ả
+@case Ấ ấ
+@case Ầ ầ
+@case Ẩ ẩ
+@case Ẫ ẫ
+@case Ậ ậ
+@case Ắ ắ
+@case Ằ ằ
+@case Ẳ ẳ
+@case Ẵ ẵ
+@case Ặ ặ
+
+# B + diacritics
+@case Ḃ ḃ
+@case Ḅ ḅ
+@case Ḇ ḇ
+
+# C + diacritics
+@case Ḉ ḉ
+
+# D + diacritics
+@case Ḋ ḋ
+@case Ḍ ḍ
+@case Ḏ ḏ
+@case Ḑ ḑ
+@case Ḓ ḓ
+
+# E + diacritics
+@case Ḕ ḕ
+@case Ḗ ḗ
+@case Ḙ ḙ
+@case Ḛ ḛ
+@case Ḝ ḝ
+@case Ẹ ẹ
+@case Ẻ ẻ
+@case Ẽ ẽ
+@case Ế ế
+@case Ề ề
+@case Ể ể
+@case Ễ ễ
+@case Ệ ệ
+
+# F + diacritics
+@case Ḟ ḟ
+
+# G + diacritics
+@case Ḡ ḡ
+
+# H + diacritics
+@case Ḣ ḣ
+@case Ḥ ḥ
+@case Ḧ ḧ
+@case Ḩ ḩ
+@case Ḫ ḫ
+
+# I + diacritics
+@case Ḭ ḭ
+@case Ḯ ḯ
+@case Ỉ ỉ
+@case Ị ị
+
+# K + diacritics
+@case Ḱ ḱ
+@case Ḳ ḳ
+@case Ḵ ḵ
+
+# L + diacritics
+@case Ḷ ḷ
+@case Ḹ ḹ
+@case Ḻ ḻ
+@case Ḽ ḽ
+
+# M + diacritics
+@case Ḿ ḿ
+@case Ṁ ṁ
+@case Ṃ ṃ
+
+# N + diacritics
+@case Ṅ ṅ
+@case Ṇ ṇ
+@case Ṉ ṉ
+@case Ṋ ṋ
+
+# O + diacritics
+@case Ṍ ṍ
+@case Ṏ ṏ
+@case Ṑ ṑ
+@case Ṓ ṓ
+@case Ọ ọ
+@case Ỏ ỏ
+@case Ố ố
+@case Ồ ồ
+@case Ổ ổ
+@case Ỗ ỗ
+@case Ộ ộ
+@case Ớ ớ
+@case Ờ ờ
+@case Ở ở
+@case Ỡ ỡ
+@case Ợ ợ
+
+# P + diacritics
+@case Ṕ ṕ
+@case Ṗ ṗ
+
+# R + diacritics
+@case Ṙ ṙ
+@case Ṛ ṛ
+@case Ṝ ṝ
+@case Ṟ ṟ
+
+# S + diacritics
+@case Ṡ ṡ
+@case Ṣ ṣ
+@case Ṥ ṥ
+@case Ṧ ṧ
+@case Ṩ ṩ
+
+# T + diacritics
+@case Ṫ ṫ
+@case Ṭ ṭ
+@case Ṯ ṯ
+@case Ṱ ṱ
+
+# U + diacritics
+@case Ṳ ṳ
+@case Ṵ ṵ
+@case Ṷ ṷ
+@case Ṹ ṹ
+@case Ṻ ṻ
+@case Ụ ụ
+@case Ủ ủ
+@case Ứ ứ
+@case Ừ ừ
+@case Ử ử
+@case Ữ ữ
+@case Ự ự
+
+# V + diacritics
+@case Ṽ ṽ
+@case Ṿ ṿ
+
+# W + diacritics
+@case Ẁ ẁ
+@case Ẃ ẃ
+@case Ẅ ẅ
+@case Ẇ ẇ
+@case Ẉ ẉ
+
+# X + diacritics
+@case Ẋ ẋ
+@case Ẍ ẍ
+
+# Y + diacritics
+@case Ẏ ẏ
+@case Ỳ ỳ
+@case Ỵ ỵ
+@case Ỷ ỷ
+@case Ỹ ỹ
+
+# Z + diacritics
+@case Ẑ ẑ
+@case Ẓ ẓ
+@case Ẕ ẕ
+
+# Special characters
+@case Ỻ ỻ
+@case Ỽ ỽ
+@case Ỿ ỿ
+
+# =============================================================================
+# END OF LATIN EXTENDED ADDITIONAL CHARACTER LIBRARY
+# =============================================================================

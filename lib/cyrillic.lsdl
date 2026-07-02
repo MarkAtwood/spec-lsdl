@@ -19,7 +19,31 @@
 #
 # =============================================================================
 
-@import elements-base.lsdl
+# =============================================================================
+# LOCAL DIACRITIC COPIES (from diacritics.lsdl)
+# =============================================================================
+
+@elem double-grave
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [4,2]
+p2 = [3,0]
+p3 = [8,2]
+p4 = [7,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem overline
+zone: diacritic-above
+path: p1 p2
+p1 = [2,0]
+p2 = [10,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
 
 # =============================================================================
 # CYRILLIC-SPECIFIC ELEMENT DEFINITIONS
@@ -186,6 +210,39 @@ anchors: attach=[4,4] left=[0,4]
 @case І і
 @case Ї ї
 
+# Accented Cyrillic (U+0400-040F / U+0450-045F)
+@case Ѐ ѐ
+@case Ё ё
+@case Ђ ђ
+@case Ѓ ѓ
+@case Ѕ ѕ
+@case Ј ј
+@case Љ љ
+@case Њ њ
+@case Ћ ћ
+@case Ќ ќ
+@case Ѝ ѝ
+@case Ў ў
+@case Џ џ
+
+# Historical Cyrillic (U+0460-047F)
+@case Ѡ ѡ
+@case Ѣ ѣ
+@case Ѥ ѥ
+@case Ѧ ѧ
+@case Ѩ ѩ
+@case Ѫ ѫ
+@case Ѭ ѭ
+@case Ѯ ѯ
+@case Ѱ ѱ
+@case Ѳ ѳ
+@case Ѵ ѵ
+@case Ѷ ѷ
+@case Ѹ ѹ
+@case Ѻ ѻ
+@case Ѽ ѽ
+@case Ѿ ѿ
+
 # =============================================================================
 # CYRILLIC CAPITAL LETTERS (33 Russian)
 # =============================================================================
@@ -194,17 +251,17 @@ anchors: attach=[4,4] left=[0,4]
 # Letters sharing Latin structure
 # -----------------------------------------------------------------------------
 
-А  CYRILLIC-CAPITAL-A = apex script:Cyrl ortho:Rus
+А  CYRILLIC-CAPITAL-A = APEX(stem.l, stem.r, crossbar.cap) script:Cyrl ortho:Rus
   # Identical to Latin A: two diagonals meeting at apex with crossbar
 
 Е  CYRILLIC-CAPITAL-IE = FRAME(stem.l, arm.top, arm.mid, arm.bot) script:Cyrl ortho:Rus
   # Identical to Latin E: vertical stem with three horizontal arms
 
-К  CYRILLIC-CAPITAL-KA = LR(stem.l, STACK(leg.cap, leg.cap.rev)) script:Cyrl ortho:Rus
+К  CYRILLIC-CAPITAL-KA = FRAME(stem.l, diagonal.l, leg.cap) script:Cyrl ortho:Rus
   # Identical to Latin K: stem with diagonal arm and leg
 
-М  CYRILLIC-CAPITAL-EM = FRAME(stem.l, vertex.cap.inv, stem.r) script:Cyrl ortho:Rus
-  # Identical to Latin M: two stems joined by inverted vertex
+М  CYRILLIC-CAPITAL-EM = FRAME(stem.l, apex, stem.r) script:Cyrl ortho:Rus
+  # Identical to Latin M: two stems joined by apex
 
 Н  CYRILLIC-CAPITAL-EN = FRAME(stem.l, crossbar.cap, stem.r) script:Cyrl ortho:Rus
   # Identical to Latin H: two stems with horizontal crossbar
@@ -212,19 +269,19 @@ anchors: attach=[4,4] left=[0,4]
 О  CYRILLIC-CAPITAL-O = bowl.cap script:Cyrl ortho:Rus
   # Identical to Latin O: closed bowl
 
-Р  CYRILLIC-CAPITAL-ER = LR(stem.l, bowl.r.upper.cap) script:Cyrl ortho:Rus
+Р  CYRILLIC-CAPITAL-ER = LR(stem.l, bowl.upper, 3/9) script:Cyrl ortho:Rus
   # Looks like Latin P but represents sound /r/
 
 С  CYRILLIC-CAPITAL-ES = STACK(arc.top.cap, arc.bot.cap) script:Cyrl ortho:Rus
   # Identical to Latin C: open bowl (arcs)
 
-Т  CYRILLIC-CAPITAL-TE = FRAME(bar.top, stem.cyr) script:Cyrl ortho:Rus
+Т  CYRILLIC-CAPITAL-TE = FRAME(bar.top, stem) script:Cyrl ortho:Rus
   # Identical to Latin T: centered stem under top bar
 
-У  CYRILLIC-CAPITAL-U = STACK(vertex.cap, descender) script:Cyrl ortho:Rus
+У  CYRILLIC-CAPITAL-U = FRAME(diagonal.l, stem, diagonal) script:Cyrl ortho:Rus
   # Looks like Latin Y with descender
 
-Х  CYRILLIC-CAPITAL-HA = FRAME(diagonal, diagonal.l) script:Cyrl ortho:Rus
+Х  CYRILLIC-CAPITAL-HA = OVR(diagonal, diagonal.l) script:Cyrl ortho:Rus
   # Identical to Latin X: two crossing diagonals
 
 # -----------------------------------------------------------------------------
@@ -234,7 +291,7 @@ anchors: attach=[4,4] left=[0,4]
 Б  CYRILLIC-CAPITAL-BE = FRAME(bar.top, stem.l, bowl.r.lower.cap) script:Cyrl ortho:Rus
   # Like Latin B but top bar extends past stem; single lower bowl
 
-В  CYRILLIC-CAPITAL-VE = LR(stem.l, STACK(bowl.r.upper.cap, bowl.r.lower.cap)) script:Cyrl ortho:Rus
+В  CYRILLIC-CAPITAL-VE = LR(stem.l, STACK(bowl.upper, bowl.lower), 3/9) script:Cyrl ortho:Rus
   # Identical to Latin B: stem with stacked upper and lower bowls
 
 Г  CYRILLIC-CAPITAL-GHE = FRAME(bar.top, stem.l) script:Cyrl ortho:Rus
@@ -320,7 +377,7 @@ anchors: attach=[4,4] left=[0,4]
 о  CYRILLIC-SMALL-O = bowl.full script:Cyrl ortho:Rus
   # Identical to Latin o: closed bowl
 
-р  CYRILLIC-SMALL-ER = LR(descender, bowl.r) script:Cyrl ortho:Rus
+р  CYRILLIC-SMALL-ER = STACK(bowl.r, descender) script:Cyrl ortho:Rus
   # Like Latin p but represents sound /r/
 
 с  CYRILLIC-SMALL-ES = STACK(arc.top, arc.bot) script:Cyrl ortho:Rus
@@ -329,10 +386,10 @@ anchors: attach=[4,4] left=[0,4]
 т  CYRILLIC-SMALL-TE = FRAME(bar.top.x, stem) script:Cyrl ortho:Rus
   # Miniature Т: stem under top bar at x-height
 
-у  CYRILLIC-SMALL-U = STACK(vertex, descender.curved) script:Cyrl ortho:Rus
+у  CYRILLIC-SMALL-U = FRAME(vertex, descender.curved) script:Cyrl ortho:Rus
   # Like Latin y: vertex with curved descender
 
-х  CYRILLIC-SMALL-HA = FRAME(diagonal.x, diagonal.x.rev) script:Cyrl ortho:Rus
+х  CYRILLIC-SMALL-HA = OVR(diagonal.x, diagonal.l) script:Cyrl ortho:Rus
   # Identical to Latin x: crossing diagonals at x-height
 
 # -----------------------------------------------------------------------------
@@ -430,6 +487,207 @@ anchors: attach=[4,4] left=[0,4]
 
 ї  CYRILLIC-SMALL-YI = DIA(і, diaeresis) script:Cyrl ortho:Ukr
   # і with diaeresis (two dots above)
+
+# =============================================================================
+# ACCENTED CYRILLIC (U+0400-040F / U+0450-045F)
+# =============================================================================
+# These are mostly base letters with diacritics, used in various Slavic
+# and non-Slavic languages using the Cyrillic script.
+
+# -----------------------------------------------------------------------------
+# Accented Capital Letters (U+0400-040F)
+# -----------------------------------------------------------------------------
+
+Ѐ  CYRILLIC-CAPITAL-IE-GRAVE = DIA(Е, grave) script:Cyrl ortho:Mac
+  # Е with grave accent (Macedonian)
+
+Ё  CYRILLIC-CAPITAL-IO = DIA(Е, diaeresis) script:Cyrl ortho:Rus
+  # Е with diaeresis (Russian ё)
+
+Ђ  CYRILLIC-CAPITAL-DJE = FRAME(soft-sign.base, bar.top.x) script:Cyrl ortho:Srp
+  # Serbian Dje - like Ћ with top bar (voiced)
+
+Ѓ  CYRILLIC-CAPITAL-GJE = DIA(Г, acute) script:Cyrl ortho:Mac
+  # Macedonian Gje - Г with acute
+
+Ѕ  CYRILLIC-CAPITAL-DZE = spine.cap script:Cyrl ortho:Mac
+  # Macedonian Dze - like Latin S
+
+Ј  CYRILLIC-CAPITAL-JE = STACK(hook.bot, stem.l) script:Cyrl ortho:Srp
+  # Serbian/Macedonian Je - like Latin J
+
+Љ  CYRILLIC-CAPITAL-LJE = LR(apex, soft-sign.base) script:Cyrl ortho:Srp
+  # Serbian/Macedonian Lje - Л + soft sign ligature
+
+Њ  CYRILLIC-CAPITAL-NJE = LR(FRAME(stem.l, crossbar.cap, stem.r), soft-sign.base) script:Cyrl ortho:Srp
+  # Serbian/Macedonian Nje - Н + soft sign ligature
+
+Ћ  CYRILLIC-CAPITAL-TSHE = FRAME(soft-sign.base, bar.top.x) script:Cyrl ortho:Srp
+  # Serbian Tshe - like soft sign with top bar (voiceless)
+
+Ќ  CYRILLIC-CAPITAL-KJE = DIA(К, acute) script:Cyrl ortho:Mac
+  # Macedonian Kje - К with acute
+
+Ѝ  CYRILLIC-CAPITAL-I-GRAVE = DIA(И, grave) script:Cyrl ortho:Mac
+  # И with grave (Macedonian, Bulgarian)
+
+Ў  CYRILLIC-CAPITAL-SHORT-U = DIA(У, breve) script:Cyrl ortho:Blr
+  # Belarusian short U - У with breve
+
+Џ  CYRILLIC-CAPITAL-DZHE = FRAME(hook.cyr, stem.cyr, stem.r) script:Cyrl ortho:Srp
+  # Serbian Dzhe - like Ч with extra stem
+
+# -----------------------------------------------------------------------------
+# Accented Small Letters (U+0450-045F)
+# -----------------------------------------------------------------------------
+
+ѐ  CYRILLIC-SMALL-IE-GRAVE = DIA(е, grave) script:Cyrl ortho:Mac
+  # е with grave accent
+
+ё  CYRILLIC-SMALL-IO = DIA(е, diaeresis) script:Cyrl ortho:Rus
+  # е with diaeresis
+
+ђ  CYRILLIC-SMALL-DJE = FRAME(ascender.l, bar.top.x, soft-sign.base) script:Cyrl ortho:Srp
+  # Serbian small dje
+
+ѓ  CYRILLIC-SMALL-GJE = DIA(г, acute) script:Cyrl ortho:Mac
+  # Macedonian small gje
+
+ѕ  CYRILLIC-SMALL-DZE = FRAME(arc.top, spine, arc.bot) script:Cyrl ortho:Mac
+  # Macedonian small dze - like Latin s
+
+ј  CYRILLIC-SMALL-JE = STACK(tittle, hook.bot, stem) script:Cyrl ortho:Srp
+  # Small je - like Latin j
+
+љ  CYRILLIC-SMALL-LJE = LR(apex.x, soft-sign.base) script:Cyrl ortho:Srp
+  # Small lje - л + ь ligature
+
+њ  CYRILLIC-SMALL-NJE = LR(FRAME(stem, crossbar, stem), soft-sign.base) script:Cyrl ortho:Srp
+  # Small nje - н + ь ligature
+
+ћ  CYRILLIC-SMALL-TSHE = FRAME(ascender.l, bar.top.x, soft-sign.base) script:Cyrl ortho:Srp
+  # Small tshe
+
+ќ  CYRILLIC-SMALL-KJE = DIA(к, acute) script:Cyrl ortho:Mac
+  # Macedonian small kje
+
+ѝ  CYRILLIC-SMALL-I-GRAVE = DIA(и, grave) script:Cyrl ortho:Mac
+  # и with grave
+
+ў  CYRILLIC-SMALL-SHORT-U = DIA(у, breve) script:Cyrl ortho:Blr
+  # Belarusian small short u
+
+џ  CYRILLIC-SMALL-DZHE = FRAME(hook.cyr, stem, stem) script:Cyrl ortho:Srp
+  # Serbian small dzhe
+
+# =============================================================================
+# HISTORICAL CYRILLIC (U+0460-047F)
+# =============================================================================
+# Letters used in Old Church Slavonic and historical texts.
+
+# -----------------------------------------------------------------------------
+# Historical Capital Letters
+# -----------------------------------------------------------------------------
+
+Ѡ  CYRILLIC-CAPITAL-OMEGA = FRAME(bowl.cap, bowl.cap) script:Cyrl ortho:OCS
+  # Omega - two joined bowls like Latin W inverted base
+
+Ѣ  CYRILLIC-CAPITAL-YAT = FRAME(stem.cyr, bar.top, soft-sign.base) script:Cyrl ortho:OCS
+  # Yat - historical vowel, like Ъ with top extension
+
+Ѥ  CYRILLIC-CAPITAL-IOTIFIED-E = LR(stem.l, Є) script:Cyrl ortho:OCS
+  # Iotified E - І + Є ligature
+
+Ѧ  CYRILLIC-CAPITAL-LITTLE-YUS = FRAME(apex, crossbar.cap) script:Cyrl ortho:OCS
+  # Little yus - like Л with crossbar (nasal vowel)
+
+Ѩ  CYRILLIC-CAPITAL-IOTIFIED-LITTLE-YUS = LR(stem.l, Ѧ) script:Cyrl ortho:OCS
+  # Iotified little yus - І + Ѧ ligature
+
+Ѫ  CYRILLIC-CAPITAL-BIG-YUS = FRAME(apex, crossbar.cap, stem.cyr) script:Cyrl ortho:OCS
+  # Big yus - like Ѧ with central descender
+
+Ѭ  CYRILLIC-CAPITAL-IOTIFIED-BIG-YUS = LR(stem.l, Ѫ) script:Cyrl ortho:OCS
+  # Iotified big yus - І + Ѫ ligature
+
+Ѯ  CYRILLIC-CAPITAL-KSI = FRAME(STACK(arc.top.cap.r, arc.bot.cap.r), crossbar.cap) script:Cyrl ortho:OCS
+  # Ksi - borrowed from Greek Ξ
+
+Ѱ  CYRILLIC-CAPITAL-PSI = FRAME(vertex.cap, stem.cyr) script:Cyrl ortho:OCS
+  # Psi - borrowed from Greek Ψ
+
+Ѳ  CYRILLIC-CAPITAL-FITA = OVR(bowl.cap, crossbar.cap) script:Cyrl ortho:OCS
+  # Fita - borrowed from Greek Θ (theta)
+
+Ѵ  CYRILLIC-CAPITAL-IZHITSA = vertex.cap script:Cyrl ortho:OCS
+  # Izhitsa - borrowed from Greek Υ (upsilon)
+
+# -----------------------------------------------------------------------------
+# Historical Small Letters
+# -----------------------------------------------------------------------------
+
+ѡ  CYRILLIC-SMALL-OMEGA = FRAME(bowl.full, bowl.full) script:Cyrl ortho:OCS
+  # Small omega - two joined bowls
+
+ѣ  CYRILLIC-SMALL-YAT = FRAME(ascender, bar.top.x, soft-sign.base) script:Cyrl ortho:OCS
+  # Small yat - like ъ with ascender
+
+ѥ  CYRILLIC-SMALL-IOTIFIED-E = LR(stem, є) script:Cyrl ortho:OCS
+  # Small iotified e - і + є ligature
+
+ѧ  CYRILLIC-SMALL-LITTLE-YUS = FRAME(apex.x, crossbar) script:Cyrl ortho:OCS
+  # Small little yus
+
+ѩ  CYRILLIC-SMALL-IOTIFIED-LITTLE-YUS = LR(stem, ѧ) script:Cyrl ortho:OCS
+  # Small iotified little yus
+
+ѫ  CYRILLIC-SMALL-BIG-YUS = FRAME(apex.x, crossbar, descender) script:Cyrl ortho:OCS
+  # Small big yus - like ѧ with central descender
+
+ѭ  CYRILLIC-SMALL-IOTIFIED-BIG-YUS = LR(stem, ѫ) script:Cyrl ortho:OCS
+  # Small iotified big yus
+
+ѯ  CYRILLIC-SMALL-KSI = FRAME(STACK(arc.top.r, arc.bot.r), crossbar) script:Cyrl ortho:OCS
+  # Small ksi
+
+ѱ  CYRILLIC-SMALL-PSI = FRAME(vertex, descender) script:Cyrl ortho:OCS
+  # Small psi
+
+ѳ  CYRILLIC-SMALL-FITA = OVR(bowl.full, crossbar) script:Cyrl ortho:OCS
+  # Small fita
+
+ѵ  CYRILLIC-SMALL-IZHITSA = vertex script:Cyrl ortho:OCS
+  # Small izhitsa
+
+Ѷ  CYRILLIC-CAPITAL-IZHITSA-DOUBLE-GRAVE = DIA(Ѵ, double-grave) script:Cyrl ortho:OCS
+  # Izhitsa with double grave accent
+
+ѷ  CYRILLIC-SMALL-IZHITSA-DOUBLE-GRAVE = DIA(ѵ, double-grave) script:Cyrl ortho:OCS
+  # Small izhitsa with double grave
+
+Ѹ  CYRILLIC-CAPITAL-UK = LR(О, У) script:Cyrl ortho:OCS
+  # Uk digraph - O + У ligature
+
+ѹ  CYRILLIC-SMALL-UK = LR(о, у) script:Cyrl ortho:OCS
+  # Small uk digraph
+
+Ѻ  CYRILLIC-CAPITAL-ROUND-OMEGA = bowl.cap script:Cyrl ortho:OCS
+  # Round Omega - like O but semantically distinct
+
+ѻ  CYRILLIC-SMALL-ROUND-OMEGA = bowl.full script:Cyrl ortho:OCS
+  # Small round omega
+
+Ѽ  CYRILLIC-CAPITAL-OMEGA-TITLO = DIA(Ѡ, overline) script:Cyrl ortho:OCS
+  # Omega with titlo (abbreviation mark, rendered as overline)
+
+ѽ  CYRILLIC-SMALL-OMEGA-TITLO = DIA(ѡ, overline) script:Cyrl ortho:OCS
+  # Small omega with titlo (rendered as overline)
+
+Ѿ  CYRILLIC-CAPITAL-OT = LR(Ѡ, Т) script:Cyrl ortho:OCS
+  # Ot - Omega + Te ligature
+
+ѿ  CYRILLIC-SMALL-OT = LR(ѡ, т) script:Cyrl ortho:OCS
+  # Small ot
 
 # =============================================================================
 # END OF CYRILLIC ALPHABET LIBRARY

@@ -1,0 +1,1210 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Greek Extended Character Library (U+1F00-U+1FFF)
+# =============================================================================
+#
+# This file defines characters from the Greek Extended Unicode block,
+# used for polytonic Greek with breathing marks and accents.
+#
+# Diacritics used (from diacritics.lsdl):
+#   - comma-above (psili): smooth breathing
+#   - reversed-comma-above (dasia): rough breathing
+#   - acute (oxia): acute accent
+#   - grave (varia): grave accent
+#   - greek-perispomeni: circumflex accent
+#   - greek-ypogegrammeni: iota subscript (lowercase)
+#   - breve (vrachy): short vowel mark
+#   - macron: long vowel mark
+#   - diaeresis (dialytika): diaeresis
+#
+# Local aliases for readability:
+#   psili = comma-above (smooth breathing)
+#   dasia = reversed-comma-above (rough breathing)
+#   oxia = acute
+#   varia = grave
+#   perispomeni = greek-perispomeni
+#   ypogegrammeni = greek-ypogegrammeni
+#   prosgegrammeni = greek-ypogegrammeni (capital form, same element)
+#   vrachy = breve
+#   dialytika = diaeresis
+#
+# Composition patterns:
+#   - Single diacritic: DIA(base, mark)
+#   - Double diacritics: DIA2(base, mark1, mark2)
+#   - Triple diacritics: DIA(DIA2(base, mark1, mark2), mark3)
+#
+# Organization:
+#   - Alpha with breathing/accents (U+1F00-U+1F0F)
+#   - Epsilon with breathing/accents (U+1F10-U+1F1D)
+#   - Eta with breathing/accents (U+1F20-U+1F2F)
+#   - Iota with breathing/accents (U+1F30-U+1F3F)
+#   - Omicron with breathing/accents (U+1F40-U+1F4D)
+#   - Upsilon with breathing/accents (U+1F50-U+1F5F)
+#   - Omega with breathing/accents (U+1F60-U+1F6F)
+#   - Vowels with varia/oxia only (U+1F70-U+1F7D)
+#   - Alpha/Eta/Omega with breathing and ypogegrammeni (U+1F80-U+1FAF)
+#   - Alpha extended forms (U+1FB0-U+1FBC)
+#   - Standalone diacritics (U+1FBD-U+1FC1)
+#   - Eta extended forms (U+1FC2-U+1FCC)
+#   - Diacritic combinations (U+1FCD-U+1FCF)
+#   - Iota extended forms (U+1FD0-U+1FDB)
+#   - Diacritic combinations (U+1FDD-U+1FDF)
+#   - Upsilon extended forms (U+1FE0-U+1FEC)
+#   - Diacritic combinations (U+1FED-U+1FEF)
+#   - Omega extended forms (U+1FF2-U+1FFC)
+#   - Standalone diacritics (U+1FFD-U+1FFE)
+#
+# =============================================================================
+
+# =============================================================================
+# LOCAL ELEMENT ALIASES
+# =============================================================================
+#
+# These aliases provide polytonic-specific names for the diacritics.
+# The underlying elements are defined in diacritics.lsdl.
+#
+# =============================================================================
+
+# Breathing marks
+@elem psili
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [6,0]
+p2 = C([6,0] [6,1])
+p3 = [6,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem dasia
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [6,0]
+p2 = C([6,0] [6,1])
+p3 = [6,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# Accent marks (aliases to standard diacritics)
+@elem oxia
+zone: diacritic-above
+path: p1 p2
+p1 = [5,2]
+p2 = [7,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem varia
+zone: diacritic-above
+path: p1 p2
+p1 = [7,2]
+p2 = [5,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem perispomeni
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [4,2]
+p2 = C([4,0] [6,0])
+p3 = C([8,0] [8,2])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem ypogegrammeni
+zone: diacritic-below
+path: p1 p2
+p1 = [6,9]
+p2 = [6,11]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+@elem vrachy
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [4,0]
+p2 = C([4,2] [6,2])
+p3 = C([8,2] [8,0])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem dialytika
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [4,1]
+p2 = C([4,1] [4,2])
+p3 = C([4,2] [4,2])
+p4 = C([4,2] [4,2])
+close: true
+width: 1
+anchors: attach=[6,2]
+@end
+
+# Combined diacritics for standalone marks
+@elem psili-varia
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [6,0]
+p2 = C([6,0] [6,1])
+p3 = [5,2]
+p4 = [3,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem psili-oxia
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [6,0]
+p2 = C([6,0] [6,1])
+p3 = [7,2]
+p4 = [9,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem psili-perispomeni
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [6,0]
+p2 = C([6,0] [6,1])
+p3 = [6,2]
+p4 = C([4,0] [6,0])
+p5 = C([8,0] [8,2])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem dasia-varia
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [6,0]
+p2 = C([6,0] [6,1])
+p3 = [5,2]
+p4 = [3,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem dasia-oxia
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [6,0]
+p2 = C([6,0] [6,1])
+p3 = [7,2]
+p4 = [9,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem dasia-perispomeni
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [6,0]
+p2 = C([6,0] [6,1])
+p3 = [6,2]
+p4 = C([4,0] [6,0])
+p5 = C([8,0] [8,2])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem dialytika-varia
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [4,1]
+p2 = C([4,1] [4,2])
+p3 = [8,1]
+p4 = [7,2]
+p5 = [5,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem dialytika-oxia
+zone: diacritic-above
+path: p1 p2 p3 p4 p5
+p1 = [4,1]
+p2 = C([4,1] [4,2])
+p3 = [8,1]
+p4 = [5,2]
+p5 = [7,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+@elem dialytika-perispomeni
+zone: diacritic-above
+path: p1 p2 p3 p4 p5 p6
+p1 = [4,1]
+p2 = C([4,1] [4,2])
+p3 = [8,1]
+p4 = [4,2]
+p5 = C([4,0] [6,0])
+p6 = C([8,0] [8,2])
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# =============================================================================
+# CASE MAPPINGS
+# =============================================================================
+
+# Alpha with breathing marks
+@case Ἀ ἀ
+@case Ἁ ἁ
+@case Ἂ ἂ
+@case Ἃ ἃ
+@case Ἄ ἄ
+@case Ἅ ἅ
+@case Ἆ ἆ
+@case Ἇ ἇ
+
+# Epsilon with breathing marks
+@case Ἐ ἐ
+@case Ἑ ἑ
+@case Ἒ ἒ
+@case Ἓ ἓ
+@case Ἔ ἔ
+@case Ἕ ἕ
+
+# Eta with breathing marks
+@case Ἠ ἠ
+@case Ἡ ἡ
+@case Ἢ ἢ
+@case Ἣ ἣ
+@case Ἤ ἤ
+@case Ἥ ἥ
+@case Ἦ ἦ
+@case Ἧ ἧ
+
+# Iota with breathing marks
+@case Ἰ ἰ
+@case Ἱ ἱ
+@case Ἲ ἲ
+@case Ἳ ἳ
+@case Ἴ ἴ
+@case Ἵ ἵ
+@case Ἶ ἶ
+@case Ἷ ἷ
+
+# Omicron with breathing marks
+@case Ὀ ὀ
+@case Ὁ ὁ
+@case Ὂ ὂ
+@case Ὃ ὃ
+@case Ὄ ὄ
+@case Ὅ ὅ
+
+# Upsilon with breathing marks (capital only has dasia)
+@case Ὑ ὑ
+@case Ὓ ὓ
+@case Ὕ ὕ
+@case Ὗ ὗ
+
+# Omega with breathing marks
+@case Ὠ ὠ
+@case Ὡ ὡ
+@case Ὢ ὢ
+@case Ὣ ὣ
+@case Ὤ ὤ
+@case Ὥ ὥ
+@case Ὦ ὦ
+@case Ὧ ὧ
+
+# Alpha with varia/oxia
+@case Ὰ ὰ
+@case Ά ά
+
+# Epsilon with varia/oxia
+@case Ὲ ὲ
+@case Έ έ
+
+# Eta with varia/oxia
+@case Ὴ ὴ
+@case Ή ή
+
+# Iota with varia/oxia
+@case Ὶ ὶ
+@case Ί ί
+
+# Omicron with varia/oxia
+@case Ὸ ὸ
+@case Ό ό
+
+# Upsilon with varia/oxia
+@case Ὺ ὺ
+@case Ύ ύ
+
+# Omega with varia/oxia
+@case Ὼ ὼ
+@case Ώ ώ
+
+# Alpha with breathing and ypogegrammeni/prosgegrammeni
+@case ᾈ ᾀ
+@case ᾉ ᾁ
+@case ᾊ ᾂ
+@case ᾋ ᾃ
+@case ᾌ ᾄ
+@case ᾍ ᾅ
+@case ᾎ ᾆ
+@case ᾏ ᾇ
+
+# Eta with breathing and ypogegrammeni/prosgegrammeni
+@case ᾘ ᾐ
+@case ᾙ ᾑ
+@case ᾚ ᾒ
+@case ᾛ ᾓ
+@case ᾜ ᾔ
+@case ᾝ ᾕ
+@case ᾞ ᾖ
+@case ᾟ ᾗ
+
+# Omega with breathing and ypogegrammeni/prosgegrammeni
+@case ᾨ ᾠ
+@case ᾩ ᾡ
+@case ᾪ ᾢ
+@case ᾫ ᾣ
+@case ᾬ ᾤ
+@case ᾭ ᾥ
+@case ᾮ ᾦ
+@case ᾯ ᾧ
+
+# Alpha with vrachy/macron
+@case Ᾰ ᾰ
+@case Ᾱ ᾱ
+
+# Alpha with prosgegrammeni
+@case ᾼ ᾳ
+
+# Eta with prosgegrammeni
+@case ῌ ῃ
+
+# Iota with vrachy/macron
+@case Ῐ ῐ
+@case Ῑ ῑ
+
+# Upsilon with vrachy/macron
+@case Ῠ ῠ
+@case Ῡ ῡ
+
+# Rho with dasia
+@case Ῥ ῥ
+
+# Omega with prosgegrammeni
+@case ῼ ῳ
+
+# =============================================================================
+# ALPHA WITH BREATHING MARKS (U+1F00-U+1F0F)
+# =============================================================================
+
+# Alpha with psili (smooth breathing)
+ἀ  GREEK-SMALL-ALPHA-PSILI = DIA(α, psili) script:Grek
+
+# Alpha with dasia (rough breathing)
+ἁ  GREEK-SMALL-ALPHA-DASIA = DIA(α, dasia) script:Grek
+
+# Alpha with psili and varia
+ἂ  GREEK-SMALL-ALPHA-PSILI-VARIA = DIA2(α, psili, varia) script:Grek
+
+# Alpha with dasia and varia
+ἃ  GREEK-SMALL-ALPHA-DASIA-VARIA = DIA2(α, dasia, varia) script:Grek
+
+# Alpha with psili and oxia
+ἄ  GREEK-SMALL-ALPHA-PSILI-OXIA = DIA2(α, psili, oxia) script:Grek
+
+# Alpha with dasia and oxia
+ἅ  GREEK-SMALL-ALPHA-DASIA-OXIA = DIA2(α, dasia, oxia) script:Grek
+
+# Alpha with psili and perispomeni
+ἆ  GREEK-SMALL-ALPHA-PSILI-PERISPOMENI = DIA2(α, psili, perispomeni) script:Grek
+
+# Alpha with dasia and perispomeni
+ἇ  GREEK-SMALL-ALPHA-DASIA-PERISPOMENI = DIA2(α, dasia, perispomeni) script:Grek
+
+# Capital alpha with psili
+Ἀ  GREEK-CAPITAL-ALPHA-PSILI = DIA(Α, psili) script:Grek
+
+# Capital alpha with dasia
+Ἁ  GREEK-CAPITAL-ALPHA-DASIA = DIA(Α, dasia) script:Grek
+
+# Capital alpha with psili and varia
+Ἂ  GREEK-CAPITAL-ALPHA-PSILI-VARIA = DIA2(Α, psili, varia) script:Grek
+
+# Capital alpha with dasia and varia
+Ἃ  GREEK-CAPITAL-ALPHA-DASIA-VARIA = DIA2(Α, dasia, varia) script:Grek
+
+# Capital alpha with psili and oxia
+Ἄ  GREEK-CAPITAL-ALPHA-PSILI-OXIA = DIA2(Α, psili, oxia) script:Grek
+
+# Capital alpha with dasia and oxia
+Ἅ  GREEK-CAPITAL-ALPHA-DASIA-OXIA = DIA2(Α, dasia, oxia) script:Grek
+
+# Capital alpha with psili and perispomeni
+Ἆ  GREEK-CAPITAL-ALPHA-PSILI-PERISPOMENI = DIA2(Α, psili, perispomeni) script:Grek
+
+# Capital alpha with dasia and perispomeni
+Ἇ  GREEK-CAPITAL-ALPHA-DASIA-PERISPOMENI = DIA2(Α, dasia, perispomeni) script:Grek
+
+# =============================================================================
+# EPSILON WITH BREATHING MARKS (U+1F10-U+1F1D)
+# =============================================================================
+
+# Epsilon with psili
+ἐ  GREEK-SMALL-EPSILON-PSILI = DIA(ε, psili) script:Grek
+
+# Epsilon with dasia
+ἑ  GREEK-SMALL-EPSILON-DASIA = DIA(ε, dasia) script:Grek
+
+# Epsilon with psili and varia
+ἒ  GREEK-SMALL-EPSILON-PSILI-VARIA = DIA2(ε, psili, varia) script:Grek
+
+# Epsilon with dasia and varia
+ἓ  GREEK-SMALL-EPSILON-DASIA-VARIA = DIA2(ε, dasia, varia) script:Grek
+
+# Epsilon with psili and oxia
+ἔ  GREEK-SMALL-EPSILON-PSILI-OXIA = DIA2(ε, psili, oxia) script:Grek
+
+# Epsilon with dasia and oxia
+ἕ  GREEK-SMALL-EPSILON-DASIA-OXIA = DIA2(ε, dasia, oxia) script:Grek
+
+# Capital epsilon with psili
+Ἐ  GREEK-CAPITAL-EPSILON-PSILI = DIA(Ε, psili) script:Grek
+
+# Capital epsilon with dasia
+Ἑ  GREEK-CAPITAL-EPSILON-DASIA = DIA(Ε, dasia) script:Grek
+
+# Capital epsilon with psili and varia
+Ἒ  GREEK-CAPITAL-EPSILON-PSILI-VARIA = DIA2(Ε, psili, varia) script:Grek
+
+# Capital epsilon with dasia and varia
+Ἓ  GREEK-CAPITAL-EPSILON-DASIA-VARIA = DIA2(Ε, dasia, varia) script:Grek
+
+# Capital epsilon with psili and oxia
+Ἔ  GREEK-CAPITAL-EPSILON-PSILI-OXIA = DIA2(Ε, psili, oxia) script:Grek
+
+# Capital epsilon with dasia and oxia
+Ἕ  GREEK-CAPITAL-EPSILON-DASIA-OXIA = DIA2(Ε, dasia, oxia) script:Grek
+
+# =============================================================================
+# ETA WITH BREATHING MARKS (U+1F20-U+1F2F)
+# =============================================================================
+
+# Eta with psili
+ἠ  GREEK-SMALL-ETA-PSILI = DIA(η, psili) script:Grek
+
+# Eta with dasia
+ἡ  GREEK-SMALL-ETA-DASIA = DIA(η, dasia) script:Grek
+
+# Eta with psili and varia
+ἢ  GREEK-SMALL-ETA-PSILI-VARIA = DIA2(η, psili, varia) script:Grek
+
+# Eta with dasia and varia
+ἣ  GREEK-SMALL-ETA-DASIA-VARIA = DIA2(η, dasia, varia) script:Grek
+
+# Eta with psili and oxia
+ἤ  GREEK-SMALL-ETA-PSILI-OXIA = DIA2(η, psili, oxia) script:Grek
+
+# Eta with dasia and oxia
+ἥ  GREEK-SMALL-ETA-DASIA-OXIA = DIA2(η, dasia, oxia) script:Grek
+
+# Eta with psili and perispomeni
+ἦ  GREEK-SMALL-ETA-PSILI-PERISPOMENI = DIA2(η, psili, perispomeni) script:Grek
+
+# Eta with dasia and perispomeni
+ἧ  GREEK-SMALL-ETA-DASIA-PERISPOMENI = DIA2(η, dasia, perispomeni) script:Grek
+
+# Capital eta with psili
+Ἠ  GREEK-CAPITAL-ETA-PSILI = DIA(Η, psili) script:Grek
+
+# Capital eta with dasia
+Ἡ  GREEK-CAPITAL-ETA-DASIA = DIA(Η, dasia) script:Grek
+
+# Capital eta with psili and varia
+Ἢ  GREEK-CAPITAL-ETA-PSILI-VARIA = DIA2(Η, psili, varia) script:Grek
+
+# Capital eta with dasia and varia
+Ἣ  GREEK-CAPITAL-ETA-DASIA-VARIA = DIA2(Η, dasia, varia) script:Grek
+
+# Capital eta with psili and oxia
+Ἤ  GREEK-CAPITAL-ETA-PSILI-OXIA = DIA2(Η, psili, oxia) script:Grek
+
+# Capital eta with dasia and oxia
+Ἥ  GREEK-CAPITAL-ETA-DASIA-OXIA = DIA2(Η, dasia, oxia) script:Grek
+
+# Capital eta with psili and perispomeni
+Ἦ  GREEK-CAPITAL-ETA-PSILI-PERISPOMENI = DIA2(Η, psili, perispomeni) script:Grek
+
+# Capital eta with dasia and perispomeni
+Ἧ  GREEK-CAPITAL-ETA-DASIA-PERISPOMENI = DIA2(Η, dasia, perispomeni) script:Grek
+
+# =============================================================================
+# IOTA WITH BREATHING MARKS (U+1F30-U+1F3F)
+# =============================================================================
+
+# Iota with psili
+ἰ  GREEK-SMALL-IOTA-PSILI = DIA(ι, psili) script:Grek
+
+# Iota with dasia
+ἱ  GREEK-SMALL-IOTA-DASIA = DIA(ι, dasia) script:Grek
+
+# Iota with psili and varia
+ἲ  GREEK-SMALL-IOTA-PSILI-VARIA = DIA2(ι, psili, varia) script:Grek
+
+# Iota with dasia and varia
+ἳ  GREEK-SMALL-IOTA-DASIA-VARIA = DIA2(ι, dasia, varia) script:Grek
+
+# Iota with psili and oxia
+ἴ  GREEK-SMALL-IOTA-PSILI-OXIA = DIA2(ι, psili, oxia) script:Grek
+
+# Iota with dasia and oxia
+ἵ  GREEK-SMALL-IOTA-DASIA-OXIA = DIA2(ι, dasia, oxia) script:Grek
+
+# Iota with psili and perispomeni
+ἶ  GREEK-SMALL-IOTA-PSILI-PERISPOMENI = DIA2(ι, psili, perispomeni) script:Grek
+
+# Iota with dasia and perispomeni
+ἷ  GREEK-SMALL-IOTA-DASIA-PERISPOMENI = DIA2(ι, dasia, perispomeni) script:Grek
+
+# Capital iota with psili
+Ἰ  GREEK-CAPITAL-IOTA-PSILI = DIA(Ι, psili) script:Grek
+
+# Capital iota with dasia
+Ἱ  GREEK-CAPITAL-IOTA-DASIA = DIA(Ι, dasia) script:Grek
+
+# Capital iota with psili and varia
+Ἲ  GREEK-CAPITAL-IOTA-PSILI-VARIA = DIA2(Ι, psili, varia) script:Grek
+
+# Capital iota with dasia and varia
+Ἳ  GREEK-CAPITAL-IOTA-DASIA-VARIA = DIA2(Ι, dasia, varia) script:Grek
+
+# Capital iota with psili and oxia
+Ἴ  GREEK-CAPITAL-IOTA-PSILI-OXIA = DIA2(Ι, psili, oxia) script:Grek
+
+# Capital iota with dasia and oxia
+Ἵ  GREEK-CAPITAL-IOTA-DASIA-OXIA = DIA2(Ι, dasia, oxia) script:Grek
+
+# Capital iota with psili and perispomeni
+Ἶ  GREEK-CAPITAL-IOTA-PSILI-PERISPOMENI = DIA2(Ι, psili, perispomeni) script:Grek
+
+# Capital iota with dasia and perispomeni
+Ἷ  GREEK-CAPITAL-IOTA-DASIA-PERISPOMENI = DIA2(Ι, dasia, perispomeni) script:Grek
+
+# =============================================================================
+# OMICRON WITH BREATHING MARKS (U+1F40-U+1F4D)
+# =============================================================================
+
+# Omicron with psili
+ὀ  GREEK-SMALL-OMICRON-PSILI = DIA(ο, psili) script:Grek
+
+# Omicron with dasia
+ὁ  GREEK-SMALL-OMICRON-DASIA = DIA(ο, dasia) script:Grek
+
+# Omicron with psili and varia
+ὂ  GREEK-SMALL-OMICRON-PSILI-VARIA = DIA2(ο, psili, varia) script:Grek
+
+# Omicron with dasia and varia
+ὃ  GREEK-SMALL-OMICRON-DASIA-VARIA = DIA2(ο, dasia, varia) script:Grek
+
+# Omicron with psili and oxia
+ὄ  GREEK-SMALL-OMICRON-PSILI-OXIA = DIA2(ο, psili, oxia) script:Grek
+
+# Omicron with dasia and oxia
+ὅ  GREEK-SMALL-OMICRON-DASIA-OXIA = DIA2(ο, dasia, oxia) script:Grek
+
+# Capital omicron with psili
+Ὀ  GREEK-CAPITAL-OMICRON-PSILI = DIA(Ο, psili) script:Grek
+
+# Capital omicron with dasia
+Ὁ  GREEK-CAPITAL-OMICRON-DASIA = DIA(Ο, dasia) script:Grek
+
+# Capital omicron with psili and varia
+Ὂ  GREEK-CAPITAL-OMICRON-PSILI-VARIA = DIA2(Ο, psili, varia) script:Grek
+
+# Capital omicron with dasia and varia
+Ὃ  GREEK-CAPITAL-OMICRON-DASIA-VARIA = DIA2(Ο, dasia, varia) script:Grek
+
+# Capital omicron with psili and oxia
+Ὄ  GREEK-CAPITAL-OMICRON-PSILI-OXIA = DIA2(Ο, psili, oxia) script:Grek
+
+# Capital omicron with dasia and oxia
+Ὅ  GREEK-CAPITAL-OMICRON-DASIA-OXIA = DIA2(Ο, dasia, oxia) script:Grek
+
+# =============================================================================
+# UPSILON WITH BREATHING MARKS (U+1F50-U+1F5F)
+# =============================================================================
+#
+# Note: Capital upsilon only has dasia forms (no psili) in classical Greek
+# because upsilon was always aspirated at word-initial position.
+#
+# =============================================================================
+
+# Upsilon with psili
+ὐ  GREEK-SMALL-UPSILON-PSILI = DIA(υ, psili) script:Grek
+
+# Upsilon with dasia
+ὑ  GREEK-SMALL-UPSILON-DASIA = DIA(υ, dasia) script:Grek
+
+# Upsilon with psili and varia
+ὒ  GREEK-SMALL-UPSILON-PSILI-VARIA = DIA2(υ, psili, varia) script:Grek
+
+# Upsilon with dasia and varia
+ὓ  GREEK-SMALL-UPSILON-DASIA-VARIA = DIA2(υ, dasia, varia) script:Grek
+
+# Upsilon with psili and oxia
+ὔ  GREEK-SMALL-UPSILON-PSILI-OXIA = DIA2(υ, psili, oxia) script:Grek
+
+# Upsilon with dasia and oxia
+ὕ  GREEK-SMALL-UPSILON-DASIA-OXIA = DIA2(υ, dasia, oxia) script:Grek
+
+# Upsilon with psili and perispomeni
+ὖ  GREEK-SMALL-UPSILON-PSILI-PERISPOMENI = DIA2(υ, psili, perispomeni) script:Grek
+
+# Upsilon with dasia and perispomeni
+ὗ  GREEK-SMALL-UPSILON-DASIA-PERISPOMENI = DIA2(υ, dasia, perispomeni) script:Grek
+
+# Capital upsilon with dasia (no psili form exists)
+Ὑ  GREEK-CAPITAL-UPSILON-DASIA = DIA(Υ, dasia) script:Grek
+
+# Capital upsilon with dasia and varia
+Ὓ  GREEK-CAPITAL-UPSILON-DASIA-VARIA = DIA2(Υ, dasia, varia) script:Grek
+
+# Capital upsilon with dasia and oxia
+Ὕ  GREEK-CAPITAL-UPSILON-DASIA-OXIA = DIA2(Υ, dasia, oxia) script:Grek
+
+# Capital upsilon with dasia and perispomeni
+Ὗ  GREEK-CAPITAL-UPSILON-DASIA-PERISPOMENI = DIA2(Υ, dasia, perispomeni) script:Grek
+
+# =============================================================================
+# OMEGA WITH BREATHING MARKS (U+1F60-U+1F6F)
+# =============================================================================
+
+# Omega with psili
+ὠ  GREEK-SMALL-OMEGA-PSILI = DIA(ω, psili) script:Grek
+
+# Omega with dasia
+ὡ  GREEK-SMALL-OMEGA-DASIA = DIA(ω, dasia) script:Grek
+
+# Omega with psili and varia
+ὢ  GREEK-SMALL-OMEGA-PSILI-VARIA = DIA2(ω, psili, varia) script:Grek
+
+# Omega with dasia and varia
+ὣ  GREEK-SMALL-OMEGA-DASIA-VARIA = DIA2(ω, dasia, varia) script:Grek
+
+# Omega with psili and oxia
+ὤ  GREEK-SMALL-OMEGA-PSILI-OXIA = DIA2(ω, psili, oxia) script:Grek
+
+# Omega with dasia and oxia
+ὥ  GREEK-SMALL-OMEGA-DASIA-OXIA = DIA2(ω, dasia, oxia) script:Grek
+
+# Omega with psili and perispomeni
+ὦ  GREEK-SMALL-OMEGA-PSILI-PERISPOMENI = DIA2(ω, psili, perispomeni) script:Grek
+
+# Omega with dasia and perispomeni
+ὧ  GREEK-SMALL-OMEGA-DASIA-PERISPOMENI = DIA2(ω, dasia, perispomeni) script:Grek
+
+# Capital omega with psili
+Ὠ  GREEK-CAPITAL-OMEGA-PSILI = DIA(Ω, psili) script:Grek
+
+# Capital omega with dasia
+Ὡ  GREEK-CAPITAL-OMEGA-DASIA = DIA(Ω, dasia) script:Grek
+
+# Capital omega with psili and varia
+Ὢ  GREEK-CAPITAL-OMEGA-PSILI-VARIA = DIA2(Ω, psili, varia) script:Grek
+
+# Capital omega with dasia and varia
+Ὣ  GREEK-CAPITAL-OMEGA-DASIA-VARIA = DIA2(Ω, dasia, varia) script:Grek
+
+# Capital omega with psili and oxia
+Ὤ  GREEK-CAPITAL-OMEGA-PSILI-OXIA = DIA2(Ω, psili, oxia) script:Grek
+
+# Capital omega with dasia and oxia
+Ὥ  GREEK-CAPITAL-OMEGA-DASIA-OXIA = DIA2(Ω, dasia, oxia) script:Grek
+
+# Capital omega with psili and perispomeni
+Ὦ  GREEK-CAPITAL-OMEGA-PSILI-PERISPOMENI = DIA2(Ω, psili, perispomeni) script:Grek
+
+# Capital omega with dasia and perispomeni
+Ὧ  GREEK-CAPITAL-OMEGA-DASIA-PERISPOMENI = DIA2(Ω, dasia, perispomeni) script:Grek
+
+# =============================================================================
+# VOWELS WITH VARIA/OXIA ONLY (U+1F70-U+1F7D)
+# =============================================================================
+
+# Alpha with varia
+ὰ  GREEK-SMALL-ALPHA-VARIA = DIA(α, varia) script:Grek
+
+# Alpha with oxia
+ά  GREEK-SMALL-ALPHA-OXIA = DIA(α, oxia) script:Grek
+
+# Epsilon with varia
+ὲ  GREEK-SMALL-EPSILON-VARIA = DIA(ε, varia) script:Grek
+
+# Epsilon with oxia
+έ  GREEK-SMALL-EPSILON-OXIA = DIA(ε, oxia) script:Grek
+
+# Eta with varia
+ὴ  GREEK-SMALL-ETA-VARIA = DIA(η, varia) script:Grek
+
+# Eta with oxia
+ή  GREEK-SMALL-ETA-OXIA = DIA(η, oxia) script:Grek
+
+# Iota with varia
+ὶ  GREEK-SMALL-IOTA-VARIA = DIA(ι, varia) script:Grek
+
+# Iota with oxia
+ί  GREEK-SMALL-IOTA-OXIA = DIA(ι, oxia) script:Grek
+
+# Omicron with varia
+ὸ  GREEK-SMALL-OMICRON-VARIA = DIA(ο, varia) script:Grek
+
+# Omicron with oxia
+ό  GREEK-SMALL-OMICRON-OXIA = DIA(ο, oxia) script:Grek
+
+# Upsilon with varia
+ὺ  GREEK-SMALL-UPSILON-VARIA = DIA(υ, varia) script:Grek
+
+# Upsilon with oxia
+ύ  GREEK-SMALL-UPSILON-OXIA = DIA(υ, oxia) script:Grek
+
+# Omega with varia
+ὼ  GREEK-SMALL-OMEGA-VARIA = DIA(ω, varia) script:Grek
+
+# Omega with oxia
+ώ  GREEK-SMALL-OMEGA-OXIA = DIA(ω, oxia) script:Grek
+
+# =============================================================================
+# ALPHA WITH BREATHING AND YPOGEGRAMMENI (U+1F80-U+1F8F)
+# =============================================================================
+
+# Alpha with psili and ypogegrammeni
+ᾀ  GREEK-SMALL-ALPHA-PSILI-YPOGEGRAMMENI = DIA2(α, psili, ypogegrammeni) script:Grek
+
+# Alpha with dasia and ypogegrammeni
+ᾁ  GREEK-SMALL-ALPHA-DASIA-YPOGEGRAMMENI = DIA2(α, dasia, ypogegrammeni) script:Grek
+
+# Alpha with psili, varia, and ypogegrammeni
+ᾂ  GREEK-SMALL-ALPHA-PSILI-VARIA-YPOGEGRAMMENI = DIA(DIA2(α, psili, varia), ypogegrammeni) script:Grek
+
+# Alpha with dasia, varia, and ypogegrammeni
+ᾃ  GREEK-SMALL-ALPHA-DASIA-VARIA-YPOGEGRAMMENI = DIA(DIA2(α, dasia, varia), ypogegrammeni) script:Grek
+
+# Alpha with psili, oxia, and ypogegrammeni
+ᾄ  GREEK-SMALL-ALPHA-PSILI-OXIA-YPOGEGRAMMENI = DIA(DIA2(α, psili, oxia), ypogegrammeni) script:Grek
+
+# Alpha with dasia, oxia, and ypogegrammeni
+ᾅ  GREEK-SMALL-ALPHA-DASIA-OXIA-YPOGEGRAMMENI = DIA(DIA2(α, dasia, oxia), ypogegrammeni) script:Grek
+
+# Alpha with psili, perispomeni, and ypogegrammeni
+ᾆ  GREEK-SMALL-ALPHA-PSILI-PERISPOMENI-YPOGEGRAMMENI = DIA(DIA2(α, psili, perispomeni), ypogegrammeni) script:Grek
+
+# Alpha with dasia, perispomeni, and ypogegrammeni
+ᾇ  GREEK-SMALL-ALPHA-DASIA-PERISPOMENI-YPOGEGRAMMENI = DIA(DIA2(α, dasia, perispomeni), ypogegrammeni) script:Grek
+
+# Capital alpha with psili and prosgegrammeni
+ᾈ  GREEK-CAPITAL-ALPHA-PSILI-PROSGEGRAMMENI = DIA2(Α, psili, ypogegrammeni) script:Grek
+
+# Capital alpha with dasia and prosgegrammeni
+ᾉ  GREEK-CAPITAL-ALPHA-DASIA-PROSGEGRAMMENI = DIA2(Α, dasia, ypogegrammeni) script:Grek
+
+# Capital alpha with psili, varia, and prosgegrammeni
+ᾊ  GREEK-CAPITAL-ALPHA-PSILI-VARIA-PROSGEGRAMMENI = DIA(DIA2(Α, psili, varia), ypogegrammeni) script:Grek
+
+# Capital alpha with dasia, varia, and prosgegrammeni
+ᾋ  GREEK-CAPITAL-ALPHA-DASIA-VARIA-PROSGEGRAMMENI = DIA(DIA2(Α, dasia, varia), ypogegrammeni) script:Grek
+
+# Capital alpha with psili, oxia, and prosgegrammeni
+ᾌ  GREEK-CAPITAL-ALPHA-PSILI-OXIA-PROSGEGRAMMENI = DIA(DIA2(Α, psili, oxia), ypogegrammeni) script:Grek
+
+# Capital alpha with dasia, oxia, and prosgegrammeni
+ᾍ  GREEK-CAPITAL-ALPHA-DASIA-OXIA-PROSGEGRAMMENI = DIA(DIA2(Α, dasia, oxia), ypogegrammeni) script:Grek
+
+# Capital alpha with psili, perispomeni, and prosgegrammeni
+ᾎ  GREEK-CAPITAL-ALPHA-PSILI-PERISPOMENI-PROSGEGRAMMENI = DIA(DIA2(Α, psili, perispomeni), ypogegrammeni) script:Grek
+
+# Capital alpha with dasia, perispomeni, and prosgegrammeni
+ᾏ  GREEK-CAPITAL-ALPHA-DASIA-PERISPOMENI-PROSGEGRAMMENI = DIA(DIA2(Α, dasia, perispomeni), ypogegrammeni) script:Grek
+
+# =============================================================================
+# ETA WITH BREATHING AND YPOGEGRAMMENI (U+1F90-U+1F9F)
+# =============================================================================
+
+# Eta with psili and ypogegrammeni
+ᾐ  GREEK-SMALL-ETA-PSILI-YPOGEGRAMMENI = DIA2(η, psili, ypogegrammeni) script:Grek
+
+# Eta with dasia and ypogegrammeni
+ᾑ  GREEK-SMALL-ETA-DASIA-YPOGEGRAMMENI = DIA2(η, dasia, ypogegrammeni) script:Grek
+
+# Eta with psili, varia, and ypogegrammeni
+ᾒ  GREEK-SMALL-ETA-PSILI-VARIA-YPOGEGRAMMENI = DIA(DIA2(η, psili, varia), ypogegrammeni) script:Grek
+
+# Eta with dasia, varia, and ypogegrammeni
+ᾓ  GREEK-SMALL-ETA-DASIA-VARIA-YPOGEGRAMMENI = DIA(DIA2(η, dasia, varia), ypogegrammeni) script:Grek
+
+# Eta with psili, oxia, and ypogegrammeni
+ᾔ  GREEK-SMALL-ETA-PSILI-OXIA-YPOGEGRAMMENI = DIA(DIA2(η, psili, oxia), ypogegrammeni) script:Grek
+
+# Eta with dasia, oxia, and ypogegrammeni
+ᾕ  GREEK-SMALL-ETA-DASIA-OXIA-YPOGEGRAMMENI = DIA(DIA2(η, dasia, oxia), ypogegrammeni) script:Grek
+
+# Eta with psili, perispomeni, and ypogegrammeni
+ᾖ  GREEK-SMALL-ETA-PSILI-PERISPOMENI-YPOGEGRAMMENI = DIA(DIA2(η, psili, perispomeni), ypogegrammeni) script:Grek
+
+# Eta with dasia, perispomeni, and ypogegrammeni
+ᾗ  GREEK-SMALL-ETA-DASIA-PERISPOMENI-YPOGEGRAMMENI = DIA(DIA2(η, dasia, perispomeni), ypogegrammeni) script:Grek
+
+# Capital eta with psili and prosgegrammeni
+ᾘ  GREEK-CAPITAL-ETA-PSILI-PROSGEGRAMMENI = DIA2(Η, psili, ypogegrammeni) script:Grek
+
+# Capital eta with dasia and prosgegrammeni
+ᾙ  GREEK-CAPITAL-ETA-DASIA-PROSGEGRAMMENI = DIA2(Η, dasia, ypogegrammeni) script:Grek
+
+# Capital eta with psili, varia, and prosgegrammeni
+ᾚ  GREEK-CAPITAL-ETA-PSILI-VARIA-PROSGEGRAMMENI = DIA(DIA2(Η, psili, varia), ypogegrammeni) script:Grek
+
+# Capital eta with dasia, varia, and prosgegrammeni
+ᾛ  GREEK-CAPITAL-ETA-DASIA-VARIA-PROSGEGRAMMENI = DIA(DIA2(Η, dasia, varia), ypogegrammeni) script:Grek
+
+# Capital eta with psili, oxia, and prosgegrammeni
+ᾜ  GREEK-CAPITAL-ETA-PSILI-OXIA-PROSGEGRAMMENI = DIA(DIA2(Η, psili, oxia), ypogegrammeni) script:Grek
+
+# Capital eta with dasia, oxia, and prosgegrammeni
+ᾝ  GREEK-CAPITAL-ETA-DASIA-OXIA-PROSGEGRAMMENI = DIA(DIA2(Η, dasia, oxia), ypogegrammeni) script:Grek
+
+# Capital eta with psili, perispomeni, and prosgegrammeni
+ᾞ  GREEK-CAPITAL-ETA-PSILI-PERISPOMENI-PROSGEGRAMMENI = DIA(DIA2(Η, psili, perispomeni), ypogegrammeni) script:Grek
+
+# Capital eta with dasia, perispomeni, and prosgegrammeni
+ᾟ  GREEK-CAPITAL-ETA-DASIA-PERISPOMENI-PROSGEGRAMMENI = DIA(DIA2(Η, dasia, perispomeni), ypogegrammeni) script:Grek
+
+# =============================================================================
+# OMEGA WITH BREATHING AND YPOGEGRAMMENI (U+1FA0-U+1FAF)
+# =============================================================================
+
+# Omega with psili and ypogegrammeni
+ᾠ  GREEK-SMALL-OMEGA-PSILI-YPOGEGRAMMENI = DIA2(ω, psili, ypogegrammeni) script:Grek
+
+# Omega with dasia and ypogegrammeni
+ᾡ  GREEK-SMALL-OMEGA-DASIA-YPOGEGRAMMENI = DIA2(ω, dasia, ypogegrammeni) script:Grek
+
+# Omega with psili, varia, and ypogegrammeni
+ᾢ  GREEK-SMALL-OMEGA-PSILI-VARIA-YPOGEGRAMMENI = DIA(DIA2(ω, psili, varia), ypogegrammeni) script:Grek
+
+# Omega with dasia, varia, and ypogegrammeni
+ᾣ  GREEK-SMALL-OMEGA-DASIA-VARIA-YPOGEGRAMMENI = DIA(DIA2(ω, dasia, varia), ypogegrammeni) script:Grek
+
+# Omega with psili, oxia, and ypogegrammeni
+ᾤ  GREEK-SMALL-OMEGA-PSILI-OXIA-YPOGEGRAMMENI = DIA(DIA2(ω, psili, oxia), ypogegrammeni) script:Grek
+
+# Omega with dasia, oxia, and ypogegrammeni
+ᾥ  GREEK-SMALL-OMEGA-DASIA-OXIA-YPOGEGRAMMENI = DIA(DIA2(ω, dasia, oxia), ypogegrammeni) script:Grek
+
+# Omega with psili, perispomeni, and ypogegrammeni
+ᾦ  GREEK-SMALL-OMEGA-PSILI-PERISPOMENI-YPOGEGRAMMENI = DIA(DIA2(ω, psili, perispomeni), ypogegrammeni) script:Grek
+
+# Omega with dasia, perispomeni, and ypogegrammeni
+ᾧ  GREEK-SMALL-OMEGA-DASIA-PERISPOMENI-YPOGEGRAMMENI = DIA(DIA2(ω, dasia, perispomeni), ypogegrammeni) script:Grek
+
+# Capital omega with psili and prosgegrammeni
+ᾨ  GREEK-CAPITAL-OMEGA-PSILI-PROSGEGRAMMENI = DIA2(Ω, psili, ypogegrammeni) script:Grek
+
+# Capital omega with dasia and prosgegrammeni
+ᾩ  GREEK-CAPITAL-OMEGA-DASIA-PROSGEGRAMMENI = DIA2(Ω, dasia, ypogegrammeni) script:Grek
+
+# Capital omega with psili, varia, and prosgegrammeni
+ᾪ  GREEK-CAPITAL-OMEGA-PSILI-VARIA-PROSGEGRAMMENI = DIA(DIA2(Ω, psili, varia), ypogegrammeni) script:Grek
+
+# Capital omega with dasia, varia, and prosgegrammeni
+ᾫ  GREEK-CAPITAL-OMEGA-DASIA-VARIA-PROSGEGRAMMENI = DIA(DIA2(Ω, dasia, varia), ypogegrammeni) script:Grek
+
+# Capital omega with psili, oxia, and prosgegrammeni
+ᾬ  GREEK-CAPITAL-OMEGA-PSILI-OXIA-PROSGEGRAMMENI = DIA(DIA2(Ω, psili, oxia), ypogegrammeni) script:Grek
+
+# Capital omega with dasia, oxia, and prosgegrammeni
+ᾭ  GREEK-CAPITAL-OMEGA-DASIA-OXIA-PROSGEGRAMMENI = DIA(DIA2(Ω, dasia, oxia), ypogegrammeni) script:Grek
+
+# Capital omega with psili, perispomeni, and prosgegrammeni
+ᾮ  GREEK-CAPITAL-OMEGA-PSILI-PERISPOMENI-PROSGEGRAMMENI = DIA(DIA2(Ω, psili, perispomeni), ypogegrammeni) script:Grek
+
+# Capital omega with dasia, perispomeni, and prosgegrammeni
+ᾯ  GREEK-CAPITAL-OMEGA-DASIA-PERISPOMENI-PROSGEGRAMMENI = DIA(DIA2(Ω, dasia, perispomeni), ypogegrammeni) script:Grek
+
+# =============================================================================
+# ALPHA EXTENDED FORMS (U+1FB0-U+1FBC)
+# =============================================================================
+
+# Alpha with vrachy (breve)
+ᾰ  GREEK-SMALL-ALPHA-VRACHY = DIA(α, vrachy) script:Grek
+
+# Alpha with macron
+ᾱ  GREEK-SMALL-ALPHA-MACRON = DIA(α, macron) script:Grek
+
+# Alpha with varia and ypogegrammeni
+ᾲ  GREEK-SMALL-ALPHA-VARIA-YPOGEGRAMMENI = DIA2(α, varia, ypogegrammeni) script:Grek
+
+# Alpha with ypogegrammeni
+ᾳ  GREEK-SMALL-ALPHA-YPOGEGRAMMENI = DIA(α, ypogegrammeni) script:Grek
+
+# Alpha with oxia and ypogegrammeni
+ᾴ  GREEK-SMALL-ALPHA-OXIA-YPOGEGRAMMENI = DIA2(α, oxia, ypogegrammeni) script:Grek
+
+# Alpha with perispomeni
+ᾶ  GREEK-SMALL-ALPHA-PERISPOMENI = DIA(α, perispomeni) script:Grek
+
+# Alpha with perispomeni and ypogegrammeni
+ᾷ  GREEK-SMALL-ALPHA-PERISPOMENI-YPOGEGRAMMENI = DIA2(α, perispomeni, ypogegrammeni) script:Grek
+
+# Capital alpha with vrachy
+Ᾰ  GREEK-CAPITAL-ALPHA-VRACHY = DIA(Α, vrachy) script:Grek
+
+# Capital alpha with macron
+Ᾱ  GREEK-CAPITAL-ALPHA-MACRON = DIA(Α, macron) script:Grek
+
+# Capital alpha with varia
+Ὰ  GREEK-CAPITAL-ALPHA-VARIA = DIA(Α, varia) script:Grek
+
+# Capital alpha with oxia
+Ά  GREEK-CAPITAL-ALPHA-OXIA = DIA(Α, oxia) script:Grek
+
+# Capital alpha with prosgegrammeni
+ᾼ  GREEK-CAPITAL-ALPHA-PROSGEGRAMMENI = DIA(Α, ypogegrammeni) script:Grek
+
+# =============================================================================
+# STANDALONE DIACRITICS (U+1FBD-U+1FC1)
+# =============================================================================
+
+# Greek koronis (same as psili, used for crasis)
+᾽  GREEK-KORONIS = psili script:Grek
+
+# Greek prosgegrammeni (adscript iota, used after capitals)
+ι  GREEK-PROSGEGRAMMENI = ypogegrammeni script:Grek
+
+# Greek psili (smooth breathing mark, standalone)
+᾿  GREEK-PSILI = psili script:Grek
+
+# Greek perispomeni (circumflex accent, standalone)
+῀  GREEK-PERISPOMENI = perispomeni script:Grek
+
+# Greek dialytika and perispomeni
+῁  GREEK-DIALYTIKA-PERISPOMENI = dialytika-perispomeni script:Grek
+
+# =============================================================================
+# ETA EXTENDED FORMS (U+1FC2-U+1FCC)
+# =============================================================================
+
+# Eta with varia and ypogegrammeni
+ῂ  GREEK-SMALL-ETA-VARIA-YPOGEGRAMMENI = DIA2(η, varia, ypogegrammeni) script:Grek
+
+# Eta with ypogegrammeni
+ῃ  GREEK-SMALL-ETA-YPOGEGRAMMENI = DIA(η, ypogegrammeni) script:Grek
+
+# Eta with oxia and ypogegrammeni
+ῄ  GREEK-SMALL-ETA-OXIA-YPOGEGRAMMENI = DIA2(η, oxia, ypogegrammeni) script:Grek
+
+# Eta with perispomeni
+ῆ  GREEK-SMALL-ETA-PERISPOMENI = DIA(η, perispomeni) script:Grek
+
+# Eta with perispomeni and ypogegrammeni
+ῇ  GREEK-SMALL-ETA-PERISPOMENI-YPOGEGRAMMENI = DIA2(η, perispomeni, ypogegrammeni) script:Grek
+
+# Capital epsilon with varia
+Ὲ  GREEK-CAPITAL-EPSILON-VARIA = DIA(Ε, varia) script:Grek
+
+# Capital epsilon with oxia
+Έ  GREEK-CAPITAL-EPSILON-OXIA = DIA(Ε, oxia) script:Grek
+
+# Capital eta with varia
+Ὴ  GREEK-CAPITAL-ETA-VARIA = DIA(Η, varia) script:Grek
+
+# Capital eta with oxia
+Ή  GREEK-CAPITAL-ETA-OXIA = DIA(Η, oxia) script:Grek
+
+# Capital eta with prosgegrammeni
+ῌ  GREEK-CAPITAL-ETA-PROSGEGRAMMENI = DIA(Η, ypogegrammeni) script:Grek
+
+# =============================================================================
+# DIACRITIC COMBINATIONS (U+1FCD-U+1FCF)
+# =============================================================================
+
+# Greek psili and varia (standalone)
+῍  GREEK-PSILI-VARIA = psili-varia script:Grek
+
+# Greek psili and oxia (standalone)
+῎  GREEK-PSILI-OXIA = psili-oxia script:Grek
+
+# Greek psili and perispomeni (standalone)
+῏  GREEK-PSILI-PERISPOMENI = psili-perispomeni script:Grek
+
+# =============================================================================
+# IOTA EXTENDED FORMS (U+1FD0-U+1FDB)
+# =============================================================================
+
+# Iota with vrachy
+ῐ  GREEK-SMALL-IOTA-VRACHY = DIA(ι, vrachy) script:Grek
+
+# Iota with macron
+ῑ  GREEK-SMALL-IOTA-MACRON = DIA(ι, macron) script:Grek
+
+# Iota with dialytika and varia
+ῒ  GREEK-SMALL-IOTA-DIALYTIKA-VARIA = DIA2(ι, dialytika, varia) script:Grek
+
+# Iota with dialytika and oxia
+ΐ  GREEK-SMALL-IOTA-DIALYTIKA-OXIA = DIA2(ι, dialytika, oxia) script:Grek
+
+# Iota with perispomeni
+ῖ  GREEK-SMALL-IOTA-PERISPOMENI = DIA(ι, perispomeni) script:Grek
+
+# Iota with dialytika and perispomeni
+ῗ  GREEK-SMALL-IOTA-DIALYTIKA-PERISPOMENI = DIA2(ι, dialytika, perispomeni) script:Grek
+
+# Capital iota with vrachy
+Ῐ  GREEK-CAPITAL-IOTA-VRACHY = DIA(Ι, vrachy) script:Grek
+
+# Capital iota with macron
+Ῑ  GREEK-CAPITAL-IOTA-MACRON = DIA(Ι, macron) script:Grek
+
+# Capital iota with varia
+Ὶ  GREEK-CAPITAL-IOTA-VARIA = DIA(Ι, varia) script:Grek
+
+# Capital iota with oxia
+Ί  GREEK-CAPITAL-IOTA-OXIA = DIA(Ι, oxia) script:Grek
+
+# =============================================================================
+# DIACRITIC COMBINATIONS (U+1FDD-U+1FDF)
+# =============================================================================
+
+# Greek dasia and varia (standalone)
+῝  GREEK-DASIA-VARIA = dasia-varia script:Grek
+
+# Greek dasia and oxia (standalone)
+῞  GREEK-DASIA-OXIA = dasia-oxia script:Grek
+
+# Greek dasia and perispomeni (standalone)
+῟  GREEK-DASIA-PERISPOMENI = dasia-perispomeni script:Grek
+
+# =============================================================================
+# UPSILON EXTENDED FORMS (U+1FE0-U+1FEC)
+# =============================================================================
+
+# Upsilon with vrachy
+ῠ  GREEK-SMALL-UPSILON-VRACHY = DIA(υ, vrachy) script:Grek
+
+# Upsilon with macron
+ῡ  GREEK-SMALL-UPSILON-MACRON = DIA(υ, macron) script:Grek
+
+# Upsilon with dialytika and varia
+ῢ  GREEK-SMALL-UPSILON-DIALYTIKA-VARIA = DIA2(υ, dialytika, varia) script:Grek
+
+# Upsilon with dialytika and oxia
+ΰ  GREEK-SMALL-UPSILON-DIALYTIKA-OXIA = DIA2(υ, dialytika, oxia) script:Grek
+
+# Rho with psili
+ῤ  GREEK-SMALL-RHO-PSILI = DIA(ρ, psili) script:Grek
+
+# Rho with dasia
+ῥ  GREEK-SMALL-RHO-DASIA = DIA(ρ, dasia) script:Grek
+
+# Upsilon with perispomeni
+ῦ  GREEK-SMALL-UPSILON-PERISPOMENI = DIA(υ, perispomeni) script:Grek
+
+# Upsilon with dialytika and perispomeni
+ῧ  GREEK-SMALL-UPSILON-DIALYTIKA-PERISPOMENI = DIA2(υ, dialytika, perispomeni) script:Grek
+
+# Capital upsilon with vrachy
+Ῠ  GREEK-CAPITAL-UPSILON-VRACHY = DIA(Υ, vrachy) script:Grek
+
+# Capital upsilon with macron
+Ῡ  GREEK-CAPITAL-UPSILON-MACRON = DIA(Υ, macron) script:Grek
+
+# Capital upsilon with varia
+Ὺ  GREEK-CAPITAL-UPSILON-VARIA = DIA(Υ, varia) script:Grek
+
+# Capital upsilon with oxia
+Ύ  GREEK-CAPITAL-UPSILON-OXIA = DIA(Υ, oxia) script:Grek
+
+# Capital rho with dasia
+Ῥ  GREEK-CAPITAL-RHO-DASIA = DIA(Ρ, dasia) script:Grek
+
+# =============================================================================
+# DIACRITIC COMBINATIONS (U+1FED-U+1FEF)
+# =============================================================================
+
+# Greek dialytika and varia (standalone)
+῭  GREEK-DIALYTIKA-VARIA = dialytika-varia script:Grek
+
+# Greek dialytika and oxia (standalone)
+΅  GREEK-DIALYTIKA-OXIA = dialytika-oxia script:Grek
+
+# Greek varia (standalone grave accent)
+`  GREEK-VARIA = varia script:Grek
+
+# =============================================================================
+# OMEGA EXTENDED FORMS (U+1FF2-U+1FFC)
+# =============================================================================
+
+# Omega with varia and ypogegrammeni
+ῲ  GREEK-SMALL-OMEGA-VARIA-YPOGEGRAMMENI = DIA2(ω, varia, ypogegrammeni) script:Grek
+
+# Omega with ypogegrammeni
+ῳ  GREEK-SMALL-OMEGA-YPOGEGRAMMENI = DIA(ω, ypogegrammeni) script:Grek
+
+# Omega with oxia and ypogegrammeni
+ῴ  GREEK-SMALL-OMEGA-OXIA-YPOGEGRAMMENI = DIA2(ω, oxia, ypogegrammeni) script:Grek
+
+# Omega with perispomeni
+ῶ  GREEK-SMALL-OMEGA-PERISPOMENI = DIA(ω, perispomeni) script:Grek
+
+# Omega with perispomeni and ypogegrammeni
+ῷ  GREEK-SMALL-OMEGA-PERISPOMENI-YPOGEGRAMMENI = DIA2(ω, perispomeni, ypogegrammeni) script:Grek
+
+# Capital omicron with varia
+Ὸ  GREEK-CAPITAL-OMICRON-VARIA = DIA(Ο, varia) script:Grek
+
+# Capital omicron with oxia
+Ό  GREEK-CAPITAL-OMICRON-OXIA = DIA(Ο, oxia) script:Grek
+
+# Capital omega with varia
+Ὼ  GREEK-CAPITAL-OMEGA-VARIA = DIA(Ω, varia) script:Grek
+
+# Capital omega with oxia
+Ώ  GREEK-CAPITAL-OMEGA-OXIA = DIA(Ω, oxia) script:Grek
+
+# Capital omega with prosgegrammeni
+ῼ  GREEK-CAPITAL-OMEGA-PROSGEGRAMMENI = DIA(Ω, ypogegrammeni) script:Grek
+
+# =============================================================================
+# STANDALONE DIACRITICS (U+1FFD-U+1FFE)
+# =============================================================================
+
+# Greek oxia (standalone acute accent)
+´  GREEK-OXIA = oxia script:Grek
+
+# Greek dasia (standalone rough breathing)
+῾  GREEK-DASIA = dasia script:Grek
+
+# =============================================================================
+# END OF GREEK EXTENDED CHARACTER LIBRARY
+# =============================================================================

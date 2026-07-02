@@ -1,0 +1,3351 @@
+{
+  "source": "Unicode confusables.txt (UTS #39)",
+  "version": "17.0.0",
+  "description": "Cross-script confusable character groups for Latin/Greek/Cyrillic",
+  "total_groups": 119,
+  "groups": [
+    {
+      "target": "'",
+      "target_codepoints": [
+        "U+0027"
+      ],
+      "members": [
+        {
+          "char": "`",
+          "codepoint": "U+0060",
+          "script": "Latin"
+        },
+        {
+          "char": "ʹ",
+          "codepoint": "U+0374",
+          "script": "Greek"
+        },
+        {
+          "char": "΄",
+          "codepoint": "U+0384",
+          "script": "Greek"
+        },
+        {
+          "char": "᾽",
+          "codepoint": "U+1FBD",
+          "script": "Greek"
+        },
+        {
+          "char": "᾿",
+          "codepoint": "U+1FBF",
+          "script": "Greek"
+        },
+        {
+          "char": "`",
+          "codepoint": "U+1FEF",
+          "script": "Greek"
+        },
+        {
+          "char": "´",
+          "codepoint": "U+1FFD",
+          "script": "Greek"
+        },
+        {
+          "char": "῾",
+          "codepoint": "U+1FFE",
+          "script": "Greek"
+        },
+        {
+          "char": "ꞌ",
+          "codepoint": "U+A78C",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "O̵",
+      "target_codepoints": [
+        "U+004F",
+        "U+0335"
+      ],
+      "members": [
+        {
+          "char": "O",
+          "codepoint": "U+004F",
+          "script": "Latin"
+        },
+        {
+          "char": "Ɵ",
+          "codepoint": "U+019F",
+          "script": "Latin"
+        },
+        {
+          "char": "Θ",
+          "codepoint": "U+0398",
+          "script": "Greek"
+        },
+        {
+          "char": "θ",
+          "codepoint": "U+03B8",
+          "script": "Greek"
+        },
+        {
+          "char": "ϑ",
+          "codepoint": "U+03D1",
+          "script": "Greek"
+        },
+        {
+          "char": "ϴ",
+          "codepoint": "U+03F4",
+          "script": "Greek"
+        },
+        {
+          "char": "Ѳ",
+          "codepoint": "U+0472",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "Ө",
+          "codepoint": "U+04E8",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "Ꝋ",
+          "codepoint": "U+A74A",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "l",
+      "target_codepoints": [
+        "U+006C"
+      ],
+      "members": [
+        {
+          "char": "I",
+          "codepoint": "U+0049",
+          "script": "Latin"
+        },
+        {
+          "char": "l",
+          "codepoint": "U+006C",
+          "script": "Latin"
+        },
+        {
+          "char": "Ɩ",
+          "codepoint": "U+0196",
+          "script": "Latin"
+        },
+        {
+          "char": "ǀ",
+          "codepoint": "U+01C0",
+          "script": "Latin"
+        },
+        {
+          "char": "Ι",
+          "codepoint": "U+0399",
+          "script": "Greek"
+        },
+        {
+          "char": "І",
+          "codepoint": "U+0406",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "Ӏ",
+          "codepoint": "U+04C0",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "ӏ",
+          "codepoint": "U+04CF",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "i",
+      "target_codepoints": [
+        "U+0069"
+      ],
+      "members": [
+        {
+          "char": "i",
+          "codepoint": "U+0069",
+          "script": "Latin"
+        },
+        {
+          "char": "ı",
+          "codepoint": "U+0131",
+          "script": "Latin"
+        },
+        {
+          "char": "ͺ",
+          "codepoint": "U+037A",
+          "script": "Greek"
+        },
+        {
+          "char": "ι",
+          "codepoint": "U+03B9",
+          "script": "Greek"
+        },
+        {
+          "char": "і",
+          "codepoint": "U+0456",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "ι",
+          "codepoint": "U+1FBE",
+          "script": "Greek"
+        },
+        {
+          "char": "ꙇ",
+          "codepoint": "U+A647",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "p",
+      "target_codepoints": [
+        "U+0070"
+      ],
+      "members": [
+        {
+          "char": "p",
+          "codepoint": "U+0070",
+          "script": "Latin"
+        },
+        {
+          "char": "þ",
+          "codepoint": "U+00FE",
+          "script": "Latin"
+        },
+        {
+          "char": "ƿ",
+          "codepoint": "U+01BF",
+          "script": "Latin"
+        },
+        {
+          "char": "ρ",
+          "codepoint": "U+03C1",
+          "script": "Greek"
+        },
+        {
+          "char": "ϱ",
+          "codepoint": "U+03F1",
+          "script": "Greek"
+        },
+        {
+          "char": "ϸ",
+          "codepoint": "U+03F8",
+          "script": "Greek"
+        },
+        {
+          "char": "р",
+          "codepoint": "U+0440",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "3",
+      "target_codepoints": [
+        "U+0033"
+      ],
+      "members": [
+        {
+          "char": "Ʒ",
+          "codepoint": "U+01B7",
+          "script": "Latin"
+        },
+        {
+          "char": "Ȝ",
+          "codepoint": "U+021C",
+          "script": "Latin"
+        },
+        {
+          "char": "З",
+          "codepoint": "U+0417",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "Ӡ",
+          "codepoint": "U+04E0",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "Ꝫ",
+          "codepoint": "U+A76A",
+          "script": "Latin"
+        },
+        {
+          "char": "Ɜ",
+          "codepoint": "U+A7AB",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "b̵",
+      "target_codepoints": [
+        "U+0062",
+        "U+0335"
+      ],
+      "members": [
+        {
+          "char": "b",
+          "codepoint": "U+0062",
+          "script": "Latin"
+        },
+        {
+          "char": "ƀ",
+          "codepoint": "U+0180",
+          "script": "Latin"
+        },
+        {
+          "char": "Ѣ",
+          "codepoint": "U+0462",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "ѣ",
+          "codepoint": "U+0463",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "Ҍ",
+          "codepoint": "U+048C",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "ҍ",
+          "codepoint": "U+048D",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "o",
+      "target_codepoints": [
+        "U+006F"
+      ],
+      "members": [
+        {
+          "char": "o",
+          "codepoint": "U+006F",
+          "script": "Latin"
+        },
+        {
+          "char": "ο",
+          "codepoint": "U+03BF",
+          "script": "Greek"
+        },
+        {
+          "char": "σ",
+          "codepoint": "U+03C3",
+          "script": "Greek"
+        },
+        {
+          "char": "ϭ",
+          "codepoint": "U+03ED",
+          "script": "Greek"
+        },
+        {
+          "char": "о",
+          "codepoint": "U+043E",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "ꬽ",
+          "codepoint": "U+AB3D",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "ß",
+      "target_codepoints": [
+        "U+00DF"
+      ],
+      "members": [
+        {
+          "char": "ß",
+          "codepoint": "U+00DF",
+          "script": "Latin"
+        },
+        {
+          "char": "β",
+          "codepoint": "U+03B2",
+          "script": "Greek"
+        },
+        {
+          "char": "ϐ",
+          "codepoint": "U+03D0",
+          "script": "Greek"
+        },
+        {
+          "char": "ẞ",
+          "codepoint": "U+1E9E",
+          "script": "Latin"
+        },
+        {
+          "char": "ꞵ",
+          "codepoint": "U+A7B5",
+          "script": "Latin"
+        },
+        {
+          "char": "Ꟗ",
+          "codepoint": "U+A7D6",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "y",
+      "target_codepoints": [
+        "U+0079"
+      ],
+      "members": [
+        {
+          "char": "y",
+          "codepoint": "U+0079",
+          "script": "Latin"
+        },
+        {
+          "char": "γ",
+          "codepoint": "U+03B3",
+          "script": "Greek"
+        },
+        {
+          "char": "у",
+          "codepoint": "U+0443",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "ү",
+          "codepoint": "U+04AF",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "ỿ",
+          "codepoint": "U+1EFF",
+          "script": "Latin"
+        },
+        {
+          "char": "ꭚ",
+          "codepoint": "U+AB5A",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "ꞓ",
+      "target_codepoints": [
+        "U+A793"
+      ],
+      "members": [
+        {
+          "char": "ε",
+          "codepoint": "U+03B5",
+          "script": "Greek"
+        },
+        {
+          "char": "ϵ",
+          "codepoint": "U+03F5",
+          "script": "Greek"
+        },
+        {
+          "char": "є",
+          "codepoint": "U+0454",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "ԑ",
+          "codepoint": "U+0511",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "ꞓ",
+          "codepoint": "U+A793",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "u",
+      "target_codepoints": [
+        "U+0075"
+      ],
+      "members": [
+        {
+          "char": "u",
+          "codepoint": "U+0075",
+          "script": "Latin"
+        },
+        {
+          "char": "υ",
+          "codepoint": "U+03C5",
+          "script": "Greek"
+        },
+        {
+          "char": "ꞟ",
+          "codepoint": "U+A79F",
+          "script": "Latin"
+        },
+        {
+          "char": "ꭎ",
+          "codepoint": "U+AB4E",
+          "script": "Latin"
+        },
+        {
+          "char": "ꭒ",
+          "codepoint": "U+AB52",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "Y",
+      "target_codepoints": [
+        "U+0059"
+      ],
+      "members": [
+        {
+          "char": "Y",
+          "codepoint": "U+0059",
+          "script": "Latin"
+        },
+        {
+          "char": "Υ",
+          "codepoint": "U+03A5",
+          "script": "Greek"
+        },
+        {
+          "char": "ϒ",
+          "codepoint": "U+03D2",
+          "script": "Greek"
+        },
+        {
+          "char": "У",
+          "codepoint": "U+0423",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "Ү",
+          "codepoint": "U+04AE",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "2",
+      "target_codepoints": [
+        "U+0032"
+      ],
+      "members": [
+        {
+          "char": "Ƨ",
+          "codepoint": "U+01A7",
+          "script": "Latin"
+        },
+        {
+          "char": "Ϩ",
+          "codepoint": "U+03E8",
+          "script": "Greek"
+        },
+        {
+          "char": "Ꙅ",
+          "codepoint": "U+A644",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "Ꝛ",
+          "codepoint": "U+A75A",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "ae",
+      "target_codepoints": [
+        "U+0061",
+        "U+0065"
+      ],
+      "members": [
+        {
+          "char": "a",
+          "codepoint": "U+0061",
+          "script": "Latin"
+        },
+        {
+          "char": "e",
+          "codepoint": "U+0065",
+          "script": "Latin"
+        },
+        {
+          "char": "æ",
+          "codepoint": "U+00E6",
+          "script": "Latin"
+        },
+        {
+          "char": "ӕ",
+          "codepoint": "U+04D5",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "AE",
+      "target_codepoints": [
+        "U+0041",
+        "U+0045"
+      ],
+      "members": [
+        {
+          "char": "A",
+          "codepoint": "U+0041",
+          "script": "Latin"
+        },
+        {
+          "char": "E",
+          "codepoint": "U+0045",
+          "script": "Latin"
+        },
+        {
+          "char": "Æ",
+          "codepoint": "U+00C6",
+          "script": "Latin"
+        },
+        {
+          "char": "Ӕ",
+          "codepoint": "U+04D4",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "B",
+      "target_codepoints": [
+        "U+0042"
+      ],
+      "members": [
+        {
+          "char": "B",
+          "codepoint": "U+0042",
+          "script": "Latin"
+        },
+        {
+          "char": "Β",
+          "codepoint": "U+0392",
+          "script": "Greek"
+        },
+        {
+          "char": "В",
+          "codepoint": "U+0412",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "Ꞵ",
+          "codepoint": "U+A7B4",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "b̄",
+      "target_codepoints": [
+        "U+0062",
+        "U+0304"
+      ],
+      "members": [
+        {
+          "char": "b",
+          "codepoint": "U+0062",
+          "script": "Latin"
+        },
+        {
+          "char": "Ƃ",
+          "codepoint": "U+0182",
+          "script": "Latin"
+        },
+        {
+          "char": "ƃ",
+          "codepoint": "U+0183",
+          "script": "Latin"
+        },
+        {
+          "char": "Б",
+          "codepoint": "U+0411",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "e",
+      "target_codepoints": [
+        "U+0065"
+      ],
+      "members": [
+        {
+          "char": "e",
+          "codepoint": "U+0065",
+          "script": "Latin"
+        },
+        {
+          "char": "е",
+          "codepoint": "U+0435",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "ҽ",
+          "codepoint": "U+04BD",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "ꬲ",
+          "codepoint": "U+AB32",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "J",
+      "target_codepoints": [
+        "U+004A"
+      ],
+      "members": [
+        {
+          "char": "J",
+          "codepoint": "U+004A",
+          "script": "Latin"
+        },
+        {
+          "char": "Ϳ",
+          "codepoint": "U+037F",
+          "script": "Greek"
+        },
+        {
+          "char": "Ј",
+          "codepoint": "U+0408",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "Ʝ",
+          "codepoint": "U+A7B2",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "M",
+      "target_codepoints": [
+        "U+004D"
+      ],
+      "members": [
+        {
+          "char": "M",
+          "codepoint": "U+004D",
+          "script": "Latin"
+        },
+        {
+          "char": "Μ",
+          "codepoint": "U+039C",
+          "script": "Greek"
+        },
+        {
+          "char": "Ϻ",
+          "codepoint": "U+03FA",
+          "script": "Greek"
+        },
+        {
+          "char": "М",
+          "codepoint": "U+041C",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "n̩",
+      "target_codepoints": [
+        "U+006E",
+        "U+0329"
+      ],
+      "members": [
+        {
+          "char": "n",
+          "codepoint": "U+006E",
+          "script": "Latin"
+        },
+        {
+          "char": "ŋ",
+          "codepoint": "U+014B",
+          "script": "Latin"
+        },
+        {
+          "char": "ƞ",
+          "codepoint": "U+019E",
+          "script": "Latin"
+        },
+        {
+          "char": "η",
+          "codepoint": "U+03B7",
+          "script": "Greek"
+        }
+      ],
+      "scripts": [
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "o̵",
+      "target_codepoints": [
+        "U+006F",
+        "U+0335"
+      ],
+      "members": [
+        {
+          "char": "o",
+          "codepoint": "U+006F",
+          "script": "Latin"
+        },
+        {
+          "char": "ѳ",
+          "codepoint": "U+0473",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "ө",
+          "codepoint": "U+04E9",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "ꝋ",
+          "codepoint": "U+A74B",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "ĸ",
+      "target_codepoints": [
+        "U+0138"
+      ],
+      "members": [
+        {
+          "char": "ĸ",
+          "codepoint": "U+0138",
+          "script": "Latin"
+        },
+        {
+          "char": "κ",
+          "codepoint": "U+03BA",
+          "script": "Greek"
+        },
+        {
+          "char": "ϰ",
+          "codepoint": "U+03F0",
+          "script": "Greek"
+        },
+        {
+          "char": "к",
+          "codepoint": "U+043A",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "r",
+      "target_codepoints": [
+        "U+0072"
+      ],
+      "members": [
+        {
+          "char": "r",
+          "codepoint": "U+0072",
+          "script": "Latin"
+        },
+        {
+          "char": "г",
+          "codepoint": "U+0433",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "ꭇ",
+          "codepoint": "U+AB47",
+          "script": "Latin"
+        },
+        {
+          "char": "ꭈ",
+          "codepoint": "U+AB48",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "s",
+      "target_codepoints": [
+        "U+0073"
+      ],
+      "members": [
+        {
+          "char": "s",
+          "codepoint": "U+0073",
+          "script": "Latin"
+        },
+        {
+          "char": "ƽ",
+          "codepoint": "U+01BD",
+          "script": "Latin"
+        },
+        {
+          "char": "ѕ",
+          "codepoint": "U+0455",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "ꜱ",
+          "codepoint": "U+A731",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "Ʌ",
+      "target_codepoints": [
+        "U+0245"
+      ],
+      "members": [
+        {
+          "char": "Ʌ",
+          "codepoint": "U+0245",
+          "script": "Latin"
+        },
+        {
+          "char": "Λ",
+          "codepoint": "U+039B",
+          "script": "Greek"
+        },
+        {
+          "char": "Л",
+          "codepoint": "U+041B",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "Ꟛ",
+          "codepoint": "U+A7DA",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "w",
+      "target_codepoints": [
+        "U+0077"
+      ],
+      "members": [
+        {
+          "char": "w",
+          "codepoint": "U+0077",
+          "script": "Latin"
+        },
+        {
+          "char": "ш",
+          "codepoint": "U+0448",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "ѡ",
+          "codepoint": "U+0461",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "ԝ",
+          "codepoint": "U+051D",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "w҆҇",
+      "target_codepoints": [
+        "U+0077",
+        "U+0486",
+        "U+0487"
+      ],
+      "members": [
+        {
+          "char": "w",
+          "codepoint": "U+0077",
+          "script": "Latin"
+        },
+        {
+          "char": "ѽ",
+          "codepoint": "U+047D",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "҆",
+          "codepoint": "U+0486",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "҇",
+          "codepoint": "U+0487",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "X",
+      "target_codepoints": [
+        "U+0058"
+      ],
+      "members": [
+        {
+          "char": "X",
+          "codepoint": "U+0058",
+          "script": "Latin"
+        },
+        {
+          "char": "Χ",
+          "codepoint": "U+03A7",
+          "script": "Greek"
+        },
+        {
+          "char": "Х",
+          "codepoint": "U+0425",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "Ꭓ",
+          "codepoint": "U+A7B3",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "ˉbi",
+      "target_codepoints": [
+        "U+02C9",
+        "U+0062",
+        "U+0069"
+      ],
+      "members": [
+        {
+          "char": "b",
+          "codepoint": "U+0062",
+          "script": "Latin"
+        },
+        {
+          "char": "i",
+          "codepoint": "U+0069",
+          "script": "Latin"
+        },
+        {
+          "char": "ꙑ",
+          "codepoint": "U+A651",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "a",
+      "target_codepoints": [
+        "U+0061"
+      ],
+      "members": [
+        {
+          "char": "a",
+          "codepoint": "U+0061",
+          "script": "Latin"
+        },
+        {
+          "char": "α",
+          "codepoint": "U+03B1",
+          "script": "Greek"
+        },
+        {
+          "char": "а",
+          "codepoint": "U+0430",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "A",
+      "target_codepoints": [
+        "U+0041"
+      ],
+      "members": [
+        {
+          "char": "A",
+          "codepoint": "U+0041",
+          "script": "Latin"
+        },
+        {
+          "char": "Α",
+          "codepoint": "U+0391",
+          "script": "Greek"
+        },
+        {
+          "char": "А",
+          "codepoint": "U+0410",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "b",
+      "target_codepoints": [
+        "U+0062"
+      ],
+      "members": [
+        {
+          "char": "b",
+          "codepoint": "U+0062",
+          "script": "Latin"
+        },
+        {
+          "char": "Ƅ",
+          "codepoint": "U+0184",
+          "script": "Latin"
+        },
+        {
+          "char": "Ь",
+          "codepoint": "U+042C",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "bl",
+      "target_codepoints": [
+        "U+0062",
+        "U+006C"
+      ],
+      "members": [
+        {
+          "char": "b",
+          "codepoint": "U+0062",
+          "script": "Latin"
+        },
+        {
+          "char": "l",
+          "codepoint": "U+006C",
+          "script": "Latin"
+        },
+        {
+          "char": "Ы",
+          "codepoint": "U+042B",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "c",
+      "target_codepoints": [
+        "U+0063"
+      ],
+      "members": [
+        {
+          "char": "c",
+          "codepoint": "U+0063",
+          "script": "Latin"
+        },
+        {
+          "char": "ϲ",
+          "codepoint": "U+03F2",
+          "script": "Greek"
+        },
+        {
+          "char": "с",
+          "codepoint": "U+0441",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "C",
+      "target_codepoints": [
+        "U+0043"
+      ],
+      "members": [
+        {
+          "char": "C",
+          "codepoint": "U+0043",
+          "script": "Latin"
+        },
+        {
+          "char": "Ϲ",
+          "codepoint": "U+03F9",
+          "script": "Greek"
+        },
+        {
+          "char": "С",
+          "codepoint": "U+0421",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "c̦",
+      "target_codepoints": [
+        "U+0063",
+        "U+0326"
+      ],
+      "members": [
+        {
+          "char": "c",
+          "codepoint": "U+0063",
+          "script": "Latin"
+        },
+        {
+          "char": "ç",
+          "codepoint": "U+00E7",
+          "script": "Latin"
+        },
+        {
+          "char": "ҫ",
+          "codepoint": "U+04AB",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "C̦",
+      "target_codepoints": [
+        "U+0043",
+        "U+0326"
+      ],
+      "members": [
+        {
+          "char": "C",
+          "codepoint": "U+0043",
+          "script": "Latin"
+        },
+        {
+          "char": "Ç",
+          "codepoint": "U+00C7",
+          "script": "Latin"
+        },
+        {
+          "char": "Ҫ",
+          "codepoint": "U+04AA",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "E",
+      "target_codepoints": [
+        "U+0045"
+      ],
+      "members": [
+        {
+          "char": "E",
+          "codepoint": "U+0045",
+          "script": "Latin"
+        },
+        {
+          "char": "Ε",
+          "codepoint": "U+0395",
+          "script": "Greek"
+        },
+        {
+          "char": "Е",
+          "codepoint": "U+0415",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "F",
+      "target_codepoints": [
+        "U+0046"
+      ],
+      "members": [
+        {
+          "char": "F",
+          "codepoint": "U+0046",
+          "script": "Latin"
+        },
+        {
+          "char": "Ϝ",
+          "codepoint": "U+03DC",
+          "script": "Greek"
+        },
+        {
+          "char": "Ꞙ",
+          "codepoint": "U+A798",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "H",
+      "target_codepoints": [
+        "U+0048"
+      ],
+      "members": [
+        {
+          "char": "H",
+          "codepoint": "U+0048",
+          "script": "Latin"
+        },
+        {
+          "char": "Η",
+          "codepoint": "U+0397",
+          "script": "Greek"
+        },
+        {
+          "char": "Н",
+          "codepoint": "U+041D",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "H̩",
+      "target_codepoints": [
+        "U+0048",
+        "U+0329"
+      ],
+      "members": [
+        {
+          "char": "H",
+          "codepoint": "U+0048",
+          "script": "Latin"
+        },
+        {
+          "char": "Ң",
+          "codepoint": "U+04A2",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "Ⱨ",
+          "codepoint": "U+2C67",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "h̵",
+      "target_codepoints": [
+        "U+0068",
+        "U+0335"
+      ],
+      "members": [
+        {
+          "char": "h",
+          "codepoint": "U+0068",
+          "script": "Latin"
+        },
+        {
+          "char": "ħ",
+          "codepoint": "U+0127",
+          "script": "Latin"
+        },
+        {
+          "char": "ћ",
+          "codepoint": "U+045B",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "H̦",
+      "target_codepoints": [
+        "U+0048",
+        "U+0326"
+      ],
+      "members": [
+        {
+          "char": "H",
+          "codepoint": "U+0048",
+          "script": "Latin"
+        },
+        {
+          "char": "Ӈ",
+          "codepoint": "U+04C7",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "Ӊ",
+          "codepoint": "U+04C9",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "j",
+      "target_codepoints": [
+        "U+006A"
+      ],
+      "members": [
+        {
+          "char": "j",
+          "codepoint": "U+006A",
+          "script": "Latin"
+        },
+        {
+          "char": "ϳ",
+          "codepoint": "U+03F3",
+          "script": "Greek"
+        },
+        {
+          "char": "ј",
+          "codepoint": "U+0458",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "K",
+      "target_codepoints": [
+        "U+004B"
+      ],
+      "members": [
+        {
+          "char": "K",
+          "codepoint": "U+004B",
+          "script": "Latin"
+        },
+        {
+          "char": "Κ",
+          "codepoint": "U+039A",
+          "script": "Greek"
+        },
+        {
+          "char": "К",
+          "codepoint": "U+041A",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "K̩",
+      "target_codepoints": [
+        "U+004B",
+        "U+0329"
+      ],
+      "members": [
+        {
+          "char": "K",
+          "codepoint": "U+004B",
+          "script": "Latin"
+        },
+        {
+          "char": "Қ",
+          "codepoint": "U+049A",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "Ⱪ",
+          "codepoint": "U+2C69",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "K̵",
+      "target_codepoints": [
+        "U+004B",
+        "U+0335"
+      ],
+      "members": [
+        {
+          "char": "K",
+          "codepoint": "U+004B",
+          "script": "Latin"
+        },
+        {
+          "char": "Ҟ",
+          "codepoint": "U+049E",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "Ꝁ",
+          "codepoint": "U+A740",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "lO",
+      "target_codepoints": [
+        "U+006C",
+        "U+004F"
+      ],
+      "members": [
+        {
+          "char": "O",
+          "codepoint": "U+004F",
+          "script": "Latin"
+        },
+        {
+          "char": "l",
+          "codepoint": "U+006C",
+          "script": "Latin"
+        },
+        {
+          "char": "Ю",
+          "codepoint": "U+042E",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "O",
+      "target_codepoints": [
+        "U+004F"
+      ],
+      "members": [
+        {
+          "char": "O",
+          "codepoint": "U+004F",
+          "script": "Latin"
+        },
+        {
+          "char": "Ο",
+          "codepoint": "U+039F",
+          "script": "Greek"
+        },
+        {
+          "char": "О",
+          "codepoint": "U+041E",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "oo",
+      "target_codepoints": [
+        "U+006F",
+        "U+006F"
+      ],
+      "members": [
+        {
+          "char": "o",
+          "codepoint": "U+006F",
+          "script": "Latin"
+        },
+        {
+          "char": "ꚙ",
+          "codepoint": "U+A699",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "ꝏ",
+          "codepoint": "U+A74F",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "OO",
+      "target_codepoints": [
+        "U+004F",
+        "U+004F"
+      ],
+      "members": [
+        {
+          "char": "O",
+          "codepoint": "U+004F",
+          "script": "Latin"
+        },
+        {
+          "char": "Ꚙ",
+          "codepoint": "U+A698",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "Ꝏ",
+          "codepoint": "U+A74E",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "P",
+      "target_codepoints": [
+        "U+0050"
+      ],
+      "members": [
+        {
+          "char": "P",
+          "codepoint": "U+0050",
+          "script": "Latin"
+        },
+        {
+          "char": "Ρ",
+          "codepoint": "U+03A1",
+          "script": "Greek"
+        },
+        {
+          "char": "Р",
+          "codepoint": "U+0420",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "ɸ",
+      "target_codepoints": [
+        "U+0278"
+      ],
+      "members": [
+        {
+          "char": "φ",
+          "codepoint": "U+03C6",
+          "script": "Greek"
+        },
+        {
+          "char": "ϕ",
+          "codepoint": "U+03D5",
+          "script": "Greek"
+        },
+        {
+          "char": "ф",
+          "codepoint": "U+0444",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek"
+      ]
+    },
+    {
+      "target": "r̵",
+      "target_codepoints": [
+        "U+0072",
+        "U+0335"
+      ],
+      "members": [
+        {
+          "char": "r",
+          "codepoint": "U+0072",
+          "script": "Latin"
+        },
+        {
+          "char": "ɍ",
+          "codepoint": "U+024D",
+          "script": "Latin"
+        },
+        {
+          "char": "ғ",
+          "codepoint": "U+0493",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "T",
+      "target_codepoints": [
+        "U+0054"
+      ],
+      "members": [
+        {
+          "char": "T",
+          "codepoint": "U+0054",
+          "script": "Latin"
+        },
+        {
+          "char": "Τ",
+          "codepoint": "U+03A4",
+          "script": "Greek"
+        },
+        {
+          "char": "Т",
+          "codepoint": "U+0422",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "v",
+      "target_codepoints": [
+        "U+0076"
+      ],
+      "members": [
+        {
+          "char": "v",
+          "codepoint": "U+0076",
+          "script": "Latin"
+        },
+        {
+          "char": "ν",
+          "codepoint": "U+03BD",
+          "script": "Greek"
+        },
+        {
+          "char": "ѵ",
+          "codepoint": "U+0475",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "x",
+      "target_codepoints": [
+        "U+0078"
+      ],
+      "members": [
+        {
+          "char": "x",
+          "codepoint": "U+0078",
+          "script": "Latin"
+        },
+        {
+          "char": "×",
+          "codepoint": "U+00D7",
+          "script": "Latin"
+        },
+        {
+          "char": "х",
+          "codepoint": "U+0445",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "y̵",
+      "target_codepoints": [
+        "U+0079",
+        "U+0335"
+      ],
+      "members": [
+        {
+          "char": "y",
+          "codepoint": "U+0079",
+          "script": "Latin"
+        },
+        {
+          "char": "ɏ",
+          "codepoint": "U+024F",
+          "script": "Latin"
+        },
+        {
+          "char": "ұ",
+          "codepoint": "U+04B1",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "Y̵",
+      "target_codepoints": [
+        "U+0059",
+        "U+0335"
+      ],
+      "members": [
+        {
+          "char": "Y",
+          "codepoint": "U+0059",
+          "script": "Latin"
+        },
+        {
+          "char": "Ɏ",
+          "codepoint": "U+024E",
+          "script": "Latin"
+        },
+        {
+          "char": "Ұ",
+          "codepoint": "U+04B0",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "ȝ",
+      "target_codepoints": [
+        "U+021D"
+      ],
+      "members": [
+        {
+          "char": "ȝ",
+          "codepoint": "U+021D",
+          "script": "Latin"
+        },
+        {
+          "char": "ӡ",
+          "codepoint": "U+04E1",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "ꝫ",
+          "codepoint": "U+A76B",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "ƨ",
+      "target_codepoints": [
+        "U+01A8"
+      ],
+      "members": [
+        {
+          "char": "ƨ",
+          "codepoint": "U+01A8",
+          "script": "Latin"
+        },
+        {
+          "char": "ϩ",
+          "codepoint": "U+03E9",
+          "script": "Greek"
+        },
+        {
+          "char": "ꙅ",
+          "codepoint": "U+A645",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "ƅi",
+      "target_codepoints": [
+        "U+0185",
+        "U+0069"
+      ],
+      "members": [
+        {
+          "char": "i",
+          "codepoint": "U+0069",
+          "script": "Latin"
+        },
+        {
+          "char": "ƅ",
+          "codepoint": "U+0185",
+          "script": "Latin"
+        },
+        {
+          "char": "ы",
+          "codepoint": "U+044B",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "π",
+      "target_codepoints": [
+        "U+03C0"
+      ],
+      "members": [
+        {
+          "char": "π",
+          "codepoint": "U+03C0",
+          "script": "Greek"
+        },
+        {
+          "char": "ϖ",
+          "codepoint": "U+03D6",
+          "script": "Greek"
+        },
+        {
+          "char": "п",
+          "codepoint": "U+043F",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek"
+      ]
+    },
+    {
+      "target": "χ",
+      "target_codepoints": [
+        "U+03C7"
+      ],
+      "members": [
+        {
+          "char": "χ",
+          "codepoint": "U+03C7",
+          "script": "Greek"
+        },
+        {
+          "char": "ꭓ",
+          "codepoint": "U+AB53",
+          "script": "Latin"
+        },
+        {
+          "char": "ꭕ",
+          "codepoint": "U+AB55",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "ω",
+      "target_codepoints": [
+        "U+03C9"
+      ],
+      "members": [
+        {
+          "char": "ω",
+          "codepoint": "U+03C9",
+          "script": "Greek"
+        },
+        {
+          "char": "ꙍ",
+          "codepoint": "U+A64D",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "ꞷ",
+          "codepoint": "U+A7B7",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "Ъl",
+      "target_codepoints": [
+        "U+042A",
+        "U+006C"
+      ],
+      "members": [
+        {
+          "char": "l",
+          "codepoint": "U+006C",
+          "script": "Latin"
+        },
+        {
+          "char": "Ъ",
+          "codepoint": "U+042A",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "Ꙑ",
+          "codepoint": "U+A650",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "·",
+      "target_codepoints": [
+        "U+00B7"
+      ],
+      "members": [
+        {
+          "char": "·",
+          "codepoint": "U+0387",
+          "script": "Greek"
+        },
+        {
+          "char": "ꞏ",
+          "codepoint": "U+A78F",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "ˉb",
+      "target_codepoints": [
+        "U+02C9",
+        "U+0062"
+      ],
+      "members": [
+        {
+          "char": "b",
+          "codepoint": "U+0062",
+          "script": "Latin"
+        },
+        {
+          "char": "ъ",
+          "codepoint": "U+044A",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "6",
+      "target_codepoints": [
+        "U+0036"
+      ],
+      "members": [
+        {
+          "char": "Ϭ",
+          "codepoint": "U+03EC",
+          "script": "Greek"
+        },
+        {
+          "char": "б",
+          "codepoint": "U+0431",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek"
+      ]
+    },
+    {
+      "target": "Ꞓ",
+      "target_codepoints": [
+        "U+A792"
+      ],
+      "members": [
+        {
+          "char": "Є",
+          "codepoint": "U+0404",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "Ꞓ",
+          "codepoint": "U+A792",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "ꜿ",
+      "target_codepoints": [
+        "U+A73F"
+      ],
+      "members": [
+        {
+          "char": "ͽ",
+          "codepoint": "U+037D",
+          "script": "Greek"
+        },
+        {
+          "char": "ꜿ",
+          "codepoint": "U+A73F",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "Ꜿ",
+      "target_codepoints": [
+        "U+A73E"
+      ],
+      "members": [
+        {
+          "char": "Ͽ",
+          "codepoint": "U+03FF",
+          "script": "Greek"
+        },
+        {
+          "char": "Ꜿ",
+          "codepoint": "U+A73E",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "d",
+      "target_codepoints": [
+        "U+0064"
+      ],
+      "members": [
+        {
+          "char": "d",
+          "codepoint": "U+0064",
+          "script": "Latin"
+        },
+        {
+          "char": "ԁ",
+          "codepoint": "U+0501",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "ẟ",
+      "target_codepoints": [
+        "U+1E9F"
+      ],
+      "members": [
+        {
+          "char": "δ",
+          "codepoint": "U+03B4",
+          "script": "Greek"
+        },
+        {
+          "char": "ẟ",
+          "codepoint": "U+1E9F",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "ę",
+      "target_codepoints": [
+        "U+0065",
+        "U+0328"
+      ],
+      "members": [
+        {
+          "char": "e",
+          "codepoint": "U+0065",
+          "script": "Latin"
+        },
+        {
+          "char": "ҿ",
+          "codepoint": "U+04BF",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "ǝ",
+      "target_codepoints": [
+        "U+01DD"
+      ],
+      "members": [
+        {
+          "char": "ǝ",
+          "codepoint": "U+01DD",
+          "script": "Latin"
+        },
+        {
+          "char": "ә",
+          "codepoint": "U+04D9",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "Ə",
+      "target_codepoints": [
+        "U+018F"
+      ],
+      "members": [
+        {
+          "char": "Ə",
+          "codepoint": "U+018F",
+          "script": "Latin"
+        },
+        {
+          "char": "Ә",
+          "codepoint": "U+04D8",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "Ɛ",
+      "target_codepoints": [
+        "U+0190"
+      ],
+      "members": [
+        {
+          "char": "Ɛ",
+          "codepoint": "U+0190",
+          "script": "Latin"
+        },
+        {
+          "char": "Ԑ",
+          "codepoint": "U+0510",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "G",
+      "target_codepoints": [
+        "U+0047"
+      ],
+      "members": [
+        {
+          "char": "G",
+          "codepoint": "U+0047",
+          "script": "Latin"
+        },
+        {
+          "char": "Ԍ",
+          "codepoint": "U+050C",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "h",
+      "target_codepoints": [
+        "U+0068"
+      ],
+      "members": [
+        {
+          "char": "h",
+          "codepoint": "U+0068",
+          "script": "Latin"
+        },
+        {
+          "char": "һ",
+          "codepoint": "U+04BB",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "h̔",
+      "target_codepoints": [
+        "U+0068",
+        "U+0314"
+      ],
+      "members": [
+        {
+          "char": "h",
+          "codepoint": "U+0068",
+          "script": "Latin"
+        },
+        {
+          "char": "ꚕ",
+          "codepoint": "U+A695",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "Ƕ",
+      "target_codepoints": [
+        "U+01F6"
+      ],
+      "members": [
+        {
+          "char": "Ƕ",
+          "codepoint": "U+01F6",
+          "script": "Latin"
+        },
+        {
+          "char": "Ԋ",
+          "codepoint": "U+050A",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "Ⱶ",
+      "target_codepoints": [
+        "U+2C75"
+      ],
+      "members": [
+        {
+          "char": "Ͱ",
+          "codepoint": "U+0370",
+          "script": "Greek"
+        },
+        {
+          "char": "Ⱶ",
+          "codepoint": "U+2C75",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "M̦",
+      "target_codepoints": [
+        "U+004D",
+        "U+0326"
+      ],
+      "members": [
+        {
+          "char": "M",
+          "codepoint": "U+004D",
+          "script": "Latin"
+        },
+        {
+          "char": "Ӎ",
+          "codepoint": "U+04CD",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "N",
+      "target_codepoints": [
+        "U+004E"
+      ],
+      "members": [
+        {
+          "char": "N",
+          "codepoint": "U+004E",
+          "script": "Latin"
+        },
+        {
+          "char": "Ν",
+          "codepoint": "U+039D",
+          "script": "Greek"
+        }
+      ],
+      "scripts": [
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "ᴎ",
+      "target_codepoints": [
+        "U+1D0E"
+      ],
+      "members": [
+        {
+          "char": "ͷ",
+          "codepoint": "U+0377",
+          "script": "Greek"
+        },
+        {
+          "char": "и",
+          "codepoint": "U+0438",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek"
+      ]
+    },
+    {
+      "target": "Ɔ",
+      "target_codepoints": [
+        "U+0186"
+      ],
+      "members": [
+        {
+          "char": "Ɔ",
+          "codepoint": "U+0186",
+          "script": "Latin"
+        },
+        {
+          "char": "Ͻ",
+          "codepoint": "U+03FD",
+          "script": "Greek"
+        }
+      ],
+      "scripts": [
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "q",
+      "target_codepoints": [
+        "U+0071"
+      ],
+      "members": [
+        {
+          "char": "q",
+          "codepoint": "U+0071",
+          "script": "Latin"
+        },
+        {
+          "char": "ԛ",
+          "codepoint": "U+051B",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "ĸ̩",
+      "target_codepoints": [
+        "U+0138",
+        "U+0329"
+      ],
+      "members": [
+        {
+          "char": "ĸ",
+          "codepoint": "U+0138",
+          "script": "Latin"
+        },
+        {
+          "char": "қ",
+          "codepoint": "U+049B",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "ĸ̵",
+      "target_codepoints": [
+        "U+0138",
+        "U+0335"
+      ],
+      "members": [
+        {
+          "char": "ĸ",
+          "codepoint": "U+0138",
+          "script": "Latin"
+        },
+        {
+          "char": "ҟ",
+          "codepoint": "U+049F",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "r'",
+      "target_codepoints": [
+        "U+0072",
+        "U+0027"
+      ],
+      "members": [
+        {
+          "char": "r",
+          "codepoint": "U+0072",
+          "script": "Latin"
+        },
+        {
+          "char": "ґ",
+          "codepoint": "U+0491",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "S",
+      "target_codepoints": [
+        "U+0053"
+      ],
+      "members": [
+        {
+          "char": "S",
+          "codepoint": "U+0053",
+          "script": "Latin"
+        },
+        {
+          "char": "Ѕ",
+          "codepoint": "U+0405",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "Ʃ",
+      "target_codepoints": [
+        "U+01A9"
+      ],
+      "members": [
+        {
+          "char": "Ʃ",
+          "codepoint": "U+01A9",
+          "script": "Latin"
+        },
+        {
+          "char": "Σ",
+          "codepoint": "U+03A3",
+          "script": "Greek"
+        }
+      ],
+      "scripts": [
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "T̩",
+      "target_codepoints": [
+        "U+0054",
+        "U+0329"
+      ],
+      "members": [
+        {
+          "char": "T",
+          "codepoint": "U+0054",
+          "script": "Latin"
+        },
+        {
+          "char": "Ҭ",
+          "codepoint": "U+04AC",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "ᴛ",
+      "target_codepoints": [
+        "U+1D1B"
+      ],
+      "members": [
+        {
+          "char": "τ",
+          "codepoint": "U+03C4",
+          "script": "Greek"
+        },
+        {
+          "char": "т",
+          "codepoint": "U+0442",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek"
+      ]
+    },
+    {
+      "target": "u̩",
+      "target_codepoints": [
+        "U+0075",
+        "U+0329"
+      ],
+      "members": [
+        {
+          "char": "u",
+          "codepoint": "U+0075",
+          "script": "Latin"
+        },
+        {
+          "char": "џ",
+          "codepoint": "U+045F",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "V",
+      "target_codepoints": [
+        "U+0056"
+      ],
+      "members": [
+        {
+          "char": "V",
+          "codepoint": "U+0056",
+          "script": "Latin"
+        },
+        {
+          "char": "Ѵ",
+          "codepoint": "U+0474",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "Ʌ̦",
+      "target_codepoints": [
+        "U+0245",
+        "U+0326"
+      ],
+      "members": [
+        {
+          "char": "Ʌ",
+          "codepoint": "U+0245",
+          "script": "Latin"
+        },
+        {
+          "char": "Ӆ",
+          "codepoint": "U+04C5",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "W",
+      "target_codepoints": [
+        "U+0057"
+      ],
+      "members": [
+        {
+          "char": "W",
+          "codepoint": "U+0057",
+          "script": "Latin"
+        },
+        {
+          "char": "Ԝ",
+          "codepoint": "U+051C",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "X̩",
+      "target_codepoints": [
+        "U+0058",
+        "U+0329"
+      ],
+      "members": [
+        {
+          "char": "X",
+          "codepoint": "U+0058",
+          "script": "Latin"
+        },
+        {
+          "char": "Ҳ",
+          "codepoint": "U+04B2",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "Z",
+      "target_codepoints": [
+        "U+005A"
+      ],
+      "members": [
+        {
+          "char": "Z",
+          "codepoint": "U+005A",
+          "script": "Latin"
+        },
+        {
+          "char": "Ζ",
+          "codepoint": "U+0396",
+          "script": "Greek"
+        }
+      ],
+      "scripts": [
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "Þ",
+      "target_codepoints": [
+        "U+00DE"
+      ],
+      "members": [
+        {
+          "char": "Þ",
+          "codepoint": "U+00DE",
+          "script": "Latin"
+        },
+        {
+          "char": "Ϸ",
+          "codepoint": "U+03F7",
+          "script": "Greek"
+        }
+      ],
+      "scripts": [
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "ƅ",
+      "target_codepoints": [
+        "U+0185"
+      ],
+      "members": [
+        {
+          "char": "ƅ",
+          "codepoint": "U+0185",
+          "script": "Latin"
+        },
+        {
+          "char": "ь",
+          "codepoint": "U+044C",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "Γ",
+      "target_codepoints": [
+        "U+0393"
+      ],
+      "members": [
+        {
+          "char": "Γ",
+          "codepoint": "U+0393",
+          "script": "Greek"
+        },
+        {
+          "char": "Г",
+          "codepoint": "U+0413",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek"
+      ]
+    },
+    {
+      "target": "Γ̵",
+      "target_codepoints": [
+        "U+0393",
+        "U+0335"
+      ],
+      "members": [
+        {
+          "char": "Γ",
+          "codepoint": "U+0393",
+          "script": "Greek"
+        },
+        {
+          "char": "Ғ",
+          "codepoint": "U+0492",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek"
+      ]
+    },
+    {
+      "target": "Γ'",
+      "target_codepoints": [
+        "U+0393",
+        "U+0027"
+      ],
+      "members": [
+        {
+          "char": "Γ",
+          "codepoint": "U+0393",
+          "script": "Greek"
+        },
+        {
+          "char": "Ґ",
+          "codepoint": "U+0490",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek"
+      ]
+    },
+    {
+      "target": "λ",
+      "target_codepoints": [
+        "U+03BB"
+      ],
+      "members": [
+        {
+          "char": "λ",
+          "codepoint": "U+03BB",
+          "script": "Greek"
+        },
+        {
+          "char": "ꟛ",
+          "codepoint": "U+A7DB",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "λ̸",
+      "target_codepoints": [
+        "U+03BB",
+        "U+0338"
+      ],
+      "members": [
+        {
+          "char": "ƛ",
+          "codepoint": "U+019B",
+          "script": "Latin"
+        },
+        {
+          "char": "λ",
+          "codepoint": "U+03BB",
+          "script": "Greek"
+        }
+      ],
+      "scripts": [
+        "Greek",
+        "Latin"
+      ]
+    },
+    {
+      "target": "Π",
+      "target_codepoints": [
+        "U+03A0"
+      ],
+      "members": [
+        {
+          "char": "Π",
+          "codepoint": "U+03A0",
+          "script": "Greek"
+        },
+        {
+          "char": "П",
+          "codepoint": "U+041F",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek"
+      ]
+    },
+    {
+      "target": "Φ",
+      "target_codepoints": [
+        "U+03A6"
+      ],
+      "members": [
+        {
+          "char": "Φ",
+          "codepoint": "U+03A6",
+          "script": "Greek"
+        },
+        {
+          "char": "Ф",
+          "codepoint": "U+0424",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek"
+      ]
+    },
+    {
+      "target": "ψ",
+      "target_codepoints": [
+        "U+03C8"
+      ],
+      "members": [
+        {
+          "char": "ψ",
+          "codepoint": "U+03C8",
+          "script": "Greek"
+        },
+        {
+          "char": "ѱ",
+          "codepoint": "U+0471",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek"
+      ]
+    },
+    {
+      "target": "Ψ",
+      "target_codepoints": [
+        "U+03A8"
+      ],
+      "members": [
+        {
+          "char": "Ψ",
+          "codepoint": "U+03A8",
+          "script": "Greek"
+        },
+        {
+          "char": "Ѱ",
+          "codepoint": "U+0470",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek"
+      ]
+    },
+    {
+      "target": "И",
+      "target_codepoints": [
+        "U+0418"
+      ],
+      "members": [
+        {
+          "char": "Ͷ",
+          "codepoint": "U+0376",
+          "script": "Greek"
+        },
+        {
+          "char": "И",
+          "codepoint": "U+0418",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek"
+      ]
+    },
+    {
+      "target": "љ",
+      "target_codepoints": [
+        "U+0459"
+      ],
+      "members": [
+        {
+          "char": "љ",
+          "codepoint": "U+0459",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "ꭠ",
+          "codepoint": "U+AB60",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "Ꙍ",
+      "target_codepoints": [
+        "U+A64C"
+      ],
+      "members": [
+        {
+          "char": "Ꙍ",
+          "codepoint": "U+A64C",
+          "script": "Cyrillic"
+        },
+        {
+          "char": "Ꞷ",
+          "codepoint": "U+A7B6",
+          "script": "Latin"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Latin"
+      ]
+    },
+    {
+      "target": "ч",
+      "target_codepoints": [
+        "U+0447"
+      ],
+      "members": [
+        {
+          "char": "ϥ",
+          "codepoint": "U+03E5",
+          "script": "Greek"
+        },
+        {
+          "char": "ч",
+          "codepoint": "U+0447",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek"
+      ]
+    },
+    {
+      "target": "Ч",
+      "target_codepoints": [
+        "U+0427"
+      ],
+      "members": [
+        {
+          "char": "Ϥ",
+          "codepoint": "U+03E4",
+          "script": "Greek"
+        },
+        {
+          "char": "Ч",
+          "codepoint": "U+0427",
+          "script": "Cyrillic"
+        }
+      ],
+      "scripts": [
+        "Cyrillic",
+        "Greek"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,585 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Latin Extended-A Character Library (U+0100-U+017F)
+# =============================================================================
+#
+# This file defines characters from the Latin Extended-A Unicode block.
+# Most characters are composed using DIA (Diacritic Attachment) or OVR
+# (Overlay) operators with base characters from basic-latin.lsdl and
+# diacritics from diacritics.lsdl.
+#
+# Organization:
+#   - A + diacritics (macron, breve, ogonek)
+#   - C + diacritics (acute, circumflex, dot-above, caron)
+#   - D + diacritics (caron, stroke)
+#   - E + diacritics (macron, breve, dot-above, ogonek, caron)
+#   - G + diacritics (circumflex, breve, dot-above, cedilla)
+#   - H + diacritics (circumflex, stroke)
+#   - I + diacritics (tilde, macron, breve, ogonek, dot-above)
+#   - J + circumflex
+#   - K + cedilla
+#   - L + diacritics (acute, cedilla, caron, middle-dot, stroke)
+#   - N + diacritics (acute, cedilla, caron, apostrophe)
+#   - Eng (unique letterform)
+#   - O + diacritics (macron, breve, double-acute)
+#   - R + diacritics (acute, cedilla, caron)
+#   - S + diacritics (acute, circumflex, cedilla, caron)
+#   - T + diacritics (cedilla, caron, stroke)
+#   - U + diacritics (tilde, macron, breve, ring, double-acute, ogonek)
+#   - W + diacritics (circumflex)
+#   - Y + diacritics (circumflex, diaeresis)
+#   - Z + diacritics (acute, dot-above, caron)
+#   - Long S (historical letterform)
+#   - Case mappings
+#
+# Note: IJ/ij (U+0132/0133) and OE/oe (U+0152/0153) are defined in
+# ligatures.lsdl as they are ligatures, not diacritical combinations.
+#
+# Special cases:
+#   - d-caron, t-caron, l-caron use caron.alt (apostrophe-like variant)
+#   - Stroke characters use OVR operator
+#   - Eng (Ŋ/ŋ), kra (ĸ), dotless i (ı), long s (ſ) are unique forms
+#
+# =============================================================================
+
+# =============================================================================
+# A + DIACRITICS
+# =============================================================================
+
+# A with macron - Latvian, Maori, Latin
+Ā  LATIN-CAPITAL-A-WITH-MACRON = DIA(A, macron) script:Latn
+
+ā  LATIN-SMALL-A-WITH-MACRON = DIA(a, macron) script:Latn
+
+# A with breve - Romanian, Vietnamese, Latin
+Ă  LATIN-CAPITAL-A-WITH-BREVE = DIA(A, breve) script:Latn
+
+ă  LATIN-SMALL-A-WITH-BREVE = DIA(a, breve) script:Latn
+
+# A with ogonek - Polish, Lithuanian
+Ą  LATIN-CAPITAL-A-WITH-OGONEK = DIA(A, ogonek) script:Latn
+
+ą  LATIN-SMALL-A-WITH-OGONEK = DIA(a, ogonek) script:Latn
+
+# =============================================================================
+# C + DIACRITICS
+# =============================================================================
+
+# C with acute - Polish, Croatian, Sorbian
+Ć  LATIN-CAPITAL-C-WITH-ACUTE = DIA(C, acute) script:Latn
+
+ć  LATIN-SMALL-C-WITH-ACUTE = DIA(c, acute) script:Latn
+
+# C with circumflex - Esperanto
+Ĉ  LATIN-CAPITAL-C-WITH-CIRCUMFLEX = DIA(C, circumflex) script:Latn
+
+ĉ  LATIN-SMALL-C-WITH-CIRCUMFLEX = DIA(c, circumflex) script:Latn
+
+# C with dot above - Maltese, Irish
+Ċ  LATIN-CAPITAL-C-WITH-DOT-ABOVE = DIA(C, dot-above) script:Latn
+
+ċ  LATIN-SMALL-C-WITH-DOT-ABOVE = DIA(c, dot-above) script:Latn
+
+# C with caron (hacek) - Czech, Slovak, Slovenian, Croatian, Latvian
+Č  LATIN-CAPITAL-C-WITH-CARON = DIA(C, caron) script:Latn
+
+č  LATIN-SMALL-C-WITH-CARON = DIA(c, caron) script:Latn
+
+# =============================================================================
+# D + DIACRITICS
+# =============================================================================
+
+# D with caron - Czech, Slovak
+# Note: Uppercase uses standard caron above
+Ď  LATIN-CAPITAL-D-WITH-CARON = DIA(D, caron) script:Latn
+
+# Note: Lowercase uses caron.alt (apostrophe-like) due to ascender
+ď  LATIN-SMALL-D-WITH-CARON = DIA(d, caron.alt) script:Latn
+
+# D with stroke - Croatian, Vietnamese, Sami
+Đ  LATIN-CAPITAL-D-WITH-STROKE = OVR(D, stroke) script:Latn
+
+đ  LATIN-SMALL-D-WITH-STROKE = OVR(d, stroke) script:Latn
+
+# =============================================================================
+# E + DIACRITICS
+# =============================================================================
+
+# E with macron - Latvian, Maori, Latin
+Ē  LATIN-CAPITAL-E-WITH-MACRON = DIA(E, macron) script:Latn
+
+ē  LATIN-SMALL-E-WITH-MACRON = DIA(e, macron) script:Latn
+
+# E with breve - Latin, Malay
+Ĕ  LATIN-CAPITAL-E-WITH-BREVE = DIA(E, breve) script:Latn
+
+ĕ  LATIN-SMALL-E-WITH-BREVE = DIA(e, breve) script:Latn
+
+# E with dot above - Lithuanian
+Ė  LATIN-CAPITAL-E-WITH-DOT-ABOVE = DIA(E, dot-above) script:Latn
+
+ė  LATIN-SMALL-E-WITH-DOT-ABOVE = DIA(e, dot-above) script:Latn
+
+# E with ogonek - Polish, Lithuanian
+Ę  LATIN-CAPITAL-E-WITH-OGONEK = DIA(E, ogonek) script:Latn
+
+ę  LATIN-SMALL-E-WITH-OGONEK = DIA(e, ogonek) script:Latn
+
+# E with caron - Czech, Slovenian
+Ě  LATIN-CAPITAL-E-WITH-CARON = DIA(E, caron) script:Latn
+
+ě  LATIN-SMALL-E-WITH-CARON = DIA(e, caron) script:Latn
+
+# =============================================================================
+# G + DIACRITICS
+# =============================================================================
+
+# G with circumflex - Esperanto
+Ĝ  LATIN-CAPITAL-G-WITH-CIRCUMFLEX = DIA(G, circumflex) script:Latn
+
+ĝ  LATIN-SMALL-G-WITH-CIRCUMFLEX = DIA(g, circumflex) script:Latn
+
+# G with breve - Turkish, Azerbaijani
+Ğ  LATIN-CAPITAL-G-WITH-BREVE = DIA(G, breve) script:Latn
+
+ğ  LATIN-SMALL-G-WITH-BREVE = DIA(g, breve) script:Latn
+
+# G with dot above - Maltese, Irish
+Ġ  LATIN-CAPITAL-G-WITH-DOT-ABOVE = DIA(G, dot-above) script:Latn
+
+ġ  LATIN-SMALL-G-WITH-DOT-ABOVE = DIA(g, dot-above) script:Latn
+
+# G with cedilla - Latvian
+Ģ  LATIN-CAPITAL-G-WITH-CEDILLA = DIA(G, cedilla) script:Latn
+
+ģ  LATIN-SMALL-G-WITH-CEDILLA = DIA(g, cedilla) script:Latn
+
+# =============================================================================
+# H + DIACRITICS
+# =============================================================================
+
+# H with circumflex - Esperanto
+Ĥ  LATIN-CAPITAL-H-WITH-CIRCUMFLEX = DIA(H, circumflex) script:Latn
+
+ĥ  LATIN-SMALL-H-WITH-CIRCUMFLEX = DIA(h, circumflex) script:Latn
+
+# H with stroke - Maltese
+Ħ  LATIN-CAPITAL-H-WITH-STROKE = OVR(H, stroke) script:Latn
+
+ħ  LATIN-SMALL-H-WITH-STROKE = OVR(h, stroke) script:Latn
+
+# =============================================================================
+# I + DIACRITICS
+# =============================================================================
+
+# I with tilde - Greenlandic
+Ĩ  LATIN-CAPITAL-I-WITH-TILDE = DIA(I, tilde) script:Latn
+
+ĩ  LATIN-SMALL-I-WITH-TILDE = DIA(i, tilde) script:Latn
+
+# I with macron - Latvian, Maori, Latin
+Ī  LATIN-CAPITAL-I-WITH-MACRON = DIA(I, macron) script:Latn
+
+ī  LATIN-SMALL-I-WITH-MACRON = DIA(i, macron) script:Latn
+
+# I with breve - Latin
+Ĭ  LATIN-CAPITAL-I-WITH-BREVE = DIA(I, breve) script:Latn
+
+ĭ  LATIN-SMALL-I-WITH-BREVE = DIA(i, breve) script:Latn
+
+# I with ogonek - Lithuanian
+Į  LATIN-CAPITAL-I-WITH-OGONEK = DIA(I, ogonek) script:Latn
+
+į  LATIN-SMALL-I-WITH-OGONEK = DIA(i, ogonek) script:Latn
+
+# I with dot above - Turkish (distinguishes from dotless i)
+İ  LATIN-CAPITAL-I-WITH-DOT-ABOVE = DIA(I, dot-above) script:Latn
+
+# Dotless i - Turkish (pairs with dotted I)
+# Note: This is a unique letterform, not a diacritical combination
+@elem dotless-i
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+ı  LATIN-SMALL-DOTLESS-I = dotless-i script:Latn
+
+# =============================================================================
+# IJ LIGATURE (U+0132-0133) - Defined in ligatures.lsdl
+# =============================================================================
+
+# =============================================================================
+# J + CIRCUMFLEX
+# =============================================================================
+
+# J with circumflex - Esperanto
+Ĵ  LATIN-CAPITAL-J-WITH-CIRCUMFLEX = DIA(J, circumflex) script:Latn
+
+ĵ  LATIN-SMALL-J-WITH-CIRCUMFLEX = DIA(j, circumflex) script:Latn
+
+# =============================================================================
+# K + CEDILLA
+# =============================================================================
+
+# K with cedilla - Latvian
+Ķ  LATIN-CAPITAL-K-WITH-CEDILLA = DIA(K, cedilla) script:Latn
+
+ķ  LATIN-SMALL-K-WITH-CEDILLA = DIA(k, cedilla) script:Latn
+
+# Kra - Greenlandic (historical, now obsolete)
+# ponytail: use small k composition instead of custom path
+ĸ  LATIN-SMALL-KRA = k script:Latn
+
+
+# =============================================================================
+# L + DIACRITICS
+# =============================================================================
+
+# L with acute - Polish, Slovak
+Ĺ  LATIN-CAPITAL-L-WITH-ACUTE = DIA(L, acute) script:Latn
+
+ĺ  LATIN-SMALL-L-WITH-ACUTE = DIA(l, acute) script:Latn
+
+# L with cedilla - Latvian
+Ļ  LATIN-CAPITAL-L-WITH-CEDILLA = DIA(L, cedilla) script:Latn
+
+ļ  LATIN-SMALL-L-WITH-CEDILLA = DIA(l, cedilla) script:Latn
+
+# L with caron - Slovak
+# Note: Uses caron.alt (apostrophe-like) positioned to the right
+Ľ  LATIN-CAPITAL-L-WITH-CARON = DIA(L, caron.alt) script:Latn
+
+ľ  LATIN-SMALL-L-WITH-CARON = DIA(l, caron.alt) script:Latn
+
+# L with middle dot - Catalan (ela geminada)
+Ŀ  LATIN-CAPITAL-L-WITH-MIDDLE-DOT = DIA(L, dot-above) script:Latn
+
+ŀ  LATIN-SMALL-L-WITH-MIDDLE-DOT = DIA(l, dot-above) script:Latn
+
+# L with stroke - Polish
+Ł  LATIN-CAPITAL-L-WITH-STROKE = OVR(L, stroke.diag) script:Latn
+
+ł  LATIN-SMALL-L-WITH-STROKE = OVR(l, stroke.diag) script:Latn
+
+# =============================================================================
+# N + DIACRITICS
+# =============================================================================
+
+# N with acute - Polish
+Ń  LATIN-CAPITAL-N-WITH-ACUTE = DIA(N, acute) script:Latn
+
+ń  LATIN-SMALL-N-WITH-ACUTE = DIA(n, acute) script:Latn
+
+# N with cedilla - Latvian
+Ņ  LATIN-CAPITAL-N-WITH-CEDILLA = DIA(N, cedilla) script:Latn
+
+ņ  LATIN-SMALL-N-WITH-CEDILLA = DIA(n, cedilla) script:Latn
+
+# N with caron - Czech, Slovak
+Ň  LATIN-CAPITAL-N-WITH-CARON = DIA(N, caron) script:Latn
+
+ň  LATIN-SMALL-N-WITH-CARON = DIA(n, caron) script:Latn
+
+# N preceded by apostrophe - Afrikaans
+# Note: This is a deprecated character; represented as apostrophe + n
+ŉ  LATIN-SMALL-N-PRECEDED-BY-APOSTROPHE = LR(comma.shape, n, 2/10) script:Latn
+
+# =============================================================================
+# ENG (LATIN CAPITAL/SMALL LETTER ENG)
+# =============================================================================
+
+# Eng - Sami languages, African languages
+# ponytail: use n+hook composition
+Ŋ  LATIN-CAPITAL-ENG = FRAME(N, hook.bot) script:Latn
+
+ŋ  LATIN-SMALL-ENG = FRAME(n, hook.bot) script:Latn
+
+# =============================================================================
+# O + DIACRITICS
+# =============================================================================
+
+# O with macron - Latvian, Maori, Latin
+Ō  LATIN-CAPITAL-O-WITH-MACRON = DIA(O, macron) script:Latn
+
+ō  LATIN-SMALL-O-WITH-MACRON = DIA(o, macron) script:Latn
+
+# O with breve - Latin
+Ŏ  LATIN-CAPITAL-O-WITH-BREVE = DIA(O, breve) script:Latn
+
+ŏ  LATIN-SMALL-O-WITH-BREVE = DIA(o, breve) script:Latn
+
+# O with double acute - Hungarian
+Ő  LATIN-CAPITAL-O-WITH-DOUBLE-ACUTE = DIA(O, double-acute) script:Latn
+
+ő  LATIN-SMALL-O-WITH-DOUBLE-ACUTE = DIA(o, double-acute) script:Latn
+
+# =============================================================================
+# OE LIGATURE (U+0152-0153) - Defined in ligatures.lsdl
+# =============================================================================
+
+# =============================================================================
+# R + DIACRITICS
+# =============================================================================
+
+# R with acute - Sorbian
+Ŕ  LATIN-CAPITAL-R-WITH-ACUTE = DIA(R, acute) script:Latn
+
+ŕ  LATIN-SMALL-R-WITH-ACUTE = DIA(r, acute) script:Latn
+
+# R with cedilla - Latvian
+Ŗ  LATIN-CAPITAL-R-WITH-CEDILLA = DIA(R, cedilla) script:Latn
+
+ŗ  LATIN-SMALL-R-WITH-CEDILLA = DIA(r, cedilla) script:Latn
+
+# R with caron - Czech, Slovak
+Ř  LATIN-CAPITAL-R-WITH-CARON = DIA(R, caron) script:Latn
+
+ř  LATIN-SMALL-R-WITH-CARON = DIA(r, caron) script:Latn
+
+# =============================================================================
+# S + DIACRITICS
+# =============================================================================
+
+# S with acute - Polish, Sorbian
+Ś  LATIN-CAPITAL-S-WITH-ACUTE = DIA(S, acute) script:Latn
+
+ś  LATIN-SMALL-S-WITH-ACUTE = DIA(s, acute) script:Latn
+
+# S with circumflex - Esperanto
+Ŝ  LATIN-CAPITAL-S-WITH-CIRCUMFLEX = DIA(S, circumflex) script:Latn
+
+ŝ  LATIN-SMALL-S-WITH-CIRCUMFLEX = DIA(s, circumflex) script:Latn
+
+# S with cedilla - Turkish, Romanian
+Ş  LATIN-CAPITAL-S-WITH-CEDILLA = DIA(S, cedilla) script:Latn
+
+ş  LATIN-SMALL-S-WITH-CEDILLA = DIA(s, cedilla) script:Latn
+
+# S with caron - Czech, Slovak, Slovenian, Croatian, Latvian
+Š  LATIN-CAPITAL-S-WITH-CARON = DIA(S, caron) script:Latn
+
+š  LATIN-SMALL-S-WITH-CARON = DIA(s, caron) script:Latn
+
+# =============================================================================
+# T + DIACRITICS
+# =============================================================================
+
+# T with cedilla - Romanian (historical, now uses comma below)
+Ţ  LATIN-CAPITAL-T-WITH-CEDILLA = DIA(T, cedilla) script:Latn
+
+ţ  LATIN-SMALL-T-WITH-CEDILLA = DIA(t, cedilla) script:Latn
+
+# T with caron - Czech, Slovak
+# Note: Uppercase uses standard caron above
+Ť  LATIN-CAPITAL-T-WITH-CARON = DIA(T, caron) script:Latn
+
+# Note: Lowercase uses caron.alt (apostrophe-like) due to ascender
+ť  LATIN-SMALL-T-WITH-CARON = DIA(t, caron.alt) script:Latn
+
+# T with stroke - Sami
+Ŧ  LATIN-CAPITAL-T-WITH-STROKE = OVR(T, stroke) script:Latn
+
+ŧ  LATIN-SMALL-T-WITH-STROKE = OVR(t, stroke) script:Latn
+
+# =============================================================================
+# U + DIACRITICS
+# =============================================================================
+
+# U with tilde - Greenlandic
+Ũ  LATIN-CAPITAL-U-WITH-TILDE = DIA(U, tilde) script:Latn
+
+ũ  LATIN-SMALL-U-WITH-TILDE = DIA(u, tilde) script:Latn
+
+# U with macron - Latvian, Maori, Latin
+Ū  LATIN-CAPITAL-U-WITH-MACRON = DIA(U, macron) script:Latn
+
+ū  LATIN-SMALL-U-WITH-MACRON = DIA(u, macron) script:Latn
+
+# U with breve - Latin
+Ŭ  LATIN-CAPITAL-U-WITH-BREVE = DIA(U, breve) script:Latn
+
+ŭ  LATIN-SMALL-U-WITH-BREVE = DIA(u, breve) script:Latn
+
+# U with ring above - Czech
+Ů  LATIN-CAPITAL-U-WITH-RING-ABOVE = DIA(U, ring) script:Latn
+
+ů  LATIN-SMALL-U-WITH-RING-ABOVE = DIA(u, ring) script:Latn
+
+# U with double acute - Hungarian
+Ű  LATIN-CAPITAL-U-WITH-DOUBLE-ACUTE = DIA(U, double-acute) script:Latn
+
+ű  LATIN-SMALL-U-WITH-DOUBLE-ACUTE = DIA(u, double-acute) script:Latn
+
+# U with ogonek - Polish, Lithuanian
+Ų  LATIN-CAPITAL-U-WITH-OGONEK = DIA(U, ogonek) script:Latn
+
+ų  LATIN-SMALL-U-WITH-OGONEK = DIA(u, ogonek) script:Latn
+
+# =============================================================================
+# W + CIRCUMFLEX
+# =============================================================================
+
+# W with circumflex - Welsh
+Ŵ  LATIN-CAPITAL-W-WITH-CIRCUMFLEX = DIA(W, circumflex) script:Latn
+
+ŵ  LATIN-SMALL-W-WITH-CIRCUMFLEX = DIA(w, circumflex) script:Latn
+
+# =============================================================================
+# Y + DIACRITICS
+# =============================================================================
+
+# Y with circumflex - Welsh
+Ŷ  LATIN-CAPITAL-Y-WITH-CIRCUMFLEX = DIA(Y, circumflex) script:Latn
+
+ŷ  LATIN-SMALL-Y-WITH-CIRCUMFLEX = DIA(y, circumflex) script:Latn
+
+# Y with diaeresis - French (rare), Welsh
+Ÿ  LATIN-CAPITAL-Y-WITH-DIAERESIS = DIA(Y, diaeresis) script:Latn
+
+# Note: Lowercase y-diaeresis (U+00FF) is in Latin-1 Supplement
+
+# =============================================================================
+# Z + DIACRITICS
+# =============================================================================
+
+# Z with acute - Polish, Sorbian
+Ź  LATIN-CAPITAL-Z-WITH-ACUTE = DIA(Z, acute) script:Latn
+
+ź  LATIN-SMALL-Z-WITH-ACUTE = DIA(z, acute) script:Latn
+
+# Z with dot above - Polish
+Ż  LATIN-CAPITAL-Z-WITH-DOT-ABOVE = DIA(Z, dot-above) script:Latn
+
+ż  LATIN-SMALL-Z-WITH-DOT-ABOVE = DIA(z, dot-above) script:Latn
+
+# Z with caron - Czech, Slovak, Slovenian, Croatian, Latvian
+Ž  LATIN-CAPITAL-Z-WITH-CARON = DIA(Z, caron) script:Latn
+
+ž  LATIN-SMALL-Z-WITH-CARON = DIA(z, caron) script:Latn
+
+# =============================================================================
+# LONG S (HISTORICAL)
+# =============================================================================
+
+# Long s - Historical letterform used in older texts
+# ponytail: use ascender with hook, similar to f without crossbar
+ſ  LATIN-SMALL-LONG-S = FRAME(ascender, hook.top) script:Latn
+
+# =============================================================================
+# CASE MAPPINGS
+# =============================================================================
+
+# A + diacritics
+@case Ā ā
+@case Ă ă
+@case Ą ą
+
+# C + diacritics
+@case Ć ć
+@case Ĉ ĉ
+@case Ċ ċ
+@case Č č
+
+# D + diacritics
+@case Ď ď
+@case Đ đ
+
+# E + diacritics
+@case Ē ē
+@case Ĕ ĕ
+@case Ė ė
+@case Ę ę
+@case Ě ě
+
+# G + diacritics
+@case Ĝ ĝ
+@case Ğ ğ
+@case Ġ ġ
+@case Ģ ģ
+
+# H + diacritics
+@case Ĥ ĥ
+@case Ħ ħ
+
+# I + diacritics
+@case Ĩ ĩ
+@case Ī ī
+@case Ĭ ĭ
+@case Į į
+# Note: Turkish I/i casing is special: I <-> ı, İ <-> i
+
+# J + circumflex
+@case Ĵ ĵ
+
+# K + cedilla
+@case Ķ ķ
+# Note: ĸ (kra) has no uppercase
+
+# L + diacritics
+@case Ĺ ĺ
+@case Ļ ļ
+@case Ľ ľ
+@case Ŀ ŀ
+@case Ł ł
+
+# N + diacritics
+@case Ń ń
+@case Ņ ņ
+@case Ň ň
+# Note: ŉ has no uppercase (deprecated character)
+
+# Eng
+@case Ŋ ŋ
+
+# O + diacritics
+@case Ō ō
+@case Ŏ ŏ
+@case Ő ő
+
+# R + diacritics
+@case Ŕ ŕ
+@case Ŗ ŗ
+@case Ř ř
+
+# S + diacritics
+@case Ś ś
+@case Ŝ ŝ
+@case Ş ş
+@case Š š
+
+# T + diacritics
+@case Ţ ţ
+@case Ť ť
+@case Ŧ ŧ
+
+# U + diacritics
+@case Ũ ũ
+@case Ū ū
+@case Ŭ ŭ
+@case Ů ů
+@case Ű ű
+@case Ų ų
+
+# W + circumflex
+@case Ŵ ŵ
+
+# Y + diacritics
+@case Ŷ ŷ
+# Note: Ÿ pairs with ÿ from Latin-1 Supplement
+
+# Z + diacritics
+@case Ź ź
+@case Ż ż
+@case Ž ž
+
+# Note: ſ (long s) lowercases to s, but s uppercases to S (not ſ)
+
+# =============================================================================
+# END OF LATIN EXTENDED-A CHARACTER LIBRARY
+# =============================================================================

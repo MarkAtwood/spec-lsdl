@@ -1,0 +1,307 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Combining Half Marks Library
+# =============================================================================
+#
+# Coverage: Unicode block U+FE20-FE2F (16 combining half marks).
+#
+# These are special combining marks designed to span multiple characters.
+# Each mark is split into left and right halves that together form a
+# complete mark when applied to adjacent characters.
+#
+# Categories:
+#   - Ligature ties: Connect characters to indicate ligature/affricate
+#   - Double tilde halves: Split tilde spanning two characters
+#   - Double macron halves: Split macron spanning two characters
+#   - Conjoining macron: Macron that continues to adjacent character
+#   - Below variants: Same marks positioned below the baseline
+#   - Cyrillic titlo: Abbreviation mark used in Church Slavonic
+#
+# Zone assignments:
+#   diacritic-above: y=0 to y=2 (above cap-height)
+#   diacritic-below: y=8 to y=11 (below baseline into descender)
+#
+# All marks MUST define an `attach` anchor per Section 15.2.
+#
+# =============================================================================
+
+# =============================================================================
+# ABOVE MARKS - LEFT HALVES
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# ligature-left-half - Left half of ligature tie above
+# Unicode: U+FE20 COMBINING LIGATURE LEFT HALF
+# Used with U+FE21 to form complete ligature tie spanning two characters
+# -----------------------------------------------------------------------------
+@elem ligature-left-half
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [6,2]
+p2 = C([6,0] [9,0])
+p3 = [12,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# double-tilde-left-half - Left half of double tilde above
+# Unicode: U+FE22 COMBINING DOUBLE TILDE LEFT HALF
+# Used with U+FE23 to form complete tilde spanning two characters
+# -----------------------------------------------------------------------------
+@elem double-tilde-left-half
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [3,2]
+p2 = C([5,0] [7,1])
+p3 = [12,1]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# macron-left-half - Left half of double macron above
+# Unicode: U+FE24 COMBINING MACRON LEFT HALF
+# Used with U+FE25 to form complete macron spanning two characters
+# -----------------------------------------------------------------------------
+@elem macron-left-half
+zone: diacritic-above
+path: p1 p2
+p1 = [4,1]
+p2 = [12,1]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# cyrillic-titlo-left-half - Left half of Cyrillic titlo
+# Unicode: U+FE2E COMBINING CYRILLIC TITLO LEFT HALF
+# Used in Church Slavonic for abbreviations
+# Used with U+FE2F to form complete titlo spanning two characters
+# -----------------------------------------------------------------------------
+@elem cyrillic-titlo-left-half
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [4,2]
+p2 = C([4,0] [6,0])
+p3 = [12,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# =============================================================================
+# ABOVE MARKS - RIGHT HALVES
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# ligature-right-half - Right half of ligature tie above
+# Unicode: U+FE21 COMBINING LIGATURE RIGHT HALF
+# Used with U+FE20 to form complete ligature tie spanning two characters
+# -----------------------------------------------------------------------------
+@elem ligature-right-half
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [0,0]
+p2 = C([3,0] [6,0])
+p3 = [6,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# double-tilde-right-half - Right half of double tilde above
+# Unicode: U+FE23 COMBINING DOUBLE TILDE RIGHT HALF
+# Used with U+FE22 to form complete tilde spanning two characters
+# -----------------------------------------------------------------------------
+@elem double-tilde-right-half
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [0,1]
+p2 = C([5,1] [7,2])
+p3 = [9,0]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# macron-right-half - Right half of double macron above
+# Unicode: U+FE25 COMBINING MACRON RIGHT HALF
+# Used with U+FE24 to form complete macron spanning two characters
+# -----------------------------------------------------------------------------
+@elem macron-right-half
+zone: diacritic-above
+path: p1 p2
+p1 = [0,1]
+p2 = [8,1]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# -----------------------------------------------------------------------------
+# cyrillic-titlo-right-half - Right half of Cyrillic titlo
+# Unicode: U+FE2F COMBINING CYRILLIC TITLO RIGHT HALF
+# Used in Church Slavonic for abbreviations
+# Used with U+FE2E to form complete titlo spanning two characters
+# -----------------------------------------------------------------------------
+@elem cyrillic-titlo-right-half
+zone: diacritic-above
+path: p1 p2 p3
+p1 = [0,0]
+p2 = C([6,0] [8,0])
+p3 = [8,2]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# =============================================================================
+# ABOVE MARKS - CONJOINING
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# conjoining-macron - Macron that extends to adjacent character
+# Unicode: U+FE26 COMBINING CONJOINING MACRON
+# Extends from current character to next, used for spanning marks
+# -----------------------------------------------------------------------------
+@elem conjoining-macron
+zone: diacritic-above
+path: p1 p2
+p1 = [6,1]
+p2 = [12,1]
+close: false
+width: 1
+anchors: attach=[6,2]
+@end
+
+# =============================================================================
+# BELOW MARKS - LEFT HALVES
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# ligature-left-half-below - Left half of ligature tie below
+# Unicode: U+FE27 COMBINING LIGATURE LEFT HALF BELOW
+# Used with U+FE28 to form complete ligature tie spanning two characters
+# -----------------------------------------------------------------------------
+@elem ligature-left-half-below
+zone: diacritic-below
+path: p1 p2 p3
+p1 = [6,9]
+p2 = C([6,11] [9,11])
+p3 = [12,11]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# tilde-left-half-below - Left half of tilde below
+# Unicode: U+FE29 COMBINING TILDE LEFT HALF BELOW
+# Used with U+FE2A to form complete tilde spanning two characters
+# -----------------------------------------------------------------------------
+@elem tilde-left-half-below
+zone: diacritic-below
+path: p1 p2 p3
+p1 = [3,9]
+p2 = C([5,11] [7,10])
+p3 = [12,10]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# macron-left-half-below - Left half of macron below
+# Unicode: U+FE2B COMBINING MACRON LEFT HALF BELOW
+# Used with U+FE2C to form complete macron spanning two characters
+# -----------------------------------------------------------------------------
+@elem macron-left-half-below
+zone: diacritic-below
+path: p1 p2
+p1 = [4,10]
+p2 = [12,10]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# =============================================================================
+# BELOW MARKS - RIGHT HALVES
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# ligature-right-half-below - Right half of ligature tie below
+# Unicode: U+FE28 COMBINING LIGATURE RIGHT HALF BELOW
+# Used with U+FE27 to form complete ligature tie spanning two characters
+# -----------------------------------------------------------------------------
+@elem ligature-right-half-below
+zone: diacritic-below
+path: p1 p2 p3
+p1 = [0,11]
+p2 = C([3,11] [6,11])
+p3 = [6,9]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# tilde-right-half-below - Right half of tilde below
+# Unicode: U+FE2A COMBINING TILDE RIGHT HALF BELOW
+# Used with U+FE29 to form complete tilde spanning two characters
+# -----------------------------------------------------------------------------
+@elem tilde-right-half-below
+zone: diacritic-below
+path: p1 p2 p3
+p1 = [0,10]
+p2 = C([5,10] [7,9])
+p3 = [9,11]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# macron-right-half-below - Right half of macron below
+# Unicode: U+FE2C COMBINING MACRON RIGHT HALF BELOW
+# Used with U+FE2B to form complete macron spanning two characters
+# -----------------------------------------------------------------------------
+@elem macron-right-half-below
+zone: diacritic-below
+path: p1 p2
+p1 = [0,10]
+p2 = [8,10]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# =============================================================================
+# BELOW MARKS - CONJOINING
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# conjoining-macron-below - Macron below that extends to adjacent character
+# Unicode: U+FE2D COMBINING CONJOINING MACRON BELOW
+# Extends from current character to next, used for spanning marks
+# -----------------------------------------------------------------------------
+@elem conjoining-macron-below
+zone: diacritic-below
+path: p1 p2
+p1 = [6,10]
+p2 = [12,10]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# =============================================================================
+# END OF COMBINING HALF MARKS LIBRARY
+# =============================================================================

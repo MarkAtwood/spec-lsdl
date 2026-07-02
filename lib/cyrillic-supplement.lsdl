@@ -1,0 +1,870 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Cyrillic Supplement Library (U+0500-052F)
+# =============================================================================
+#
+# 48 characters for minority languages using Cyrillic script:
+#   - Komi letters (Ԁ-ԏ): De, Dje, Zje, Dzje, Lje, Nje, Sje, Tje variants
+#   - Reversed Ze (Ԑ/ԑ): Enets, Khanty
+#   - El with hook (Ԓ/ԓ): Khanty
+#   - Lha/Rha (Ԕ-ԗ): Kurdish Cyrillic
+#   - Yae (Ԙ/ԙ): Buryat
+#   - Qa/We (Ԛ-ԝ): Kurdish Cyrillic
+#   - Aleut Ka (Ԟ/ԟ): Aleut
+#   - Middle hook variants (Ԡ-ԣ): Abkhasian
+#   - Descender variants (Ԥ-ԯ): Abkhaz, minority languages
+#
+# =============================================================================
+
+# =============================================================================
+# CASE MAPPINGS (24 pairs)
+# =============================================================================
+
+@case Ԁ ԁ
+@case Ԃ ԃ
+@case Ԅ ԅ
+@case Ԇ ԇ
+@case Ԉ ԉ
+@case Ԋ ԋ
+@case Ԍ ԍ
+@case Ԏ ԏ
+@case Ԑ ԑ
+@case Ԓ ԓ
+@case Ԕ ԕ
+@case Ԗ ԗ
+@case Ԙ ԙ
+@case Ԛ ԛ
+@case Ԝ ԝ
+@case Ԟ ԟ
+@case Ԡ ԡ
+@case Ԣ ԣ
+@case Ԥ ԥ
+@case Ԧ ԧ
+@case Ԩ ԩ
+@case Ԫ ԫ
+@case Ԭ ԭ
+@case Ԯ ԯ
+
+# =============================================================================
+# LOCAL ELEMENT DEFINITIONS
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Structural elements from elements-base.lsdl (local copies for standalone validation)
+# -----------------------------------------------------------------------------
+
+@elem stem
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8] mid=[6,6]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+@elem stem.l
+zone: cap
+path: p1 p2
+p1 = [2,0]
+p2 = [2,8]
+close: false
+width: 1
+anchors: top=[2,0] base=[2,8] mid=[2,4]
+  mark-above=[2,0] mark-below=[2,9]
+@end
+
+@elem stem.r
+zone: cap
+path: p1 p2
+p1 = [10,0]
+p2 = [10,8]
+close: false
+width: 1
+anchors: top=[10,0] base=[10,8] mid=[10,4]
+  mark-above=[10,0] mark-below=[10,9]
+@end
+
+@elem descender
+zone: descender
+path: p1 p2
+p1 = [6,4]
+p2 = [6,10]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,10] mid=[6,7]
+  mark-below=[6,11]
+@end
+
+@elem ascender
+zone: ascender
+path: p1 p2
+p1 = [6,1]
+p2 = [6,8]
+close: false
+width: 1
+anchors: top=[6,1] base=[6,8] mid=[6,4]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+@elem crossbar
+zone: x-height
+path: p1 p2
+p1 = [2,6]
+p2 = [10,6]
+close: false
+width: 1
+anchors: left=[2,6] right=[10,6] mid=[6,6]
+@end
+
+@elem crossbar.cap
+zone: cap
+path: p1 p2
+p1 = [2,4]
+p2 = [10,4]
+close: false
+width: 1
+anchors: left=[2,4] right=[10,4] mid=[6,4]
+@end
+
+@elem bar.top
+zone: cap
+path: p1 p2
+p1 = [0,0]
+p2 = [12,0]
+close: false
+width: 1
+anchors: left=[0,0] right=[12,0] mid=[6,0]
+@end
+
+@elem bar.top.x
+zone: x-height
+path: p1 p2
+p1 = [0,4]
+p2 = [12,4]
+close: false
+width: 1
+anchors: left=[0,4] right=[12,4] mid=[6,4]
+@end
+
+@elem bar.bot
+zone: x-height
+path: p1 p2
+p1 = [0,8]
+p2 = [12,8]
+close: false
+width: 1
+anchors: left=[0,8] right=[12,8] mid=[6,8]
+@end
+
+@elem bar.bot.cap
+zone: cap
+path: p1 p2
+p1 = [0,8]
+p2 = [12,8]
+close: false
+width: 1
+anchors: left=[0,8] right=[12,8] mid=[6,8]
+@end
+
+@elem bowl.full
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [6,4]
+p2 = C([12,4] [12,6])
+p3 = C([12,8] [6,8])
+p4 = C([0,8] [0,6])
+p5 = C([0,4] [6,4])
+close: true
+width: 1
+anchors: attach=[6,6] mark-above=[6,3] mark-below=[6,9]
+  left=[0,6] right=[12,6] top=[6,4] base=[6,8]
+@end
+
+@elem bowl.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [6,0]
+p2 = C([12,0] [12,4])
+p3 = C([12,8] [6,8])
+p4 = C([0,8] [0,4])
+p5 = C([0,0] [6,0])
+close: true
+width: 1
+anchors: attach=[6,4] mark-above=[6,0] mark-below=[6,9]
+  left=[0,4] right=[12,4] top=[6,0] base=[6,8]
+@end
+
+@elem bowl.l
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = C([0,4] [0,6])
+p3 = C([0,8] [6,8])
+p4 = C([12,8] [12,6])
+close: true
+width: 1
+anchors: attach=[6,6] mark-above=[4,3] mark-below=[4,9]
+@end
+
+@elem bowl.r
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = C([12,4] [12,6])
+p3 = C([12,8] [6,8])
+p4 = C([0,8] [0,6])
+close: true
+width: 1
+anchors: attach=[6,6] mark-above=[8,3] mark-below=[8,9]
+@end
+
+@elem arc.top
+zone: x-height
+path: p1 p2 p3
+p1 = [10,6]
+p2 = C([10,4] [6,4])
+p3 = [2,6]
+close: false
+width: 1
+anchors: left=[2,6] right=[10,6] top=[6,4]
+  mark-above=[6,3]
+@end
+
+@elem arc.bot
+zone: x-height
+path: p1 p2 p3
+p1 = [2,6]
+p2 = C([2,8] [6,8])
+p3 = [10,8]
+close: false
+width: 1
+anchors: left=[2,6] right=[10,8] base=[6,8]
+  mark-below=[6,9]
+@end
+
+@elem arc.top.cap
+zone: cap
+path: p1 p2 p3
+p1 = [10,4]
+p2 = C([10,0] [6,0])
+p3 = [2,4]
+close: false
+width: 1
+anchors: left=[2,4] right=[10,4] top=[6,0]
+  mark-above=[6,0]
+@end
+
+@elem arc.bot.cap
+zone: cap
+path: p1 p2 p3
+p1 = [2,4]
+p2 = C([2,8] [6,8])
+p3 = [10,4]
+close: false
+width: 1
+anchors: left=[2,4] right=[10,4] base=[6,8]
+  mark-below=[6,9]
+@end
+
+@elem arc.top.r
+zone: x-height
+path: p1 p2 p3
+p1 = [2,6]
+p2 = C([2,4] [6,4])
+p3 = [10,6]
+close: false
+width: 1
+anchors: left=[2,6] right=[10,6] top=[6,4]
+@end
+
+@elem arc.bot.r
+zone: x-height
+path: p1 p2 p3
+p1 = [10,6]
+p2 = C([10,8] [6,8])
+p3 = [2,6]
+close: false
+width: 1
+anchors: left=[2,6] right=[10,6] base=[6,8]
+@end
+
+@elem arc.top.cap.r
+zone: cap
+path: p1 p2 p3
+p1 = [2,4]
+p2 = C([2,0] [6,0])
+p3 = [10,4]
+close: false
+width: 1
+anchors: left=[2,4] right=[10,4] top=[6,0]
+@end
+
+@elem arc.bot.cap.r
+zone: cap
+path: p1 p2 p3
+p1 = [10,4]
+p2 = C([10,8] [6,8])
+p3 = [2,4]
+close: false
+width: 1
+anchors: left=[2,4] right=[10,4] base=[6,8]
+@end
+
+@elem apex
+zone: cap
+path: p1 p2 p3
+p1 = [0,8]
+p2 = [6,0]
+p3 = [12,8]
+close: false
+width: 1
+anchors: top=[6,0] left=[0,8] right=[12,8]
+  mark-above=[6,0]
+@end
+
+@elem apex.x
+zone: x-height
+path: p1 p2 p3
+p1 = [0,8]
+p2 = [6,4]
+p3 = [12,8]
+close: false
+width: 1
+anchors: top=[6,4] left=[0,8] right=[12,8]
+@end
+
+@elem vertex
+zone: x-height
+path: p1 p2 p3
+p1 = [0,4]
+p2 = [6,8]
+p3 = [12,4]
+close: false
+width: 1
+anchors: base=[6,8] left=[0,4] right=[12,4]
+  mark-below=[6,9]
+@end
+
+@elem vertex.cap
+zone: cap
+path: p1 p2 p3
+p1 = [0,0]
+p2 = [6,8]
+p3 = [12,0]
+close: false
+width: 1
+anchors: base=[6,8] left=[0,0] right=[12,0]
+  mark-below=[6,9]
+@end
+
+@elem diagonal
+zone: cap
+path: p1 p2
+p1 = [2,0]
+p2 = [10,8]
+close: false
+width: 1
+anchors: top=[2,0] base=[10,8] mid=[6,4]
+@end
+
+@elem diagonal.x
+zone: x-height
+path: p1 p2
+p1 = [2,4]
+p2 = [10,8]
+close: false
+width: 1
+anchors: top=[2,4] base=[10,8] mid=[6,6]
+@end
+
+@elem leg
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [10,8]
+close: false
+width: 1
+anchors: attach=[6,4] base=[10,8]
+@end
+
+@elem leg.cap
+zone: cap
+path: p1 p2
+p1 = [2,4]
+p2 = [10,8]
+close: false
+width: 1
+anchors: attach=[2,4] base=[10,8]
+@end
+
+@elem leg.rev
+zone: x-height
+path: p1 p2
+p1 = [2,8]
+p2 = [6,4]
+close: false
+width: 1
+anchors: attach=[6,4] base=[2,8]
+@end
+
+@elem leg.cap.rev
+zone: cap
+path: p1 p2
+p1 = [2,8]
+p2 = [6,4]
+close: false
+width: 1
+anchors: attach=[6,4] base=[2,8]
+@end
+
+@elem shoulder
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,6]
+p2 = C([2,4] [6,4])
+p3 = C([10,4] [10,6])
+p4 = [10,8]
+close: false
+width: 1
+anchors: attach=[2,6] top=[6,4] base=[10,8]
+  left=[2,6] right=[10,6]
+@end
+
+@elem tail
+zone: descender
+path: p1 p2 p3
+p1 = [6,8]
+p2 = C([8,9] [10,10])
+p3 = [11,10]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+@elem hook.bot
+zone: descender
+path: p1 p2 p3
+p1 = [6,8]
+p2 = C([6,10] [2,10])
+p3 = [2,9]
+close: false
+width: 1
+anchors: attach=[6,8] top=[6,8]
+  mark-below=[4,11]
+@end
+
+@elem stroke.horiz
+zone: x-height
+path: p1 p2
+p1 = [2,6]
+p2 = [10,6]
+close: false
+width: 1
+anchors: left=[2,6] right=[10,6] mid=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# Cyrillic-specific elements from cyrillic.lsdl (local copies)
+# -----------------------------------------------------------------------------
+
+@elem stem.cyr
+zone: cap
+path: p1 p2
+p1 = [6,0]
+p2 = [6,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mid=[6,4]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+@elem hook.cyr
+zone: x-height
+path: p1 p2 p3
+p1 = [2,4]
+p2 = C([2,6] [4,8])
+p3 = [6,8]
+close: false
+width: 1
+anchors: attach=[2,4] base=[6,8] top=[2,4]
+@end
+
+@elem tail.cyr
+zone: descender
+path: p1 p2 p3
+p1 = [10,8]
+p2 = [10,10]
+p3 = [8,10]
+close: false
+width: 1
+anchors: attach=[10,8] base=[10,10]
+@end
+
+@elem soft-sign.base
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,4]
+p2 = [2,8]
+p3 = C([2,8] [8,8])
+p4 = C([8,6] [2,6])
+close: true
+width: 1
+anchors: top=[2,4] base=[2,8] attach=[5,7]
+  mark-above=[2,3] mark-below=[5,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Extended Cyrillic elements from cyrillic-extended.lsdl (local copies)
+# -----------------------------------------------------------------------------
+
+@elem hook.desc.cyr
+zone: descender
+path: p1 p2 p3
+p1 = [6,8]
+p2 = [6,10]
+p3 = C([6,10] [4,10])
+close: false
+width: 1
+anchors: attach=[6,8] base=[4,10]
+@end
+
+# -----------------------------------------------------------------------------
+# New elements for Cyrillic Supplement
+# -----------------------------------------------------------------------------
+
+# Komi soft-sign variant - open curve like soft sign but more rounded
+@elem soft-sign.komi
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,4]
+p2 = [2,8]
+p3 = C([2,8] [10,8])
+p4 = C([10,5] [2,5])
+close: true
+width: 1
+anchors: top=[2,4] base=[2,8] attach=[6,7]
+  mark-above=[2,3] mark-below=[6,9]
+@end
+
+# Komi soft-sign variant capital - larger form
+@elem soft-sign.komi.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [2,0]
+p2 = [2,8]
+p3 = C([2,8] [10,8])
+p4 = C([10,4] [2,4])
+close: true
+width: 1
+anchors: top=[2,0] base=[2,8] attach=[6,6]
+  mark-above=[2,0] mark-below=[6,9]
+@end
+
+# Middle hook - curves into middle of letter (for Ԡ, Ԣ)
+@elem hook.mid
+zone: x-height
+path: p1 p2 p3
+p1 = [6,6]
+p2 = C([6,7] [4,7])
+p3 = [3,7]
+close: false
+width: 1
+anchors: attach=[6,6] base=[3,7]
+@end
+
+# Middle hook capital
+@elem hook.mid.cap
+zone: cap
+path: p1 p2 p3
+p1 = [6,4]
+p2 = C([6,5] [4,5])
+p3 = [3,5]
+close: false
+width: 1
+anchors: attach=[6,4] base=[3,5]
+@end
+
+# Left hook - curves to left side (for Ԩ, ԩ)
+@elem hook.left
+zone: x-height
+path: p1 p2 p3
+p1 = [2,4]
+p2 = C([0,4] [0,6])
+p3 = [2,6]
+close: false
+width: 1
+anchors: attach=[2,4] base=[2,6]
+@end
+
+# Left hook capital
+@elem hook.left.cap
+zone: cap
+path: p1 p2 p3
+p1 = [2,0]
+p2 = C([0,0] [0,2])
+p3 = [2,2]
+close: false
+width: 1
+anchors: attach=[2,0] base=[2,2]
+@end
+
+# Descender stroke - simple vertical descender for Ԥ, Ԧ
+@elem descender.cyr
+zone: descender
+path: p1 p2
+p1 = [6,8]
+p2 = [6,10]
+close: false
+width: 1
+anchors: attach=[6,8] base=[6,10]
+@end
+
+# Descender for apex (Л-shaped) letters
+@elem descender.apex
+zone: descender
+path: p1 p2
+p1 = [6,8]
+p2 = [6,11]
+close: false
+width: 1
+anchors: attach=[6,8] base=[6,11]
+@end
+
+# Shha element - h-like form for Ԧ
+@elem shha.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [2,0]
+p2 = [2,8]
+p3 = C([2,4] [6,4])
+p4 = C([10,4] [10,6])
+p5 = [10,8]
+close: false
+width: 1
+anchors: top=[2,0] base=[10,8] mid=[6,4]
+  mark-above=[2,0]
+@end
+
+# Shha lowercase
+@elem shha
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [2,4]
+p2 = [2,8]
+p3 = C([2,6] [6,6])
+p4 = C([10,6] [10,7])
+p5 = [10,8]
+close: false
+width: 1
+anchors: top=[2,4] base=[10,8] mid=[6,6]
+@end
+
+# Dzzhe bowl - bowl with stem going through (for Ԫ)
+@elem dzzhe.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [6,0]
+p2 = [6,8]
+p3 = C([0,8] [0,4])
+p4 = C([0,0] [6,0])
+p5 = C([12,0] [12,4])
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mid=[6,4]
+  mark-above=[6,0]
+@end
+
+# =============================================================================
+# KOMI LETTERS (U+0500-050F)
+# =============================================================================
+
+# Komi De - like Д but with soft-sign style bowl
+Ԁ  CYRILLIC-CAPITAL-KOMI-DE = soft-sign.komi.cap script:Cyrl ortho:Komi
+  # Komi De - rounded D-like form
+
+ԁ  CYRILLIC-SMALL-KOMI-DE = soft-sign.komi script:Cyrl ortho:Komi
+  # Small Komi de
+
+# Komi Dje - De with soft-sign + tail
+Ԃ  CYRILLIC-CAPITAL-KOMI-DJE = FRAME(soft-sign.komi.cap, tail.cyr) script:Cyrl ortho:Komi
+  # Komi Dje - De with tail
+
+ԃ  CYRILLIC-SMALL-KOMI-DJE = FRAME(soft-sign.komi, tail.cyr) script:Cyrl ortho:Komi
+  # Small Komi dje
+
+# Komi Zje - like З with hook
+Ԅ  CYRILLIC-CAPITAL-KOMI-ZJE = FRAME(STACK(arc.top.cap.r, arc.bot.cap.r), hook.desc.cyr) script:Cyrl ortho:Komi
+  # Komi Zje - Ze with descender hook
+
+ԅ  CYRILLIC-SMALL-KOMI-ZJE = FRAME(STACK(arc.top.r, arc.bot.r), hook.desc.cyr) script:Cyrl ortho:Komi
+  # Small Komi zje
+
+# Komi Dzje - like Ԅ but different form (З + descender)
+Ԇ  CYRILLIC-CAPITAL-KOMI-DZJE = FRAME(STACK(arc.top.cap.r, arc.bot.cap.r), tail.cyr) script:Cyrl ortho:Komi
+  # Komi Dzje - Ze with tail
+
+ԇ  CYRILLIC-SMALL-KOMI-DZJE = FRAME(STACK(arc.top.r, arc.bot.r), tail.cyr) script:Cyrl ortho:Komi
+  # Small Komi dzje
+
+# Komi Lje - like Л + soft sign
+Ԉ  CYRILLIC-CAPITAL-KOMI-LJE = LR(apex, soft-sign.base) script:Cyrl ortho:Komi
+  # Komi Lje - El + soft sign ligature
+
+ԉ  CYRILLIC-SMALL-KOMI-LJE = LR(apex.x, soft-sign.base) script:Cyrl ortho:Komi
+  # Small Komi lje
+
+# Komi Nje - like Н + soft sign
+Ԋ  CYRILLIC-CAPITAL-KOMI-NJE = LR(FRAME(stem.l, crossbar.cap, stem.r), soft-sign.base) script:Cyrl ortho:Komi
+  # Komi Nje - En + soft sign ligature
+
+ԋ  CYRILLIC-SMALL-KOMI-NJE = LR(FRAME(stem, crossbar, stem), soft-sign.base) script:Cyrl ortho:Komi
+  # Small Komi nje
+
+# Komi Sje - like С with descender
+Ԍ  CYRILLIC-CAPITAL-KOMI-SJE = FRAME(STACK(arc.top.cap, arc.bot.cap), tail.cyr) script:Cyrl ortho:Komi
+  # Komi Sje - Es with tail
+
+ԍ  CYRILLIC-SMALL-KOMI-SJE = FRAME(STACK(arc.top, arc.bot), tail.cyr) script:Cyrl ortho:Komi
+  # Small Komi sje
+
+# Komi Tje - like Т with tail
+Ԏ  CYRILLIC-CAPITAL-KOMI-TJE = FRAME(bar.top, stem.cyr, tail.cyr) script:Cyrl ortho:Komi
+  # Komi Tje - Te with tail
+
+ԏ  CYRILLIC-SMALL-KOMI-TJE = FRAME(bar.top.x, stem, tail.cyr) script:Cyrl ortho:Komi
+  # Small Komi tje
+
+# =============================================================================
+# REVERSED ZE AND EL WITH HOOK (U+0510-0513)
+# =============================================================================
+
+# Reversed Ze - mirror of З
+Ԑ  CYRILLIC-CAPITAL-REVERSED-ZE = STACK(arc.top.cap, arc.bot.cap) script:Cyrl ortho:Ene
+  # Reversed Ze - like C but fully curved (Enets)
+
+ԑ  CYRILLIC-SMALL-REVERSED-ZE = STACK(arc.top, arc.bot) script:Cyrl ortho:Ene
+  # Small reversed ze
+
+# El with hook - Л with bottom hook
+Ԓ  CYRILLIC-CAPITAL-EL-HOOK = FRAME(apex, hook.desc.cyr) script:Cyrl ortho:Kha
+  # El with hook (Khanty)
+
+ԓ  CYRILLIC-SMALL-EL-HOOK = FRAME(apex.x, hook.desc.cyr) script:Cyrl ortho:Kha
+  # Small el with hook
+
+# =============================================================================
+# KURDISH CYRILLIC (U+0514-051D)
+# =============================================================================
+
+# Lha - Л with horizontal stroke
+Ԕ  CYRILLIC-CAPITAL-LHA = OVR(apex, stroke.horiz) script:Cyrl ortho:Krd
+  # Lha - El with stroke (Kurdish Cyrillic)
+
+ԕ  CYRILLIC-SMALL-LHA = OVR(apex.x, stroke.horiz) script:Cyrl ortho:Krd
+  # Small lha
+
+# Rha - Р with horizontal stroke
+Ԗ  CYRILLIC-CAPITAL-RHA = FRAME(stem.l, bowl.r, stroke.horiz) script:Cyrl ortho:Krd
+  # Rha - Er with stroke (Kurdish Cyrillic)
+
+ԗ  CYRILLIC-SMALL-RHA = FRAME(descender, bowl.r, stroke.horiz) script:Cyrl ortho:Krd
+  # Small rha
+
+# Yae - Э variant for Buryat
+Ԙ  CYRILLIC-CAPITAL-YAE = FRAME(STACK(arc.top.cap.r, arc.bot.cap.r), crossbar.cap, tail) script:Cyrl ortho:Bur
+  # Yae - E reversed with tail (Buryat)
+
+ԙ  CYRILLIC-SMALL-YAE = FRAME(STACK(arc.top.r, arc.bot.r), crossbar, tail) script:Cyrl ortho:Bur
+  # Small yae
+
+# Qa - like Latin Q
+Ԛ  CYRILLIC-CAPITAL-QA = FRAME(bowl.cap, tail) script:Cyrl ortho:Krd
+  # Qa - O with tail (Kurdish Cyrillic)
+
+ԛ  CYRILLIC-SMALL-QA = FRAME(bowl.full, tail) script:Cyrl ortho:Krd
+  # Small qa
+
+# We - like W/V double form
+Ԝ  CYRILLIC-CAPITAL-WE = FRAME(vertex.cap, vertex.cap) script:Cyrl ortho:Krd
+  # We - double V (Kurdish Cyrillic)
+
+ԝ  CYRILLIC-SMALL-WE = FRAME(vertex, vertex) script:Cyrl ortho:Krd
+  # Small we
+
+# =============================================================================
+# ALEUT AND MIDDLE HOOK VARIANTS (U+051E-0523)
+# =============================================================================
+
+# Aleut Ka - К with bar
+Ԟ  CYRILLIC-CAPITAL-ALEUT-KA = OVR(LR(stem.l, STACK(leg.cap, leg.cap.rev)), stroke.horiz) script:Cyrl ortho:Alt
+  # Aleut Ka - Ka with stroke
+
+ԟ  CYRILLIC-SMALL-ALEUT-KA = OVR(LR(stem, STACK(leg, leg.rev)), stroke.horiz) script:Cyrl ortho:Alt
+  # Small Aleut ka
+
+# El with middle hook - Л with hook at mid-height
+Ԡ  CYRILLIC-CAPITAL-EL-MIDDLE-HOOK = FRAME(apex, hook.mid.cap) script:Cyrl ortho:Abk
+  # El with middle hook (Abkhaz)
+
+ԡ  CYRILLIC-SMALL-EL-MIDDLE-HOOK = FRAME(apex.x, hook.mid) script:Cyrl ortho:Abk
+  # Small el with middle hook
+
+# En with middle hook - Н with hook at mid-height
+Ԣ  CYRILLIC-CAPITAL-EN-MIDDLE-HOOK = FRAME(stem.l, crossbar.cap, stem.r, hook.mid.cap) script:Cyrl ortho:Abk
+  # En with middle hook (Abkhaz)
+
+ԣ  CYRILLIC-SMALL-EN-MIDDLE-HOOK = FRAME(stem, crossbar, stem, hook.mid) script:Cyrl ortho:Abk
+  # Small en with middle hook
+
+# =============================================================================
+# DESCENDER VARIANTS (U+0524-052F)
+# =============================================================================
+
+# Pe with descender - П with vertical descender (Abkhaz)
+Ԥ  CYRILLIC-CAPITAL-PE-DESCENDER = FRAME(stem.l, bar.top, stem.r, descender.cyr) script:Cyrl ortho:Abk
+  # Pe with descender (Abkhaz)
+
+ԥ  CYRILLIC-SMALL-PE-DESCENDER = FRAME(stem, bar.top.x, stem, descender.cyr) script:Cyrl ortho:Abk
+  # Small pe with descender
+
+# Shha with descender - Һ with descender
+Ԧ  CYRILLIC-CAPITAL-SHHA-DESCENDER = FRAME(shha.cap, descender.cyr) script:Cyrl ortho:Abk
+  # Shha with descender (Abkhaz)
+
+ԧ  CYRILLIC-SMALL-SHHA-DESCENDER = FRAME(shha, descender.cyr) script:Cyrl ortho:Abk
+  # Small shha with descender
+
+# En with left hook - Н with hook on left stem
+Ԩ  CYRILLIC-CAPITAL-EN-LEFT-HOOK = FRAME(hook.left.cap, stem.l, crossbar.cap, stem.r) script:Cyrl ortho:Bur
+  # En with left hook (Buryat)
+
+ԩ  CYRILLIC-SMALL-EN-LEFT-HOOK = FRAME(hook.left, stem, crossbar, stem) script:Cyrl ortho:Bur
+  # Small en with left hook
+
+# Dzzhe - like Ж but with bowl through center
+Ԫ  CYRILLIC-CAPITAL-DZZHE = LR3(STACK(leg.cap.rev, leg.cap), bowl.cap, STACK(leg.cap, leg.cap.rev)) script:Cyrl ortho:Abk
+  # Dzzhe - Zhe variant (Abkhaz)
+
+ԫ  CYRILLIC-SMALL-DZZHE = LR3(STACK(leg.rev, leg), bowl.full, STACK(leg, leg.rev)) script:Cyrl ortho:Abk
+  # Small dzzhe
+
+# Dche - like Ч but with bowl
+Ԭ  CYRILLIC-CAPITAL-DCHE = FRAME(bowl.l, stem.r) script:Cyrl ortho:Abk
+  # Dche - Che variant (Abkhaz)
+
+ԭ  CYRILLIC-SMALL-DCHE = FRAME(bowl.l, stem) script:Cyrl ortho:Abk
+  # Small dche
+
+# El with descender - Л with vertical descender
+Ԯ  CYRILLIC-CAPITAL-EL-DESCENDER = FRAME(apex, descender.apex) script:Cyrl ortho:Abk
+  # El with descender
+
+ԯ  CYRILLIC-SMALL-EL-DESCENDER = FRAME(apex.x, descender.apex) script:Cyrl ortho:Abk
+  # Small el with descender
+
+# =============================================================================
+# END OF CYRILLIC SUPPLEMENT LIBRARY
+# =============================================================================

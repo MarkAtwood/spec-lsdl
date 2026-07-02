@@ -1,0 +1,428 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Latin Extended-C Character Library (U+2C60-U+2C7F)
+# =============================================================================
+#
+# This file defines the 32 characters in the Latin Extended-C Unicode block.
+# These characters are primarily used for phonetic transcription, historical
+# orthographies, and various linguistic purposes.
+#
+# Categories:
+#   - Barred/stroked letters (L with double bar, P with stroke, etc.)
+#   - Letters with descenders (H, K, Z with descender)
+#   - Turned/rotated letters (turned A, turned alpha, turned R)
+#   - Hook variants (M, V, W with hook)
+#   - Phonetic variants (half H, tailless phi, small capital turned E)
+#   - Modifier letters (subscript j, modifier V)
+#   - Swash tail variants (S, Z with swash tail)
+#
+# Composition patterns:
+#   - OVR: Stroke overlays
+#   - FRAME: Complex letterforms with hooks, tails, descenders
+#   - sc: Transform for turned/rotated letters
+#
+# =============================================================================
+
+# =============================================================================
+# SPECIAL ELEMENTS FOR LATIN EXTENDED-C
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# double.bar.l - Double horizontal bar for L
+# Two short horizontal strokes through the stem
+# -----------------------------------------------------------------------------
+@elem double.bar.l
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [4,5]
+p2 = [8,5]
+p3 = [4,7]
+p4 = [8,7]
+close: false
+width: 1
+anchors: mid=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# double.bar.l.cap - Double horizontal bar for capital L
+# -----------------------------------------------------------------------------
+@elem double.bar.l.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [0,3]
+p2 = [4,3]
+p3 = [0,5]
+p4 = [4,5]
+close: false
+width: 1
+anchors: mid=[2,4]
+@end
+
+# -----------------------------------------------------------------------------
+# tilde.mid - Middle tilde overlay for letters
+# Used for L with middle tilde
+# -----------------------------------------------------------------------------
+@elem tilde.mid
+zone: cap
+path: p1 p2 p3
+p1 = [0,4]
+p2 = C([2,3] [4,5])
+p3 = [6,4]
+close: false
+width: 1
+anchors: mid=[3,4]
+@end
+
+# -----------------------------------------------------------------------------
+# stroke.desc - Stroke through descender
+# For P with stroke through descender
+# -----------------------------------------------------------------------------
+@elem stroke.desc
+zone: descender
+path: p1 p2
+p1 = [4,9]
+p2 = [8,9]
+close: false
+width: 1
+anchors: mid=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# tail.r - Right-curving retroflex tail
+# For R with tail, turned R with tail
+# -----------------------------------------------------------------------------
+@elem tail.r
+zone: descender
+path: p1 p2 p3
+p1 = [6,8]
+p2 = C([6,10] [8,10])
+p3 = [9,9]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# descender.short - Short descender for H, K, Z
+# Descends slightly below baseline
+# -----------------------------------------------------------------------------
+@elem descender.short
+zone: descender
+path: p1 p2
+p1 = [10,8]
+p2 = [10,10]
+close: false
+width: 1
+anchors: attach=[10,8] base=[10,10]
+@end
+
+# -----------------------------------------------------------------------------
+# descender.short.l - Left-positioned short descender
+# -----------------------------------------------------------------------------
+@elem descender.short.l
+zone: descender
+path: p1 p2
+p1 = [2,8]
+p2 = [2,10]
+close: false
+width: 1
+anchors: attach=[2,8] base=[2,10]
+@end
+
+# -----------------------------------------------------------------------------
+# alpha.cap - Capital alpha shape
+# Similar to A but with curved top
+# -----------------------------------------------------------------------------
+@elem alpha.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [2,8]
+p2 = C([2,4] [4,0])
+p3 = C([8,0] [10,4])
+p4 = [10,8]
+p5 = [6,4]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] left=[2,8] right=[10,8]
+@end
+
+# -----------------------------------------------------------------------------
+# hook.m - Hook descending from M
+# For M with hook
+# -----------------------------------------------------------------------------
+@elem hook.m
+zone: descender
+path: p1 p2 p3
+p1 = [10,8]
+p2 = C([10,10] [8,10])
+p3 = [7,9]
+close: false
+width: 1
+anchors: attach=[10,8]
+@end
+
+# -----------------------------------------------------------------------------
+# hook.v.right - Right hook for v
+# Small rightward hook at baseline
+# -----------------------------------------------------------------------------
+@elem hook.v.right
+zone: x-height
+path: p1 p2 p3
+p1 = [6,8]
+p2 = C([7,8] [8,7])
+p3 = [9,7]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# curl.v - Small curl for v
+# Used in v with curl
+# -----------------------------------------------------------------------------
+@elem curl.v
+zone: x-height
+path: p1 p2 p3
+p1 = [10,6]
+p2 = C([11,6] [11,7])
+p3 = [10,7]
+close: false
+width: 1
+anchors: attach=[10,6]
+@end
+
+# -----------------------------------------------------------------------------
+# half.h.cap - Capital half H shape
+# Left vertical with short right leg
+# -----------------------------------------------------------------------------
+@elem half.h.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [2,0]
+p2 = [2,8]
+p3 = [2,4]
+p4 = [8,4]
+close: false
+width: 1
+anchors: top=[2,0] base=[2,8] mid=[5,4]
+@end
+
+# -----------------------------------------------------------------------------
+# half.h.small - Small half h shape
+# -----------------------------------------------------------------------------
+@elem half.h.small
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,4]
+p2 = [2,8]
+p3 = [2,6]
+p4 = [8,6]
+close: false
+width: 1
+anchors: top=[2,4] base=[2,8] mid=[5,6]
+@end
+
+# -----------------------------------------------------------------------------
+# phi.tailless - Tailless phi shape
+# Circle with vertical line, no descender
+# -----------------------------------------------------------------------------
+@elem phi.tailless
+zone: x-height
+path: p1 p2 p3 p4 p5 p6
+p1 = [6,4]
+p2 = [6,8]
+p3 = [6,6]
+p4 = C([0,6] [0,4])
+p5 = C([12,4] [12,6])
+p6 = [6,6]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# notch.e - Notch in e
+# Small v-shaped notch
+# -----------------------------------------------------------------------------
+@elem notch.e
+zone: x-height
+path: p1 p2 p3
+p1 = [4,6]
+p2 = [6,7]
+p3 = [8,6]
+close: false
+width: 1
+anchors: mid=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# ring.inside - Small ring inside letter
+# For O with low ring inside
+# -----------------------------------------------------------------------------
+@elem ring.inside
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,6]
+p2 = C([7,6] [7,7])
+p3 = C([7,8] [6,8])
+p4 = C([5,8] [5,7])
+close: true
+width: 1
+anchors: mid=[6,7]
+@end
+
+# -----------------------------------------------------------------------------
+# schwa.small.cap - Small capital schwa (turned E)
+# Smaller version for small capital usage
+# -----------------------------------------------------------------------------
+@elem schwa.small.cap
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [2,4]
+p2 = C([8,4] [10,5])
+p3 = C([10,7] [6,6])
+p4 = C([2,7] [2,8])
+p5 = [10,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8] mid=[6,6]
+@end
+
+# =============================================================================
+# CHARACTERS U+2C60-U+2C6F
+# =============================================================================
+
+# Ⱡ - Latin Capital Letter L with Double Bar
+Ⱡ  LATIN-CAPITAL-L-DOUBLE-BAR = OVR(L, double.bar.l.cap) cp:U+2C60 script:Latn
+
+# ⱡ - Latin Small Letter L with Double Bar
+ⱡ  LATIN-SMALL-L-DOUBLE-BAR = OVR(l, double.bar.l) cp:U+2C61 script:Latn
+
+# Ɫ - Latin Capital Letter L with Middle Tilde
+Ɫ  LATIN-CAPITAL-L-MIDDLE-TILDE = OVR(L, tilde.mid) cp:U+2C62 script:Latn
+
+# Ᵽ - Latin Capital Letter P with Stroke
+# Note: Stroke through descender portion
+Ᵽ  LATIN-CAPITAL-P-STROKE = OVR(P, stroke.horiz) cp:U+2C63 script:Latn
+
+# Ɽ - Latin Capital Letter R with Tail
+Ɽ  LATIN-CAPITAL-R-TAIL = FRAME(R, tail.r) cp:U+2C64 script:Latn
+
+# ⱥ - Latin Small Letter A with Stroke
+ⱥ  LATIN-SMALL-A-STROKE = OVR(a, stroke.horiz) cp:U+2C65 script:Latn
+
+# ⱦ - Latin Small Letter T with Diagonal Stroke
+ⱦ  LATIN-SMALL-T-DIAGONAL-STROKE = OVR(t, stroke.diag) cp:U+2C66 script:Latn
+
+# Ⱨ - Latin Capital Letter H with Descender
+Ⱨ  LATIN-CAPITAL-H-DESCENDER = FRAME(H, descender.short) cp:U+2C67 script:Latn
+
+# ⱨ - Latin Small Letter H with Descender
+ⱨ  LATIN-SMALL-H-DESCENDER = FRAME(h, descender.short) cp:U+2C68 script:Latn
+
+# Ⱪ - Latin Capital Letter K with Descender
+Ⱪ  LATIN-CAPITAL-K-DESCENDER = FRAME(K, descender.short) cp:U+2C69 script:Latn
+
+# ⱪ - Latin Small Letter K with Descender
+ⱪ  LATIN-SMALL-K-DESCENDER = FRAME(k, descender.short) cp:U+2C6A script:Latn
+
+# Ⱬ - Latin Capital Letter Z with Descender
+Ⱬ  LATIN-CAPITAL-Z-DESCENDER = FRAME(Z, descender.short) cp:U+2C6B script:Latn
+
+# ⱬ - Latin Small Letter Z with Descender
+ⱬ  LATIN-SMALL-Z-DESCENDER = FRAME(z, descender.short) cp:U+2C6C script:Latn
+
+# Ɑ - Latin Capital Letter Alpha
+Ɑ  LATIN-CAPITAL-ALPHA = alpha.cap cp:U+2C6D script:Latn
+
+# Ɱ - Latin Capital Letter M with Hook
+Ɱ  LATIN-CAPITAL-M-HOOK = FRAME(M, hook.m) cp:U+2C6E script:Latn
+
+# Ɐ - Latin Capital Letter Turned A
+Ɐ  LATIN-CAPITAL-TURNED-A = sc(A, sx=12, sy=-12) cp:U+2C6F script:Latn
+
+# =============================================================================
+# CHARACTERS U+2C70-U+2C7F
+# =============================================================================
+
+# Ɒ - Latin Capital Letter Turned Alpha
+Ɒ  LATIN-CAPITAL-TURNED-ALPHA = sc(alpha.cap, sx=-12, sy=-12) cp:U+2C70 script:Latn
+
+# ⱱ - Latin Small Letter V with Right Hook
+ⱱ  LATIN-SMALL-V-RIGHT-HOOK = FRAME(v, hook.v.right) cp:U+2C71 script:Latn
+
+# Ⱳ - Latin Capital Letter W with Hook
+Ⱳ  LATIN-CAPITAL-W-HOOK = FRAME(W, hook.bot) cp:U+2C72 script:Latn
+
+# ⱳ - Latin Small Letter W with Hook
+ⱳ  LATIN-SMALL-W-HOOK = FRAME(w, hook.bot) cp:U+2C73 script:Latn
+
+# ⱴ - Latin Small Letter V with Curl
+ⱴ  LATIN-SMALL-V-CURL = FRAME(v, curl.v) cp:U+2C74 script:Latn
+
+# Ⱶ - Latin Capital Letter Half H
+Ⱶ  LATIN-CAPITAL-HALF-H = half.h.cap cp:U+2C75 script:Latn
+
+# ⱶ - Latin Small Letter Half H
+ⱶ  LATIN-SMALL-HALF-H = half.h.small cp:U+2C76 script:Latn
+
+# ⱷ - Latin Small Letter Tailless Phi
+ⱷ  LATIN-SMALL-TAILLESS-PHI = phi.tailless cp:U+2C77 script:Latn
+
+# ⱸ - Latin Small Letter E with Notch
+ⱸ  LATIN-SMALL-E-NOTCH = OVR(e, notch.e) cp:U+2C78 script:Latn
+
+# ⱹ - Latin Small Letter Turned R with Tail
+ⱹ  LATIN-SMALL-TURNED-R-TAIL = FRAME(sc(r, sx=-12, sy=-12), tail.r) cp:U+2C79 script:Latn
+
+# ⱺ - Latin Small Letter O with Low Ring Inside
+ⱺ  LATIN-SMALL-O-LOW-RING-INSIDE = OVR(o, ring.inside) cp:U+2C7A script:Latn
+
+# ⱻ - Latin Letter Small Capital Turned E
+ⱻ  LATIN-LETTER-SMALL-CAPITAL-TURNED-E = schwa.small.cap cp:U+2C7B script:Latn
+
+# ⱼ - Latin Subscript Small Letter J
+# Subscript letters are typically scaled and lowered
+ⱼ  LATIN-SUBSCRIPT-SMALL-J = sc(j, sx=8, sy=8) cp:U+2C7C script:Latn
+
+# ⱽ - Modifier Letter Capital V
+# Modifier letters are typically superscript sized
+ⱽ  MODIFIER-LETTER-CAPITAL-V = sc(V, sx=8, sy=8) cp:U+2C7D script:Latn
+
+# Ȿ - Latin Capital Letter S with Swash Tail
+Ȿ  LATIN-CAPITAL-S-SWASH-TAIL = FRAME(S, swash) cp:U+2C7E script:Latn
+
+# Ɀ - Latin Capital Letter Z with Swash Tail
+Ɀ  LATIN-CAPITAL-Z-SWASH-TAIL = FRAME(Z, swash) cp:U+2C7F script:Latn
+
+# =============================================================================
+# CASE MAPPINGS
+# =============================================================================
+#
+# Case pairs within this block or with known mappings.
+# Note: Some lowercase forms are in IPA Extensions or Latin Extended-B.
+#
+# =============================================================================
+
+# L with double bar (both in this block)
+@case Ⱡ ⱡ
+
+# H with descender (both in this block)
+@case Ⱨ ⱨ
+
+# K with descender (both in this block)
+@case Ⱪ ⱪ
+
+# Z with descender (both in this block)
+@case Ⱬ ⱬ
+
+# W with hook (both in this block)
+@case Ⱳ ⱳ
+
+# Half H (both in this block)
+@case Ⱶ ⱶ
+
+# =============================================================================
+# END OF LATIN EXTENDED-C CHARACTER LIBRARY
+# =============================================================================

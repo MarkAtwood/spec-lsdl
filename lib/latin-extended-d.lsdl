@@ -1,0 +1,1798 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Latin Extended-D Character Library (U+A720-A7FF)
+# =============================================================================
+#
+# This file defines the 199 characters in the Latin Extended-D Unicode block.
+# These characters are used for medieval manuscripts, Africanist linguistics,
+# Old English/Irish (insular forms), Visigothic texts, and various historical
+# orthographies.
+#
+# Categories:
+#   - Modifier letters (stress/tone marks)
+#   - Egyptological letters (alef, ain)
+#   - Medieval abbreviation letters (heng, tresillo, cuatrillo)
+#   - Ligatures (AA, AO, AU, AV, AY, OO, TZ, VY)
+#   - K variants with strokes (medieval)
+#   - Insular letters (D, F, G, R, S, T for Old English/Irish)
+#   - Africanist letters (turned forms)
+#   - Visigothic letters (Z variant)
+#   - P/Q variants with descender strokes
+#   - Volapuk letters (AE, OE, UE)
+#   - Greek-derived letters (beta, omega, chi, lambda)
+#   - Epigraphic letters (reversed F, P, inverted M, etc.)
+#
+# Composition patterns:
+#   - DIA: Single diacritic attachment
+#   - OVR: Stroke overlays
+#   - FRAME: Complex letterforms with hooks, tails
+#   - LR: Digraphs and compound letters
+#   - sc: Rotations and mirroring
+#
+# =============================================================================
+
+# =============================================================================
+# SPECIAL ELEMENTS FOR LATIN EXTENDED-D
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# egyptological.alef - Egyptological alef shape (like half-ring)
+# For Egyptological Alef letters
+# -----------------------------------------------------------------------------
+@elem egyptological.alef.cap
+zone: cap
+path: p1 p2 p3
+p1 = [8,0]
+p2 = C([2,0] [2,4])
+p3 = C([2,8] [8,8])
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+@elem egyptological.alef.small
+zone: x-height
+path: p1 p2 p3
+p1 = [8,4]
+p2 = C([2,4] [2,6])
+p3 = C([2,8] [8,8])
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# egyptological.ain - Egyptological ain shape (like reversed half-ring)
+# -----------------------------------------------------------------------------
+@elem egyptological.ain.cap
+zone: cap
+path: p1 p2 p3
+p1 = [4,0]
+p2 = C([10,0] [10,4])
+p3 = C([10,8] [4,8])
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+@elem egyptological.ain.small
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = C([10,4] [10,6])
+p3 = C([10,8] [4,8])
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# heng - Heng letter shape (h with hook extension)
+# -----------------------------------------------------------------------------
+@elem heng.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6
+p1 = [2,0]
+p2 = [2,8]
+p3 = [2,4]
+p4 = C([2,2] [6,2])
+p5 = C([10,2] [10,5])
+p6 = C([10,9] [8,10])
+close: false
+width: 1
+anchors: top=[2,0] base=[2,8]
+@end
+
+@elem heng.small
+zone: full
+path: p1 p2 p3 p4 p5 p6
+p1 = [2,1]
+p2 = [2,8]
+p3 = [2,5]
+p4 = C([2,4] [6,4])
+p5 = C([10,4] [10,7])
+p6 = C([10,10] [8,10])
+close: false
+width: 1
+anchors: top=[2,1] base=[2,8]
+@end
+
+# -----------------------------------------------------------------------------
+# tresillo - Tresillo shape (like numeral 3)
+# -----------------------------------------------------------------------------
+@elem tresillo.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [2,0]
+p2 = [10,0]
+p3 = C([10,2] [6,4])
+p4 = C([10,6] [10,8])
+p5 = [2,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+@elem tresillo.small
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [2,4]
+p2 = [10,4]
+p3 = C([10,5] [6,6])
+p4 = C([10,7] [10,8])
+p5 = [2,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# cuatrillo - Cuatrillo shape (like numeral 4)
+# -----------------------------------------------------------------------------
+@elem cuatrillo.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [2,0]
+p2 = [2,5]
+p3 = [10,5]
+p4 = [8,0]
+p5 = [8,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[8,8]
+@end
+
+@elem cuatrillo.small
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [2,4]
+p2 = [2,6]
+p3 = [10,6]
+p4 = [8,4]
+p5 = [8,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[8,8]
+@end
+
+# -----------------------------------------------------------------------------
+# insular.d - Insular D shape (rounded)
+# Used for Old English/Irish manuscripts
+# -----------------------------------------------------------------------------
+@elem insular.d.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [10,0]
+p2 = [2,0]
+p3 = C([0,0] [0,4])
+p4 = C([0,8] [6,8])
+p5 = C([10,8] [10,4])
+close: true
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+@elem insular.d.small
+zone: full
+path: p1 p2 p3 p4 p5
+p1 = [10,1]
+p2 = [10,6]
+p3 = C([10,8] [6,8])
+p4 = C([2,8] [2,6])
+p5 = C([2,4] [10,4])
+close: true
+width: 1
+anchors: top=[10,1] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# insular.f - Insular F shape (rounded top)
+# -----------------------------------------------------------------------------
+@elem insular.f.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [10,0]
+p2 = C([6,0] [4,2])
+p3 = [4,8]
+p4 = [4,4]
+p5 = [10,4]
+close: false
+width: 1
+anchors: top=[6,0] base=[4,8]
+@end
+
+@elem insular.f.small
+zone: full
+path: p1 p2 p3 p4 p5
+p1 = [10,1]
+p2 = C([6,1] [4,3])
+p3 = [4,10]
+p4 = [4,4]
+p5 = [10,4]
+close: false
+width: 1
+anchors: top=[6,1] base=[4,10]
+@end
+
+# -----------------------------------------------------------------------------
+# insular.g - Insular G shape (rounded, closed form)
+# -----------------------------------------------------------------------------
+@elem insular.g.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6
+p1 = [10,2]
+p2 = C([10,0] [6,0])
+p3 = C([2,0] [2,4])
+p4 = C([2,8] [6,8])
+p5 = C([10,8] [10,5])
+p6 = [6,5]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# insular.r - Insular R shape (rounded)
+# -----------------------------------------------------------------------------
+@elem insular.r.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [2,0]
+p2 = [2,8]
+p3 = [2,0]
+p4 = C([10,0] [10,3])
+p5 = C([10,6] [6,6])
+close: false
+width: 1
+anchors: top=[2,0] base=[2,8]
+@end
+
+@elem insular.r.small
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,4]
+p2 = [2,8]
+p3 = [2,4]
+p4 = C([10,4] [10,6])
+close: false
+width: 1
+anchors: top=[2,4] base=[2,8]
+@end
+
+# -----------------------------------------------------------------------------
+# insular.s - Insular S shape (r-like with descender)
+# -----------------------------------------------------------------------------
+@elem insular.s.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [10,0]
+p2 = C([4,0] [4,4])
+p3 = [4,8]
+p4 = [10,4]
+close: false
+width: 1
+anchors: top=[6,0] base=[4,8]
+@end
+
+@elem insular.s.small
+zone: full
+path: p1 p2 p3 p4
+p1 = [10,4]
+p2 = C([4,4] [4,6])
+p3 = [4,10]
+p4 = [10,6]
+close: false
+width: 1
+anchors: top=[6,4] base=[4,10]
+@end
+
+# -----------------------------------------------------------------------------
+# insular.t - Insular T shape (rounded crossbar)
+# -----------------------------------------------------------------------------
+@elem insular.t.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [2,2]
+p2 = C([2,0] [6,0])
+p3 = C([10,0] [10,2])
+p4 = [6,0]
+p5 = [6,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+@elem insular.t.small
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [2,5]
+p2 = C([2,4] [6,4])
+p3 = C([10,4] [10,5])
+p4 = [6,4]
+p5 = [6,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# r.rotunda - R rotunda shape (abbreviated r)
+# -----------------------------------------------------------------------------
+@elem r.rotunda.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [2,4]
+p2 = C([2,0] [6,0])
+p3 = C([10,0] [10,4])
+p4 = [10,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[10,8]
+@end
+
+@elem r.rotunda.small
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,6]
+p2 = C([2,4] [6,4])
+p3 = C([10,4] [10,6])
+p4 = [10,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[10,8]
+@end
+
+# -----------------------------------------------------------------------------
+# rum.rotunda - Rum rotunda shape (r with macron)
+# -----------------------------------------------------------------------------
+@elem rum.rotunda.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6
+p1 = [0,2]
+p2 = [12,2]
+p3 = [2,4]
+p4 = C([2,0] [6,0])
+p5 = C([10,0] [10,4])
+p6 = [10,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[10,8]
+@end
+
+@elem rum.rotunda.small
+zone: x-height
+path: p1 p2 p3 p4 p5 p6
+p1 = [0,3]
+p2 = [12,3]
+p3 = [2,6]
+p4 = C([2,4] [6,4])
+p5 = C([10,4] [10,6])
+p6 = [10,8]
+close: false
+width: 1
+anchors: top=[6,3] base=[10,8]
+@end
+
+# -----------------------------------------------------------------------------
+# visigothic.z - Visigothic Z shape
+# -----------------------------------------------------------------------------
+@elem visigothic.z.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [2,0]
+p2 = [10,0]
+p3 = [6,4]
+p4 = C([4,6] [4,8])
+p5 = [2,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[2,8]
+@end
+
+@elem visigothic.z.small
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [2,4]
+p2 = [10,4]
+p3 = [6,6]
+p4 = C([4,7] [4,8])
+p5 = [2,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[2,8]
+@end
+
+# -----------------------------------------------------------------------------
+# vend - Vend letter shape (like V with hook)
+# -----------------------------------------------------------------------------
+@elem vend.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [0,0]
+p2 = [6,8]
+p3 = [12,0]
+p4 = C([10,2] [8,4])
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+@elem vend.small
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [0,4]
+p2 = [6,8]
+p3 = [12,4]
+p4 = C([10,5] [8,6])
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# et - Et ligature shape (like &)
+# -----------------------------------------------------------------------------
+@elem et.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6
+p1 = [10,3]
+p2 = C([10,0] [6,0])
+p3 = C([2,0] [2,3])
+p4 = [10,6]
+p5 = C([10,8] [6,8])
+p6 = [2,6]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+@elem et.small
+zone: x-height
+path: p1 p2 p3 p4 p5 p6
+p1 = [10,5]
+p2 = C([10,4] [6,4])
+p3 = C([2,4] [2,5])
+p4 = [10,7]
+p5 = C([10,8] [6,8])
+p6 = [2,7]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# is - Is abbreviation shape
+# -----------------------------------------------------------------------------
+@elem is.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [4,0]
+p2 = [8,0]
+p3 = [6,0]
+p4 = [6,8]
+p5 = C([6,10] [4,10])
+close: false
+width: 1
+anchors: top=[6,0] base=[4,10]
+@end
+
+@elem is.small
+zone: full
+path: p1 p2 p3 p4 p5
+p1 = [4,4]
+p2 = [8,4]
+p3 = [6,4]
+p4 = [6,8]
+p5 = C([6,10] [4,10])
+close: false
+width: 1
+anchors: top=[6,4] base=[4,10]
+@end
+
+# -----------------------------------------------------------------------------
+# con - Con abbreviation shape
+# -----------------------------------------------------------------------------
+@elem con.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [10,2]
+p2 = C([10,0] [6,0])
+p3 = C([2,0] [2,4])
+p4 = C([2,8] [6,8])
+p5 = C([8,8] [8,6])
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+@elem con.small
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [10,5]
+p2 = C([10,4] [6,4])
+p3 = C([2,4] [2,6])
+p4 = C([2,8] [6,8])
+p5 = C([8,8] [8,7])
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# saltillo - Saltillo shape (apostrophe-like letter)
+# -----------------------------------------------------------------------------
+@elem saltillo.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [6,0]
+p2 = [6,3]
+p3 = C([6,5] [5,6])
+p4 = [4,6]
+close: false
+width: 1
+anchors: top=[6,0] base=[5,6]
+@end
+
+@elem saltillo.small
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = [6,6]
+p3 = C([6,7] [5,8])
+p4 = [4,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[5,8]
+@end
+
+# -----------------------------------------------------------------------------
+# beta.latin - Latin Beta shape
+# -----------------------------------------------------------------------------
+@elem beta.latin.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6 p7
+p1 = [2,8]
+p2 = [2,0]
+p3 = C([2,0] [8,0])
+p4 = C([10,0] [10,2])
+p5 = C([10,4] [6,4])
+p6 = C([10,4] [10,6])
+p7 = C([10,8] [2,8])
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+@elem beta.latin.small
+zone: full
+path: p1 p2 p3 p4 p5 p6 p7
+p1 = [2,10]
+p2 = [2,1]
+p3 = C([2,1] [8,1])
+p4 = C([10,1] [10,3])
+p5 = C([10,5] [6,5])
+p6 = C([10,5] [10,7])
+p7 = C([10,8] [2,8])
+close: false
+width: 1
+anchors: top=[6,1] base=[2,10]
+@end
+
+# -----------------------------------------------------------------------------
+# omega.latin - Latin Omega shape
+# -----------------------------------------------------------------------------
+@elem omega.latin.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6 p7
+p1 = [0,8]
+p2 = [0,6]
+p3 = C([0,2] [4,2])
+p4 = C([6,2] [6,4])
+p5 = C([6,2] [8,2])
+p6 = C([12,2] [12,6])
+p7 = [12,8]
+close: false
+width: 1
+anchors: top=[6,2] base=[6,8]
+@end
+
+@elem omega.latin.small
+zone: x-height
+path: p1 p2 p3 p4 p5 p6 p7
+p1 = [0,8]
+p2 = [0,7]
+p3 = C([0,4] [4,4])
+p4 = C([6,4] [6,5])
+p5 = C([6,4] [8,4])
+p6 = C([12,4] [12,7])
+p7 = [12,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# chi.latin - Latin Chi shape
+# -----------------------------------------------------------------------------
+@elem chi.latin.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [0,0]
+p2 = [12,8]
+p3 = [12,0]
+p4 = [0,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# lambda.latin - Latin Lambda shape
+# -----------------------------------------------------------------------------
+@elem lambda.latin.cap
+zone: cap
+path: p1 p2 p3
+p1 = [0,8]
+p2 = [6,0]
+p3 = [12,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+@elem lambda.latin.small
+zone: x-height
+path: p1 p2 p3
+p1 = [0,8]
+p2 = [6,4]
+p3 = [12,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# anglicana.w - Anglicana W shape
+# -----------------------------------------------------------------------------
+@elem anglicana.w.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [0,0]
+p2 = [3,8]
+p3 = [6,4]
+p4 = [9,8]
+p5 = [12,0]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+@elem anglicana.w.small
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [0,4]
+p2 = [3,8]
+p3 = [6,6]
+p4 = [9,8]
+p5 = [12,4]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# middle.scots.s - Middle Scots S shape (long s variant)
+# -----------------------------------------------------------------------------
+@elem middle.scots.s.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [8,0]
+p2 = C([4,0] [4,3])
+p3 = [4,5]
+p4 = C([4,8] [8,8])
+p5 = [8,6]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+@elem middle.scots.s.small
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [8,4]
+p2 = C([4,4] [4,5])
+p3 = [4,6]
+p4 = C([4,8] [8,8])
+p5 = [8,7]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# sigmoid.s - Sigmoid S shape
+# -----------------------------------------------------------------------------
+@elem sigmoid.s.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [10,1]
+p2 = C([10,0] [6,0])
+p3 = C([2,0] [2,4])
+p4 = C([2,8] [6,8])
+p5 = C([10,8] [10,7])
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+@elem sigmoid.s.small
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [10,5]
+p2 = C([10,4] [6,4])
+p3 = C([2,4] [2,6])
+p4 = C([2,8] [6,8])
+p5 = C([10,8] [10,7])
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# reversed.half.h - Reversed half H shape
+# -----------------------------------------------------------------------------
+@elem reversed.half.h.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [10,0]
+p2 = [10,8]
+p3 = [10,4]
+p4 = [2,4]
+close: false
+width: 1
+anchors: top=[10,0] base=[10,8]
+@end
+
+@elem reversed.half.h.small
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [10,4]
+p2 = [10,8]
+p3 = [10,6]
+p4 = [2,6]
+close: false
+width: 1
+anchors: top=[10,4] base=[10,8]
+@end
+
+# -----------------------------------------------------------------------------
+# sinological.dot - Sinological dot (middle dot)
+# -----------------------------------------------------------------------------
+@elem sinological.dot
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,5]
+p2 = C([8,5] [8,6])
+p3 = C([8,7] [6,7])
+p4 = C([4,7] [4,6])
+close: true
+width: 1
+anchors: top=[6,5] base=[6,7]
+@end
+
+# -----------------------------------------------------------------------------
+# oo.ligature - Double O ligature shape
+# -----------------------------------------------------------------------------
+@elem oo.ligature.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6
+p1 = [2,4]
+p2 = C([2,0] [6,0])
+p3 = C([10,0] [10,4])
+p4 = C([10,8] [6,8])
+p5 = C([2,8] [2,4])
+p6 = C([2,0] [6,0])
+close: true
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+@elem oo.ligature.small
+zone: x-height
+path: p1 p2 p3 p4 p5 p6
+p1 = [2,6]
+p2 = C([2,4] [6,4])
+p3 = C([10,4] [10,6])
+p4 = C([10,8] [6,8])
+p5 = C([2,8] [2,6])
+p6 = C([2,4] [6,4])
+close: true
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# modifier.stress.high - Modifier stress with high tone
+# -----------------------------------------------------------------------------
+@elem modifier.stress.high
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [4,0]
+p2 = [4,3]
+p3 = [8,0]
+p4 = [8,3]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,3]
+@end
+
+# -----------------------------------------------------------------------------
+# modifier.stress.low - Modifier stress with low tone
+# -----------------------------------------------------------------------------
+@elem modifier.stress.low
+zone: diacritic-above
+path: p1 p2 p3 p4
+p1 = [4,3]
+p2 = [4,0]
+p3 = [8,3]
+p4 = [8,0]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,3]
+@end
+
+# -----------------------------------------------------------------------------
+# flourish - Decorative flourish for letters
+# -----------------------------------------------------------------------------
+@elem flourish
+zone: descender
+path: p1 p2 p3
+p1 = [6,8]
+p2 = C([4,10] [8,10])
+p3 = [10,9]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# squirrel.tail - Squirrel tail for P variant
+# -----------------------------------------------------------------------------
+@elem squirrel.tail
+zone: descender
+path: p1 p2 p3 p4
+p1 = [6,8]
+p2 = C([6,10] [8,10])
+p3 = C([10,10] [10,9])
+p4 = [8,9]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# stroke.oblique - Oblique stroke for G, K, N, R, S
+# -----------------------------------------------------------------------------
+@elem stroke.oblique
+zone: x-height
+path: p1 p2
+p1 = [3,7]
+p2 = [9,5]
+close: false
+width: 1
+anchors: mid=[6,6]
+@end
+
+@elem stroke.oblique.cap
+zone: cap
+path: p1 p2
+p1 = [2,6]
+p2 = [10,2]
+close: false
+width: 1
+anchors: mid=[6,4]
+@end
+
+# -----------------------------------------------------------------------------
+# stroke.short - Short stroke overlay
+# -----------------------------------------------------------------------------
+@elem stroke.short
+zone: x-height
+path: p1 p2
+p1 = [4,5]
+p2 = [8,7]
+close: false
+width: 1
+anchors: mid=[6,6]
+@end
+
+@elem stroke.short.cap
+zone: cap
+path: p1 p2
+p1 = [4,3]
+p2 = [8,5]
+close: false
+width: 1
+anchors: mid=[6,4]
+@end
+
+# -----------------------------------------------------------------------------
+# glottal.modifier - Glottal stop modifier shape
+# -----------------------------------------------------------------------------
+@elem glottal.modifier
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = C([8,4] [8,5])
+p3 = [6,6]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# old.polish.o - Old Polish O shape (with tail)
+# -----------------------------------------------------------------------------
+@elem old.polish.o.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6
+p1 = [6,0]
+p2 = C([0,0] [0,4])
+p3 = C([0,8] [6,8])
+p4 = C([12,8] [12,4])
+p5 = C([12,0] [6,0])
+p6 = [8,10]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+@elem old.polish.o.small
+zone: x-height
+path: p1 p2 p3 p4 p5 p6
+p1 = [6,4]
+p2 = C([0,4] [0,6])
+p3 = C([0,8] [6,8])
+p4 = C([12,8] [12,6])
+p5 = C([12,4] [6,4])
+p6 = [8,10]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# closed.insular.g - Closed insular G shape
+# -----------------------------------------------------------------------------
+@elem closed.insular.g.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [10,2]
+p2 = C([10,0] [6,0])
+p3 = C([2,0] [2,4])
+p4 = C([2,8] [6,8])
+p5 = C([10,8] [10,4])
+close: true
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+@elem closed.insular.g.small
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [10,5]
+p2 = C([10,4] [6,4])
+p3 = C([2,4] [2,6])
+p4 = C([2,8] [6,8])
+p5 = C([10,8] [10,6])
+close: true
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# epigraphic.f.reversed - Reversed F for epigraphy
+# -----------------------------------------------------------------------------
+@elem epigraphic.f.reversed
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [2,4]
+p2 = [10,4]
+p3 = [10,8]
+p4 = [10,6]
+p5 = [4,6]
+close: false
+width: 1
+anchors: top=[6,4] base=[10,8]
+@end
+
+# -----------------------------------------------------------------------------
+# epigraphic.p.reversed - Reversed P for epigraphy
+# -----------------------------------------------------------------------------
+@elem epigraphic.p.reversed
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [10,4]
+p2 = [10,8]
+p3 = [10,4]
+p4 = C([2,4] [2,6])
+close: false
+width: 1
+anchors: top=[10,4] base=[10,8]
+@end
+
+# -----------------------------------------------------------------------------
+# epigraphic.m.inverted - Inverted M for epigraphy
+# -----------------------------------------------------------------------------
+@elem epigraphic.m.inverted
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [0,4]
+p2 = [0,8]
+p3 = [6,6]
+p4 = [12,8]
+p5 = [12,4]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# epigraphic.i.longa - Long I for epigraphy
+# -----------------------------------------------------------------------------
+@elem epigraphic.i.longa
+zone: full
+path: p1 p2
+p1 = [6,1]
+p2 = [6,10]
+close: false
+width: 1
+anchors: top=[6,1] base=[6,10]
+@end
+
+# -----------------------------------------------------------------------------
+# epigraphic.m.archaic - Archaic M for epigraphy
+# -----------------------------------------------------------------------------
+@elem epigraphic.m.archaic
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [0,8]
+p2 = [0,4]
+p3 = [6,8]
+p4 = [12,4]
+p5 = [12,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# open.e.cap - Open E shape (epsilon-like)
+# For reversed open E capital
+# -----------------------------------------------------------------------------
+@elem open.e.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [10,0]
+p2 = C([4,0] [2,2])
+p3 = [6,4]
+p4 = C([2,6] [4,8])
+p5 = [10,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mid=[6,4]
+@end
+
+# -----------------------------------------------------------------------------
+# gamma.cap - Capital Gamma shape (rams horn)
+# -----------------------------------------------------------------------------
+@elem gamma.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [2,0]
+p2 = [6,4]
+p3 = [10,0]
+p4 = [6,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# wynn.small - Small wynn shape
+# -----------------------------------------------------------------------------
+@elem wynn.small
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,4]
+p2 = [2,8]
+p3 = C([2,5] [8,5])
+p4 = C([10,6] [8,8])
+close: false
+width: 1
+anchors: top=[2,4] base=[2,8]
+@end
+
+# =============================================================================
+# CHARACTERS U+A720-A72F (Modifier letters and Egyptological)
+# =============================================================================
+
+# Modifier letters - stress and tone marks
+꜠  MODIFIER-LETTER-STRESS-HIGH-TONE = modifier.stress.high cp:U+A720 script:Latn
+꜡  MODIFIER-LETTER-STRESS-LOW-TONE = modifier.stress.low cp:U+A721 script:Latn
+
+# Egyptological letters
+Ꜣ  LATIN-CAPITAL-EGYPTOLOGICAL-ALEF = egyptological.alef.cap cp:U+A722 script:Latn
+ꜣ  LATIN-SMALL-EGYPTOLOGICAL-ALEF = egyptological.alef.small cp:U+A723 script:Latn
+Ꜥ  LATIN-CAPITAL-EGYPTOLOGICAL-AIN = egyptological.ain.cap cp:U+A724 script:Latn
+ꜥ  LATIN-SMALL-EGYPTOLOGICAL-AIN = egyptological.ain.small cp:U+A725 script:Latn
+
+# Heng
+Ꜧ  LATIN-CAPITAL-HENG = heng.cap cp:U+A726 script:Latn
+ꜧ  LATIN-SMALL-HENG = heng.small cp:U+A727 script:Latn
+
+# TZ digraph
+Ꜩ  LATIN-CAPITAL-TZ = LR(T, Z, 6/6) cp:U+A728 script:Latn
+ꜩ  LATIN-SMALL-TZ = LR(t, z, 6/6) cp:U+A729 script:Latn
+
+# Tresillo
+Ꜫ  LATIN-CAPITAL-TRESILLO = tresillo.cap cp:U+A72A script:Latn
+ꜫ  LATIN-SMALL-TRESILLO = tresillo.small cp:U+A72B script:Latn
+
+# Cuatrillo
+Ꜭ  LATIN-CAPITAL-CUATRILLO = cuatrillo.cap cp:U+A72C script:Latn
+ꜭ  LATIN-SMALL-CUATRILLO = cuatrillo.small cp:U+A72D script:Latn
+
+# Cuatrillo with comma
+Ꜯ  LATIN-CAPITAL-CUATRILLO-COMMA = DIA(cuatrillo.cap, comma-below) cp:U+A72E script:Latn
+ꜯ  LATIN-SMALL-CUATRILLO-COMMA = DIA(cuatrillo.small, comma-below) cp:U+A72F script:Latn
+
+# =============================================================================
+# CHARACTERS U+A730-A73F (Small capitals and ligatures)
+# =============================================================================
+
+# Small capitals
+ꜰ  LATIN-SMALL-CAPITAL-F = sc(F, sx=9, sy=9) cp:U+A730 script:Latn
+ꜱ  LATIN-SMALL-CAPITAL-S = sc(S, sx=9, sy=9) cp:U+A731 script:Latn
+
+# AA ligature
+Ꜳ  LATIN-CAPITAL-AA = LR(A, A, 6/6) cp:U+A732 script:Latn
+ꜳ  LATIN-SMALL-AA = LR(a, a, 6/6) cp:U+A733 script:Latn
+
+# AO ligature
+Ꜵ  LATIN-CAPITAL-AO = LR(A, O, 6/6) cp:U+A734 script:Latn
+ꜵ  LATIN-SMALL-AO = LR(a, o, 6/6) cp:U+A735 script:Latn
+
+# AU ligature
+Ꜷ  LATIN-CAPITAL-AU = LR(A, U, 6/6) cp:U+A736 script:Latn
+ꜷ  LATIN-SMALL-AU = LR(a, u, 6/6) cp:U+A737 script:Latn
+
+# AV ligature
+Ꜹ  LATIN-CAPITAL-AV = LR(A, V, 6/6) cp:U+A738 script:Latn
+ꜹ  LATIN-SMALL-AV = LR(a, v, 6/6) cp:U+A739 script:Latn
+
+# AV with horizontal bar
+Ꜻ  LATIN-CAPITAL-AV-BAR = OVR(LR(A, V, 6/6), stroke.horiz) cp:U+A73A script:Latn
+ꜻ  LATIN-SMALL-AV-BAR = OVR(LR(a, v, 6/6), stroke.horiz) cp:U+A73B script:Latn
+
+# AY ligature
+Ꜽ  LATIN-CAPITAL-AY = LR(A, Y, 6/6) cp:U+A73C script:Latn
+ꜽ  LATIN-SMALL-AY = LR(a, y, 6/6) cp:U+A73D script:Latn
+
+# Reversed C with dot
+Ꜿ  LATIN-CAPITAL-REVERSED-C-DOT = DIA(sc(C, sx=-12, sy=12), dot-above) cp:U+A73E script:Latn
+ꜿ  LATIN-SMALL-REVERSED-C-DOT = DIA(sc(c, sx=-12, sy=12), dot-above) cp:U+A73F script:Latn
+
+# =============================================================================
+# CHARACTERS U+A740-A74F (K variants and L/O variants)
+# =============================================================================
+
+# K with stroke
+Ꝁ  LATIN-CAPITAL-K-STROKE = OVR(K, stroke.horiz) cp:U+A740 script:Latn
+ꝁ  LATIN-SMALL-K-STROKE = OVR(k, stroke.horiz) cp:U+A741 script:Latn
+
+# K with diagonal stroke
+Ꝃ  LATIN-CAPITAL-K-DIAGONAL-STROKE = OVR(K, stroke.diag.cap) cp:U+A742 script:Latn
+ꝃ  LATIN-SMALL-K-DIAGONAL-STROKE = OVR(k, stroke.diag) cp:U+A743 script:Latn
+
+# K with stroke and diagonal stroke
+Ꝅ  LATIN-CAPITAL-K-STROKE-DIAGONAL = OVR(OVR(K, stroke.horiz), stroke.diag.cap) cp:U+A744 script:Latn
+ꝅ  LATIN-SMALL-K-STROKE-DIAGONAL = OVR(OVR(k, stroke.horiz), stroke.diag) cp:U+A745 script:Latn
+
+# Broken L
+Ꝇ  LATIN-CAPITAL-BROKEN-L = OVR(L, stroke.horiz) cp:U+A746 script:Latn
+ꝇ  LATIN-SMALL-BROKEN-L = OVR(l, stroke.horiz) cp:U+A747 script:Latn
+
+# L with high stroke
+Ꝉ  LATIN-CAPITAL-L-HIGH-STROKE = OVR(L, stroke.horiz) cp:U+A748 script:Latn
+ꝉ  LATIN-SMALL-L-HIGH-STROKE = OVR(l, stroke.horiz) cp:U+A749 script:Latn
+
+# O with long stroke overlay
+Ꝋ  LATIN-CAPITAL-O-LONG-STROKE = OVR(O, stroke.diag.cap) cp:U+A74A script:Latn
+ꝋ  LATIN-SMALL-O-LONG-STROKE = OVR(o, stroke.diag) cp:U+A74B script:Latn
+
+# O with loop
+Ꝍ  LATIN-CAPITAL-O-LOOP = FRAME(O, loop) cp:U+A74C script:Latn
+ꝍ  LATIN-SMALL-O-LOOP = FRAME(o, loop) cp:U+A74D script:Latn
+
+# OO ligature
+Ꝏ  LATIN-CAPITAL-OO = oo.ligature.cap cp:U+A74E script:Latn
+ꝏ  LATIN-SMALL-OO = oo.ligature.small cp:U+A74F script:Latn
+
+# =============================================================================
+# CHARACTERS U+A750-A75F (P/Q/R/V variants)
+# =============================================================================
+
+# P with stroke through descender
+Ꝑ  LATIN-CAPITAL-P-STROKE-DESCENDER = OVR(P, stroke.horiz) cp:U+A750 script:Latn
+ꝑ  LATIN-SMALL-P-STROKE-DESCENDER = OVR(p, stroke.horiz) cp:U+A751 script:Latn
+
+# P with flourish
+Ꝓ  LATIN-CAPITAL-P-FLOURISH = FRAME(P, flourish) cp:U+A752 script:Latn
+ꝓ  LATIN-SMALL-P-FLOURISH = FRAME(p, flourish) cp:U+A753 script:Latn
+
+# P with squirrel tail
+Ꝕ  LATIN-CAPITAL-P-SQUIRREL-TAIL = FRAME(P, squirrel.tail) cp:U+A754 script:Latn
+ꝕ  LATIN-SMALL-P-SQUIRREL-TAIL = FRAME(p, squirrel.tail) cp:U+A755 script:Latn
+
+# Q with stroke through descender
+Ꝗ  LATIN-CAPITAL-Q-STROKE-DESCENDER = OVR(Q, stroke.horiz) cp:U+A756 script:Latn
+ꝗ  LATIN-SMALL-Q-STROKE-DESCENDER = OVR(q, stroke.horiz) cp:U+A757 script:Latn
+
+# Q with diagonal stroke
+Ꝙ  LATIN-CAPITAL-Q-DIAGONAL-STROKE = OVR(Q, stroke.diag.cap) cp:U+A758 script:Latn
+ꝙ  LATIN-SMALL-Q-DIAGONAL-STROKE = OVR(q, stroke.diag) cp:U+A759 script:Latn
+
+# R rotunda
+Ꝛ  LATIN-CAPITAL-R-ROTUNDA = r.rotunda.cap cp:U+A75A script:Latn
+ꝛ  LATIN-SMALL-R-ROTUNDA = r.rotunda.small cp:U+A75B script:Latn
+
+# Rum rotunda
+Ꝝ  LATIN-CAPITAL-RUM-ROTUNDA = rum.rotunda.cap cp:U+A75C script:Latn
+ꝝ  LATIN-SMALL-RUM-ROTUNDA = rum.rotunda.small cp:U+A75D script:Latn
+
+# V with diagonal stroke
+Ꝟ  LATIN-CAPITAL-V-DIAGONAL-STROKE = OVR(V, stroke.diag.cap) cp:U+A75E script:Latn
+ꝟ  LATIN-SMALL-V-DIAGONAL-STROKE = OVR(v, stroke.diag) cp:U+A75F script:Latn
+
+# =============================================================================
+# CHARACTERS U+A760-A76F (VY, Visigothic, Thorn, Vend, ET, IS, CON)
+# =============================================================================
+
+# VY ligature
+Ꝡ  LATIN-CAPITAL-VY = LR(V, Y, 6/6) cp:U+A760 script:Latn
+ꝡ  LATIN-SMALL-VY = LR(v, y, 6/6) cp:U+A761 script:Latn
+
+# Visigothic Z
+Ꝣ  LATIN-CAPITAL-VISIGOTHIC-Z = visigothic.z.cap cp:U+A762 script:Latn
+ꝣ  LATIN-SMALL-VISIGOTHIC-Z = visigothic.z.small cp:U+A763 script:Latn
+
+# Thorn with stroke
+Ꝥ  LATIN-CAPITAL-THORN-STROKE = OVR(Þ, stroke.horiz) cp:U+A764 script:Latn
+ꝥ  LATIN-SMALL-THORN-STROKE = OVR(þ, stroke.horiz) cp:U+A765 script:Latn
+
+# Thorn with stroke through descender
+Ꝧ  LATIN-CAPITAL-THORN-STROKE-DESCENDER = OVR(Þ, stroke.horiz) cp:U+A766 script:Latn
+ꝧ  LATIN-SMALL-THORN-STROKE-DESCENDER = OVR(þ, stroke.horiz) cp:U+A767 script:Latn
+
+# Vend
+Ꝩ  LATIN-CAPITAL-VEND = vend.cap cp:U+A768 script:Latn
+ꝩ  LATIN-SMALL-VEND = vend.small cp:U+A769 script:Latn
+
+# Et
+Ꝫ  LATIN-CAPITAL-ET = et.cap cp:U+A76A script:Latn
+ꝫ  LATIN-SMALL-ET = et.small cp:U+A76B script:Latn
+
+# Is
+Ꝭ  LATIN-CAPITAL-IS = is.cap cp:U+A76C script:Latn
+ꝭ  LATIN-SMALL-IS = is.small cp:U+A76D script:Latn
+
+# Con
+Ꝯ  LATIN-CAPITAL-CON = con.cap cp:U+A76E script:Latn
+ꝯ  LATIN-SMALL-CON = con.small cp:U+A76F script:Latn
+
+# =============================================================================
+# CHARACTERS U+A770-A77F (Modifier US, abbreviations, Insular)
+# =============================================================================
+
+# Modifier letter US
+ꝰ  MODIFIER-LETTER-US = sc(u, sx=6, sy=6) cp:U+A770 script:Latn
+
+# Abbreviation letters (lowercase only)
+ꝱ  LATIN-SMALL-DUM = LR(d, macron, 6/6) cp:U+A771 script:Latn
+ꝲ  LATIN-SMALL-LUM = LR(l, macron, 6/6) cp:U+A772 script:Latn
+ꝳ  LATIN-SMALL-MUM = LR(m, macron, 6/6) cp:U+A773 script:Latn
+ꝴ  LATIN-SMALL-NUM = LR(n, macron, 6/6) cp:U+A774 script:Latn
+ꝵ  LATIN-SMALL-RUM = LR(r, macron, 6/6) cp:U+A775 script:Latn
+
+# Small capital RUM
+ꝶ  LATIN-SMALL-CAPITAL-RUM = sc(R, sx=9, sy=9) cp:U+A776 script:Latn
+
+# TUM
+ꝷ  LATIN-SMALL-TUM = LR(t, macron, 6/6) cp:U+A777 script:Latn
+
+# UM
+ꝸ  LATIN-SMALL-UM = LR(u, macron, 6/6) cp:U+A778 script:Latn
+
+# Insular D
+Ꝺ  LATIN-CAPITAL-INSULAR-D = insular.d.cap cp:U+A779 script:Latn
+ꝺ  LATIN-SMALL-INSULAR-D = insular.d.small cp:U+A77A script:Latn
+
+# Insular F
+Ꝼ  LATIN-CAPITAL-INSULAR-F = insular.f.cap cp:U+A77B script:Latn
+ꝼ  LATIN-SMALL-INSULAR-F = insular.f.small cp:U+A77C script:Latn
+
+# Insular G (capital only - lowercase is in another block)
+Ᵹ  LATIN-CAPITAL-INSULAR-G = insular.g.cap cp:U+A77D script:Latn
+
+# Turned insular G
+Ꝿ  LATIN-CAPITAL-TURNED-INSULAR-G = sc(insular.g.cap, sx=12, sy=-12) cp:U+A77E script:Latn
+ꝿ  LATIN-SMALL-TURNED-INSULAR-G = sc(insular.g.cap, sx=9, sy=-9) cp:U+A77F script:Latn
+
+# =============================================================================
+# CHARACTERS U+A780-A78F (Turned L, Insular R/S/T, modifiers)
+# =============================================================================
+
+# Turned L
+Ꞁ  LATIN-CAPITAL-TURNED-L = sc(L, sx=-12, sy=-12) cp:U+A780 script:Latn
+ꞁ  LATIN-SMALL-TURNED-L = sc(l, sx=-12, sy=-12) cp:U+A781 script:Latn
+
+# Insular R
+Ꞃ  LATIN-CAPITAL-INSULAR-R = insular.r.cap cp:U+A782 script:Latn
+ꞃ  LATIN-SMALL-INSULAR-R = insular.r.small cp:U+A783 script:Latn
+
+# Insular S
+Ꞅ  LATIN-CAPITAL-INSULAR-S = insular.s.cap cp:U+A784 script:Latn
+ꞅ  LATIN-SMALL-INSULAR-S = insular.s.small cp:U+A785 script:Latn
+
+# Insular T
+Ꞇ  LATIN-CAPITAL-INSULAR-T = insular.t.cap cp:U+A786 script:Latn
+ꞇ  LATIN-SMALL-INSULAR-T = insular.t.small cp:U+A787 script:Latn
+
+# Modifier letters
+ꞈ  MODIFIER-LOW-CIRCUMFLEX = sc(circumflex, sx=8, sy=8) cp:U+A788 script:Latn
+꞉  MODIFIER-COLON = LR(dot.high, dot, 1/1) cp:U+A789 script:Latn
+꞊  MODIFIER-SHORT-EQUALS = LR(stroke.horiz, stroke.horiz, 1/1) cp:U+A78A script:Latn
+
+# Saltillo
+Ꞌ  LATIN-CAPITAL-SALTILLO = saltillo.cap cp:U+A78B script:Latn
+ꞌ  LATIN-SMALL-SALTILLO = saltillo.small cp:U+A78C script:Latn
+
+# Turned H (capital only - maps to lowercase in IPA)
+Ɥ  LATIN-CAPITAL-TURNED-H = sc(H, sx=12, sy=-12) cp:U+A78D script:Latn
+
+# L with retroflex hook and belt
+ꞎ  LATIN-SMALL-L-RETROFLEX-BELT = FRAME(l, hook.bot) cp:U+A78E script:Latn
+
+# Sinological dot
+ꞏ  LATIN-SINOLOGICAL-DOT = sinological.dot cp:U+A78F script:Latn
+
+# =============================================================================
+# CHARACTERS U+A790-A79F (N descender, C bar, palatal hooks, B/F flourish, Volapuk)
+# =============================================================================
+
+# N with descender
+Ꞑ  LATIN-CAPITAL-N-DESCENDER = FRAME(N, descender) cp:U+A790 script:Latn
+ꞑ  LATIN-SMALL-N-DESCENDER = FRAME(n, descender) cp:U+A791 script:Latn
+
+# C with bar
+Ꞓ  LATIN-CAPITAL-C-BAR = OVR(C, stroke.horiz) cp:U+A792 script:Latn
+ꞓ  LATIN-SMALL-C-BAR = OVR(c, stroke.horiz) cp:U+A793 script:Latn
+
+# C with palatal hook
+ꞔ  LATIN-SMALL-C-PALATAL-HOOK = FRAME(c, hook.bot) cp:U+A794 script:Latn
+
+# H with palatal hook
+ꞕ  LATIN-SMALL-H-PALATAL-HOOK = FRAME(h, hook.bot) cp:U+A795 script:Latn
+
+# B with flourish
+Ꞗ  LATIN-CAPITAL-B-FLOURISH = FRAME(B, flourish) cp:U+A796 script:Latn
+ꞗ  LATIN-SMALL-B-FLOURISH = FRAME(b, flourish) cp:U+A797 script:Latn
+
+# F with stroke
+Ꞙ  LATIN-CAPITAL-F-STROKE = OVR(F, stroke.horiz) cp:U+A798 script:Latn
+ꞙ  LATIN-SMALL-F-STROKE = OVR(f, stroke.horiz) cp:U+A799 script:Latn
+
+# Volapuk AE
+Ꞛ  LATIN-CAPITAL-VOLAPUK-AE = LR(A, E, 4/4) cp:U+A79A script:Latn
+ꞛ  LATIN-SMALL-VOLAPUK-AE = LR(a, e, 4/4) cp:U+A79B script:Latn
+
+# Volapuk OE
+Ꞝ  LATIN-CAPITAL-VOLAPUK-OE = LR(O, E, 4/4) cp:U+A79C script:Latn
+ꞝ  LATIN-SMALL-VOLAPUK-OE = LR(o, e, 4/4) cp:U+A79D script:Latn
+
+# Volapuk UE
+Ꞟ  LATIN-CAPITAL-VOLAPUK-UE = LR(U, E, 4/4) cp:U+A79E script:Latn
+ꞟ  LATIN-SMALL-VOLAPUK-UE = LR(u, e, 4/4) cp:U+A79F script:Latn
+
+# =============================================================================
+# CHARACTERS U+A7A0-A7AF (Oblique strokes and letters with hooks)
+# =============================================================================
+
+# G with oblique stroke
+Ꞡ  LATIN-CAPITAL-G-OBLIQUE-STROKE = OVR(G, stroke.oblique.cap) cp:U+A7A0 script:Latn
+ꞡ  LATIN-SMALL-G-OBLIQUE-STROKE = OVR(g, stroke.oblique) cp:U+A7A1 script:Latn
+
+# K with oblique stroke
+Ꞣ  LATIN-CAPITAL-K-OBLIQUE-STROKE = OVR(K, stroke.oblique.cap) cp:U+A7A2 script:Latn
+ꞣ  LATIN-SMALL-K-OBLIQUE-STROKE = OVR(k, stroke.oblique) cp:U+A7A3 script:Latn
+
+# N with oblique stroke
+Ꞥ  LATIN-CAPITAL-N-OBLIQUE-STROKE = OVR(N, stroke.oblique.cap) cp:U+A7A4 script:Latn
+ꞥ  LATIN-SMALL-N-OBLIQUE-STROKE = OVR(n, stroke.oblique) cp:U+A7A5 script:Latn
+
+# R with oblique stroke
+Ꞧ  LATIN-CAPITAL-R-OBLIQUE-STROKE = OVR(R, stroke.oblique.cap) cp:U+A7A6 script:Latn
+ꞧ  LATIN-SMALL-R-OBLIQUE-STROKE = OVR(r, stroke.oblique) cp:U+A7A7 script:Latn
+
+# S with oblique stroke
+Ꞩ  LATIN-CAPITAL-S-OBLIQUE-STROKE = OVR(S, stroke.oblique.cap) cp:U+A7A8 script:Latn
+ꞩ  LATIN-SMALL-S-OBLIQUE-STROKE = OVR(s, stroke.oblique) cp:U+A7A9 script:Latn
+
+# H with hook (capital only - maps to IPA lowercase)
+Ɦ  LATIN-CAPITAL-H-HOOK = FRAME(H, hook.bot) cp:U+A7AA script:Latn
+
+# Reversed open E (capital only - maps to IPA lowercase)
+Ɜ  LATIN-CAPITAL-REVERSED-OPEN-E = sc(open.e.cap, sx=-12, sy=12) cp:U+A7AB script:Latn
+
+# Script G (capital only - maps to IPA lowercase)
+Ɡ  LATIN-CAPITAL-SCRIPT-G = G cp:U+A7AC script:Latn
+
+# L with belt (capital only - maps to IPA lowercase)
+Ɬ  LATIN-CAPITAL-L-BELT = OVR(L, stroke.horiz) cp:U+A7AD script:Latn
+
+# Small capital I (capital only)
+Ɪ  LATIN-CAPITAL-SMALL-CAPITAL-I = sc(I, sx=9, sy=9) cp:U+A7AE script:Latn
+
+# Small capital Q
+ꞯ  LATIN-SMALL-CAPITAL-Q = sc(Q, sx=9, sy=9) cp:U+A7AF script:Latn
+
+# =============================================================================
+# CHARACTERS U+A7B0-A7BF (Turned letters, Greek-derived, glottal letters)
+# =============================================================================
+
+# Turned K (capital only)
+Ʞ  LATIN-CAPITAL-TURNED-K = sc(K, sx=-12, sy=-12) cp:U+A7B0 script:Latn
+
+# Turned T (capital only)
+Ʇ  LATIN-CAPITAL-TURNED-T = sc(T, sx=12, sy=-12) cp:U+A7B1 script:Latn
+
+# J with crossed-tail (capital only)
+Ʝ  LATIN-CAPITAL-J-CROSSED-TAIL = FRAME(J, stroke.horiz) cp:U+A7B2 script:Latn
+
+# Chi (capital only)
+Ꭓ  LATIN-CAPITAL-CHI = chi.latin.cap cp:U+A7B3 script:Latn
+
+# Beta
+Ꞵ  LATIN-CAPITAL-BETA = beta.latin.cap cp:U+A7B4 script:Latn
+ꞵ  LATIN-SMALL-BETA = beta.latin.small cp:U+A7B5 script:Latn
+
+# Omega
+Ꞷ  LATIN-CAPITAL-OMEGA = omega.latin.cap cp:U+A7B6 script:Latn
+ꞷ  LATIN-SMALL-OMEGA = omega.latin.small cp:U+A7B7 script:Latn
+
+# U with stroke
+Ꞹ  LATIN-CAPITAL-U-STROKE = OVR(U, stroke.horiz) cp:U+A7B8 script:Latn
+ꞹ  LATIN-SMALL-U-STROKE = OVR(u, stroke.horiz) cp:U+A7B9 script:Latn
+
+# Glottal A
+Ꞻ  LATIN-CAPITAL-GLOTTAL-A = FRAME(A, glottal.modifier) cp:U+A7BA script:Latn
+ꞻ  LATIN-SMALL-GLOTTAL-A = FRAME(a, glottal.modifier) cp:U+A7BB script:Latn
+
+# Glottal I
+Ꞽ  LATIN-CAPITAL-GLOTTAL-I = FRAME(I, glottal.modifier) cp:U+A7BC script:Latn
+ꞽ  LATIN-SMALL-GLOTTAL-I = FRAME(i, glottal.modifier) cp:U+A7BD script:Latn
+
+# Glottal U
+Ꞿ  LATIN-CAPITAL-GLOTTAL-U = FRAME(U, glottal.modifier) cp:U+A7BE script:Latn
+ꞿ  LATIN-SMALL-GLOTTAL-U = FRAME(u, glottal.modifier) cp:U+A7BF script:Latn
+
+# =============================================================================
+# CHARACTERS U+A7C0-A7CF (Old Polish O, Anglicana W, hooks, short strokes)
+# =============================================================================
+
+# Old Polish O
+Ꟁ  LATIN-CAPITAL-OLD-POLISH-O = old.polish.o.cap cp:U+A7C0 script:Latn
+ꟁ  LATIN-SMALL-OLD-POLISH-O = old.polish.o.small cp:U+A7C1 script:Latn
+
+# Anglicana W
+Ꟃ  LATIN-CAPITAL-ANGLICANA-W = anglicana.w.cap cp:U+A7C2 script:Latn
+ꟃ  LATIN-SMALL-ANGLICANA-W = anglicana.w.small cp:U+A7C3 script:Latn
+
+# C with palatal hook (capital)
+Ꞔ  LATIN-CAPITAL-C-PALATAL-HOOK = FRAME(C, hook.bot) cp:U+A7C4 script:Latn
+
+# S with hook (capital only)
+Ʂ  LATIN-CAPITAL-S-HOOK = FRAME(S, hook.bot) cp:U+A7C5 script:Latn
+
+# Z with palatal hook (capital only)
+Ᶎ  LATIN-CAPITAL-Z-PALATAL-HOOK = FRAME(Z, hook.bot) cp:U+A7C6 script:Latn
+
+# D with short stroke overlay
+Ꟈ  LATIN-CAPITAL-D-SHORT-STROKE = OVR(D, stroke.short.cap) cp:U+A7C7 script:Latn
+ꟈ  LATIN-SMALL-D-SHORT-STROKE = OVR(d, stroke.short) cp:U+A7C8 script:Latn
+
+# S with short stroke overlay
+Ꟊ  LATIN-CAPITAL-S-SHORT-STROKE = OVR(S, stroke.short.cap) cp:U+A7C9 script:Latn
+ꟊ  LATIN-SMALL-S-SHORT-STROKE = OVR(s, stroke.short) cp:U+A7CA script:Latn
+
+# Rams horn (capital only)
+Ɤ  LATIN-CAPITAL-RAMS-HORN = gamma.cap cp:U+A7CB script:Latn
+
+# S with diagonal stroke
+Ꟍ  LATIN-CAPITAL-S-DIAGONAL-STROKE = OVR(S, stroke.diag.cap) cp:U+A7CC script:Latn
+ꟍ  LATIN-SMALL-S-DIAGONAL-STROKE = OVR(s, stroke.diag) cp:U+A7CD script:Latn
+
+# =============================================================================
+# CHARACTERS U+A7D0-A7DF (Closed insular G, thorns, wynns, Scots S, sigmoid)
+# =============================================================================
+
+# Closed insular G
+Ꟑ  LATIN-CAPITAL-CLOSED-INSULAR-G = closed.insular.g.cap cp:U+A7D0 script:Latn
+ꟑ  LATIN-SMALL-CLOSED-INSULAR-G = closed.insular.g.small cp:U+A7D1 script:Latn
+
+# Double thorn (lowercase only)
+ꟓ  LATIN-SMALL-DOUBLE-THORN = LR(þ, þ, 6/6) cp:U+A7D3 script:Latn
+
+# Double wynn (lowercase only)
+ꟕ  LATIN-SMALL-DOUBLE-WYNN = LR(wynn.small, wynn.small, 6/6) cp:U+A7D5 script:Latn
+
+# Middle Scots S
+Ꟗ  LATIN-CAPITAL-MIDDLE-SCOTS-S = middle.scots.s.cap cp:U+A7D6 script:Latn
+ꟗ  LATIN-SMALL-MIDDLE-SCOTS-S = middle.scots.s.small cp:U+A7D7 script:Latn
+
+# Sigmoid S
+Ꟙ  LATIN-CAPITAL-SIGMOID-S = sigmoid.s.cap cp:U+A7D8 script:Latn
+ꟙ  LATIN-SMALL-SIGMOID-S = sigmoid.s.small cp:U+A7D9 script:Latn
+
+# Lambda
+Ꟛ  LATIN-CAPITAL-LAMBDA = lambda.latin.cap cp:U+A7DA script:Latn
+ꟛ  LATIN-SMALL-LAMBDA = lambda.latin.small cp:U+A7DB script:Latn
+
+# Lambda with stroke (capital only)
+Ƛ  LATIN-CAPITAL-LAMBDA-STROKE = OVR(lambda.latin.cap, stroke.horiz) cp:U+A7DC script:Latn
+
+# =============================================================================
+# CHARACTERS U+A7F2-A7FF (Modifier letters and epigraphic letters)
+# =============================================================================
+
+# Modifier letters
+ꟲ  MODIFIER-LETTER-CAPITAL-C = sc(C, sx=6, sy=6) cp:U+A7F2 script:Latn
+ꟳ  MODIFIER-LETTER-CAPITAL-F = sc(F, sx=6, sy=6) cp:U+A7F3 script:Latn
+ꟴ  MODIFIER-LETTER-CAPITAL-Q = sc(Q, sx=6, sy=6) cp:U+A7F4 script:Latn
+
+# Reversed half H
+Ꟶ  LATIN-CAPITAL-REVERSED-HALF-H = reversed.half.h.cap cp:U+A7F5 script:Latn
+ꟶ  LATIN-SMALL-REVERSED-HALF-H = reversed.half.h.small cp:U+A7F6 script:Latn
+
+# Epigraphic sideways I
+ꟷ  LATIN-EPIGRAPHIC-SIDEWAYS-I = sc(I, sx=12, sy=12) cp:U+A7F7 script:Latn
+
+# Modifier letter capital H with stroke
+ꟸ  MODIFIER-CAPITAL-H-STROKE = OVR(sc(H, sx=6, sy=6), stroke.horiz) cp:U+A7F8 script:Latn
+
+# Modifier letter small ligature OE
+ꟹ  MODIFIER-SMALL-LIGATURE-OE = sc(LR(o, e, 4/4), sx=6, sy=6) cp:U+A7F9 script:Latn
+
+# Small capital turned M
+ꟺ  LATIN-SMALL-CAPITAL-TURNED-M = sc(sc(M, sx=12, sy=-12), sx=9, sy=9) cp:U+A7FA script:Latn
+
+# Epigraphic reversed F
+ꟻ  LATIN-EPIGRAPHIC-REVERSED-F = epigraphic.f.reversed cp:U+A7FB script:Latn
+
+# Epigraphic reversed P
+ꟼ  LATIN-EPIGRAPHIC-REVERSED-P = epigraphic.p.reversed cp:U+A7FC script:Latn
+
+# Epigraphic inverted M
+ꟽ  LATIN-EPIGRAPHIC-INVERTED-M = epigraphic.m.inverted cp:U+A7FD script:Latn
+
+# Epigraphic I longa
+ꟾ  LATIN-EPIGRAPHIC-I-LONGA = epigraphic.i.longa cp:U+A7FE script:Latn
+
+# Epigraphic archaic M
+ꟿ  LATIN-EPIGRAPHIC-ARCHAIC-M = epigraphic.m.archaic cp:U+A7FF script:Latn
+
+# =============================================================================
+# CASE MAPPINGS
+# =============================================================================
+
+# Egyptological letters
+@case Ꜣ ꜣ
+@case Ꜥ ꜥ
+
+# Heng
+@case Ꜧ ꜧ
+
+# TZ
+@case Ꜩ ꜩ
+
+# Tresillo
+@case Ꜫ ꜫ
+
+# Cuatrillo
+@case Ꜭ ꜭ
+@case Ꜯ ꜯ
+
+# AA, AO, AU, AV, AY ligatures
+@case Ꜳ ꜳ
+@case Ꜵ ꜵ
+@case Ꜷ ꜷ
+@case Ꜹ ꜹ
+@case Ꜻ ꜻ
+@case Ꜽ ꜽ
+
+# Reversed C with dot
+@case Ꜿ ꜿ
+
+# K variants
+@case Ꝁ ꝁ
+@case Ꝃ ꝃ
+@case Ꝅ ꝅ
+
+# Broken L
+@case Ꝇ ꝇ
+
+# L with high stroke
+@case Ꝉ ꝉ
+
+# O variants
+@case Ꝋ ꝋ
+@case Ꝍ ꝍ
+@case Ꝏ ꝏ
+
+# P variants
+@case Ꝑ ꝑ
+@case Ꝓ ꝓ
+@case Ꝕ ꝕ
+
+# Q variants
+@case Ꝗ ꝗ
+@case Ꝙ ꝙ
+
+# R rotunda
+@case Ꝛ ꝛ
+
+# Rum rotunda
+@case Ꝝ ꝝ
+
+# V with diagonal stroke
+@case Ꝟ ꝟ
+
+# VY
+@case Ꝡ ꝡ
+
+# Visigothic Z
+@case Ꝣ ꝣ
+
+# Thorn variants
+@case Ꝥ ꝥ
+@case Ꝧ ꝧ
+
+# Vend
+@case Ꝩ ꝩ
+
+# Et
+@case Ꝫ ꝫ
+
+# Is
+@case Ꝭ ꝭ
+
+# Con
+@case Ꝯ ꝯ
+
+# Insular D
+@case Ꝺ ꝺ
+
+# Insular F
+@case Ꝼ ꝼ
+
+# Turned insular G
+@case Ꝿ ꝿ
+
+# Turned L
+@case Ꞁ ꞁ
+
+# Insular R
+@case Ꞃ ꞃ
+
+# Insular S
+@case Ꞅ ꞅ
+
+# Insular T
+@case Ꞇ ꞇ
+
+# Saltillo
+@case Ꞌ ꞌ
+
+# N with descender
+@case Ꞑ ꞑ
+
+# C with bar
+@case Ꞓ ꞓ
+
+# B with flourish
+@case Ꞗ ꞗ
+
+# F with stroke
+@case Ꞙ ꞙ
+
+# Volapuk letters
+@case Ꞛ ꞛ
+@case Ꞝ ꞝ
+@case Ꞟ ꞟ
+
+# Oblique stroke letters
+@case Ꞡ ꞡ
+@case Ꞣ ꞣ
+@case Ꞥ ꞥ
+@case Ꞧ ꞧ
+@case Ꞩ ꞩ
+
+# Beta
+@case Ꞵ ꞵ
+
+# Omega
+@case Ꞷ ꞷ
+
+# U with stroke
+@case Ꞹ ꞹ
+
+# Glottal letters
+@case Ꞻ ꞻ
+@case Ꞽ ꞽ
+@case Ꞿ ꞿ
+
+# Old Polish O
+@case Ꟁ ꟁ
+
+# Anglicana W
+@case Ꟃ ꟃ
+
+# D with short stroke
+@case Ꟈ ꟈ
+
+# S with short stroke
+@case Ꟊ ꟊ
+
+# S with diagonal stroke
+@case Ꟍ ꟍ
+
+# Closed insular G
+@case Ꟑ ꟑ
+
+# Middle Scots S
+@case Ꟗ ꟗ
+
+# Sigmoid S
+@case Ꟙ ꟙ
+
+# Lambda
+@case Ꟛ ꟛ
+
+# Reversed half H
+@case Ꟶ ꟶ
+
+# =============================================================================
+# END OF LATIN EXTENDED-D CHARACTER LIBRARY
+# =============================================================================
