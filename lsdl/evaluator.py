@@ -584,15 +584,15 @@ def evaluate_compose(expr: ComposeExpr, ctx: EvaluationContext) -> ComposedEleme
     elif op == "LR3":
         return evaluate_lr(children, expr.split, ctx)  # LR3 is just LR with 3+ children
     elif op == "DIA":
-        return evaluate_dia(children, expr.anchor_override, ctx)
+        return evaluate_dia(children, expr.anchor_override, ctx, expr.line, expr.col)
     elif op == "DIA2":
-        return evaluate_dia2(children, ctx)
+        return evaluate_dia2(children, ctx, expr.line, expr.col)
     elif op == "OVR":
-        return evaluate_ovr(children, ctx)
+        return evaluate_ovr(children, ctx, expr.line, expr.col)
     elif op == "FRAME":
-        return evaluate_frame(children, ctx)
+        return evaluate_frame(children, ctx, expr.line, expr.col)
     elif op == "LIG":
-        return evaluate_lig(children, expr.merge_strategy, ctx)
+        return evaluate_lig(children, expr.merge_strategy, ctx, expr.line, expr.col)
     elif op == "APEX":
         return evaluate_apex(children, ctx)
     else:
@@ -711,7 +711,11 @@ def evaluate_lr(
 
 
 def evaluate_dia(
-    children: list[EvaluatedExpr], anchor_override: str | None, ctx: EvaluationContext
+    children: list[EvaluatedExpr],
+    anchor_override: str | None,
+    ctx: EvaluationContext,
+    line: int = 0,
+    col: int = 0,
 ) -> ComposedElement:
     """Evaluate DIA operator - diacritic attachment.
 
@@ -721,7 +725,7 @@ def evaluate_dia(
     - attach: parameter can override the target anchor
     """
     if len(children) < 2:
-        raise EvaluationError("DIA requires at least 2 arguments")
+        raise EvaluationError(f"DIA requires at least 2 arguments, got {len(children)}", line, col)
 
     base = children[0]
     mark = children[1]
@@ -777,7 +781,9 @@ def evaluate_dia(
     )
 
 
-def evaluate_dia2(children: list[EvaluatedExpr], ctx: EvaluationContext) -> ComposedElement:
+def evaluate_dia2(
+    children: list[EvaluatedExpr], ctx: EvaluationContext, line: int = 0, col: int = 0
+) -> ComposedElement:
     """Evaluate DIA2 operator - double diacritic attachment.
 
     Per Section 8.6 and 15.4:
@@ -792,14 +798,14 @@ def evaluate_dia2(children: list[EvaluatedExpr], ctx: EvaluationContext) -> Comp
     representing all 3 original inputs appropriately positioned.
     """
     if len(children) != 3:
-        raise EvaluationError("DIA2 requires exactly 3 arguments")
+        raise EvaluationError(f"DIA2 requires exactly 3 arguments, got {len(children)}", line, col)
 
     base = children[0]
     mark1 = children[1]
     mark2 = children[2]
 
     # First, attach mark1 to base using standard DIA logic
-    dia1_result = evaluate_dia([base, mark1], None, ctx)
+    dia1_result = evaluate_dia([base, mark1], None, ctx, line, col)
     positioned_mark1 = dia1_result.children[1]
 
     # Determine mark directions (above or below base)
@@ -865,14 +871,16 @@ def evaluate_dia2(children: list[EvaluatedExpr], ctx: EvaluationContext) -> Comp
     )
 
 
-def evaluate_ovr(children: list[EvaluatedExpr], ctx: EvaluationContext) -> ComposedElement:
+def evaluate_ovr(
+    children: list[EvaluatedExpr], ctx: EvaluationContext, line: int = 0, col: int = 0
+) -> ComposedElement:
     """Evaluate OVR operator - overlay.
 
     Per Section 8.7: Places child b on top of child a within same bounding box.
     Both children occupy the full parent box.
     """
     if len(children) != 2:
-        raise EvaluationError("OVR requires exactly 2 children")
+        raise EvaluationError(f"OVR requires exactly 2 children, got {len(children)}", line, col)
 
     base = children[0]
     overlay = children[1]
@@ -895,14 +903,16 @@ def evaluate_ovr(children: list[EvaluatedExpr], ctx: EvaluationContext) -> Compo
     )
 
 
-def evaluate_frame(children: list[EvaluatedExpr], ctx: EvaluationContext) -> ComposedElement:
+def evaluate_frame(
+    children: list[EvaluatedExpr], ctx: EvaluationContext, line: int = 0, col: int = 0
+) -> ComposedElement:
     """Evaluate FRAME operator - assembled from attachment points.
 
     Per Section 8.8: Assembles character from named parts positioned at their
     defined anchor points, without imposing a single axis of composition.
     """
     if len(children) < 2:
-        raise EvaluationError("FRAME requires at least 2 children")
+        raise EvaluationError(f"FRAME requires at least 2 children, got {len(children)}", line, col)
 
     # For FRAME, we position children based on matching anchors
     # This is more complex - we need to find compatible anchor pairs
@@ -937,7 +947,11 @@ def evaluate_frame(children: list[EvaluatedExpr], ctx: EvaluationContext) -> Com
 
 
 def evaluate_lig(
-    children: list[EvaluatedExpr], merge_strategy: str | None, ctx: EvaluationContext
+    children: list[EvaluatedExpr],
+    merge_strategy: str | None,
+    ctx: EvaluationContext,
+    line: int = 0,
+    col: int = 0,
 ) -> ComposedElement:
     """Evaluate LIG operator - ligature composition.
 
@@ -946,7 +960,7 @@ def evaluate_lig(
     Default is horizontal adjacency (like LR).
     """
     if len(children) < 2:
-        raise EvaluationError("LIG requires at least 2 children")
+        raise EvaluationError(f"LIG requires at least 2 children, got {len(children)}", line, col)
 
     # Default behavior: horizontal adjacency (like LR without scaling)
     if not merge_strategy or merge_strategy == "adjacent":
