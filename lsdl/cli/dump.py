@@ -79,11 +79,6 @@ def main(argv: list[str] | None = None) -> None:
 
     args = parser.parse_args(argv)
 
-    # Validate file exists
-    if not args.file.exists():
-        print(f"lsdl-dump: error: file not found: {args.file}", file=sys.stderr)
-        sys.exit(1)
-
     # Parse the file
     try:
         doc = parse_file(args.file)
@@ -92,6 +87,21 @@ def main(argv: list[str] | None = None) -> None:
         sys.exit(1)
     except LSDLError as e:
         print(f"lsdl-dump: error: {e}", file=sys.stderr)
+        sys.exit(1)
+    except FileNotFoundError:
+        print(f"lsdl-dump: file not found: {args.file}", file=sys.stderr)
+        sys.exit(1)
+    except PermissionError:
+        print(f"lsdl-dump: permission denied: {args.file}", file=sys.stderr)
+        sys.exit(1)
+    except IsADirectoryError:
+        print(f"lsdl-dump: path is a directory: {args.file}", file=sys.stderr)
+        sys.exit(1)
+    except UnicodeDecodeError:
+        print(f"lsdl-dump: invalid UTF-8 encoding: {args.file}", file=sys.stderr)
+        sys.exit(1)
+    except OSError as e:
+        print(f"lsdl-dump: {e}", file=sys.stderr)
         sys.exit(1)
 
     # Output based on format and filters

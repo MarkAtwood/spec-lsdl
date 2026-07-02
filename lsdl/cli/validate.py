@@ -180,6 +180,28 @@ def validate_file(
         )
         print(f"{path_str}: error: invalid UTF-8 encoding", file=output)
         return ValidationResult(path=path_str, valid=False, errors=errors, warnings=warnings)
+    except IsADirectoryError:
+        errors.append(
+            ValidationIssue(
+                severity=Severity.ERROR,
+                message="path is a directory",
+                location=path_str,
+                code="is-directory",
+            )
+        )
+        print(f"{path_str}: error: path is a directory", file=output)
+        return ValidationResult(path=path_str, valid=False, errors=errors, warnings=warnings)
+    except OSError as e:
+        errors.append(
+            ValidationIssue(
+                severity=Severity.ERROR,
+                message=str(e),
+                location=path_str,
+                code="io-error",
+            )
+        )
+        print(f"{path_str}: error: {e}", file=output)
+        return ValidationResult(path=path_str, valid=False, errors=errors, warnings=warnings)
 
     return validate_source(source, path_str, quiet=quiet, output=output)
 

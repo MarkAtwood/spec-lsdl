@@ -88,11 +88,16 @@ class BoundingBox:
 
     def scale(self, sx: float, sy: float, cx: float = 6.0, cy: float = 6.0) -> BoundingBox:
         """Scale relative to center point (cx, cy). sx, sy are factors (1.0 = 100%)."""
+        new_x1 = cx + (self.x_min - cx) * sx
+        new_y1 = cy + (self.y_min - cy) * sy
+        new_x2 = cx + (self.x_max - cx) * sx
+        new_y2 = cy + (self.y_max - cy) * sy
+        # ponytail: normalize to preserve min <= max invariant with negative scale
         return BoundingBox(
-            x_min=cx + (self.x_min - cx) * sx,
-            y_min=cy + (self.y_min - cy) * sy,
-            x_max=cx + (self.x_max - cx) * sx,
-            y_max=cy + (self.y_max - cy) * sy,
+            x_min=min(new_x1, new_x2),
+            y_min=min(new_y1, new_y2),
+            x_max=max(new_x1, new_x2),
+            y_max=max(new_y1, new_y2),
         )
 
     def skew(self, kx: float, ky: float, cx: float = 6.0, cy: float = 6.0) -> BoundingBox:

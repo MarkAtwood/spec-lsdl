@@ -400,6 +400,18 @@ def main(argv: list[str] | None = None) -> None:
     except FileNotFoundError:
         print(f"lsdl-render: file not found: {args.file}", file=sys.stderr)
         sys.exit(1)
+    except PermissionError:
+        print(f"lsdl-render: permission denied: {args.file}", file=sys.stderr)
+        sys.exit(1)
+    except IsADirectoryError:
+        print(f"lsdl-render: path is a directory: {args.file}", file=sys.stderr)
+        sys.exit(1)
+    except UnicodeDecodeError:
+        print(f"lsdl-render: invalid UTF-8 encoding: {args.file}", file=sys.stderr)
+        sys.exit(1)
+    except OSError as e:
+        print(f"lsdl-render: {e}", file=sys.stderr)
+        sys.exit(1)
 
     # Determine which characters to render
     if args.render_all:
@@ -430,7 +442,11 @@ def main(argv: list[str] | None = None) -> None:
         sys.exit(1)
 
     # Create output directory if needed
-    args.output.mkdir(parents=True, exist_ok=True)
+    try:
+        args.output.mkdir(parents=True, exist_ok=True)
+    except OSError as e:
+        print(f"lsdl-render: cannot create output directory: {e}", file=sys.stderr)
+        sys.exit(1)
 
     # Get metrics for zone overlay
     metrics = lsdl_file.metrics.as_dict() if args.show_zones else None
@@ -456,7 +472,11 @@ def main(argv: list[str] | None = None) -> None:
         filename = _safe_filename(char) + ".svg"
         output_path = args.output / filename
 
-        output_path.write_text(svg_content, encoding="utf-8")
+        try:
+            output_path.write_text(svg_content, encoding="utf-8")
+        except OSError as e:
+            print(f"lsdl-render: cannot write {output_path}: {e}", file=sys.stderr)
+            continue
         print(f"Rendered: {output_path}")
         rendered_count += 1
 
