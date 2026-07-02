@@ -617,6 +617,7 @@ class Parser:
         elem = ElementDefinition(name=name, grid=grid, line=line, col=col)
         is_expr_form = False
         seen_anchors = False  # Track if we've parsed anchors: field
+        seen_fields: set[str] = set()  # Track duplicate field names
 
         while not self._at_end_kw():
             self.skip_blank_lines()
@@ -627,6 +628,10 @@ class Parser:
             if t.type == "BLOCK_FIELD":
                 field_name = t.value.rstrip(":")
                 self.consume()
+
+                if field_name in seen_fields:
+                    self.add_error(f"duplicate field '{field_name}:'", t)
+                seen_fields.add(field_name)
 
                 if field_name == "zone":
                     if self._check("NAME") is not None:
@@ -871,6 +876,7 @@ class Parser:
 
         char_def = CharacterDefinition(char=char, name=uname, line=line, col=col)
         is_expr_form = False
+        seen_fields: set[str] = set()  # Track duplicate field names
 
         while not self._at_end_kw():
             self.skip_blank_lines()
@@ -881,6 +887,10 @@ class Parser:
             if t.type == "BLOCK_FIELD":
                 field_name = t.value.rstrip(":")
                 self.consume()
+
+                if field_name in seen_fields:
+                    self.add_error(f"duplicate field '{field_name}:'", t)
+                seen_fields.add(field_name)
 
                 if field_name == "zone":
                     if self._check("NAME") is not None:
