@@ -270,7 +270,7 @@ class Parser:
             Token at the offset position, or None if out of bounds.
         """
         p = self.pos + offset
-        return self.tokens[p] if p < len(self.tokens) else None
+        return self.tokens[p] if 0 <= p < len(self.tokens) else None
 
     def _check(self, *types: str) -> Token | None:
         """Return current token if it matches any of the given types, else None.
