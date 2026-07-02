@@ -107,7 +107,7 @@ TOKEN_PATTERNS = [
     # Literal Unicode character per LSDL spec Section 12.2 Lexical Productions.
     # Ranges match the Unicode blocks relevant to Latin-script fonts:
     #   !-~        U+0021-U+007E  Basic Latin (ASCII printable, excl. space/DEL)
-    #   \xa0-ɏ    U+00A0-U+024F  Latin-1 Supplement, Latin Extended-A/B
+    #   \xa0-ͯ    U+00A0-U+036F  Latin-1 Supp thru Combining Diacriticals (incl. IPA, Spacing Modifiers)
     #   Ͱ-ԯ       U+0370-U+052F  Greek and Coptic, Cyrillic, Cyrillic Supplement
     #   ᪰-᫿       U+1AB0-U+1AFF  Combining Diacritical Marks Extended
     #   ᲀ-᲏       U+1C80-U+1C8F  Cyrillic Extended-C
@@ -123,7 +123,7 @@ TOKEN_PATTERNS = [
     #   (SMP)     U+1E030-1E08F  Cyrillic Extended-D (requires \U escape)
     (
         "LITERAL_CHAR",
-        r"[!-~ -ɏͰ-ԯ᪰-᫿"
+        r"[!-~ -ͯͰ-ԯ᪰-᫿"
         r"ᲀ-᲏᷀-᷿Ḁ-ỿἀ-῿"
         r"Ⱡ-Ɀⷠ-ⷿꙀ-ꟿꬰ-꭯"
         r"ﬀ-ﬆ⃐-⃿]"
