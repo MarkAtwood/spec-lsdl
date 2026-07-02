@@ -685,9 +685,10 @@ def evaluate_lr(
 
     for _i, (child, width) in enumerate(zip(children, widths)):
         # Scale child horizontally to fit allocated width
-        # Use minimum width of 1 grid unit to avoid division by zero or extreme scaling
+        # Guard against zero/degenerate widths to avoid division by zero or extreme scaling
+        # ponytail: min scale 0.01 prevents collapse; upgrade to skip-element if 0-proportion needed
         child_width = max(child.bbox.width, 1.0)
-        scale_x = width / child_width
+        scale_x = max(width / child_width, 0.01)
         scaled = scale_element(child, scale_x, 1.0, child.bbox.center_x, child.bbox.center_y)
 
         # Translate to current x position
