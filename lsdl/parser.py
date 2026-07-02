@@ -251,9 +251,7 @@ class Parser:
         self.in_style_block = False
 
     def current(self) -> Token | None:
-        """Get current token, skipping whitespace."""
-        while self.pos < len(self.tokens) and self.tokens[self.pos].type == "WS":
-            self.pos += 1
+        """Get current token."""
         return self.tokens[self.pos] if self.pos < len(self.tokens) else None
 
     def peek(self, offset: int = 0) -> Token | None:
