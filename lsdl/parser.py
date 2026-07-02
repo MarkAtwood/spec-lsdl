@@ -768,9 +768,9 @@ class Parser:
                 self.add_error("path-form @elem requires anchors:", tok)
 
         # Validate path point IDs match path: declaration
-        if elem.path_ids and elem.path_points:
-            declared = set(elem.path_ids)
-            defined = set(elem.path_points.keys())
+        if elem.path_ids is not None or elem.path_points:
+            declared = set(elem.path_ids or [])
+            defined = set((elem.path_points or {}).keys())
             missing = declared - defined
             extra = defined - declared
             if missing:
@@ -1174,10 +1174,12 @@ class Parser:
         # Optional final: form
         final = None
         if self._check("FINAL") is not None:
-            self.consume()
+            final_kw = self.consume()
             final_tok = self.current()
             if final_tok is not None and final_tok.type in ("LITERAL_CHAR", "NAME"):
                 final = self.consume().value
+            else:
+                self.add_error("expected character after 'final:'", final_kw)
 
         # Constraint: duplicate uppercase entries are errors
         if upper in self.case_uppers:
@@ -1398,16 +1400,20 @@ class Parser:
 
             # Check for attach: parameter (DIA)
             if self._check("ATTACH") is not None:
-                self.consume()
+                attach_tok = self.consume()
                 if self._check("NAME") is not None:
                     anchor_override = self.consume().value
+                else:
+                    self.add_error("expected anchor name after 'attach:'", attach_tok)
                 continue
 
             # Check for merge: parameter (LIG)
             if self._check("MERGE") is not None:
-                self.consume()
+                merge_tok = self.consume()
                 if self._check("NAME") is not None:
                     merge_strategy = self.consume().value
+                else:
+                    self.add_error("expected merge strategy after 'merge:'", merge_tok)
                 continue
 
             # Otherwise it's another child expression
@@ -1520,13 +1526,16 @@ class Parser:
         while self._check("COMMA") is not None:
             self.consume()
             if self._check("XFORM_PARAM") is not None:
-                param_name = self.consume().value.rstrip("=")
+                param_tok = self.consume()
+                param_name = param_tok.value.rstrip("=")
                 if self._check("INT") is not None:
                     param_val = int(self.consume().value)
                     # Constraint 2: TPARAM in range -12 to 24
                     if param_val < -12 or param_val > 24:
                         self.add_error(f"transform param must be -12 to 24, got {param_val}", tok)
                     params[param_name] = param_val
+                else:
+                    self.add_error(f"expected integer value after '{param_name}='", param_tok)
 
         rparen_tok = self.current()
         if rparen_tok is None or rparen_tok.type != "RPAREN":
