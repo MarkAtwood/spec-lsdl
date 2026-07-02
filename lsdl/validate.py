@@ -12,8 +12,8 @@ complete and usable; only the validate() function body is unimplemented.
 
 from __future__ import annotations
 
-# Only export types that are usable; ValidationError is internal until validate() works
-__all__ = ["Severity", "ValidationIssue", "validate"]
+# ponytail: only export types that are usable; validate() is stub, add to __all__ when implemented
+__all__ = ["Severity", "ValidationIssue"]
 
 from dataclasses import dataclass
 from enum import Enum

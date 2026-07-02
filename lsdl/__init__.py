@@ -19,6 +19,7 @@ See the LSDL Specification for full grammar and semantics.
 """
 
 import warnings
+from typing import cast
 
 from lsdl.evaluator import (
     BoundingBox,
@@ -151,5 +152,6 @@ def __getattr__(name: str) -> type:
             DeprecationWarning,
             stacklevel=2,
         )
-        return globals()[new_name]
+        # ponytail: cast needed because globals() returns Any; actual values are type objects
+        return cast(type, globals()[new_name])
     raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
