@@ -298,9 +298,9 @@ specific additional capabilities from higher levels.
   structural expression.
 
 **composition operator**
-: One of the 8 structural composition operators (STACK, LR, LR3,
-  DIA, DIA2, OVR, FRAME, LIG) that combine elements into
-  characters. See Section 8.
+: One of the 9 structural composition operators (STACK, LR, LR3,
+  DIA, DIA2, OVR, FRAME, APEX, LIG) that combine elements into
+  characters. See Sections 8 and 14.
 
 **DAG**
 : Directed Acyclic Graph. The reference structure of an LSDL
@@ -851,7 +851,7 @@ anchor syntax in composition expressions:
 
 ### 8.1 Overview
 
-LSDL defines 8 composition operators that combine elements into
+LSDL defines 9 composition operators that combine elements into
 characters. These operators differ structurally from CSDL's spatial
 tiling operators because alphabetic characters compose by
 attachment rather than partition.
@@ -1619,7 +1619,7 @@ compositions: a composition builds a single character from
 anatomical parts, while a ligature merges two or more complete
 characters into a combined form.
 
-LSDL describes ligatures using the LIG operator (Section 8). This
+LSDL describes ligatures using the LIG operator. This
 section defines the semantics of ligature definitions and the
 `merge:` parameter vocabulary.
 
