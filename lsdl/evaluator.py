@@ -1018,7 +1018,12 @@ def evaluate_lig(
         # O+E: O's right curve merges into E's stem
         return _lig_overlap(children, overlap=3, ctx=ctx)
     else:
-        # Unknown strategy - fall back to horizontal adjacency
+        # Unknown strategy - warn and fall back to horizontal adjacency
+        warnings.warn(
+            f"Unknown LIG merge strategy '{merge_strategy}'; using horizontal adjacency",
+            UserWarning,
+            stacklevel=2,
+        )
         return evaluate_lr(children, None, ctx)
 
 
