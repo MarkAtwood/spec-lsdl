@@ -405,8 +405,9 @@ def evaluate_path_form_element(
 
 def position_path_point(pp: PathPoint, grid: int = 12) -> PositionedPathPoint:
     """Convert a PathPoint to a PositionedPathPoint."""
-    # Scale coordinates if using /24 grid
-    scale = 12.0 / grid
+    # Scale coordinates if using /24 grid; only 12 and 24 are valid per spec
+    effective_grid = grid if grid in (12, 24) else 12
+    scale = 12.0 / effective_grid
 
     endpoint = PositionedCoordinate(float(pp.endpoint.x) * scale, float(pp.endpoint.y) * scale)
 
