@@ -932,6 +932,7 @@ class Parser:
                     char_def.expression = self.parse_expr()
                 else:
                     self.add_error("expression without build: from_expr")
+                    self.pos += 1
 
             elif t.type == "NL":
                 self.pos += 1

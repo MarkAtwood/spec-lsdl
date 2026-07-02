@@ -447,7 +447,9 @@ def evaluate_expr(expr: Expr, ctx: EvaluationContext) -> EvaluatedExpr:
         raise EvaluationError(f"Unknown expression type: {type(expr)}", line, col)
 
 
-def evaluate_ref(ref: RefExpr, ctx: EvaluationContext) -> EvaluatedExpr:
+def evaluate_ref(
+    ref: RefExpr, ctx: EvaluationContext, _seen_aliases: set[str] | None = None
+) -> EvaluatedExpr:
     """Evaluate an element/character reference."""
     name = ref.name
 
@@ -461,8 +463,15 @@ def evaluate_ref(ref: RefExpr, ctx: EvaluationContext) -> EvaluatedExpr:
 
     # Check if it's an alias
     if name in ctx.file.aliases:
+        if _seen_aliases is None:
+            _seen_aliases = set()
+        if name in _seen_aliases:
+            raise EvaluationError(f"alias cycle detected: {name}", ref.line, ref.col)
+        _seen_aliases.add(name)
         target = ctx.file.aliases[name].target
-        return evaluate_ref(RefExpr(name=target, line=ref.line, col=ref.col), ctx)
+        return evaluate_ref(
+            RefExpr(name=target, line=ref.line, col=ref.col), ctx, _seen_aliases
+        )
 
     # Element not found - create a placeholder (for standard elements not defined in file)
     # In a full implementation, standard elements would be pre-defined
@@ -569,7 +578,7 @@ def evaluate_compose(expr: ComposeExpr, ctx: EvaluationContext) -> ComposedEleme
     # the ComposeExpr (split, anchor_override, merge_strategy). A dict would need
     # lambdas or a wrapper layer, adding indirection without improving clarity.
     if op == "STACK":
-        return evaluate_stack(children, ctx)
+        return evaluate_stack(children, ctx, expr.line, expr.col)
     elif op == "LR":
         return evaluate_lr(children, expr.split, ctx)
     elif op == "LR3":
@@ -590,14 +599,16 @@ def evaluate_compose(expr: ComposeExpr, ctx: EvaluationContext) -> ComposedEleme
         raise EvaluationError(f"Unknown composition operator: {op}", expr.line, expr.col)
 
 
-def evaluate_stack(children: list[EvaluatedExpr], ctx: EvaluationContext) -> ComposedElement:
+def evaluate_stack(
+    children: list[EvaluatedExpr], ctx: EvaluationContext, line: int = 0, col: int = 0
+) -> ComposedElement:
     """Evaluate STACK operator - vertical stacking.
 
     Per Section 8.2: Stacks elements along a shared vertical axis, top to bottom.
     The first element's `base` anchor aligns with the second element's `top` anchor.
     """
     if len(children) < 2:
-        raise EvaluationError(f"STACK requires at least 2 children, got {len(children)}")
+        raise EvaluationError(f"STACK requires at least 2 children, got {len(children)}", line, col)
 
     # Process first child separately to initialize combined_bbox,
     # avoiding BoundingBox | None union for mypy
