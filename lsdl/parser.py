@@ -911,9 +911,10 @@ class Parser:
         line, col = tok.line, tok.col
 
         # Literal character (may be LITERAL_CHAR or single-letter NAME like 'a'..'z')
-        tok = self.current()
-        if tok is not None and (
-            tok.type == "LITERAL_CHAR" or (tok.type == "NAME" and len(tok.value) == 1)
+        char_tok = self.current()
+        if char_tok is not None and (
+            char_tok.type == "LITERAL_CHAR"
+            or (char_tok.type == "NAME" and len(char_tok.value) == 1)
         ):
             char = self.consume().value
         else:
@@ -1668,10 +1669,11 @@ class Parser:
             else:
                 graph[name] = set()
 
-        # Add character dependencies to graph
+        # Add character dependencies to graph (merge with existing element refs if same name)
         for char, char_def in result.characters.items():
             if char_def.expression:
-                graph[char] = self.collect_refs(char_def.expression)
+                refs = self.collect_refs(char_def.expression)
+                graph.setdefault(char, set()).update(refs)
 
         # Add alias dependencies to graph (only alias-to-alias chains)
         for name, alias in result.aliases.items():
@@ -1690,12 +1692,14 @@ class Parser:
             if node in visited:
                 return False
             path.add(node)
-            for dep in graph.get(node, set()):
-                if dep in graph and dfs(dep):  # Only follow refs in graph
-                    return True
-            path.remove(node)
-            visited.add(node)
-            return False
+            try:
+                for dep in graph.get(node, set()):
+                    if dep in graph and dfs(dep):  # Only follow refs in graph
+                        return True
+                return False
+            finally:
+                path.remove(node)
+                visited.add(node)
 
         for node in graph:
             dfs(node)
