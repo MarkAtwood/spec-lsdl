@@ -1272,10 +1272,9 @@ desc-limit: 12
 """
         with pytest.raises(ParseError) as exc_info:
             parse(source)
-        assert (
-            "monoton" in str(exc_info.value).lower()
-            or "non-decreasing" in str(exc_info.value).lower()
-        )
+        err = str(exc_info.value).lower()
+        # Error should identify the specific violation
+        assert "ascender=3" in err and "cap-top=5" in err and ">=" in err
 
     def test_path_form_requires_zone(self) -> None:
         """Test that path-form @elem requires zone."""

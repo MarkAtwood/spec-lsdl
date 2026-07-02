@@ -597,6 +597,15 @@ class Parser:
             self.consume()
 
         # Validate monotonicity (constraint 15)
+        metric_names = [
+            "cap-top",
+            "ascender",
+            "cap-height",
+            "x-top",
+            "baseline",
+            "descender",
+            "desc-limit",
+        ]
         values = [
             metrics.cap_top,
             metrics.ascender,
@@ -608,8 +617,10 @@ class Parser:
         ]
         for i in range(1, len(values)):
             if values[i] < values[i - 1]:
-                self.add_error("metric values must be monotonically non-decreasing", tok)
-                break
+                self.add_error(
+                    f"{metric_names[i]}={values[i]} must be >= {metric_names[i-1]}={values[i-1]}",
+                    tok,
+                )
 
         return metrics
 
@@ -985,7 +996,10 @@ class Parser:
                         # ponytail: error and advance to prevent infinite loop
                         self.add_error(f"expected path point after '{pid}='")
                         self.pos += 1
+                elif is_expr_form:
+                    char_def.expression = self.parse_expr()
                 else:
+                    self.add_error(f"unexpected in @char: {t.value!r}", t)
                     self.pos += 1
 
             elif t.type == "COMPOSE_OP" or t.type == "XFORM_OP":
@@ -995,9 +1009,13 @@ class Parser:
                     self.add_error("expression without build: from_expr")
                     self.pos += 1
 
+            elif t.type == "LITERAL_CHAR" and is_expr_form:
+                char_def.expression = self.parse_expr()
+
             elif t.type == "NL":
                 self.pos += 1
             else:
+                self.add_error(f"unexpected token in @char block: {t.value!r}", t)
                 self.pos += 1
 
         if self._at_end_kw():
