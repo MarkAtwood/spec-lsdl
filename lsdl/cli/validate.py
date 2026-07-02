@@ -23,7 +23,6 @@ from pathlib import Path
 from typing import TextIO
 
 from lsdl.cli import get_version
-from lsdl.evaluator import EvaluationError
 from lsdl.parser import ParseError, parse
 from lsdl.validate import Severity, ValidationIssue
 
@@ -101,8 +100,8 @@ def validate_source(
 
     try:
         parse(source, filename=path)
-    except (ParseError, EvaluationError) as e:
-        code = "parse-error" if isinstance(e, ParseError) else "evaluation-error"
+    except ParseError as e:
+        code = "parse-error"
         issue = ValidationIssue(
             severity=Severity.ERROR,
             message=e.message,
