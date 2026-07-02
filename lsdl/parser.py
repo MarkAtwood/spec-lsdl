@@ -945,6 +945,7 @@ class Parser:
         char_def = CharacterDefinition(char=char, name=uname, grid=grid, line=line, col=col)
         is_expr_form = False
         seen_fields: set[str] = set()  # Track duplicate field names
+        seen_anchors = False  # Track if anchors: has been seen for continuation
 
         while not self._at_end_kw():
             self.skip_blank_lines()
@@ -992,6 +993,7 @@ class Parser:
 
                 elif field_name == "anchors":
                     char_def.anchors = self.parse_anchor_defs()
+                    seen_anchors = True
 
                 elif field_name == "build":
                     if self._check("FROM_EXPR") is not None:
@@ -1003,6 +1005,9 @@ class Parser:
                     else:
                         self.add_error("expected 'from_expr' after build:")
 
+                elif field_name == "transform":
+                    self.add_error("transform: only valid in @style blocks")
+
             elif t.type == "META_FIELD":
                 meta_name = t.value.removesuffix(":")
                 if meta_name in seen_fields:
@@ -1013,18 +1018,26 @@ class Parser:
             elif t.type == "NAME":
                 peek1 = self.peek(1)
                 if peek1 is not None and peek1.type == "EQUALS":
-                    # Path point definition
-                    pid = self.consume().value
-                    self.consume("EQUALS")
-                    pp = self.parse_path_point()
-                    if pp:
-                        if char_def.path_points is None:
-                            char_def.path_points = {}
-                        char_def.path_points[pid] = pp
+                    # After anchors:, NAME = COORD is an anchor continuation, not a path point.
+                    # Path points use NAME = COORD or NAME = C(...), but only before anchors:.
+                    peek2 = self.peek(2)
+                    if seen_anchors and peek2 is not None and peek2.type == "COORD":
+                        # Anchor continuation on a new line
+                        more_anchors = self.parse_anchor_defs()
+                        char_def.anchors.extend(more_anchors)
                     else:
-                        # ponytail: error and advance to prevent infinite loop
-                        self.add_error(f"expected path point after '{pid}='")
-                        self.pos += 1
+                        # Path point definition
+                        pid = self.consume().value
+                        self.consume("EQUALS")
+                        pp = self.parse_path_point(grid)
+                        if pp:
+                            if char_def.path_points is None:
+                                char_def.path_points = {}
+                            char_def.path_points[pid] = pp
+                        else:
+                            # ponytail: error and advance to prevent infinite loop
+                            self.add_error(f"expected path point after '{pid}='")
+                            self.pos += 1
                 elif is_expr_form:
                     char_def.expression = self.parse_expr()
                 else:
