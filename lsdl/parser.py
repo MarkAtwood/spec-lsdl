@@ -1686,6 +1686,10 @@ def parse(source: str, filename: str = "<string>") -> LSDLFile:
     Raises:
         ParseError: If the source contains syntax or semantic errors
     """
+    # ponytail: normalize line endings (CRLF/CR -> LF) and strip UTF-8 BOM
+    if source.startswith("﻿"):
+        source = source[1:]
+    source = source.replace("\r\n", "\n").replace("\r", "\n")
     tokens = _tokenize(source)
     parser = Parser(tokens, filename)
     return parser.parse()
