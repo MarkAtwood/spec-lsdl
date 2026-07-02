@@ -663,7 +663,7 @@ class Parser:
                 break
 
             if t.type == "BLOCK_FIELD":
-                field_name = t.value.rstrip(":")
+                field_name = t.value.removesuffix(":")
                 self.consume()
 
                 if field_name in seen_fields:
@@ -718,7 +718,7 @@ class Parser:
                     self.add_error("transform: only valid in @style blocks")
 
             elif t.type == "META_FIELD":
-                meta_name = t.value.rstrip(":")
+                meta_name = t.value.removesuffix(":")
                 if meta_name in seen_fields:
                     self.add_error(f"duplicate field '{t.value}'", t)
                 seen_fields.add(meta_name)
@@ -951,7 +951,7 @@ class Parser:
                 break
 
             if t.type == "BLOCK_FIELD":
-                field_name = t.value.rstrip(":")
+                field_name = t.value.removesuffix(":")
                 self.consume()
 
                 if field_name in seen_fields:
@@ -1002,7 +1002,7 @@ class Parser:
                         self.add_error("expected 'from_expr' after build:")
 
             elif t.type == "META_FIELD":
-                meta_name = t.value.rstrip(":")
+                meta_name = t.value.removesuffix(":")
                 if meta_name in seen_fields:
                     self.add_error(f"duplicate field '{t.value}'", t)
                 seen_fields.add(meta_name)
@@ -1125,7 +1125,7 @@ class Parser:
         while self._check("META_FIELD") is not None:
             t = self.current()
             if t is not None:
-                meta_name = t.value.rstrip(":")
+                meta_name = t.value.removesuffix(":")
                 if meta_name in seen_meta:
                     self.add_error(f"duplicate field '{t.value}'", t)
                 seen_meta.add(meta_name)
@@ -1323,7 +1323,7 @@ class Parser:
     def parse_metadata_field(self, meta: Metadata) -> None:
         """Parse a metadata field and add to metadata object."""
         tok = self.consume("META_FIELD")
-        field_name = tok.value.rstrip(":")
+        field_name = tok.value.removesuffix(":")
 
         if field_name == "script":
             cur = self.current()
@@ -1420,8 +1420,9 @@ class Parser:
             elif tok.type == "INT":
                 hint = " (numbers must be part of a coordinate like [x,y] or a parameter like sx=N)"
             self.add_error(
-                f"expected expression: composition operator (STACK, LR, DIA, OVR, FRAME, LIG, APEX), "
-                f"transform (sc, sh, sk), or element name, got {got_desc}{hint}",
+                "expected expression: composition operator "
+                f"(STACK, LR, DIA, OVR, FRAME, LIG, APEX), transform (sc, sh, sk), "
+                f"or element name, got {got_desc}{hint}",
                 tok,
             )
             self.pos += 1
@@ -1592,7 +1593,7 @@ class Parser:
             self.consume()
             if self._check("XFORM_PARAM") is not None:
                 param_tok = self.consume()
-                param_name = param_tok.value.rstrip("=")
+                param_name = param_tok.value.removesuffix("=")
                 if self._check("INT") is not None:
                     param_val = int(self.consume().value)
                     # Constraint 2: TPARAM in range -12 to 24
