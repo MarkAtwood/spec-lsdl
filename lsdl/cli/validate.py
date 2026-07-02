@@ -102,18 +102,19 @@ def validate_source(
     try:
         parse(source, filename=path)
     except ParseError as e:
-        code = "parse-error"
-        issue = ValidationIssue(
-            severity=Severity.ERROR,
-            message=e.message,
-            location=f"{path}:{e.line}:{e.col}",
-            code=code,
-        )
-        errors.append(issue)
+        # Report all collected errors, not just the first
+        for err in e.errors:
+            issue = ValidationIssue(
+                severity=Severity.ERROR,
+                message=err.message,
+                location=f"{path}:{err.line}:{err.col}",
+                code="parse-error",
+            )
+            errors.append(issue)
 
-        source_line = get_source_line(source, e.line)
-        msg = format_error_line(path, e.line, e.col, "error", e.message, source_line)
-        print(msg, file=output)
+            source_line = get_source_line(source, err.line)
+            msg = format_error_line(path, err.line, err.col, "error", err.message, source_line)
+            print(msg, file=output)
 
     return ValidationResult(
         path=path,
