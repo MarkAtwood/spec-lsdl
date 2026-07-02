@@ -1297,7 +1297,7 @@ class Parser:
 
         if field_name == "script":
             cur = self.current()
-            if cur is not None:
+            if cur is not None and cur.type not in ("NL", "META_FIELD", "KEYWORD"):
                 script_val = self.consume().value
                 if len(script_val) != 4 or not script_val.isalpha():
                     self.add_error(
@@ -1305,6 +1305,8 @@ class Parser:
                         tok,
                     )
                 meta.script = script_val
+            else:
+                self.add_error("script: requires a value", tok)
         elif field_name == "ortho":
             # Comma-separated list of language tags
             orthos = []
@@ -1327,9 +1329,13 @@ class Parser:
         elif field_name == "cp":
             if self._check("CODEPOINT") is not None:
                 meta.cp = self.consume().value
+            else:
+                self.add_error("cp: requires U+XXXX codepoint", tok)
         elif field_name == "freq":
             if self._check("INT") is not None:
                 meta.freq = int(self.consume().value)
+            else:
+                self.add_error("freq: requires integer", tok)
         elif field_name.startswith("x-"):
             # Extension field
             parts = []
