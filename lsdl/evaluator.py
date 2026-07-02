@@ -771,16 +771,22 @@ def evaluate_dia(
 
     base_target = get_anchor(base, target_anchor_name)
     if not base_target:
-        # Fallback: center horizontally, position at edge vertically
+        # Fallback: center horizontally, position at edge for known anchors, center for custom
         if target_anchor_name == "mark-above":
             base_target = PositionedAnchor(
                 target_anchor_name,
                 PositionedCoordinate(base.bbox.center_x, base.bbox.y_min),
             )
-        else:
+        elif target_anchor_name == "mark-below":
             base_target = PositionedAnchor(
                 target_anchor_name,
                 PositionedCoordinate(base.bbox.center_x, base.bbox.y_max),
+            )
+        else:
+            # ponytail: unknown anchor name fallback to center
+            base_target = PositionedAnchor(
+                target_anchor_name,
+                PositionedCoordinate(base.bbox.center_x, base.bbox.center_y),
             )
 
     # Translate mark so its attach anchor aligns with base's target anchor
@@ -914,8 +920,8 @@ def evaluate_ovr(
     dy = base.bbox.center_y - overlay.bbox.center_y
     positioned_overlay = translate_element(overlay, dx, dy)
 
-    # Use base's bounding box (both share it)
-    combined_bbox = base.bbox
+    # ponytail: use union to avoid clipping if overlay is larger than base
+    combined_bbox = base.bbox.union(positioned_overlay.bbox)
 
     merged_anchors = merge_anchors([base, positioned_overlay])
 

@@ -572,7 +572,9 @@ class Parser:
             # Expect metric-name: value
             if t.type == "NAME":
                 name = self.consume().value
-                if self._check("COLON") is not None:
+                if self._check("COLON") is None:
+                    self.add_error(f"expected ':' after metric name '{name}'", t)
+                else:
                     self.consume()
                 if self._check("INT") is not None:
                     value = int(self.consume().value)
@@ -581,6 +583,8 @@ class Parser:
                         self.add_error(f"metric value must be 0-12, got {value}")
                     if name in metric_map:
                         setattr(metrics, metric_map[name], value)
+                    else:
+                        self.add_error(f"unknown metric name '{name}'", t)
                 else:
                     self.add_error(f"expected integer value for {name}")
             elif t.type == "NL":
