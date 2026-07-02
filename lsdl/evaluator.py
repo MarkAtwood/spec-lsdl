@@ -706,8 +706,8 @@ def evaluate_lr(
     for _i, (child, width) in enumerate(zip(children, widths)):
         # Scale child horizontally to fit allocated width
         # Guard against zero/degenerate widths to avoid division by zero or extreme scaling
-        # ponytail: min scale 0.01 prevents collapse; upgrade to skip-element if 0-proportion needed
-        child_width = max(child.bbox.width, 1.0)
+        # ponytail: use abs() for negative widths from pathological transforms; min 1.0
+        child_width = max(abs(child.bbox.width), 1.0)
         scale_x = max(width / child_width, 0.01)
         scaled = scale_element(child, scale_x, 1.0, child.bbox.center_x, child.bbox.center_y)
 
@@ -827,6 +827,9 @@ def evaluate_dia2(
 
     # First, attach mark1 to base using standard DIA logic
     dia1_result = evaluate_dia([base, mark1], None, ctx, line, col)
+    # ponytail: defensive check; evaluate_dia always returns 2 children but guard against future changes
+    if len(dia1_result.children) < 2:
+        raise EvaluationError("DIA2 internal error: DIA returned insufficient children", line, col)
     positioned_mark1 = dia1_result.children[1]
 
     # Determine mark directions (above or below base)
@@ -1082,18 +1085,25 @@ def evaluate_transform(expr: TransformExpr, ctx: EvaluationContext) -> Evaluated
 
     if op == "sc":
         # Scale: sx, sy are fractions of 12 (12 = 100%)
-        sx = params.get("sx", 12) / 12.0
-        sy = params.get("sy", 12) / 12.0
+        # ponytail: clamp to [-100, 100] to prevent coordinate overflow; 0.01 min prevents collapse
+        sx = max(min(params.get("sx", 12) / 12.0, 100.0), -100.0)
+        sy = max(min(params.get("sy", 12) / 12.0, 100.0), -100.0)
+        if abs(sx) < 0.01:
+            sx = 0.01 if sx >= 0 else -0.01
+        if abs(sy) < 0.01:
+            sy = 0.01 if sy >= 0 else -0.01
         return scale_element(child, sx, sy)
     elif op == "sh":
         # Shift: dx, dy are grid units
-        dx = float(params.get("dx", 0))
-        dy = float(params.get("dy", 0))
+        # ponytail: clamp to [-1000, 1000] to prevent coordinate overflow
+        dx = max(min(float(params.get("dx", 0)), 1000.0), -1000.0)
+        dy = max(min(float(params.get("dy", 0)), 1000.0), -1000.0)
         return translate_element(child, dx, dy)
     elif op == "sk":
         # Skew: kx, ky tilt the coordinate space
-        kx = float(params.get("kx", 0))
-        ky = float(params.get("ky", 0))
+        # ponytail: clamp to [-100, 100] to prevent coordinate overflow
+        kx = max(min(float(params.get("kx", 0)), 100.0), -100.0)
+        ky = max(min(float(params.get("ky", 0)), 100.0), -100.0)
         return skew_element(child, kx, ky)
     else:
         raise EvaluationError(f"Unknown transform operator: {op}", expr.line, expr.col)
@@ -1257,8 +1267,13 @@ def find_anchor_match(
     """Find matching anchors between placed elements and a new element.
 
     Returns tuple of (placed_anchor, new_elem_anchor) if a match is found.
+
+    Match priority (first match wins):
+    1. Earlier placed elements checked before later ones
+    2. Within each element, pairs tried in order: right/left, arm.right/arm.left,
+       top/base, base/top
     """
-    # Common anchor pairs that typically connect
+    # ponytail: priority order is deliberate; scoring-based matching if needed later
     anchor_pairs = [
         ("right", "left"),
         ("arm.right", "arm.left"),

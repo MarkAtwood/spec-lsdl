@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import sys
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 from lsdl.cli import get_version
 from lsdl.evaluator import (
@@ -27,9 +28,9 @@ from lsdl.evaluator import (
 )
 from lsdl.parser import ParseError, parse_file
 
-# Note: svgwrite is imported at runtime inside render_character_svg() and main()
-# Type annotations use string literals (via `from __future__ import annotations`)
-# so no TYPE_CHECKING import is needed.
+if TYPE_CHECKING:
+    import svgwrite
+    from svgwrite.container import Group
 
 __all__ = ["main"]
 

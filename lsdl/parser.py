@@ -789,7 +789,12 @@ class Parser:
         # Format: [x,y] - regex ensures format, but wrap for clear errors
         try:
             inner = tok.value[1:-1]
-            x, y = map(int, inner.split(","))
+            parts = inner.split(",")
+            # ponytail: reject absurdly long numbers to prevent int() DoS; 5 digits allows 0-99999
+            if any(len(p) > 5 for p in parts):
+                self.add_error(f"coordinate value too large: {tok.value!r}", tok)
+                return Coordinate(0, 0)
+            x, y = map(int, parts)
         except (ValueError, IndexError) as e:
             self.add_error(f"malformed coordinate {tok.value!r}: {e}", tok)
             return Coordinate(0, 0)
