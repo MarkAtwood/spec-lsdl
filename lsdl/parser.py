@@ -781,9 +781,13 @@ class Parser:
     def parse_coordinate(self) -> Coordinate:
         """Parse [x,y] coordinate."""
         tok = self.consume("COORD")
-        # Format: [x,y]
-        inner = tok.value[1:-1]  # Remove brackets
-        x, y = map(int, inner.split(","))
+        # Format: [x,y] - regex ensures format, but wrap for clear errors
+        try:
+            inner = tok.value[1:-1]
+            x, y = map(int, inner.split(","))
+        except (ValueError, IndexError) as e:
+            self.add_error(f"malformed coordinate {tok.value!r}: {e}", tok)
+            return Coordinate(0, 0)
         return Coordinate(x, y)
 
     def parse_path_point(self, grid: int = 12) -> PathPoint | None:
