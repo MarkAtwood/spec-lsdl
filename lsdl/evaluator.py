@@ -704,9 +704,7 @@ def evaluate_lr(
 
     positioned_children: list[EvaluatedExpr] = []
     current_x = 0.0
-    # Initialize combined_bbox to first child's bbox as fallback,
-    # ensuring we never leave it as None even if widths is empty
-    combined_bbox = children[0].bbox if children else BoundingBox.standard()
+    combined_bbox: BoundingBox | None = None
 
     for child, width in zip(children, widths):
         # Scale child horizontally to fit allocated width
@@ -728,6 +726,7 @@ def evaluate_lr(
 
     merged_anchors = merge_anchors(positioned_children)
 
+    assert combined_bbox is not None  # Loop always runs; early return handles empty
     return ComposedElement(
         operator="LR",
         children=positioned_children,
