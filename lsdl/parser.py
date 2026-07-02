@@ -770,6 +770,8 @@ class Parser:
 
         # Validate element form (constraints 9, 10)
         if is_expr_form:
+            if not elem.expression:
+                self.add_error("build: from_expr requires an expression", tok)
             if elem.path_points:
                 self.add_error("expression-form block cannot have path definitions", tok)
         else:
@@ -908,12 +910,16 @@ class Parser:
         tok = self.consume("KEYWORD")  # @char
         line, col = tok.line, tok.col
 
-        # Literal character
-        if self._check("LITERAL_CHAR") is None:
+        # Literal character (may be LITERAL_CHAR or single-letter NAME like 'a'..'z')
+        tok = self.current()
+        if tok is not None and (
+            tok.type == "LITERAL_CHAR" or (tok.type == "NAME" and len(tok.value) == 1)
+        ):
+            char = self.consume().value
+        else:
             self.add_error("expected literal character after @char")
             self.skip_to_end_or_keyword()
             return None
-        char = self.consume().value
 
         # Unicode name
         if self._check("UNAME") is None:
@@ -1020,6 +1026,10 @@ class Parser:
 
         if self._at_end_kw():
             self.consume()
+
+        # Validate expr-form has an expression
+        if is_expr_form and not char_def.expression:
+            self.add_error("build: from_expr requires an expression", tok)
 
         # Validate path point IDs match path: declaration
         if char_def.path_ids and char_def.path_points:
@@ -1649,7 +1659,7 @@ class Parser:
             self.validate_refs(expr.child, all_names, context)
 
     def detect_cycles(self, result: LSDLFile) -> None:
-        """Detect cycles in element reference graph (constraint 7)."""
+        """Detect cycles in element/character reference graph (constraint 7)."""
         # Build dependency graph from elements
         graph: dict[str, set[str]] = {}
         for name, elem in result.elements.items():
@@ -1657,6 +1667,11 @@ class Parser:
                 graph[name] = self.collect_refs(elem.expression)
             else:
                 graph[name] = set()
+
+        # Add character dependencies to graph
+        for char, char_def in result.characters.items():
+            if char_def.expression:
+                graph[char] = self.collect_refs(char_def.expression)
 
         # Add alias dependencies to graph (only alias-to-alias chains)
         for name, alias in result.aliases.items():
