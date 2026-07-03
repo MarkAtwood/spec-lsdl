@@ -1,0 +1,327 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL General Punctuation Library (U+2000-206F)
+# =============================================================================
+#
+# This file defines General Punctuation characters from Unicode block
+# U+2000-206F. Spaces (U+2000-200F) are skipped as they have no visible glyph.
+#
+# Priority characters defined:
+#   - Quotation marks: U+2018-201F (8 chars)
+#   - Dashes: U+2013-2015 (3 chars)
+#   - Bullet and ellipsis: U+2022, U+2026 (2 chars)
+#   - Daggers: U+2020-2021 (2 chars)
+#   - Per mille: U+2030 (1 char)
+#   - Primes: U+2032-2033 (2 chars)
+#   - Angle quotations: U+2039-203A (2 chars)
+#
+# =============================================================================
+
+# =============================================================================
+# LOCAL PUNCTUATION ELEMENTS
+# =============================================================================
+
+# punct.quote.left - Curly quote shape like a "6" (left single quote)
+@elem punct.quote.left
+zone: cap
+path: p1 p2 p3
+p1 = [5,0]
+p2 = C([5,1] [7,2])
+p3 = [7,3]
+close: false
+width: 1
+anchors: attach=[6,1]
+@end
+
+# punct.quote.right - Curly quote shape like a "9" (right single quote / apostrophe)
+@elem punct.quote.right
+zone: cap
+path: p1 p2 p3
+p1 = [7,0]
+p2 = C([7,1] [5,2])
+p3 = [5,3]
+close: false
+width: 1
+anchors: attach=[6,1]
+@end
+
+# punct.quote.low - Low "9" shaped quote at baseline
+@elem punct.quote.low
+zone: x-height
+path: p1 p2 p3
+p1 = [7,7]
+p2 = C([7,8] [5,9])
+p3 = [5,10]
+close: false
+width: 1
+anchors: attach=[6,8]
+@end
+
+# punct.quote.rev - Reversed "9" quote (high reversed comma, looks like turned comma)
+@elem punct.quote.rev
+zone: cap
+path: p1 p2 p3
+p1 = [5,3]
+p2 = C([5,2] [7,1])
+p3 = [7,0]
+close: false
+width: 1
+anchors: attach=[6,1]
+@end
+
+# punct.dash.en - En dash (medium-length horizontal stroke)
+@elem punct.dash.en
+zone: x-height
+path: p1 p2
+p1 = [2,6]
+p2 = [10,6]
+close: false
+width: 1
+anchors: mid=[6,6]
+@end
+
+# punct.dash.em - Em dash (full-width horizontal stroke)
+@elem punct.dash.em
+zone: x-height
+path: p1 p2
+p1 = [0,6]
+p2 = [12,6]
+close: false
+width: 1
+anchors: mid=[6,6]
+@end
+
+# punct.bar.horiz - Horizontal bar (quotation dash, same width as em dash)
+@elem punct.bar.horiz
+zone: x-height
+path: p1 p2
+p1 = [0,6]
+p2 = [12,6]
+close: false
+width: 1
+anchors: mid=[6,6]
+@end
+
+# punct.bullet - Filled circular bullet
+@elem punct.bullet
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = C([3,4] [3,6])
+p3 = C([3,8] [6,8])
+p4 = C([9,8] [9,6])
+close: true
+width: 1
+anchors: attach=[6,6]
+@end
+
+# punct.dagger.stem - Vertical stem for dagger
+@elem punct.dagger.stem
+zone: cap
+path: p1 p2
+p1 = [6,0]
+p2 = [6,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mid=[6,4]
+@end
+
+# punct.dagger.arm - Horizontal crossbar for dagger (near top)
+@elem punct.dagger.arm
+zone: cap
+path: p1 p2
+p1 = [3,2]
+p2 = [9,2]
+close: false
+width: 1
+anchors: mid=[6,2]
+@end
+
+# punct.dagger.arm.lower - Lower horizontal crossbar for double dagger
+@elem punct.dagger.arm.lower
+zone: cap
+path: p1 p2
+p1 = [3,5]
+p2 = [9,5]
+close: false
+width: 1
+anchors: mid=[6,5]
+@end
+
+# punct.permille.diag - Diagonal stroke for per mille sign
+@elem punct.permille.diag
+zone: cap
+path: p1 p2
+p1 = [10,0]
+p2 = [2,8]
+close: false
+width: 1
+anchors: top=[10,0] base=[2,8]
+@end
+
+# punct.permille.circle.top - Top circle for per mille
+@elem punct.permille.circle.top
+zone: cap
+path: p1 p2 p3 p4
+p1 = [4,0]
+p2 = C([2,0] [2,1])
+p3 = C([2,2] [4,2])
+p4 = C([6,2] [6,1])
+close: true
+width: 1
+anchors: attach=[4,1]
+@end
+
+# punct.permille.circle.bot.l - Bottom-left circle for per mille
+@elem punct.permille.circle.bot.l
+zone: cap
+path: p1 p2 p3 p4
+p1 = [5,6]
+p2 = C([3,6] [3,7])
+p3 = C([3,8] [5,8])
+p4 = C([7,8] [7,7])
+close: true
+width: 1
+anchors: attach=[5,7]
+@end
+
+# punct.permille.circle.bot.r - Bottom-right circle for per mille
+@elem punct.permille.circle.bot.r
+zone: cap
+path: p1 p2 p3 p4
+p1 = [9,6]
+p2 = C([7,6] [7,7])
+p3 = C([7,8] [9,8])
+p4 = C([11,8] [11,7])
+close: true
+width: 1
+anchors: attach=[9,7]
+@end
+
+# punct.prime - Single prime mark (angled tick)
+@elem punct.prime
+zone: cap
+path: p1 p2
+p1 = [7,0]
+p2 = [5,4]
+close: false
+width: 1
+anchors: top=[7,0] base=[5,4]
+@end
+
+# punct.angle.left - Single left-pointing angle quotation
+@elem punct.angle.left
+zone: x-height
+path: p1 p2 p3
+p1 = [9,4]
+p2 = [3,6]
+p3 = [9,8]
+close: false
+width: 1
+anchors: mid=[6,6]
+@end
+
+# punct.angle.right - Single right-pointing angle quotation
+@elem punct.angle.right
+zone: x-height
+path: p1 p2 p3
+p1 = [3,4]
+p2 = [9,6]
+p3 = [3,8]
+close: false
+width: 1
+anchors: mid=[6,6]
+@end
+
+# =============================================================================
+# U+2013-2015: DASHES (3 characters)
+# =============================================================================
+
+# EN DASH - Medium-length horizontal dash
+U+2013 EN-DASH = punct.dash.en cp:U+2013
+
+# EM DASH - Full-width horizontal dash
+U+2014 EM-DASH = punct.dash.em cp:U+2014
+
+# HORIZONTAL BAR - Quotation dash (same as em dash visually)
+U+2015 HORIZONTAL-BAR = punct.bar.horiz cp:U+2015
+
+# =============================================================================
+# U+2018-201F: QUOTATION MARKS (8 characters)
+# =============================================================================
+
+# LEFT SINGLE QUOTATION MARK - Curly opening single quote (6-shaped)
+U+2018 LEFT-SINGLE-QUOTATION-MARK = punct.quote.left cp:U+2018
+
+# RIGHT SINGLE QUOTATION MARK - Curly closing single quote (9-shaped)
+U+2019 RIGHT-SINGLE-QUOTATION-MARK = punct.quote.right cp:U+2019
+
+# SINGLE LOW-9 QUOTATION MARK - Low single quote at baseline
+U+201A SINGLE-LOW-9-QUOTATION-MARK = punct.quote.low cp:U+201A
+
+# SINGLE HIGH-REVERSED-9 QUOTATION MARK - Reversed 9 quote at cap height
+U+201B SINGLE-HIGH-REVERSED-9-QUOTATION-MARK = punct.quote.rev cp:U+201B
+
+# LEFT DOUBLE QUOTATION MARK - Two 6-shaped quotes
+U+201C LEFT-DOUBLE-QUOTATION-MARK = LR(punct.quote.left, punct.quote.left, 6/6) cp:U+201C
+
+# RIGHT DOUBLE QUOTATION MARK - Two 9-shaped quotes
+U+201D RIGHT-DOUBLE-QUOTATION-MARK = LR(punct.quote.right, punct.quote.right, 6/6) cp:U+201D
+
+# DOUBLE LOW-9 QUOTATION MARK - Two low 9-shaped quotes
+U+201E DOUBLE-LOW-9-QUOTATION-MARK = LR(punct.quote.low, punct.quote.low, 6/6) cp:U+201E
+
+# DOUBLE HIGH-REVERSED-9 QUOTATION MARK - Two reversed 9 quotes
+U+201F DOUBLE-HIGH-REVERSED-9-QUOTATION-MARK = LR(punct.quote.rev, punct.quote.rev, 6/6) cp:U+201F
+
+# =============================================================================
+# U+2020-2022: DAGGERS AND BULLET (3 characters)
+# =============================================================================
+
+# DAGGER - Cross with vertical stem and single crossbar near top
+U+2020 DAGGER = OVR(punct.dagger.stem, punct.dagger.arm) cp:U+2020
+
+# DOUBLE DAGGER - Cross with vertical stem and two crossbars
+U+2021 DOUBLE-DAGGER = OVR(punct.dagger.stem, OVR(punct.dagger.arm, punct.dagger.arm.lower)) cp:U+2021
+
+# BULLET - Filled circular dot at mid-height
+U+2022 BULLET = punct.bullet cp:U+2022
+
+# =============================================================================
+# U+2026: HORIZONTAL ELLIPSIS (1 character)
+# =============================================================================
+
+# HORIZONTAL ELLIPSIS - Three evenly spaced dots
+U+2026 HORIZONTAL-ELLIPSIS = LR3(dot, dot, dot) cp:U+2026
+
+# =============================================================================
+# U+2030: PER MILLE SIGN (1 character)
+# =============================================================================
+
+# PER MILLE SIGN - Like percent but with two circles at bottom
+U+2030 PER-MILLE-SIGN = FRAME(punct.permille.circle.top, punct.permille.diag, punct.permille.circle.bot.l, punct.permille.circle.bot.r) cp:U+2030
+
+# =============================================================================
+# U+2032-2033: PRIME MARKS (2 characters)
+# =============================================================================
+
+# PRIME - Single angled tick mark (minutes, feet)
+U+2032 PRIME = punct.prime cp:U+2032
+
+# DOUBLE PRIME - Two angled tick marks (seconds, inches)
+U+2033 DOUBLE-PRIME = LR(punct.prime, punct.prime, 6/6) cp:U+2033
+
+# =============================================================================
+# U+2039-203A: ANGLE QUOTATION MARKS (2 characters)
+# =============================================================================
+
+# SINGLE LEFT-POINTING ANGLE QUOTATION MARK
+U+2039 SINGLE-LEFT-POINTING-ANGLE-QUOTATION-MARK = punct.angle.left cp:U+2039
+
+# SINGLE RIGHT-POINTING ANGLE QUOTATION MARK
+U+203A SINGLE-RIGHT-POINTING-ANGLE-QUOTATION-MARK = punct.angle.right cp:U+203A
+
+# =============================================================================
+# END OF GENERAL PUNCTUATION LIBRARY
+# =============================================================================

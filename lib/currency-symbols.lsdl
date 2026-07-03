@@ -1,0 +1,938 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Currency Symbols Library
+# =============================================================================
+#
+# This file defines currency symbols from Unicode block U+20A0-20CF
+# (Currency Symbols). 33 characters defined.
+#
+# Note: Since U+20A0-20CF is outside the standard LITERAL_CHAR ranges,
+# all character definitions use @char block form with cp: metadata.
+# Placeholder characters from the ASCII range are used for the literal char.
+#
+# Organization:
+#   - Local elements for currency-specific shapes
+#   - Historical European currency signs
+#   - Asian currency signs
+#   - Modern currency signs
+#   - American currency signs
+#   - African currency signs
+#
+# Composition patterns:
+#   - Letter-based: Derived from Latin letters with added strokes
+#   - OVR: Overlaid horizontal bars
+#   - FRAME: Letter with attached strokes
+#
+# =============================================================================
+
+# =============================================================================
+# LOCAL CURRENCY ELEMENTS
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Horizontal Bar Elements for Currency Signs
+# -----------------------------------------------------------------------------
+
+# bar.double.cap - Two parallel horizontal bars for currency overlay
+@elem bar.double.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [0,3]
+p2 = [12,3]
+p3 = [0,5]
+p4 = [12,5]
+close: false
+width: 1
+anchors: left=[0,4] right=[12,4] mid=[6,4]
+  top-bar=[6,3] bot-bar=[6,5]
+@end
+
+# bar.single.mid.currency - Single horizontal bar through middle for currency
+@elem bar.single.mid.currency
+zone: cap
+path: p1 p2
+p1 = [0,4]
+p2 = [12,4]
+close: false
+width: 1
+anchors: left=[0,4] right=[12,4] mid=[6,4]
+@end
+
+# bar.single.upper.currency - Single horizontal bar in upper region
+@elem bar.single.upper.currency
+zone: cap
+path: p1 p2
+p1 = [0,3]
+p2 = [12,3]
+close: false
+width: 1
+anchors: left=[0,3] right=[12,3] mid=[6,3]
+@end
+
+# bar.single.lower.currency - Single horizontal bar in lower region
+@elem bar.single.lower.currency
+zone: cap
+path: p1 p2
+p1 = [0,5]
+p2 = [12,5]
+close: false
+width: 1
+anchors: left=[0,5] right=[12,5] mid=[6,5]
+@end
+
+# -----------------------------------------------------------------------------
+# Cent-like C shape with stroke through
+# -----------------------------------------------------------------------------
+
+# currency.cent.stroke - Vertical stroke through center for cent-like symbols
+@elem currency.cent.stroke
+zone: cap
+path: p1 p2
+p1 = [5,0]
+p2 = [5,8]
+close: false
+width: 1
+anchors: top=[5,0] base=[5,8] mid=[5,4]
+@end
+
+# -----------------------------------------------------------------------------
+# Colon Sign Elements (Costa Rica)
+# -----------------------------------------------------------------------------
+
+# currency.colon.strokes - Two vertical strokes for Colon
+@elem currency.colon.strokes
+zone: cap
+path: p1 p2 p3 p4
+p1 = [5,0]
+p2 = [5,8]
+p3 = [7,0]
+p4 = [7,8]
+close: false
+width: 1
+anchors: left=[5,4] right=[7,4] mid=[6,4]
+@end
+
+# -----------------------------------------------------------------------------
+# Cruzeiro Sign Elements (Brazil - historical)
+# -----------------------------------------------------------------------------
+
+# currency.cruzeiro.r - Small r attachment for Cruzeiro
+@elem currency.cruzeiro.r
+zone: cap
+path: p1 p2 p3 p4
+p1 = [10,4]
+p2 = [10,8]
+p3 = [10,4]
+p4 = C([12,4] [12,6])
+close: false
+width: 1
+anchors: top=[10,4] base=[10,8] mid=[11,5]
+@end
+
+# -----------------------------------------------------------------------------
+# Franc Sign Elements
+# -----------------------------------------------------------------------------
+
+# currency.franc.bar - Horizontal bar for Franc (F with bar)
+@elem currency.franc.bar
+zone: cap
+path: p1 p2
+p1 = [0,6]
+p2 = [8,6]
+close: false
+width: 1
+anchors: left=[0,6] right=[8,6] mid=[4,6]
+@end
+
+# -----------------------------------------------------------------------------
+# Lira Sign Elements (similar to pound)
+# -----------------------------------------------------------------------------
+
+# currency.lira.l - L-shape base for Lira
+@elem currency.lira.l
+zone: cap
+path: p1 p2 p3 p4
+p1 = [2,0]
+p2 = C([0,0] [0,4])
+p3 = C([0,8] [4,8])
+p4 = [10,8]
+close: false
+width: 1
+anchors: top=[2,0] base=[4,8] left=[0,4] right=[10,8]
+  mid=[2,4] mark-above=[2,0] mark-below=[4,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Naira Sign Elements (Nigeria)
+# -----------------------------------------------------------------------------
+
+# currency.naira.n - N-shape for Naira (4 points: down, up-diagonal, down)
+@elem currency.naira.n
+zone: cap
+path: p1 p2 p3 p4
+p1 = [2,8]
+p2 = [2,0]
+p3 = [10,8]
+p4 = [10,0]
+close: false
+width: 1
+anchors: top-left=[2,0] base-left=[2,8]
+  top-right=[10,0] base-right=[10,8]
+  mid=[6,4] mark-above=[6,0] mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Peseta Sign Elements (Spain)
+# -----------------------------------------------------------------------------
+
+# currency.peseta.p - P-shape for Peseta
+@elem currency.peseta.p
+zone: cap
+path: p1 p2 p3 p4
+p1 = [0,0]
+p2 = [0,8]
+p3 = [0,0]
+p4 = C([6,0] [6,2] [0,4])
+close: false
+width: 1
+anchors: top=[0,0] base=[0,8] mid=[3,2]
+@end
+
+# -----------------------------------------------------------------------------
+# Rupee Sign Elements (Generic - Rs ligature style)
+# -----------------------------------------------------------------------------
+
+# currency.rupee.r - R-like shape for generic Rupee
+@elem currency.rupee.r
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [2,0]
+p2 = [2,8]
+p3 = [2,0]
+p4 = C([8,0] [8,2] [2,4])
+p5 = [10,8]
+close: false
+width: 1
+anchors: top=[2,0] base=[2,8] bowl-end=[2,4]
+  leg-end=[10,8] mid=[5,4]
+  mark-above=[5,0] mark-below=[5,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Won Sign Elements (Korea)
+# -----------------------------------------------------------------------------
+
+# currency.won.w - W-shape for Won (double V)
+@elem currency.won.w
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [0,0]
+p2 = [3,8]
+p3 = [6,4]
+p4 = [9,8]
+p5 = [12,0]
+close: false
+width: 1
+anchors: top-left=[0,0] top-right=[12,0]
+  base-left=[3,8] base-right=[9,8] mid=[6,4]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Sheqel Sign Elements (Israel)
+# -----------------------------------------------------------------------------
+
+# currency.sheqel - Sheqel shape (two vertical strokes with curved top)
+@elem currency.sheqel
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [2,8]
+p2 = [2,2]
+p3 = C([2,0] [6,0])
+p4 = C([10,0] [10,2])
+p5 = [10,8]
+close: false
+width: 1
+anchors: top=[6,0] base-left=[2,8] base-right=[10,8]
+  mid=[6,4] mark-above=[6,0] mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Dong Sign Elements (Vietnam)
+# -----------------------------------------------------------------------------
+
+# currency.dong.stroke - Diagonal stroke through Dong
+@elem currency.dong.stroke
+zone: cap
+path: p1 p2
+p1 = [0,6]
+p2 = [6,10]
+close: false
+width: 1
+anchors: top=[0,6] base=[6,10]
+@end
+
+# -----------------------------------------------------------------------------
+# Euro Sign Elements
+# -----------------------------------------------------------------------------
+
+# currency.euro.c - C-shape for Euro (more angular than standard C)
+@elem currency.euro.c
+zone: cap
+path: p1 p2 p3
+p1 = [10,1]
+p2 = C([10,0] [0,0] [0,4])
+p3 = C([0,8] [10,8] [10,7])
+close: false
+width: 1
+anchors: top=[5,0] base=[5,8] left=[0,4] right=[10,4]
+  mid=[5,4] mark-above=[5,0] mark-below=[5,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Kip Sign Elements (Laos)
+# -----------------------------------------------------------------------------
+
+# currency.kip.k - K-shape for Kip
+@elem currency.kip.k
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [2,0]
+p2 = [2,8]
+p3 = [10,0]
+p4 = [2,4]
+p5 = [10,8]
+close: false
+width: 1
+anchors: top=[2,0] base=[2,8] mid=[2,4]
+  diagonal-top=[10,0] diagonal-bot=[10,8]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Tugrik Sign Elements (Mongolia)
+# -----------------------------------------------------------------------------
+
+# currency.tugrik.t - T-shape for Tugrik
+@elem currency.tugrik.t
+zone: cap
+path: p1 p2 p3
+p1 = [0,0]
+p2 = [12,0]
+p3 = [6,0]
+close: false
+width: 1
+anchors: left=[0,0] right=[12,0] mid=[6,0]
+@end
+
+# currency.tugrik.loop - Oval loop for Tugrik
+@elem currency.tugrik.loop
+zone: cap
+path: p1 p2 p3 p4
+p1 = [6,0]
+p2 = C([2,0] [2,5])
+p3 = C([2,10] [6,10])
+p4 = C([10,10] [10,0])
+close: true
+width: 1
+anchors: top=[6,0] base=[6,10] mid=[6,5]
+  left=[2,5] right=[10,5]
+@end
+
+# -----------------------------------------------------------------------------
+# Drachma Sign Elements (Greece - historical)
+# -----------------------------------------------------------------------------
+
+# currency.drachma - Drachma shape (delta-like)
+@elem currency.drachma
+zone: cap
+path: p1 p2 p3 p4
+p1 = [0,8]
+p2 = [6,0]
+p3 = [6,0]
+p4 = [12,8]
+close: false
+width: 1
+anchors: apex=[6,0] base-left=[0,8] base-right=[12,8]
+  mid=[6,4] mark-above=[6,0] mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Peso Sign Elements (Philippines, Mexico)
+# -----------------------------------------------------------------------------
+
+# currency.peso.p - P-shape for Peso
+@elem currency.peso.p
+zone: cap
+path: p1 p2 p3 p4
+p1 = [2,0]
+p2 = [2,8]
+p3 = [2,0]
+p4 = C([10,0] [10,2] [2,4])
+close: false
+width: 1
+anchors: top=[2,0] base=[2,8] bowl=[6,2]
+  mid=[6,4] mark-above=[6,0] mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Hryvnia Sign Elements (Ukraine)
+# -----------------------------------------------------------------------------
+
+# currency.hryvnia.s - S-like double curve for Hryvnia
+@elem currency.hryvnia.s
+zone: cap
+path: p1 p2 p3 p4
+p1 = [10,1]
+p2 = C([10,0] [2,0] [2,3])
+p3 = C([2,5] [10,5] [10,7])
+p4 = C([10,8] [2,8])
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mid=[6,4]
+  left=[2,4] right=[10,4]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Tenge Sign Elements (Kazakhstan)
+# -----------------------------------------------------------------------------
+
+# currency.tenge.t - T-shape for Tenge
+@elem currency.tenge.t
+zone: cap
+path: p1 p2 p3 p4
+p1 = [0,0]
+p2 = [12,0]
+p3 = [6,0]
+p4 = [6,8]
+close: false
+width: 1
+anchors: bar-left=[0,0] bar-right=[12,0]
+  top=[6,0] base=[6,8] mid=[6,4]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+# currency.tenge.bar - Horizontal bar below top bar for Tenge
+@elem currency.tenge.bar
+zone: cap
+path: p1 p2
+p1 = [2,3]
+p2 = [10,3]
+close: false
+width: 1
+anchors: left=[2,3] right=[10,3]
+@end
+
+# -----------------------------------------------------------------------------
+# Indian Rupee Sign Elements
+# -----------------------------------------------------------------------------
+
+# currency.inr - Indian Rupee shape (Devanagari-influenced R)
+@elem currency.inr
+zone: cap
+path: p1 p2 p3 p4 p5 p6
+p1 = [0,0]
+p2 = [10,0]
+p3 = [0,3]
+p4 = [10,3]
+p5 = [2,3]
+p6 = C([8,3] [8,5] [2,8])
+close: false
+width: 1
+anchors: top-bar=[5,0] mid-bar=[5,3]
+  leg=[2,8] mid=[5,4]
+  mark-above=[5,0] mark-below=[5,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Turkish Lira Sign Elements
+# -----------------------------------------------------------------------------
+
+# currency.try - Turkish Lira shape (L with curves)
+@elem currency.try
+zone: cap
+path: p1 p2 p3
+p1 = [8,0]
+p2 = C([2,0] [2,4])
+p3 = C([2,8] [8,8])
+close: false
+width: 1
+anchors: top=[8,0] base=[8,8] mid=[2,4]
+  mark-above=[5,0] mark-below=[5,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Manat Sign Elements (Azerbaijan)
+# -----------------------------------------------------------------------------
+
+# currency.manat.m - M-shape for Manat
+@elem currency.manat.m
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [0,8]
+p2 = [0,0]
+p3 = [6,4]
+p4 = [12,0]
+p5 = [12,8]
+close: false
+width: 1
+anchors: top-left=[0,0] top-right=[12,0]
+  base-left=[0,8] base-right=[12,8]
+  apex=[6,4] mid=[6,4]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+# currency.manat.bar - Underline bar for Manat
+@elem currency.manat.bar
+zone: cap
+path: p1 p2
+p1 = [0,10]
+p2 = [12,10]
+close: false
+width: 1
+anchors: left=[0,10] right=[12,10]
+@end
+
+# -----------------------------------------------------------------------------
+# Ruble Sign Elements (Russia)
+# -----------------------------------------------------------------------------
+
+# currency.rub - Ruble shape (P with bowl)
+@elem currency.rub
+zone: cap
+path: p1 p2 p3 p4
+p1 = [2,0]
+p2 = [2,8]
+p3 = [2,0]
+p4 = C([10,0] [10,2] [2,4])
+close: false
+width: 1
+anchors: top=[2,0] base=[2,8] bowl=[6,2]
+  mid=[2,4] mark-above=[6,0] mark-below=[6,9]
+@end
+
+# currency.rub.bar - Horizontal bar for Ruble
+@elem currency.rub.bar
+zone: cap
+path: p1 p2
+p1 = [0,5]
+p2 = [8,5]
+close: false
+width: 1
+anchors: left=[0,5] right=[8,5]
+@end
+
+# -----------------------------------------------------------------------------
+# Lari Sign Elements (Georgia)
+# -----------------------------------------------------------------------------
+
+# currency.lari - Lari shape (curved L-like form)
+@elem currency.lari
+zone: cap
+path: p1 p2 p3 p4
+p1 = [10,2]
+p2 = C([10,0] [2,0] [2,4])
+p3 = [2,8]
+p4 = [10,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mid=[2,4]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Bitcoin Sign Elements
+# -----------------------------------------------------------------------------
+
+# currency.btc.b - B-shape for Bitcoin (two bowls)
+@elem currency.btc.b
+zone: cap
+path: p1 p2 p3 p4 p5 p6
+p1 = [2,0]
+p2 = [2,8]
+p3 = [2,0]
+p4 = C([10,0] [10,2] [2,4])
+p5 = [2,4]
+p6 = C([10,4] [10,6] [2,8])
+close: false
+width: 1
+anchors: top=[2,0] base=[2,8] mid=[6,4]
+  upper-bowl=[6,2] lower-bowl=[6,6]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+# currency.btc.strokes - Two vertical strokes through B for Bitcoin
+@elem currency.btc.strokes
+zone: full
+path: p1 p2 p3 p4
+p1 = [4,0]
+p2 = [4,9]
+p3 = [8,0]
+p4 = [8,9]
+close: false
+width: 1
+anchors: left-top=[4,0] left-base=[4,9]
+  right-top=[8,0] right-base=[8,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Som Sign Elements (Kyrgyzstan, Uzbekistan)
+# -----------------------------------------------------------------------------
+
+# currency.som - Som shape (S-like with underlining)
+@elem currency.som
+zone: cap
+path: p1 p2 p3 p4
+p1 = [10,1]
+p2 = C([10,0] [2,0] [2,3])
+p3 = C([2,5] [10,5] [10,7])
+p4 = C([10,9] [2,9])
+close: false
+width: 1
+anchors: top=[6,0] base=[6,9] mid=[6,4]
+  mark-above=[6,0] mark-below=[6,10]
+@end
+
+# -----------------------------------------------------------------------------
+# Mill Sign Elements (1/10 cent - historical)
+# -----------------------------------------------------------------------------
+
+# currency.mill.m - Lowercase m for Mill
+@elem currency.mill.m
+zone: x-height
+path: p1 p2 p3 p4 p5 p6
+p1 = [0,4]
+p2 = [0,8]
+p3 = [0,4]
+p4 = C([0,4] [4,4] [4,8])
+p5 = [4,4]
+p6 = C([4,4] [8,4] [8,8])
+close: false
+width: 1
+anchors: top=[4,4] base=[4,8] mid=[4,6]
+  mark-above=[4,3] mark-below=[4,9]
+@end
+
+# currency.mill.stroke - Vertical stroke for Mill
+@elem currency.mill.stroke
+zone: x-height
+path: p1 p2
+p1 = [4,3]
+p2 = [4,9]
+close: false
+width: 1
+anchors: top=[4,3] base=[4,9]
+@end
+
+# -----------------------------------------------------------------------------
+# S-curve for currency (cap height version)
+# -----------------------------------------------------------------------------
+
+# currency.s.cap - S-shape at cap height for Spesmilo
+@elem currency.s.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [9,1]
+p2 = C([9,0] [3,0] [3,2])
+p3 = C([3,4] [9,4] [9,6])
+p4 = C([9,8] [3,8] [3,7])
+close: false
+width: 1
+anchors: attach=[6,4] mark-above=[6,0] mark-below=[6,9]
+  left=[3,4] right=[9,4] top=[6,0] base=[6,8]
+@end
+
+# =============================================================================
+# CHARACTER DEFINITIONS
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Historical European Currency Signs
+# -----------------------------------------------------------------------------
+
+# U+20A0 EURO-CURRENCY SIGN (old ECU symbol)
+# Note: Historical symbol for European Currency Unit, predates Euro
+@char ! EURO-CURRENCY-SIGN
+build: from_expr
+OVR(arc.c.cap, bar.single.mid.currency)
+cp: U+20A0
+@end
+
+# U+20A3 FRENCH FRANC SIGN - F with horizontal bar
+@char B FRENCH-FRANC-SIGN
+build: from_expr
+FRAME(stem.l, arm.top, arm.mid, currency.franc.bar)
+cp: U+20A3
+@end
+
+# U+20A4 LIRA SIGN - Stylized L with one or two horizontal bars
+# Similar to British Pound symbol
+@char C LIRA-SIGN
+build: from_expr
+OVR(currency.lira.l, bar.double.cap)
+cp: U+20A4
+@end
+
+# U+20AF DRACHMA SIGN - Greek historical currency
+@char $ DRACHMA-SIGN
+build: from_expr
+OVR(currency.drachma, bar.double.cap)
+cp: U+20AF
+@end
+
+# U+20B0 GERMAN PENNY SIGN - Historical German currency
+@char % GERMAN-PENNY-SIGN
+build: from_expr
+OVR(LR(stem.l, bowl.r.cap, 3/9), currency.cent.stroke)
+cp: U+20B0
+@end
+
+# U+20B6 LIVRE TOURNOIS SIGN - Historical French currency
+@char ^ LIVRE-TOURNOIS-SIGN
+build: from_expr
+OVR(FRAME(stem.l, arm.bot), bar.single.mid.currency)
+cp: U+20B6
+@end
+
+# U+20B7 SPESMILO SIGN - Esperanto currency
+@char D SPESMILO-SIGN
+build: from_expr
+LR(currency.s.cap, FRAME(stem.l, apex, stem.r), 5/8)
+cp: U+20B7
+@end
+
+# U+20BB NORDIC MARK SIGN - Historical Nordic currency
+@char E NORDIC-MARK-SIGN
+build: from_expr
+OVR(FRAME(stem.l, apex, stem.r), bar.single.mid.currency)
+cp: U+20BB
+@end
+
+# -----------------------------------------------------------------------------
+# Major World Currency Signs
+# -----------------------------------------------------------------------------
+
+# U+20AC EURO SIGN - Most important currency symbol in block
+# C-shape with two horizontal bars
+@char F EURO-SIGN
+build: from_expr
+OVR(currency.euro.c, bar.double.cap)
+cp: U+20AC
+@end
+
+# U+20A9 WON SIGN - Korean currency
+# W with one or two horizontal bars
+@char G WON-SIGN
+build: from_expr
+OVR(currency.won.w, bar.double.cap)
+cp: U+20A9
+@end
+
+# U+20B9 INDIAN RUPEE SIGN - Modern Indian currency symbol
+# Devanagari-influenced R with horizontal bars
+@char H INDIAN-RUPEE-SIGN
+build: from_expr
+currency.inr
+cp: U+20B9
+@end
+
+# U+20BD RUBLE SIGN - Russian currency
+# P with horizontal bar through stem below bowl
+@char I RUBLE-SIGN
+build: from_expr
+OVR(currency.rub, currency.rub.bar)
+cp: U+20BD
+@end
+
+# U+20BF BITCOIN SIGN - Cryptocurrency
+# B with two vertical strokes through
+@char J BITCOIN-SIGN
+build: from_expr
+OVR(currency.btc.b, currency.btc.strokes)
+cp: U+20BF
+@end
+
+# -----------------------------------------------------------------------------
+# Asian Currency Signs
+# -----------------------------------------------------------------------------
+
+# U+20A8 RUPEE SIGN - Generic South Asian rupee
+# Rs ligature style
+@char . RUPEE-SIGN
+build: from_expr
+currency.rupee.r
+cp: U+20A8
+@end
+
+# U+20AA NEW SHEQEL SIGN - Israeli currency
+# Two strokes with curved top connection
+@char K NEW-SHEQEL-SIGN
+build: from_expr
+currency.sheqel
+cp: U+20AA
+@end
+
+# U+20AB DONG SIGN - Vietnamese currency
+# D with stroke through
+@char 0 DONG-SIGN
+build: from_expr
+OVR(LR(stem.l, bowl.r.cap, 3/9), currency.dong.stroke)
+cp: U+20AB
+@end
+
+# U+20AD KIP SIGN - Laotian currency
+# K with horizontal bar
+@char 1 KIP-SIGN
+build: from_expr
+OVR(currency.kip.k, bar.single.mid.currency)
+cp: U+20AD
+@end
+
+# U+20AE TUGRIK SIGN - Mongolian currency
+# T with downward stroke through oval
+@char 2 TUGRIK-SIGN
+build: from_expr
+OVR(currency.tugrik.t, currency.tugrik.loop)
+cp: U+20AE
+@end
+
+# U+20B8 TENGE SIGN - Kazakhstani currency
+# T with horizontal bar below top bar
+@char 3 TENGE-SIGN
+build: from_expr
+OVR(currency.tenge.t, currency.tenge.bar)
+cp: U+20B8
+@end
+
+# U+20BA TURKISH LIRA SIGN - Turkish currency
+# L-shape with double horizontal strokes
+@char 4 TURKISH-LIRA-SIGN
+build: from_expr
+OVR(currency.try, bar.double.cap)
+cp: U+20BA
+@end
+
+# U+20BC MANAT SIGN - Azerbaijani currency
+# M with horizontal bar below
+@char 5 MANAT-SIGN
+build: from_expr
+OVR(currency.manat.m, currency.manat.bar)
+cp: U+20BC
+@end
+
+# U+20C0 SOM SIGN - Central Asian currency (Kyrgyzstan)
+@char 6 SOM-SIGN
+build: from_expr
+currency.som
+cp: U+20C0
+@end
+
+# -----------------------------------------------------------------------------
+# Americas Currency Signs
+# -----------------------------------------------------------------------------
+
+# U+20A1 COLON SIGN - Costa Rican and Salvadoran currency
+# C with two vertical strokes through
+@char 7 COLON-SIGN
+build: from_expr
+OVR(arc.c.cap, currency.colon.strokes)
+cp: U+20A1
+@end
+
+# U+20A2 CRUZEIRO SIGN - Historical Brazilian currency
+# C with small r attached or Cr ligature
+@char 8 CRUZEIRO-SIGN
+build: from_expr
+LR(arc.c.cap, currency.cruzeiro.r, 8/5)
+cp: U+20A2
+@end
+
+# U+20B1 PESO SIGN - Philippine and Mexican peso
+# P with two horizontal bars
+@char 9 PESO-SIGN
+build: from_expr
+OVR(currency.peso.p, bar.double.cap)
+cp: U+20B1
+@end
+
+# U+20B2 GUARANI SIGN - Paraguayan currency
+# G with stroke through
+@char L GUARANI-SIGN
+build: from_expr
+OVR(arc.g.cap, currency.cent.stroke)
+cp: U+20B2
+@end
+
+# U+20B3 AUSTRAL SIGN - Historical Argentine currency
+# A with loop or underline
+@char M AUSTRAL-SIGN
+build: from_expr
+OVR(APEX(stem.l, stem.r, crossbar.cap), bar.single.lower.currency)
+cp: U+20B3
+@end
+
+# -----------------------------------------------------------------------------
+# African Currency Signs
+# -----------------------------------------------------------------------------
+
+# U+20A6 NAIRA SIGN - Nigerian currency
+# N with two horizontal bars
+@char N NAIRA-SIGN
+build: from_expr
+OVR(currency.naira.n, bar.double.cap)
+cp: U+20A6
+@end
+
+# U+20B5 CEDI SIGN - Ghanaian currency
+# C with vertical stroke through
+@char O CEDI-SIGN
+build: from_expr
+OVR(arc.c.cap, currency.cent.stroke)
+cp: U+20B5
+@end
+
+# -----------------------------------------------------------------------------
+# Eastern European Currency Signs
+# -----------------------------------------------------------------------------
+
+# U+20B4 HRYVNIA SIGN - Ukrainian currency
+# Stylized S-like double curve with horizontal bars
+@char P HRYVNIA-SIGN
+build: from_expr
+OVR(currency.hryvnia.s, bar.double.cap)
+cp: U+20B4
+@end
+
+# U+20BE LARI SIGN - Georgian currency
+# Stylized form resembling Georgian letter
+@char Q LARI-SIGN
+build: from_expr
+OVR(currency.lari, bar.single.mid.currency)
+cp: U+20BE
+@end
+
+# -----------------------------------------------------------------------------
+# Other Historical and Minor Currency Signs
+# -----------------------------------------------------------------------------
+
+# U+20A5 MILL SIGN - 1/10 of a cent (historical)
+# Lowercase m with vertical stroke through
+@char R MILL-SIGN
+build: from_expr
+OVR(currency.mill.m, currency.mill.stroke)
+cp: U+20A5
+@end
+
+# U+20A7 PESETA SIGN - Historical Spanish currency
+# Pts ligature form (simplified as P with bar)
+@char A PESETA-SIGN
+build: from_expr
+OVR(currency.peseta.p, bar.single.mid.currency)
+cp: U+20A7
+@end
+
+# =============================================================================
+# END OF CURRENCY SYMBOLS LIBRARY
+# =============================================================================

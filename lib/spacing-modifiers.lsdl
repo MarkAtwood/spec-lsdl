@@ -1,0 +1,1049 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Spacing Modifier Letters Library
+# =============================================================================
+#
+# This file defines characters from the Unicode Spacing Modifier Letters block
+# (U+02B0-02FF). These are spacing characters used as phonetic modifiers and
+# diacritical marks in various writing systems.
+#
+# Character count: 80
+#
+# Categories:
+#   - Superscript letter forms (U+02B0-02B8, U+02E0-02E4): scaled Latin letters
+#   - Prime marks and apostrophes (U+02B9-02BF): vertical/curved strokes
+#   - Glottal stops (U+02C0-02C1): question-mark-like forms
+#   - Arrowhead modifiers (U+02C2-02C5, U+02EF-02F2): triangular points
+#   - Spacing diacritical marks (U+02C6-02C7, U+02D8-02DD): accent shapes
+#   - IPA stress/length marks (U+02C8-02D1): vertical lines and colons
+#   - Phonetic modifiers (U+02D2-02D7, U+02DE-02DF): various shapes
+#   - Tone letters (U+02E5-02E9): horizontal bars at different heights
+#   - Yin/Yang tone marks (U+02EA-02EE): angled strokes
+#   - Low modifiers (U+02EF-02FF): positioned below baseline
+#
+# Approach:
+#   - Superscript letters: use sc() to scale base letters to ~65% (sx=8, sy=8)
+#   - Stress marks: simple vertical lines at different vertical positions
+#   - Tone bars: horizontal bars positioned at 5 different heights
+#   - Arrowheads: small triangular forms
+#
+# =============================================================================
+
+# =============================================================================
+# LOCAL ELEMENTS FOR SPACING MODIFIERS
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Base letter elements (for superscript forms)
+# -----------------------------------------------------------------------------
+
+# curve.s - Lowercase s: single continuous S-curve (copied from basic-latin.lsdl)
+@elem curve.s
+zone: x-height
+path: p1 p2 p3
+p1 = [9,2]
+p2 = C([9,0] [2,0] [2,4])
+p3 = C([2,8] [9,8] [9,6])
+close: false
+width: 1
+anchors: attach=[5,4] mark-above=[5,0] mark-below=[5,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Vertical line elements for stress marks
+# -----------------------------------------------------------------------------
+
+# mod.vert.high - High vertical line (primary stress mark)
+@elem mod.vert.high
+zone: x-height
+path: p1 p2
+p1 = [6,2]
+p2 = [6,5]
+close: false
+width: 1
+anchors: top=[6,2] base=[6,5] mid=[6,3]
+@end
+
+# mod.vert.low - Low vertical line (secondary stress mark)
+@elem mod.vert.low
+zone: x-height
+path: p1 p2
+p1 = [6,6]
+p2 = [6,9]
+close: false
+width: 1
+anchors: top=[6,6] base=[6,9] mid=[6,7]
+@end
+
+# -----------------------------------------------------------------------------
+# Tone bar elements (5 heights for IPA tone notation)
+# -----------------------------------------------------------------------------
+
+# mod.tone.extra.high - Extra-high tone bar (position 5, highest)
+@elem mod.tone.extra.high
+zone: x-height
+path: p1 p2
+p1 = [4,2]
+p2 = [8,2]
+close: false
+width: 1
+anchors: left=[4,2] right=[8,2] mid=[6,2]
+@end
+
+# mod.tone.high - High tone bar (position 4)
+@elem mod.tone.high
+zone: x-height
+path: p1 p2
+p1 = [4,3]
+p2 = [8,3]
+close: false
+width: 1
+anchors: left=[4,3] right=[8,3] mid=[6,3]
+@end
+
+# mod.tone.mid - Mid tone bar (position 3)
+@elem mod.tone.mid
+zone: x-height
+path: p1 p2
+p1 = [4,5]
+p2 = [8,5]
+close: false
+width: 1
+anchors: left=[4,5] right=[8,5] mid=[6,5]
+@end
+
+# mod.tone.low - Low tone bar (position 2)
+@elem mod.tone.low
+zone: x-height
+path: p1 p2
+p1 = [4,7]
+p2 = [8,7]
+close: false
+width: 1
+anchors: left=[4,7] right=[8,7] mid=[6,7]
+@end
+
+# mod.tone.extra.low - Extra-low tone bar (position 1, lowest)
+@elem mod.tone.extra.low
+zone: x-height
+path: p1 p2
+p1 = [4,8]
+p2 = [8,8]
+close: false
+width: 1
+anchors: left=[4,8] right=[8,8] mid=[6,8]
+@end
+
+# mod.tone.stem - Vertical stem for tone bars
+@elem mod.tone.stem
+zone: x-height
+path: p1 p2
+p1 = [4,2]
+p2 = [4,8]
+close: false
+width: 1
+anchors: top=[4,2] base=[4,8]
+@end
+
+# -----------------------------------------------------------------------------
+# Triangle/arrow elements
+# -----------------------------------------------------------------------------
+
+# mod.triangle.left - Left-pointing triangle
+@elem mod.triangle.left
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = [8,6]
+p3 = [4,8]
+close: true
+width: 1
+anchors: left=[4,6] right=[8,6]
+@end
+
+# mod.triangle.right - Right-pointing triangle
+@elem mod.triangle.right
+zone: x-height
+path: p1 p2 p3
+p1 = [8,4]
+p2 = [4,6]
+p3 = [8,8]
+close: true
+width: 1
+anchors: left=[4,6] right=[8,6]
+@end
+
+# mod.triangle.up - Up-pointing triangle
+@elem mod.triangle.up
+zone: x-height
+path: p1 p2 p3
+p1 = [6,3]
+p2 = [3,7]
+p3 = [9,7]
+close: true
+width: 1
+anchors: top=[6,3] base=[6,7]
+@end
+
+# mod.triangle.down - Down-pointing triangle
+@elem mod.triangle.down
+zone: x-height
+path: p1 p2 p3
+p1 = [6,8]
+p2 = [3,4]
+p3 = [9,4]
+close: true
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# Triangular colon elements (for length marks)
+# -----------------------------------------------------------------------------
+
+# mod.tri.upper - Upper triangular point
+@elem mod.tri.upper
+zone: x-height
+path: p1 p2 p3
+p1 = [6,3]
+p2 = [4,5]
+p3 = [8,5]
+close: true
+width: 1
+anchors: top=[6,3] base=[6,5]
+@end
+
+# mod.tri.lower - Lower triangular point
+@elem mod.tri.lower
+zone: x-height
+path: p1 p2 p3
+p1 = [4,6]
+p2 = [8,6]
+p3 = [6,8]
+close: true
+width: 1
+anchors: top=[6,6] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# Half-ring and apostrophe elements
+# -----------------------------------------------------------------------------
+
+# mod.halfring.right - Right half ring (opening to left)
+@elem mod.halfring.right
+zone: x-height
+path: p1 p2 p3
+p1 = [7,3]
+p2 = C([9,5] [9,7])
+p3 = [7,8]
+close: false
+width: 1
+anchors: top=[7,3] base=[7,8] mid=[8,5]
+@end
+
+# mod.halfring.left - Left half ring (opening to right)
+@elem mod.halfring.left
+zone: x-height
+path: p1 p2 p3
+p1 = [5,3]
+p2 = C([3,5] [3,7])
+p3 = [5,8]
+close: false
+width: 1
+anchors: top=[5,3] base=[5,8] mid=[4,5]
+@end
+
+# mod.comma.turned - Turned comma shape
+@elem mod.comma.turned
+zone: x-height
+path: p1 p2 p3
+p1 = [7,3]
+p2 = C([5,4] [5,5])
+p3 = [6,6]
+close: false
+width: 1
+anchors: top=[7,3] base=[6,6]
+@end
+
+# mod.comma.reversed - Reversed comma shape
+@elem mod.comma.reversed
+zone: x-height
+path: p1 p2 p3
+p1 = [5,3]
+p2 = C([7,4] [7,5])
+p3 = [6,6]
+close: false
+width: 1
+anchors: top=[5,3] base=[6,6]
+@end
+
+# mod.apostrophe - Apostrophe shape (comma-like above)
+@elem mod.apostrophe
+zone: x-height
+path: p1 p2 p3
+p1 = [6,3]
+p2 = C([7,4] [6,5])
+p3 = [5,6]
+close: false
+width: 1
+anchors: top=[6,3] base=[5,6]
+@end
+
+# -----------------------------------------------------------------------------
+# Glottal stop elements
+# -----------------------------------------------------------------------------
+
+# mod.glottal - Glottal stop (like small question mark without dot)
+@elem mod.glottal
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [4,3]
+p2 = C([4,2] [8,2])
+p3 = C([8,4] [6,5])
+p4 = [6,7]
+close: false
+width: 1
+anchors: top=[6,2] base=[6,7]
+@end
+
+# mod.glottal.reversed - Reversed glottal stop
+@elem mod.glottal.reversed
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [8,3]
+p2 = C([8,2] [4,2])
+p3 = C([4,4] [6,5])
+p4 = [6,7]
+close: false
+width: 1
+anchors: top=[6,2] base=[6,7]
+@end
+
+# -----------------------------------------------------------------------------
+# Accent elements (spacing versions)
+# -----------------------------------------------------------------------------
+
+# mod.circumflex - Circumflex accent
+@elem mod.circumflex
+zone: x-height
+path: p1 p2 p3
+p1 = [3,6]
+p2 = [6,3]
+p3 = [9,6]
+close: false
+width: 1
+anchors: top=[6,3] base=[6,6]
+@end
+
+# mod.caron - Caron/hacek
+@elem mod.caron
+zone: x-height
+path: p1 p2 p3
+p1 = [3,3]
+p2 = [6,6]
+p3 = [9,3]
+close: false
+width: 1
+anchors: top=[6,3] base=[6,6]
+@end
+
+# mod.macron - Macron bar
+@elem mod.macron
+zone: x-height
+path: p1 p2
+p1 = [3,4]
+p2 = [9,4]
+close: false
+width: 1
+anchors: left=[3,4] right=[9,4] mid=[6,4]
+@end
+
+# mod.macron.low - Low macron bar
+@elem mod.macron.low
+zone: x-height
+path: p1 p2
+p1 = [3,8]
+p2 = [9,8]
+close: false
+width: 1
+anchors: left=[3,8] right=[9,8] mid=[6,8]
+@end
+
+# mod.acute - Acute accent
+@elem mod.acute
+zone: x-height
+path: p1 p2
+p1 = [4,5]
+p2 = [8,2]
+close: false
+width: 1
+anchors: top=[8,2] base=[4,5]
+@end
+
+# mod.grave - Grave accent
+@elem mod.grave
+zone: x-height
+path: p1 p2
+p1 = [4,2]
+p2 = [8,5]
+close: false
+width: 1
+anchors: top=[4,2] base=[8,5]
+@end
+
+# mod.breve - Breve (curved)
+@elem mod.breve
+zone: x-height
+path: p1 p2 p3
+p1 = [3,3]
+p2 = C([6,6] [9,3])
+p3 = [9,3]
+close: false
+width: 1
+anchors: top=[6,3] base=[6,6]
+@end
+
+# mod.dot.above - Dot above (single centered dot)
+@elem mod.dot.above
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,3]
+p2 = C([5,3] [5,4])
+p3 = C([5,5] [6,5])
+p4 = C([7,5] [7,4])
+close: true
+width: 1
+anchors: attach=[6,4]
+@end
+
+# mod.ring.above - Ring above (small circle)
+@elem mod.ring.above
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [6,2]
+p2 = C([4,2] [4,4])
+p3 = C([4,6] [6,6])
+p4 = C([8,6] [8,4])
+p5 = C([8,2] [6,2])
+close: true
+width: 1
+anchors: attach=[6,4]
+@end
+
+# mod.ogonek - Ogonek (small hook below)
+@elem mod.ogonek
+zone: x-height
+path: p1 p2 p3
+p1 = [6,8]
+p2 = C([4,9] [4,10])
+p3 = [6,10]
+close: false
+width: 1
+anchors: attach=[6,8] base=[5,10]
+@end
+
+# mod.tilde - Small tilde
+@elem mod.tilde
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [3,5]
+p2 = C([4,3] [5,4])
+p3 = C([7,6] [8,4])
+p4 = [9,4]
+close: false
+width: 1
+anchors: left=[3,5] right=[9,4] mid=[6,4]
+@end
+
+# mod.double.acute - Double acute accent
+@elem mod.double.acute
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [3,5]
+p2 = [5,2]
+p3 = [7,5]
+p4 = [9,2]
+close: false
+width: 1
+anchors: mid=[6,3]
+@end
+
+# mod.rhotic.hook - Rhotic hook (rightward curl)
+@elem mod.rhotic.hook
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = C([4,7] [7,7])
+p3 = C([9,6] [9,5])
+close: false
+width: 1
+anchors: top=[4,4] base=[9,5]
+@end
+
+# mod.cross - Cross accent (plus sign shaped)
+@elem mod.cross
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,3]
+p2 = [6,7]
+p3 = [4,5]
+p4 = [8,5]
+close: false
+width: 1
+anchors: mid=[6,5]
+@end
+
+# mod.prime - Prime mark (short diagonal)
+@elem mod.prime
+zone: x-height
+path: p1 p2
+p1 = [5,3]
+p2 = [7,7]
+close: false
+width: 1
+anchors: top=[5,3] base=[7,7]
+@end
+
+# mod.double.prime - Double prime mark
+@elem mod.double.prime
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [3,3]
+p2 = [5,7]
+p3 = [6,3]
+p4 = [8,7]
+close: false
+width: 1
+anchors: mid=[5,5]
+@end
+
+# -----------------------------------------------------------------------------
+# Tack elements (up/down/plus/minus modifiers)
+# -----------------------------------------------------------------------------
+
+# mod.tack.up - Up tack modifier
+@elem mod.tack.up
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = [6,7]
+p3 = [4,7]
+p4 = [8,7]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,7]
+@end
+
+# mod.tack.down - Down tack modifier
+@elem mod.tack.down
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,8]
+p2 = [6,5]
+p3 = [4,5]
+p4 = [8,5]
+close: false
+width: 1
+anchors: top=[6,5] base=[6,8]
+@end
+
+# mod.plus - Plus sign modifier
+@elem mod.plus
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,3]
+p2 = [6,7]
+p3 = [4,5]
+p4 = [8,5]
+close: false
+width: 1
+anchors: mid=[6,5]
+@end
+
+# mod.minus - Minus sign modifier
+@elem mod.minus
+zone: x-height
+path: p1 p2
+p1 = [3,5]
+p2 = [9,5]
+close: false
+width: 1
+anchors: left=[3,5] right=[9,5] mid=[6,5]
+@end
+
+# -----------------------------------------------------------------------------
+# Yin-Yang tone elements
+# -----------------------------------------------------------------------------
+
+# mod.yin.departing - Yin departing tone (downward diagonal)
+@elem mod.yin.departing
+zone: x-height
+path: p1 p2
+p1 = [4,3]
+p2 = [8,8]
+close: false
+width: 1
+anchors: top=[4,3] base=[8,8]
+@end
+
+# mod.yang.departing - Yang departing tone (upward diagonal)
+@elem mod.yang.departing
+zone: x-height
+path: p1 p2
+p1 = [4,8]
+p2 = [8,3]
+close: false
+width: 1
+anchors: top=[8,3] base=[4,8]
+@end
+
+# mod.voicing - Voicing modifier (wedge shape)
+@elem mod.voicing
+zone: x-height
+path: p1 p2 p3
+p1 = [4,4]
+p2 = [6,7]
+p3 = [8,4]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,7]
+@end
+
+# mod.unaspirated - Unaspirated modifier (equals sign)
+@elem mod.unaspirated
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [3,4]
+p2 = [9,4]
+p3 = [3,6]
+p4 = [9,6]
+close: false
+width: 1
+anchors: mid=[6,5]
+@end
+
+# mod.shelf - Shelf modifier (right angle)
+@elem mod.shelf
+zone: x-height
+path: p1 p2 p3
+p1 = [3,6]
+p2 = [9,6]
+p3 = [9,8]
+close: false
+width: 1
+anchors: left=[3,6] right=[9,8]
+@end
+
+# mod.shelf.open - Open shelf modifier (inverted right angle)
+@elem mod.shelf.open
+zone: x-height
+path: p1 p2 p3
+p1 = [3,8]
+p2 = [9,8]
+p3 = [9,6]
+close: false
+width: 1
+anchors: left=[3,8] right=[9,6]
+@end
+
+# mod.raised.colon - Raised colon (two dots vertically)
+@elem mod.raised.colon
+zone: x-height
+path: p1 p2 p3 p4 p5 p6 p7 p8
+p1 = [6,3]
+p2 = C([5,3] [5,4])
+p3 = C([5,5] [6,5])
+p4 = C([7,5] [7,4])
+p5 = [6,6]
+p6 = C([5,6] [5,7])
+p7 = C([5,8] [6,8])
+p8 = C([7,8] [7,7])
+close: false
+width: 1
+anchors: mid=[6,5]
+@end
+
+# mod.corner.left.up - Left-up corner bracket
+@elem mod.corner.left.up
+zone: x-height
+path: p1 p2 p3
+p1 = [8,3]
+p2 = [4,3]
+p3 = [4,5]
+close: false
+width: 1
+anchors: top=[6,3] left=[4,4]
+@end
+
+# mod.corner.right.up - Right-up corner bracket
+@elem mod.corner.right.up
+zone: x-height
+path: p1 p2 p3
+p1 = [4,3]
+p2 = [8,3]
+p3 = [8,5]
+close: false
+width: 1
+anchors: top=[6,3] right=[8,4]
+@end
+
+# mod.corner.left.down - Left-down corner bracket
+@elem mod.corner.left.down
+zone: x-height
+path: p1 p2 p3
+p1 = [8,8]
+p2 = [4,8]
+p3 = [4,6]
+close: false
+width: 1
+anchors: base=[6,8] left=[4,7]
+@end
+
+# mod.corner.right.down - Right-down corner bracket
+@elem mod.corner.right.down
+zone: x-height
+path: p1 p2 p3
+p1 = [4,8]
+p2 = [8,8]
+p3 = [8,6]
+close: false
+width: 1
+anchors: base=[6,8] right=[8,7]
+@end
+
+# mod.ring.low - Low ring (small circle below)
+@elem mod.ring.low
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [6,7]
+p2 = C([5,7] [5,8])
+p3 = C([5,9] [6,9])
+p4 = C([7,9] [7,8])
+p5 = C([7,7] [6,7])
+close: true
+width: 1
+anchors: attach=[6,8]
+@end
+
+# mod.tilde.low - Low tilde
+@elem mod.tilde.low
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [3,8]
+p2 = C([4,7] [5,7])
+p3 = C([7,9] [8,8])
+p4 = [9,8]
+close: false
+width: 1
+anchors: mid=[6,8]
+@end
+
+# mod.arrow.low.left - Low left arrow
+@elem mod.arrow.low.left
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [8,8]
+p2 = [3,8]
+p3 = [5,7]
+p4 = [3,8]
+close: false
+width: 1
+anchors: right=[8,8] left=[3,8]
+@end
+
+# -----------------------------------------------------------------------------
+# Superscript letter elements (turned/reversed forms not available via sc)
+# -----------------------------------------------------------------------------
+
+# mod.turned.r - Turned r (r flipped vertically)
+@elem mod.turned.r
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,8]
+p2 = [6,4]
+p3 = C([4,4] [2,5])
+p4 = [2,5]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8]
+@end
+
+# mod.turned.r.hook - Turned r with hook
+@elem mod.turned.r.hook
+zone: x-height
+path: p1 p2 p3 p4 p5 p6
+p1 = [6,10]
+p2 = C([6,9] [4,9])
+p3 = [4,8]
+p4 = [4,4]
+p5 = C([4,4] [2,5])
+p6 = [2,5]
+close: false
+width: 1
+anchors: top=[4,4] base=[6,10]
+@end
+
+# mod.small.cap.inv.r - Small capital inverted R
+@elem mod.small.cap.inv.r
+zone: x-height
+path: p1 p2 p3 p4 p5 p6 p7
+p1 = [10,4]
+p2 = [10,8]
+p3 = [10,4]
+p4 = C([10,4] [6,4])
+p5 = C([6,4] [6,5])
+p6 = [6,6]
+p7 = [2,8]
+close: false
+width: 1
+anchors: top=[10,4] base=[6,8]
+@end
+
+# mod.small.gamma - Small gamma (v with descender)
+@elem mod.small.gamma
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [2,4]
+p2 = [6,7]
+p3 = [10,4]
+p4 = [6,7]
+p5 = [6,10]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,10]
+@end
+
+# =============================================================================
+# SUPERSCRIPT LETTER FORMS (U+02B0-02B8)
+# =============================================================================
+# These are scaled versions of lowercase letters used as phonetic modifiers
+
+U+02B0 MODIFIER-LETTER-SMALL-H = sc(FRAME(ascender, shoulder), sx=7, sy=7) cp:U+02B0
+
+U+02B1 MODIFIER-LETTER-SMALL-H-WITH-HOOK = sc(FRAME(STACK(hook.bot, ascender), shoulder), sx=7, sy=7) cp:U+02B1
+
+U+02B2 MODIFIER-LETTER-SMALL-J = sc(STACK(tittle, stem, hook.bot), sx=7, sy=7) cp:U+02B2
+
+U+02B3 MODIFIER-LETTER-SMALL-R = sc(FRAME(stem, ear), sx=7, sy=7) cp:U+02B3
+
+U+02B4 MODIFIER-LETTER-SMALL-TURNED-R = sc(mod.turned.r, sx=8, sy=8) cp:U+02B4
+
+U+02B5 MODIFIER-LETTER-SMALL-TURNED-R-WITH-HOOK = sc(mod.turned.r.hook, sx=8, sy=8) cp:U+02B5
+
+U+02B6 MODIFIER-LETTER-SMALL-CAPITAL-INVERTED-R = sc(mod.small.cap.inv.r, sx=7, sy=7) cp:U+02B6
+
+U+02B7 MODIFIER-LETTER-SMALL-W = sc(LR(vertex, vertex, 6/6), sx=7, sy=7) cp:U+02B7
+
+U+02B8 MODIFIER-LETTER-SMALL-Y = sc(FRAME(vertex, descender.curved), sx=7, sy=7) cp:U+02B8
+
+# =============================================================================
+# PRIME MARKS AND APOSTROPHES (U+02B9-02BF)
+# =============================================================================
+
+U+02B9 MODIFIER-LETTER-PRIME = mod.prime cp:U+02B9
+
+U+02BA MODIFIER-LETTER-DOUBLE-PRIME = mod.double.prime cp:U+02BA
+
+U+02BB MODIFIER-LETTER-TURNED-COMMA = mod.comma.turned cp:U+02BB
+
+U+02BC MODIFIER-LETTER-APOSTROPHE = mod.apostrophe cp:U+02BC
+
+U+02BD MODIFIER-LETTER-REVERSED-COMMA = mod.comma.reversed cp:U+02BD
+
+U+02BE MODIFIER-LETTER-RIGHT-HALF-RING = mod.halfring.right cp:U+02BE
+
+U+02BF MODIFIER-LETTER-LEFT-HALF-RING = mod.halfring.left cp:U+02BF
+
+# =============================================================================
+# GLOTTAL STOPS (U+02C0-02C1)
+# =============================================================================
+
+U+02C0 MODIFIER-LETTER-GLOTTAL-STOP = mod.glottal cp:U+02C0
+
+U+02C1 MODIFIER-LETTER-REVERSED-GLOTTAL-STOP = mod.glottal.reversed cp:U+02C1
+
+# =============================================================================
+# ARROWHEAD MODIFIERS (U+02C2-02C5)
+# =============================================================================
+
+U+02C2 MODIFIER-LETTER-LEFT-ARROWHEAD = mod.triangle.left cp:U+02C2
+
+U+02C3 MODIFIER-LETTER-RIGHT-ARROWHEAD = mod.triangle.right cp:U+02C3
+
+U+02C4 MODIFIER-LETTER-UP-ARROWHEAD = mod.triangle.up cp:U+02C4
+
+U+02C5 MODIFIER-LETTER-DOWN-ARROWHEAD = mod.triangle.down cp:U+02C5
+
+# =============================================================================
+# SPACING DIACRITICAL MARKS (U+02C6-02C7)
+# =============================================================================
+
+U+02C6 MODIFIER-LETTER-CIRCUMFLEX-ACCENT = mod.circumflex cp:U+02C6
+
+U+02C7 CARON = mod.caron cp:U+02C7
+
+# =============================================================================
+# IPA STRESS AND PROSODIC MARKS (U+02C8-02CF)
+# =============================================================================
+
+U+02C8 MODIFIER-LETTER-VERTICAL-LINE = mod.vert.high cp:U+02C8
+
+U+02C9 MODIFIER-LETTER-MACRON = mod.macron cp:U+02C9
+
+U+02CA MODIFIER-LETTER-ACUTE-ACCENT = mod.acute cp:U+02CA
+
+U+02CB MODIFIER-LETTER-GRAVE-ACCENT = mod.grave cp:U+02CB
+
+U+02CC MODIFIER-LETTER-LOW-VERTICAL-LINE = mod.vert.low cp:U+02CC
+
+U+02CD MODIFIER-LETTER-LOW-MACRON = mod.macron.low cp:U+02CD
+
+U+02CE MODIFIER-LETTER-LOW-GRAVE-ACCENT = sh(mod.grave, dx=0, dy=3) cp:U+02CE
+
+U+02CF MODIFIER-LETTER-LOW-ACUTE-ACCENT = sh(mod.acute, dx=0, dy=3) cp:U+02CF
+
+# =============================================================================
+# LENGTH MARKS (U+02D0-02D1)
+# =============================================================================
+
+U+02D0 MODIFIER-LETTER-TRIANGULAR-COLON = STACK(mod.tri.upper, mod.tri.lower) cp:U+02D0
+
+U+02D1 MODIFIER-LETTER-HALF-TRIANGULAR-COLON = mod.tri.upper cp:U+02D1
+
+# =============================================================================
+# PHONETIC MODIFIERS (U+02D2-02D7)
+# =============================================================================
+
+U+02D2 MODIFIER-LETTER-CENTRED-RIGHT-HALF-RING = sh(mod.halfring.right, dx=0, dy=1) cp:U+02D2
+
+U+02D3 MODIFIER-LETTER-CENTRED-LEFT-HALF-RING = sh(mod.halfring.left, dx=0, dy=1) cp:U+02D3
+
+U+02D4 MODIFIER-LETTER-UP-TACK = mod.tack.up cp:U+02D4
+
+U+02D5 MODIFIER-LETTER-DOWN-TACK = mod.tack.down cp:U+02D5
+
+U+02D6 MODIFIER-LETTER-PLUS-SIGN = mod.plus cp:U+02D6
+
+U+02D7 MODIFIER-LETTER-MINUS-SIGN = mod.minus cp:U+02D7
+
+# =============================================================================
+# SPACING DIACRITICAL MARKS (U+02D8-02DD)
+# =============================================================================
+
+U+02D8 BREVE = mod.breve cp:U+02D8
+
+U+02D9 DOT-ABOVE = mod.dot.above cp:U+02D9
+
+U+02DA RING-ABOVE = mod.ring.above cp:U+02DA
+
+U+02DB OGONEK = mod.ogonek cp:U+02DB
+
+U+02DC SMALL-TILDE = mod.tilde cp:U+02DC
+
+U+02DD DOUBLE-ACUTE-ACCENT = mod.double.acute cp:U+02DD
+
+# =============================================================================
+# PHONETIC MODIFIERS CONTINUED (U+02DE-02DF)
+# =============================================================================
+
+U+02DE MODIFIER-LETTER-RHOTIC-HOOK = mod.rhotic.hook cp:U+02DE
+
+U+02DF MODIFIER-LETTER-CROSS-ACCENT = OVR(stem.x, crossbar) cp:U+02DF
+
+# =============================================================================
+# SUPERSCRIPT LETTER FORMS CONTINUED (U+02E0-02E4)
+# =============================================================================
+
+U+02E0 MODIFIER-LETTER-SMALL-GAMMA = sc(mod.small.gamma, sx=7, sy=7) cp:U+02E0
+
+U+02E1 MODIFIER-LETTER-SMALL-L = sc(ascender, sx=7, sy=7) cp:U+02E1
+
+U+02E2 MODIFIER-LETTER-SMALL-S = sc(curve.s, sx=7, sy=7) cp:U+02E2
+
+U+02E3 MODIFIER-LETTER-SMALL-X = sc(OVR(diagonal.x, diagonal.l), sx=7, sy=7) cp:U+02E3
+
+U+02E4 MODIFIER-LETTER-SMALL-REVERSED-GLOTTAL-STOP = sc(mod.glottal.reversed, sx=8, sy=8) cp:U+02E4
+
+# =============================================================================
+# TONE LETTERS (U+02E5-02E9)
+# =============================================================================
+# IPA tone bars: 5 levels from extra-high (5) to extra-low (1)
+
+U+02E5 MODIFIER-LETTER-EXTRA-HIGH-TONE-BAR = FRAME(mod.tone.stem, mod.tone.extra.high) cp:U+02E5
+
+U+02E6 MODIFIER-LETTER-HIGH-TONE-BAR = FRAME(mod.tone.stem, mod.tone.high) cp:U+02E6
+
+U+02E7 MODIFIER-LETTER-MID-TONE-BAR = FRAME(mod.tone.stem, mod.tone.mid) cp:U+02E7
+
+U+02E8 MODIFIER-LETTER-LOW-TONE-BAR = FRAME(mod.tone.stem, mod.tone.low) cp:U+02E8
+
+U+02E9 MODIFIER-LETTER-EXTRA-LOW-TONE-BAR = FRAME(mod.tone.stem, mod.tone.extra.low) cp:U+02E9
+
+# =============================================================================
+# YIN-YANG TONE MARKS AND ADDITIONAL MODIFIERS (U+02EA-02EE)
+# =============================================================================
+
+U+02EA MODIFIER-LETTER-YIN-DEPARTING-TONE-MARK = mod.yin.departing cp:U+02EA
+
+U+02EB MODIFIER-LETTER-YANG-DEPARTING-TONE-MARK = mod.yang.departing cp:U+02EB
+
+U+02EC MODIFIER-LETTER-VOICING = mod.voicing cp:U+02EC
+
+U+02ED MODIFIER-LETTER-UNASPIRATED = mod.unaspirated cp:U+02ED
+
+U+02EE MODIFIER-LETTER-DOUBLE-APOSTROPHE = LR(mod.apostrophe, mod.apostrophe, 6/6) cp:U+02EE
+
+# =============================================================================
+# LOW ARROWHEAD MODIFIERS (U+02EF-02F2)
+# =============================================================================
+
+U+02EF MODIFIER-LETTER-LOW-DOWN-ARROWHEAD = sh(mod.triangle.down, dx=0, dy=2) cp:U+02EF
+
+U+02F0 MODIFIER-LETTER-LOW-UP-ARROWHEAD = sh(mod.triangle.up, dx=0, dy=2) cp:U+02F0
+
+U+02F1 MODIFIER-LETTER-LOW-LEFT-ARROWHEAD = sh(mod.triangle.left, dx=0, dy=2) cp:U+02F1
+
+U+02F2 MODIFIER-LETTER-LOW-RIGHT-ARROWHEAD = sh(mod.triangle.right, dx=0, dy=2) cp:U+02F2
+
+# =============================================================================
+# LOW MODIFIERS (U+02F3-02F7)
+# =============================================================================
+
+U+02F3 MODIFIER-LETTER-LOW-RING = mod.ring.low cp:U+02F3
+
+U+02F4 MODIFIER-LETTER-MIDDLE-GRAVE-ACCENT = sh(mod.grave, dx=0, dy=1) cp:U+02F4
+
+U+02F5 MODIFIER-LETTER-MIDDLE-DOUBLE-GRAVE-ACCENT = LR(sh(mod.grave, dx=0, dy=1), sh(mod.grave, dx=0, dy=1), 5/5) cp:U+02F5
+
+U+02F6 MODIFIER-LETTER-MIDDLE-DOUBLE-ACUTE-ACCENT = LR(sh(mod.acute, dx=0, dy=1), sh(mod.acute, dx=0, dy=1), 5/5) cp:U+02F6
+
+U+02F7 MODIFIER-LETTER-LOW-TILDE = mod.tilde.low cp:U+02F7
+
+# =============================================================================
+# RAISED AND BRACKET MODIFIERS (U+02F8-02FC)
+# =============================================================================
+
+U+02F8 MODIFIER-LETTER-RAISED-COLON = mod.raised.colon cp:U+02F8
+
+U+02F9 MODIFIER-LETTER-BEGIN-HIGH-TONE = mod.corner.left.up cp:U+02F9
+
+U+02FA MODIFIER-LETTER-END-HIGH-TONE = mod.corner.right.up cp:U+02FA
+
+U+02FB MODIFIER-LETTER-BEGIN-LOW-TONE = mod.corner.left.down cp:U+02FB
+
+U+02FC MODIFIER-LETTER-END-LOW-TONE = mod.corner.right.down cp:U+02FC
+
+# =============================================================================
+# SHELF MODIFIERS AND ARROW (U+02FD-02FF)
+# =============================================================================
+
+U+02FD MODIFIER-LETTER-SHELF = mod.shelf cp:U+02FD
+
+U+02FE MODIFIER-LETTER-OPEN-SHELF = mod.shelf.open cp:U+02FE
+
+U+02FF MODIFIER-LETTER-LOW-LEFT-ARROW = mod.arrow.low.left cp:U+02FF
+
+# =============================================================================
+# END OF SPACING MODIFIER LETTERS LIBRARY
+# =============================================================================
