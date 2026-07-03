@@ -580,20 +580,25 @@ anchors: top=[6,0] base=[6,8] mark-above=[6,0]
 @end
 
 # -----------------------------------------------------------------------------
-# multiocular-o - O with multiple dots/eyes (rare symbol)
+# multiocular-o - O with 7 eyes (seraphim symbol, Unicode 15.1)
+# The "many-eyed" O from a single phrase in the Psalter describing seraphim.
+# Eyes arranged: 2 top, 3 middle, 2 bottom.
 # -----------------------------------------------------------------------------
 @elem multiocular-o.cap
 zone: cap
-path: p1 p2 p3 p4 p5 p6 p7 p8 p9
+path: p1 p2 p3 p4 p5 e1 e2 e3 e4 e5 e6 e7
 p1 = [6,0]
 p2 = C([12,0] [12,4])
 p3 = C([12,8] [6,8])
 p4 = C([0,8] [0,4])
 p5 = C([0,0] [6,0])
-p6 = [4,3]
-p7 = [8,3]
-p8 = [4,5]
-p9 = [8,5]
+e1 = [4,2]
+e2 = [8,2]
+e3 = [3,4]
+e4 = [6,4]
+e5 = [9,4]
+e6 = [4,6]
+e7 = [8,6]
 close: false
 width: 1
 anchors: top=[6,0] base=[6,8] mark-above=[6,0]
