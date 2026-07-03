@@ -141,12 +141,15 @@ specific points, not in spatial quadrants.
 LSDL describes the structural composition of characters in
 bicameral alphabetic scripts. Its primary targets are:
 
-- **Latin script:** Basic Latin through Latin Extended-E and Latin
-  Extended Additional (approximately 1400 characters).
+- **Latin script:** Basic Latin through Latin Extended-E, Latin
+  Extended Additional, IPA Extensions, and Spacing Modifiers
+  (approximately 5500 characters).
 - **Greek script:** Greek and Coptic, Greek Extended
   (approximately 400 characters).
 - **Cyrillic script:** Cyrillic through Cyrillic Extended-D
   (approximately 500 characters).
+- **Symbols:** Currency, punctuation, mathematical operators,
+  arrows, and shapes (approximately 1100 characters).
 - **Combining marks:** Combining Diacritical Marks and extensions
   (approximately 200 marks).
 

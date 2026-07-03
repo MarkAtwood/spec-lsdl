@@ -229,11 +229,12 @@ Definitions can carry metadata:
 
 ## Scope and Coverage
 
-LSDL targets approximately 2500 characters across:
+LSDL currently defines approximately 7700 characters across:
 
-- **Latin:** Basic Latin through Latin Extended-E and Latin Extended Additional (~1400 characters)
+- **Latin:** Basic Latin through Latin Extended-E, Latin Extended Additional, IPA Extensions, and Spacing Modifiers (~5500 characters)
 - **Greek:** Greek and Coptic, Greek Extended (~400 characters)
 - **Cyrillic:** Cyrillic through Cyrillic Extended-D (~500 characters)
+- **Symbols:** Currency, punctuation, mathematical operators, arrows, and shapes (~1100 characters)
 - **Combining marks:** Combining Diacritical Marks and extensions (~200 marks)
 
 Scripts that share the bicameral alphabetic model (Armenian, Georgian, Coptic) can be described using LSDL with metric overrides and script-specific element variants.

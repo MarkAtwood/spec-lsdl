@@ -46,9 +46,10 @@ complete registry):
 
 | Script | Blocks | Approx. Glyphs |
 |--------|--------|-----------------|
-| Latin  | Basic Latin, Latin-1 Supplement, Latin Extended-A/B/C/D/E, Latin Extended Additional | ~1400 |
+| Latin  | Basic Latin, Latin-1 Supplement, Latin Extended-A/B/C/D/E, Latin Extended Additional, IPA Extensions, Spacing Modifiers | ~5500 |
 | Greek  | Greek and Coptic, Greek Extended | ~400 |
 | Cyrillic | Cyrillic, Cyrillic Supplement, Cyrillic Extended-A/B/C/D | ~500 |
+| Symbols | Currency, Punctuation, Mathematical Operators, Arrows, Shapes | ~1100 |
 | Common | Combining Diacritical Marks, Combining Diacritical Marks Extended | ~200 |
 
 Any character decomposable into the element vocabulary (§3) and

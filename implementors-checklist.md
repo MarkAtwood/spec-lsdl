@@ -254,7 +254,7 @@ how these decisions are made.
 |--------------------------------------------|-----------------|
 | Error recovery strategy (stop-at-first, collect-all, partial output) | SS2.3 |
 | Error reporting format (message text, structured JSON, error codes, line/column) | SS2.3 |
-| Capacity limits (SHOULD support full Latin/Greek/Cyrillic repertoire ~2500 chars) | SS18 |
+| Capacity limits (SHOULD support full Latin/Greek/Cyrillic repertoire ~7700 chars) | SS18 |
 | Multi-file concatenation and library management | SS4.2.2     |
 | NFC detection and rejection of non-NFC input | SS4.2          |
 | Mapping of width values (0, 1, 2) to concrete pixel or em widths | SS5.6 |
