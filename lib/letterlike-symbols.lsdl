@@ -1,0 +1,992 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Letterlike Symbols Library
+# =============================================================================
+#
+# This file defines letterlike symbols from Unicode block U+2100-214F
+# (Letterlike Symbols). Approximately 80 characters.
+#
+# Note: Since U+2100-214F is outside the standard LITERAL_CHAR ranges,
+# all character definitions use @char block form with cp: metadata.
+# Placeholder characters from the ASCII range are used for the literal char.
+#
+# Organization:
+#   - Local elements for letterlike shapes
+#   - Unit symbols (degree Celsius/Fahrenheit, Ohm, Kelvin, Angstrom)
+#   - Commercial and legal symbols (trademark, copyright, numero)
+#   - Script variants (script capitals and small letters)
+#   - Black-letter variants (Fraktur capitals)
+#   - Double-struck capitals (for mathematical sets)
+#
+# Composition patterns:
+#   - Unit combinations: LR() for side-by-side placement
+#   - Script variants: reference base letter, apply script transform
+#   - Black-letter variants: reference base letter, apply black-letter transform
+#   - Double-struck variants: OVR() for overlaid double lines
+#
+# =============================================================================
+
+# =============================================================================
+# LOCAL LETTERLIKE ELEMENTS
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Degree Symbol Elements
+# -----------------------------------------------------------------------------
+
+# degree.small - Small degree circle for temperature units
+@elem degree.small
+zone: cap
+path: p1 p2 p3 p4
+p1 = [3,0]
+p2 = C([0,0] [0,3])
+p3 = C([0,6] [3,6])
+p4 = C([6,6] [6,3])
+close: true
+width: 1
+anchors: top=[3,0] base=[3,6] left=[0,3] right=[6,3]
+  mid=[3,3] mark-above=[3,0] mark-below=[3,7]
+@end
+
+# -----------------------------------------------------------------------------
+# Script Letter Elements
+# -----------------------------------------------------------------------------
+
+# script.loop.g - Looped form for script small g
+@elem script.loop.g
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [10,4]
+p2 = C([10,3] [6,3])
+p3 = C([2,3] [2,5])
+p4 = C([2,7] [6,7])
+p5 = C([10,7] [10,10])
+close: false
+width: 1
+anchors: top=[6,3] base=[6,7] left=[2,5] right=[10,5]
+  descender=[10,10] mark-above=[6,2] mark-below=[6,11]
+@end
+
+# script.flourish - Decorative flourish for script letters
+@elem script.flourish
+zone: cap
+path: p1 p2 p3
+p1 = [0,2]
+p2 = C([2,0] [6,0])
+p3 = C([10,0] [12,2])
+close: false
+width: 1
+anchors: left=[0,2] top=[6,0] right=[12,2]
+@end
+
+# -----------------------------------------------------------------------------
+# Black-letter (Fraktur) Elements
+# -----------------------------------------------------------------------------
+
+# fraktur.stem.broken - Broken stem for black-letter style
+@elem fraktur.stem.broken
+zone: cap
+path: p1 p2 p3 p4
+p1 = [6,0]
+p2 = [4,4]
+p3 = [8,4]
+p4 = [6,8]
+close: false
+width: 1
+anchors: top=[6,0] mid=[6,4] base=[6,8]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+# fraktur.diamond - Diamond shape for black-letter decoration
+@elem fraktur.diamond
+zone: cap
+path: p1 p2 p3 p4
+p1 = [6,0]
+p2 = [3,4]
+p3 = [6,8]
+p4 = [9,4]
+close: true
+width: 1
+anchors: top=[6,0] left=[3,4] base=[6,8] right=[9,4]
+  mid=[6,4]
+@end
+
+# -----------------------------------------------------------------------------
+# Double-struck Elements
+# -----------------------------------------------------------------------------
+
+# dblstruck.stem.l - Left vertical with double line
+@elem dblstruck.stem.l
+zone: cap
+path: p1 p2
+p1 = [2,0]
+p2 = [2,8]
+close: false
+width: 2
+anchors: top=[2,0] base=[2,8] mid=[2,4]
+  mark-above=[2,0] mark-below=[2,9]
+@end
+
+# dblstruck.stem.r - Right vertical with double line
+@elem dblstruck.stem.r
+zone: cap
+path: p1 p2
+p1 = [10,0]
+p2 = [10,8]
+close: false
+width: 2
+anchors: top=[10,0] base=[10,8] mid=[10,4]
+  mark-above=[10,0] mark-below=[10,9]
+@end
+
+# dblstruck.inner.line - Inner line for double-struck effect
+@elem dblstruck.inner.line
+zone: cap
+path: p1 p2
+p1 = [4,1]
+p2 = [4,7]
+close: false
+width: 1
+anchors: top=[4,1] base=[4,7] mid=[4,4]
+@end
+
+# -----------------------------------------------------------------------------
+# Numero Sign Elements
+# -----------------------------------------------------------------------------
+
+# numero.o.super - Superscript o for numero sign (scaled to fit in 0-12 range)
+@elem numero.o.super
+zone: cap
+path: p1 p2 p3 p4
+p1 = [9,0]
+p2 = C([7,0] [7,2])
+p3 = C([7,4] [9,4])
+p4 = C([11,4] [11,2])
+close: true
+width: 1
+anchors: top=[9,0] base=[9,4] left=[7,2] right=[11,2]
+  mid=[9,2]
+@end
+
+# numero.underline - Underline for numero sign
+@elem numero.underline
+zone: cap
+path: p1 p2
+p1 = [7,5]
+p2 = [11,5]
+close: false
+width: 1
+anchors: left=[7,5] right=[11,5] mid=[9,5]
+@end
+
+# -----------------------------------------------------------------------------
+# Service Mark Elements
+# -----------------------------------------------------------------------------
+
+# sm.s.super - Superscript S for service mark
+@elem sm.s.super
+zone: cap
+path: p1 p2 p3 p4
+p1 = [5,0]
+p2 = C([5,0] [2,0] [2,1])
+p3 = C([2,2] [5,2] [5,3])
+p4 = C([5,4] [2,4] [2,3])
+close: false
+width: 1
+anchors: top=[4,0] mid=[4,2] base=[4,4]
+@end
+
+# sm.m.super - Superscript M for service mark
+@elem sm.m.super
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [6,4]
+p2 = [6,0]
+p3 = [8,2]
+p4 = [10,0]
+p5 = [10,4]
+close: false
+width: 1
+anchors: left=[6,2] top=[8,0] right=[10,2] base=[8,4]
+@end
+
+# -----------------------------------------------------------------------------
+# Trademark Elements
+# -----------------------------------------------------------------------------
+
+# tm.t.super - Superscript T for trademark
+@elem tm.t.super
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [0,0]
+p2 = [6,0]
+p3 = [3,0]
+p4 = [3,0]
+p5 = [3,4]
+close: false
+width: 1
+anchors: top-left=[0,0] top-right=[6,0] base=[3,4]
+@end
+
+# tm.m.super - Superscript M for trademark
+@elem tm.m.super
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [7,4]
+p2 = [7,0]
+p3 = [9,2]
+p4 = [11,0]
+p5 = [11,4]
+close: false
+width: 1
+anchors: left=[7,2] top=[9,0] right=[11,2] base=[9,4]
+@end
+
+# -----------------------------------------------------------------------------
+# Telephone Sign Elements
+# -----------------------------------------------------------------------------
+
+# telephone.handset - Telephone handset shape
+@elem telephone.handset
+zone: cap
+path: p1 p2 p3 p4 p5 p6 p7 p8
+p1 = [0,2]
+p2 = C([0,0] [2,0])
+p3 = [2,3]
+p4 = C([2,4] [6,4])
+p5 = C([10,4] [10,3])
+p6 = [10,0]
+p7 = C([10,0] [12,0])
+p8 = [12,2]
+close: false
+width: 1
+anchors: left=[0,2] right=[12,2] mid=[6,4]
+  mark-above=[6,0] mark-below=[6,5]
+@end
+
+# -----------------------------------------------------------------------------
+# Estimated Symbol Elements
+# -----------------------------------------------------------------------------
+
+# estimated.e - Stylized e for estimated symbol
+@elem estimated.e
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [10,4]
+p2 = [2,4]
+p3 = C([2,2] [6,0])
+p4 = C([10,0] [10,4])
+p5 = C([10,8] [6,8] [2,6])
+close: false
+width: 1
+anchors: top=[6,0] mid=[6,4] base=[6,8]
+  left=[2,4] right=[10,4]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Sound Recording Copyright Elements
+# -----------------------------------------------------------------------------
+
+# phonogram.circle - Circle for sound recording copyright
+@elem phonogram.circle
+zone: cap
+path: p1 p2 p3 p4
+p1 = [6,0]
+p2 = C([0,0] [0,4])
+p3 = C([0,8] [6,8])
+p4 = C([12,8] [12,4])
+close: true
+width: 1
+anchors: top=[6,0] base=[6,8] left=[0,4] right=[12,4]
+  mid=[6,4] mark-above=[6,0] mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Division Slash Element (for ligatures)
+# -----------------------------------------------------------------------------
+
+# letterlike.slash - Forward slash for a/c style ligatures
+@elem letterlike.slash
+zone: cap
+path: p1 p2
+p1 = [9,0]
+p2 = [3,8]
+close: false
+width: 1
+anchors: top=[9,0] base=[3,8] mid=[6,4]
+@end
+
+# -----------------------------------------------------------------------------
+# Summation Element (for double-struck summation)
+# -----------------------------------------------------------------------------
+
+# letterlike.sigma - Large sigma shape for n-ary summation
+@elem letterlike.sigma
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [10,0]
+p2 = [2,0]
+p3 = [6,4]
+p4 = [2,8]
+p5 = [10,8]
+close: false
+width: 1
+anchors: top-left=[2,0] top-right=[10,0] mid=[6,4]
+  base-left=[2,8] base-right=[10,8]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Inverted Omega Element (for mho/inverted ohm)
+# -----------------------------------------------------------------------------
+
+# letterlike.mho - Inverted omega for mho (conductance)
+@elem letterlike.mho
+zone: cap
+path: p1 p2 p3 p4
+p1 = [1,8]
+p2 = [1,3]
+p3 = C([1,0] [6,0] [11,0])
+p4 = C([11,0] [11,3] [11,8])
+close: false
+width: 1
+anchors: top=[6,0] base-left=[1,8] base-right=[11,8]
+  mid=[6,4] mark-above=[6,0] mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# S-curve Elements (local copies for self-containment)
+# -----------------------------------------------------------------------------
+
+# letterlike.curve.s - Lowercase s-shape curve
+@elem letterlike.curve.s
+zone: x-height
+path: p1 p2 p3
+p1 = [9,2]
+p2 = C([9,0] [2,0] [2,4])
+p3 = C([2,8] [9,8] [9,6])
+close: false
+width: 1
+anchors: attach=[5,4] mark-above=[5,0] mark-below=[5,9]
+@end
+
+# letterlike.curve.s.cap - Capital S-shape curve
+@elem letterlike.curve.s.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [9,1]
+p2 = C([9,0] [3,0] [3,2])
+p3 = C([3,4] [9,4] [9,6])
+p4 = C([9,8] [3,8] [3,7])
+close: false
+width: 1
+anchors: attach=[6,4] mark-above=[6,0] mark-below=[6,9]
+  left=[3,4] right=[9,4] top=[6,0] base=[6,8]
+@end
+
+# -----------------------------------------------------------------------------
+# Turned G Element
+# -----------------------------------------------------------------------------
+
+# letterlike.turned.g - Turned sans-serif G
+@elem letterlike.turned.g
+zone: cap
+path: p1 p2 p3 p4
+p1 = [2,6]
+p2 = C([2,8] [12,8] [12,4])
+p3 = C([12,0] [2,0] [2,4])
+p4 = [7,4]
+close: false
+width: 1
+anchors: mid=[6,4] top=[6,0] base=[6,8]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+# =============================================================================
+# CHARACTER DEFINITIONS - UNIT SYMBOLS
+# =============================================================================
+
+# U+2103 DEGREE CELSIUS - Degree sign followed by C
+@char ! DEGREE-CELSIUS
+build: from_expr
+LR(degree.small, arc.c.cap)
+cp: U+2103
+@end
+
+# U+2109 DEGREE FAHRENHEIT - Degree sign followed by F
+@char " DEGREE-FAHRENHEIT
+build: from_expr
+LR(degree.small, FRAME(stem.l, arm.top, arm.mid))
+cp: U+2109
+@end
+
+# U+2126 OHM SIGN - Greek capital letter omega (resistance unit)
+# Note: Canonical decomposition to Greek Omega (U+03A9)
+@char $ OHM-SIGN
+build: from_expr
+arc.u.cap
+cp: U+2126
+@end
+
+# U+212A KELVIN SIGN - Latin capital letter K (temperature unit)
+# Note: Canonical decomposition to Latin K (U+004B)
+@char % KELVIN-SIGN
+build: from_expr
+FRAME(stem.l, diagonal.l, leg.cap)
+cp: U+212A
+@end
+
+# U+212B ANGSTROM SIGN - Latin A with ring above (length unit)
+# Note: Canonical decomposition to A-ring (U+00C5)
+@char & ANGSTROM-SIGN
+build: from_expr
+DIA(APEX(stem.l, stem.r, crossbar.cap), ring)
+cp: U+212B
+@end
+
+# =============================================================================
+# CHARACTER DEFINITIONS - COMMERCIAL AND LEGAL SYMBOLS
+# =============================================================================
+
+# U+2116 NUMERO SIGN - N with superscript o and underline
+@char ' NUMERO-SIGN
+build: from_expr
+LR(FRAME(stem.l, diagonal, stem.r), STACK(numero.o.super, numero.underline), 8/7)
+cp: U+2116
+@end
+
+# U+2117 SOUND RECORDING COPYRIGHT - P in circle
+@char ~ SOUND-RECORDING-COPYRIGHT
+build: from_expr
+OVR(phonogram.circle, LR(stem.l, bowl.upper, 3/9))
+cp: U+2117
+@end
+
+# U+2120 SERVICE MARK - Superscript SM
+@char + SERVICE-MARK
+build: from_expr
+LR(sm.s.super, sm.m.super, 5/6)
+cp: U+2120
+@end
+
+# U+2121 TELEPHONE SIGN - TEL ligature
+@char - TELEPHONE-SIGN
+build: from_expr
+telephone.handset
+cp: U+2121
+@end
+
+# U+2122 TRADE MARK SIGN - Superscript TM
+@char . TRADE-MARK-SIGN
+build: from_expr
+LR(tm.t.super, tm.m.super, 6/5)
+cp: U+2122
+@end
+
+# U+212E ESTIMATED SYMBOL - Stylized lowercase e
+@char / ESTIMATED-SYMBOL
+build: from_expr
+estimated.e
+cp: U+212E
+@end
+
+# =============================================================================
+# CHARACTER DEFINITIONS - SCRIPT VARIANTS
+# =============================================================================
+
+# U+210A SCRIPT SMALL G - Mathematical script small g
+@char 0 SCRIPT-SMALL-G
+build: from_expr
+script.loop.g
+cp: U+210A
+@end
+
+# U+210B SCRIPT CAPITAL H - Mathematical script capital H
+# Script H with flourish
+@char 1 SCRIPT-CAPITAL-H
+build: from_expr
+FRAME(FRAME(stem.l, stem.r, crossbar.cap), script.flourish)
+cp: U+210B
+@end
+
+# U+2110 SCRIPT CAPITAL I - Mathematical script capital I
+@char 2 SCRIPT-CAPITAL-I
+build: from_expr
+FRAME(stem.l, script.flourish)
+cp: U+2110
+@end
+
+# U+2112 SCRIPT CAPITAL L - Mathematical script capital L
+# Laplace transform symbol
+@char 3 SCRIPT-CAPITAL-L
+build: from_expr
+FRAME(FRAME(stem.l, arm.bot), script.flourish)
+cp: U+2112
+@end
+
+# U+2113 SCRIPT SMALL L - Mathematical script small l
+# Liter symbol
+@char 4 SCRIPT-SMALL-L
+build: from_expr
+FRAME(ascender, script.flourish)
+cp: U+2113
+@end
+
+# U+211B SCRIPT CAPITAL R - Mathematical script capital R
+# Real part (alternate)
+@char 5 SCRIPT-CAPITAL-R
+build: from_expr
+FRAME(FRAME(stem.l, bowl.upper, leg.cap), script.flourish)
+cp: U+211B
+@end
+
+# =============================================================================
+# CHARACTER DEFINITIONS - BLACK-LETTER (FRAKTUR) VARIANTS
+# =============================================================================
+
+# U+210C BLACK-LETTER CAPITAL H - Mathematical Fraktur capital H
+# Hilbert space
+@char 6 BLACK-LETTER-CAPITAL-H
+build: from_expr
+OVR(FRAME(stem.l, stem.r, crossbar.cap), fraktur.diamond)
+cp: U+210C
+@end
+
+# U+210D DOUBLE-STRUCK CAPITAL H - Mathematical double-struck capital H
+# Quaternion space
+# Note: This is double-struck, not black-letter (included here for range order)
+@char 7 DOUBLE-STRUCK-CAPITAL-H
+build: from_expr
+OVR(FRAME(stem.l, stem.r, crossbar.cap), dblstruck.inner.line)
+cp: U+210D
+@end
+
+# U+2111 BLACK-LETTER CAPITAL I - Mathematical Fraktur capital I
+# Imaginary part symbol
+@char 8 BLACK-LETTER-CAPITAL-I
+build: from_expr
+OVR(stem.l, fraktur.diamond)
+cp: U+2111
+@end
+
+# U+211C BLACK-LETTER CAPITAL R - Mathematical Fraktur capital R
+# Real part symbol
+@char 9 BLACK-LETTER-CAPITAL-R
+build: from_expr
+OVR(FRAME(stem.l, bowl.upper, leg.cap), fraktur.diamond)
+cp: U+211C
+@end
+
+# =============================================================================
+# CHARACTER DEFINITIONS - DOUBLE-STRUCK CAPITALS
+# =============================================================================
+# These represent standard mathematical number sets
+
+# U+2115 DOUBLE-STRUCK CAPITAL N - Natural numbers
+@char A DOUBLE-STRUCK-CAPITAL-N
+build: from_expr
+OVR(FRAME(stem.l, diagonal, stem.r), dblstruck.inner.line)
+cp: U+2115
+@end
+
+# U+2119 DOUBLE-STRUCK CAPITAL P - Prime numbers / Projective space
+@char B DOUBLE-STRUCK-CAPITAL-P
+build: from_expr
+OVR(LR(stem.l, bowl.upper, 3/9), dblstruck.inner.line)
+cp: U+2119
+@end
+
+# U+211A DOUBLE-STRUCK CAPITAL Q - Rational numbers
+@char C DOUBLE-STRUCK-CAPITAL-Q
+build: from_expr
+OVR(FRAME(bowl.cap, tail), dblstruck.inner.line)
+cp: U+211A
+@end
+
+# U+211D DOUBLE-STRUCK CAPITAL R - Real numbers
+@char D DOUBLE-STRUCK-CAPITAL-R
+build: from_expr
+OVR(FRAME(stem.l, bowl.upper, leg.cap), dblstruck.inner.line)
+cp: U+211D
+@end
+
+# U+2124 DOUBLE-STRUCK CAPITAL Z - Integer numbers
+@char E DOUBLE-STRUCK-CAPITAL-Z
+build: from_expr
+OVR(FRAME(bar.top, diagonal, bar.bot.cap), dblstruck.inner.line)
+cp: U+2124
+@end
+
+# =============================================================================
+# CHARACTER DEFINITIONS - ADDITIONAL LETTERLIKE SYMBOLS
+# =============================================================================
+
+# U+2100 ACCOUNT OF - a/c ligature
+@char F ACCOUNT-OF
+build: from_expr
+LR(LR(bowl.l, stem, 7/5), OVR(letterlike.slash, arc.c), 5/7)
+cp: U+2100
+@end
+
+# U+2101 ADDRESSED TO SUBJECT - a/s ligature
+@char G ADDRESSED-TO-SUBJECT
+build: from_expr
+LR(LR(bowl.l, stem, 7/5), OVR(letterlike.slash, letterlike.curve.s), 5/7)
+cp: U+2101
+@end
+
+# U+2102 DOUBLE-STRUCK CAPITAL C - Complex numbers
+@char H DOUBLE-STRUCK-CAPITAL-C
+build: from_expr
+OVR(arc.c.cap, dblstruck.inner.line)
+cp: U+2102
+@end
+
+# U+2105 CARE OF - c/o ligature
+@char I CARE-OF
+build: from_expr
+LR(arc.c, OVR(letterlike.slash, bowl.full), 5/7)
+cp: U+2105
+@end
+
+# U+2106 CADA UNA - c/u ligature (Spanish "each one")
+@char J CADA-UNA
+build: from_expr
+LR(arc.c, OVR(letterlike.slash, arc.u), 5/7)
+cp: U+2106
+@end
+
+# U+2107 EULER CONSTANT - Script capital E
+@char K EULER-CONSTANT
+build: from_expr
+FRAME(FRAME(stem.l, arm.top, arm.mid, arm.bot), script.flourish)
+cp: U+2107
+@end
+
+# U+210E PLANCK CONSTANT - Italic small h
+@char L PLANCK-CONSTANT
+build: from_expr
+FRAME(ascender, shoulder)
+cp: U+210E
+@end
+
+# U+210F PLANCK CONSTANT OVER TWO PI - h-bar
+@char M PLANCK-CONSTANT-OVER-TWO-PI
+build: from_expr
+OVR(FRAME(ascender, shoulder), stroke.horiz)
+cp: U+210F
+@end
+
+# U+2114 L B BAR SYMBOL - Pound sign variant
+@char N L-B-BAR-SYMBOL
+build: from_expr
+OVR(LR(ascender, STACK(ascender, bowl.r), 5/7), stroke.horiz)
+cp: U+2114
+@end
+
+# U+2118 SCRIPT CAPITAL P - Weierstrass elliptic function
+@char O SCRIPT-CAPITAL-P
+build: from_expr
+FRAME(LR(stem.l, bowl.upper, 3/9), script.flourish)
+cp: U+2118
+@end
+
+# U+211E PRESCRIPTION TAKE - Rx symbol
+@char P PRESCRIPTION-TAKE
+build: from_expr
+FRAME(FRAME(stem.l, bowl.upper, leg.cap), OVR(diagonal.x, leg))
+cp: U+211E
+@end
+
+# U+211F RESPONSE - R in script style
+@char Q RESPONSE
+build: from_expr
+FRAME(FRAME(stem.l, bowl.upper, leg.cap), script.flourish)
+cp: U+211F
+@end
+
+# U+2123 VERSICLE - V in script style
+@char R VERSICLE
+build: from_expr
+FRAME(vertex.cap, script.flourish)
+cp: U+2123
+@end
+
+# U+2125 OUNCE SIGN - Script z with tail
+@char S OUNCE-SIGN
+build: from_expr
+FRAME(FRAME(bar.top.x, diagonal.x, bar.bot), descender.curved)
+cp: U+2125
+@end
+
+# U+2127 INVERTED OHM SIGN - Mho (conductance)
+@char T INVERTED-OHM-SIGN
+build: from_expr
+letterlike.mho
+cp: U+2127
+@end
+
+# U+2128 BLACK-LETTER CAPITAL Z - Mathematical Fraktur capital Z
+@char U BLACK-LETTER-CAPITAL-Z
+build: from_expr
+OVR(FRAME(bar.top, diagonal, bar.bot.cap), fraktur.diamond)
+cp: U+2128
+@end
+
+# U+2129 TURNED GREEK SMALL LETTER IOTA - Turned iota
+@char V TURNED-GREEK-SMALL-LETTER-IOTA
+build: from_expr
+FRAME(stem, hook.top)
+cp: U+2129
+@end
+
+# U+212C SCRIPT CAPITAL B - Bernoulli number
+@char W SCRIPT-CAPITAL-B
+build: from_expr
+FRAME(LR(stem.l, STACK(bowl.upper, bowl.lower), 3/9), script.flourish)
+cp: U+212C
+@end
+
+# U+212D BLACK-LETTER CAPITAL C - Mathematical Fraktur capital C
+@char X BLACK-LETTER-CAPITAL-C
+build: from_expr
+OVR(arc.c.cap, fraktur.diamond)
+cp: U+212D
+@end
+
+# U+212F SCRIPT SMALL E - Natural exponent base
+@char Y SCRIPT-SMALL-E
+build: from_expr
+FRAME(FRAME(crossbar.low, arc.top, arc.bot), script.flourish)
+cp: U+212F
+@end
+
+# U+2130 SCRIPT CAPITAL E - Emf symbol
+@char Z SCRIPT-CAPITAL-E
+build: from_expr
+FRAME(FRAME(stem.l, arm.top, arm.mid, arm.bot), script.flourish)
+cp: U+2130
+@end
+
+# U+2131 SCRIPT CAPITAL F - Fourier transform
+@char [ SCRIPT-CAPITAL-F
+build: from_expr
+FRAME(FRAME(stem.l, arm.top, arm.mid), script.flourish)
+cp: U+2131
+@end
+
+# U+2132 TURNED CAPITAL F - Claudian letter digamma inversum
+@char \ TURNED-CAPITAL-F
+build: from_expr
+FRAME(stem.l, arm.bot, arm.mid)
+cp: U+2132
+@end
+
+# U+2133 SCRIPT CAPITAL M - M-matrix
+@char ] SCRIPT-CAPITAL-M
+build: from_expr
+FRAME(FRAME(stem.l, apex, stem.r), script.flourish)
+cp: U+2133
+@end
+
+# U+2134 SCRIPT SMALL O - Order of magnitude
+@char ^ SCRIPT-SMALL-O
+build: from_expr
+FRAME(bowl.full, script.flourish)
+cp: U+2134
+@end
+
+# U+2135 ALEF SYMBOL - Hebrew alef (first transfinite cardinal)
+@char _ ALEF-SYMBOL
+build: from_expr
+FRAME(diagonal.l, diagonal)
+cp: U+2135
+@end
+
+# U+2136 BET SYMBOL - Hebrew bet (second transfinite cardinal)
+@char ` BET-SYMBOL
+build: from_expr
+FRAME(bar.top, stem.r, arm.bot)
+cp: U+2136
+@end
+
+# U+2137 GIMEL SYMBOL - Hebrew gimel (third transfinite cardinal)
+@char a GIMEL-SYMBOL
+build: from_expr
+FRAME(bar.top, diagonal.l)
+cp: U+2137
+@end
+
+# U+2138 DALET SYMBOL - Hebrew dalet (fourth transfinite cardinal)
+@char b DALET-SYMBOL
+build: from_expr
+FRAME(bar.top, stem.r)
+cp: U+2138
+@end
+
+# U+2139 INFORMATION SOURCE - Lowercase i in circle
+@char c INFORMATION-SOURCE
+build: from_expr
+OVR(bowl.cap, STACK(tittle, stem))
+cp: U+2139
+@end
+
+# U+213A ROTATED CAPITAL Q - Stylized Q
+@char d ROTATED-CAPITAL-Q
+build: from_expr
+FRAME(bowl.cap, tail)
+cp: U+213A
+@end
+
+# U+213B FAX SIGN - FAX ligature
+@char e FAX-SIGN
+build: from_expr
+LR(FRAME(stem.l, arm.top, arm.mid), LR(APEX(stem.l, stem.r, crossbar.cap), OVR(diagonal, diagonal.l), 5/5), 5/10)
+cp: U+213B
+@end
+
+# U+213C DOUBLE-STRUCK SMALL PI - Mathematical constant
+@char f DOUBLE-STRUCK-SMALL-PI
+build: from_expr
+OVR(FRAME(bar.top.x, stem, stem.r), dblstruck.inner.line)
+cp: U+213C
+@end
+
+# U+213D DOUBLE-STRUCK SMALL GAMMA - Euler-Mascheroni constant
+@char g DOUBLE-STRUCK-SMALL-GAMMA
+build: from_expr
+OVR(FRAME(vertex, descender.curved), dblstruck.inner.line)
+cp: U+213D
+@end
+
+# U+213E DOUBLE-STRUCK CAPITAL GAMMA - Function space
+@char h DOUBLE-STRUCK-CAPITAL-GAMMA
+build: from_expr
+OVR(FRAME(bar.top, stem.l), dblstruck.inner.line)
+cp: U+213E
+@end
+
+# U+213F DOUBLE-STRUCK CAPITAL PI - Product operator
+@char i DOUBLE-STRUCK-CAPITAL-PI
+build: from_expr
+OVR(FRAME(bar.top, stem.l, stem.r), dblstruck.inner.line)
+cp: U+213F
+@end
+
+# U+2140 DOUBLE-STRUCK N-ARY SUMMATION - Summation operator
+@char j DOUBLE-STRUCK-N-ARY-SUMMATION
+build: from_expr
+OVR(letterlike.sigma, dblstruck.inner.line)
+cp: U+2140
+@end
+
+# U+2141 TURNED SANS-SERIF CAPITAL G - Game theory
+@char k TURNED-SANS-SERIF-CAPITAL-G
+build: from_expr
+letterlike.turned.g
+cp: U+2141
+@end
+
+# U+2142 TURNED SANS-SERIF CAPITAL L - Logic
+@char l TURNED-SANS-SERIF-CAPITAL-L
+build: from_expr
+FRAME(arm.top, stem.r)
+cp: U+2142
+@end
+
+# U+2143 REVERSED SANS-SERIF CAPITAL L - Reversed L
+@char m REVERSED-SANS-SERIF-CAPITAL-L
+build: from_expr
+FRAME(stem.r, arm.bot)
+cp: U+2143
+@end
+
+# U+2144 TURNED SANS-SERIF CAPITAL Y - Y inverted
+@char n TURNED-SANS-SERIF-CAPITAL-Y
+build: from_expr
+FRAME(diagonal, diagonal.l, stem)
+cp: U+2144
+@end
+
+# U+2145 DOUBLE-STRUCK ITALIC CAPITAL D - Differential
+@char o DOUBLE-STRUCK-ITALIC-CAPITAL-D
+build: from_expr
+OVR(LR(stem.l, bowl.r.cap, 3/9), dblstruck.inner.line)
+cp: U+2145
+@end
+
+# U+2146 DOUBLE-STRUCK ITALIC SMALL D - Differential
+@char p DOUBLE-STRUCK-ITALIC-SMALL-D
+build: from_expr
+OVR(LR(bowl.l, ascender, 7/5), dblstruck.inner.line)
+cp: U+2146
+@end
+
+# U+2147 DOUBLE-STRUCK ITALIC SMALL E - Natural exponent
+@char q DOUBLE-STRUCK-ITALIC-SMALL-E
+build: from_expr
+OVR(FRAME(crossbar.low, arc.top, arc.bot), dblstruck.inner.line)
+cp: U+2147
+@end
+
+# U+2148 DOUBLE-STRUCK ITALIC SMALL I - Imaginary unit
+@char r DOUBLE-STRUCK-ITALIC-SMALL-I
+build: from_expr
+OVR(STACK(tittle, stem), dblstruck.inner.line)
+cp: U+2148
+@end
+
+# U+2149 DOUBLE-STRUCK ITALIC SMALL J - Quaternion unit
+@char s DOUBLE-STRUCK-ITALIC-SMALL-J
+build: from_expr
+OVR(STACK(tittle, stem, hook.bot), dblstruck.inner.line)
+cp: U+2149
+@end
+
+# U+214A PROPERTY LINE - Logic notation
+@char t PROPERTY-LINE
+build: from_expr
+FRAME(stem, bar.top)
+cp: U+214A
+@end
+
+# U+214B TURNED AMPERSAND - Per sign
+@char u TURNED-AMPERSAND
+build: from_expr
+FRAME(bowl.upper, bowl.lower, diagonal)
+cp: U+214B
+@end
+
+# U+214C PER SIGN - Per notation
+@char v PER-SIGN
+build: from_expr
+OVR(diagonal.x, diagonal.x.rev)
+cp: U+214C
+@end
+
+# U+214D AKTIESELSKAB - A/S ligature (Danish company)
+@char w AKTIESELSKAB
+build: from_expr
+LR(APEX(stem.l, stem.r, crossbar.cap), OVR(letterlike.slash, letterlike.curve.s.cap), 5/7)
+cp: U+214D
+@end
+
+# U+214E TURNED SMALL F - Latin small letter turned f
+@char x TURNED-SMALL-F
+build: from_expr
+FRAME(hook.bot, stem, bar.mid.short)
+cp: U+214E
+@end
+
+# U+214F SYMBOL FOR SAMARITAN SOURCE - Used in Biblical studies
+@char y SYMBOL-FOR-SAMARITAN-SOURCE
+build: from_expr
+FRAME(fraktur.diamond, stem)
+cp: U+214F
+@end
+
+# =============================================================================
+# END OF LETTERLIKE SYMBOLS LIBRARY
+# =============================================================================

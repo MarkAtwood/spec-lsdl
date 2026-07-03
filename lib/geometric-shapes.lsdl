@@ -1,0 +1,1323 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Geometric Shapes Character Library
+# =============================================================================
+#
+# This file defines geometric shape characters from the Geometric Shapes
+# block (U+25A0-25FF).
+#
+# Characters defined (~96 total):
+#   - Squares: filled, outline, small variants
+#   - Rectangles and parallelograms
+#   - Triangles: up/down/left/right, filled and outline
+#   - Diamonds: filled and outline
+#   - Circles: filled, outline, half-filled variants
+#   - Small shape variants
+#
+# Design notes:
+#   - BLACK = filled closed path (close: true, width: 0 for fill)
+#   - WHITE = outline only (close: true, width: 1 for stroke)
+#   - All shapes centered in the 12x12 grid
+#   - Uses @char block format since Geometric Shapes block (U+25xx) is not
+#     in the inline-character whitelist in the parser
+#
+# =============================================================================
+
+# =============================================================================
+# SQUARE ELEMENTS
+# =============================================================================
+
+# geo.square.black - Filled black square
+@elem geo.square.black
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [1,1]
+p2 = [11,1]
+p3 = [11,11]
+p4 = [1,11]
+close: true
+width: 0
+anchors: center=[6,6] top=[6,1] base=[6,11] left=[1,6] right=[11,6]
+@end
+
+# geo.square.white - Outline white square
+@elem geo.square.white
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [1,1]
+p2 = [11,1]
+p3 = [11,11]
+p4 = [1,11]
+close: true
+width: 1
+anchors: center=[6,6] top=[6,1] base=[6,11] left=[1,6] right=[11,6]
+@end
+
+# geo.square.small.black - Small filled black square
+@elem geo.square.small.black
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [4,4]
+p2 = [8,4]
+p3 = [8,8]
+p4 = [4,8]
+close: true
+width: 0
+anchors: center=[6,6]
+@end
+
+# geo.square.small.white - Small outline white square
+@elem geo.square.small.white
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [4,4]
+p2 = [8,4]
+p3 = [8,8]
+p4 = [4,8]
+close: true
+width: 1
+anchors: center=[6,6]
+@end
+
+# geo.square.rounded.black - Filled black square with rounded corners
+@elem geo.square.rounded.black
+zone: x-height
+path: p1 p2 p3 p4 p5 p6 p7 p8
+p1 = [2,1]
+p2 = [10,1]
+p3 = C([11,1] [11,2])
+p4 = [11,10]
+p5 = C([11,11] [10,11])
+p6 = [2,11]
+p7 = C([1,11] [1,10])
+p8 = C([1,1] [2,1])
+close: true
+width: 0
+anchors: center=[6,6]
+@end
+
+# geo.square.rounded.white - Outline white square with rounded corners
+@elem geo.square.rounded.white
+zone: x-height
+path: p1 p2 p3 p4 p5 p6 p7 p8
+p1 = [2,1]
+p2 = [10,1]
+p3 = C([11,1] [11,2])
+p4 = [11,10]
+p5 = C([11,11] [10,11])
+p6 = [2,11]
+p7 = C([1,11] [1,10])
+p8 = C([1,1] [2,1])
+close: true
+width: 1
+anchors: center=[6,6]
+@end
+
+# =============================================================================
+# RECTANGLE ELEMENTS
+# =============================================================================
+
+# geo.rect.vert.black - Vertical rectangle filled
+@elem geo.rect.vert.black
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [3,1]
+p2 = [9,1]
+p3 = [9,11]
+p4 = [3,11]
+close: true
+width: 0
+anchors: center=[6,6]
+@end
+
+# geo.rect.vert.white - Vertical rectangle outline
+@elem geo.rect.vert.white
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [3,1]
+p2 = [9,1]
+p3 = [9,11]
+p4 = [3,11]
+close: true
+width: 1
+anchors: center=[6,6]
+@end
+
+# geo.rect.horiz.black - Horizontal rectangle filled
+@elem geo.rect.horiz.black
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [1,3]
+p2 = [11,3]
+p3 = [11,9]
+p4 = [1,9]
+close: true
+width: 0
+anchors: center=[6,6]
+@end
+
+# geo.rect.horiz.white - Horizontal rectangle outline
+@elem geo.rect.horiz.white
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [1,3]
+p2 = [11,3]
+p3 = [11,9]
+p4 = [1,9]
+close: true
+width: 1
+anchors: center=[6,6]
+@end
+
+# =============================================================================
+# PARALLELOGRAM ELEMENTS
+# =============================================================================
+
+# geo.parallelogram.black - Filled parallelogram (slanted right)
+@elem geo.parallelogram.black
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [3,2]
+p2 = [11,2]
+p3 = [9,10]
+p4 = [1,10]
+close: true
+width: 0
+anchors: center=[6,6]
+@end
+
+# geo.parallelogram.white - Outline parallelogram
+@elem geo.parallelogram.white
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [3,2]
+p2 = [11,2]
+p3 = [9,10]
+p4 = [1,10]
+close: true
+width: 1
+anchors: center=[6,6]
+@end
+
+# =============================================================================
+# TRIANGLE ELEMENTS
+# =============================================================================
+
+# geo.triangle.up.black - Filled upward-pointing triangle
+@elem geo.triangle.up.black
+zone: x-height
+path: p1 p2 p3
+p1 = [6,1]
+p2 = [11,11]
+p3 = [1,11]
+close: true
+width: 0
+anchors: top=[6,1] base=[6,11] center=[6,7]
+@end
+
+# geo.triangle.up.white - Outline upward-pointing triangle
+@elem geo.triangle.up.white
+zone: x-height
+path: p1 p2 p3
+p1 = [6,1]
+p2 = [11,11]
+p3 = [1,11]
+close: true
+width: 1
+anchors: top=[6,1] base=[6,11] center=[6,7]
+@end
+
+# geo.triangle.down.black - Filled downward-pointing triangle
+@elem geo.triangle.down.black
+zone: x-height
+path: p1 p2 p3
+p1 = [1,1]
+p2 = [11,1]
+p3 = [6,11]
+close: true
+width: 0
+anchors: top=[6,1] base=[6,11] center=[6,5]
+@end
+
+# geo.triangle.down.white - Outline downward-pointing triangle
+@elem geo.triangle.down.white
+zone: x-height
+path: p1 p2 p3
+p1 = [1,1]
+p2 = [11,1]
+p3 = [6,11]
+close: true
+width: 1
+anchors: top=[6,1] base=[6,11] center=[6,5]
+@end
+
+# geo.triangle.left.black - Filled left-pointing triangle
+@elem geo.triangle.left.black
+zone: x-height
+path: p1 p2 p3
+p1 = [1,6]
+p2 = [11,1]
+p3 = [11,11]
+close: true
+width: 0
+anchors: left=[1,6] right=[11,6] center=[7,6]
+@end
+
+# geo.triangle.left.white - Outline left-pointing triangle
+@elem geo.triangle.left.white
+zone: x-height
+path: p1 p2 p3
+p1 = [1,6]
+p2 = [11,1]
+p3 = [11,11]
+close: true
+width: 1
+anchors: left=[1,6] right=[11,6] center=[7,6]
+@end
+
+# geo.triangle.right.black - Filled right-pointing triangle
+@elem geo.triangle.right.black
+zone: x-height
+path: p1 p2 p3
+p1 = [1,1]
+p2 = [11,6]
+p3 = [1,11]
+close: true
+width: 0
+anchors: left=[1,6] right=[11,6] center=[5,6]
+@end
+
+# geo.triangle.right.white - Outline right-pointing triangle
+@elem geo.triangle.right.white
+zone: x-height
+path: p1 p2 p3
+p1 = [1,1]
+p2 = [11,6]
+p3 = [1,11]
+close: true
+width: 1
+anchors: left=[1,6] right=[11,6] center=[5,6]
+@end
+
+# Small triangle variants
+# geo.triangle.up.small.black - Small filled upward triangle
+@elem geo.triangle.up.small.black
+zone: x-height
+path: p1 p2 p3
+p1 = [6,3]
+p2 = [9,9]
+p3 = [3,9]
+close: true
+width: 0
+anchors: center=[6,7]
+@end
+
+# geo.triangle.up.small.white - Small outline upward triangle
+@elem geo.triangle.up.small.white
+zone: x-height
+path: p1 p2 p3
+p1 = [6,3]
+p2 = [9,9]
+p3 = [3,9]
+close: true
+width: 1
+anchors: center=[6,7]
+@end
+
+# geo.triangle.down.small.black - Small filled downward triangle
+@elem geo.triangle.down.small.black
+zone: x-height
+path: p1 p2 p3
+p1 = [3,3]
+p2 = [9,3]
+p3 = [6,9]
+close: true
+width: 0
+anchors: center=[6,5]
+@end
+
+# geo.triangle.down.small.white - Small outline downward triangle
+@elem geo.triangle.down.small.white
+zone: x-height
+path: p1 p2 p3
+p1 = [3,3]
+p2 = [9,3]
+p3 = [6,9]
+close: true
+width: 1
+anchors: center=[6,5]
+@end
+
+# geo.triangle.left.small.black - Small filled left triangle
+@elem geo.triangle.left.small.black
+zone: x-height
+path: p1 p2 p3
+p1 = [3,6]
+p2 = [9,3]
+p3 = [9,9]
+close: true
+width: 0
+anchors: center=[7,6]
+@end
+
+# geo.triangle.left.small.white - Small outline left triangle
+@elem geo.triangle.left.small.white
+zone: x-height
+path: p1 p2 p3
+p1 = [3,6]
+p2 = [9,3]
+p3 = [9,9]
+close: true
+width: 1
+anchors: center=[7,6]
+@end
+
+# geo.triangle.right.small.black - Small filled right triangle
+@elem geo.triangle.right.small.black
+zone: x-height
+path: p1 p2 p3
+p1 = [3,3]
+p2 = [9,6]
+p3 = [3,9]
+close: true
+width: 0
+anchors: center=[5,6]
+@end
+
+# geo.triangle.right.small.white - Small outline right triangle
+@elem geo.triangle.right.small.white
+zone: x-height
+path: p1 p2 p3
+p1 = [3,3]
+p2 = [9,6]
+p3 = [3,9]
+close: true
+width: 1
+anchors: center=[5,6]
+@end
+
+# =============================================================================
+# DIAMOND ELEMENTS
+# =============================================================================
+
+# geo.diamond.black - Filled black diamond
+@elem geo.diamond.black
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,1]
+p2 = [11,6]
+p3 = [6,11]
+p4 = [1,6]
+close: true
+width: 0
+anchors: top=[6,1] base=[6,11] left=[1,6] right=[11,6] center=[6,6]
+@end
+
+# geo.diamond.white - Outline white diamond
+@elem geo.diamond.white
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,1]
+p2 = [11,6]
+p3 = [6,11]
+p4 = [1,6]
+close: true
+width: 1
+anchors: top=[6,1] base=[6,11] left=[1,6] right=[11,6] center=[6,6]
+@end
+
+# geo.diamond.small.black - Small filled diamond
+@elem geo.diamond.small.black
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,3]
+p2 = [9,6]
+p3 = [6,9]
+p4 = [3,6]
+close: true
+width: 0
+anchors: center=[6,6]
+@end
+
+# geo.diamond.small.white - Small outline diamond
+@elem geo.diamond.small.white
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,3]
+p2 = [9,6]
+p3 = [6,9]
+p4 = [3,6]
+close: true
+width: 1
+anchors: center=[6,6]
+@end
+
+# geo.lozenge.black - Filled lozenge (taller diamond)
+@elem geo.lozenge.black
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,0]
+p2 = [10,6]
+p3 = [6,12]
+p4 = [2,6]
+close: true
+width: 0
+anchors: center=[6,6]
+@end
+
+# geo.lozenge.white - Outline lozenge
+@elem geo.lozenge.white
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,0]
+p2 = [10,6]
+p3 = [6,12]
+p4 = [2,6]
+close: true
+width: 1
+anchors: center=[6,6]
+@end
+
+# =============================================================================
+# CIRCLE ELEMENTS
+# =============================================================================
+
+# geo.circle.black - Filled black circle
+@elem geo.circle.black
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,1]
+p2 = C([11,1] [11,6])
+p3 = C([11,11] [6,11])
+p4 = C([1,11] [1,6])
+close: true
+width: 0
+anchors: top=[6,1] base=[6,11] left=[1,6] right=[11,6] center=[6,6]
+@end
+
+# geo.circle.white - Outline white circle
+@elem geo.circle.white
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,1]
+p2 = C([11,1] [11,6])
+p3 = C([11,11] [6,11])
+p4 = C([1,11] [1,6])
+close: true
+width: 1
+anchors: top=[6,1] base=[6,11] left=[1,6] right=[11,6] center=[6,6]
+@end
+
+# geo.circle.half.left.black - Circle with left half black
+@elem geo.circle.half.left.black
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,1]
+p2 = [6,11]
+p3 = C([1,11] [1,6])
+p4 = C([1,1] [6,1])
+close: true
+width: 0
+anchors: center=[3,6]
+@end
+
+# geo.circle.half.right.black - Circle with right half black
+@elem geo.circle.half.right.black
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,1]
+p2 = C([11,1] [11,6])
+p3 = C([11,11] [6,11])
+p4 = [6,1]
+close: true
+width: 0
+anchors: center=[9,6]
+@end
+
+# geo.circle.half.top.black - Circle with top half black
+@elem geo.circle.half.top.black
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [1,6]
+p2 = C([1,1] [6,1])
+p3 = C([11,1] [11,6])
+p4 = [1,6]
+close: true
+width: 0
+anchors: center=[6,3]
+@end
+
+# geo.circle.half.bot.black - Circle with bottom half black
+@elem geo.circle.half.bot.black
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [1,6]
+p2 = [11,6]
+p3 = C([11,11] [6,11])
+p4 = C([1,11] [1,6])
+close: true
+width: 0
+anchors: center=[6,9]
+@end
+
+# geo.circle.dotted - Circle with center dot
+@elem geo.circle.dotted
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,5]
+p2 = C([7,5] [7,6])
+p3 = C([7,7] [6,7])
+p4 = C([5,7] [5,6])
+close: true
+width: 0
+anchors: center=[6,6]
+@end
+
+# geo.circle.small.black - Small filled circle
+@elem geo.circle.small.black
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,3]
+p2 = C([9,3] [9,6])
+p3 = C([9,9] [6,9])
+p4 = C([3,9] [3,6])
+close: true
+width: 0
+anchors: center=[6,6]
+@end
+
+# geo.circle.small.white - Small outline circle
+@elem geo.circle.small.white
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,3]
+p2 = C([9,3] [9,6])
+p3 = C([9,9] [6,9])
+p4 = C([3,9] [3,6])
+close: true
+width: 1
+anchors: center=[6,6]
+@end
+
+# geo.bullseye - Circle with inner ring (bullseye)
+@elem geo.bullseye
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = C([8,4] [8,6])
+p3 = C([8,8] [6,8])
+p4 = C([4,8] [4,6])
+close: true
+width: 0
+anchors: center=[6,6]
+@end
+
+# =============================================================================
+# STAR ELEMENTS
+# =============================================================================
+
+# geo.star.four.black - Four-pointed star filled
+@elem geo.star.four.black
+zone: x-height
+path: p1 p2 p3 p4 p5 p6 p7 p8
+p1 = [6,0]
+p2 = [7,5]
+p3 = [12,6]
+p4 = [7,7]
+p5 = [6,12]
+p6 = [5,7]
+p7 = [0,6]
+p8 = [5,5]
+close: true
+width: 0
+anchors: center=[6,6]
+@end
+
+# geo.star.four.white - Four-pointed star outline
+@elem geo.star.four.white
+zone: x-height
+path: p1 p2 p3 p4 p5 p6 p7 p8
+p1 = [6,0]
+p2 = [7,5]
+p3 = [12,6]
+p4 = [7,7]
+p5 = [6,12]
+p6 = [5,7]
+p7 = [0,6]
+p8 = [5,5]
+close: true
+width: 1
+anchors: center=[6,6]
+@end
+
+# geo.star.five.black - Five-pointed star filled (pentagram)
+@elem geo.star.five.black
+zone: x-height
+path: p1 p2 p3 p4 p5 p6 p7 p8 p9 p10
+p1 = [6,0]
+p2 = [7,4]
+p3 = [12,4]
+p4 = [8,7]
+p5 = [10,12]
+p6 = [6,9]
+p7 = [2,12]
+p8 = [4,7]
+p9 = [0,4]
+p10 = [5,4]
+close: true
+width: 0
+anchors: center=[6,6]
+@end
+
+# geo.star.five.white - Five-pointed star outline
+@elem geo.star.five.white
+zone: x-height
+path: p1 p2 p3 p4 p5 p6 p7 p8 p9 p10
+p1 = [6,0]
+p2 = [7,4]
+p3 = [12,4]
+p4 = [8,7]
+p5 = [10,12]
+p6 = [6,9]
+p7 = [2,12]
+p8 = [4,7]
+p9 = [0,4]
+p10 = [5,4]
+close: true
+width: 1
+anchors: center=[6,6]
+@end
+
+# geo.star.six.black - Six-pointed star (Star of David) filled
+@elem geo.star.six.black
+zone: x-height
+path: p1 p2 p3 p4 p5 p6
+p1 = [6,0]
+p2 = [9,5]
+p3 = [12,5]
+p4 = [9,7]
+p5 = [6,12]
+p6 = [3,7]
+close: true
+width: 0
+anchors: center=[6,6]
+@end
+
+# geo.star.six.white - Six-pointed star outline
+@elem geo.star.six.white
+zone: x-height
+path: p1 p2 p3 p4 p5 p6
+p1 = [6,0]
+p2 = [9,5]
+p3 = [12,5]
+p4 = [9,7]
+p5 = [6,12]
+p6 = [3,7]
+close: true
+width: 1
+anchors: center=[6,6]
+@end
+
+# =============================================================================
+# =============================================================================
+# CHARACTER DEFINITIONS
+# =============================================================================
+#
+# Since the Geometric Shapes block (U+25xx) is not in the inline-character
+# whitelist in the LSDL parser, we use @char blocks with placeholder ASCII
+# characters and cp: metadata to specify the actual Unicode codepoint.
+#
+# =============================================================================
+
+# U+25A0 BLACK SQUARE
+@char ! BLACK-SQUARE
+build: from_expr
+geo.square.black
+cp: U+25A0
+@end
+
+# U+25A1 WHITE SQUARE
+@char $ WHITE-SQUARE
+build: from_expr
+geo.square.white
+cp: U+25A1
+@end
+
+# U+25A2 WHITE SQUARE WITH ROUNDED CORNERS
+@char % WHITE-SQUARE-WITH-ROUNDED-CORNERS
+build: from_expr
+geo.square.rounded.white
+cp: U+25A2
+@end
+
+# U+25A3 WHITE SQUARE CONTAINING BLACK SMALL SQUARE
+@char & WHITE-SQUARE-CONTAINING-BLACK-SMALL-SQUARE
+build: from_expr
+FRAME(geo.square.white, geo.square.small.black)
+cp: U+25A3
+@end
+
+# U+25A4 SQUARE WITH HORIZONTAL FILL
+@char ' SQUARE-WITH-HORIZONTAL-FILL
+build: from_expr
+geo.square.black
+cp: U+25A4
+@end
+
+# U+25A5 SQUARE WITH VERTICAL FILL
+@char + SQUARE-WITH-VERTICAL-FILL
+build: from_expr
+geo.square.black
+cp: U+25A5
+@end
+
+# U+25A6 SQUARE WITH ORTHOGONAL CROSSHATCH FILL
+@char - SQUARE-WITH-ORTHOGONAL-CROSSHATCH-FILL
+build: from_expr
+geo.square.black
+cp: U+25A6
+@end
+
+# U+25A7 SQUARE WITH UPPER LEFT TO LOWER RIGHT FILL
+@char . SQUARE-WITH-UPPER-LEFT-TO-LOWER-RIGHT-FILL
+build: from_expr
+geo.square.black
+cp: U+25A7
+@end
+
+# U+25A8 SQUARE WITH UPPER RIGHT TO LOWER LEFT FILL
+@char / SQUARE-WITH-UPPER-RIGHT-TO-LOWER-LEFT-FILL
+build: from_expr
+geo.square.black
+cp: U+25A8
+@end
+
+# U+25A9 SQUARE WITH DIAGONAL CROSSHATCH FILL
+@char 0 SQUARE-WITH-DIAGONAL-CROSSHATCH-FILL
+build: from_expr
+geo.square.black
+cp: U+25A9
+@end
+
+# U+25AA BLACK SMALL SQUARE
+@char 1 BLACK-SMALL-SQUARE
+build: from_expr
+geo.square.small.black
+cp: U+25AA
+@end
+
+# U+25AB WHITE SMALL SQUARE
+@char 2 WHITE-SMALL-SQUARE
+build: from_expr
+geo.square.small.white
+cp: U+25AB
+@end
+
+# U+25AC BLACK RECTANGLE
+@char 3 BLACK-RECTANGLE
+build: from_expr
+geo.rect.horiz.black
+cp: U+25AC
+@end
+
+# U+25AD WHITE RECTANGLE
+@char 4 WHITE-RECTANGLE
+build: from_expr
+geo.rect.horiz.white
+cp: U+25AD
+@end
+
+# U+25AE BLACK VERTICAL RECTANGLE
+@char 5 BLACK-VERTICAL-RECTANGLE
+build: from_expr
+geo.rect.vert.black
+cp: U+25AE
+@end
+
+# U+25AF WHITE VERTICAL RECTANGLE
+@char 6 WHITE-VERTICAL-RECTANGLE
+build: from_expr
+geo.rect.vert.white
+cp: U+25AF
+@end
+
+# U+25B0 BLACK PARALLELOGRAM
+@char 7 BLACK-PARALLELOGRAM
+build: from_expr
+geo.parallelogram.black
+cp: U+25B0
+@end
+
+# U+25B1 WHITE PARALLELOGRAM
+@char 8 WHITE-PARALLELOGRAM
+build: from_expr
+geo.parallelogram.white
+cp: U+25B1
+@end
+
+# U+25B2 BLACK UP POINTING TRIANGLE
+@char 9 BLACK-UP-POINTING-TRIANGLE
+build: from_expr
+geo.triangle.up.black
+cp: U+25B2
+@end
+
+# U+25B3 WHITE UP POINTING TRIANGLE
+@char ; WHITE-UP-POINTING-TRIANGLE
+build: from_expr
+geo.triangle.up.white
+cp: U+25B3
+@end
+
+# U+25B4 BLACK UP POINTING SMALL TRIANGLE
+@char ? BLACK-UP-POINTING-SMALL-TRIANGLE
+build: from_expr
+geo.triangle.up.small.black
+cp: U+25B4
+@end
+
+# U+25B5 WHITE UP POINTING SMALL TRIANGLE
+@char @ WHITE-UP-POINTING-SMALL-TRIANGLE
+build: from_expr
+geo.triangle.up.small.white
+cp: U+25B5
+@end
+
+# U+25B6 BLACK RIGHT POINTING TRIANGLE
+@char A BLACK-RIGHT-POINTING-TRIANGLE
+build: from_expr
+geo.triangle.right.black
+cp: U+25B6
+@end
+
+# U+25B7 WHITE RIGHT POINTING TRIANGLE
+@char B WHITE-RIGHT-POINTING-TRIANGLE
+build: from_expr
+geo.triangle.right.white
+cp: U+25B7
+@end
+
+# U+25B8 BLACK RIGHT POINTING SMALL TRIANGLE
+@char C BLACK-RIGHT-POINTING-SMALL-TRIANGLE
+build: from_expr
+geo.triangle.right.small.black
+cp: U+25B8
+@end
+
+# U+25B9 WHITE RIGHT POINTING SMALL TRIANGLE
+@char D WHITE-RIGHT-POINTING-SMALL-TRIANGLE
+build: from_expr
+geo.triangle.right.small.white
+cp: U+25B9
+@end
+
+# U+25BA BLACK RIGHT POINTING POINTER
+@char E BLACK-RIGHT-POINTING-POINTER
+build: from_expr
+geo.triangle.right.black
+cp: U+25BA
+@end
+
+# U+25BB WHITE RIGHT POINTING POINTER
+@char F WHITE-RIGHT-POINTING-POINTER
+build: from_expr
+geo.triangle.right.white
+cp: U+25BB
+@end
+
+# U+25BC BLACK DOWN POINTING TRIANGLE
+@char G BLACK-DOWN-POINTING-TRIANGLE
+build: from_expr
+geo.triangle.down.black
+cp: U+25BC
+@end
+
+# U+25BD WHITE DOWN POINTING TRIANGLE
+@char H WHITE-DOWN-POINTING-TRIANGLE
+build: from_expr
+geo.triangle.down.white
+cp: U+25BD
+@end
+
+# U+25BE BLACK DOWN POINTING SMALL TRIANGLE
+@char I BLACK-DOWN-POINTING-SMALL-TRIANGLE
+build: from_expr
+geo.triangle.down.small.black
+cp: U+25BE
+@end
+
+# U+25BF WHITE DOWN POINTING SMALL TRIANGLE
+@char J WHITE-DOWN-POINTING-SMALL-TRIANGLE
+build: from_expr
+geo.triangle.down.small.white
+cp: U+25BF
+@end
+
+# U+25C0 BLACK LEFT POINTING TRIANGLE
+@char K BLACK-LEFT-POINTING-TRIANGLE
+build: from_expr
+geo.triangle.left.black
+cp: U+25C0
+@end
+
+# U+25C1 WHITE LEFT POINTING TRIANGLE
+@char L WHITE-LEFT-POINTING-TRIANGLE
+build: from_expr
+geo.triangle.left.white
+cp: U+25C1
+@end
+
+# U+25C2 BLACK LEFT POINTING SMALL TRIANGLE
+@char M BLACK-LEFT-POINTING-SMALL-TRIANGLE
+build: from_expr
+geo.triangle.left.small.black
+cp: U+25C2
+@end
+
+# U+25C3 WHITE LEFT POINTING SMALL TRIANGLE
+@char N WHITE-LEFT-POINTING-SMALL-TRIANGLE
+build: from_expr
+geo.triangle.left.small.white
+cp: U+25C3
+@end
+
+# U+25C4 BLACK LEFT POINTING POINTER
+@char O BLACK-LEFT-POINTING-POINTER
+build: from_expr
+geo.triangle.left.black
+cp: U+25C4
+@end
+
+# U+25C5 WHITE LEFT POINTING POINTER
+@char P WHITE-LEFT-POINTING-POINTER
+build: from_expr
+geo.triangle.left.white
+cp: U+25C5
+@end
+
+# U+25C6 BLACK DIAMOND
+@char Q BLACK-DIAMOND
+build: from_expr
+geo.diamond.black
+cp: U+25C6
+@end
+
+# U+25C7 WHITE DIAMOND
+@char R WHITE-DIAMOND
+build: from_expr
+geo.diamond.white
+cp: U+25C7
+@end
+
+# U+25C8 WHITE DIAMOND CONTAINING BLACK SMALL DIAMOND
+@char S WHITE-DIAMOND-CONTAINING-BLACK-SMALL-DIAMOND
+build: from_expr
+FRAME(geo.diamond.white, geo.diamond.small.black)
+cp: U+25C8
+@end
+
+# U+25C9 FISHEYE
+@char T FISHEYE
+build: from_expr
+FRAME(geo.circle.white, geo.bullseye)
+cp: U+25C9
+@end
+
+# U+25CA LOZENGE
+@char U LOZENGE
+build: from_expr
+geo.lozenge.white
+cp: U+25CA
+@end
+
+# U+25CB WHITE CIRCLE
+@char V WHITE-CIRCLE
+build: from_expr
+geo.circle.white
+cp: U+25CB
+@end
+
+# U+25CC DOTTED CIRCLE
+@char W DOTTED-CIRCLE
+build: from_expr
+geo.circle.white
+cp: U+25CC
+@end
+
+# U+25CD CIRCLE WITH VERTICAL FILL
+@char X CIRCLE-WITH-VERTICAL-FILL
+build: from_expr
+geo.circle.black
+cp: U+25CD
+@end
+
+# U+25CE BULLSEYE
+@char Y BULLSEYE
+build: from_expr
+FRAME(geo.circle.white, geo.circle.small.white)
+cp: U+25CE
+@end
+
+# U+25CF BLACK CIRCLE
+@char Z BLACK-CIRCLE
+build: from_expr
+geo.circle.black
+cp: U+25CF
+@end
+
+# U+25D0 CIRCLE WITH LEFT HALF BLACK
+@char ^ CIRCLE-WITH-LEFT-HALF-BLACK
+build: from_expr
+FRAME(geo.circle.white, geo.circle.half.left.black)
+cp: U+25D0
+@end
+
+# U+25D1 CIRCLE WITH RIGHT HALF BLACK
+@char _ CIRCLE-WITH-RIGHT-HALF-BLACK
+build: from_expr
+FRAME(geo.circle.white, geo.circle.half.right.black)
+cp: U+25D1
+@end
+
+# U+25D2 CIRCLE WITH LOWER HALF BLACK
+@char ` CIRCLE-WITH-LOWER-HALF-BLACK
+build: from_expr
+FRAME(geo.circle.white, geo.circle.half.bot.black)
+cp: U+25D2
+@end
+
+# U+25D3 CIRCLE WITH UPPER HALF BLACK
+@char a CIRCLE-WITH-UPPER-HALF-BLACK
+build: from_expr
+FRAME(geo.circle.white, geo.circle.half.top.black)
+cp: U+25D3
+@end
+
+# U+25D4 CIRCLE WITH UPPER RIGHT QUADRANT BLACK
+@char b CIRCLE-WITH-UPPER-RIGHT-QUADRANT-BLACK
+build: from_expr
+FRAME(geo.circle.white, geo.circle.half.right.black)
+cp: U+25D4
+@end
+
+# U+25D5 CIRCLE WITH ALL BUT UPPER LEFT QUADRANT BLACK
+@char c CIRCLE-WITH-ALL-BUT-UPPER-LEFT-QUADRANT-BLACK
+build: from_expr
+geo.circle.black
+cp: U+25D5
+@end
+
+# U+25D6 LEFT HALF BLACK CIRCLE
+@char d LEFT-HALF-BLACK-CIRCLE
+build: from_expr
+geo.circle.half.left.black
+cp: U+25D6
+@end
+
+# U+25D7 RIGHT HALF BLACK CIRCLE
+@char e RIGHT-HALF-BLACK-CIRCLE
+build: from_expr
+geo.circle.half.right.black
+cp: U+25D7
+@end
+
+# U+25D8 INVERSE BULLET
+@char f INVERSE-BULLET
+build: from_expr
+geo.circle.white
+cp: U+25D8
+@end
+
+# U+25D9 INVERSE WHITE CIRCLE
+@char g INVERSE-WHITE-CIRCLE
+build: from_expr
+geo.circle.black
+cp: U+25D9
+@end
+
+# U+25DA UPPER HALF INVERSE WHITE CIRCLE
+@char h UPPER-HALF-INVERSE-WHITE-CIRCLE
+build: from_expr
+geo.circle.half.top.black
+cp: U+25DA
+@end
+
+# U+25DB LOWER HALF INVERSE WHITE CIRCLE
+@char i LOWER-HALF-INVERSE-WHITE-CIRCLE
+build: from_expr
+geo.circle.half.bot.black
+cp: U+25DB
+@end
+
+# U+25EF LARGE CIRCLE
+@char j LARGE-CIRCLE
+build: from_expr
+geo.circle.white
+cp: U+25EF
+@end
+
+# U+25E2 BLACK LOWER RIGHT TRIANGLE
+@char k BLACK-LOWER-RIGHT-TRIANGLE
+build: from_expr
+geo.triangle.down.small.black
+cp: U+25E2
+@end
+
+# U+25E3 BLACK LOWER LEFT TRIANGLE
+@char l BLACK-LOWER-LEFT-TRIANGLE
+build: from_expr
+geo.triangle.down.small.black
+cp: U+25E3
+@end
+
+# U+25E4 BLACK UPPER LEFT TRIANGLE
+@char m BLACK-UPPER-LEFT-TRIANGLE
+build: from_expr
+geo.triangle.up.small.black
+cp: U+25E4
+@end
+
+# U+25E5 BLACK UPPER RIGHT TRIANGLE
+@char n BLACK-UPPER-RIGHT-TRIANGLE
+build: from_expr
+geo.triangle.up.small.black
+cp: U+25E5
+@end
+
+# U+25E6 WHITE BULLET
+@char o WHITE-BULLET
+build: from_expr
+geo.circle.small.white
+cp: U+25E6
+@end
+
+# U+2605 BLACK STAR
+@char p BLACK-STAR
+build: from_expr
+geo.star.five.black
+cp: U+2605
+@end
+
+# U+2606 WHITE STAR
+@char q WHITE-STAR
+build: from_expr
+geo.star.five.white
+cp: U+2606
+@end
+
+# U+25F0 WHITE SQUARE WITH UPPER LEFT QUADRANT
+@char r WHITE-SQUARE-WITH-UPPER-LEFT-QUADRANT
+build: from_expr
+geo.square.white
+cp: U+25F0
+@end
+
+# U+25F1 WHITE SQUARE WITH LOWER LEFT QUADRANT
+@char s WHITE-SQUARE-WITH-LOWER-LEFT-QUADRANT
+build: from_expr
+geo.square.white
+cp: U+25F1
+@end
+
+# U+25F2 WHITE SQUARE WITH LOWER RIGHT QUADRANT
+@char t WHITE-SQUARE-WITH-LOWER-RIGHT-QUADRANT
+build: from_expr
+geo.square.white
+cp: U+25F2
+@end
+
+# U+25F3 WHITE SQUARE WITH UPPER RIGHT QUADRANT
+@char u WHITE-SQUARE-WITH-UPPER-RIGHT-QUADRANT
+build: from_expr
+geo.square.white
+cp: U+25F3
+@end
+
+# U+25F4 WHITE CIRCLE WITH UPPER LEFT QUADRANT
+@char v WHITE-CIRCLE-WITH-UPPER-LEFT-QUADRANT
+build: from_expr
+geo.circle.white
+cp: U+25F4
+@end
+
+# U+25F5 WHITE CIRCLE WITH LOWER LEFT QUADRANT
+@char w WHITE-CIRCLE-WITH-LOWER-LEFT-QUADRANT
+build: from_expr
+geo.circle.white
+cp: U+25F5
+@end
+
+# U+25F6 WHITE CIRCLE WITH LOWER RIGHT QUADRANT
+@char x WHITE-CIRCLE-WITH-LOWER-RIGHT-QUADRANT
+build: from_expr
+geo.circle.white
+cp: U+25F6
+@end
+
+# U+25F7 WHITE CIRCLE WITH UPPER RIGHT QUADRANT
+@char y WHITE-CIRCLE-WITH-UPPER-RIGHT-QUADRANT
+build: from_expr
+geo.circle.white
+cp: U+25F7
+@end
+
+# U+25F8 UPPER LEFT TRIANGLE
+@char z UPPER-LEFT-TRIANGLE
+build: from_expr
+geo.triangle.up.small.white
+cp: U+25F8
+@end
+
+# U+25F9 UPPER RIGHT TRIANGLE
+@char { UPPER-RIGHT-TRIANGLE
+build: from_expr
+geo.triangle.up.small.white
+cp: U+25F9
+@end
+
+# U+25FA LOWER LEFT TRIANGLE
+@char | LOWER-LEFT-TRIANGLE
+build: from_expr
+geo.triangle.down.small.white
+cp: U+25FA
+@end
+
+# U+25FB WHITE MEDIUM SQUARE
+@char } WHITE-MEDIUM-SQUARE
+build: from_expr
+geo.square.white
+cp: U+25FB
+@end
+
+# U+25FC BLACK MEDIUM SQUARE
+@char ~ BLACK-MEDIUM-SQUARE
+build: from_expr
+geo.square.black
+cp: U+25FC
+@end
+
+# U+25FD WHITE MEDIUM SMALL SQUARE
+@char " WHITE-MEDIUM-SMALL-SQUARE
+build: from_expr
+geo.square.small.white
+cp: U+25FD
+@end
+
+# U+25FE BLACK MEDIUM SMALL SQUARE
+@char \ BLACK-MEDIUM-SMALL-SQUARE
+build: from_expr
+geo.square.small.black
+cp: U+25FE
+@end
+
+# U+25FF LOWER RIGHT TRIANGLE
+@char \ LOWER-RIGHT-TRIANGLE
+build: from_expr
+geo.triangle.down.small.white
+cp: U+25FF
+@end
+
+# =============================================================================
+# END OF GEOMETRIC SHAPES CHARACTER LIBRARY
+# =============================================================================

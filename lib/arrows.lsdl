@@ -1,0 +1,348 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Arrow Character Library
+# =============================================================================
+#
+# This file defines common arrow characters from the Arrows block (U+2190-21FF).
+#
+# Characters defined (18 total):
+#   - Single arrows: ← ↑ → ↓ ↔ ↕ ↖ ↗ ↘ ↙
+#   - Double arrows: ⇐ ⇑ ⇒ ⇓ ⇔ ⇕
+#   - Hook arrows: ↩ ↪
+#
+# =============================================================================
+
+# =============================================================================
+# ARROW SHAFT ELEMENTS
+# =============================================================================
+
+# arrow.shaft.horiz - Horizontal arrow shaft
+@elem arrow.shaft.horiz
+zone: x-height
+path: p1 p2
+p1 = [1,6]
+p2 = [11,6]
+close: false
+width: 1
+anchors: left=[1,6] right=[11,6] mid=[6,6]
+@end
+
+# arrow.shaft.vert - Vertical arrow shaft
+@elem arrow.shaft.vert
+zone: x-height
+path: p1 p2
+p1 = [6,2]
+p2 = [6,10]
+close: false
+width: 1
+anchors: top=[6,2] base=[6,10] mid=[6,6]
+@end
+
+# arrow.shaft.diag.ne - Diagonal shaft, lower-left to upper-right
+@elem arrow.shaft.diag.ne
+zone: x-height
+path: p1 p2
+p1 = [2,10]
+p2 = [10,2]
+close: false
+width: 1
+anchors: top=[10,2] base=[2,10] mid=[6,6]
+@end
+
+# arrow.shaft.diag.se - Diagonal shaft, upper-left to lower-right
+@elem arrow.shaft.diag.se
+zone: x-height
+path: p1 p2
+p1 = [2,2]
+p2 = [10,10]
+close: false
+width: 1
+anchors: top=[2,2] base=[10,10] mid=[6,6]
+@end
+
+# =============================================================================
+# SINGLE ARROW HEAD ELEMENTS
+# =============================================================================
+
+# arrow.head.right - Right-pointing arrowhead (>)
+@elem arrow.head.right
+zone: x-height
+path: p1 p2 p3
+p1 = [8,3]
+p2 = [11,6]
+p3 = [8,9]
+close: false
+width: 1
+anchors: tip=[11,6] attach=[8,6]
+@end
+
+# arrow.head.left - Left-pointing arrowhead (<)
+@elem arrow.head.left
+zone: x-height
+path: p1 p2 p3
+p1 = [4,3]
+p2 = [1,6]
+p3 = [4,9]
+close: false
+width: 1
+anchors: tip=[1,6] attach=[4,6]
+@end
+
+# arrow.head.up - Upward-pointing arrowhead (^)
+@elem arrow.head.up
+zone: x-height
+path: p1 p2 p3
+p1 = [3,5]
+p2 = [6,2]
+p3 = [9,5]
+close: false
+width: 1
+anchors: tip=[6,2] attach=[6,5]
+@end
+
+# arrow.head.down - Downward-pointing arrowhead (v)
+@elem arrow.head.down
+zone: x-height
+path: p1 p2 p3
+p1 = [3,7]
+p2 = [6,10]
+p3 = [9,7]
+close: false
+width: 1
+anchors: tip=[6,10] attach=[6,7]
+@end
+
+# arrow.head.ne - Northeast-pointing arrowhead
+@elem arrow.head.ne
+zone: x-height
+path: p1 p2 p3
+p1 = [7,2]
+p2 = [10,2]
+p3 = [10,5]
+close: false
+width: 1
+anchors: tip=[10,2] attach=[8,4]
+@end
+
+# arrow.head.nw - Northwest-pointing arrowhead
+@elem arrow.head.nw
+zone: x-height
+path: p1 p2 p3
+p1 = [2,5]
+p2 = [2,2]
+p3 = [5,2]
+close: false
+width: 1
+anchors: tip=[2,2] attach=[4,4]
+@end
+
+# arrow.head.se - Southeast-pointing arrowhead
+@elem arrow.head.se
+zone: x-height
+path: p1 p2 p3
+p1 = [10,7]
+p2 = [10,10]
+p3 = [7,10]
+close: false
+width: 1
+anchors: tip=[10,10] attach=[8,8]
+@end
+
+# arrow.head.sw - Southwest-pointing arrowhead
+@elem arrow.head.sw
+zone: x-height
+path: p1 p2 p3
+p1 = [5,10]
+p2 = [2,10]
+p3 = [2,7]
+close: false
+width: 1
+anchors: tip=[2,10] attach=[4,8]
+@end
+
+# =============================================================================
+# DOUBLE ARROW HEAD ELEMENTS
+# =============================================================================
+
+# arrow.double.head.right - Right-pointing double arrowhead (>>)
+@elem arrow.double.head.right
+zone: x-height
+path: p1 p2 p3 p4 p5 p6
+p1 = [6,3]
+p2 = [9,6]
+p3 = [6,9]
+p4 = [8,9]
+p5 = [11,6]
+p6 = [8,3]
+close: false
+width: 1
+anchors: tip=[11,6] attach=[6,6]
+@end
+
+# arrow.double.head.left - Left-pointing double arrowhead (<<)
+@elem arrow.double.head.left
+zone: x-height
+path: p1 p2 p3 p4 p5 p6
+p1 = [6,3]
+p2 = [3,6]
+p3 = [6,9]
+p4 = [4,9]
+p5 = [1,6]
+p6 = [4,3]
+close: false
+width: 1
+anchors: tip=[1,6] attach=[6,6]
+@end
+
+# arrow.double.head.up - Upward-pointing double arrowhead
+@elem arrow.double.head.up
+zone: x-height
+path: p1 p2 p3 p4 p5 p6
+p1 = [3,6]
+p2 = [6,3]
+p3 = [9,6]
+p4 = [9,4]
+p5 = [6,1]
+p6 = [3,4]
+close: false
+width: 1
+anchors: tip=[6,1] attach=[6,6]
+@end
+
+# arrow.double.head.down - Downward-pointing double arrowhead
+@elem arrow.double.head.down
+zone: x-height
+path: p1 p2 p3 p4 p5 p6
+p1 = [3,6]
+p2 = [6,9]
+p3 = [9,6]
+p4 = [9,8]
+p5 = [6,11]
+p6 = [3,8]
+close: false
+width: 1
+anchors: tip=[6,11] attach=[6,6]
+@end
+
+# =============================================================================
+# HOOK ARROW ELEMENTS
+# =============================================================================
+
+# arrow.hook.left - Left-curving hook for arrow
+@elem arrow.hook.left
+zone: x-height
+path: p1 p2 p3
+p1 = [11,6]
+p2 = C([11,9] [6,9])
+p3 = [2,9]
+close: false
+width: 1
+anchors: attach=[11,6] end=[2,9]
+@end
+
+# arrow.hook.right - Right-curving hook for arrow
+@elem arrow.hook.right
+zone: x-height
+path: p1 p2 p3
+p1 = [1,6]
+p2 = C([1,9] [6,9])
+p3 = [10,9]
+close: false
+width: 1
+anchors: attach=[1,6] end=[10,9]
+@end
+
+# arrow.head.left.low - Left arrowhead positioned low for hook arrows
+@elem arrow.head.left.low
+zone: x-height
+path: p1 p2 p3
+p1 = [5,6]
+p2 = [2,9]
+p3 = [5,12]
+close: false
+width: 1
+anchors: tip=[2,9] attach=[5,9]
+@end
+
+# arrow.head.right.low - Right arrowhead positioned low for hook arrows
+@elem arrow.head.right.low
+zone: x-height
+path: p1 p2 p3
+p1 = [7,6]
+p2 = [10,9]
+p3 = [7,12]
+close: false
+width: 1
+anchors: tip=[10,9] attach=[7,9]
+@end
+
+# =============================================================================
+# SINGLE ARROW CHARACTERS (U+2190-2199)
+# =============================================================================
+
+# U+2190 LEFTWARDS ARROW
+←  LEFTWARDS-ARROW = FRAME(arrow.shaft.horiz, arrow.head.left) cp:U+2190
+
+# U+2191 UPWARDS ARROW
+↑  UPWARDS-ARROW = FRAME(arrow.shaft.vert, arrow.head.up) cp:U+2191
+
+# U+2192 RIGHTWARDS ARROW
+→  RIGHTWARDS-ARROW = FRAME(arrow.shaft.horiz, arrow.head.right) cp:U+2192
+
+# U+2193 DOWNWARDS ARROW
+↓  DOWNWARDS-ARROW = FRAME(arrow.shaft.vert, arrow.head.down) cp:U+2193
+
+# U+2194 LEFT RIGHT ARROW
+↔  LEFT-RIGHT-ARROW = FRAME(arrow.head.left, arrow.shaft.horiz, arrow.head.right) cp:U+2194
+
+# U+2195 UP DOWN ARROW
+↕  UP-DOWN-ARROW = FRAME(arrow.head.up, arrow.shaft.vert, arrow.head.down) cp:U+2195
+
+# U+2196 NORTH WEST ARROW
+↖  NORTH-WEST-ARROW = FRAME(arrow.shaft.diag.se, arrow.head.nw) cp:U+2196
+
+# U+2197 NORTH EAST ARROW
+↗  NORTH-EAST-ARROW = FRAME(arrow.shaft.diag.ne, arrow.head.ne) cp:U+2197
+
+# U+2198 SOUTH EAST ARROW
+↘  SOUTH-EAST-ARROW = FRAME(arrow.shaft.diag.se, arrow.head.se) cp:U+2198
+
+# U+2199 SOUTH WEST ARROW
+↙  SOUTH-WEST-ARROW = FRAME(arrow.shaft.diag.ne, arrow.head.sw) cp:U+2199
+
+# =============================================================================
+# DOUBLE ARROW CHARACTERS (U+21D0-21D5)
+# =============================================================================
+
+# U+21D0 LEFTWARDS DOUBLE ARROW
+⇐  LEFTWARDS-DOUBLE-ARROW = FRAME(arrow.shaft.horiz, arrow.double.head.left) cp:U+21D0
+
+# U+21D1 UPWARDS DOUBLE ARROW
+⇑  UPWARDS-DOUBLE-ARROW = FRAME(arrow.shaft.vert, arrow.double.head.up) cp:U+21D1
+
+# U+21D2 RIGHTWARDS DOUBLE ARROW
+⇒  RIGHTWARDS-DOUBLE-ARROW = FRAME(arrow.shaft.horiz, arrow.double.head.right) cp:U+21D2
+
+# U+21D3 DOWNWARDS DOUBLE ARROW
+⇓  DOWNWARDS-DOUBLE-ARROW = FRAME(arrow.shaft.vert, arrow.double.head.down) cp:U+21D3
+
+# U+21D4 LEFT RIGHT DOUBLE ARROW
+⇔  LEFT-RIGHT-DOUBLE-ARROW = FRAME(arrow.double.head.left, arrow.shaft.horiz, arrow.double.head.right) cp:U+21D4
+
+# U+21D5 UP DOWN DOUBLE ARROW
+⇕  UP-DOWN-DOUBLE-ARROW = FRAME(arrow.double.head.up, arrow.shaft.vert, arrow.double.head.down) cp:U+21D5
+
+# =============================================================================
+# HOOK ARROW CHARACTERS (U+21A9-21AA)
+# =============================================================================
+
+# U+21A9 LEFTWARDS ARROW WITH HOOK
+↩  LEFTWARDS-ARROW-WITH-HOOK = FRAME(arrow.hook.left, arrow.head.left.low) cp:U+21A9
+
+# U+21AA RIGHTWARDS ARROW WITH HOOK
+↪  RIGHTWARDS-ARROW-WITH-HOOK = FRAME(arrow.hook.right, arrow.head.right.low) cp:U+21AA
+
+# =============================================================================
+# END OF ARROW CHARACTER LIBRARY
+# =============================================================================

@@ -1,0 +1,999 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Mathematical Operators Library
+# =============================================================================
+#
+# This file defines mathematical operators from Unicode block U+2200-22FF
+# (Mathematical Operators). Approximately 50 most common operators.
+#
+# Note: Since U+2200-22FF is outside the standard LITERAL_CHAR ranges,
+# all character definitions use @char block form with cp: metadata.
+# Placeholder characters from the ASCII range are used for the literal char.
+#
+# Organization:
+#   - Local elements for mathematical shapes
+#   - Logic and set theory operators (U+2200-2209)
+#   - Arithmetic operators (U+220F-221E)
+#   - Comparison and relation operators (U+2260-2265)
+#   - Set relation operators (U+2282-2287)
+#   - Additional operators
+#
+# =============================================================================
+
+# =============================================================================
+# LOCAL MATHEMATICAL ELEMENTS
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Quantifier and Logic Elements
+# -----------------------------------------------------------------------------
+
+# forall - Inverted A shape (universal quantifier)
+@elem forall.shape
+zone: cap
+path: p1 p2 p3 p4
+p1 = [0,0]
+p2 = [6,8]
+p3 = [12,0]
+p4 = [3,4]
+close: false
+width: 1
+anchors: top-left=[0,0] top-right=[12,0] base=[6,8] mid=[6,4]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+# forall.crossbar - Crossbar for forall
+@elem forall.crossbar
+zone: cap
+path: p1 p2
+p1 = [3,4]
+p2 = [9,4]
+close: false
+width: 1
+anchors: left=[3,4] right=[9,4]
+@end
+
+# exists - Reflected E shape (existential quantifier)
+@elem exists.shape
+zone: cap
+path: p1 p2 p3 p4 p5 p6 p7
+p1 = [10,0]
+p2 = [2,0]
+p3 = [2,4]
+p4 = [8,4]
+p5 = [2,4]
+p6 = [2,8]
+p7 = [10,8]
+close: false
+width: 1
+anchors: top=[6,0] mid=[5,4] base=[6,8]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+# nabla - Inverted triangle (del/gradient operator)
+@elem nabla.shape
+zone: cap
+path: p1 p2 p3
+p1 = [0,0]
+p2 = [12,0]
+p3 = [6,8]
+close: true
+width: 1
+anchors: top-left=[0,0] top-right=[12,0] base=[6,8] mid=[6,4]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+# element-of - Curved E shape for set membership
+@elem element.shape
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [10,1]
+p2 = C([10,0] [2,0] [2,4])
+p3 = [8,4]
+p4 = C([2,4] [2,8] [10,8])
+p5 = [10,7]
+close: false
+width: 1
+anchors: top=[6,0] mid=[5,4] base=[6,8]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+# contains - Mirrored element-of shape
+@elem contains.shape
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [2,1]
+p2 = C([2,0] [10,0] [10,4])
+p3 = [4,4]
+p4 = C([10,4] [10,8] [2,8])
+p5 = [2,7]
+close: false
+width: 1
+anchors: top=[6,0] mid=[7,4] base=[6,8]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Summation and Product Elements
+# -----------------------------------------------------------------------------
+
+# sigma.large - Large sigma shape for n-ary summation
+@elem sigma.large
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [10,0]
+p2 = [2,0]
+p3 = [6,4]
+p4 = [2,8]
+p5 = [10,8]
+close: false
+width: 1
+anchors: top-left=[2,0] top-right=[10,0] mid=[6,4]
+  base-left=[2,8] base-right=[10,8]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+# pi.large - Large pi shape for n-ary product
+@elem pi.large
+zone: cap
+path: p1 p2 p3 p4
+p1 = [2,8]
+p2 = [2,0]
+p3 = [10,0]
+p4 = [10,8]
+close: false
+width: 1
+anchors: top-left=[2,0] top-right=[10,0]
+  base-left=[2,8] base-right=[10,8]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Root and Radical Elements
+# -----------------------------------------------------------------------------
+
+# radical.check - Check portion of square root
+@elem radical.check
+zone: cap
+path: p1 p2 p3
+p1 = [0,5]
+p2 = [3,8]
+p3 = [6,0]
+close: false
+width: 1
+anchors: start=[0,5] vertex=[3,8] top=[6,0]
+@end
+
+# radical.bar - Horizontal bar of square root (vinculum)
+@elem radical.bar
+zone: cap
+path: p1 p2
+p1 = [6,0]
+p2 = [12,0]
+close: false
+width: 1
+anchors: left=[6,0] right=[12,0]
+@end
+
+# -----------------------------------------------------------------------------
+# Infinity and Special Symbols
+# -----------------------------------------------------------------------------
+
+# infinity.shape - Lemniscate (figure-8 on side)
+@elem infinity.shape
+zone: x-height
+path: p1 p2 p3 p4 p5 p6 p7 p8
+p1 = [6,6]
+p2 = C([4,4] [2,4])
+p3 = C([0,4] [0,6])
+p4 = C([0,8] [2,8])
+p5 = C([4,8] [6,6])
+p6 = C([8,4] [10,4])
+p7 = C([12,4] [12,6])
+p8 = C([12,8] [10,8])
+close: true
+width: 1
+anchors: mid=[6,6] left=[0,6] right=[12,6]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+# proportional.shape - Proportional-to symbol (open figure-8)
+@elem proportional.shape
+zone: x-height
+path: p1 p2 p3 p4 p5 p6
+p1 = [0,6]
+p2 = C([0,4] [2,4])
+p3 = C([4,4] [6,6])
+p4 = C([8,8] [10,8])
+p5 = C([12,8] [12,6])
+p6 = C([12,4] [10,4])
+close: false
+width: 1
+anchors: mid=[6,6] left=[0,6] right=[12,6]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+# angle.shape - Angle symbol
+@elem angle.shape
+zone: cap
+path: p1 p2 p3
+p1 = [10,2]
+p2 = [2,8]
+p3 = [10,8]
+close: false
+width: 1
+anchors: top=[10,2] vertex=[2,8] right=[10,8]
+  mark-above=[6,0] mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Integral Elements
+# -----------------------------------------------------------------------------
+
+# integral.shape - Elongated S-curve for integral sign
+@elem integral.shape
+zone: full
+path: p1 p2 p3 p4 p5
+p1 = [8,1]
+p2 = C([8,0] [6,0])
+p3 = C([4,0] [4,6])
+p4 = C([4,12] [6,12])
+p5 = C([8,12] [8,11])
+close: false
+width: 1
+anchors: top=[7,0] base=[7,12] mid=[4,6]
+  mark-above=[6,0] mark-below=[6,12]
+@end
+
+# -----------------------------------------------------------------------------
+# Logical Operator Elements
+# -----------------------------------------------------------------------------
+
+# logical-and.shape - Wedge shape (conjunction)
+@elem logical-and.shape
+zone: x-height
+path: p1 p2 p3
+p1 = [0,8]
+p2 = [6,4]
+p3 = [12,8]
+close: false
+width: 1
+anchors: left=[0,8] top=[6,4] right=[12,8]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+# logical-or.shape - Inverted wedge (disjunction)
+@elem logical-or.shape
+zone: x-height
+path: p1 p2 p3
+p1 = [0,4]
+p2 = [6,8]
+p3 = [12,4]
+close: false
+width: 1
+anchors: left=[0,4] base=[6,8] right=[12,4]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Set Operation Elements
+# -----------------------------------------------------------------------------
+
+# intersection.shape - Cap shape (set intersection)
+@elem intersection.shape
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [0,8]
+p2 = [0,5]
+p3 = C([0,4] [6,4])
+p4 = C([12,4] [12,5])
+p5 = [12,8]
+close: false
+width: 1
+anchors: left=[0,6] top=[6,4] right=[12,6]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+# union.shape - Cup shape (set union)
+@elem union.shape
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [0,4]
+p2 = [0,7]
+p3 = C([0,8] [6,8])
+p4 = C([12,8] [12,7])
+p5 = [12,4]
+close: false
+width: 1
+anchors: left=[0,6] base=[6,8] right=[12,6]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Comparison and Relation Elements
+# -----------------------------------------------------------------------------
+
+# equals.upper - Upper bar of equals
+@elem equals.upper
+zone: x-height
+path: p1 p2
+p1 = [2,5]
+p2 = [10,5]
+close: false
+width: 1
+anchors: left=[2,5] right=[10,5] mid=[6,5]
+@end
+
+# equals.lower - Lower bar of equals
+@elem equals.lower
+zone: x-height
+path: p1 p2
+p1 = [2,7]
+p2 = [10,7]
+close: false
+width: 1
+anchors: left=[2,7] right=[10,7] mid=[6,7]
+@end
+
+# less-than.shape - Less than angle
+@elem less-than.shape
+zone: x-height
+path: p1 p2 p3
+p1 = [10,4]
+p2 = [2,6]
+p3 = [10,8]
+close: false
+width: 1
+anchors: top-right=[10,4] left=[2,6] base-right=[10,8]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+# greater-than.shape - Greater than angle
+@elem greater-than.shape
+zone: x-height
+path: p1 p2 p3
+p1 = [2,4]
+p2 = [10,6]
+p3 = [2,8]
+close: false
+width: 1
+anchors: top-left=[2,4] right=[10,6] base-left=[2,8]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+# underline.short - Short underline for less/greater-equal
+@elem underline.short
+zone: x-height
+path: p1 p2
+p1 = [2,9]
+p2 = [10,9]
+close: false
+width: 1
+anchors: left=[2,9] right=[10,9] mid=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Subset and Superset Elements
+# -----------------------------------------------------------------------------
+
+# subset.shape - Subset curve (opening right)
+@elem subset.shape
+zone: x-height
+path: p1 p2 p3
+p1 = [10,4]
+p2 = C([10,4] [2,4] [2,6])
+p3 = C([2,8] [10,8] [10,8])
+close: false
+width: 1
+anchors: top=[6,4] left=[2,6] base=[6,8]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+# superset.shape - Superset curve (opening left)
+@elem superset.shape
+zone: x-height
+path: p1 p2 p3
+p1 = [2,4]
+p2 = C([2,4] [10,4] [10,6])
+p3 = C([10,8] [2,8] [2,8])
+close: false
+width: 1
+anchors: top=[6,4] right=[10,6] base=[6,8]
+  mark-above=[6,3] mark-below=[6,9]
+@end
+
+# -----------------------------------------------------------------------------
+# Stroke and Negation Elements
+# -----------------------------------------------------------------------------
+
+# negation.stroke - Diagonal stroke for negation
+@elem negation.stroke
+zone: x-height
+path: p1 p2
+p1 = [3,8]
+p2 = [9,4]
+close: false
+width: 1
+anchors: base=[3,8] top=[9,4] mid=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# Asterisk Operator
+# -----------------------------------------------------------------------------
+
+# asterisk.op - Vertical stroke of asterisk
+@elem asterisk.op
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+close: false
+width: 1
+anchors: top=[6,4] base=[6,8] mid=[6,6]
+@end
+
+# asterisk.diag1 - First diagonal of asterisk
+@elem asterisk.diag1
+zone: x-height
+path: p1 p2
+p1 = [3,5]
+p2 = [9,7]
+close: false
+width: 1
+anchors: top-left=[3,5] base-right=[9,7]
+@end
+
+# asterisk.diag2 - Second diagonal of asterisk
+@elem asterisk.diag2
+zone: x-height
+path: p1 p2
+p1 = [9,5]
+p2 = [3,7]
+close: false
+width: 1
+anchors: top-right=[9,5] base-left=[3,7]
+@end
+
+# -----------------------------------------------------------------------------
+# Minus Sign (distinct from hyphen)
+# -----------------------------------------------------------------------------
+
+# minus.sign - Horizontal bar for minus sign
+@elem minus.sign
+zone: x-height
+path: p1 p2
+p1 = [2,6]
+p2 = [10,6]
+close: false
+width: 1
+anchors: left=[2,6] right=[10,6] mid=[6,6]
+  mark-above=[6,5] mark-below=[6,7]
+@end
+
+# -----------------------------------------------------------------------------
+# Division Slash
+# -----------------------------------------------------------------------------
+
+# division.slash - Forward slash for division
+@elem division.slash
+zone: cap
+path: p1 p2
+p1 = [9,0]
+p2 = [3,8]
+close: false
+width: 1
+anchors: top=[9,0] base=[3,8] mid=[6,4]
+@end
+
+# -----------------------------------------------------------------------------
+# Empty Set Elements
+# -----------------------------------------------------------------------------
+
+# empty-set.circle - Circle for empty set
+@elem empty-set.circle
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [6,4]
+p2 = C([2,4] [2,6])
+p3 = C([2,8] [6,8])
+p4 = C([10,8] [10,6])
+p5 = C([10,4] [6,4])
+close: true
+width: 1
+anchors: top=[6,4] base=[6,8] left=[2,6] right=[10,6]
+  mid=[6,6] mark-above=[6,3] mark-below=[6,9]
+@end
+
+# empty-set.stroke - Diagonal stroke for empty set
+@elem empty-set.stroke
+zone: x-height
+path: p1 p2
+p1 = [3,8]
+p2 = [9,4]
+close: false
+width: 1
+anchors: base=[3,8] top=[9,4] mid=[6,6]
+@end
+
+# -----------------------------------------------------------------------------
+# Tilde elements for approximately equals
+# -----------------------------------------------------------------------------
+
+# tilde.upper - Upper tilde for approximately
+@elem tilde.upper
+zone: x-height
+path: p1 p2 p3
+p1 = [2,5]
+p2 = C([4,4] [8,6])
+p3 = [10,5]
+close: false
+width: 1
+anchors: left=[2,5] right=[10,5] mid=[6,5]
+@end
+
+# tilde.lower - Lower tilde for approximately
+@elem tilde.lower
+zone: x-height
+path: p1 p2 p3
+p1 = [2,7]
+p2 = C([4,6] [8,8])
+p3 = [10,7]
+close: false
+width: 1
+anchors: left=[2,7] right=[10,7] mid=[6,7]
+@end
+
+# -----------------------------------------------------------------------------
+# Triple bar element for identical
+# -----------------------------------------------------------------------------
+
+# equals.middle - Middle bar for triple equals
+@elem equals.middle
+zone: x-height
+path: p1 p2
+p1 = [2,6]
+p2 = [10,6]
+close: false
+width: 1
+anchors: left=[2,6] right=[10,6] mid=[6,6]
+@end
+
+# =============================================================================
+# CHARACTER DEFINITIONS - QUANTIFIERS AND LOGIC (U+2200-220F)
+# =============================================================================
+
+# U+2200 FOR ALL - Universal quantifier (inverted A)
+@char ! FOR-ALL
+build: from_expr
+FRAME(forall.shape, forall.crossbar)
+cp: U+2200
+@end
+
+# U+2202 PARTIAL DIFFERENTIAL - Curly d
+@char " PARTIAL-DIFFERENTIAL
+build: from_expr
+STACK(hook.top, bowl.l)
+cp: U+2202
+@end
+
+# U+2203 THERE EXISTS - Existential quantifier (reflected E)
+@char $ THERE-EXISTS
+build: from_expr
+exists.shape
+cp: U+2203
+@end
+
+# U+2204 THERE DOES NOT EXIST - Negated existential
+@char % THERE-DOES-NOT-EXIST
+build: from_expr
+OVR(exists.shape, negation.stroke)
+cp: U+2204
+@end
+
+# U+2205 EMPTY SET - Circle with diagonal stroke
+@char & EMPTY-SET
+build: from_expr
+OVR(empty-set.circle, empty-set.stroke)
+cp: U+2205
+@end
+
+# U+2206 INCREMENT - Greek capital delta (triangle)
+@char ' INCREMENT
+build: from_expr
+apex
+cp: U+2206
+@end
+
+# U+2207 NABLA - Del/gradient operator (inverted triangle)
+@char + NABLA
+build: from_expr
+nabla.shape
+cp: U+2207
+@end
+
+# U+2208 ELEMENT OF - Set membership
+@char - ELEMENT-OF
+build: from_expr
+element.shape
+cp: U+2208
+@end
+
+# U+2209 NOT AN ELEMENT OF - Negated set membership
+@char . NOT-AN-ELEMENT-OF
+build: from_expr
+OVR(element.shape, negation.stroke)
+cp: U+2209
+@end
+
+# U+220B CONTAINS AS MEMBER - Reversed element-of
+@char / CONTAINS-AS-MEMBER
+build: from_expr
+contains.shape
+cp: U+220B
+@end
+
+# U+220C DOES NOT CONTAIN AS MEMBER - Negated contains
+@char ^ DOES-NOT-CONTAIN-AS-MEMBER
+build: from_expr
+OVR(contains.shape, negation.stroke)
+cp: U+220C
+@end
+
+# =============================================================================
+# CHARACTER DEFINITIONS - PRODUCTS AND SUMS (U+220F-2211)
+# =============================================================================
+
+# U+220F N-ARY PRODUCT - Large pi for products
+@char _ N-ARY-PRODUCT
+build: from_expr
+pi.large
+cp: U+220F
+@end
+
+# U+2211 N-ARY SUMMATION - Large sigma for sums
+@char ` N-ARY-SUMMATION
+build: from_expr
+sigma.large
+cp: U+2211
+@end
+
+# =============================================================================
+# CHARACTER DEFINITIONS - ARITHMETIC (U+2212-221E)
+# =============================================================================
+
+# U+2212 MINUS SIGN - Mathematical minus (distinct from hyphen-minus)
+@char ~ MINUS-SIGN
+build: from_expr
+minus.sign
+cp: U+2212
+@end
+
+# U+2215 DIVISION SLASH - Mathematical division slash
+@char | DIVISION-SLASH
+build: from_expr
+division.slash
+cp: U+2215
+@end
+
+# U+2217 ASTERISK OPERATOR - Six-pointed asterisk
+@char } ASTERISK-OPERATOR
+build: from_expr
+OVR(OVR(asterisk.op, asterisk.diag1), asterisk.diag2)
+cp: U+2217
+@end
+
+# U+2218 RING OPERATOR - Small circle for composition
+@char { RING-OPERATOR
+build: from_expr
+sc(empty-set.circle, sx=8, sy=8)
+cp: U+2218
+@end
+
+# U+2219 BULLET OPERATOR - Filled dot
+@char \ BULLET-OPERATOR
+build: from_expr
+dot.mid
+cp: U+2219
+@end
+
+# U+221A SQUARE ROOT - Radical sign
+@char ? SQUARE-ROOT
+build: from_expr
+FRAME(radical.check, radical.bar)
+cp: U+221A
+@end
+
+# U+221D PROPORTIONAL TO - Open infinity-like symbol
+@char > PROPORTIONAL-TO
+build: from_expr
+proportional.shape
+cp: U+221D
+@end
+
+# U+221E INFINITY - Lemniscate (horizontal figure-8)
+@char < INFINITY
+build: from_expr
+infinity.shape
+cp: U+221E
+@end
+
+# =============================================================================
+# CHARACTER DEFINITIONS - ANGLES AND GEOMETRY (U+221F-2222)
+# =============================================================================
+
+# U+221F RIGHT ANGLE - L-shaped right angle
+@char ; RIGHT-ANGLE
+build: from_expr
+FRAME(stem.l, bar.bot)
+cp: U+221F
+@end
+
+# U+2220 ANGLE - Angle symbol
+@char @ ANGLE
+build: from_expr
+angle.shape
+cp: U+2220
+@end
+
+# =============================================================================
+# CHARACTER DEFINITIONS - LOGIC (U+2227-222C)
+# =============================================================================
+
+# U+2227 LOGICAL AND - Wedge/conjunction
+@char a LOGICAL-AND
+build: from_expr
+logical-and.shape
+cp: U+2227
+@end
+
+# U+2228 LOGICAL OR - Vee/disjunction
+@char b LOGICAL-OR
+build: from_expr
+logical-or.shape
+cp: U+2228
+@end
+
+# U+2229 INTERSECTION - Cap shape
+@char c INTERSECTION
+build: from_expr
+intersection.shape
+cp: U+2229
+@end
+
+# U+222A UNION - Cup shape
+@char d UNION
+build: from_expr
+union.shape
+cp: U+222A
+@end
+
+# U+222B INTEGRAL - Elongated S-curve
+@char e INTEGRAL
+build: from_expr
+integral.shape
+cp: U+222B
+@end
+
+# U+222C DOUBLE INTEGRAL - Two integral signs
+@char f DOUBLE-INTEGRAL
+build: from_expr
+LR(integral.shape, integral.shape, 6/6)
+cp: U+222C
+@end
+
+# =============================================================================
+# CHARACTER DEFINITIONS - RELATIONS (U+2248-2262)
+# =============================================================================
+
+# U+2248 ALMOST EQUAL TO - Double tilde
+@char g ALMOST-EQUAL-TO
+build: from_expr
+FRAME(tilde.upper, tilde.lower)
+cp: U+2248
+@end
+
+# U+2260 NOT EQUAL TO - Equals with diagonal stroke
+@char h NOT-EQUAL-TO
+build: from_expr
+OVR(FRAME(equals.upper, equals.lower), negation.stroke)
+cp: U+2260
+@end
+
+# U+2261 IDENTICAL TO - Triple horizontal bars
+@char i IDENTICAL-TO
+build: from_expr
+FRAME(equals.upper, equals.middle, equals.lower)
+cp: U+2261
+@end
+
+# =============================================================================
+# CHARACTER DEFINITIONS - INEQUALITIES (U+2264-2267)
+# =============================================================================
+
+# U+2264 LESS-THAN OR EQUAL TO - Less-than with underline
+@char j LESS-THAN-OR-EQUAL-TO
+build: from_expr
+FRAME(less-than.shape, underline.short)
+cp: U+2264
+@end
+
+# U+2265 GREATER-THAN OR EQUAL TO - Greater-than with underline
+@char k GREATER-THAN-OR-EQUAL-TO
+build: from_expr
+FRAME(greater-than.shape, underline.short)
+cp: U+2265
+@end
+
+# U+226A MUCH LESS-THAN - Double less-than
+@char l MUCH-LESS-THAN
+build: from_expr
+LR(less-than.shape, less-than.shape, 6/6)
+cp: U+226A
+@end
+
+# U+226B MUCH GREATER-THAN - Double greater-than
+@char m MUCH-GREATER-THAN
+build: from_expr
+LR(greater-than.shape, greater-than.shape, 6/6)
+cp: U+226B
+@end
+
+# =============================================================================
+# CHARACTER DEFINITIONS - SET RELATIONS (U+2282-228B)
+# =============================================================================
+
+# U+2282 SUBSET OF - Curved subset symbol
+@char n SUBSET-OF
+build: from_expr
+subset.shape
+cp: U+2282
+@end
+
+# U+2283 SUPERSET OF - Curved superset symbol (reversed subset)
+@char o SUPERSET-OF
+build: from_expr
+superset.shape
+cp: U+2283
+@end
+
+# U+2284 NOT A SUBSET OF - Subset with stroke
+@char p NOT-A-SUBSET-OF
+build: from_expr
+OVR(subset.shape, negation.stroke)
+cp: U+2284
+@end
+
+# U+2285 NOT A SUPERSET OF - Superset with stroke
+@char q NOT-A-SUPERSET-OF
+build: from_expr
+OVR(superset.shape, negation.stroke)
+cp: U+2285
+@end
+
+# U+2286 SUBSET OF OR EQUAL TO - Subset with underline
+@char r SUBSET-OF-OR-EQUAL-TO
+build: from_expr
+FRAME(subset.shape, underline.short)
+cp: U+2286
+@end
+
+# U+2287 SUPERSET OF OR EQUAL TO - Superset with underline
+@char s SUPERSET-OF-OR-EQUAL-TO
+build: from_expr
+FRAME(superset.shape, underline.short)
+cp: U+2287
+@end
+
+# =============================================================================
+# CHARACTER DEFINITIONS - ADDITIONAL OPERATORS (U+228C-22FF)
+# =============================================================================
+
+# U+2295 CIRCLED PLUS - Plus inside circle
+@char t CIRCLED-PLUS
+build: from_expr
+OVR(empty-set.circle, FRAME(minus.sign, stem.x))
+cp: U+2295
+@end
+
+# U+2296 CIRCLED MINUS - Minus inside circle
+@char u CIRCLED-MINUS
+build: from_expr
+OVR(empty-set.circle, minus.sign)
+cp: U+2296
+@end
+
+# U+2297 CIRCLED TIMES - Cross inside circle
+@char v CIRCLED-TIMES
+build: from_expr
+OVR(empty-set.circle, OVR(diagonal.x, diagonal.x.rev))
+cp: U+2297
+@end
+
+# U+2298 CIRCLED DIVISION SLASH - Slash inside circle
+@char w CIRCLED-DIVISION-SLASH
+build: from_expr
+OVR(empty-set.circle, negation.stroke)
+cp: U+2298
+@end
+
+# U+2299 CIRCLED DOT OPERATOR - Dot inside circle
+@char x CIRCLED-DOT-OPERATOR
+build: from_expr
+OVR(empty-set.circle, dot.mid)
+cp: U+2299
+@end
+
+# U+22A4 DOWN TACK - Inverted T (top/true)
+@char y DOWN-TACK
+build: from_expr
+FRAME(bar.top.x, stem)
+cp: U+22A4
+@end
+
+# U+22A5 UP TACK - T shape (bottom/false/perpendicular)
+@char z UP-TACK
+build: from_expr
+FRAME(stem, bar.bot)
+cp: U+22A5
+@end
+
+# U+22C0 N-ARY LOGICAL AND - Large wedge
+@char A N-ARY-LOGICAL-AND
+build: from_expr
+sc(logical-and.shape, sx=14, sy=14)
+cp: U+22C0
+@end
+
+# U+22C1 N-ARY LOGICAL OR - Large vee
+@char B N-ARY-LOGICAL-OR
+build: from_expr
+sc(logical-or.shape, sx=14, sy=14)
+cp: U+22C1
+@end
+
+# U+22C2 N-ARY INTERSECTION - Large cap
+@char C N-ARY-INTERSECTION
+build: from_expr
+sc(intersection.shape, sx=14, sy=14)
+cp: U+22C2
+@end
+
+# U+22C3 N-ARY UNION - Large cup
+@char D N-ARY-UNION
+build: from_expr
+sc(union.shape, sx=14, sy=14)
+cp: U+22C3
+@end
+
+# U+22C5 DOT OPERATOR - Centered dot for multiplication
+@char E DOT-OPERATOR
+build: from_expr
+dot.mid
+cp: U+22C5
+@end
+
+# U+22C6 STAR OPERATOR - Six pointed star
+@char F STAR-OPERATOR
+build: from_expr
+OVR(OVR(asterisk.op, asterisk.diag1), asterisk.diag2)
+cp: U+22C6
+@end
+
+# U+22EE VERTICAL ELLIPSIS - Three vertical dots
+@char G VERTICAL-ELLIPSIS
+build: from_expr
+STACK(dot.high, dot.mid, dot)
+cp: U+22EE
+@end
+
+# U+22EF MIDLINE HORIZONTAL ELLIPSIS - Three horizontal dots
+@char H MIDLINE-HORIZONTAL-ELLIPSIS
+build: from_expr
+LR3(dot.mid, dot.mid, dot.mid, 4/4/4)
+cp: U+22EF
+@end
+
+# =============================================================================
+# END OF MATHEMATICAL OPERATORS LIBRARY
+# =============================================================================
