@@ -29,12 +29,13 @@
 # -----------------------------------------------------------------------------
 # grave - Falling diagonal stroke
 # Unicode: U+0300 COMBINING GRAVE ACCENT
+# Stroke: top-right to bottom-left (falling)
 # -----------------------------------------------------------------------------
 @elem grave
 zone: diacritic-above
 path: p1 p2
-p1 = [7,2]
-p2 = [5,0]
+p1 = [7,0]
+p2 = [5,2]
 close: false
 width: 1
 anchors: attach=[6,2]
@@ -43,12 +44,13 @@ anchors: attach=[6,2]
 # -----------------------------------------------------------------------------
 # acute - Rising diagonal stroke
 # Unicode: U+0301 COMBINING ACUTE ACCENT
+# Stroke: top-left to bottom-right (rising appearance, but drawn top-down)
 # -----------------------------------------------------------------------------
 @elem acute
 zone: diacritic-above
 path: p1 p2
-p1 = [5,2]
-p2 = [7,0]
+p1 = [5,0]
+p2 = [7,2]
 close: false
 width: 1
 anchors: attach=[6,2]
@@ -131,14 +133,15 @@ anchors: attach=[6,2]
 # -----------------------------------------------------------------------------
 # dot-above - Single dot above
 # Unicode: U+0307 COMBINING DOT ABOVE
+# Winding: counterclockwise (top -> left -> bottom -> right)
 # -----------------------------------------------------------------------------
 @elem dot-above
 zone: diacritic-above
 path: p1 p2 p3 p4
 p1 = [6,0]
-p2 = C([7,0] [7,1])
-p3 = C([7,2] [6,2])
-p4 = C([5,2] [5,1])
+p2 = C([5,0] [5,1])
+p3 = C([5,2] [6,2])
+p4 = C([7,2] [7,1])
 close: true
 width: 1
 anchors: attach=[6,2]
@@ -181,14 +184,15 @@ anchors: attach=[6,2]
 # -----------------------------------------------------------------------------
 # ring - Small circle above
 # Unicode: U+030A COMBINING RING ABOVE
+# Winding: counterclockwise (top -> left -> bottom -> right)
 # -----------------------------------------------------------------------------
 @elem ring
 zone: diacritic-above
 path: p1 p2 p3 p4
 p1 = [6,0]
-p2 = C([8,0] [8,1])
-p3 = C([8,2] [6,2])
-p4 = C([4,2] [4,1])
+p2 = C([4,0] [4,1])
+p3 = C([4,2] [6,2])
+p4 = C([8,2] [8,1])
 close: true
 width: 1
 anchors: attach=[6,2]
@@ -197,12 +201,13 @@ anchors: attach=[6,2]
 # -----------------------------------------------------------------------------
 # double-acute - Two rising diagonal strokes
 # Unicode: U+030B COMBINING DOUBLE ACUTE ACCENT
+# Stroke: top-left to bottom-right (drawn top-down)
 # -----------------------------------------------------------------------------
 @elem double-acute
 zone: diacritic-above
 path: p1 p2
-p1 = [3,2]
-p2 = [5,0]
+p1 = [3,0]
+p2 = [5,2]
 close: false
 width: 1
 anchors: attach=[6,2]
@@ -255,12 +260,13 @@ anchors: attach=[6,2]
 # -----------------------------------------------------------------------------
 # double-grave - Two falling diagonal strokes
 # Unicode: U+030F COMBINING DOUBLE GRAVE ACCENT
+# Stroke: top-right to bottom-left (falling)
 # -----------------------------------------------------------------------------
 @elem double-grave
 zone: diacritic-above
 path: p1 p2
-p1 = [5,2]
-p2 = [3,0]
+p1 = [5,0]
+p2 = [3,2]
 close: false
 width: 1
 anchors: attach=[6,2]
@@ -593,12 +599,13 @@ anchors: attach=[6,2]
 # grave-tone-mark - Vietnamese grave tone mark
 # Unicode: U+0340 COMBINING GRAVE TONE MARK
 # Note: Canonically equivalent to U+0300, included for completeness
+# Stroke: top-right to bottom-left (falling)
 # -----------------------------------------------------------------------------
 @elem grave-tone-mark
 zone: diacritic-above
 path: p1 p2
-p1 = [7,2]
-p2 = [5,0]
+p1 = [7,0]
+p2 = [5,2]
 close: false
 width: 1
 anchors: attach=[6,2]
@@ -608,12 +615,13 @@ anchors: attach=[6,2]
 # acute-tone-mark - Vietnamese acute tone mark
 # Unicode: U+0341 COMBINING ACUTE TONE MARK
 # Note: Canonically equivalent to U+0301, included for completeness
+# Stroke: top-left to bottom-right (rising appearance, drawn top-down)
 # -----------------------------------------------------------------------------
 @elem acute-tone-mark
 zone: diacritic-above
 path: p1 p2
-p1 = [5,2]
-p2 = [7,0]
+p1 = [5,0]
+p2 = [7,2]
 close: false
 width: 1
 anchors: attach=[6,2]
@@ -675,6 +683,7 @@ anchors: attach=[6,2]
 # -----------------------------------------------------------------------------
 # grave-below - Falling diagonal stroke below
 # Unicode: U+0316 COMBINING GRAVE ACCENT BELOW
+# Stroke: top-right to bottom-left (falling)
 # -----------------------------------------------------------------------------
 @elem grave-below
 zone: diacritic-below
@@ -689,6 +698,7 @@ anchors: attach=[6,8]
 # -----------------------------------------------------------------------------
 # acute-below - Rising diagonal stroke below
 # Unicode: U+0317 COMBINING ACUTE ACCENT BELOW
+# Stroke: top-left to bottom-right (drawn top-down)
 # -----------------------------------------------------------------------------
 @elem acute-below
 zone: diacritic-below
@@ -844,14 +854,15 @@ anchors: attach=[6,8]
 # -----------------------------------------------------------------------------
 # dot-below - Single dot below
 # Unicode: U+0323 COMBINING DOT BELOW
+# Winding: counterclockwise (top -> left -> bottom -> right)
 # -----------------------------------------------------------------------------
 @elem dot-below
 zone: diacritic-below
 path: p1 p2 p3 p4
 p1 = [6,9]
-p2 = C([7,9] [7,10])
-p3 = C([7,10] [6,10])
-p4 = C([5,10] [5,10])
+p2 = C([5,9] [5,10])
+p3 = C([5,10] [6,10])
+p4 = C([7,10] [7,9])
 close: true
 width: 1
 anchors: attach=[6,8]
@@ -876,14 +887,15 @@ anchors: attach=[6,8]
 # -----------------------------------------------------------------------------
 # ring-below - Small circle below
 # Unicode: U+0325 COMBINING RING BELOW
+# Winding: counterclockwise (top -> left -> bottom -> right)
 # -----------------------------------------------------------------------------
 @elem ring-below
 zone: diacritic-below
 path: p1 p2 p3 p4
 p1 = [6,9]
-p2 = C([8,9] [8,10])
-p3 = C([8,11] [6,11])
-p4 = C([4,11] [4,10])
+p2 = C([4,9] [4,10])
+p3 = C([4,11] [6,11])
+p4 = C([8,11] [8,10])
 close: true
 width: 1
 anchors: attach=[6,8]
@@ -1138,6 +1150,7 @@ anchors: attach=[6,8]
 # square-below - Small square below
 # Unicode: U+033B COMBINING SQUARE BELOW
 # IPA for laminal articulation
+# Winding: counterclockwise (top-left -> top-right -> bottom-right -> bottom-left)
 # -----------------------------------------------------------------------------
 @elem square-below
 zone: diacritic-below
@@ -1320,14 +1333,15 @@ anchors: attach=[6,8]
 # -----------------------------------------------------------------------------
 # double-ring-below - Two concentric circles below
 # Unicode: U+035A COMBINING DOUBLE RING BELOW
+# Winding: counterclockwise (top -> left -> bottom -> right)
 # -----------------------------------------------------------------------------
 @elem double-ring-below
 zone: diacritic-below
 path: p1 p2 p3 p4
 p1 = [6,9]
-p2 = C([8,9] [8,10])
-p3 = C([8,11] [6,11])
-p4 = C([4,11] [4,10])
+p2 = C([4,9] [4,10])
+p3 = C([4,11] [6,11])
+p4 = C([8,11] [8,10])
 close: true
 width: 1
 anchors: attach=[6,8]
@@ -1595,14 +1609,15 @@ anchors: attach=[6,2]
 # -----------------------------------------------------------------------------
 # combining-latin-small-letter-o
 # Unicode: U+0366 COMBINING LATIN SMALL LETTER O
+# Winding: counterclockwise (top -> left -> bottom -> right)
 # -----------------------------------------------------------------------------
 @elem combining-latin-small-letter-o
 zone: diacritic-above
 path: p1 p2 p3 p4
 p1 = [6,0]
-p2 = C([8,0] [8,1])
-p3 = C([8,2] [6,2])
-p4 = C([4,2] [4,1])
+p2 = C([4,0] [4,1])
+p3 = C([4,2] [6,2])
+p4 = C([8,2] [8,1])
 close: true
 width: 1
 anchors: attach=[6,2]

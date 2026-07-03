@@ -437,13 +437,13 @@ anchors: top=[6,0] base=[6,8]
 ƀ  LATIN-SMALL-B-STROKE = OVR(b, stroke.horiz) cp:U+0180 script:Latn
 
 # Ɓ - Latin Capital Letter B with Hook
-Ɓ  LATIN-CAPITAL-B-HOOK = FRAME(hook.top.cap, B) cp:U+0181 script:Latn
+Ɓ  LATIN-CAPITAL-B-HOOK = FRAME(B, hook.top.cap) cp:U+0181 script:Latn
 
 # Ƃ - Latin Capital Letter B with Topbar
-Ƃ  LATIN-CAPITAL-B-TOPBAR = FRAME(topbar, B) cp:U+0182 script:Latn
+Ƃ  LATIN-CAPITAL-B-TOPBAR = FRAME(B, topbar) cp:U+0182 script:Latn
 
 # ƃ - Latin Small Letter B with Topbar
-ƃ  LATIN-SMALL-B-TOPBAR = FRAME(topbar.small, b) cp:U+0183 script:Latn
+ƃ  LATIN-SMALL-B-TOPBAR = FRAME(b, topbar.small) cp:U+0183 script:Latn
 
 # Ƅ - Latin Capital Letter Tone Six
 Ƅ  LATIN-CAPITAL-TONE-SIX = FRAME(bowl.cap, stem.l) cp:U+0184 script:Latn
@@ -455,22 +455,22 @@ anchors: top=[6,0] base=[6,8]
 Ɔ  LATIN-CAPITAL-OPEN-O = open.o.cap cp:U+0186 script:Latn
 
 # Ƈ - Latin Capital Letter C with Hook
-Ƈ  LATIN-CAPITAL-C-HOOK = FRAME(hook.top.cap, C) cp:U+0187 script:Latn
+Ƈ  LATIN-CAPITAL-C-HOOK = FRAME(C, hook.top.cap) cp:U+0187 script:Latn
 
 # ƈ - Latin Small Letter C with Hook
-ƈ  LATIN-SMALL-C-HOOK = FRAME(hook.top, c) cp:U+0188 script:Latn
+ƈ  LATIN-SMALL-C-HOOK = FRAME(c, hook.top) cp:U+0188 script:Latn
 
 # Ɖ - Latin Capital Letter African D
 Ɖ  LATIN-CAPITAL-AFRICAN-D = OVR(D, stroke.horiz) cp:U+0189 script:Latn
 
 # Ɗ - Latin Capital Letter D with Hook
-Ɗ  LATIN-CAPITAL-D-HOOK = FRAME(hook.top.cap, D) cp:U+018A script:Latn
+Ɗ  LATIN-CAPITAL-D-HOOK = FRAME(D, hook.top.cap) cp:U+018A script:Latn
 
 # Ƌ - Latin Capital Letter D with Topbar
-Ƌ  LATIN-CAPITAL-D-TOPBAR = FRAME(topbar, D) cp:U+018B script:Latn
+Ƌ  LATIN-CAPITAL-D-TOPBAR = FRAME(D, topbar) cp:U+018B script:Latn
 
 # ƌ - Latin Small Letter D with Topbar
-ƌ  LATIN-SMALL-D-TOPBAR = FRAME(topbar.small, d) cp:U+018C script:Latn
+ƌ  LATIN-SMALL-D-TOPBAR = FRAME(d, topbar.small) cp:U+018C script:Latn
 
 # ƍ - Latin Small Letter Turned Delta
 # This is a phonetic symbol, delta shape rotated 180 degrees
@@ -496,7 +496,7 @@ anchors: top=[6,0] base=[6,8]
 ƒ  LATIN-SMALL-F-HOOK = FRAME(f, hook.bot) cp:U+0192 script:Latn
 
 # Ɠ - Latin Capital Letter G with Hook
-Ɠ  LATIN-CAPITAL-G-HOOK = FRAME(hook.top.cap, G) cp:U+0193 script:Latn
+Ɠ  LATIN-CAPITAL-G-HOOK = FRAME(G, hook.top.cap) cp:U+0193 script:Latn
 
 # Ɣ - Latin Capital Letter Gamma
 Ɣ  LATIN-CAPITAL-GAMMA = gamma.cap cp:U+0194 script:Latn
@@ -511,10 +511,10 @@ anchors: top=[6,0] base=[6,8]
 Ɨ  LATIN-CAPITAL-I-STROKE = OVR(I, stroke.horiz) cp:U+0197 script:Latn
 
 # Ƙ - Latin Capital Letter K with Hook
-Ƙ  LATIN-CAPITAL-K-HOOK = FRAME(hook.top.cap, K) cp:U+0198 script:Latn
+Ƙ  LATIN-CAPITAL-K-HOOK = FRAME(K, hook.top.cap) cp:U+0198 script:Latn
 
 # ƙ - Latin Small Letter K with Hook
-ƙ  LATIN-SMALL-K-HOOK = FRAME(hook.top, k) cp:U+0199 script:Latn
+ƙ  LATIN-SMALL-K-HOOK = FRAME(k, hook.top) cp:U+0199 script:Latn
 
 # ƚ - Latin Small Letter L with Bar
 ƚ  LATIN-SMALL-L-BAR = OVR(l, stroke.horiz) cp:U+019A script:Latn
@@ -526,7 +526,7 @@ anchors: top=[6,0] base=[6,8]
 Ɯ  LATIN-CAPITAL-TURNED-M = sc(M, sx=12, sy=-12) cp:U+019C script:Latn
 
 # Ɲ - Latin Capital Letter N with Left Hook
-Ɲ  LATIN-CAPITAL-N-LEFT-HOOK = FRAME(hook.top.cap, N) cp:U+019D script:Latn
+Ɲ  LATIN-CAPITAL-N-LEFT-HOOK = FRAME(N, hook.top.cap) cp:U+019D script:Latn
 
 # ƞ - Latin Small Letter N with Long Right Leg
 ƞ  LATIN-SMALL-N-LONG-RIGHT-LEG = FRAME(n, descender.r) cp:U+019E script:Latn
@@ -551,10 +551,10 @@ anchors: top=[6,0] base=[6,8]
 ƣ  LATIN-SMALL-OI = FRAME(bowl.full, stem) cp:U+01A3 script:Latn
 
 # Ƥ - Latin Capital Letter P with Hook
-Ƥ  LATIN-CAPITAL-P-HOOK = FRAME(hook.top.cap, P) cp:U+01A4 script:Latn
+Ƥ  LATIN-CAPITAL-P-HOOK = FRAME(P, hook.top.cap) cp:U+01A4 script:Latn
 
 # ƥ - Latin Small Letter P with Hook
-ƥ  LATIN-SMALL-P-HOOK = FRAME(hook.top, p) cp:U+01A5 script:Latn
+ƥ  LATIN-SMALL-P-HOOK = FRAME(p, hook.top) cp:U+01A5 script:Latn
 
 # Ʀ - Latin Letter Yr
 Ʀ  LATIN-LETTER-YR = FRAME(R, descender) cp:U+01A6 script:Latn
@@ -575,10 +575,10 @@ anchors: top=[6,0] base=[6,8]
 ƫ  LATIN-SMALL-T-PALATAL-HOOK = FRAME(t, hook.bot) cp:U+01AB script:Latn
 
 # Ƭ - Latin Capital Letter T with Hook
-Ƭ  LATIN-CAPITAL-T-HOOK = FRAME(hook.top.cap, T) cp:U+01AC script:Latn
+Ƭ  LATIN-CAPITAL-T-HOOK = FRAME(T, hook.top.cap) cp:U+01AC script:Latn
 
 # ƭ - Latin Small Letter T with Hook
-ƭ  LATIN-SMALL-T-HOOK = FRAME(hook.top, t) cp:U+01AD script:Latn
+ƭ  LATIN-SMALL-T-HOOK = FRAME(t, hook.top) cp:U+01AD script:Latn
 
 # Ʈ - Latin Capital Letter T with Retroflex Hook
 Ʈ  LATIN-CAPITAL-T-RETROFLEX-HOOK = FRAME(T, hook.bot) cp:U+01AE script:Latn

@@ -508,7 +508,7 @@ anchors: mid=[6,6]
 𐐁  DESERET-CAPITAL-LONG-E       = dsrt.curve.s cp:U+10401 script:Dsrt
 
 # Long A - left-opening arc with stem
-𐐂  DESERET-CAPITAL-LONG-A       = FRAME(dsrt.arc.left, dsrt.stem.r) cp:U+10402 script:Dsrt
+𐐂  DESERET-CAPITAL-LONG-A       = FRAME(dsrt.stem.r, dsrt.arc.left) cp:U+10402 script:Dsrt
 
 # Long Ah - bowl shape open at right
 𐐃  DESERET-CAPITAL-LONG-AH      = dsrt.arc.left cp:U+10403 script:Dsrt
@@ -568,7 +568,7 @@ anchors: mid=[6,6]
 𐐑  DESERET-CAPITAL-PEE          = FRAME(dsrt.stem.l, dsrt.bowl.right) cp:U+10411 script:Dsrt
 
 # Bee - stem with left bowl
-𐐒  DESERET-CAPITAL-BEE          = FRAME(dsrt.bowl.left, dsrt.stem.r) cp:U+10412 script:Dsrt
+𐐒  DESERET-CAPITAL-BEE          = FRAME(dsrt.stem.r, dsrt.bowl.left) cp:U+10412 script:Dsrt
 
 # Tee - V pointing up (apex)
 𐐓  DESERET-CAPITAL-TEE          = dsrt.vertex.top cp:U+10413 script:Dsrt
@@ -593,7 +593,7 @@ anchors: mid=[6,6]
 # -----------------------------------------------------------------------------
 
 # Ef - top arc with stem
-𐐙  DESERET-CAPITAL-EF           = FRAME(dsrt.arc.top, dsrt.stem) cp:U+10419 script:Dsrt
+𐐙  DESERET-CAPITAL-EF           = FRAME(dsrt.stem, dsrt.arc.top) cp:U+10419 script:Dsrt
 
 # Vee - bottom arc with stem
 𐐚  DESERET-CAPITAL-VEE          = FRAME(dsrt.stem, dsrt.arc.bot) cp:U+1041A script:Dsrt
@@ -605,7 +605,7 @@ anchors: mid=[6,6]
 𐐜  DESERET-CAPITAL-THEE         = FRAME(dsrt.stem.l, dsrt.arc.right) cp:U+1041C script:Dsrt
 
 # Es - top bar with stem
-𐐝  DESERET-CAPITAL-ES           = FRAME(dsrt.bar.top, dsrt.stem) cp:U+1041D script:Dsrt
+𐐝  DESERET-CAPITAL-ES           = FRAME(dsrt.stem, dsrt.bar.top) cp:U+1041D script:Dsrt
 
 # Zee - bottom bar with stem
 𐐞  DESERET-CAPITAL-ZEE          = FRAME(dsrt.stem, dsrt.bar.bot) cp:U+1041E script:Dsrt
@@ -621,7 +621,7 @@ anchors: mid=[6,6]
 # -----------------------------------------------------------------------------
 
 # Er - arc loop form
-𐐡  DESERET-CAPITAL-ER           = FRAME(dsrt.arc.left, dsrt.stem.r) cp:U+10421 script:Dsrt
+𐐡  DESERET-CAPITAL-ER           = FRAME(dsrt.stem.r, dsrt.arc.left) cp:U+10421 script:Dsrt
 
 # El - stem with bottom curve
 𐐢  DESERET-CAPITAL-EL           = FRAME(dsrt.stem.l, dsrt.arc.bot) cp:U+10422 script:Dsrt
@@ -633,7 +633,7 @@ anchors: mid=[6,6]
 𐐤  DESERET-CAPITAL-EN           = FRAME(dsrt.stem.l, dsrt.arc.bot, dsrt.stem.r) cp:U+10424 script:Dsrt
 
 # Eng - loop with stems
-𐐥  DESERET-CAPITAL-ENG          = FRAME(dsrt.loop, dsrt.stem.r) cp:U+10425 script:Dsrt
+𐐥  DESERET-CAPITAL-ENG          = FRAME(dsrt.stem.r, dsrt.loop) cp:U+10425 script:Dsrt
 
 # -----------------------------------------------------------------------------
 # Additional Letters (U+10426-U+10427)
@@ -666,7 +666,7 @@ anchors: mid=[6,6]
 𐐩  DESERET-SMALL-LONG-E         = dsrt.curve.s cp:U+10429 script:Dsrt
 
 # Small Long A
-𐐪  DESERET-SMALL-LONG-A         = FRAME(dsrt.arc.left, dsrt.stem.r) cp:U+1042A script:Dsrt
+𐐪  DESERET-SMALL-LONG-A         = FRAME(dsrt.stem.r, dsrt.arc.left) cp:U+1042A script:Dsrt
 
 # Small Long Ah
 𐐫  DESERET-SMALL-LONG-AH        = dsrt.arc.left cp:U+1042B script:Dsrt
@@ -726,7 +726,7 @@ anchors: mid=[6,6]
 𐐹  DESERET-SMALL-PEE            = FRAME(dsrt.stem.l, dsrt.bowl.right) cp:U+10439 script:Dsrt
 
 # Small Bee
-𐐺  DESERET-SMALL-BEE            = FRAME(dsrt.bowl.left, dsrt.stem.r) cp:U+1043A script:Dsrt
+𐐺  DESERET-SMALL-BEE            = FRAME(dsrt.stem.r, dsrt.bowl.left) cp:U+1043A script:Dsrt
 
 # Small Tee
 𐐻  DESERET-SMALL-TEE            = dsrt.vertex.top cp:U+1043B script:Dsrt
@@ -751,7 +751,7 @@ anchors: mid=[6,6]
 # -----------------------------------------------------------------------------
 
 # Small Ef
-𐑁  DESERET-SMALL-EF             = FRAME(dsrt.arc.top, dsrt.stem) cp:U+10441 script:Dsrt
+𐑁  DESERET-SMALL-EF             = FRAME(dsrt.stem, dsrt.arc.top) cp:U+10441 script:Dsrt
 
 # Small Vee
 𐑂  DESERET-SMALL-VEE            = FRAME(dsrt.stem, dsrt.arc.bot) cp:U+10442 script:Dsrt
@@ -763,7 +763,7 @@ anchors: mid=[6,6]
 𐑄  DESERET-SMALL-THEE           = FRAME(dsrt.stem.l, dsrt.arc.right) cp:U+10444 script:Dsrt
 
 # Small Es
-𐑅  DESERET-SMALL-ES             = FRAME(dsrt.bar.top, dsrt.stem) cp:U+10445 script:Dsrt
+𐑅  DESERET-SMALL-ES             = FRAME(dsrt.stem, dsrt.bar.top) cp:U+10445 script:Dsrt
 
 # Small Zee
 𐑆  DESERET-SMALL-ZEE            = FRAME(dsrt.stem, dsrt.bar.bot) cp:U+10446 script:Dsrt
@@ -779,7 +779,7 @@ anchors: mid=[6,6]
 # -----------------------------------------------------------------------------
 
 # Small Er
-𐑉  DESERET-SMALL-ER             = FRAME(dsrt.arc.left, dsrt.stem.r) cp:U+10449 script:Dsrt
+𐑉  DESERET-SMALL-ER             = FRAME(dsrt.stem.r, dsrt.arc.left) cp:U+10449 script:Dsrt
 
 # Small El
 𐑊  DESERET-SMALL-EL             = FRAME(dsrt.stem.l, dsrt.arc.bot) cp:U+1044A script:Dsrt
@@ -791,7 +791,7 @@ anchors: mid=[6,6]
 𐑌  DESERET-SMALL-EN             = FRAME(dsrt.stem.l, dsrt.arc.bot, dsrt.stem.r) cp:U+1044C script:Dsrt
 
 # Small Eng
-𐑍  DESERET-SMALL-ENG            = FRAME(dsrt.loop, dsrt.stem.r) cp:U+1044D script:Dsrt
+𐑍  DESERET-SMALL-ENG            = FRAME(dsrt.stem.r, dsrt.loop) cp:U+1044D script:Dsrt
 
 # -----------------------------------------------------------------------------
 # Additional Letters (U+1044E-U+1044F)

@@ -342,7 +342,8 @@ anchors: top=[6,4] base=[6,8]
 
 # ꬲ - Latin Small Letter Blackletter E
 # Blackletter style e - using rotated/styled e
-ꬲ  LATIN-SMALL-BLACKLETTER-E = FRAME(arc.top, crossbar.low, arc.bot) cp:U+AB32 script:Latn
+# Stroke order: crossbar first, then arcs (same as basic 'e')
+ꬲ  LATIN-SMALL-BLACKLETTER-E = FRAME(crossbar.low, arc.top, arc.bot) cp:U+AB32 script:Latn
 
 # ꬳ - Latin Small Letter Barred E
 ꬳ  LATIN-SMALL-BARRED-E = OVR(e, stroke.horiz) cp:U+AB33 script:Latn
@@ -447,7 +448,8 @@ anchors: top=[6,4] base=[6,8]
 ꭑ  LATIN-SMALL-TURNED-UI = sc(LR(u, i, 6/6), sx=-12, sy=-12) cp:U+AB51 script:Latn
 
 # ꭒ - Latin Small Letter U with Left Hook
-ꭒ  LATIN-SMALL-U-LEFT-HOOK = FRAME(hook.bot, u) cp:U+AB52 script:Latn
+# Stroke order: main letter first, hook detail second
+ꭒ  LATIN-SMALL-U-LEFT-HOOK = FRAME(u, hook.bot) cp:U+AB52 script:Latn
 
 # ꭓ - Latin Small Letter Chi
 ꭓ  LATIN-SMALL-CHI = chi.small cp:U+AB53 script:Latn
@@ -487,7 +489,8 @@ anchors: top=[6,4] base=[6,8]
 ꭞ  MODIFIER-LETTER-SMALL-L-MIDDLE-TILDE = sc(OVR(l, tilde.overlay), sx=8, sy=8) cp:U+AB5E script:Latn
 
 # ꭟ - Modifier Letter Small U with Left Hook
-ꭟ  MODIFIER-LETTER-SMALL-U-LEFT-HOOK = sc(FRAME(hook.bot, u), sx=8, sy=8) cp:U+AB5F script:Latn
+# Stroke order: main letter first, hook detail second
+ꭟ  MODIFIER-LETTER-SMALL-U-LEFT-HOOK = sc(FRAME(u, hook.bot), sx=8, sy=8) cp:U+AB5F script:Latn
 
 # =============================================================================
 # CHARACTERS U+AB60-AB6B

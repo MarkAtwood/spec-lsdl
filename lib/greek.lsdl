@@ -174,7 +174,7 @@ anchors: attach=[6,2]
 Ζ  GREEK-CAPITAL-ZETA     = FRAME(bar.top, diagonal, bar.bot.cap) script:Grek
 
 # Eta - Structurally identical to Latin H
-Η  GREEK-CAPITAL-ETA      = FRAME(stem.l, crossbar.cap, stem.r) script:Grek
+Η  GREEK-CAPITAL-ETA      = FRAME(stem.l, stem.r, crossbar.cap) script:Grek
 
 # Theta - Greek-specific: oval with crossbar
 Θ  GREEK-CAPITAL-THETA    = OVR(bowl.cap, crossbar.cap) script:Grek
@@ -201,7 +201,7 @@ anchors: attach=[6,2]
 Ο  GREEK-CAPITAL-OMICRON  = bowl.cap script:Grek
 
 # Pi - Greek-specific: two stems with connecting bar (like wide sans H top)
-Π  GREEK-CAPITAL-PI       = FRAME(stem.l, bar.top, stem.r) script:Grek
+Π  GREEK-CAPITAL-PI       = FRAME(bar.top, stem.l, stem.r) script:Grek
 
 # Rho - Structurally similar to Latin P
 Ρ  GREEK-CAPITAL-RHO      = LR(stem.l, bowl.upper, 3/9) script:Grek
@@ -210,10 +210,10 @@ anchors: attach=[6,2]
 Σ  GREEK-CAPITAL-SIGMA    = FRAME(bar.top, vertex.cap, bar.bot.cap) script:Grek
 
 # Tau - Structurally identical to Latin T
-Τ  GREEK-CAPITAL-TAU      = FRAME(bar.top, stem) script:Grek
+Τ  GREEK-CAPITAL-TAU      = FRAME(stem, bar.top) script:Grek
 
 # Upsilon - Structurally similar to Latin Y
-Υ  GREEK-CAPITAL-UPSILON  = FRAME(diagonal.l, stem, diagonal) script:Grek
+Υ  GREEK-CAPITAL-UPSILON  = FRAME(diagonal.l, diagonal, stem) script:Grek
 
 # Phi - Greek-specific: circular bowl with vertical through-stroke
 Φ  GREEK-CAPITAL-PHI      = OVR(bowl.cap, full-stem) script:Grek
@@ -222,7 +222,7 @@ anchors: attach=[6,2]
 Χ  GREEK-CAPITAL-CHI      = OVR(diagonal, diagonal.l) script:Grek
 
 # Psi - Greek-specific: trident form
-Ψ  GREEK-CAPITAL-PSI      = FRAME(diagonal.l, full-stem, diagonal) script:Grek
+Ψ  GREEK-CAPITAL-PSI      = FRAME(diagonal.l, diagonal, full-stem) script:Grek
 
 # Omega - Greek-specific: horseshoe form
 Ω  GREEK-CAPITAL-OMEGA    = FRAME(arc.top.cap, arc.bot.cap, stem.l, stem.r) script:Grek
@@ -283,13 +283,13 @@ anchors: attach=[6,2]
 ρ  GREEK-SMALL-RHO        = STACK(bowl.r, descender) script:Grek
 
 # Medial sigma - Used in middle of words
-σ  GREEK-SMALL-SIGMA      = FRAME(tail.sigma, bowl.full) script:Grek
+σ  GREEK-SMALL-SIGMA      = FRAME(bowl.full, tail.sigma) script:Grek
 
 # Final sigma - Used at end of words (declared via @case Σ σ final:ς)
 ς  GREEK-SMALL-FINAL-SIGMA = STACK(arc.top, descender.curved) script:Grek
 
 # Tau - Crossbar with stem
-τ  GREEK-SMALL-TAU        = FRAME(bar.top.x, stem) script:Grek
+τ  GREEK-SMALL-TAU        = FRAME(stem, bar.top.x) script:Grek
 
 # Upsilon - V-shape with stem
 υ  GREEK-SMALL-UPSILON    = arc.bot script:Grek
@@ -534,8 +534,8 @@ anchors: attach=[6,2]
 
 # Hori - Coptic letter for /h/ sound
 @case Ϩ ϩ
-Ϩ  COPTIC-CAPITAL-HORI   = FRAME(stem.l, crossbar.cap, stem.r) script:Copt
-ϩ  COPTIC-SMALL-HORI     = FRAME(stem, crossbar, shoulder) script:Copt
+Ϩ  COPTIC-CAPITAL-HORI   = FRAME(stem.l, stem.r, crossbar.cap) script:Copt
+ϩ  COPTIC-SMALL-HORI     = FRAME(stem, shoulder, crossbar) script:Copt
 
 # Gangia - Coptic letter
 @case Ϫ ϫ
@@ -549,8 +549,8 @@ anchors: attach=[6,2]
 
 # Dei - Coptic letter
 @case Ϯ ϯ
-Ϯ  COPTIC-CAPITAL-DEI    = FRAME(stem.l, bar.top, stem.r) script:Copt
-ϯ  COPTIC-SMALL-DEI      = FRAME(stem, bar.top.x, stem.x) script:Copt
+Ϯ  COPTIC-CAPITAL-DEI    = FRAME(bar.top, stem.l, stem.r) script:Copt
+ϯ  COPTIC-SMALL-DEI      = FRAME(bar.top.x, stem, stem.x) script:Copt
 
 # =============================================================================
 # END OF GREEK ALPHABET LIBRARY

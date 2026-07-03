@@ -238,13 +238,13 @@ anchors: attach=[10,8] left=[2,8]
   UNIFON-LETTER-GOAT           = FRAME(arc.top.cap, arc.bot.cap, bar.mid) cp:U+E74A script:Latn
 
 # HAT - Standard H for /h/
-  UNIFON-LETTER-HAT            = FRAME(stem.l, crossbar.cap, stem.r) cp:U+E74B script:Latn
+  UNIFON-LETTER-HAT            = FRAME(stem.l, stem.r, crossbar.cap) cp:U+E74B script:Latn
 
 # BIT - Small-cap I for /I/
   UNIFON-LETTER-BIT            = stem.l cp:U+E74C script:Latn
 
 # BITE - Turned I for /aI/
-  UNIFON-LETTER-BITE           = FRAME(serif.top, stem.l, serif) cp:U+E74D script:Latn
+  UNIFON-LETTER-BITE           = FRAME(stem.l, serif.top, serif) cp:U+E74D script:Latn
 
 # JAW - Standard J for /dZ/
   UNIFON-LETTER-JAW            = STACK(stem.r, hook.bot) cp:U+E74E script:Latn
@@ -292,7 +292,7 @@ anchors: attach=[10,8] left=[2,8]
   UNIFON-LETTER-SURE           = FRAME(stem, unf.tail.esh) cp:U+E75C script:Latn
 
 # TABLE - Standard T for /t/
-  UNIFON-LETTER-TABLE          = FRAME(bar.top, stem) cp:U+E75D script:Latn
+  UNIFON-LETTER-TABLE          = FRAME(stem, bar.top) cp:U+E75D script:Latn
 
 # THERE - Eth for /D/
   UNIFON-LETTER-THERE          = OVR(LR(stem.l, bowl.r.cap, 3/9), stroke.horiz) cp:U+E75E script:Latn
@@ -307,7 +307,7 @@ anchors: attach=[10,8] left=[2,8]
   UNIFON-LETTER-DUE            = OVR(FRAME(stem.l, arc.bot.cap, stem.r), crossbar.cap) cp:U+E761 script:Latn
 
 # YOU - Standard Y for /ju/
-  UNIFON-LETTER-YOU            = FRAME(diagonal.l, stem, diagonal) cp:U+E762 script:Latn
+  UNIFON-LETTER-YOU            = FRAME(diagonal.l, diagonal, stem) cp:U+E762 script:Latn
 
 # VEST - Standard V for /v/
   UNIFON-LETTER-VEST           = vertex.cap cp:U+E763 script:Latn
@@ -319,7 +319,7 @@ anchors: attach=[10,8] left=[2,8]
   UNIFON-LETTER-AZURE          = FRAME(bar.top, diagonal, unf.hook.ezh) cp:U+E765 script:Latn
 
 # YES - Standard Y for /j/
-  UNIFON-LETTER-YES            = FRAME(diagonal.l, stem, diagonal) cp:U+E766 script:Latn
+  UNIFON-LETTER-YES            = FRAME(diagonal.l, diagonal, stem) cp:U+E766 script:Latn
 
 # ZEBRA - Standard Z for /z/
   UNIFON-LETTER-ZEBRA          = FRAME(bar.top, diagonal, bar.bot.cap) cp:U+E767 script:Latn

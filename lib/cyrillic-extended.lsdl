@@ -158,11 +158,11 @@ anchors: mid=[2,4]
 Ҏ  CYRILLIC-CAPITAL-ER-TICK = FRAME(Р, tick.cyr) script:Cyrl
   # Er with tick (Kildin Sami)
 
-Ғ  CYRILLIC-CAPITAL-GHE-STROKE = FRAME(bar.top, stem.l, stroke.mid.cyr) script:Cyrl ortho:Kaz
-  # Ghe with middle stroke (Kazakh, Azerbaijani)
+Ғ  CYRILLIC-CAPITAL-GHE-STROKE = FRAME(stem.l, bar.top, stroke.mid.cyr) script:Cyrl ortho:Kaz
+  # Ghe with middle stroke: stem first (stroke order)
 
-Ҕ  CYRILLIC-CAPITAL-GHE-HOOK = FRAME(bar.top, stem.l, hook.desc.cyr) script:Cyrl ortho:Yak
-  # Ghe with hook (Yakut)
+Ҕ  CYRILLIC-CAPITAL-GHE-HOOK = FRAME(stem.l, bar.top, hook.desc.cyr) script:Cyrl ortho:Yak
+  # Ghe with hook: stem first (stroke order)
 
 Җ  CYRILLIC-CAPITAL-ZHE-DESCENDER = FRAME(Ж, tail.cyr) script:Cyrl ortho:Tat
   # Zhe with descender (Tatar, Bashkir)
@@ -339,11 +339,11 @@ anchors: mid=[2,4]
 ҏ  CYRILLIC-SMALL-ER-TICK = FRAME(р, tick.cyr) script:Cyrl
   # Small er with tick
 
-ғ  CYRILLIC-SMALL-GHE-STROKE = FRAME(bar.top.x, stem, stroke.mid.cyr) script:Cyrl ortho:Kaz
-  # Small ghe with stroke
+ғ  CYRILLIC-SMALL-GHE-STROKE = FRAME(stem, bar.top.x, stroke.mid.cyr) script:Cyrl ortho:Kaz
+  # Small ghe with stroke: stem first (stroke order)
 
-ҕ  CYRILLIC-SMALL-GHE-HOOK = FRAME(bar.top.x, stem, hook.desc.cyr) script:Cyrl ortho:Yak
-  # Small ghe with hook
+ҕ  CYRILLIC-SMALL-GHE-HOOK = FRAME(stem, bar.top.x, hook.desc.cyr) script:Cyrl ortho:Yak
+  # Small ghe with hook: stem first (stroke order)
 
 җ  CYRILLIC-SMALL-ZHE-DESCENDER = FRAME(ж, tail.cyr) script:Cyrl ortho:Tat
   # Small zhe with descender

@@ -16,6 +16,104 @@
 # =============================================================================
 
 # =============================================================================
+# LOCAL SINGLE-STROKE CURVE ELEMENTS
+# =============================================================================
+# These elements define single continuous strokes for proper stroke order,
+# replacing stacked arc compositions.
+
+# arc.c.cap - C-shape: single counterclockwise stroke from top-right to bottom-right
+@elem arc.c.cap
+zone: cap
+path: p1 p2 p3
+p1 = [10,2]
+p2 = C([10,0] [0,0] [0,4])
+p3 = C([0,8] [10,8] [10,6])
+close: false
+width: 1
+anchors: attach=[5,4] mark-above=[5,0] mark-below=[5,9]
+  left=[0,4] right=[10,4] top=[5,0] base=[5,8]
+@end
+
+# arc.g.cap - G-shape: C-arc with horizontal bar stub at middle-right
+@elem arc.g.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [10,2]
+p2 = C([10,0] [0,0] [0,4])
+p3 = C([0,8] [10,8] [10,4])
+p4 = [5,4]
+close: false
+width: 1
+anchors: attach=[5,4] mark-above=[5,0] mark-below=[5,9]
+  left=[0,4] right=[10,4] top=[5,0] base=[5,8]
+@end
+
+# curve.s.cap - S-shape: single continuous curve, top-to-bottom
+@elem curve.s.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [9,1]
+p2 = C([9,0] [3,0] [3,2])
+p3 = C([3,4] [9,4] [9,6])
+p4 = C([9,8] [3,8] [3,7])
+close: false
+width: 1
+anchors: attach=[6,4] mark-above=[6,0] mark-below=[6,9]
+  left=[3,4] right=[9,4] top=[6,0] base=[6,8]
+@end
+
+# arc.u.cap - U-shape: single horseshoe stroke, left stem down, curve, right stem up
+@elem arc.u.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [1,0]
+p2 = [1,5]
+p3 = C([1,8] [6,8] [11,8])
+p4 = C([11,8] [11,5] [11,0])
+close: false
+width: 1
+anchors: attach=[6,4] mark-above=[6,0] mark-below=[6,9]
+  left=[1,4] right=[11,4] top=[6,0] base=[6,8]
+@end
+
+# arc.c - Lowercase c: single counterclockwise stroke
+@elem arc.c
+zone: x-height
+path: p1 p2 p3
+p1 = [10,2]
+p2 = C([10,0] [0,0] [0,4])
+p3 = C([0,8] [10,8] [10,6])
+close: false
+width: 1
+anchors: attach=[5,4] mark-above=[5,0] mark-below=[5,9]
+@end
+
+# curve.s - Lowercase s: single continuous S-curve
+@elem curve.s
+zone: x-height
+path: p1 p2 p3
+p1 = [9,2]
+p2 = C([9,0] [2,0] [2,4])
+p3 = C([2,8] [9,8] [9,6])
+close: false
+width: 1
+anchors: attach=[5,4] mark-above=[5,0] mark-below=[5,9]
+@end
+
+# arc.u - Lowercase u: single horseshoe stroke
+@elem arc.u
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [1,0]
+p2 = [1,5]
+p3 = C([1,8] [6,8] [11,8])
+p4 = C([11,8] [11,5] [11,0])
+close: false
+width: 1
+anchors: attach=[6,4] mark-above=[6,0] mark-below=[6,9]
+@end
+
+# =============================================================================
 # UPPERCASE LETTERS A-Z (26 characters)
 # =============================================================================
 
@@ -25,8 +123,8 @@ A  LATIN-CAPITAL-A = APEX(stem.l, stem.r, crossbar.cap) script:Latn
 # B - Vertical stem with two stacked half-bowls
 B  LATIN-CAPITAL-B = LR(stem.l, STACK(bowl.upper, bowl.lower), 3/9) script:Latn
 
-# C - Open arc form
-C  LATIN-CAPITAL-C = STACK(arc.top.cap, arc.bot.cap) script:Latn
+# C - Single-stroke open arc form
+C  LATIN-CAPITAL-C = arc.c.cap script:Latn
 
 # D - Vertical stem with right-side capital bowl
 D  LATIN-CAPITAL-D = LR(stem.l, bowl.r.cap, 3/9) script:Latn
@@ -37,11 +135,11 @@ E  LATIN-CAPITAL-E = FRAME(stem.l, arm.top, arm.mid, arm.bot) script:Latn
 # F - Vertical stem with two horizontal arms (top and middle)
 F  LATIN-CAPITAL-F = FRAME(stem.l, arm.top, arm.mid) script:Latn
 
-# G - C-shape with horizontal bar
-G  LATIN-CAPITAL-G = FRAME(arc.top.cap, arc.bot.cap, bar.mid) script:Latn
+# G - Single-stroke C-arc with horizontal bar stub
+G  LATIN-CAPITAL-G = arc.g.cap script:Latn
 
-# H - Two vertical stems connected by crossbar
-H  LATIN-CAPITAL-H = FRAME(stem.l, crossbar.cap, stem.r) script:Latn
+# H - Two vertical stems, then crossbar
+H  LATIN-CAPITAL-H = FRAME(stem.l, stem.r, crossbar.cap) script:Latn
 
 # I - Single vertical stem
 I  LATIN-CAPITAL-I = stem.l script:Latn
@@ -73,14 +171,14 @@ Q  LATIN-CAPITAL-Q = FRAME(bowl.cap, tail) script:Latn
 # R - Vertical stem with upper bowl and leg
 R  LATIN-CAPITAL-R = FRAME(stem.l, bowl.upper, leg.cap) script:Latn
 
-# S - Central spine curve with top and bottom arcs
-S  LATIN-CAPITAL-S = FRAME(arc.top.cap, spine.cap, arc.bot.cap) script:Latn
+# S - Single-stroke continuous curve, top-to-bottom
+S  LATIN-CAPITAL-S = curve.s.cap script:Latn
 
-# T - Horizontal bar at top with vertical stem
-T  LATIN-CAPITAL-T = FRAME(bar.top, stem) script:Latn
+# T - Vertical stem, then top bar
+T  LATIN-CAPITAL-T = FRAME(stem, bar.top) script:Latn
 
-# U - Two vertical stems connected by bottom arc
-U  LATIN-CAPITAL-U = FRAME(stem.l, arc.bot.cap, stem.r) script:Latn
+# U - Single-stroke horseshoe form
+U  LATIN-CAPITAL-U = arc.u.cap script:Latn
 
 # V - Two diagonal stems meeting at bottom vertex
 V  LATIN-CAPITAL-V = vertex.cap script:Latn
@@ -91,8 +189,8 @@ W  LATIN-CAPITAL-W = LR(vertex.cap, vertex.cap, 6/6) script:Latn
 # X - Two crossing diagonals
 X  LATIN-CAPITAL-X = OVR(diagonal, diagonal.l) script:Latn
 
-# Y - Two diagonal stems meeting at center, descending to baseline
-Y  LATIN-CAPITAL-Y = FRAME(diagonal.l, stem, diagonal) script:Latn
+# Y - Two diagonals meeting at center, then stem descending to baseline
+Y  LATIN-CAPITAL-Y = FRAME(diagonal.l, diagonal, stem) script:Latn
 
 # Z - Top bar, diagonal, bottom bar
 Z  LATIN-CAPITAL-Z = FRAME(bar.top, diagonal, bar.bot.cap) script:Latn
@@ -107,14 +205,14 @@ a  LATIN-SMALL-A = LR(bowl.l, stem, 7/5) script:Latn
 # b - Ascender with right-side bowl
 b  LATIN-SMALL-B = STACK(ascender, bowl.r) script:Latn
 
-# c - Open arc form at x-height
-c  LATIN-SMALL-C = STACK(arc.top, arc.bot) script:Latn
+# c - Single-stroke open arc (counterclockwise)
+c  LATIN-SMALL-C = arc.c script:Latn
 
 # d - Left-side bowl with ascender
 d  LATIN-SMALL-D = LR(bowl.l, ascender, 7/5) script:Latn
 
-# e - Bowl with crossbar (single eye form)
-e  LATIN-SMALL-E = FRAME(arc.top, crossbar.low, arc.bot) script:Latn
+# e - Bowl with crossbar (stroke: start at crossbar, curve counterclockwise)
+e  LATIN-SMALL-E = FRAME(crossbar.low, arc.top, arc.bot) script:Latn
 
 # f - Hook top with stem and crossbar
 f  LATIN-SMALL-F = FRAME(hook.top, stem, bar.mid.short) script:Latn
@@ -125,10 +223,10 @@ g  LATIN-SMALL-G = STACK(bowl, loop) script:Latn
 # h - Ascender with shoulder
 h  LATIN-SMALL-H = FRAME(ascender, shoulder) script:Latn
 
-# i - Stem with tittle above
+# i - Stem with tittle above (stroke order: stem, then tittle; STACK is visual)
 i  LATIN-SMALL-I = STACK(tittle, stem) script:Latn
 
-# j - Stem with hook bottom and tittle above
+# j - Stem with hook bottom and tittle above (stroke order: stem+hook, then tittle; STACK is visual)
 j  LATIN-SMALL-J = STACK(tittle, stem, hook.bot) script:Latn
 
 # k - Ascender with diagonal arm and leg
@@ -146,8 +244,8 @@ n  LATIN-SMALL-N = FRAME(stem, shoulder) script:Latn
 # o - Full round bowl at x-height
 o  LATIN-SMALL-O = bowl.full script:Latn
 
-# p - Stem descending below baseline with right bowl
-p  LATIN-SMALL-P = STACK(bowl.r, descender) script:Latn
+# p - Descender stem, then bowl (stroke order: stem down, then bowl clockwise)
+p  LATIN-SMALL-P = FRAME(descender, bowl.r) script:Latn
 
 # q - Left bowl with descending stem
 q  LATIN-SMALL-Q = LR(bowl.l, descender.r, 7/5) script:Latn
@@ -155,14 +253,14 @@ q  LATIN-SMALL-Q = LR(bowl.l, descender.r, 7/5) script:Latn
 # r - Stem with ear projection
 r  LATIN-SMALL-R = FRAME(stem, ear) script:Latn
 
-# s - Spine curve at x-height
-s  LATIN-SMALL-S = FRAME(arc.top, spine, arc.bot) script:Latn
+# s - Single-stroke S-curve (top to bottom)
+s  LATIN-SMALL-S = curve.s script:Latn
 
 # t - Stem with crossbar (shorter than f)
 t  LATIN-SMALL-T = FRAME(ascender, bar.mid.short) script:Latn
 
-# u - Two stems connected by bottom arc (inverted n)
-u  LATIN-SMALL-U = FRAME(stem, arc.bot, stem) script:Latn
+# u - Single horseshoe stroke (left down, curve, right up)
+u  LATIN-SMALL-U = arc.u script:Latn
 
 # v - Diagonal vertex at x-height
 v  LATIN-SMALL-V = vertex script:Latn

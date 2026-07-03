@@ -263,8 +263,8 @@ anchors: attach=[4,4] left=[0,4]
 М  CYRILLIC-CAPITAL-EM = FRAME(stem.l, apex, stem.r) script:Cyrl ortho:Rus
   # Identical to Latin M: two stems joined by apex
 
-Н  CYRILLIC-CAPITAL-EN = FRAME(stem.l, crossbar.cap, stem.r) script:Cyrl ortho:Rus
-  # Identical to Latin H: two stems with horizontal crossbar
+Н  CYRILLIC-CAPITAL-EN = FRAME(stem.l, stem.r, crossbar.cap) script:Cyrl ortho:Rus
+  # Identical to Latin H: two stems, then crossbar (stroke order: stems first)
 
 О  CYRILLIC-CAPITAL-O = bowl.cap script:Cyrl ortho:Rus
   # Identical to Latin O: closed bowl
@@ -275,11 +275,11 @@ anchors: attach=[4,4] left=[0,4]
 С  CYRILLIC-CAPITAL-ES = STACK(arc.top.cap, arc.bot.cap) script:Cyrl ortho:Rus
   # Identical to Latin C: open bowl (arcs)
 
-Т  CYRILLIC-CAPITAL-TE = FRAME(bar.top, stem) script:Cyrl ortho:Rus
-  # Identical to Latin T: centered stem under top bar
+Т  CYRILLIC-CAPITAL-TE = FRAME(stem, bar.top) script:Cyrl ortho:Rus
+  # Identical to Latin T: stem first, then top bar (stroke order)
 
-У  CYRILLIC-CAPITAL-U = FRAME(diagonal.l, stem, diagonal) script:Cyrl ortho:Rus
-  # Looks like Latin Y with descender
+У  CYRILLIC-CAPITAL-U = FRAME(diagonal.l, diagonal, stem) script:Cyrl ortho:Rus
+  # Looks like Latin Y: diagonals first, stem last (stroke order)
 
 Х  CYRILLIC-CAPITAL-HA = OVR(diagonal, diagonal.l) script:Cyrl ortho:Rus
   # Identical to Latin X: two crossing diagonals
@@ -294,8 +294,8 @@ anchors: attach=[4,4] left=[0,4]
 В  CYRILLIC-CAPITAL-VE = LR(stem.l, STACK(bowl.upper, bowl.lower), 3/9) script:Cyrl ortho:Rus
   # Identical to Latin B: stem with stacked upper and lower bowls
 
-Г  CYRILLIC-CAPITAL-GHE = FRAME(bar.top, stem.l) script:Cyrl ortho:Rus
-  # Like Latin L rotated 180 degrees or Greek Gamma
+Г  CYRILLIC-CAPITAL-GHE = FRAME(stem.l, bar.top) script:Cyrl ortho:Rus
+  # Like Latin L rotated 180 degrees or Greek Gamma (stroke order: stem first)
 
 Д  CYRILLIC-CAPITAL-DE = FRAME(apex, bar.bot.cap, tail.cyr, tail.cyr) script:Cyrl ortho:Rus
   # Triangular top with legs descending below baseline
@@ -315,8 +315,8 @@ anchors: attach=[4,4] left=[0,4]
 Л  CYRILLIC-CAPITAL-EL = apex script:Cyrl ortho:Rus
   # Like Greek Lambda or inverted V (no crossbar)
 
-П  CYRILLIC-CAPITAL-PE = FRAME(stem.l, bar.top, stem.r) script:Cyrl ortho:Rus
-  # Like Greek Pi: two stems joined at top by horizontal bar
+П  CYRILLIC-CAPITAL-PE = FRAME(stem.l, stem.r, bar.top) script:Cyrl ortho:Rus
+  # Like Greek Pi: stems first, then top bar (stroke order)
 
 Ф  CYRILLIC-CAPITAL-EF = OVR(bowl.cap, stem.cyr) script:Cyrl ortho:Rus
   # Stem through center of full bowl (like Greek Phi)
@@ -362,8 +362,8 @@ anchors: attach=[4,4] left=[0,4]
 а  CYRILLIC-SMALL-A = LR(bowl.l, stem) script:Cyrl ortho:Rus
   # Like Latin a: left bowl with right stem
 
-е  CYRILLIC-SMALL-IE = FRAME(arc.top, crossbar.low, arc.bot) script:Cyrl ortho:Rus
-  # Like Latin e: bowl with horizontal crossbar
+е  CYRILLIC-SMALL-IE = FRAME(crossbar.low, arc.top, arc.bot) script:Cyrl ortho:Rus
+  # Like Latin e: crossbar first, then arcs (stroke order)
 
 к  CYRILLIC-SMALL-KA = LR(stem, STACK(leg, leg.rev)) script:Cyrl ortho:Rus
   # Like Latin k but at x-height
@@ -383,8 +383,8 @@ anchors: attach=[4,4] left=[0,4]
 с  CYRILLIC-SMALL-ES = STACK(arc.top, arc.bot) script:Cyrl ortho:Rus
   # Identical to Latin c: open bowl
 
-т  CYRILLIC-SMALL-TE = FRAME(bar.top.x, stem) script:Cyrl ortho:Rus
-  # Miniature Т: stem under top bar at x-height
+т  CYRILLIC-SMALL-TE = FRAME(stem, bar.top.x) script:Cyrl ortho:Rus
+  # Miniature Т: stem first, then top bar (stroke order)
 
 у  CYRILLIC-SMALL-U = FRAME(vertex, descender.curved) script:Cyrl ortho:Rus
   # Like Latin y: vertex with curved descender
@@ -402,8 +402,8 @@ anchors: attach=[4,4] left=[0,4]
 в  CYRILLIC-SMALL-VE = LR(stem, STACK(bowl.r.upper, bowl.r.lower)) script:Cyrl ortho:Rus
   # Like small Latin b with two stacked bowls
 
-г  CYRILLIC-SMALL-GHE = FRAME(bar.top.x, stem) script:Cyrl ortho:Rus
-  # Like lowercase Г: horizontal bar with descending stem
+г  CYRILLIC-SMALL-GHE = FRAME(stem, bar.top.x) script:Cyrl ortho:Rus
+  # Like lowercase Г: stem first, then top bar (stroke order)
 
 д  CYRILLIC-SMALL-DE = FRAME(apex.x, bar.bot, tail.cyr, tail.cyr) script:Cyrl ortho:Rus
   # Like small Д: triangular with descending tails
@@ -423,8 +423,8 @@ anchors: attach=[4,4] left=[0,4]
 л  CYRILLIC-SMALL-EL = apex.x script:Cyrl ortho:Rus
   # Like inverted v at x-height
 
-п  CYRILLIC-SMALL-PE = FRAME(stem, bar.top.x, stem) script:Cyrl ortho:Rus
-  # Like small п: two stems joined at x-height top
+п  CYRILLIC-SMALL-PE = FRAME(stem, stem, bar.top.x) script:Cyrl ortho:Rus
+  # Like small п: stems first, then top bar (stroke order)
 
 ф  CYRILLIC-SMALL-EF = STACK(ascender, bowl.full, descender) script:Cyrl ortho:Rus
   # Vertical line through bowl, extending above and below
@@ -464,11 +464,11 @@ anchors: attach=[4,4] left=[0,4]
 # =============================================================================
 # Ukrainian uses the Russian alphabet plus these four additional letters
 
-Ґ  CYRILLIC-CAPITAL-GHE-UPTURN = FRAME(bar.top, stem.l, tick.cyr) script:Cyrl ortho:Ukr
-  # Г with small ascending tick (for /g/ sound)
+Ґ  CYRILLIC-CAPITAL-GHE-UPTURN = FRAME(stem.l, bar.top, tick.cyr) script:Cyrl ortho:Ukr
+  # Г with small ascending tick: stem first, then bar, then tick (stroke order)
 
-ґ  CYRILLIC-SMALL-GHE-UPTURN = FRAME(bar.top.x, stem, tick.cyr) script:Cyrl ortho:Ukr
-  # Small г with ascending tick
+ґ  CYRILLIC-SMALL-GHE-UPTURN = FRAME(stem, bar.top.x, tick.cyr) script:Cyrl ortho:Ukr
+  # Small г with ascending tick: stem first (stroke order)
 
 Є  CYRILLIC-CAPITAL-UKRAINIAN-IE = FRAME(STACK(arc.top.cap, arc.bot.cap), crossbar.cap) script:Cyrl ortho:Ukr
   # Like Latin E but curved (reversed Э)

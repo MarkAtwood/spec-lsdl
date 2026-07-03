@@ -282,7 +282,8 @@
 Þ LATIN-CAPITAL-THORN = LR(stem.l, bowl.r.upper.cap, 3/9) cp:U+00DE script:Latn ortho:Ice
 
 # þ - Small thorn: ascender-height stem with x-height bowl, descends below baseline
-þ LATIN-SMALL-THORN = FRAME(ascender, bowl.r, descender) cp:U+00FE script:Latn ortho:Ice
+# Stroke order: full vertical stem first (ascender->descender), then bowl
+þ LATIN-SMALL-THORN = FRAME(ascender, descender, bowl.r) cp:U+00FE script:Latn ortho:Ice
 
 # -----------------------------------------------------------------------------
 # ESZETT (ß) - German sharp s
@@ -300,8 +301,35 @@
 ÿ LATIN-SMALL-Y-DIAERESIS = DIA(y, diaeresis) cp:U+00FF script:Latn ortho:Fra
 
 # -----------------------------------------------------------------------------
-# MATHEMATICAL OPERATORS
+# MATHEMATICAL OPERATORS AND SYMBOLS
 # -----------------------------------------------------------------------------
+
+# ¬ - Not sign: horizontal bar with right descender
+¬ NOT-SIGN = LR(crossbar, descender.r, 5/9) cp:U+00AC
+
+# ° - Degree sign: small circle at cap height
+° DEGREE-SIGN = sc(bowl.full, sx=4, sy=4) cp:U+00B0
+
+# ± - Plus-minus sign: plus with bar below
+± PLUS-MINUS-SIGN = STACK(apex.x, crossbar) cp:U+00B1
+
+# ² - Superscript two: scaled arc and crossbar
+² SUPERSCRIPT-TWO = sc(FRAME(arc.top.cap, bar.bot.cap), sx=6, sy=6) cp:U+00B2
+
+# ³ - Superscript three: scaled stacked arcs
+³ SUPERSCRIPT-THREE = sc(STACK(arc.top.cap.r, arc.bot.cap.r), sx=6, sy=6) cp:U+00B3
+
+# µ - Micro sign: like u with descender
+µ MICRO-SIGN = FRAME(shoulder, descender.l) cp:U+00B5
+
+# ¶ - Pilcrow sign: two bowls with vertical stem
+¶ PILCROW-SIGN = FRAME(stem.l, bowl.r.upper.cap, bowl.r.lower.cap) cp:U+00B6
+
+# · - Middle dot: centered dot at x-height mid
+· MIDDLE-DOT = dot.mid cp:U+00B7
+
+# ¹ - Superscript one: scaled vertical stem with flag
+¹ SUPERSCRIPT-ONE = sc(FRAME(flag.cap, stem.r), sx=6, sy=6) cp:U+00B9
 
 # × - Multiplication sign: rotated plus or X shape at mid-height
 × MULTIPLICATION-SIGN = OVR(diagonal.x, diagonal.x.rev) cp:U+00D7

@@ -50,14 +50,15 @@ anchors: attach=[6,2]
 # combining-diaeresis-ring - Diaeresis with ring
 # Unicode: U+1AB1 COMBINING DIAERESIS-RING
 # Medieval scribal mark
+# Winding: counterclockwise (top -> left -> bottom -> right)
 # -----------------------------------------------------------------------------
 @elem combining-diaeresis-ring
 zone: diacritic-above
 path: p1 p2 p3 p4
 p1 = [6,0]
-p2 = C([8,0] [8,1])
-p3 = C([8,2] [6,2])
-p4 = C([4,2] [4,1])
+p2 = C([4,0] [4,1])
+p3 = C([4,2] [6,2])
+p4 = C([8,2] [8,1])
 close: true
 width: 1
 anchors: attach=[6,2]
