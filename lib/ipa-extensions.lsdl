@@ -35,15 +35,16 @@
 # -----------------------------------------------------------------------------
 # turned.a - Turned lowercase a shape
 # For ɐ (Latin Small Letter Turned A)
+# Stroke order: counterclockwise from top (top -> left -> bottom -> right)
 # -----------------------------------------------------------------------------
 @elem turned.a
 zone: x-height
 path: p1 p2 p3 p4 p5
-p1 = [10,4]
-p2 = [10,8]
-p3 = C([10,8] [4,8])
-p4 = C([0,8] [0,6])
-p5 = C([0,4] [6,4])
+p1 = [6,4]
+p2 = C([0,4] [0,6])
+p3 = C([0,8] [4,8])
+p4 = C([10,8] [10,6])
+p5 = [10,4]
 close: true
 width: 1
 anchors: top=[6,4] base=[6,8] mid=[5,6]
@@ -53,15 +54,17 @@ anchors: top=[6,4] base=[6,8] mid=[5,6]
 # -----------------------------------------------------------------------------
 # alpha.small - Latin alpha shape (open at top right)
 # For ɑ (Latin Small Letter Alpha)
+# Stroke order: counterclockwise from top-center (top -> left -> bottom -> right)
+# Open path ends at right side
 # -----------------------------------------------------------------------------
 @elem alpha.small
 zone: x-height
 path: p1 p2 p3 p4 p5
-p1 = [10,4]
-p2 = [10,8]
-p3 = C([10,8] [6,8])
-p4 = C([2,8] [2,6])
-p5 = C([2,4] [6,4])
+p1 = [6,4]
+p2 = C([2,4] [2,6])
+p3 = C([2,8] [6,8])
+p4 = C([10,8] [10,6])
+p5 = [10,4]
 close: false
 width: 1
 anchors: top=[6,4] base=[6,8] mid=[6,6]
@@ -71,15 +74,17 @@ anchors: top=[6,4] base=[6,8] mid=[6,6]
 # -----------------------------------------------------------------------------
 # turned.alpha - Turned alpha shape
 # For ɒ (Latin Small Letter Turned Alpha)
+# Stroke order: counterclockwise from top (top -> right -> bottom)
+# Open path ends at left side (mirror of alpha.small)
 # -----------------------------------------------------------------------------
 @elem turned.alpha
 zone: x-height
 path: p1 p2 p3 p4 p5
-p1 = [2,8]
-p2 = [2,4]
-p3 = C([2,4] [6,4])
-p4 = C([10,4] [10,6])
-p5 = C([10,8] [6,8])
+p1 = [6,4]
+p2 = C([10,4] [10,6])
+p3 = C([10,8] [6,8])
+p4 = C([2,8] [2,6])
+p5 = [2,4]
 close: false
 width: 1
 anchors: top=[6,4] base=[6,8] mid=[6,6]
@@ -89,14 +94,16 @@ anchors: top=[6,4] base=[6,8] mid=[6,6]
 # -----------------------------------------------------------------------------
 # open.o.small - Open O shape (like reversed C)
 # For ɔ (Latin Small Letter Open O)
+# Stroke order: counterclockwise from top (top -> left -> bottom)
+# Open path for reversed C shape
 # -----------------------------------------------------------------------------
 @elem open.o.small
 zone: x-height
 path: p1 p2 p3 p4
-p1 = [2,5]
-p2 = C([2,4] [6,4])
-p3 = C([10,4] [10,6])
-p4 = C([10,8] [6,8])
+p1 = [6,4]
+p2 = C([2,4] [2,6])
+p3 = C([2,8] [6,8])
+p4 = C([10,8] [10,6])
 close: false
 width: 1
 anchors: top=[6,4] base=[6,8] left=[2,6]
@@ -142,16 +149,18 @@ anchors: top=[6,4] base=[6,8] mid=[6,6]
 # -----------------------------------------------------------------------------
 # script.g - Script g shape (single-storey)
 # For ɡ (Latin Small Letter Script G)
+# Stroke order: counterclockwise from top-center (top -> left -> bottom -> right)
+# Open path with descender loop
 # -----------------------------------------------------------------------------
 @elem script.g
 zone: descender
 path: p1 p2 p3 p4 p5 p6
-p1 = [10,4]
-p2 = [10,8]
-p3 = C([10,10] [6,10])
-p4 = C([2,10] [2,8])
-p5 = C([2,4] [6,4])
-p6 = C([10,4] [10,6])
+p1 = [6,4]
+p2 = C([2,4] [2,6])
+p3 = C([2,8] [2,10])
+p4 = C([2,10] [6,10])
+p5 = C([10,10] [10,8])
+p6 = [10,4]
 close: false
 width: 1
 anchors: top=[6,4] base=[6,10] mid=[6,7]
@@ -328,17 +337,19 @@ anchors: top=[6,4] base=[8,11]
 # -----------------------------------------------------------------------------
 # hooked.b - b with hook (implosive)
 # For ɓ (Latin Small Letter B with Hook)
+# Stroke order: hook top-down, then bowl counterclockwise from junction
+# Bowl: top-left junction -> top-right -> bottom-right -> bottom-left
 # -----------------------------------------------------------------------------
 @elem hooked.b
 zone: full
 path: p1 p2 p3 p4 p5 p6 p7
 p1 = [4,0]
 p2 = C([2,0] [2,2])
-p3 = [2,8]
-p4 = C([2,8] [6,8])
-p5 = C([10,8] [10,6])
-p6 = C([10,4] [6,4])
-p7 = [2,4]
+p3 = [2,4]
+p4 = C([2,4] [6,4])
+p5 = C([10,4] [10,6])
+p6 = C([10,8] [6,8])
+p7 = [2,8]
 close: false
 width: 1
 anchors: top=[4,0] base=[6,8]

@@ -167,14 +167,15 @@ anchors: top=[2,0] base=[4,8] left=[0,4] right=[10,8]
 # Naira Sign Elements (Nigeria)
 # -----------------------------------------------------------------------------
 
-# currency.naira.n - N-shape for Naira (4 points: down, up-diagonal, down)
+# currency.naira.n - N-shape for Naira (4 points: down, diagonal, down)
+# Stroke order: left stem down, diagonal up-right, right stem down
 @elem currency.naira.n
 zone: cap
 path: p1 p2 p3 p4
-p1 = [2,8]
-p2 = [2,0]
-p3 = [10,8]
-p4 = [10,0]
+p1 = [2,0]
+p2 = [2,8]
+p3 = [10,0]
+p4 = [10,8]
 close: false
 width: 1
 anchors: top-left=[2,0] base-left=[2,8]
@@ -244,14 +245,15 @@ anchors: top-left=[0,0] top-right=[12,0]
 # -----------------------------------------------------------------------------
 
 # currency.sheqel - Sheqel shape (two vertical strokes with curved top)
+# Stroke order: start top-left, curve across top, down right side
 @elem currency.sheqel
 zone: cap
 path: p1 p2 p3 p4 p5
-p1 = [2,8]
-p2 = [2,2]
-p3 = C([2,0] [6,0])
-p4 = C([10,0] [10,2])
-p5 = [10,8]
+p1 = [2,2]
+p2 = C([2,0] [6,0])
+p3 = C([10,0] [10,2])
+p4 = [10,8]
+p5 = [2,8]
 close: false
 width: 1
 anchors: top=[6,0] base-left=[2,8] base-right=[10,8]
@@ -345,11 +347,12 @@ anchors: top=[6,0] base=[6,10] mid=[6,5]
 # -----------------------------------------------------------------------------
 
 # currency.drachma - Drachma shape (delta-like)
+# Stroke order: start at apex, down-left diagonal, down-right diagonal
 @elem currency.drachma
 zone: cap
 path: p1 p2 p3 p4
-p1 = [0,8]
-p2 = [6,0]
+p1 = [6,0]
+p2 = [0,8]
 p3 = [6,0]
 p4 = [12,8]
 close: false
@@ -468,11 +471,12 @@ anchors: top=[8,0] base=[8,8] mid=[2,4]
 # -----------------------------------------------------------------------------
 
 # currency.manat.m - M-shape for Manat
+# Stroke order: start top-left, down left stem, zigzag, down right stem
 @elem currency.manat.m
 zone: cap
 path: p1 p2 p3 p4 p5
-p1 = [0,8]
-p2 = [0,0]
+p1 = [0,0]
+p2 = [0,8]
 p3 = [6,4]
 p4 = [12,0]
 p5 = [12,8]
