@@ -172,6 +172,74 @@ The metric system difference reflects script geometry:
 - **CJK:** Uniform em-square; all characters fill the same bounding box
 - **Alphabetic:** Variable vertical extent; lowercase x-height, ascenders, descenders, capitals, and diacritics occupy distinct zones
 
+## Stroke Order Convention
+
+LSDL encodes stroke order in element path definitions and composition
+argument order. The convention is documented in `docs/stroke-order-convention.md`.
+This section records the provenance of each principle.
+
+### Principles with Pedagogical Basis
+
+| Principle | Source | Notes |
+|-----------|--------|-------|
+| Top-to-bottom vertical strokes | Zaner-Bloser, D'Nealian, Palmer Method, UK National Curriculum | Universal across Latin handwriting curricula |
+| Left-to-right horizontal strokes | Same as above | Universal across Latin handwriting curricula |
+| Pull over push (downstrokes preferred) | Edward Johnston, *Writing & Illuminating & Lettering* (1906); Irene Wellington, *The Foundational Hand* | Standard broad-pen calligraphy principle |
+| Main structural stroke first | Handwriting pedagogy consensus | Common to most curricula; stem before bowl, etc. |
+
+### Graphics Convention (Not Pedagogical)
+
+| Principle | Source | Notes |
+|-----------|--------|-------|
+| Counterclockwise winding for closed paths | TrueType, PostScript, SVG fill-rule conventions | Ensures correct fill behavior; not derived from handwriting instruction |
+
+### What Does Not Exist
+
+Unlike CJK scripts, there is no government or ISO standard for Latin
+stroke order. Japan publishes stroke order in 常用漢字表, China in
+通用规范汉字表, and Taiwan/Korea have equivalent standards. Latin script
+has no comparable authority.
+
+Handwriting methods vary significantly:
+- **US:** Zaner-Bloser vs. D'Nealian (different letter formations)
+- **UK:** Continuous cursive vs. print
+- **France/Germany:** Different joining conventions
+- **Historical:** Palmer Method (1894) differs from modern approaches
+
+### LSDL Synthesis
+
+The stroke-order convention in this dataset is our synthesis of:
+1. Shared principles across major handwriting curricula
+2. Calligraphic tradition (broad-pen letter construction)
+3. Font toolchain conventions (counterclockwise winding)
+
+This synthesis is defensible but not authoritative. A different
+project might reasonably choose different conventions (e.g., clockwise
+winding to match a specific national curriculum). The key property is
+internal consistency: all ~7700 characters in the LSDL dataset follow
+the same convention.
+
+### References
+
+**Edward Johnston**, *Writing & Illuminating & Lettering*, Pitman, 1906.
+The foundational text for modern Western calligraphy; establishes
+pull-stroke principles still taught today.
+
+**Zaner-Bloser Handwriting**, Zaner-Bloser Inc.
+Dominant US handwriting curriculum; defines letter formation sequences.
+
+**D'Nealian Handwriting**, Scott Foresman.
+Alternative US curriculum with different stroke patterns for some letters.
+
+**UK National Curriculum**, Department for Education.
+Specifies handwriting expectations including letter formation direction.
+
+**TrueType Reference Manual**, Apple Computer, 1990–present.
+Defines counterclockwise contour direction for filled outlines.
+
+**PostScript Language Reference**, Adobe Systems.
+Defines non-zero winding fill rule requiring consistent contour direction.
+
 ## Verification
 
 To verify element and diacritic coverage against Unicode:

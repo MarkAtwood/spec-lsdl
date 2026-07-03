@@ -100,6 +100,18 @@ Elements are the atomic anatomical parts. The approximately 45 named elements fa
 
 Elements support **positional variants** via dotted names. The element `bowl` has variants `bowl.l` (left-side, as in d, q), `bowl.r` (right-side, as in b, p), and `bowl.full` (complete round, as in o). Script-specific variants include `stem.cyr` (Cyrillic stem) and `sigma.final` (Greek final sigma).
 
+## Stroke Order
+
+LSDL encodes stroke order in two ways: element path point sequences define pen direction within a single stroke, and composition operator argument order defines which strokes come first.
+
+The dataset follows these conventions:
+- **Vertical strokes:** top-to-bottom (pull, not push)
+- **Horizontal strokes:** left-to-right
+- **Closed curves:** counterclockwise winding (for correct font fills)
+- **Main stroke first:** structural elements before details (stem before bowl, crossbar after verticals)
+
+These principles derive from handwriting pedagogy (Zaner-Bloser, Palmer Method, UK National Curriculum) and calligraphic tradition (Edward Johnston's broad-pen principles), combined with font toolchain conventions for counterclockwise contour direction. Unlike CJK scripts, there is no government standard for Latin stroke order; this is our synthesis. See `DATA_SOURCES.md` for full provenance and `docs/stroke-order-convention.md` for the detailed specification.
+
 ## Composition Operators
 
 Nine operators describe how elements combine:
