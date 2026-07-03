@@ -7,10 +7,11 @@ Usage:
     lsdl-validate -              # Read from stdin
 
 Options:
-    -q, --quiet     Only output errors
-    --json          Output as JSON
-    --strict        Treat warnings as errors
-    --version       Show version
+    -q, --quiet             Only output errors
+    --json                  Output as JSON
+    --strict                Treat warnings as errors
+    --check-stroke-order    Check stroke-order conventions
+    --version               Show version
 """
 
 from __future__ import annotations
@@ -23,6 +24,7 @@ from pathlib import Path
 from typing import TextIO
 
 from lsdl.cli import get_version
+from lsdl.lint_stroke_order import check_stroke_order
 from lsdl.parser import ParseError, parse
 from lsdl.validate import Severity, ValidationIssue
 
@@ -81,6 +83,7 @@ def validate_source(
     path: str,
     quiet: bool = False,
     output: TextIO | None = None,
+    check_stroke_order_flag: bool = False,
 ) -> ValidationResult:
     """Validate LSDL source text.
 
@@ -89,6 +92,7 @@ def validate_source(
         path: Path for error messages
         quiet: If True, suppress non-error output
         output: File to write output to (defaults to stderr)
+        check_stroke_order_flag: If True, check stroke-order conventions
 
     Returns:
         ValidationResult with errors and warnings
@@ -100,7 +104,32 @@ def validate_source(
     warnings: list[ValidationIssue] = []
 
     try:
-        parse(source, filename=path)
+        doc = parse(source, filename=path)
+
+        # Run stroke-order checks if requested
+        if check_stroke_order_flag:
+            stroke_issues = check_stroke_order(doc)
+            for issue in stroke_issues:
+                if issue.severity == Severity.ERROR:
+                    errors.append(issue)
+                    msg = format_error_line(
+                        path, 0, 0, "error", f"[{issue.code}] {issue.message}"
+                    )
+                    print(msg, file=output)
+                elif issue.severity == Severity.WARNING:
+                    warnings.append(issue)
+                    if not quiet:
+                        msg = format_error_line(
+                            path, 0, 0, "warning", f"[{issue.code}] {issue.message}"
+                        )
+                        print(msg, file=output)
+                elif issue.severity == Severity.INFO and not quiet:
+                    # Info messages are printed but not counted as warnings
+                    msg = format_error_line(
+                        path, 0, 0, "info", f"[{issue.code}] {issue.message}"
+                    )
+                    print(msg, file=output)
+
     except ParseError as e:
         # Report all collected errors, not just the first
         for err in e.errors:
@@ -128,6 +157,7 @@ def validate_file(
     path: Path,
     quiet: bool = False,
     output: TextIO | None = None,
+    check_stroke_order_flag: bool = False,
 ) -> ValidationResult:
     """Validate an LSDL file.
 
@@ -135,6 +165,7 @@ def validate_file(
         path: Path to the .lsdl file
         quiet: If True, suppress non-error output
         output: File to write output to (defaults to stderr)
+        check_stroke_order_flag: If True, check stroke-order conventions
 
     Returns:
         ValidationResult with errors and warnings
@@ -204,7 +235,10 @@ def validate_file(
         print(f"{path_str}: error: {e}", file=output)
         return ValidationResult(path=path_str, valid=False, errors=errors, warnings=warnings)
 
-    return validate_source(source, path_str, quiet=quiet, output=output)
+    return validate_source(
+        source, path_str, quiet=quiet, output=output,
+        check_stroke_order_flag=check_stroke_order_flag
+    )
 
 
 def main(argv: list[str] | None = None) -> None:
@@ -236,6 +270,12 @@ def main(argv: list[str] | None = None) -> None:
         help="Output results as JSON",
     )
     parser.add_argument(
+        "--check-stroke-order",
+        action="store_true",
+        dest="check_stroke_order",
+        help="Check stroke-order conventions (per docs/stroke-order-convention.md)",
+    )
+    parser.add_argument(
         "--version",
         action="version",
         version=f"%(prog)s {get_version()}",
@@ -257,10 +297,16 @@ def main(argv: list[str] | None = None) -> None:
         if file_arg == "-":
             # Read from stdin
             source = sys.stdin.read()
-            result = validate_source(source, "<stdin>", quiet=args.quiet, output=output)
+            result = validate_source(
+                source, "<stdin>", quiet=args.quiet, output=output,
+                check_stroke_order_flag=args.check_stroke_order
+            )
         else:
             path = Path(file_arg)
-            result = validate_file(path, quiet=args.quiet, output=output)
+            result = validate_file(
+                path, quiet=args.quiet, output=output,
+                check_stroke_order_flag=args.check_stroke_order
+            )
 
         results.append(result)
         if result.errors:
