@@ -1,0 +1,50 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL Digit Library
+# =============================================================================
+#
+# This file defines the 10 Arabic numerals (U+0030-0039).
+# Uses digit.* elements from elements-base.lsdl.
+#
+# Stroke order convention: main stroke first, top-to-bottom, left-to-right.
+#
+# =============================================================================
+
+# =============================================================================
+# DIGITS 0-9 (10 characters)
+# =============================================================================
+
+# 0 - Oval form (similar to capital O)
+0  DIGIT-ZERO = bowl.cap cp:U+0030
+
+# 1 - Vertical stem with top angle flag
+1  DIGIT-ONE = FRAME(flag.cap, stem.r) cp:U+0031
+
+# 2 - Top arc flowing into vertical into bottom bar
+2  DIGIT-TWO = FRAME(digit.arc.top.two, digit.stem.two, bar.bot.cap) cp:U+0032
+
+# 3 - Two arcs stacked, both opening left
+3  DIGIT-THREE = STACK(digit.arc.upper.three, digit.arc.lower.three) cp:U+0033
+
+# 4 - Vertical stem with diagonal and crossbar
+4  DIGIT-FOUR = FRAME(digit.stem.four, digit.diag.four, digit.crossbar.four) cp:U+0034
+
+# 5 - Top bar, vertical stem, bottom arc
+5  DIGIT-FIVE = FRAME(digit.bar.top.five, digit.stem.five, digit.arc.bot.five) cp:U+0035
+
+# 6 - Continuous curve: ascending hook flowing into closed bowl
+6  DIGIT-SIX = digit.curve.six cp:U+0036
+
+# 7 - Top bar with diagonal descending stroke
+7  DIGIT-SEVEN = FRAME(bar.top, diagonal.l) cp:U+0037
+
+# 8 - Two bowls stacked (figure-8 form)
+8  DIGIT-EIGHT = STACK(digit.bowl.upper.eight, digit.bowl.lower.eight) cp:U+0038
+
+# 9 - Bowl with descending tail (inverted 6)
+9  DIGIT-NINE = digit.curve.nine cp:U+0039
+
+# =============================================================================
+# END OF DIGIT LIBRARY
+# =============================================================================

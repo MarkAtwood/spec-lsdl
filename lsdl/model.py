@@ -97,6 +97,10 @@ ELEMENT_REGISTRY: frozenset[str] = frozenset(
         "dot",
         "caron",
         "comma",
+        # Numerals (1)
+        "digit",
+        # Punctuation (1)
+        "punct",
     }
 )
 

@@ -213,9 +213,9 @@ anchors: top=[6,1] base=[6,10] mid=[6,5]
 zone: x-height
 path: p1 p2 p3 p4
 p1 = [6,4]
-p2 = C([12,4] [12,6])
-p3 = C([12,8] [6,8])
-p4 = C([0,8] [0,6])
+p2 = C([0,4] [0,6])
+p3 = C([0,8] [6,8])
+p4 = C([12,8] [12,6])
 close: true
 width: 1
 anchors: attach=[6,6] mark-above=[6,3] mark-below=[6,9]
@@ -241,9 +241,9 @@ anchors: attach=[6,6] mark-above=[4,3] mark-below=[4,9]
 zone: x-height
 path: p1 p2 p3 p4
 p1 = [6,4]
-p2 = C([12,4] [12,6])
-p3 = C([12,8] [6,8])
-p4 = C([0,8] [0,6])
+p2 = C([0,4] [0,6])
+p3 = C([0,8] [6,8])
+p4 = C([12,8] [12,6])
 close: true
 width: 1
 anchors: attach=[6,6] mark-above=[8,3] mark-below=[8,9]
@@ -255,10 +255,10 @@ anchors: attach=[6,6] mark-above=[8,3] mark-below=[8,9]
 zone: x-height
 path: p1 p2 p3 p4 p5
 p1 = [6,4]
-p2 = C([12,4] [12,6])
-p3 = C([12,8] [6,8])
-p4 = C([0,8] [0,6])
-p5 = C([0,4] [6,4])
+p2 = C([0,4] [0,6])
+p3 = C([0,8] [6,8])
+p4 = C([12,8] [12,6])
+p5 = C([12,4] [6,4])
 close: true
 width: 1
 anchors: attach=[6,6] mark-above=[6,3] mark-below=[6,9]
@@ -270,10 +270,10 @@ anchors: attach=[6,6] mark-above=[6,3] mark-below=[6,9]
 zone: cap
 path: p1 p2 p3 p4 p5
 p1 = [6,0]
-p2 = C([12,0] [12,4])
-p3 = C([12,8] [6,8])
-p4 = C([0,8] [0,4])
-p5 = C([0,0] [6,0])
+p2 = C([0,0] [0,4])
+p3 = C([0,8] [6,8])
+p4 = C([12,8] [12,4])
+p5 = C([12,0] [6,0])
 close: true
 width: 1
 anchors: attach=[6,4] mark-above=[6,0] mark-below=[6,9]
@@ -395,8 +395,8 @@ anchors: attach=[6,2] top=[4,0] base=[4,4]
 zone: x-height
 path: p1 p2 p3
 p1 = [5,5]
-p2 = C([9,5] [9,7])
-p3 = C([5,7] [5,5])
+p2 = C([5,7] [9,7])
+p3 = C([9,5] [5,5])
 close: true
 width: 0
 anchors: attach=[6,6]
@@ -462,9 +462,9 @@ anchors: left=[2,4] right=[10,4] base=[6,8]
 @elem arc.top.r
 zone: x-height
 path: p1 p2 p3
-p1 = [2,6]
-p2 = C([2,4] [6,4])
-p3 = [10,6]
+p1 = [10,6]
+p2 = C([6,4] [2,4])
+p3 = [2,6]
 close: false
 width: 1
 anchors: left=[2,6] right=[10,6] top=[6,4]
@@ -475,9 +475,9 @@ anchors: left=[2,6] right=[10,6] top=[6,4]
 @elem arc.bot.r
 zone: x-height
 path: p1 p2 p3
-p1 = [10,6]
-p2 = C([10,8] [6,8])
-p3 = [2,6]
+p1 = [2,6]
+p2 = C([6,8] [10,8])
+p3 = [10,6]
 close: false
 width: 1
 anchors: left=[2,6] right=[10,6] base=[6,8]
@@ -488,9 +488,9 @@ anchors: left=[2,6] right=[10,6] base=[6,8]
 @elem arc.top.cap.r
 zone: cap
 path: p1 p2 p3
-p1 = [2,4]
-p2 = C([2,0] [6,0])
-p3 = [10,4]
+p1 = [10,4]
+p2 = C([6,0] [2,0])
+p3 = [2,4]
 close: false
 width: 1
 anchors: left=[2,4] right=[10,4] top=[6,0]
@@ -501,9 +501,9 @@ anchors: left=[2,4] right=[10,4] top=[6,0]
 @elem arc.bot.cap.r
 zone: cap
 path: p1 p2 p3
-p1 = [10,4]
-p2 = C([10,8] [6,8])
-p3 = [2,4]
+p1 = [2,4]
+p2 = C([6,8] [10,8])
+p3 = [10,4]
 close: false
 width: 1
 anchors: left=[2,4] right=[10,4] base=[6,8]
@@ -516,9 +516,9 @@ anchors: left=[2,4] right=[10,4] base=[6,8]
 @elem hook.top
 zone: ascender
 path: p1 p2 p3
-p1 = [10,1]
-p2 = C([10,2] [6,2])
-p3 = [6,4]
+p1 = [6,4]
+p2 = C([6,2] [10,2])
+p3 = [10,1]
 close: false
 width: 1
 anchors: attach=[6,4] base=[6,4] top=[10,1]
@@ -529,10 +529,10 @@ anchors: attach=[6,4] base=[6,4] top=[10,1]
 @elem hook.top.deep
 zone: ascender
 path: p1 p2 p3 p4
-p1 = [11,1]
-p2 = C([11,3] [8,3])
-p3 = C([6,3] [6,4])
-p4 = [6,5]
+p1 = [6,5]
+p2 = C([6,4] [6,3])
+p3 = C([8,3] [11,3])
+p4 = [11,1]
 close: false
 width: 1
 anchors: attach=[6,5] base=[6,5] top=[11,1]
@@ -543,9 +543,9 @@ anchors: attach=[6,5] base=[6,5] top=[11,1]
 @elem hook.top.cyr
 zone: ascender
 path: p1 p2 p3
-p1 = [10,1]
-p2 = C([8,1] [6,2])
-p3 = [6,4]
+p1 = [6,4]
+p2 = C([6,2] [8,1])
+p3 = [10,1]
 close: false
 width: 1
 anchors: attach=[6,4] base=[6,4] top=[10,1]
@@ -931,12 +931,12 @@ width: 1
 anchors: attach=[6,4] base=[2,8]
 @end
 
-# leg.rev - Reversed leg, rising from baseline (as in Cyrillic К lower)
+# leg.rev - Reversed leg, descending from junction (as in Cyrillic К lower)
 @elem leg.rev
 zone: x-height
 path: p1 p2
-p1 = [2,8]
-p2 = [6,4]
+p1 = [6,4]
+p2 = [2,8]
 close: false
 width: 1
 anchors: attach=[6,4] base=[2,8]
@@ -946,8 +946,8 @@ anchors: attach=[6,4] base=[2,8]
 @elem leg.cap.rev
 zone: cap
 path: p1 p2
-p1 = [2,8]
-p2 = [6,4]
+p1 = [6,4]
+p2 = [2,8]
 close: false
 width: 1
 anchors: attach=[6,4] base=[2,8]
@@ -1315,9 +1315,9 @@ anchors: attach=[6,4]
 zone: x-height
 path: p1 p2 p3 p4
 p1 = [7,7]
-p2 = C([8,7] [8,8])
-p3 = C([8,9] [7,9])
-p4 = C([6,9] [6,8])
+p2 = C([6,7] [6,8])
+p3 = C([6,9] [7,9])
+p4 = C([8,9] [8,8])
 close: true
 width: 1
 anchors: attach=[6,8]
@@ -1328,9 +1328,9 @@ anchors: attach=[6,8]
 zone: x-height
 path: p1 p2 p3 p4
 p1 = [7,5]
-p2 = C([8,5] [8,4])
-p3 = C([8,3] [7,3])
-p4 = C([6,3] [6,4])
+p2 = C([6,5] [6,4])
+p3 = C([6,3] [7,3])
+p4 = C([8,3] [8,4])
 close: true
 width: 1
 anchors: attach=[6,4]
@@ -1341,9 +1341,9 @@ anchors: attach=[6,4]
 zone: x-height
 path: p1 p2 p3 p4
 p1 = [6,7]
-p2 = C([7,7] [7,8])
-p3 = C([7,9] [6,9])
-p4 = C([5,9] [5,8])
+p2 = C([5,7] [5,8])
+p3 = C([5,9] [6,9])
+p4 = C([7,9] [7,8])
 close: true
 width: 1
 anchors: attach=[5,8]
@@ -1454,7 +1454,7 @@ width: 1
 anchors: attach=[6,0]
 @end
 
-# flag.l - Left flag
+# flag.l - Right-extending flag (strokes from outer end to attachment then down)
 @elem flag.l
 zone: x-height
 path: p1 p2 p3
@@ -1473,9 +1473,9 @@ anchors: attach=[6,4]
 zone: x-height
 path: p1 p2 p3 p4
 p1 = [6,2]
-p2 = C([7,2] [7,3])
-p3 = C([7,4] [6,4])
-p4 = C([5,4] [5,3])
+p2 = C([5,2] [5,3])
+p3 = C([5,4] [6,4])
+p4 = C([7,4] [7,3])
 close: true
 width: 1
 anchors: attach=[6,3] base=[6,4]
@@ -1487,9 +1487,9 @@ anchors: attach=[6,3] base=[6,4]
 zone: x-height
 path: p1 p2 p3 p4
 p1 = [5,2]
-p2 = [7,2]
+p2 = [5,4]
 p3 = [7,4]
-p4 = [5,4]
+p4 = [7,2]
 close: true
 width: 1
 anchors: attach=[6,3] base=[6,4]
@@ -1506,9 +1506,9 @@ anchors: attach=[6,3] base=[6,4]
 zone: x-height
 path: p1 p2 p3 p4
 p1 = [6,7]
-p2 = C([7,7] [7,8])
-p3 = C([7,9] [6,9])
-p4 = C([5,9] [5,8])
+p2 = C([5,7] [5,8])
+p3 = C([5,9] [6,9])
+p4 = C([7,9] [7,8])
 close: true
 width: 1
 anchors: attach=[6,8]
@@ -1519,9 +1519,9 @@ anchors: attach=[6,8]
 zone: x-height
 path: p1 p2 p3 p4
 p1 = [6,5]
-p2 = C([7,5] [7,6])
-p3 = C([7,7] [6,7])
-p4 = C([5,7] [5,6])
+p2 = C([5,5] [5,6])
+p3 = C([5,7] [6,7])
+p4 = C([7,7] [7,6])
 close: true
 width: 1
 anchors: attach=[6,6]
@@ -1532,9 +1532,9 @@ anchors: attach=[6,6]
 zone: x-height
 path: p1 p2 p3 p4
 p1 = [6,4]
-p2 = C([7,4] [7,5])
-p3 = C([7,6] [6,6])
-p4 = C([5,6] [5,5])
+p2 = C([5,4] [5,5])
+p3 = C([5,6] [6,6])
+p4 = C([7,6] [7,5])
 close: true
 width: 1
 anchors: attach=[6,5]
@@ -1637,6 +1637,182 @@ sc(bowl.l, sx=12, sy=16)
 @elem bowl.r.cap
 build: from_expr
 sc(bowl.r, sx=12, sy=16)
+@end
+
+# =============================================================================
+# DIGIT ELEMENTS
+# =============================================================================
+# Elements for constructing digits 0-9. Used by digits.lsdl and
+# superscripts-subscripts.lsdl.
+
+# digit.arc.top.two - Top arc for digit 2
+@elem digit.arc.top.two
+zone: cap
+path: p1 p2 p3
+p1 = [10,2]
+p2 = C([10,0] [6,0])
+p3 = C([2,0] [2,3])
+close: false
+width: 1
+anchors: right=[10,2] top=[6,0] left=[2,3]
+@end
+
+# digit.stem.two - Vertical stroke for digit 2
+@elem digit.stem.two
+zone: cap
+path: p1 p2
+p1 = [2,3]
+p2 = [2,8]
+close: false
+width: 1
+anchors: top=[2,3] base=[2,8]
+@end
+
+# digit.arc.upper.three - Upper arc for digit 3
+@elem digit.arc.upper.three
+zone: cap
+path: p1 p2 p3
+p1 = [2,1]
+p2 = C([2,0] [6,0])
+p3 = C([10,0] [10,2])
+close: false
+width: 1
+anchors: left=[2,1] top=[6,0] right=[10,2]
+@end
+
+# digit.arc.lower.three - Lower arc for digit 3
+@elem digit.arc.lower.three
+zone: cap
+path: p1 p2 p3
+p1 = [10,6]
+p2 = C([10,8] [6,8])
+p3 = C([2,8] [2,7])
+close: false
+width: 1
+anchors: right=[10,6] base=[6,8] left=[2,7]
+@end
+
+# digit.stem.four - Vertical stem for digit 4
+@elem digit.stem.four
+zone: cap
+path: p1 p2
+p1 = [8,0]
+p2 = [8,8]
+close: false
+width: 1
+anchors: top=[8,0] base=[8,8]
+@end
+
+# digit.diag.four - Diagonal stroke for digit 4
+@elem digit.diag.four
+zone: cap
+path: p1 p2
+p1 = [0,0]
+p2 = [0,5]
+close: false
+width: 1
+anchors: top=[0,0] base=[0,5]
+@end
+
+# digit.crossbar.four - Crossbar for digit 4
+@elem digit.crossbar.four
+zone: cap
+path: p1 p2
+p1 = [0,5]
+p2 = [10,5]
+close: false
+width: 1
+anchors: left=[0,5] right=[10,5]
+@end
+
+# digit.arc.bot.five - Bottom arc for digit 5
+@elem digit.arc.bot.five
+zone: cap
+path: p1 p2 p3
+p1 = [2,4]
+p2 = C([2,6] [6,8])
+p3 = C([10,8] [10,6])
+close: false
+width: 1
+anchors: left=[2,4] base=[6,8] right=[10,6]
+@end
+
+# digit.stem.five - Vertical stem for digit 5
+@elem digit.stem.five
+zone: cap
+path: p1 p2
+p1 = [2,0]
+p2 = [2,4]
+close: false
+width: 1
+anchors: top=[2,0] base=[2,4]
+@end
+
+# digit.bar.top.five - Top bar for digit 5
+@elem digit.bar.top.five
+zone: cap
+path: p1 p2
+p1 = [2,0]
+p2 = [10,0]
+close: false
+width: 1
+anchors: left=[2,0] right=[10,0]
+@end
+
+# digit.curve.six - Full curve for digit 6
+@elem digit.curve.six
+zone: cap
+path: p1 p2 p3 p4 p5 p6
+p1 = [10,1]
+p2 = C([8,0] [4,0])
+p3 = C([0,1] [0,4])
+p4 = C([0,8] [6,8])
+p5 = C([12,8] [12,5])
+p6 = C([12,3] [6,3])
+close: true
+width: 1
+anchors: top=[6,0] base=[6,8] attach=[6,5]
+@end
+
+# digit.curve.nine - Full curve for digit 9
+@elem digit.curve.nine
+zone: cap
+path: p1 p2 p3 p4 p5 p6
+p1 = [2,7]
+p2 = C([4,8] [8,8])
+p3 = C([12,7] [12,4])
+p4 = C([12,0] [6,0])
+p5 = C([0,0] [0,3])
+p6 = C([0,5] [6,5])
+close: true
+width: 1
+anchors: base=[6,8] top=[6,0] attach=[6,3]
+@end
+
+# digit.bowl.upper.eight - Upper bowl for digit 8
+@elem digit.bowl.upper.eight
+zone: cap
+path: p1 p2 p3 p4
+p1 = [6,0]
+p2 = C([2,0] [2,2])
+p3 = C([2,4] [6,4])
+p4 = C([10,4] [10,2])
+close: true
+width: 1
+anchors: top=[6,0] base=[6,4] attach=[6,2]
+@end
+
+# digit.bowl.lower.eight - Lower bowl for digit 8
+@elem digit.bowl.lower.eight
+zone: cap
+path: p1 p2 p3 p4
+p1 = [6,4]
+p2 = C([1,4] [1,6])
+p3 = C([1,8] [6,8])
+p4 = C([11,8] [11,6])
+close: true
+width: 1
+anchors: top=[6,4] base=[6,8] attach=[6,6]
 @end
 
 # =============================================================================
