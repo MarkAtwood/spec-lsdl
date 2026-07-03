@@ -1,0 +1,697 @@
+@lsdl 1.0
+
+# =============================================================================
+# LSDL ASCII Punctuation Library
+# =============================================================================
+#
+# This file defines 32 ASCII punctuation characters:
+#   U+0021-002F (15 chars): ! " # $ % & ' ( ) * + , - . /
+#   U+003A-0040 (7 chars):  : ; < = > ? @
+#   U+005B-0060 (6 chars):  [ \ ] ^ _ `
+#   U+007B-007E (4 chars):  { | } ~
+#
+# All 32 ASCII punctuation characters are now supported using U+XXXX
+# codepoint notation for characters that would otherwise conflict with
+# lexer tokens: # ( ) * , : =
+#
+# =============================================================================
+
+# =============================================================================
+# LOCAL PUNCTUATION ELEMENTS
+# =============================================================================
+
+# punct.stem.short - Short vertical stroke for exclamation mark
+@elem punct.stem.short
+zone: cap
+path: p1 p2
+p1 = [6,0]
+p2 = [6,6]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,6]
+@end
+
+# punct.dot.low - Low dot at baseline (for exclamation, question marks)
+@elem punct.dot.low
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [6,7]
+p2 = C([5,7] [5,8])
+p3 = C([5,9] [6,9])
+p4 = C([7,9] [7,8])
+close: true
+width: 1
+anchors: attach=[6,8]
+@end
+
+# punct.quote.single - Single quotation mark / apostrophe
+@elem punct.quote.single
+zone: cap
+path: p1 p2 p3
+p1 = [6,0]
+p2 = C([6,1] [6,2])
+p3 = [5,3]
+close: false
+width: 1
+anchors: attach=[6,1]
+@end
+
+# punct.paren.left - Left parenthesis curve
+@elem punct.paren.left
+zone: full
+path: p1 p2 p3
+p1 = [8,0]
+p2 = C([4,2] [4,5])
+p3 = C([4,8] [8,10])
+close: false
+width: 1
+anchors: top=[8,0] base=[8,10]
+@end
+
+# punct.paren.right - Right parenthesis curve
+@elem punct.paren.right
+zone: full
+path: p1 p2 p3
+p1 = [4,0]
+p2 = C([8,2] [8,5])
+p3 = C([8,8] [4,10])
+close: false
+width: 1
+anchors: top=[4,0] base=[4,10]
+@end
+
+# punct.bracket.left - Left square bracket
+@elem punct.bracket.left
+zone: full
+path: p1 p2 p3 p4
+p1 = [8,0]
+p2 = [4,0]
+p3 = [4,10]
+p4 = [8,10]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,10]
+@end
+
+# punct.bracket.right - Right square bracket
+@elem punct.bracket.right
+zone: full
+path: p1 p2 p3 p4
+p1 = [4,0]
+p2 = [8,0]
+p3 = [8,10]
+p4 = [4,10]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,10]
+@end
+
+# punct.brace.left - Left curly bracket
+@elem punct.brace.left
+zone: full
+path: p1 p2 p3 p4 p5
+p1 = [8,0]
+p2 = C([6,0] [6,2])
+p3 = C([6,4] [4,5])
+p4 = C([6,6] [6,8])
+p5 = C([6,10] [8,10])
+close: false
+width: 1
+anchors: mid=[4,5]
+@end
+
+# punct.brace.right - Right curly bracket
+@elem punct.brace.right
+zone: full
+path: p1 p2 p3 p4 p5
+p1 = [4,0]
+p2 = C([6,0] [6,2])
+p3 = C([6,4] [8,5])
+p4 = C([6,6] [6,8])
+p5 = C([6,10] [4,10])
+close: false
+width: 1
+anchors: mid=[8,5]
+@end
+
+# punct.solidus - Forward slash
+@elem punct.solidus
+zone: full
+path: p1 p2
+p1 = [10,0]
+p2 = [2,10]
+close: false
+width: 1
+anchors: top=[10,0] base=[2,10]
+@end
+
+# punct.reverse.solidus - Backslash
+@elem punct.reverse.solidus
+zone: full
+path: p1 p2
+p1 = [2,0]
+p2 = [10,10]
+close: false
+width: 1
+anchors: top=[2,0] base=[10,10]
+@end
+
+# punct.plus.horiz - Horizontal stroke of plus sign
+@elem punct.plus.horiz
+zone: x-height
+path: p1 p2
+p1 = [2,6]
+p2 = [10,6]
+close: false
+width: 1
+anchors: mid=[6,6]
+@end
+
+# punct.plus.vert - Vertical stroke of plus sign
+@elem punct.plus.vert
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+close: false
+width: 1
+anchors: mid=[6,6]
+@end
+
+# punct.hyphen - Short horizontal stroke at mid-height
+@elem punct.hyphen
+zone: x-height
+path: p1 p2
+p1 = [3,6]
+p2 = [9,6]
+close: false
+width: 1
+anchors: mid=[6,6]
+@end
+
+# punct.underscore - Horizontal stroke at baseline
+@elem punct.underscore
+zone: x-height
+path: p1 p2
+p1 = [0,9]
+p2 = [12,9]
+close: false
+width: 1
+anchors: mid=[6,9]
+@end
+
+# punct.less.than - Less-than angle bracket
+@elem punct.less.than
+zone: x-height
+path: p1 p2 p3
+p1 = [10,4]
+p2 = [2,6]
+p3 = [10,8]
+close: false
+width: 1
+anchors: mid=[6,6]
+@end
+
+# punct.greater.than - Greater-than angle bracket
+@elem punct.greater.than
+zone: x-height
+path: p1 p2 p3
+p1 = [2,4]
+p2 = [10,6]
+p3 = [2,8]
+close: false
+width: 1
+anchors: mid=[6,6]
+@end
+
+# punct.equals.top - Top bar of equals sign
+@elem punct.equals.top
+zone: x-height
+path: p1 p2
+p1 = [2,5]
+p2 = [10,5]
+close: false
+width: 1
+anchors: mid=[6,5]
+@end
+
+# punct.equals.bot - Bottom bar of equals sign
+@elem punct.equals.bot
+zone: x-height
+path: p1 p2
+p1 = [2,7]
+p2 = [10,7]
+close: false
+width: 1
+anchors: mid=[6,7]
+@end
+
+# punct.question.curve - Curved top of question mark
+@elem punct.question.curve
+zone: cap
+path: p1 p2 p3 p4
+p1 = [3,2]
+p2 = C([3,0] [6,0])
+p3 = C([10,0] [10,3])
+p4 = C([10,5] [6,6])
+close: false
+width: 1
+anchors: top=[6,0] base=[6,6]
+@end
+
+# punct.at.bowl - Inner bowl of at-sign
+@elem punct.at.bowl
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [8,5]
+p2 = C([8,4] [6,4])
+p3 = C([4,4] [4,6])
+p4 = C([4,8] [6,8])
+close: false
+width: 1
+anchors: attach=[6,6]
+@end
+
+# punct.at.wrap - Outer wrap of at-sign
+@elem punct.at.wrap
+zone: cap
+path: p1 p2 p3 p4 p5 p6
+p1 = [10,7]
+p2 = [10,4]
+p3 = C([10,0] [6,0])
+p4 = C([2,0] [2,4])
+p5 = C([2,8] [6,8])
+p6 = C([10,8] [10,6])
+close: false
+width: 1
+anchors: attach=[6,4]
+@end
+
+# punct.hash.diag.one - First diagonal of hash/number sign
+@elem punct.hash.diag.one
+zone: cap
+path: p1 p2
+p1 = [3,0]
+p2 = [5,8]
+close: false
+width: 1
+anchors: mid=[4,4]
+@end
+
+# punct.hash.diag.two - Second diagonal of hash/number sign
+@elem punct.hash.diag.two
+zone: cap
+path: p1 p2
+p1 = [7,0]
+p2 = [9,8]
+close: false
+width: 1
+anchors: mid=[8,4]
+@end
+
+# punct.hash.horiz.one - First horizontal of hash/number sign
+@elem punct.hash.horiz.one
+zone: cap
+path: p1 p2
+p1 = [2,3]
+p2 = [10,3]
+close: false
+width: 1
+anchors: mid=[6,3]
+@end
+
+# punct.hash.horiz.two - Second horizontal of hash/number sign
+@elem punct.hash.horiz.two
+zone: cap
+path: p1 p2
+p1 = [2,5]
+p2 = [10,5]
+close: false
+width: 1
+anchors: mid=[6,5]
+@end
+
+# punct.dollar.curve - S-curve for dollar sign
+@elem punct.dollar.curve
+zone: cap
+path: p1 p2 p3 p4
+p1 = [9,2]
+p2 = C([9,1] [4,1])
+p3 = C([4,4] [8,4])
+p4 = C([8,7] [3,7])
+close: false
+width: 1
+anchors: mid=[6,4]
+@end
+
+# punct.dollar.stem - Vertical stem through dollar sign
+@elem punct.dollar.stem
+zone: cap
+path: p1 p2
+p1 = [6,0]
+p2 = [6,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8]
+@end
+
+# punct.percent.diag - Diagonal of percent sign
+@elem punct.percent.diag
+zone: cap
+path: p1 p2
+p1 = [10,0]
+p2 = [2,8]
+close: false
+width: 1
+anchors: top=[10,0] base=[2,8]
+@end
+
+# punct.percent.circle.top - Top circle of percent sign
+@elem punct.percent.circle.top
+zone: cap
+path: p1 p2 p3 p4
+p1 = [4,0]
+p2 = C([2,0] [2,1])
+p3 = C([2,2] [4,2])
+p4 = C([6,2] [6,1])
+close: true
+width: 1
+anchors: attach=[4,1]
+@end
+
+# punct.percent.circle.bot - Bottom circle of percent sign
+@elem punct.percent.circle.bot
+zone: cap
+path: p1 p2 p3 p4
+p1 = [8,6]
+p2 = C([6,6] [6,7])
+p3 = C([6,8] [8,8])
+p4 = C([10,8] [10,7])
+close: true
+width: 1
+anchors: attach=[8,7]
+@end
+
+# punct.ampersand - Ampersand (single complex stroke)
+# NOTE: Exceptional stroke - starts with PUSH (bottom-right curve up)
+@elem punct.ampersand
+zone: cap
+path: p1 p2 p3 p4 p5 p6 p7 p8
+p1 = [10,8]
+p2 = C([8,8] [6,6])
+p3 = C([4,4] [4,2])
+p4 = C([4,0] [6,0])
+p5 = C([8,0] [8,2])
+p6 = C([8,4] [2,8])
+p7 = C([0,8] [2,6])
+p8 = [11,8]
+close: false
+width: 1
+anchors: attach=[6,4]
+# ponytail: push stroke - this is an exception to pull-over-push convention
+@end
+
+# punct.caret - Circumflex/caret at cap height
+@elem punct.caret
+zone: cap
+path: p1 p2 p3
+p1 = [2,4]
+p2 = [6,0]
+p3 = [10,4]
+close: false
+width: 1
+anchors: top=[6,0]
+@end
+
+# punct.vertical.bar - Full-height vertical line
+@elem punct.vertical.bar
+zone: full
+path: p1 p2
+p1 = [6,0]
+p2 = [6,10]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,10]
+@end
+
+# punct.tilde.mid - Tilde at mid-height
+@elem punct.tilde.mid
+zone: x-height
+path: p1 p2 p3
+p1 = [2,6]
+p2 = C([4,4] [6,6])
+p3 = C([8,8] [10,6])
+close: false
+width: 1
+anchors: attach=[6,6]
+@end
+
+# punct.asterisk.vert - Vertical stroke of asterisk
+@elem punct.asterisk.vert
+zone: cap
+path: p1 p2
+p1 = [6,0]
+p2 = [6,4]
+close: false
+width: 1
+anchors: mid=[6,2]
+@end
+
+# punct.asterisk.diag.one - First diagonal of asterisk
+@elem punct.asterisk.diag.one
+zone: cap
+path: p1 p2
+p1 = [3,1]
+p2 = [9,3]
+close: false
+width: 1
+anchors: mid=[6,2]
+@end
+
+# punct.asterisk.diag.two - Second diagonal of asterisk
+@elem punct.asterisk.diag.two
+zone: cap
+path: p1 p2
+p1 = [9,1]
+p2 = [3,3]
+close: false
+width: 1
+anchors: mid=[6,2]
+@end
+
+# =============================================================================
+# U+0021-002F: PUNCTUATION MARKS (15 characters)
+# =============================================================================
+
+# ! - Vertical stem with dot below
+@char ! EXCLAMATION-MARK
+build: from_expr
+STACK(punct.stem.short, punct.dot.low)
+cp:U+0021
+@end
+
+# " - Two quotation marks side by side
+@char " QUOTATION-MARK
+build: from_expr
+LR(punct.quote.single, punct.quote.single, 4/8)
+cp:U+0022
+@end
+
+# NUMBER-SIGN - Two diagonals crossed by two horizontals
+U+0023 NUMBER-SIGN = OVR(OVR(punct.hash.diag.one, punct.hash.diag.two), OVR(punct.hash.horiz.one, punct.hash.horiz.two)) cp:U+0023
+
+# $ - S-curve with vertical stem through it
+@char $ DOLLAR-SIGN
+build: from_expr
+OVR(punct.dollar.curve, punct.dollar.stem)
+cp:U+0024
+@end
+
+# % - Diagonal with two small circles
+@char % PERCENT-SIGN
+build: from_expr
+FRAME(punct.percent.circle.top, punct.percent.diag, punct.percent.circle.bot)
+cp:U+0025
+@end
+
+# & - Complex looping form (single stroke, exceptional push start)
+# ponytail: push stroke - starts with upward curve, exception to pull convention
+@char & AMPERSAND
+build: from_expr
+punct.ampersand
+cp:U+0026
+@end
+
+# ' - Single curved quotation mark
+@char ' APOSTROPHE
+build: from_expr
+punct.quote.single
+cp:U+0027
+@end
+
+# LEFT-PARENTHESIS - Left curving parenthesis
+U+0028 LEFT-PARENTHESIS = punct.paren.left cp:U+0028
+
+# RIGHT-PARENTHESIS - Right curving parenthesis
+U+0029 RIGHT-PARENTHESIS = punct.paren.right cp:U+0029
+
+# ASTERISK - Six-pointed star shape
+U+002A ASTERISK = OVR(punct.asterisk.vert, OVR(punct.asterisk.diag.one, punct.asterisk.diag.two)) cp:U+002A
+
+# + - Vertical crossed by horizontal
+@char + PLUS-SIGN
+build: from_expr
+OVR(punct.plus.vert, punct.plus.horiz)
+cp:U+002B
+@end
+
+# COMMA - Comma shape at baseline
+U+002C COMMA = comma.shape cp:U+002C
+
+# - - Short horizontal stroke at mid-height
+@char - HYPHEN-MINUS
+build: from_expr
+punct.hyphen
+cp:U+002D
+@end
+
+# . - Single dot at baseline
+@char . FULL-STOP
+build: from_expr
+dot
+cp:U+002E
+@end
+
+# / - Diagonal stroke from top-right to bottom-left
+@char / SOLIDUS
+build: from_expr
+punct.solidus
+cp:U+002F
+@end
+
+# =============================================================================
+# U+003A-0040: PUNCTUATION AND SYMBOLS (7 characters)
+# =============================================================================
+
+# COLON - Two dots stacked vertically
+U+003A COLON = STACK(dot.high, dot) cp:U+003A
+
+# ; - Dot above comma shape
+@char ; SEMICOLON
+build: from_expr
+STACK(dot.high, comma.shape)
+cp:U+003B
+@end
+
+# < - Left-pointing angle bracket
+@char < LESS-THAN-SIGN
+build: from_expr
+punct.less.than
+cp:U+003C
+@end
+
+# EQUALS-SIGN - Two horizontal lines
+U+003D EQUALS-SIGN = STACK(punct.equals.top, punct.equals.bot) cp:U+003D
+
+# > - Right-pointing angle bracket
+@char > GREATER-THAN-SIGN
+build: from_expr
+punct.greater.than
+cp:U+003E
+@end
+
+# ? - Curved hook with dot below
+@char ? QUESTION-MARK
+build: from_expr
+STACK(punct.question.curve, punct.dot.low)
+cp:U+003F
+@end
+
+# @ - Bowl inside wrap
+@char @ COMMERCIAL-AT
+build: from_expr
+OVR(punct.at.wrap, punct.at.bowl)
+cp:U+0040
+@end
+
+# =============================================================================
+# U+005B-0060: BRACKETS AND ACCENTS (6 characters)
+# =============================================================================
+
+# [ - Left square bracket
+@char [ LEFT-SQUARE-BRACKET
+build: from_expr
+punct.bracket.left
+cp:U+005B
+@end
+
+# \ - Backslash diagonal
+@char \ REVERSE-SOLIDUS
+build: from_expr
+punct.reverse.solidus
+cp:U+005C
+@end
+
+# ] - Right square bracket
+@char ] RIGHT-SQUARE-BRACKET
+build: from_expr
+punct.bracket.right
+cp:U+005D
+@end
+
+# ^ - Circumflex/caret accent
+@char ^ CIRCUMFLEX-ACCENT
+build: from_expr
+punct.caret
+cp:U+005E
+@end
+
+# _ - Underscore/low line
+@char _ LOW-LINE
+build: from_expr
+punct.underscore
+cp:U+005F
+@end
+
+# ` - Grave accent mark
+@char ` GRAVE-ACCENT
+build: from_expr
+grave
+cp:U+0060
+@end
+
+# =============================================================================
+# U+007B-007E: BRACKETS AND TILDE (4 characters)
+# =============================================================================
+
+# { - Left curly bracket
+@char { LEFT-CURLY-BRACKET
+build: from_expr
+punct.brace.left
+cp:U+007B
+@end
+
+# | - Vertical line
+@char | VERTICAL-LINE
+build: from_expr
+punct.vertical.bar
+cp:U+007C
+@end
+
+# } - Right curly bracket
+@char } RIGHT-CURLY-BRACKET
+build: from_expr
+punct.brace.right
+cp:U+007D
+@end
+
+# ~ - Tilde wave
+@char ~ TILDE
+build: from_expr
+punct.tilde.mid
+cp:U+007E
+@end
+
+# =============================================================================
+# END OF ASCII PUNCTUATION LIBRARY
+# =============================================================================
