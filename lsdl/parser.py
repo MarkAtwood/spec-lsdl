@@ -316,13 +316,6 @@ class Parser:
             return tok
         return None
 
-    def _check_val(self, value: str) -> Token | None:
-        """Return current token if it has the given value, else None."""
-        tok = self.current()
-        if tok is not None and tok.value == value:
-            return tok
-        return None
-
     def _at_end_kw(self) -> bool:
         """Check if current token is '@end' keyword."""
         tok = self.current()
@@ -434,7 +427,7 @@ class Parser:
             self.skip_blank_lines()
 
         # Definitions
-        while (tok := self.current()) is not None:
+        while True:
             self.skip_blank_lines()
             tok = self.current()
             if tok is None:

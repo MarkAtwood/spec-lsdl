@@ -17,6 +17,7 @@ Options:
 from __future__ import annotations
 
 import argparse
+import io
 import json
 import sys
 from dataclasses import dataclass
@@ -289,8 +290,6 @@ def main(argv: list[str] | None = None) -> None:
 
     # In JSON mode, suppress human-readable error output by writing to a
     # StringIO null sink; structured errors are emitted via JSON at the end.
-    import io
-
     output: TextIO = io.StringIO() if args.json_output else sys.stderr
 
     for file_arg in args.files:

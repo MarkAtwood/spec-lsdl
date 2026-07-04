@@ -3,6 +3,8 @@
 Entry points for lsdl-validate, lsdl-dump, and lsdl-render commands.
 """
 
+from __future__ import annotations
+
 
 def get_version() -> str:
     """Get the lsdl package version.

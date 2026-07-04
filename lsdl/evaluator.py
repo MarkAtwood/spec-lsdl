@@ -505,9 +505,7 @@ def evaluate_ref(
             )
         _seen_aliases.add(name)
         target = ctx.file.aliases[name].target
-        return evaluate_ref(
-            RefExpr(name=target, line=ref.line, col=ref.col), ctx, _seen_aliases
-        )
+        return evaluate_ref(RefExpr(name=target, line=ref.line, col=ref.col), ctx, _seen_aliases)
 
     # Element not found - create a placeholder (for standard elements not defined in file)
     # In a full implementation, standard elements would be pre-defined
@@ -699,7 +697,9 @@ def evaluate_lr(
     """
     # ponytail: parser validates LR has >=2 children; this is unreachable but kept as defensive check
     if len(children) < 2:
-        raise RuntimeError(f"LR requires at least 2 children, got {len(children)} (should be caught by parser)")
+        raise RuntimeError(
+            f"LR requires at least 2 children, got {len(children)} (should be caught by parser)"
+        )
 
     # Determine split proportions
     if split:
