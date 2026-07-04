@@ -29,6 +29,7 @@ from lsdl.model import (
     Expr,
     LSDLError,
     LSDLFile,
+    PathPoint,
     RefExpr,
     TransformExpr,
     WildcardExpr,
@@ -387,7 +388,7 @@ def _expr_to_dict(expr: Expr | None) -> dict[str, Any] | None:
     return {"type": "unknown"}
 
 
-def _path_point_to_dict(pp: Any) -> dict[str, Any]:
+def _path_point_to_dict(pp: PathPoint) -> dict[str, Any]:
     """Convert path point to dictionary."""
     result: dict[str, Any] = {
         "endpoint": {"x": pp.endpoint.x, "y": pp.endpoint.y},

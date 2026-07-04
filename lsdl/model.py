@@ -144,6 +144,8 @@ DIACRITIC_REGISTRY: frozenset[str] = frozenset(
         "caron-below",
         "inverted-breve-below",
         # Through (3)
+        "stroke",
+        "stroke.diag",
         "oblique-stroke",
     }
 )
@@ -479,6 +481,7 @@ class LSDLFile:
     This is the top-level container returned by parse() and parse_file().
     """
 
+    filename: str = "<string>"
     version: tuple[int, int] = (1, 0)  # Major, minor
     metrics: Metrics = field(default_factory=Metrics)
     elements: dict[str, ElementDefinition] = field(default_factory=dict)

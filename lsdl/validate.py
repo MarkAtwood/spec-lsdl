@@ -55,11 +55,12 @@ class ValidationError(Exception):
         super().__init__(f"Validation failed with {len(errors)} error(s)")
 
 
-def validate(doc: LSDLFile, strict: bool = False) -> list[ValidationIssue]:
-    """Validate an LSDL document.
+def _validate(doc: LSDLFile, strict: bool = False) -> list[ValidationIssue]:
+    """Validate an LSDL document. [PRIVATE STUB - not for external use]
 
     **Stub**: This function is not yet implemented and always raises
     NotImplementedError. See LSDL spec Section 13 for planned semantics.
+    Rename to validate() and add to __all__ when implemented.
 
     Args:
         doc: The document to validate

@@ -29,8 +29,8 @@ from lsdl.evaluator import (
 from lsdl.parser import ParseError, parse_file
 
 if TYPE_CHECKING:
-    import svgwrite
-    from svgwrite.container import Group
+    import svgwrite  # type: ignore[import-untyped]
+    from svgwrite.container import Group  # type: ignore[import-untyped]
 
 __all__ = ["main"]
 
@@ -281,7 +281,7 @@ def render_character_svg(
     Returns:
         SVG content as string
     """
-    import svgwrite  # type: ignore[import-untyped]
+    import svgwrite
 
     dwg = svgwrite.Drawing(
         filename=f"{char}.svg",
@@ -453,6 +453,8 @@ def main(argv: list[str] | None = None) -> None:
 
     # Render each character
     rendered_count = 0
+    if not evaluated:
+        print("lsdl-render: warning: no characters could be evaluated", file=sys.stderr)
     for char in chars_to_render:
         if char not in evaluated:
             print(f"lsdl-render: warning: could not evaluate '{char}'", file=sys.stderr)
@@ -473,6 +475,10 @@ def main(argv: list[str] | None = None) -> None:
         output_path = args.output / filename
 
         try:
+            # ponytail: refuse to write through symlinks to prevent symlink attacks
+            if output_path.is_symlink():
+                print(f"lsdl-render: refusing to write through symlink {output_path}", file=sys.stderr)
+                continue
             output_path.write_text(svg_content, encoding="utf-8")
         except OSError as e:
             print(f"lsdl-render: cannot write {output_path}: {e}", file=sys.stderr)

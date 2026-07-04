@@ -351,6 +351,7 @@ def evaluate_character(char_def: CharacterDefinition, ctx: EvaluationContext) ->
             f"Character {char_def.char} has neither expression nor path form",
             char_def.line,
             char_def.col,
+            ctx.file.filename,
         )
 
 
@@ -374,7 +375,7 @@ def evaluate_path_form(
 ) -> PositionedElement:
     """Evaluate a path-form definition (element or character)."""
     if defn.zone is None:
-        raise EvaluationError("Path form requires zone", defn.line, defn.col)
+        raise EvaluationError("Path form requires zone", defn.line, defn.col, ctx.file.filename)
 
     bbox = BoundingBox.from_zone(defn.zone, ctx.metrics)
 
@@ -383,7 +384,9 @@ def evaluate_path_form(
     if defn.path_points and defn.path_ids:
         for pid in defn.path_ids:
             if pid not in defn.path_points:
-                raise EvaluationError(f"Path point {pid} not defined", defn.line, defn.col)
+                raise EvaluationError(
+                    f"Path point {pid} not defined", defn.line, defn.col, ctx.file.filename
+                )
             pp = defn.path_points[pid]
             positioned = position_path_point(pp, defn.grid)
             path_points.append(positioned)
@@ -438,7 +441,9 @@ def evaluate_expr(expr: Expr, ctx: EvaluationContext) -> EvaluatedExpr:
     if ctx._depth > MAX_EVAL_DEPTH:
         line = getattr(expr, "line", 0)
         col = getattr(expr, "col", 0)
-        raise EvaluationError(f"expression nesting too deep (>{MAX_EVAL_DEPTH})", line, col)
+        raise EvaluationError(
+            f"expression nesting too deep (>{MAX_EVAL_DEPTH})", line, col, ctx.file.filename
+        )
     try:
         return _evaluate_expr_impl(expr, ctx)
     finally:
@@ -458,18 +463,22 @@ def _evaluate_expr_impl(expr: Expr, ctx: EvaluationContext) -> EvaluatedExpr:
             "Wildcard (*) cannot be evaluated outside @style context",
             expr.line,
             expr.col,
+            ctx.file.filename,
         )
     elif isinstance(expr, ErrorExpr):
         raise EvaluationError(
             f"Cannot evaluate expression due to parse error: {expr.message}",
             expr.line,
             expr.col,
+            ctx.file.filename,
         )
     else:
         # All Expr subtypes have line/col; use getattr for safety with unexpected types
         line = getattr(expr, "line", 0)
         col = getattr(expr, "col", 0)
-        raise EvaluationError(f"Unknown expression type: {type(expr)}", line, col)
+        raise EvaluationError(
+            f"Unknown expression type: {type(expr)}", line, col, ctx.file.filename
+        )
 
 
 def evaluate_ref(
@@ -491,7 +500,9 @@ def evaluate_ref(
         if _seen_aliases is None:
             _seen_aliases = set()
         if name in _seen_aliases:
-            raise EvaluationError(f"alias cycle detected: {name}", ref.line, ref.col)
+            raise EvaluationError(
+                f"alias cycle detected: {name}", ref.line, ref.col, ctx.file.filename
+            )
         _seen_aliases.add(name)
         target = ctx.file.aliases[name].target
         return evaluate_ref(
@@ -621,7 +632,9 @@ def evaluate_compose(expr: ComposeExpr, ctx: EvaluationContext) -> ComposedEleme
     elif op == "APEX":
         return evaluate_apex(children, ctx)
     else:
-        raise EvaluationError(f"Unknown composition operator: {op}", expr.line, expr.col)
+        raise EvaluationError(
+            f"Unknown composition operator: {op}", expr.line, expr.col, ctx.file.filename
+        )
 
 
 def evaluate_stack(
@@ -633,7 +646,12 @@ def evaluate_stack(
     The first element's `base` anchor aligns with the second element's `top` anchor.
     """
     if len(children) < 2:
-        raise EvaluationError(f"STACK requires at least 2 children, got {len(children)}", line, col)
+        raise EvaluationError(
+            f"STACK requires at least 2 children, got {len(children)}",
+            line,
+            col,
+            ctx.file.filename,
+        )
 
     # Process first child separately to initialize combined_bbox,
     # avoiding BoundingBox | None union for mypy
@@ -679,15 +697,9 @@ def evaluate_lr(
     Per Section 8.3: Places elements side by side, left to right, aligned on baseline.
     Split values are proportional; renderer divides parent box according to ratio.
     """
-    if not children or len(children) == 0:
-        # Empty children list: return a placeholder composed element
-        # with a standard bounding box to allow evaluation to proceed
-        return ComposedElement(
-            operator="LR",
-            children=[],
-            bbox=BoundingBox.standard(),
-            anchors=[],
-        )
+    # ponytail: parser validates LR has >=2 children; this is unreachable but kept as defensive check
+    if len(children) < 2:
+        raise RuntimeError(f"LR requires at least 2 children, got {len(children)} (should be caught by parser)")
 
     # Determine split proportions
     if split:
@@ -750,7 +762,12 @@ def evaluate_dia(
     - attach: parameter can override the target anchor
     """
     if len(children) < 2:
-        raise EvaluationError(f"DIA requires exactly 2 children, got {len(children)}", line, col)
+        raise EvaluationError(
+            f"DIA requires exactly 2 children, got {len(children)}",
+            line,
+            col,
+            ctx.file.filename,
+        )
 
     base = children[0]
     mark = children[1]
@@ -829,7 +846,12 @@ def evaluate_dia2(
     representing all 3 original inputs appropriately positioned.
     """
     if len(children) != 3:
-        raise EvaluationError(f"DIA2 requires exactly 3 arguments, got {len(children)}", line, col)
+        raise EvaluationError(
+            f"DIA2 requires exactly 3 arguments, got {len(children)}",
+            line,
+            col,
+            ctx.file.filename,
+        )
 
     base = children[0]
     mark1 = children[1]
@@ -839,10 +861,17 @@ def evaluate_dia2(
     dia1_result = evaluate_dia([base, mark1], None, ctx, line, col)
     # ponytail: evaluate_dia always returns 2 children; guard against future changes
     if len(dia1_result.children) < 2:
-        raise EvaluationError("DIA2 internal error: DIA returned insufficient children", line, col)
+        raise EvaluationError(
+            "DIA2 internal error: DIA returned insufficient children",
+            line,
+            col,
+            ctx.file.filename,
+        )
     positioned_mark1 = dia1_result.children[1]
 
     # Determine mark directions (above or below base)
+    # ponytail: uses bbox heuristic; transforms before DIA2 can mislead this.
+    # Proper fix: carry zone through EvaluatedExpr. Upgrade if real usage hits this.
     mark1_above = mark1.bbox.center_y < base.bbox.center_y
     mark2_above = mark2.bbox.center_y < base.bbox.center_y
 
@@ -914,7 +943,12 @@ def evaluate_ovr(
     Both children occupy the full parent box.
     """
     if len(children) != 2:
-        raise EvaluationError(f"OVR requires exactly 2 children, got {len(children)}", line, col)
+        raise EvaluationError(
+            f"OVR requires exactly 2 children, got {len(children)}",
+            line,
+            col,
+            ctx.file.filename,
+        )
 
     base = children[0]
     overlay = children[1]
@@ -946,7 +980,12 @@ def evaluate_frame(
     defined anchor points, without imposing a single axis of composition.
     """
     if len(children) < 2:
-        raise EvaluationError(f"FRAME requires at least 2 children, got {len(children)}", line, col)
+        raise EvaluationError(
+            f"FRAME requires at least 2 children, got {len(children)}",
+            line,
+            col,
+            ctx.file.filename,
+        )
 
     # For FRAME, we position children based on matching anchors
     # This is more complex - we need to find compatible anchor pairs
@@ -994,7 +1033,12 @@ def evaluate_lig(
     Default is horizontal adjacency (like LR).
     """
     if len(children) < 2:
-        raise EvaluationError(f"LIG requires exactly 2 children, got {len(children)}", line, col)
+        raise EvaluationError(
+            f"LIG requires exactly 2 children, got {len(children)}",
+            line,
+            col,
+            ctx.file.filename,
+        )
 
     # Default behavior: horizontal adjacency (like LR without scaling)
     if not merge_strategy or merge_strategy == "adjacent":
@@ -1121,7 +1165,9 @@ def evaluate_transform(expr: TransformExpr, ctx: EvaluationContext) -> Evaluated
         ky = max(min(float(params.get("ky", 0)), 100.0), -100.0)
         return skew_element(child, kx, ky)
     else:
-        raise EvaluationError(f"Unknown transform operator: {op}", expr.line, expr.col)
+        raise EvaluationError(
+            f"Unknown transform operator: {op}", expr.line, expr.col, ctx.file.filename
+        )
 
 
 # =============================================================================
@@ -1163,7 +1209,8 @@ def translate_element(elem: EvaluatedExpr, dx: float, dy: float) -> EvaluatedExp
             anchors=new_anchors,
         )
     else:
-        raise EvaluationError(f"Cannot translate {type(elem)}")
+        # ponytail: internal error, not user-facing - use RuntimeError
+        raise RuntimeError(f"Cannot translate {type(elem)}")
 
 
 def scale_element(
@@ -1202,7 +1249,8 @@ def scale_element(
             anchors=new_anchors,
         )
     else:
-        raise EvaluationError(f"Cannot scale {type(elem)}")
+        # ponytail: internal error, not user-facing - use RuntimeError
+        raise RuntimeError(f"Cannot scale {type(elem)}")
 
 
 def skew_element(
@@ -1241,7 +1289,8 @@ def skew_element(
             anchors=new_anchors,
         )
     else:
-        raise EvaluationError(f"Cannot skew {type(elem)}")
+        # ponytail: internal error, not user-facing - use RuntimeError
+        raise RuntimeError(f"Cannot skew {type(elem)}")
 
 
 # =============================================================================

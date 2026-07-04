@@ -78,6 +78,7 @@ _DEPRECATED_ALIASES = {
 }
 
 __all__ = [
+    # === STABLE PUBLIC API ===
     # Version
     "__version__",
     # Base exception
@@ -95,34 +96,19 @@ __all__ = [
     "apply_style",
     "EvaluationError",
     "EvaluationContext",
-    # Evaluation output types
-    "BoundingBox",
-    "PositionedElement",
-    "ComposedElement",
-    "EvaluatedExpr",
-    "PositionedAnchor",
-    "PositionedCoordinate",
-    "PositionedPathPoint",
     # File-level structures
     "LSDLFile",
     "Metrics",
-    # Definitions
+    # Definitions (parser output)
     "ElementDefinition",
     "CharacterDefinition",
     "AliasDefinition",
     "CaseMapping",
     "StyleDefinition",
-    # Expression types
-    "Expr",
-    "RefExpr",
-    "ComposeExpr",
-    "TransformExpr",
-    "WildcardExpr",
-    # Coordinates and paths
+    # Input types
     "Coordinate",
     "PathPoint",
     "Anchor",
-    # Metadata
     "Metadata",
     "Zone",
     "ZONE_NAMES",
@@ -130,7 +116,22 @@ __all__ = [
     "ELEMENT_REGISTRY",
     "DIACRITIC_REGISTRY",
     "FULL_ELEMENT_REGISTRY",
-    # Backward compatibility (deprecated, will be removed in v2.0)
+    # === INTERNAL (may change without notice) ===
+    # Evaluation output types - internal representation, may change
+    "BoundingBox",
+    "PositionedElement",
+    "ComposedElement",
+    "EvaluatedExpr",
+    "PositionedAnchor",
+    "PositionedCoordinate",
+    "PositionedPathPoint",
+    # Expression types - AST internals
+    "Expr",
+    "RefExpr",
+    "ComposeExpr",
+    "TransformExpr",
+    "WildcardExpr",
+    # === DEPRECATED (will be removed in v2.0) ===
     "Document",
     "GlyphDef",
     "StrokeDef",

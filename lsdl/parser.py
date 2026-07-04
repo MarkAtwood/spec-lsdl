@@ -206,6 +206,9 @@ class ParseError(LSDLError):
             When multiple errors are detected, the first error is raised but
             all errors are accessible via this attribute. For a single error,
             this list contains only the raised error itself.
+        partial_result: The LSDLFile that was constructed before errors were
+            detected. May be incomplete or contain placeholder values where
+            parsing failed. Inspect at your own risk.
     """
 
     def __init__(
@@ -215,10 +218,12 @@ class ParseError(LSDLError):
         col: int = 0,
         filename: str = "<string>",
         errors: list[ParseError] | None = None,
+        partial_result: LSDLFile | None = None,
     ):
         super().__init__(message, line, col, filename)
         # If errors list provided, use it; otherwise this error is the only one
         self.errors: list[ParseError] = errors if errors is not None else [self]
+        self.partial_result = partial_result
 
 
 # =============================================================================
@@ -361,7 +366,7 @@ class Parser:
         "NAME": "identifier",
         "LITERAL_CHAR": "literal character",
         "NL": "newline",
-        "ERROR": "unknown character",
+        "ERROR": "unsupported character (LSDL supports Latin, Greek, Cyrillic scripts)",
     }
 
     def _describe_token(self, tok: Token | None, include_value: bool = True) -> str:
@@ -369,7 +374,7 @@ class Parser:
         if tok is None:
             return "end of input"
         desc = self.TOKEN_DESCRIPTIONS.get(tok.type, tok.type)
-        if include_value and tok.type not in ("NL", "WS"):
+        if include_value and tok.type != "NL":
             return f"{desc} ({tok.value!r})"
         return desc
 
@@ -415,7 +420,7 @@ class Parser:
 
     def parse(self) -> LSDLFile:
         """Parse complete LSDL file."""
-        result = LSDLFile()
+        result = LSDLFile(filename=self.filename)
         self.skip_blank_lines()
 
         # Optional @lsdl version declaration
@@ -526,10 +531,15 @@ class Parser:
         self.validate_semantics(result)
 
         if self.errors:
-            # Raise first error but include all errors for callers to access
+            # Raise first error but include all errors and partial result for callers
             first = self.errors[0]
             raise ParseError(
-                first.message, first.line, first.col, first.filename, errors=self.errors
+                first.message,
+                first.line,
+                first.col,
+                first.filename,
+                errors=self.errors,
+                partial_result=result,
             )
 
         return result
@@ -723,7 +733,7 @@ class Parser:
                         except ValueError:
                             self.add_error(f"invalid zone: {zone_val}")
                     else:
-                        self.add_error("expected zone name")
+                        self.add_error("zone: requires a value")
 
                 elif field_name == "path":
                     elem.path_ids = []
@@ -886,11 +896,15 @@ class Parser:
         try:
             inner = tok.value[1:-1]
             parts = inner.split(",")
-            # ponytail: reject absurdly long numbers to prevent int() DoS; 5 digits allows 0-99999
+            # ponytail: clamp long numbers to prevent int() DoS and avoid silent (0,0)
+            def safe_int(s: str) -> int:
+                if len(s) > 5:
+                    return 99999 if s[0] != "-" else -99999
+                return int(s)
+
             if any(len(p) > 5 for p in parts):
-                self.add_error(f"coordinate value too large: {tok.value!r}", tok)
-                return Coordinate(0, 0)
-            x, y = map(int, parts)
+                self.add_error(f"coordinate value truncated: {tok.value!r}", tok)
+            x, y = safe_int(parts[0]), safe_int(parts[1])
         except (ValueError, IndexError) as e:
             self.add_error(f"malformed coordinate {tok.value!r}: {e}", tok)
             return Coordinate(0, 0)
@@ -1371,6 +1385,9 @@ class Parser:
                     self.add_error("@style transform must be a transform expression (sc, sh, sk)")
             elif t.type == "BLOCK_FIELD":
                 self.add_error(f"'{t.value}' not valid in @style blocks", t)
+                self.pos += 1
+            elif t.type == "META_FIELD":
+                self.add_error("metadata fields not valid in @style blocks", t)
                 self.pos += 1
             elif t.type == "NL":
                 self.pos += 1
