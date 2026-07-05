@@ -2,7 +2,7 @@
 
 import pytest
 
-from lsdl.parser import parse_string, ParseError
+from lsdl.parser import ParseError, parse_string
 
 
 def test_codepoint_block_form():
@@ -59,7 +59,7 @@ def test_codepoint_max_valid():
 U+10FFFF MAX-CODEPOINT = stem.l
 """
     doc = parse_string(src)
-    assert "\U0010FFFF" in doc.characters
+    assert "\U0010ffff" in doc.characters
 
 
 def test_codepoint_exceeds_unicode_max():

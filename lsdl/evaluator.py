@@ -87,7 +87,10 @@ class BoundingBox:
         )
 
     def scale(self, sx: float, sy: float, cx: float = 6.0, cy: float = 6.0) -> BoundingBox:
-        """Scale relative to center point (cx, cy). sx, sy are factors (1.0 = 100%)."""
+        """Scale relative to center point (cx, cy). sx, sy are factors (1.0 = 100%).
+
+        Negative scales are normalized to preserve min <= max invariant.
+        """
         new_x1 = cx + (self.x_min - cx) * sx
         new_y1 = cy + (self.y_min - cy) * sy
         new_x2 = cx + (self.x_max - cx) * sx
@@ -523,12 +526,12 @@ def create_placeholder_element(
     Emits a warning to alert users that an element was not found and a placeholder
     with empty geometry is being used instead.
     """
-    # ponytail: include source location in message since stacklevel varies with call depth
+    # ponytail: include LSDL source location in message; stacklevel=2 points to caller
     loc = f" at {line}:{col}" if line > 0 else ""
     warnings.warn(
         f"Element '{name}' not found{loc}; using placeholder with empty geometry",
         category=UserWarning,
-        stacklevel=1,
+        stacklevel=2,
     )
 
     # Determine zone based on element name
@@ -695,10 +698,13 @@ def evaluate_lr(
     Per Section 8.3: Places elements side by side, left to right, aligned on baseline.
     Split values are proportional; renderer divides parent box according to ratio.
     """
-    # ponytail: parser validates LR has >=2 children; this is unreachable but kept as defensive check
+    # ponytail: parser validates LR has >=2 children; defensive check
     if len(children) < 2:
-        raise RuntimeError(
-            f"LR requires at least 2 children, got {len(children)} (should be caught by parser)"
+        raise EvaluationError(
+            f"LR requires at least 2 children, got {len(children)}",
+            0,
+            0,
+            ctx.file.filename,
         )
 
     # Determine split proportions
@@ -761,7 +767,7 @@ def evaluate_dia(
     - Direction inferred from diacritic's zone
     - attach: parameter can override the target anchor
     """
-    if len(children) < 2:
+    if len(children) != 2:
         raise EvaluationError(
             f"DIA requires exactly 2 children, got {len(children)}",
             line,
@@ -784,11 +790,11 @@ def evaluate_dia(
     if anchor_override:
         target_anchor_name = anchor_override
     else:
-        # Infer direction from mark position (above or below base)
-        if mark.bbox.center_y < base.bbox.center_y:
-            target_anchor_name = "mark-above"
-        else:
-            target_anchor_name = "mark-below"
+        # Infer direction from zone lookup first, then bbox heuristic
+        mark_above = is_mark_above(mark, ctx)
+        if mark_above is None:
+            mark_above = mark.bbox.center_y < base.bbox.center_y
+        target_anchor_name = "mark-above" if mark_above else "mark-below"
 
     base_target = get_anchor(base, target_anchor_name)
     if not base_target:
@@ -870,10 +876,11 @@ def evaluate_dia2(
     positioned_mark1 = dia1_result.children[1]
 
     # Determine mark directions (above or below base)
-    # ponytail: uses bbox heuristic; transforms before DIA2 can mislead this.
-    # Proper fix: carry zone through EvaluatedExpr. Upgrade if real usage hits this.
-    mark1_above = mark1.bbox.center_y < base.bbox.center_y
-    mark2_above = mark2.bbox.center_y < base.bbox.center_y
+    # First try zone lookup (reliable even after transforms), then bbox heuristic
+    mark1_zone = is_mark_above(mark1, ctx)
+    mark2_zone = is_mark_above(mark2, ctx)
+    mark1_above = mark1_zone if mark1_zone is not None else mark1.bbox.center_y < base.bbox.center_y
+    mark2_above = mark2_zone if mark2_zone is not None else mark2.bbox.center_y < base.bbox.center_y
 
     # Get mark2's attach anchor
     mark2_attach = get_anchor(mark2, "attach")
@@ -1032,7 +1039,7 @@ def evaluate_lig(
     The merge: parameter specifies the structural joining strategy.
     Default is horizontal adjacency (like LR).
     """
-    if len(children) < 2:
+    if len(children) != 2:
         raise EvaluationError(
             f"LIG requires exactly 2 children, got {len(children)}",
             line,
@@ -1302,6 +1309,43 @@ def get_anchor(elem: EvaluatedExpr, name: str) -> PositionedAnchor | None:
     """Get an anchor by name from an evaluated expression."""
     if isinstance(elem, (PositionedElement, ComposedElement)):
         return elem.get_anchor(name)
+    return None
+
+
+def is_mark_above(elem: EvaluatedExpr, ctx: EvaluationContext) -> bool | None:
+    """Determine if an element is an above-diacritic based on zone.
+
+    Looks up the original element or character definition to check its zone,
+    which is more reliable than bbox heuristics when transforms have been applied.
+    Handles variant names (e.g., 'acute.heavy' -> 'acute') by falling back to
+    base name lookup.
+
+    Returns True for diacritic-above, False for diacritic-below, None if unknown.
+    """
+    if isinstance(elem, PositionedElement):
+        name = elem.name
+        # Try exact match in elements, then base name (without variant suffix)
+        zone = None
+        elem_def = ctx.file.elements.get(name)
+        if elem_def:
+            zone = elem_def.zone
+        else:
+            # Try base name for variants like 'acute.heavy' -> 'acute'
+            base_name = name.split(".")[0]
+            if base_name != name:
+                elem_def = ctx.file.elements.get(base_name)
+                if elem_def:
+                    zone = elem_def.zone
+        # Also check characters (path-form chars can have zones)
+        if not zone:
+            char_def = ctx.file.characters.get(name)
+            if char_def:
+                zone = char_def.zone
+        if zone:
+            if zone == Zone.DIACRITIC_ABOVE:
+                return True
+            if zone == Zone.DIACRITIC_BELOW:
+                return False
     return None
 
 

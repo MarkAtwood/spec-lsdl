@@ -247,6 +247,7 @@ class Parser:
         self.filename = filename
         self.pos = 0
         self.errors: list[ParseError] = []
+        self.dropped_errors = 0  # Count of errors dropped after limit
         # Track definitions for semantic validation
         self.defined_elements: dict[str, int] = {}  # name -> line
         self.defined_chars: dict[str, int] = {}  # char -> line
@@ -264,6 +265,7 @@ class Parser:
 
         Returns the character on success, None on error (error recorded via add_error).
         Validates: codepoint <= U+10FFFF and not a surrogate (U+D800-U+DFFF).
+        Note: U+0000 (NUL) is intentionally allowed as a valid Unicode codepoint.
         """
         value = tok.value
         codepoint = int(value[2:], 16)
@@ -404,7 +406,8 @@ class Parser:
         """Record an error and continue parsing."""
         # ponytail: limit error collection to prevent memory exhaustion on pathological input
         if len(self.errors) >= 100:
-            return  # silently drop after limit; first 100 errors is enough to diagnose
+            self.dropped_errors += 1
+            return
         self.errors.append(self.error(msg, tok))
 
     # -------------------------------------------------------------------------
@@ -526,8 +529,11 @@ class Parser:
         if self.errors:
             # Raise first error but include all errors and partial result for callers
             first = self.errors[0]
+            msg = first.message
+            if self.dropped_errors > 0:
+                msg = f"{msg} (and {self.dropped_errors} more errors not shown)"
             raise ParseError(
-                first.message,
+                msg,
                 first.line,
                 first.col,
                 first.filename,
@@ -665,10 +671,8 @@ class Parser:
         ]
         for i in range(1, len(values)):
             if values[i] < values[i - 1]:
-                self.add_error(
-                    f"{metric_names[i]}={values[i]} must be >= {metric_names[i-1]}={values[i-1]}",
-                    tok,
-                )
+                prev, curr = metric_names[i - 1], metric_names[i]
+                self.add_error(f"{curr}={values[i]} must be >= {prev}={values[i - 1]}", tok)
 
         return metrics
 
@@ -889,6 +893,7 @@ class Parser:
         try:
             inner = tok.value[1:-1]
             parts = inner.split(",")
+
             # ponytail: clamp long numbers to prevent int() DoS and avoid silent (0,0)
             def safe_int(s: str) -> int:
                 if len(s) > 5:
@@ -1287,26 +1292,30 @@ class Parser:
         tok = self.consume("KEYWORD")  # @case
         line, col = tok.line, tok.col
 
-        # Uppercase character (LITERAL_CHAR or single-letter NAME)
+        # Uppercase character (LITERAL_CHAR, single-letter NAME, or single digit)
         upper_tok = self.current()
         if upper_tok is None:
             self.add_error("expected uppercase character")
             return None
-        if upper_tok.type == "LITERAL_CHAR" or (
-            upper_tok.type == "NAME" and len(upper_tok.value) == 1
+        if (
+            upper_tok.type == "LITERAL_CHAR"
+            or (upper_tok.type == "NAME" and len(upper_tok.value) == 1)
+            or (upper_tok.type == "INT" and len(upper_tok.value) == 1)
         ):
             upper = self.consume().value
         else:
             self.add_error("expected uppercase character")
             return None
 
-        # Lowercase character (LITERAL_CHAR or single-letter NAME)
+        # Lowercase character (LITERAL_CHAR, single-letter NAME, or single digit)
         lower_tok = self.current()
         if lower_tok is None:
             self.add_error("expected lowercase character")
             return None
-        if lower_tok.type == "LITERAL_CHAR" or (
-            lower_tok.type == "NAME" and len(lower_tok.value) == 1
+        if (
+            lower_tok.type == "LITERAL_CHAR"
+            or (lower_tok.type == "NAME" and len(lower_tok.value) == 1)
+            or (lower_tok.type == "INT" and len(lower_tok.value) == 1)
         ):
             lower = self.consume().value
         else:
@@ -1318,7 +1327,7 @@ class Parser:
         if self._check("FINAL") is not None:
             final_kw = self.consume()
             final_tok = self.current()
-            if final_tok is not None and final_tok.type in ("LITERAL_CHAR", "NAME"):
+            if final_tok is not None and final_tok.type in ("LITERAL_CHAR", "NAME", "INT"):
                 final = self.consume().value
             else:
                 self.add_error("expected character after 'final:'", final_kw)
@@ -1419,9 +1428,9 @@ class Parser:
             cur = self.current()
             if cur is not None and cur.type not in ("NL", "META_FIELD", "KEYWORD"):
                 script_val = self.consume().value
-                if len(script_val) != 4 or not script_val.isalpha():
+                if len(script_val) != 4 or not script_val.isalpha() or not script_val.isascii():
                     self.add_error(
-                        f"script: requires 4-letter ISO 15924 code, got {script_val!r}",
+                        f"script: requires 4-letter ASCII ISO 15924 code, got {script_val!r}",
                         tok,
                     )
                 meta.script = script_val
@@ -1453,7 +1462,11 @@ class Parser:
                 self.add_error("cp: requires U+XXXX codepoint", tok)
         elif field_name == "freq":
             if self._check("INT") is not None:
-                meta.freq = int(self.consume().value)
+                freq_val = int(self.consume().value)
+                if freq_val < 0:
+                    self.add_error("freq: must be non-negative", tok)
+                else:
+                    meta.freq = freq_val
             else:
                 self.add_error("freq: requires integer", tok)
         elif field_name.startswith("x-"):

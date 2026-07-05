@@ -63,10 +63,14 @@ def format_error_line(
     """
     result = f"{path}:{line}:{col}: {level}: {message}"
     if source_line is not None:
-        result += f"\n  {source_line.rstrip()}"
-        # Add caret pointer
+        # Expand tabs to spaces for consistent caret alignment
+        expanded = source_line.rstrip().expandtabs(4)
+        result += f"\n  {expanded}"
+        # Calculate caret position accounting for expanded tabs
         if col > 0:
-            result += f"\n  {' ' * (col - 1)}^"
+            prefix = source_line[: col - 1] if col <= len(source_line) else source_line
+            caret_pos = len(prefix.expandtabs(4))
+            result += f"\n  {' ' * caret_pos}^"
     return result
 
 
@@ -113,9 +117,7 @@ def validate_source(
             for issue in stroke_issues:
                 if issue.severity == Severity.ERROR:
                     errors.append(issue)
-                    msg = format_error_line(
-                        path, 0, 0, "error", f"[{issue.code}] {issue.message}"
-                    )
+                    msg = format_error_line(path, 0, 0, "error", f"[{issue.code}] {issue.message}")
                     print(msg, file=output)
                 elif issue.severity == Severity.WARNING:
                     warnings.append(issue)
@@ -126,9 +128,7 @@ def validate_source(
                         print(msg, file=output)
                 elif issue.severity == Severity.INFO and not quiet:
                     # Info messages are printed but not counted as warnings
-                    msg = format_error_line(
-                        path, 0, 0, "info", f"[{issue.code}] {issue.message}"
-                    )
+                    msg = format_error_line(path, 0, 0, "info", f"[{issue.code}] {issue.message}")
                     print(msg, file=output)
 
     except ParseError as e:
@@ -237,8 +237,11 @@ def validate_file(
         return ValidationResult(path=path_str, valid=False, errors=errors, warnings=warnings)
 
     return validate_source(
-        source, path_str, quiet=quiet, output=output,
-        check_stroke_order_flag=check_stroke_order_flag
+        source,
+        path_str,
+        quiet=quiet,
+        output=output,
+        check_stroke_order_flag=check_stroke_order_flag,
     )
 
 
@@ -297,14 +300,19 @@ def main(argv: list[str] | None = None) -> None:
             # Read from stdin
             source = sys.stdin.read()
             result = validate_source(
-                source, "<stdin>", quiet=args.quiet, output=output,
-                check_stroke_order_flag=args.check_stroke_order
+                source,
+                "<stdin>",
+                quiet=args.quiet,
+                output=output,
+                check_stroke_order_flag=args.check_stroke_order,
             )
         else:
             path = Path(file_arg)
             result = validate_file(
-                path, quiet=args.quiet, output=output,
-                check_stroke_order_flag=args.check_stroke_order
+                path,
+                quiet=args.quiet,
+                output=output,
+                check_stroke_order_flag=args.check_stroke_order,
             )
 
         results.append(result)
@@ -325,11 +333,16 @@ def main(argv: list[str] | None = None) -> None:
                 "code": issue.code,
             }
 
+        def is_valid(r: ValidationResult) -> bool:
+            if not r.valid:
+                return False
+            return not (args.strict and r.warnings)
+
         output_data = {
             "files": [
                 {
                     "path": r.path,
-                    "valid": r.valid,
+                    "valid": is_valid(r),
                     "errors": [issue_to_dict(e) for e in r.errors],
                     "warnings": [issue_to_dict(w) for w in r.warnings],
                 }
@@ -337,7 +350,7 @@ def main(argv: list[str] | None = None) -> None:
             ],
             "summary": {
                 "total_files": len(results),
-                "valid_files": sum(1 for r in results if r.valid),
+                "valid_files": sum(1 for r in results if is_valid(r)),
                 "total_errors": sum(len(r.errors) for r in results),
                 "total_warnings": sum(len(r.warnings) for r in results),
             },

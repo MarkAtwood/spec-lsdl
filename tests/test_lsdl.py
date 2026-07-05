@@ -6,6 +6,7 @@ Tests cover:
 3. Semantic validation - constraint checking
 """
 
+import contextlib
 from pathlib import Path
 
 import pytest
@@ -1756,16 +1757,26 @@ x LATIN-SMALL-X = {nested}
         # Create anchors with different positions
         anchor1_top = PositionedAnchor("top", PositionedCoordinate(0, 0))
         anchor1_bottom = PositionedAnchor("bottom", PositionedCoordinate(0, 12))
-        anchor2_top = PositionedAnchor("top", PositionedCoordinate(6, 0))  # Same name, different pos
+        anchor2_top = PositionedAnchor(
+            "top", PositionedCoordinate(6, 0)
+        )  # Same name, different pos
 
         # Create minimal PositionedElement instances
         elem1 = PositionedElement(
-            name="e1", path_points=[], close=False, width=1,
-            anchors=[anchor1_top, anchor1_bottom], bbox=BoundingBox.standard()
+            name="e1",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[anchor1_top, anchor1_bottom],
+            bbox=BoundingBox.standard(),
         )
         elem2 = PositionedElement(
-            name="e2", path_points=[], close=False, width=1,
-            anchors=[anchor2_top], bbox=BoundingBox.standard()
+            name="e2",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[anchor2_top],
+            bbox=BoundingBox.standard(),
         )
 
         merged = merge_anchors([elem1, elem2])
@@ -1822,8 +1833,12 @@ x LATIN-SMALL-X = {nested}
 
         # PositionedElement
         elem = PositionedElement(
-            name="stem", path_points=[], close=False, width=1,
-            anchors=[top, bottom], bbox=BoundingBox.standard()
+            name="stem",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[top, bottom],
+            bbox=BoundingBox.standard(),
         )
         assert elem.get_anchor("top") is top
         assert elem.get_anchor("bottom") is bottom
@@ -1831,8 +1846,7 @@ x LATIN-SMALL-X = {nested}
 
         # ComposedElement
         composed = ComposedElement(
-            operator="LR", children=[], bbox=BoundingBox.standard(),
-            anchors=[top, bottom]
+            operator="LR", children=[], bbox=BoundingBox.standard(), anchors=[top, bottom]
         )
         assert composed.get_anchor("top") is top
         assert composed.get_anchor("bottom") is bottom
@@ -1913,7 +1927,8 @@ x LATIN-SMALL-X = {nested}
         # Create element with path form
         elem = ElementDefinition(
             name="stem",
-            line=1, col=1,
+            line=1,
+            col=1,
             zone=Zone.CAP,
             path_points=[
                 PathPoint(endpoint=Coordinate(6, 0)),
@@ -2076,7 +2091,9 @@ x LATIN-SMALL-X = {nested}
         assert "C(" in str(pp_quad)
 
         # PathPoint - cubic
-        pp_cubic = PathPoint(endpoint=Coordinate(6, 8), control1=Coordinate(3, 4), control2=Coordinate(5, 6))
+        pp_cubic = PathPoint(
+            endpoint=Coordinate(6, 8), control1=Coordinate(3, 4), control2=Coordinate(5, 6)
+        )
         assert "C(" in str(pp_cubic)
 
         # Anchor
@@ -2116,10 +2133,10 @@ x LATIN-SMALL-X = {nested}
             expression=None,
             zone=Zone.CAP,
             path_points={
-                1: PathPoint(endpoint=Coordinate(0, 0)),
-                2: PathPoint(endpoint=Coordinate(6, 8)),
+                "p1": PathPoint(endpoint=Coordinate(0, 0)),
+                "p2": PathPoint(endpoint=Coordinate(6, 8)),
             },
-            path_ids=[1, 2],
+            path_ids=["p1", "p2"],
         )
         metrics = Metrics()
         file = LSDLFile(filename="test.lsdl", characters={"A": char_def}, metrics=metrics)
@@ -2166,8 +2183,12 @@ x LATIN-SMALL-X = {nested}
         pp = PositionedPathPoint(endpoint=pt)
         anchor = PositionedAnchor("center", pt)
         elem = PositionedElement(
-            name="test", path_points=[pp], close=False, width=1,
-            anchors=[anchor], bbox=BoundingBox.standard()
+            name="test",
+            path_points=[pp],
+            close=False,
+            width=1,
+            anchors=[anchor],
+            bbox=BoundingBox.standard(),
         )
 
         # Skew with kx=12, ky=0 (strong x-skew)
@@ -2218,15 +2239,18 @@ x LATIN-SMALL-X = {nested}
         pt = PositionedCoordinate(3, 4)
         pp = PositionedPathPoint(endpoint=pt)
         child = PositionedElement(
-            name="child", path_points=[pp], close=False, width=1,
-            anchors=[], bbox=BoundingBox(0, 0, 6, 8)
+            name="child",
+            path_points=[pp],
+            close=False,
+            width=1,
+            anchors=[],
+            bbox=BoundingBox(0, 0, 6, 8),
         )
 
         # Create composed element
         anchor = PositionedAnchor("test", PositionedCoordinate(3, 4))
         composed = ComposedElement(
-            operator="LR", children=[child], bbox=BoundingBox(0, 0, 6, 8),
-            anchors=[anchor]
+            operator="LR", children=[child], bbox=BoundingBox(0, 0, 6, 8), anchors=[anchor]
         )
 
         # Translate
@@ -2247,9 +2271,12 @@ x LATIN-SMALL-X = {nested}
 
         # path_ids references point 99 which doesn't exist
         elem = ElementDefinition(
-            name="test", line=5, col=3, zone=Zone.CAP,
-            path_points={1: PathPoint(endpoint=Coordinate(0, 0))},
-            path_ids=[1, 99],  # 99 is not defined
+            name="test",
+            line=5,
+            col=3,
+            zone=Zone.CAP,
+            path_points={"p1": PathPoint(endpoint=Coordinate(0, 0))},
+            path_ids=["p1", "p99"],  # p99 is not defined
         )
         metrics = Metrics()
         file = LSDLFile(filename="test.lsdl", metrics=metrics)
@@ -2258,7 +2285,7 @@ x LATIN-SMALL-X = {nested}
         with pytest.raises(EvaluationError) as exc_info:
             evaluate_path_form(elem, ctx)
 
-        assert "99" in str(exc_info.value)
+        assert "p99" in str(exc_info.value)
         assert "not defined" in str(exc_info.value)
 
     def test_get_anchor_helper(self) -> None:
@@ -2274,8 +2301,12 @@ x LATIN-SMALL-X = {nested}
 
         anchor = PositionedAnchor("top", PositionedCoordinate(6, 0))
         elem = PositionedElement(
-            name="test", path_points=[], close=False, width=1,
-            anchors=[anchor], bbox=BoundingBox.standard()
+            name="test",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[anchor],
+            bbox=BoundingBox.standard(),
         )
 
         # Found
@@ -2299,12 +2330,20 @@ x LATIN-SMALL-X = {nested}
         ctx = EvaluationContext(file, metrics)
 
         base = PositionedElement(
-            name="base", path_points=[], close=False, width=1,
-            anchors=[], bbox=BoundingBox(0, 0, 12, 12)
+            name="base",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[],
+            bbox=BoundingBox(0, 0, 12, 12),
         )
         overlay = PositionedElement(
-            name="overlay", path_points=[], close=False, width=1,
-            anchors=[], bbox=BoundingBox(0, 0, 6, 6)
+            name="overlay",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[],
+            bbox=BoundingBox(0, 0, 6, 6),
         )
 
         result = evaluate_ovr([base, overlay], ctx)
@@ -2318,7 +2357,12 @@ x LATIN-SMALL-X = {nested}
 
     def test_evaluate_apex(self) -> None:
         """Test evaluate_apex (alias for FRAME)."""
-        from lsdl.evaluator import EvaluationContext, PositionedAnchor, PositionedCoordinate, evaluate_apex
+        from lsdl.evaluator import (
+            EvaluationContext,
+            PositionedAnchor,
+            PositionedCoordinate,
+            evaluate_apex,
+        )
 
         metrics = Metrics()
         file = LSDLFile(filename="test.lsdl", metrics=metrics)
@@ -2327,12 +2371,20 @@ x LATIN-SMALL-X = {nested}
         # Create elements with anchors for frame alignment
         anchor = PositionedAnchor("apex", PositionedCoordinate(6, 0))
         elem1 = PositionedElement(
-            name="diag1", path_points=[], close=False, width=1,
-            anchors=[anchor], bbox=BoundingBox(0, 0, 6, 8)
+            name="diag1",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[anchor],
+            bbox=BoundingBox(0, 0, 6, 8),
         )
         elem2 = PositionedElement(
-            name="diag2", path_points=[], close=False, width=1,
-            anchors=[anchor], bbox=BoundingBox(6, 0, 12, 8)
+            name="diag2",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[anchor],
+            bbox=BoundingBox(6, 0, 12, 8),
         )
 
         result = evaluate_apex([elem1, elem2], ctx)
@@ -2350,16 +2402,28 @@ x LATIN-SMALL-X = {nested}
 
         # Create elements
         elem1 = PositionedElement(
-            name="a", path_points=[], close=False, width=1,
-            anchors=[], bbox=BoundingBox(0, 0, 4, 12)
+            name="a",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[],
+            bbox=BoundingBox(0, 0, 4, 12),
         )
         elem2 = PositionedElement(
-            name="b", path_points=[], close=False, width=1,
-            anchors=[], bbox=BoundingBox(0, 0, 4, 12)
+            name="b",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[],
+            bbox=BoundingBox(0, 0, 4, 12),
         )
         elem3 = PositionedElement(
-            name="c", path_points=[], close=False, width=1,
-            anchors=[], bbox=BoundingBox(0, 0, 4, 12)
+            name="c",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[],
+            bbox=BoundingBox(0, 0, 4, 12),
         )
 
         # LR3 uses same evaluate_lr function
@@ -2370,7 +2434,12 @@ x LATIN-SMALL-X = {nested}
 
     def test_evaluate_stack_anchor_alignment(self) -> None:
         """Test evaluate_stack with anchor-based and fallback alignment."""
-        from lsdl.evaluator import EvaluationContext, PositionedAnchor, PositionedCoordinate, evaluate_stack
+        from lsdl.evaluator import (
+            EvaluationContext,
+            PositionedAnchor,
+            PositionedCoordinate,
+            evaluate_stack,
+        )
 
         metrics = Metrics()
         file = LSDLFile(filename="test.lsdl", metrics=metrics)
@@ -2378,14 +2447,20 @@ x LATIN-SMALL-X = {nested}
 
         # Elements with base/top anchors for anchor-based alignment
         elem1 = PositionedElement(
-            name="top", path_points=[], close=False, width=1,
+            name="top",
+            path_points=[],
+            close=False,
+            width=1,
             anchors=[PositionedAnchor("base", PositionedCoordinate(6, 4))],
-            bbox=BoundingBox(0, 0, 12, 4)
+            bbox=BoundingBox(0, 0, 12, 4),
         )
         elem2 = PositionedElement(
-            name="bottom", path_points=[], close=False, width=1,
+            name="bottom",
+            path_points=[],
+            close=False,
+            width=1,
             anchors=[PositionedAnchor("top", PositionedCoordinate(6, 0))],
-            bbox=BoundingBox(0, 0, 12, 4)
+            bbox=BoundingBox(0, 0, 12, 4),
         )
 
         result = evaluate_stack([elem1, elem2], ctx)
@@ -2394,12 +2469,20 @@ x LATIN-SMALL-X = {nested}
 
         # Fallback: no anchors - stacks by bounding boxes
         elem_no_anchor1 = PositionedElement(
-            name="a", path_points=[], close=False, width=1,
-            anchors=[], bbox=BoundingBox(0, 0, 12, 4)
+            name="a",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[],
+            bbox=BoundingBox(0, 0, 12, 4),
         )
         elem_no_anchor2 = PositionedElement(
-            name="b", path_points=[], close=False, width=1,
-            anchors=[], bbox=BoundingBox(0, 0, 12, 4)
+            name="b",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[],
+            bbox=BoundingBox(0, 0, 12, 4),
         )
 
         result2 = evaluate_stack([elem_no_anchor1, elem_no_anchor2], ctx)
@@ -2419,14 +2502,22 @@ x LATIN-SMALL-X = {nested}
 
         # Base without mark anchors (will use fallback)
         base = PositionedElement(
-            name="base", path_points=[], close=False, width=1,
-            anchors=[], bbox=BoundingBox(0, 4, 12, 8)
+            name="base",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[],
+            bbox=BoundingBox(0, 4, 12, 8),
         )
 
         # Diacritic above (no attach anchor - uses center fallback)
         mark_above = PositionedElement(
-            name="mark", path_points=[], close=False, width=1,
-            anchors=[], bbox=BoundingBox(4, 0, 8, 3)
+            name="mark",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[],
+            bbox=BoundingBox(4, 0, 8, 3),
         )
 
         result = evaluate_dia([base, mark_above], anchor_override=None, ctx=ctx)
@@ -2447,20 +2538,32 @@ x LATIN-SMALL-X = {nested}
 
         # Base in middle
         base = PositionedElement(
-            name="base", path_points=[], close=False, width=1,
-            anchors=[], bbox=BoundingBox(0, 4, 12, 8)
+            name="base",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[],
+            bbox=BoundingBox(0, 4, 12, 8),
         )
 
         # Mark above
         mark1 = PositionedElement(
-            name="mark1", path_points=[], close=False, width=1,
-            anchors=[], bbox=BoundingBox(4, 0, 8, 3)
+            name="mark1",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[],
+            bbox=BoundingBox(4, 0, 8, 3),
         )
 
         # Mark below
         mark2 = PositionedElement(
-            name="mark2", path_points=[], close=False, width=1,
-            anchors=[], bbox=BoundingBox(4, 9, 8, 12)
+            name="mark2",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[],
+            bbox=BoundingBox(4, 9, 8, 12),
         )
 
         result = evaluate_dia2([base, mark1, mark2], ctx)
@@ -2471,9 +2574,123 @@ x LATIN-SMALL-X = {nested}
         with pytest.raises(EvaluationError, match="exactly 3"):
             evaluate_dia2([base, mark1], ctx)
 
+    def test_evaluate_dia2_zone_based_direction(self) -> None:
+        """Test evaluate_dia2 uses zone lookup for direction even after transforms."""
+        from lsdl.evaluator import EvaluationContext, evaluate_dia2, is_mark_above
+        from lsdl.model import ElementDefinition
+
+        metrics = Metrics()
+        # Create element definitions with explicit zones
+        acute_def = ElementDefinition(name="acute", line=1, col=1, zone=Zone.DIACRITIC_ABOVE)
+        cedilla_def = ElementDefinition(name="cedilla", line=2, col=1, zone=Zone.DIACRITIC_BELOW)
+        file = LSDLFile(
+            filename="test.lsdl",
+            elements={"acute": acute_def, "cedilla": cedilla_def},
+            metrics=metrics,
+        )
+        ctx = EvaluationContext(file, metrics)
+
+        # Create marks with bboxes that would mislead bbox heuristic after transform
+        # acute: placed LOW (y=9-12) but zone says above
+        mark_above = PositionedElement(
+            name="acute",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[],
+            bbox=BoundingBox(4, 9, 8, 12),  # Low position
+        )
+        # cedilla: placed HIGH (y=0-3) but zone says below
+        mark_below = PositionedElement(
+            name="cedilla",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[],
+            bbox=BoundingBox(4, 0, 8, 3),  # High position
+        )
+        # Base in middle
+        base = PositionedElement(
+            name="base",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[],
+            bbox=BoundingBox(0, 4, 12, 8),  # center_y = 6
+        )
+
+        # Test is_mark_above helper directly
+        assert is_mark_above(mark_above, ctx) is True  # Zone says above
+        assert is_mark_above(mark_below, ctx) is False  # Zone says below
+        assert is_mark_above(base, ctx) is None  # No zone info
+
+        # DIA2 should use zone-based direction, not bbox
+        result = evaluate_dia2([base, mark_above, mark_below], ctx)
+        assert result.operator == "DIA2"
+        assert len(result.children) == 3
+
+    def test_is_mark_above_variants_and_characters(self) -> None:
+        """Test is_mark_above handles variant names and character zones."""
+        from lsdl.evaluator import EvaluationContext, is_mark_above
+        from lsdl.model import CharacterDefinition, ElementDefinition
+
+        metrics = Metrics()
+        # Base element definition (no variant)
+        acute_def = ElementDefinition(name="acute", line=1, col=1, zone=Zone.DIACRITIC_ABOVE)
+        # Character with zone (path-form)
+        char_mark = CharacterDefinition(
+            char="x", name="COMBINING-X", line=2, col=1, zone=Zone.DIACRITIC_BELOW
+        )
+        file = LSDLFile(
+            filename="test.lsdl",
+            elements={"acute": acute_def},
+            characters={"x": char_mark},
+            metrics=metrics,
+        )
+        ctx = EvaluationContext(file, metrics)
+
+        # Variant name should resolve to base element
+        variant_mark = PositionedElement(
+            name="acute.heavy",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[],
+            bbox=BoundingBox(4, 9, 8, 12),  # Low position (would be "below" by bbox)
+        )
+        assert is_mark_above(variant_mark, ctx) is True  # Resolves to 'acute' zone
+
+        # Character zone lookup
+        char_elem = PositionedElement(
+            name="x",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[],
+            bbox=BoundingBox(4, 0, 8, 3),  # High position (would be "above" by bbox)
+        )
+        assert is_mark_above(char_elem, ctx) is False  # Character zone says below
+
+        # Unknown element returns None
+        unknown = PositionedElement(
+            name="unknown",
+            path_points=[],
+            close=False,
+            width=1,
+            anchors=[],
+            bbox=BoundingBox(0, 0, 12, 12),
+        )
+        assert is_mark_above(unknown, ctx) is None
+
     def test_evaluate_frame_anchor_matching(self) -> None:
         """Test evaluate_frame with find_anchor_match."""
-        from lsdl.evaluator import EvaluationContext, PositionedAnchor, PositionedCoordinate, evaluate_frame, find_anchor_match
+        from lsdl.evaluator import (
+            EvaluationContext,
+            PositionedAnchor,
+            PositionedCoordinate,
+            evaluate_frame,
+            find_anchor_match,
+        )
 
         metrics = Metrics()
         file = LSDLFile(filename="test.lsdl", metrics=metrics)
@@ -2481,16 +2698,22 @@ x LATIN-SMALL-X = {nested}
 
         # Element with right anchor
         elem1 = PositionedElement(
-            name="left", path_points=[], close=False, width=1,
+            name="left",
+            path_points=[],
+            close=False,
+            width=1,
             anchors=[PositionedAnchor("right", PositionedCoordinate(6, 4))],
-            bbox=BoundingBox(0, 0, 6, 8)
+            bbox=BoundingBox(0, 0, 6, 8),
         )
 
         # Element with left anchor - should match
         elem2 = PositionedElement(
-            name="right", path_points=[], close=False, width=1,
+            name="right",
+            path_points=[],
+            close=False,
+            width=1,
             anchors=[PositionedAnchor("left", PositionedCoordinate(0, 4))],
-            bbox=BoundingBox(0, 0, 6, 8)
+            bbox=BoundingBox(0, 0, 6, 8),
         )
 
         result = evaluate_frame([elem1, elem2], ctx)
@@ -2505,9 +2728,12 @@ x LATIN-SMALL-X = {nested}
 
         # No match case
         elem_no_match = PositionedElement(
-            name="solo", path_points=[], close=False, width=1,
+            name="solo",
+            path_points=[],
+            close=False,
+            width=1,
             anchors=[],
-            bbox=BoundingBox(0, 0, 6, 8)
+            bbox=BoundingBox(0, 0, 6, 8),
         )
         assert find_anchor_match([elem1], elem_no_match) is None
 
@@ -2522,12 +2748,10 @@ x LATIN-SMALL-X = {nested}
         ctx = EvaluationContext(file, metrics)
 
         elem1 = PositionedElement(
-            name="a", path_points=[], close=False, width=1,
-            anchors=[], bbox=BoundingBox(0, 0, 6, 8)
+            name="a", path_points=[], close=False, width=1, anchors=[], bbox=BoundingBox(0, 0, 6, 8)
         )
         elem2 = PositionedElement(
-            name="b", path_points=[], close=False, width=1,
-            anchors=[], bbox=BoundingBox(0, 0, 6, 8)
+            name="b", path_points=[], close=False, width=1, anchors=[], bbox=BoundingBox(0, 0, 6, 8)
         )
 
         # Default/adjacent strategy -> LR
@@ -2557,20 +2781,31 @@ x LATIN-SMALL-X = {nested}
     def test_apply_style(self) -> None:
         """Test apply_style applies transform to expression."""
         from lsdl.evaluator import EvaluationContext, apply_style
-        from lsdl.model import Coordinate, ElementDefinition, PathPoint, RefExpr, TransformExpr, WildcardExpr, Zone
+        from lsdl.model import (
+            Coordinate,
+            ElementDefinition,
+            PathPoint,
+            RefExpr,
+            TransformExpr,
+            WildcardExpr,
+            Zone,
+        )
 
         metrics = Metrics()
         elem = ElementDefinition(
-            name="stem", line=1, col=1, zone=Zone.CAP,
-            path_points={1: PathPoint(endpoint=Coordinate(6, 0))}, path_ids=[1]
+            name="stem",
+            line=1,
+            col=1,
+            zone=Zone.CAP,
+            path_points={"p1": PathPoint(endpoint=Coordinate(6, 0))},
+            path_ids=["p1"],
         )
         file = LSDLFile(filename="test.lsdl", elements={"stem": elem}, metrics=metrics)
         ctx = EvaluationContext(file, metrics)
 
         # Style transform with wildcard
         style = TransformExpr(
-            op="sh", child=WildcardExpr(line=1, col=1),
-            params={"dx": 2, "dy": 0}, line=1, col=1
+            op="sh", child=WildcardExpr(line=1, col=1), params={"dx": 2, "dy": 0}, line=1, col=1
         )
 
         # Apply to reference
@@ -2596,10 +2831,8 @@ x LATIN-SMALL-X = {nested}
         old_stdout = sys.stdout
         sys.stdout = StringIO()
 
-        try:
+        with contextlib.suppress(SystemExit):
             validate_main([str(lsdl_file), "--json"])
-        except SystemExit:
-            pass
 
         output = sys.stdout.getvalue()
         sys.stdout = old_stdout
@@ -2624,10 +2857,8 @@ x LATIN-SMALL-X = {nested}
         sys.stdin = StringIO("meta: name=stdin-test\n")
         sys.stdout = StringIO()
 
-        try:
+        with contextlib.suppress(SystemExit):
             validate_main(["-", "--json"])
-        except SystemExit:
-            pass
 
         output = sys.stdout.getvalue()
         sys.stdin = old_stdin
@@ -2659,10 +2890,8 @@ x LATIN-SMALL-X = {nested}
 
         # Test directory path
         sys.stderr = StringIO()
-        try:
+        with contextlib.suppress(SystemExit):
             validate_main([str(tmp_path)])  # tmp_path is a directory
-        except SystemExit:
-            pass
 
         stderr_output = sys.stderr.getvalue()
         sys.stderr = old_stderr
@@ -2689,20 +2918,16 @@ anchors: top=[6,4] base=[6,8]
         # Test tree format (default)
         old_stdout = sys.stdout
         sys.stdout = StringIO()
-        try:
+        with contextlib.suppress(SystemExit):
             dump_main([str(lsdl_file)])
-        except SystemExit:
-            pass
         tree_output = sys.stdout.getvalue()
         sys.stdout = old_stdout
         assert "stem" in tree_output
 
         # Test JSON format
         sys.stdout = StringIO()
-        try:
+        with contextlib.suppress(SystemExit):
             dump_main([str(lsdl_file), "--format", "json"])
-        except SystemExit:
-            pass
         json_output = sys.stdout.getvalue()
         sys.stdout = old_stdout
 
@@ -2711,10 +2936,8 @@ anchors: top=[6,4] base=[6,8]
 
         # Test stats format
         sys.stdout = StringIO()
-        try:
+        with contextlib.suppress(SystemExit):
             dump_main([str(lsdl_file), "--stats"])
-        except SystemExit:
-            pass
         stats_output = sys.stdout.getvalue()
         sys.stdout = old_stdout
         assert "element" in stats_output.lower() or len(stats_output) > 0
@@ -2730,8 +2953,12 @@ anchors: top=[6,4] base=[6,8]
         pp = PositionedPathPoint(endpoint=PositionedCoordinate(6, 0))
         pp2 = PositionedPathPoint(endpoint=PositionedCoordinate(6, 8))
         elem = PositionedElement(
-            name="test", path_points=[pp, pp2], close=False, width=1,
-            anchors=[], bbox=BoundingBox.standard()
+            name="test",
+            path_points=[pp, pp2],
+            close=False,
+            width=1,
+            anchors=[],
+            bbox=BoundingBox.standard(),
         )
 
         svg_content = render_character_svg("a", elem, size=120)
@@ -2739,3 +2966,148 @@ anchors: top=[6,4] base=[6,8]
         assert "<svg" in svg_content
         assert "viewBox" in svg_content
         assert "</svg>" in svg_content
+
+    def test_style_block_invalid_fields(self) -> None:
+        """Test that invalid fields in @style blocks produce errors."""
+        # zone: not valid in @style
+        source = """@lsdl 1.0
+@style italic
+zone: x-height
+transform: sk(*, kx=3)
+@end
+"""
+        with pytest.raises(ParseError) as exc_info:
+            parse(source)
+        assert "not valid in @style" in str(exc_info.value).lower()
+
+        # path: not valid in @style
+        source2 = """@lsdl 1.0
+@style bold
+path: p1 p2
+transform: sc(*, sx=12)
+@end
+"""
+        with pytest.raises(ParseError) as exc_info:
+            parse(source2)
+        assert "not valid in @style" in str(exc_info.value).lower()
+
+        # anchors: not valid in @style
+        source3 = """@lsdl 1.0
+@style condensed
+anchors: top=[6,0]
+transform: sc(*, sx=8, sy=12)
+@end
+"""
+        with pytest.raises(ParseError) as exc_info:
+            parse(source3)
+        assert "not valid in @style" in str(exc_info.value).lower()
+
+        # metadata fields not valid in @style
+        source4 = """@lsdl 1.0
+@style light
+script:Latn
+transform: sc(*, sx=10)
+@end
+"""
+        with pytest.raises(ParseError) as exc_info:
+            parse(source4)
+        assert (
+            "metadata" in str(exc_info.value).lower() or "not valid" in str(exc_info.value).lower()
+        )
+
+    def test_close_width_missing_values(self) -> None:
+        """Test that close:/width: without values produce errors."""
+        # close: with no value
+        source = """@lsdl 1.0
+@elem bad
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+close:
+anchors: top=[6,4] base=[6,8]
+@end
+"""
+        with pytest.raises(ParseError) as exc_info:
+            parse(source)
+        assert (
+            "close:" in str(exc_info.value).lower()
+            or "true or false" in str(exc_info.value).lower()
+        )
+
+        # width: with no value
+        source2 = """@lsdl 1.0
+@elem bad2
+zone: x-height
+path: p1 p2
+p1 = [6,4]
+p2 = [6,8]
+width:
+anchors: top=[6,4] base=[6,8]
+@end
+"""
+        with pytest.raises(ParseError) as exc_info:
+            parse(source2)
+        assert "width" in str(exc_info.value).lower() or "expected" in str(exc_info.value).lower()
+
+        # close: in @char block with no value
+        source3 = """@lsdl 1.0
+@char X LATIN-CAPITAL-X
+zone: cap
+path: p1 p2
+p1 = [0,0]
+p2 = [12,8]
+close:
+anchors: top=[6,0] base=[6,8]
+@end
+"""
+        with pytest.raises(ParseError) as exc_info:
+            parse(source3)
+        assert (
+            "close:" in str(exc_info.value).lower()
+            or "true or false" in str(exc_info.value).lower()
+        )
+
+    def test_get_definition_method(self) -> None:
+        """Test LSDLFile.get_definition() for character lookup with alias resolution."""
+        from lsdl.model import (
+            AliasDefinition,
+            CharacterDefinition,
+            ElementDefinition,
+            LSDLFile,
+            Metrics,
+            RefExpr,
+        )
+
+        stem = ElementDefinition(name="stem", line=1, col=1)
+        char_a = CharacterDefinition(
+            char="a",
+            name="LATIN-SMALL-A",
+            line=2,
+            col=1,
+            expression=RefExpr(name="stem", line=2, col=20),
+        )
+        alias_x = AliasDefinition(name="x", target="a", line=3, col=1)
+        alias_cycle1 = AliasDefinition(name="c1", target="c2", line=4, col=1)
+        alias_cycle2 = AliasDefinition(name="c2", target="c1", line=5, col=1)
+
+        file = LSDLFile(
+            filename="test.lsdl",
+            elements={"stem": stem},
+            characters={"a": char_a},
+            aliases={"x": alias_x, "c1": alias_cycle1, "c2": alias_cycle2},
+            metrics=Metrics(),
+        )
+
+        # Direct character lookup
+        assert file.get_definition("a") is char_a
+
+        # Alias resolution to character
+        assert file.get_definition("x") is char_a
+
+        # Not found returns None
+        assert file.get_definition("nonexistent") is None
+
+        # Cycle detection
+        with pytest.raises(ValueError, match="Alias cycle"):
+            file.get_definition("c1")

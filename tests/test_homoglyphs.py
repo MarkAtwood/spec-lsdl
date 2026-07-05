@@ -18,11 +18,12 @@ from lsdl.evaluator import (
     BoundingBox,
     ComposedElement,
     EvaluatedExpr,
+    EvaluationError,
     PositionedElement,
     PositionedPathPoint,
     evaluate,
 )
-from lsdl.parser import parse
+from lsdl.parser import ParseError, parse
 
 PROJECT_ROOT = Path(__file__).parent.parent
 LIB_DIR = PROJECT_ROOT / "lib"
@@ -69,11 +70,11 @@ def path_point_equal(a: PositionedPathPoint, b: PositionedPathPoint) -> bool:
 
 def geometry_equal(a: EvaluatedExpr, b: EvaluatedExpr) -> tuple[bool, str]:
     """Compare two evaluated expressions for identical geometry."""
-    if type(a) != type(b):
+    if type(a) is not type(b):
         return False, f"type mismatch: {type(a).__name__} vs {type(b).__name__}"
 
     if not bbox_equal(a.bbox, b.bbox):
-        return False, f"bbox mismatch"
+        return False, "bbox mismatch"
 
     if isinstance(a, PositionedElement) and isinstance(b, PositionedElement):
         if len(a.path_points) != len(b.path_points):
@@ -82,7 +83,7 @@ def geometry_equal(a: EvaluatedExpr, b: EvaluatedExpr) -> tuple[bool, str]:
             if not path_point_equal(pa, pb):
                 return False, f"path point {i} differs"
         if a.close != b.close:
-            return False, f"close differs"
+            return False, "close differs"
         return True, ""
 
     if isinstance(a, ComposedElement) and isinstance(b, ComposedElement):
@@ -109,8 +110,8 @@ def load_all_lsdl_files() -> dict[str, EvaluatedExpr]:
             parsed = parse(source, filename=str(lsdl_file))
             evaluated = evaluate(parsed)
             all_chars.update(evaluated)
-        except Exception:
-            pass  # Skip files that fail to parse
+        except (ParseError, EvaluationError):
+            pass  # Skip files that fail to parse or evaluate
 
     return all_chars
 

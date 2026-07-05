@@ -18,45 +18,64 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
-from lsdl.model import ComposeExpr, Expr, RefExpr
+from lsdl.model import DIACRITIC_REGISTRY, ComposeExpr, Expr, RefExpr, TransformExpr
 from lsdl.validate import Severity, ValidationIssue
 
 if TYPE_CHECKING:
-    from lsdl.model import CharacterDefinition, ElementDefinition, LSDLFile
+    from lsdl.model import LSDLFile
 
 __all__ = ["check_stroke_order", "StrokeOrderChecker"]
 
 
 # Element classifications for stroke-order analysis
-STEM_ELEMENTS = frozenset({
-    "stem", "ascender", "descender", "full-stem",
-})
+STEM_ELEMENTS = frozenset(
+    {
+        "stem",
+        "ascender",
+        "descender",
+        "full-stem",
+    }
+)
 
-CROSSBAR_ELEMENTS = frozenset({
-    "crossbar", "bar",
-})
+CROSSBAR_ELEMENTS = frozenset(
+    {
+        "crossbar",
+        "bar",
+    }
+)
 
-ARM_ELEMENTS = frozenset({
-    "arm",
-})
+ARM_ELEMENTS = frozenset(
+    {
+        "arm",
+    }
+)
 
-DIAGONAL_ELEMENTS = frozenset({
-    "diagonal", "leg",
-})
+DIAGONAL_ELEMENTS = frozenset(
+    {
+        "diagonal",
+        "leg",
+    }
+)
 
-BOWL_ELEMENTS = frozenset({
-    "bowl", "arc", "counter",
-})
+BOWL_ELEMENTS = frozenset(
+    {
+        "bowl",
+        "arc",
+        "counter",
+    }
+)
 
-DIACRITIC_ELEMENTS = frozenset({
-    "acute", "grave", "circumflex", "tilde", "diaeresis", "macron", "breve",
-    "caron", "ring", "dot-above", "double-acute", "double-grave", "horn",
-    "cedilla", "ogonek", "dot-below", "comma-below", "tittle",
-})
+# Use centralized diacritic registry from model.py
+DIACRITIC_ELEMENTS = DIACRITIC_REGISTRY | frozenset({"tittle"})
 
-DOT_ELEMENTS = frozenset({
-    "tittle", "dot", "dot-above", "dot-below",
-})
+DOT_ELEMENTS = frozenset(
+    {
+        "tittle",
+        "dot",
+        "dot-above",
+        "dot-below",
+    }
+)
 
 
 def _get_base_name(name: str) -> str:
@@ -103,9 +122,7 @@ def _is_diacritic(ref: Expr) -> bool:
 class StrokeOrderChecker:
     """Checker for stroke-order convention violations."""
 
-    def check_frame_h_pattern(
-        self, expr: ComposeExpr, context: str
-    ) -> list[ValidationIssue]:
+    def check_frame_h_pattern(self, expr: ComposeExpr, context: str) -> list[ValidationIssue]:
         """Check H-pattern: FRAME with two stems and a crossbar.
 
         Convention: crossbar should be last (stem.l, stem.r, crossbar).
@@ -143,9 +160,7 @@ class StrokeOrderChecker:
 
         return issues
 
-    def check_frame_t_pattern(
-        self, expr: ComposeExpr, context: str
-    ) -> list[ValidationIssue]:
+    def check_frame_t_pattern(self, expr: ComposeExpr, context: str) -> list[ValidationIssue]:
         """Check T-pattern: FRAME with stem and bar.top.
 
         Convention: stem should be first.
@@ -171,36 +186,28 @@ class StrokeOrderChecker:
                     has_stem = True
                     stem_idx = i
 
-        if has_bar_top and has_stem:
-            # Stem should be first (index 0)
-            if stem_idx > bar_idx:
-                stem_name = (
-                    children[stem_idx].name
-                    if isinstance(children[stem_idx], RefExpr)
-                    else "stem"
+        if has_bar_top and has_stem and stem_idx > bar_idx:
+            stem_name = (
+                children[stem_idx].name if isinstance(children[stem_idx], RefExpr) else "stem"
+            )
+            bar_name = (
+                children[bar_idx].name if isinstance(children[bar_idx], RefExpr) else "bar.top"
+            )
+            issues.append(
+                ValidationIssue(
+                    severity=Severity.WARNING,
+                    message=(
+                        f"T-pattern stroke order: {stem_name} should come before "
+                        f"{bar_name} (stem first, then crossbar)"
+                    ),
+                    location=context,
+                    code="stroke-order-t-pattern",
                 )
-                bar_name = (
-                    children[bar_idx].name
-                    if isinstance(children[bar_idx], RefExpr)
-                    else "bar.top"
-                )
-                issues.append(
-                    ValidationIssue(
-                        severity=Severity.WARNING,
-                        message=(
-                            f"T-pattern stroke order: {stem_name} should come before "
-                            f"{bar_name} (stem first, then crossbar)"
-                        ),
-                        location=context,
-                        code="stroke-order-t-pattern",
-                    )
-                )
+            )
 
         return issues
 
-    def check_dia_base_first(
-        self, expr: ComposeExpr, context: str
-    ) -> list[ValidationIssue]:
+    def check_dia_base_first(self, expr: ComposeExpr, context: str) -> list[ValidationIssue]:
         """Check DIA pattern: base should come before diacritic.
 
         Convention: in DIA(x, y), x should be the base letter.
@@ -237,9 +244,7 @@ class StrokeOrderChecker:
 
         return issues
 
-    def check_stack_tittle_pattern(
-        self, expr: ComposeExpr, context: str
-    ) -> list[ValidationIssue]:
+    def check_stack_tittle_pattern(self, expr: ComposeExpr, context: str) -> list[ValidationIssue]:
         """Check STACK with tittle: note that visual order differs from stroke order.
 
         This is informational - STACK is a visual ordering operator, so having
@@ -274,9 +279,7 @@ class StrokeOrderChecker:
 
         return issues
 
-    def check_expression(
-        self, expr: Expr, context: str
-    ) -> list[ValidationIssue]:
+    def check_expression(self, expr: Expr, context: str) -> list[ValidationIssue]:
         """Check an expression tree for stroke-order violations."""
         issues: list[ValidationIssue] = []
 
@@ -293,6 +296,10 @@ class StrokeOrderChecker:
             # Recursively check children
             for child in expr.children:
                 issues.extend(self.check_expression(child, context))
+
+        elif isinstance(expr, TransformExpr):
+            # Recurse into transformed child
+            issues.extend(self.check_expression(expr.child, context))
 
         return issues
 

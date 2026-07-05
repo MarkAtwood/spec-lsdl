@@ -477,7 +477,9 @@ def main(argv: list[str] | None = None) -> None:
         try:
             # ponytail: refuse to write through symlinks to prevent symlink attacks
             if output_path.is_symlink():
-                print(f"lsdl-render: refusing to write through symlink {output_path}", file=sys.stderr)
+                print(
+                    f"lsdl-render: refusing to write through symlink {output_path}", file=sys.stderr
+                )
                 continue
             output_path.write_text(svg_content, encoding="utf-8")
         except OSError as e:
@@ -497,7 +499,7 @@ def _safe_filename(char: str) -> str:
     to underscore-separated codepoints.
     """
     if len(char) == 0:
-        return "empty"
+        raise ValueError("Empty character string")
 
     parts = []
     for c in char:
