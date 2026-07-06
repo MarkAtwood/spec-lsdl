@@ -100,34 +100,165 @@ width: 1
 anchors: attach=[5,4] mark-above=[5,0] mark-below=[5,9]
 @end
 
-# arc.u - Lowercase u: single horseshoe stroke
+# arc.u - Lowercase u: horseshoe within x-height
 @elem arc.u
 zone: x-height
-path: p1 p2 p3 p4
-p1 = [1,0]
-p2 = [1,5]
-p3 = C([1,8] [6,8] [11,8])
-p4 = C([11,8] [11,5] [11,0])
+path: p1 p2 p3
+p1 = [2,4]
+p2 = C([2,8] [5,8] [5,8])
+p3 = C([9,8] [9,4] [9,4])
 close: false
 width: 1
-anchors: attach=[6,4] mark-above=[6,0] mark-below=[6,9]
+anchors: attach=[5,6] mark-above=[5,4] mark-below=[5,9]
+@end
+
+# =============================================================================
+# SINGLE-STROKE UPPERCASE ELEMENTS
+# =============================================================================
+# These replace broken compositions with proper single-path definitions
+
+# letter.a.cap - Capital A: two diagonals meeting at apex + crossbar
+@elem letter.a.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [1,8]
+p2 = [6,0]
+p3 = [11,8]
+p4 = [9,5]
+p5 = [3,5]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mark-above=[6,0]
+@end
+
+# letter.b.cap - Capital B: stem + two bumps
+@elem letter.b.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6 p7 p8 p9
+p1 = [2,0]
+p2 = [2,8]
+p3 = [2,0]
+p4 = [7,0]
+p5 = C([10,0] [10,4] [7,4])
+p6 = [2,4]
+p7 = [8,4]
+p8 = C([11,4] [11,8] [8,8])
+p9 = [2,8]
+close: false
+width: 1
+anchors: top=[2,0] base=[2,8] mark-above=[6,0]
+@end
+
+# letter.d.cap - Capital D: stem + bowl
+@elem letter.d.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [2,0]
+p2 = [2,8]
+p3 = [2,0]
+p4 = C([2,0] [10,0] [10,4])
+close: false
+width: 1
+anchors: top=[2,0] base=[2,8] mark-above=[6,0]
+@end
+
+# letter.j.cap - Capital J: stem + hook
+@elem letter.j.cap
+zone: cap
+path: p1 p2 p3
+p1 = [8,0]
+p2 = [8,6]
+p3 = C([8,8] [4,8] [2,6])
+close: false
+width: 1
+anchors: top=[8,0] base=[5,8] mark-above=[8,0]
+@end
+
+# letter.k.cap - Capital K: stem + arm + leg meeting at junction
+@elem letter.k.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6
+p1 = [2,0]
+p2 = [2,8]
+p3 = [2,4]
+p4 = [10,0]
+p5 = [2,4]
+p6 = [10,8]
+close: false
+width: 1
+anchors: top=[2,0] base=[2,8] mark-above=[6,0]
+@end
+
+# letter.m.cap - Capital M: two stems + nadir (V pointing down)
+@elem letter.m.cap
+zone: cap
+path: p1 p2 p3 p4 p5
+p1 = [1,8]
+p2 = [1,0]
+p3 = [6,5]
+p4 = [11,0]
+p5 = [11,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mark-above=[6,0]
+@end
+
+# letter.p.cap - Capital P: stem + upper bowl
+@elem letter.p.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [2,8]
+p2 = [2,0]
+p3 = C([2,0] [10,0] [10,2])
+p4 = C([10,4] [2,4] [2,4])
+close: false
+width: 1
+anchors: top=[2,0] base=[2,8] mark-above=[6,0]
+@end
+
+# letter.r.cap - Capital R: stem + bowl + leg
+@elem letter.r.cap
+zone: cap
+path: p1 p2 p3 p4 p5 p6
+p1 = [2,8]
+p2 = [2,0]
+p3 = C([2,0] [10,0] [10,2])
+p4 = C([10,4] [2,4] [2,4])
+p5 = [2,4]
+p6 = [10,8]
+close: false
+width: 1
+anchors: top=[2,0] base=[2,8] mark-above=[6,0]
+@end
+
+# letter.t.cap - Capital T: crossbar + stem
+@elem letter.t.cap
+zone: cap
+path: p1 p2 p3 p4
+p1 = [1,0]
+p2 = [11,0]
+p3 = [6,0]
+p4 = [6,8]
+close: false
+width: 1
+anchors: top=[6,0] base=[6,8] mark-above=[6,0]
 @end
 
 # =============================================================================
 # UPPERCASE LETTERS A-Z (26 characters)
 # =============================================================================
 
-# A - Two diagonal stems meeting at apex with crossbar
-A  LATIN-CAPITAL-A = APEX(stem.l, stem.r, crossbar.cap) script:Latn
+# A - Single-stroke apex with crossbar
+A  LATIN-CAPITAL-A = letter.a.cap script:Latn
 
-# B - Vertical stem with two stacked half-bowls
-B  LATIN-CAPITAL-B = LR(stem.l, STACK(bowl.upper, bowl.lower), 3/9) script:Latn
+# B - Single-stroke stem with two bumps
+B  LATIN-CAPITAL-B = letter.b.cap script:Latn
 
 # C - Single-stroke open arc form
 C  LATIN-CAPITAL-C = arc.c.cap script:Latn
 
-# D - Vertical stem with right-side capital bowl
-D  LATIN-CAPITAL-D = LR(stem.l, bowl.r.cap, 3/9) script:Latn
+# D - Single-stroke stem + bowl
+D  LATIN-CAPITAL-D = letter.d.cap script:Latn
 
 # E - Vertical stem with three horizontal arms
 E  LATIN-CAPITAL-E = FRAME(stem.l, arm.top, arm.mid, arm.bot) script:Latn
@@ -144,17 +275,17 @@ H  LATIN-CAPITAL-H = FRAME(stem.l, stem.r, crossbar.cap) script:Latn
 # I - Single vertical stem
 I  LATIN-CAPITAL-I = stem.l script:Latn
 
-# J - Descending stem with bottom hook
-J  LATIN-CAPITAL-J = STACK(stem.r, hook.bot) script:Latn
+# J - Single-stroke stem with hook
+J  LATIN-CAPITAL-J = letter.j.cap script:Latn
 
-# K - Vertical stem with diagonal arm and leg
-K  LATIN-CAPITAL-K = FRAME(stem.l, diagonal.l, leg.cap) script:Latn
+# K - Single-stroke stem with arm and leg
+K  LATIN-CAPITAL-K = letter.k.cap script:Latn
 
 # L - Vertical stem with bottom horizontal arm
 L  LATIN-CAPITAL-L = FRAME(stem.l, arm.bot) script:Latn
 
-# M - Two outer stems with apex structure between
-M  LATIN-CAPITAL-M = FRAME(stem.l, apex, stem.r) script:Latn
+# M - Single-stroke M with nadir
+M  LATIN-CAPITAL-M = letter.m.cap script:Latn
 
 # N - Two vertical stems connected by diagonal
 N  LATIN-CAPITAL-N = FRAME(stem.l, diagonal, stem.r) script:Latn
@@ -162,20 +293,20 @@ N  LATIN-CAPITAL-N = FRAME(stem.l, diagonal, stem.r) script:Latn
 # O - Full round capital bowl
 O  LATIN-CAPITAL-O = bowl.cap script:Latn
 
-# P - Vertical stem with upper bowl
-P  LATIN-CAPITAL-P = LR(stem.l, bowl.upper, 3/9) script:Latn
+# P - Single-stroke stem with bowl
+P  LATIN-CAPITAL-P = letter.p.cap script:Latn
 
 # Q - Full round bowl with tail
 Q  LATIN-CAPITAL-Q = FRAME(bowl.cap, tail) script:Latn
 
-# R - Vertical stem with upper bowl and leg
-R  LATIN-CAPITAL-R = FRAME(stem.l, bowl.upper, leg.cap) script:Latn
+# R - Single-stroke stem with bowl and leg
+R  LATIN-CAPITAL-R = letter.r.cap script:Latn
 
 # S - Single-stroke continuous curve, top-to-bottom
 S  LATIN-CAPITAL-S = curve.s.cap script:Latn
 
-# T - Vertical stem, then top bar
-T  LATIN-CAPITAL-T = FRAME(stem, bar.top) script:Latn
+# T - Single-stroke crossbar + stem
+T  LATIN-CAPITAL-T = letter.t.cap script:Latn
 
 # U - Single-stroke horseshoe form
 U  LATIN-CAPITAL-U = arc.u.cap script:Latn
@@ -196,68 +327,353 @@ Y  LATIN-CAPITAL-Y = FRAME(diagonal.l, diagonal, stem) script:Latn
 Z  LATIN-CAPITAL-Z = FRAME(bar.top, diagonal, bar.bot.cap) script:Latn
 
 # =============================================================================
+# SINGLE-STROKE LOWERCASE ELEMENTS
+# =============================================================================
+
+# letter.a - Lowercase a: bowl + stem
+@elem letter.a
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [9,8]
+p2 = [9,4]
+p3 = C([9,4] [9,8] [5,8])
+p4 = C([1,8] [1,4] [5,4])
+p5 = C([9,4] [9,4] [9,8])
+close: false
+width: 1
+anchors: mark-above=[5,4] mark-below=[5,9]
+@end
+
+# letter.b - Lowercase b: ascender + bowl
+@elem letter.b
+zone: full
+path: p1 p2 p3 p4
+p1 = [2,0]
+p2 = [2,8]
+p3 = C([2,8] [2,4] [6,4])
+p4 = C([10,4] [10,8] [2,8])
+close: false
+width: 1
+anchors: mark-above=[2,0] mark-below=[6,9]
+@end
+
+# letter.d - Lowercase d: bowl + ascender
+@elem letter.d
+zone: full
+path: p1 p2 p3 p4
+p1 = [9,0]
+p2 = [9,8]
+p3 = C([9,8] [9,4] [5,4])
+p4 = C([1,4] [1,8] [9,8])
+close: false
+width: 1
+anchors: mark-above=[9,0] mark-below=[5,9]
+@end
+
+# letter.e - Lowercase e: bowl with crossbar
+@elem letter.e
+zone: x-height
+path: p1 p2 p3 p4
+p1 = [2,6]
+p2 = [10,6]
+p3 = C([10,4] [5,4] [5,4])
+p4 = C([1,4] [1,8] [10,8])
+close: false
+width: 1
+anchors: mark-above=[5,4] mark-below=[5,9]
+@end
+
+# letter.g - Lowercase g: bowl + descending loop
+@elem letter.g
+zone: descender
+path: p1 p2 p3 p4 p5
+p1 = [9,4]
+p2 = C([9,4] [9,8] [5,8])
+p3 = C([1,8] [1,4] [9,4])
+p4 = [9,10]
+p5 = C([9,12] [2,12] [2,10])
+close: false
+width: 1
+anchors: mark-above=[5,4] mark-below=[5,12]
+@end
+
+# letter.h - Lowercase h: ascender stem down, shoulder arching right, second stem down
+@elem letter.h
+zone: full
+path: p1 p2 p3 p4 p5
+p1 = [2,1]
+p2 = [2,8]
+p3 = [2,5]
+p4 = C([2,4] [6,4] [9,5])
+p5 = [9,8]
+close: false
+width: 1
+anchors: mark-above=[2,1] mark-below=[5,9]
+@end
+
+# letter.i - Lowercase i: stem only
+@elem letter.i
+zone: x-height
+path: p1 p2
+p1 = [5,4]
+p2 = [5,8]
+close: false
+width: 1
+anchors: mark-above=[5,2] mark-below=[5,9]
+@end
+
+@elem dotover.i
+zone: x-height
+path: p1 p2
+p1 = [4,2]
+p2 = [6,2]
+close: false
+width: 2
+anchors: mark-above=[5,2]
+@end
+
+# letter.j - Lowercase j: stem down, hook curving left, then dot above
+@elem letter.j
+zone: descender
+path: p1 p2 p3
+p1 = [6,4]
+p2 = [6,10]
+p3 = C([6,11] [3,11] [3,9])
+close: false
+width: 1
+anchors: mark-above=[6,2] mark-below=[5,11]
+@end
+
+@elem dotover.j
+zone: x-height
+path: p1 p2
+p1 = [5,2]
+p2 = [7,2]
+close: false
+width: 2
+anchors: mark-above=[6,2]
+@end
+
+# letter.k - Lowercase k: ascender + arm + leg
+@elem letter.k
+zone: full
+path: p1 p2 p3 p4 p5 p6
+p1 = [2,0]
+p2 = [2,8]
+p3 = [2,5]
+p4 = [9,4]
+p5 = [2,5]
+p6 = [9,8]
+close: false
+width: 1
+anchors: mark-above=[2,0] mark-below=[5,9]
+@end
+
+# letter.m - Lowercase m: three stems with connecting arches at top
+@elem letter.m
+zone: x-height
+path: p1 p2 p3 p4 p5 p6 p7
+p1 = [2,8]
+p2 = [2,4]
+p3 = C([2,4] [2,4] [4,4])
+p4 = C([6,4] [6,8] [6,8])
+p5 = C([6,4] [6,4] [8,4])
+p6 = C([10,4] [10,8] [10,8])
+p7 = [10,8]
+close: false
+width: 1
+anchors: mark-above=[6,4] mark-below=[6,9]
+@end
+
+# letter.n - Lowercase n: stem + arch
+@elem letter.n
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [2,8]
+p2 = [2,4]
+p3 = C([2,4] [2,4] [5,4])
+p4 = C([9,4] [9,4] [9,8])
+p5 = [9,8]
+close: false
+width: 1
+anchors: mark-above=[5,4] mark-below=[5,9]
+@end
+
+# letter.p - Lowercase p: stem down to descender, bowl bulging right
+@elem letter.p
+zone: descender
+path: p1 p2 p3 p4
+p1 = [3,4]
+p2 = [3,11]
+p3 = [3,4]
+p4 = C([9,4] [9,8] [3,8])
+close: false
+width: 1
+anchors: mark-above=[5,4] mark-below=[5,9]
+@end
+
+# letter.q - Lowercase q: bowl on left + descender on right
+@elem letter.q
+zone: descender
+path: p1 p2 p3 p4 p5
+p1 = [8,4]
+p2 = C([8,4] [8,8] [5,8])
+p3 = C([2,8] [2,4] [5,4])
+p4 = C([8,4] [8,4] [8,4])
+p5 = [8,11]
+close: false
+width: 1
+anchors: mark-above=[5,4] mark-below=[5,9]
+@end
+
+# letter.s - Lowercase s: proper S with two opposing curves
+@elem letter.s
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [8,5]
+p2 = C([8,4] [2,4] [2,5])
+p3 = [5,6]
+p4 = C([8,7] [8,8] [2,7])
+p5 = [2,7]
+close: false
+width: 1
+anchors: mark-above=[5,4] mark-below=[5,9]
+@end
+
+# letter.f - Lowercase f: hook curving right at top, stem down, crossbar at x-height
+@elem letter.f
+zone: ascender
+path: p1 p2 p3 p4 p5 p6
+p1 = [9,2]
+p2 = C([9,1] [6,1] [6,2])
+p3 = [6,8]
+p4 = [6,4]
+p5 = [4,4]
+p6 = [8,4]
+close: false
+width: 1
+anchors: mark-above=[7,1] mark-below=[6,9]
+@end
+
+# letter.t - Lowercase t: stem extends into ascender zone + crossbar at x-height
+@elem letter.t.stem
+zone: ascender
+path: p1 p2
+p1 = [6,1]
+p2 = [6,8]
+close: false
+width: 1
+anchors: mark-above=[6,1] mark-below=[6,9]
+@end
+
+@elem letter.t.bar
+zone: x-height
+path: p1 p2
+p1 = [4,4]
+p2 = [8,4]
+close: false
+width: 1
+anchors: mark-above=[6,4]
+@end
+
+# letter.x - Lowercase x: two separate crossing diagonals
+@elem letter.x
+zone: x-height
+path: p1 p2
+p1 = [2,4]
+p2 = [10,8]
+close: false
+width: 1
+anchors: mark-above=[6,4] mark-below=[6,9]
+@end
+
+@elem diagonal.x.r
+zone: x-height
+path: p1 p2
+p1 = [10,4]
+p2 = [2,8]
+close: false
+width: 1
+anchors: mark-above=[6,4]
+@end
+
+# letter.z - Lowercase z: top bar, diagonal (top-right to bottom-left), bottom bar
+@elem letter.z
+zone: x-height
+path: p1 p2 p3 p4 p5
+p1 = [2,4]
+p2 = [10,4]
+p3 = [2,8]
+p4 = [2,8]
+p5 = [10,8]
+close: false
+width: 1
+anchors: mark-above=[6,4] mark-below=[6,9]
+@end
+
+# =============================================================================
 # LOWERCASE LETTERS a-z (26 characters)
 # =============================================================================
 
-# a - Bowl with vertical stem on right
-a  LATIN-SMALL-A = LR(bowl.l, stem, 7/5) script:Latn
+# a - Single-stroke bowl + stem
+a  LATIN-SMALL-A = letter.a script:Latn
 
-# b - Ascender with right-side bowl
-b  LATIN-SMALL-B = STACK(ascender, bowl.r) script:Latn
+# b - Single-stroke ascender + bowl
+b  LATIN-SMALL-B = letter.b script:Latn
 
 # c - Single-stroke open arc (counterclockwise)
 c  LATIN-SMALL-C = arc.c script:Latn
 
-# d - Left-side bowl with ascender
-d  LATIN-SMALL-D = LR(bowl.l, ascender, 7/5) script:Latn
+# d - Single-stroke bowl + ascender
+d  LATIN-SMALL-D = letter.d script:Latn
 
-# e - Bowl with crossbar (stroke: start at crossbar, curve counterclockwise)
-e  LATIN-SMALL-E = FRAME(crossbar.low, arc.top, arc.bot) script:Latn
+# e - Single-stroke bowl with crossbar
+e  LATIN-SMALL-E = letter.e script:Latn
 
-# f - Hook top with stem and crossbar
-f  LATIN-SMALL-F = FRAME(hook.top, stem, bar.mid.short) script:Latn
+# f - Single-stroke stem + hook + crossbar
+f  LATIN-SMALL-F = letter.f script:Latn
 
-# g - Bowl with descending loop (double-storey)
-g  LATIN-SMALL-G = STACK(bowl, loop) script:Latn
+# g - Single-stroke bowl + descending loop
+g  LATIN-SMALL-G = letter.g script:Latn
 
-# h - Ascender with shoulder
-h  LATIN-SMALL-H = FRAME(ascender, shoulder) script:Latn
+# h - Single-stroke ascender + shoulder
+h  LATIN-SMALL-H = letter.h script:Latn
 
-# i - Stem with tittle above (stroke order: stem, then tittle; STACK is visual)
-i  LATIN-SMALL-I = STACK(tittle, stem) script:Latn
+# i - Stem + dot
+i  LATIN-SMALL-I = FRAME(letter.i, dotover.i) script:Latn
 
-# j - Stem with hook bottom and tittle above (stroke order: stem+hook, then tittle; STACK is visual)
-j  LATIN-SMALL-J = STACK(tittle, stem, hook.bot) script:Latn
+# j - Stem with hook + dot above
+j  LATIN-SMALL-J = FRAME(letter.j, dotover.j) script:Latn
 
-# k - Ascender with diagonal arm and leg
-k  LATIN-SMALL-K = FRAME(ascender, diagonal.l, leg) script:Latn
+# k - Single-stroke ascender + arm + leg
+k  LATIN-SMALL-K = letter.k script:Latn
 
 # l - Simple ascender
 l  LATIN-SMALL-L = ascender script:Latn
 
-# m - Stem with two shoulders (double arch)
-m  LATIN-SMALL-M = FRAME(stem, shoulder.l, shoulder.r) script:Latn
+# m - Single-stroke stem + two arches
+m  LATIN-SMALL-M = letter.m script:Latn
 
-# n - Stem with single shoulder
-n  LATIN-SMALL-N = FRAME(stem, shoulder) script:Latn
+# n - Single-stroke stem + arch
+n  LATIN-SMALL-N = letter.n script:Latn
 
 # o - Full round bowl at x-height
 o  LATIN-SMALL-O = bowl.full script:Latn
 
-# p - Descender stem, then bowl (stroke order: stem down, then bowl clockwise)
-p  LATIN-SMALL-P = FRAME(descender, bowl.r) script:Latn
+# p - Single-stroke descender + bowl
+p  LATIN-SMALL-P = letter.p script:Latn
 
-# q - Left bowl with descending stem
-q  LATIN-SMALL-Q = LR(bowl.l, descender.r, 7/5) script:Latn
+# q - Single-stroke bowl + descender
+q  LATIN-SMALL-Q = letter.q script:Latn
 
 # r - Stem with ear projection
 r  LATIN-SMALL-R = FRAME(stem, ear) script:Latn
 
-# s - Single-stroke S-curve (top to bottom)
-s  LATIN-SMALL-S = curve.s script:Latn
+# s - Single-stroke S-curve
+s  LATIN-SMALL-S = letter.s script:Latn
 
-# t - Stem with crossbar (shorter than f)
-t  LATIN-SMALL-T = FRAME(ascender, bar.mid.short) script:Latn
+# t - Stem + crossbar
+t  LATIN-SMALL-T = FRAME(letter.t.stem, letter.t.bar) script:Latn
 
 # u - Single horseshoe stroke (left down, curve, right up)
 u  LATIN-SMALL-U = arc.u script:Latn
@@ -269,13 +685,13 @@ v  LATIN-SMALL-V = vertex script:Latn
 w  LATIN-SMALL-W = LR(vertex, vertex, 6/6) script:Latn
 
 # x - Two crossing diagonals at x-height
-x  LATIN-SMALL-X = OVR(diagonal.x, diagonal.l) script:Latn
+x  LATIN-SMALL-X = OVR(letter.x, diagonal.x.r) script:Latn
 
 # y - Vertex with descending tail
 y  LATIN-SMALL-Y = FRAME(vertex, descender.curved) script:Latn
 
 # z - Top bar, diagonal, bottom bar at x-height
-z  LATIN-SMALL-Z = FRAME(bar.top.x, diagonal.x, bar.bot) script:Latn
+z  LATIN-SMALL-Z = letter.z script:Latn
 
 # =============================================================================
 # CASE MAPPINGS
